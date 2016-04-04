@@ -1,0 +1,152 @@
+{% if method.mediaUpload %}{% for key,value in method.mediaUpload.protocols.items %}
+// static
+const {{ api.client_namespace }}::MediaUploadSpec
+{{ method.className }}::{{ key|upper }}_MEDIA_UPLOAD(
+    "{{ key }}", "{{ value.path }}", {{ value.multipart|lower }});
+
+{% endfor %}
+{% endif %}
+{% filter noblanklines %}
+
+{% if method.requestType and method.mediaUpload %}
+// Deprecated constructor did not take media upload arguments.
+{{ method.className }}::{{ method.className }}({% indent 1 %}
+  {% parameter_list %}
+  {% parameter %}
+    const {{ api.className }}* _service_
+  {% end_parameter %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+{% end_parameter_list %}){% endindent %}
+    : {{ api.className }}BaseRequest({% indent 2 %}
+{#-------------------------------------------------------------------------#}
+{# The base class constructor takes service, credential, HttpMethod, and   #}
+{# a url template.                                                         #}
+{#-------------------------------------------------------------------------#}
+  _service_, _credential_,
+  {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
+  "{{ method.path }}"){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}
+  uploader_.reset(new {{ api.client_namespace }}::MediaUploader(
+      &SIMPLE_MEDIA_UPLOAD,
+      _service_->url_root(),
+      {{ api.client_namespace }}::JoinPath(
+          _service_->url_path(), "{{ method.path }}")));
+}
+{% endif %}
+
+// Standard constructor.
+{{ method.className }}::{{ method.className }}({% indent 1 %}
+  {% parameter_list %}
+  {#-----------------------------------------------------------#}
+  {# FIRST add standard _service_ and _credential_ parameters  #}
+  {#-----------------------------------------------------------#}
+  {% parameter %}
+    const {{ api.className }}* _service_
+  {% end_parameter %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {#--------------------------------------------------------------#}
+  {# SECOND add the required parameters from the discovery spec.  #}
+  {#--------------------------------------------------------------#}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+  {#---------------------------------------------------------------------#}
+  {# FINALLY add the content parameter if the request will be posting a  #}
+  {# json object                                                         #}
+  {#---------------------------------------------------------------------#}
+  {% if method.requestType %}
+    {% parameter %}
+      {# We call the parameter different things if there is also media #}
+      {# content available. That is sort of a confusing design choice. #}
+      {% if method.mediaUpload %}
+        const {{ method.requestType.packageRelativeClassName }}* _metadata_
+      {% else %}
+        const {{ method.requestType.packageRelativeClassName }}& __request_content__
+      {% endif %}
+    {% end_parameter %}
+  {% endif %}
+  {% if method.mediaUpload %}
+    {% parameter %}const StringPiece& _media_content_type_{% end_parameter %}
+    {% parameter %}{{ api.client_namespace }}::DataReader* _media_content_reader_{% end_parameter %}
+  {% endif %}
+  {% end_parameter_list %}){% endindent %}
+    : {{ api.className }}BaseRequest({% indent 2 %}
+{#-------------------------------------------------------------------------#}
+{# The base class constructor takes service, credential, HttpMethod, and   #}
+{# a url template.                                                         #}
+{#-------------------------------------------------------------------------#}
+    _service_, _credential_,
+    {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
+    "{{ method.path }}"){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}{% if method.mediaUpload %}
+{# TODO(ewiseblatt): We're assuming SIMPLE for now, but this should take #}
+{# the set of choices (a class variable) and allow them to be restricted #}
+{# later, such as by resetting the choices or setting the preferred choice #}
+  if (_media_content_reader_) {
+    {{ api.client_namespace }}::MediaUploader* uploader =
+        new {{ api.client_namespace }}::MediaUploader(
+            &SIMPLE_MEDIA_UPLOAD,
+            _service_->url_root(),
+            {{ api.client_namespace }}::JoinPath(
+                _service_->url_path(), "{{ method.path }}"));
+{% if method.requestType %}
+    if (_metadata_) {
+      uploader->set_metadata(*_metadata_);
+    }
+{% endif %}
+    uploader->set_media_content_reader(
+        _media_content_type_.as_string(), _media_content_reader_);
+    ResetMediaUploader(uploader);
+{% if method.requestType %}
+  } else {
+    AddJsonContentToRequest(_metadata_);
+{% endif %}
+  }
+{% elif method.requestType  %}
+  AddJsonContentToRequest(&__request_content__);
+{% endif %}
+}
+{% endfilter %}
+
+// Standard destructor.
+{{ method.className }}::~{{ method.className }}() {
+}
+
+{% filter noblanklines %}
+{% if method.queryParameters %}
+{{ api.status_type }} {{ method.className }}::AppendOptionalQueryParameters(string* target) {
+  const char* sep = (target->find('?') == string::npos) ? "?" : "&";{% indent %}
+{% for p in method.queryParameters %}{% if p.required %}{% call_template _append_query_parameter_cc variable=p %}{% else %}if (_have_{{p.memberName}}) {
+{% call_template _append_query_parameter_cc variable=p %}
+}{% endif %}
+{% endfor %}{% endindent %}
+  return {{ api.className }}BaseRequest::AppendOptionalQueryParameters(target);
+}
+{% endif %}
+{% endfilter %}
+{% filter noblanklines %}
+{% if method.parameters %}{{ api.status_type }} {{ method.className }}::AppendVariable(
+        const StringPiece& variable_name,
+        const {{ api.client_namespace }}::UriTemplateConfig& config,
+        string* target) {
+{% for p in method.requiredParameters %}
+  {% if p.location == 'path' %}
+  if (variable_name == {% literal p.wireName %}) {{% indent %}{% call_template _append_uri_template_variable_cc variable=p %}{% endindent %}
+    return {{ api.client_namespace }}::StatusOk();
+  }
+  {% endif %}
+{% endfor %}
+{%if api.parameters %}
+  return {{ api.className }}BaseRequest::AppendVariable(
+      variable_name, config, target);
+{% else %}
+  return {{ api.client_namespace }}::StatusInvalidArgument(StrCat("Unexpected url variable name='", variable_name, "'"));
+{% endif %}
+}
+{% endif %}
+{% endfilter %}

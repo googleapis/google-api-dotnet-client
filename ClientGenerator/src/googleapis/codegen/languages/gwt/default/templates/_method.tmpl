@@ -1,0 +1,30 @@
+/**{% filter block_comment %}
+{% if method.description %} * {{ method.description }}
+ * {% endif %}{% endfilter %}
+ *
+ *{% for param in method.requiredParameters %}
+ * @param {{ param.memberName }} {{ param.description }}{% endfor %}{% if method.requestType %}
+ * @param content Request body content.{% endif %}
+ */
+{{ method.className }} {{ method.codeName }}({% parameter_list %}
+  {% for p in method.requiredParameters %}
+    {% parameter %}
+      @PropertyName("{{ p.wireName }}") {{ p.codeType }} {{ p.memberName }}
+    {% end_parameter %}
+  {% endfor %}
+  {% if method.requestType %}{% parameter %}
+    @JsonRpcContent {{ method.requestType.fullClassName }} content
+  {% end_parameter %}{% endif %}
+  {% end_parameter_list %});
+
+/**
+ * Request object to call the "{{ method.rpcMethod }}" method.
+ */
+@JsonRpcWireName(value="{{ method.rpcMethod }}", version="{{ api.version }}")
+public interface {{ method.className }} extends Request<{{ method.responseType.fullClassName }}> {
+{% for param in method.parameters %}
+  {% doc_comment_if param.description %}
+  @PropertyName("{{ param.wireName }}")
+  {{ method.className }} {{ param.setterName }}(@PropertyName("{{ param.wireName }}") {{ param.codeType }} {{ param.memberName }});
+{% if param.enumType %}
+{% call_template _enum param=param enum=param.enumType %}{% endif %}{% endfor %}}

@@ -1,0 +1,29 @@
+{% language objc %}@implementation {{ api.serviceName }}
+
+#if DEBUG
+// Method compiled in debug builds just to check that all the needed support
+// classes are present at link time.
++ (NSArray *)checkClasses {
+  NSArray *classes = @[
+{% if api.query %}    [{{api.query}} class],
+{% endif %}{% for model in api.models %}    [{{ model.className }} class]{% if not forloop.last %},{% endif %}
+{% endfor %}  ];
+  return classes;
+}
+#endif  // DEBUG
+
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    // Version from discovery.
+    self.apiVersion = {% literal api.version %};
+{% if api.rpcUrl %}
+    // From discovery.  Where to send JSON-RPC.
+    // Turn off prettyPrint for this service to save bandwidth (especially on
+    // mobile). The fetcher logging will pretty print.
+    self.rpcURL = [NSURL URLWithString:{% literal api.rpcUrl %}];
+{% endif %}  }
+  return self;
+}
+
+@end

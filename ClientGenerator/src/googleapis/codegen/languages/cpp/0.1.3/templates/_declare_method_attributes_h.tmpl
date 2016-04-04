@@ -1,0 +1,16 @@
+{% filter noblanklines %}
+{% for p in parameters %}
+{% if p.isPrimitive or p.data_type.json_type == 'string' %}
+  {{ p.codeType }} {{ p.memberName }};
+{% else %}{% if p.required %}
+  {{p.codeType }} {{ p.memberName }};
+{% else %}
+  {{ api.client_namespace }}::JsonCppCapsule< {{ p.codeType }} > {{ p.memberName }};
+{% endif %}{% endif %}{% endfor %}
+
+{% for p in parameters %}
+{% if not p.required %}
+  bool _have_{{ p.memberName }} : 1;
+{% endif %}
+{% endfor %}
+{% endfilter %}

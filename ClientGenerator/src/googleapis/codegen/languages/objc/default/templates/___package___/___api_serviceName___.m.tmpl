@@ -1,0 +1,21 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.serviceName }}.m
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+// Classes:
+//   {{ api.serviceName }} (0 custom class methods, 0 custom properties)
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+#import "{{ api.className }}.h"
+
+{% call_template _service_m_impl %}

@@ -1,0 +1,27 @@
+const char {{ api.className}}::googleapis_API_NAME[] = {"{{ api.name }}"};
+
+const char {{ api.className}}::googleapis_API_VERSION[] = {"{{ api.version }}"};
+
+const char {{ api.className}}::googleapis_API_GENERATOR[] = {
+  "{{ tool.name }} {{ tool.version }} / {{ features.releaseVersion }}"};
+
+{% call_template _service_scopes_cc api=api %}
+{% call_template _base_method_cc api=api %}
+
+{% for resource in api.resources %}{% call_template _resource_method_cc resource=resource %}
+{% endfor %}
+{% for method in api.methods %}{% call_template _method_cc method=method %}{% endfor %}
+
+{{ api.className }}::{{ api.className }}({{ api.client_namespace }}::HttpTransport* transport)
+  : ClientService("{{ api.rootUrl }}", "{{ api.servicePath }}", transport){% for resource in api.resources %}, {{ resource.memberName }}(this){% endfor %} {
+}
+
+{{ api.className }}::~{{ api.className }}() {
+}
+
+{% for resource in api.resources %}
+{% call_template _resource_cc resource=resource %}
+{% endfor %}
+{% for method in api.methods %}
+{% call_template _method_factory_cc method=method %}
+{% endfor %}

@@ -1,0 +1,29 @@
+{% language java %}{% collapsenewlines %}{% call_template _file_header %}
+{% if not api.authscopes %}{% halt %}{% endif %}
+package {{ api.module.name }};
+
+/**
+ * Available OAuth 2.0 scopes for use with the {{ api.title }}.
+ *
+ * @since 1.4
+ */
+public class {{ api.className }}Scopes {
+{% for authscope in api.authscopes %}
+  /** {{ authscope.description }}. */
+  public static final String {{ authscope.name }} = "{{ authscope.value }}";
+{% endfor %}
+
+  /**
+   * Returns an unmodifiable set that contains all scopes declared by this class.
+   *
+   * @since 1.16
+   */
+  public static java.util.Set<String> all() {
+    java.util.Set<String> set = new java.util.HashSet<String>();{% for authscope in api.authscopes %}
+    set.add({{ authscope.name }});{% endfor %}
+    return java.util.Collections.unmodifiableSet(set);
+  }
+
+  private {{ api.className }}Scopes() {
+  }
+}{% endcollapsenewlines %}

@@ -1,0 +1,8 @@
+resource {{% indent %}
+name: {{ resource.wireName }}
+id: {{ resource.wireName }}
+{% for m in resource.methods %}{% call_template _method method m %}
+{% endfor %}
+{% for subr in resource.resources %}{% call_template _resource resource subr %}
+{% endfor %}
+{% endindent %}}

@@ -1,0 +1,8 @@
+name: google_api_{{ api.name }}_{{ api.version }}
+description: >{% indent %}
+{{ api.description }}{% endindent %}
+version: {{ features.releaseVersion }}.{{ api.revision }}
+author: Sam McCall <sammccall@google.com>
+dependencies:
+  google_api_common:
+    git: https://code.google.com/p/google-api-dart-client.common/

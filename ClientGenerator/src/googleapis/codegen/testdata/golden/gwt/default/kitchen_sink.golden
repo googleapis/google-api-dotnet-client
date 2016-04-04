@@ -1,0 +1,3378 @@
+=== begin: ./build.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="jar" name="gwt-kitch_sink-v1">
+  <property environment="env" />
+
+  <property name="gwtdir" value="${env.GWT_HOME}" />
+  <property name="baselibdir" value="${env.BASE_LIB_DIR}" />
+
+  <property name="src.dir" value="${basedir}/src" />
+  <property name="build.dir" value="${basedir}/build" />
+  <property name="build.classes.dir" value="${build.dir}/classes" />
+  <property name="build.dist.dir" value="${build.dir}/dist" />
+  <property name="build.javadoc.dir" value="${build.dir}/javadoc" />
+
+  <property name="release" value="0.4-alpha" />
+  <property name="debuglevel" value="source,lines,vars" />
+
+  <target name="verify" description="Check that necessary dependencies are found">
+    <available file="${gwtdir}/gwt-user.jar" property="foundgwtuserjar" />
+    <fail unless="foundgwtuserjar" message="Cannot find gwt-user.jar" />
+  </target>
+
+  <target name="build-base" description="Compiles base lib with javac">
+    <copy includeemptydirs="true" todir="${build.classes.dir}/com/google/api/gwt">
+      <fileset dir="${baselibdir}" excludes="**/oauth2/**,**/samples/**,**/opensource/**,package-info.class" />
+    </copy>
+
+    <javac srcdir="${baselibdir}" excludes="**/oauth2/**,**/samples/**" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}"/>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar-base" depends="build-base" description="Generates a JAR of the base library">
+    <mkdir dir="${build.dist.dir}/gwt-base-${release}" />
+    <jar jarfile="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar">
+      <fileset dir="${build.classes.dir}" />
+    </jar>
+  </target>
+
+  <target name="javac" depends="jar-base" description="Compiles the source files using javac">
+    <javac srcdir="${src.dir}" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}" />
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="javac" description="Generates a jar of the generated source files">
+    <mkdir dir="${build.dist.dir}" />
+
+    <jar jarfile="${build.dist.dir}/gwt-kitch_sink-v1-${release}.jar">
+      <zipfileset src="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar" />
+      <fileset dir="${build.classes.dir}" />
+      <fileset dir="${src.dir}" />
+    </jar>
+  </target>
+
+  <target name="javadoc" depends="clean" description="Generates JavaDoc for the generated source files">
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.javadoc.dir}" />
+
+    <javadoc packagenames="com.google.api.gwt.services.*"
+        destdir="${build.javadoc.dir}"
+        encoding="UTF-8"
+        docencoding="UTF-8"
+        charset="UTF-8"
+        use="true"
+        author="true"
+        protected="true"
+        linksource="true"
+        additionalparam="-notimestamp"
+        windowtitle="Google API Client Library for GWT - kitch_sink v1">
+      <sourcepath>
+        <pathelement location="${src.dir}" />
+      </sourcepath>
+      <classpath>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+      <link href="http://google-web-toolkit.googlecode.com/svn/javadoc/latest/" />
+      <link href="http://docs.oracle.com/javase/6/docs/api" />
+    </javadoc>
+  </target>
+
+  <target name="clean" description="Remove generated files">
+    <delete dir="${build.dir}" />
+    <delete dir="${src.dir}" />
+
+    <mkdir dir="${src.dir}" />
+    <copy includeemptydirs="true" todir="${src.dir}">
+      <fileset dir="${basedir}" excludes="build.xml" />
+    </copy>
+  </target>
+</project>
+=== end: ./build.xml
+=== begin: ./com/google/api/gwt/services/KitchSink.gwt.xml
+<module>
+  <inherits name="com.google.web.bindery.requestfactory.RequestFactory"/>
+  <inherits name="com.google.api.gwt.ApiCore" />
+
+  <source path="kitch_sink" includes="shared/**"/>
+</module>
+=== end: ./com/google/api/gwt/services/KitchSink.gwt.xml
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/KitchSink.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared;
+
+import com.google.api.gwt.shared.AuthScope;
+import com.google.api.gwt.shared.EmptyResponse;
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.requestfactory.shared.JsonRpcContent;
+import com.google.web.bindery.requestfactory.shared.JsonRpcService;
+import com.google.web.bindery.requestfactory.shared.JsonRpcWireName;
+import com.google.web.bindery.requestfactory.shared.Request;
+import com.google.web.bindery.requestfactory.shared.RequestContext;
+import com.google.web.bindery.requestfactory.shared.RequestFactory;
+
+/**
+ * Service definition for KitchSink (v1).
+ *
+ * <p>
+ * An API with every strange thing in it
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+public interface KitchSink extends RequestFactory {
+  /** Available authentiation scopes for use with this service. */
+  public enum KitchSinkAuthScope implements AuthScope {
+
+    /** A non googleapis.com scope */
+    MAIL_GOOGLE_COM("https://mail.google.com/"),
+
+    /** a product level scope */
+    PRODUCT("https://www.googleapis.com/auth/product"),
+
+    /** A typical scope */
+    USERINFO_EMAIL("https://www.googleapis.com/auth/userinfo.email"),
+    ;
+    private final String scope;
+    private KitchSinkAuthScope(String scope) {
+      this.scope = scope;
+    }
+
+    /** The String value of this scope. */
+    @Override
+    public String getScope() {
+      return scope;
+    }
+  }
+
+  /**
+   * The {@link RequestContext} used to call methods on the "featured" collection.
+   */
+  @JsonRpcService
+  public interface FeaturedContext extends RequestContext {
+
+  }
+  public interface Featured {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "series" collection.
+     */
+    @JsonRpcService
+    public interface SeriesContext extends RequestContext {
+
+      /**
+       * Lists the featured series.
+       *
+       *
+       */
+      ListRequest list();
+
+      /**
+       * Request object to call the "moderator.featured.series.list" method.
+       */
+      @JsonRpcWireName(value="moderator.featured.series.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "global" collection.
+   */
+  @JsonRpcService
+  public interface GlobalContext extends RequestContext {
+
+  }
+  public interface Global {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "series" collection.
+     */
+    @JsonRpcService
+    public interface SeriesContext extends RequestContext {
+
+      /**
+       * Searches the public series and returns the search results.
+       *
+       *
+       */
+      ListRequest list();
+
+      /**
+       * Request object to call the "moderator.global.series.list" method.
+       */
+      @JsonRpcWireName(value="moderator.global.series.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+
+        /** Maximum number of results to return. */
+        @PropertyName("max-results")
+        ListRequest setMaxResults(@PropertyName("max-results") Integer maxResults);
+
+        /** Search query. */
+        @PropertyName("q")
+        ListRequest setQ(@PropertyName("q") String q);
+
+        /** Index of the first result to be retrieved. */
+        @PropertyName("start-index")
+        ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "my" collection.
+   */
+  @JsonRpcService
+  public interface MyContext extends RequestContext {
+
+  }
+  public interface My {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "series" collection.
+     */
+    @JsonRpcService
+    public interface SeriesContext extends RequestContext {
+
+      /**
+       * Lists all series created by the authenticated user.
+       *
+       *
+       */
+      ListRequest list();
+
+      /**
+       * Request object to call the "moderator.my.series.list" method.
+       */
+      @JsonRpcWireName(value="moderator.my.series.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "myrecent" collection.
+   */
+  @JsonRpcService
+  public interface MyrecentContext extends RequestContext {
+
+  }
+  public interface Myrecent {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "private" collection.
+     */
+    @JsonRpcService
+    public interface KitchSinkPrivateContext extends RequestContext {
+
+      /**
+       * Resource using a name which is a keyword in many languages, to check their handling.
+       *
+       *
+       */
+      ListRequest list();
+
+      /**
+       * Request object to call the "moderator.myrecent.private.list" method.
+       */
+      @JsonRpcWireName(value="moderator.myrecent.private.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "profiles" collection.
+   */
+  @JsonRpcService
+  public interface ProfilesContext extends RequestContext {
+
+    /**
+     * Returns the profile information for the authenticated user.
+     *
+     *
+     */
+    GetRequest get();
+
+    /**
+     * Request object to call the "moderator.profiles.get" method.
+     */
+    @JsonRpcWireName(value="moderator.profiles.get", version="v1")
+    public interface GetRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Profile> {
+    }
+    /**
+     * Updates the profile information for the authenticated user.
+     *
+     *
+     * @param content Request body content.
+     */
+    UpdateRequest update(@JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Profile content);
+
+    /**
+     * Request object to call the "moderator.profiles.update" method.
+     */
+    @JsonRpcWireName(value="moderator.profiles.update", version="v1")
+    public interface UpdateRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Profile> {
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "responses" collection.
+   */
+  @JsonRpcService
+  public interface ResponsesContext extends RequestContext {
+
+    /**
+     * Inserts a response for the specified submission in the specified topic within the specified
+     * series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param topicId The decimal ID of the Topic within the Series.
+     * @param parentSubmissionId The decimal ID of the parent Submission within the Series.
+     * @param content Request body content.
+     */
+    InsertRequest insert(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId, @PropertyName("parentSubmissionId") Integer parentSubmissionId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Submission content);
+
+    /**
+     * Request object to call the "moderator.responses.insert" method.
+     */
+    @JsonRpcWireName(value="moderator.responses.insert", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Submission> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      InsertRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Topic within the Series. */
+      @PropertyName("topicId")
+      InsertRequest setTopicId(@PropertyName("topicId") Integer topicId);
+
+      /** The decimal ID of the parent Submission within the Series. */
+      @PropertyName("parentSubmissionId")
+      InsertRequest setParentSubmissionId(@PropertyName("parentSubmissionId") Integer parentSubmissionId);
+
+      /** Set to true to mark the new submission as anonymous. */
+      @PropertyName("anonymous")
+      InsertRequest setAnonymous(@PropertyName("anonymous") Boolean anonymous);
+    }
+    /**
+     * Lists or searches the responses for the specified submission within the specified series and
+     * returns the search results.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     */
+    ListRequest list(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId);
+
+    /**
+     * Request object to call the "moderator.responses.list" method.
+     */
+    @JsonRpcWireName(value="moderator.responses.list", version="v1")
+    public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SubmissionList> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      ListRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+
+      /** Restricts the results to submissions by a specific author. */
+      @PropertyName("author")
+      ListRequest setAuthor(@PropertyName("author") String author);
+
+      /** Specifies whether to restrict to submissions that have videos attached. */
+      @PropertyName("hasAttachedVideo")
+      ListRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
+
+      /** Search query. */
+      @PropertyName("q")
+      ListRequest setQ(@PropertyName("q") String q);
+
+      /** Sort order. */
+      @PropertyName("sort")
+      ListRequest setSort(@PropertyName("sort") String sort);
+
+      /** Index of the first result to be retrieved. */
+      @PropertyName("start-index")
+      ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "series" collection.
+   */
+  @JsonRpcService
+  public interface SeriesContext extends RequestContext {
+
+    /**
+     * Returns the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     */
+    GetRequest get(@PropertyName("seriesId") Integer seriesId);
+
+    /**
+     * Request object to call the "moderator.series.get" method.
+     */
+    @JsonRpcWireName(value="moderator.series.get", version="v1")
+    public interface GetRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Series> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      GetRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+    }
+    /**
+     * Media method without request data.
+     *
+     *
+     */
+    InsertRequest insert();
+
+    /**
+     * Request object to call the "media.without.request" method.
+     */
+    @JsonRpcWireName(value="media.without.request", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Series> {
+    }
+    /**
+     * Searches the series and returns the search results.
+     *
+     *
+     */
+    ListRequest list();
+
+    /**
+     * Request object to call the "moderator.series.list" method.
+     */
+    @JsonRpcWireName(value="moderator.series.list", version="v1")
+    public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+
+      /** Maximum number of results to return. */
+      @PropertyName("max-results")
+      ListRequest setMaxResults(@PropertyName("max-results") Integer maxResults);
+
+      /** Search query. */
+      @PropertyName("q")
+      ListRequest setQ(@PropertyName("q") String q);
+
+      /** Index of the first result to be retrieved. */
+      @PropertyName("start-index")
+      ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+    }
+    /**
+     * Updates the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param content Request body content.
+     */
+    UpdateRequest update(@PropertyName("seriesId") Integer seriesId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Series content);
+
+    /**
+     * Request object to call the "moderator.series.update" method.
+     */
+    @JsonRpcWireName(value="moderator.series.update", version="v1")
+    public interface UpdateRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Series> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      UpdateRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+    }
+  }
+  public interface Series {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "responses" collection.
+     */
+    @JsonRpcService
+    public interface ResponsesContext extends RequestContext {
+
+      /**
+       * Searches the responses for the specified series and returns the search results.
+       *
+       *
+       * @param seriesId The decimal ID of the Series.
+       * @param q Search query - a required query parameter.
+       */
+      ListRequest list(@PropertyName("seriesId") Integer seriesId, @PropertyName("q") String q);
+
+      /**
+       * Request object to call the "moderator.series.responses.list" method.
+       */
+      @JsonRpcWireName(value="moderator.series.responses.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SeriesList> {
+
+        /** The decimal ID of the Series. */
+        @PropertyName("seriesId")
+        ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+        /** Restricts the results to submissions by a specific author. */
+        @PropertyName("author")
+        ListRequest setAuthor(@PropertyName("author") String author);
+
+        /** Specifies whether to restrict to submissions that have videos attached. */
+        @PropertyName("hasAttachedVideo")
+        ListRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
+
+        /** Maximum number of results to return. */
+        @PropertyName("max-results")
+        ListRequest setMaxResults(@PropertyName("max-results") Integer maxResults);
+
+        /** Search query - a required query parameter. */
+        @PropertyName("q")
+        ListRequest setQ(@PropertyName("q") String q);
+
+        /** Sort order. */
+        @PropertyName("sort")
+        ListRequest setSort(@PropertyName("sort") String sort);
+
+        /** Index of the first result to be retrieved. */
+        @PropertyName("start-index")
+        ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+      }
+    }
+    /**
+     * The {@link RequestContext} used to call methods on the "submissions" collection.
+     */
+    @JsonRpcService
+    public interface SubmissionsContext extends RequestContext {
+
+      /**
+       * Searches the submissions for the specified series and returns the search results.
+       *
+       *
+       * @param seriesId The decimal ID of the Series.
+       */
+      ListRequest list(@PropertyName("seriesId") Integer seriesId);
+
+      /**
+       * Request object to call the "moderator.series.submissions.list" method.
+       */
+      @JsonRpcWireName(value="moderator.series.submissions.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SubmissionList> {
+
+        /** The decimal ID of the Series. */
+        @PropertyName("seriesId")
+        ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+        /** Restricts the results to submissions by a specific author. */
+        @PropertyName("author")
+        ListRequest setAuthor(@PropertyName("author") String author);
+
+        /** Specifies whether to restrict to submissions that have videos attached. */
+        @PropertyName("hasAttachedVideo")
+        ListRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
+
+        /** The language code for the language the client prefers resuls in. */
+        @PropertyName("lang")
+        ListRequest setLang(@PropertyName("lang") String lang);
+
+        /** Search query. */
+        @PropertyName("q")
+        ListRequest setQ(@PropertyName("q") String q);
+
+        /** Sort order. */
+        @PropertyName("sort")
+        ListRequest setSort(@PropertyName("sort") String sort);
+
+        /** Index of the first result to be retrieved. */
+        @PropertyName("start-index")
+        ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "submissions" collection.
+   */
+  @JsonRpcService
+  public interface SubmissionsContext extends RequestContext {
+
+    /**
+     * Returns the specified submission within the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     */
+    GetRequest get(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId);
+
+    /**
+     * Request object to call the "moderator.submissions.get" method.
+     */
+    @JsonRpcWireName(value="moderator.submissions.get", version="v1")
+    public interface GetRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Submission> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      GetRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      GetRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+
+      /** The language code for the language the client prefers resuls in. */
+      @PropertyName("lang")
+      GetRequest setLang(@PropertyName("lang") String lang);
+    }
+    /**
+     * Inserts a new submission in the specified topic within the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param topicId The decimal ID of the Topic within the Series.
+     * @param content Request body content.
+     */
+    InsertRequest insert(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Submission content);
+
+    /**
+     * Request object to call the "moderator.submissions.insert" method.
+     */
+    @JsonRpcWireName(value="moderator.submissions.insert", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Submission> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      InsertRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Topic within the Series. */
+      @PropertyName("topicId")
+      InsertRequest setTopicId(@PropertyName("topicId") Integer topicId);
+
+      /** Set to true to mark the new submission as anonymous. */
+      @PropertyName("anonymous")
+      InsertRequest setAnonymous(@PropertyName("anonymous") Boolean anonymous);
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "tags" collection.
+   */
+  @JsonRpcService
+  public interface TagsContext extends RequestContext {
+
+    /**
+     * Deletes the specified tag from the specified submission within the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param tagId
+     */
+    DeleteRequest delete(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId, @PropertyName("tagId") String tagId);
+
+    /**
+     * Request object to call the "moderator.tags.delete" method.
+     */
+    @JsonRpcWireName(value="moderator.tags.delete", version="v1")
+    public interface DeleteRequest extends Request<EmptyResponse> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      DeleteRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      DeleteRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+
+
+      @PropertyName("tagId")
+      DeleteRequest setTagId(@PropertyName("tagId") String tagId);
+    }
+    /**
+     * Inserts a new tag for the specified submission within the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param content Request body content.
+     */
+    InsertRequest insert(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Tag content);
+
+    /**
+     * Request object to call the "moderator.tags.insert" method.
+     */
+    @JsonRpcWireName(value="moderator.tags.insert", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Tag> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      InsertRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      InsertRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+    }
+    /**
+     * A method with a parameters named |id| and |else|
+     *
+     *
+     * @param id id is a reserved word in Objective-C
+     * @param else__ A parameter name 'else'.
+     */
+    ListRequest list(@PropertyName("id") String id, @PropertyName("else") String else__);
+
+    /**
+     * Request object to call the "moderator.tags.list" method.
+     */
+    @JsonRpcWireName(value="moderator.tags.list", version="v1")
+    public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.TagList> {
+
+      /** id is a reserved word in Objective-C */
+      @PropertyName("id")
+      ListRequest setId(@PropertyName("id") String id);
+
+      /** A parameter name 'else'. */
+      @PropertyName("else")
+      ListRequest setElse(@PropertyName("else") String else__);
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "topics" collection.
+   */
+  @JsonRpcService
+  public interface TopicsContext extends RequestContext {
+
+    /**
+     * Returns the specified topic from the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param topicId The decimal ID of the Topic within the Series.
+     */
+    GetRequest get(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId);
+
+    /**
+     * Request object to call the "moderator.topics.get" method.
+     */
+    @JsonRpcWireName(value="moderator.topics.get", version="v1")
+    public interface GetRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Topic2> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      GetRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Topic within the Series. */
+      @PropertyName("topicId")
+      GetRequest setTopicId(@PropertyName("topicId") Integer topicId);
+    }
+    /**
+     * Inserts a new topic into the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param content Request body content.
+     */
+    InsertRequest insert(@PropertyName("seriesId") Integer seriesId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Topic content);
+
+    /**
+     * Request object to call the "moderator.topics.insert" method.
+     */
+    @JsonRpcWireName(value="moderator.topics.insert", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Topic> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      InsertRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+    }
+    /**
+     * Searches the topics within the specified series and returns the search results.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     */
+    ListRequest list(@PropertyName("seriesId") Integer seriesId);
+
+    /**
+     * Request object to call the "moderator.topics.list" method.
+     */
+    @JsonRpcWireName(value="moderator.topics.list", version="v1")
+    public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.TopicList> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** Maximum number of results to return. */
+      @PropertyName("max-results")
+      ListRequest setMaxResults(@PropertyName("max-results") Integer maxResults);
+
+
+      @PropertyName("mode")
+      ListRequest setMode(@PropertyName("mode") ListRequest.Mode mode);
+
+      /** Possible values for {@link #setMode(mode)}. */
+      public enum Mode {
+
+        /** A value with a @, to show we make constant names the right way. */
+        @PropertyName("@auto") AUTO,
+        /** boring */
+        @PropertyName("Normal") NORMAL,
+        /** this should be kMixItUp in some languages */
+        @PropertyName("mix_it_up") MIX_IT_UP,
+        ;
+      }
+      /** Search query. */
+      @PropertyName("q")
+      ListRequest setQ(@PropertyName("q") String q);
+
+      /** Index of the first result to be retrieved. */
+      @PropertyName("start-index")
+      ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+    }
+    /**
+     * Updates the specified topic within the specified series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param topicId The decimal ID of the Topic within the Series.
+     * @param content Request body content.
+     */
+    UpdateRequest update(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Topic content);
+
+    /**
+     * Request object to call the "moderator.topics.update" method.
+     */
+    @JsonRpcWireName(value="moderator.topics.update", version="v1")
+    public interface UpdateRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Topic> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      UpdateRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Topic within the Series. */
+      @PropertyName("topicId")
+      UpdateRequest setTopicId(@PropertyName("topicId") Integer topicId);
+    }
+  }
+  public interface Topics {
+
+    /**
+     * The {@link RequestContext} used to call methods on the "submissions" collection.
+     */
+    @JsonRpcService
+    public interface SubmissionsContext extends RequestContext {
+
+      /**
+       * Searches the submissions for the specified topic within the specified series and returns the
+       * search results.
+       *
+       *
+       * @param seriesId The decimal ID of the Series.
+       * @param topicId The decimal ID of the Topic within the Series.
+       */
+      ListRequest list(@PropertyName("seriesId") Integer seriesId, @PropertyName("topicId") Integer topicId);
+
+      /**
+       * Request object to call the "moderator.topics.submissions.list" method.
+       */
+      @JsonRpcWireName(value="moderator.topics.submissions.list", version="v1")
+      public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.SubmissionList> {
+
+        /** The decimal ID of the Series. */
+        @PropertyName("seriesId")
+        ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+        /** The decimal ID of the Topic within the Series. */
+        @PropertyName("topicId")
+        ListRequest setTopicId(@PropertyName("topicId") Integer topicId);
+
+        /** Restricts the results to submissions by a specific author. */
+        @PropertyName("author")
+        ListRequest setAuthor(@PropertyName("author") String author);
+
+        /** Specifies whether to restrict to submissions that have videos attached. */
+        @PropertyName("hasAttachedVideo")
+        ListRequest setHasAttachedVideo(@PropertyName("hasAttachedVideo") Boolean hasAttachedVideo);
+
+        /** Search query. */
+        @PropertyName("q")
+        ListRequest setQ(@PropertyName("q") String q);
+
+        /** Sort order. */
+        @PropertyName("sort")
+        ListRequest setSort(@PropertyName("sort") String sort);
+
+        /** Index of the first result to be retrieved. */
+        @PropertyName("start-index")
+        ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+      }
+    }
+  }
+  /**
+   * The {@link RequestContext} used to call methods on the "votes" collection.
+   */
+  @JsonRpcService
+  public interface VotesContext extends RequestContext {
+
+    /**
+     * Returns the votes by the authenticated user for the specified submission within the specified
+     * series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     */
+    GetRequest get(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId);
+
+    /**
+     * Request object to call the "moderator.votes.get" method.
+     */
+    @JsonRpcWireName(value="moderator.votes.get", version="v1")
+    public interface GetRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Vote> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      GetRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      GetRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+
+
+      @PropertyName("userId")
+      GetRequest setUserId(@PropertyName("userId") String userId);
+    }
+    /**
+     * Inserts a new vote by the authenticated user for the specified submission within the specified
+     * series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param content Request body content.
+     */
+    InsertRequest insert(@PropertyName("seriesId") Integer seriesId, @PropertyName("submissionId") Integer submissionId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Vote content);
+
+    /**
+     * Request object to call the "moderator.votes.insert" method.
+     */
+    @JsonRpcWireName(value="moderator.votes.insert", version="v1")
+    public interface InsertRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Vote> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      InsertRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submissionId")
+      InsertRequest setSubmissionId(@PropertyName("submissionId") Integer submissionId);
+    }
+    /**
+     * Lists the votes by the authenticated user for the given series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     */
+    ListRequest list(@PropertyName("seriesId") Integer seriesId);
+
+    /**
+     * Request object to call the "moderator.votes.list" method.
+     */
+    @JsonRpcWireName(value="moderator.votes.list", version="v1")
+    public interface ListRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.VoteList> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      ListRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** Index of the first result to be retrieved. */
+      @PropertyName("start-index")
+      ListRequest setStartIndex(@PropertyName("start-index") Integer startIndex);
+    }
+    /**
+     * Updates the votes by the authenticated user for the specified submission within the specified
+     * series.
+     *
+     *
+     * @param seriesId The decimal ID of the Series.
+     * @param submissionId The decimal ID of the Submission within the Series.
+     * @param content Request body content.
+     */
+    UpdateRequest update(@PropertyName("seriesId") Integer seriesId, @PropertyName("submission_id") Integer submissionId, @JsonRpcContent com.google.api.gwt.services.kitch_sink.shared.model.Vote content);
+
+    /**
+     * Request object to call the "moderator.votes.update" method.
+     */
+    @JsonRpcWireName(value="moderator.votes.update", version="v1")
+    public interface UpdateRequest extends Request<com.google.api.gwt.services.kitch_sink.shared.model.Vote> {
+
+      /** The decimal ID of the Series. */
+      @PropertyName("seriesId")
+      UpdateRequest setSeriesId(@PropertyName("seriesId") Integer seriesId);
+
+      /** The decimal ID of the Submission within the Series. */
+      @PropertyName("submission_id")
+      UpdateRequest setSubmissionId(@PropertyName("submission_id") Integer submissionId);
+
+
+      @PropertyName("userId")
+      UpdateRequest setUserId(@PropertyName("userId") String userId);
+    }
+  }
+
+
+  /** Returns the {@link #FeaturedContext} context. */
+  FeaturedContext featured();
+
+  /** Returns the {@link #SeriesContext} context. */
+  Featured.SeriesContext featured_series();
+  /** Returns the {@link #GlobalContext} context. */
+  GlobalContext global();
+
+  /** Returns the {@link #SeriesContext} context. */
+  Global.SeriesContext global_series();
+  /** Returns the {@link #MyContext} context. */
+  MyContext my();
+
+  /** Returns the {@link #SeriesContext} context. */
+  My.SeriesContext my_series();
+  /** Returns the {@link #MyrecentContext} context. */
+  MyrecentContext myrecent();
+
+  /** Returns the {@link #KitchSinkPrivateContext} context. */
+  Myrecent.KitchSinkPrivateContext myrecent_kitch_sinkPrivate();
+  /** Returns the {@link #ProfilesContext} context. */
+  ProfilesContext profiles();
+  /** Returns the {@link #ResponsesContext} context. */
+  ResponsesContext responses();
+  /** Returns the {@link #SeriesContext} context. */
+  SeriesContext series();
+
+  /** Returns the {@link #ResponsesContext} context. */
+  Series.ResponsesContext series_responses();
+  /** Returns the {@link #SubmissionsContext} context. */
+  Series.SubmissionsContext series_submissions();
+  /** Returns the {@link #SubmissionsContext} context. */
+  SubmissionsContext submissions();
+  /** Returns the {@link #TagsContext} context. */
+  TagsContext tags();
+  /** Returns the {@link #TopicsContext} context. */
+  TopicsContext topics();
+
+  /** Returns the {@link #SubmissionsContext} context. */
+  Topics.SubmissionsContext topics_submissions();
+  /** Returns the {@link #VotesContext} context. */
+  VotesContext votes();
+
+
+
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/KitchSink.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryCollection.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.GeometryCollection.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface GeometryCollection extends ValueProxy {
+
+  
+  @PropertyName("geometries")
+  java.util.List<Geometry> getGeometries();
+
+  @PropertyName("geometries")
+  GeometryCollection setGeometries(java.util.List<Geometry> geometries);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryCollection.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Geometry.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Geometry.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Geometry extends ValueProxy {
+
+  
+  @PropertyName("type")
+  String getType();
+
+  @PropertyName("type")
+  Geometry setType(String type);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Geometry.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryPolygon.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.GeometryPolygon.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface GeometryPolygon extends ValueProxy {
+
+  
+  @PropertyName("coordinates")
+  String getCoordinates();
+
+  @PropertyName("coordinates")
+  GeometryPolygon setCoordinates(String coordinates);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryPolygon.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryReference.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.GeometryReference.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface GeometryReference extends ValueProxy {
+
+  
+  @PropertyName("coordinates")
+  String getCoordinates();
+
+  @PropertyName("coordinates")
+  GeometryReference setCoordinates(String coordinates);
+
+  
+  @PropertyName("type")
+  String getType();
+
+  @PropertyName("type")
+  GeometryReference setType(String type);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/GeometryReference.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/LatLong.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.LatLong.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface LatLong extends ValueProxy {
+
+  
+  @PropertyName("latitude")
+  Number getLatitude();
+
+  @PropertyName("latitude")
+  LatLong setLatitude(Number latitude);
+
+  
+  @PropertyName("location")
+  String getLocation();
+
+  @PropertyName("location")
+  LatLong setLocation(String location);
+
+  
+  @PropertyName("longitude")
+  Number getLongitude();
+
+  @PropertyName("longitude")
+  LatLong setLongitude(Number longitude);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/LatLong.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartial.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.ModeratorTopicsResourcePartial.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface ModeratorTopicsResourcePartial extends ValueProxy {
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/ModeratorTopicsResourcePartial.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ProfileAttribution.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.ProfileAttribution.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface ProfileAttribution extends ValueProxy {
+
+  
+  @PropertyName("avatarUrl")
+  String getAvatarUrl();
+
+  @PropertyName("avatarUrl")
+  ProfileAttribution setAvatarUrl(String avatarUrl);
+
+  
+  @PropertyName("displayName")
+  String getDisplayName();
+
+  @PropertyName("displayName")
+  ProfileAttribution setDisplayName(String displayName);
+
+  
+  @PropertyName("geo")
+  LatLong getGeo();
+
+  @PropertyName("geo")
+  ProfileAttribution setGeo(LatLong geo);
+
+  
+  @PropertyName("location")
+  String getLocation();
+
+  @PropertyName("location")
+  ProfileAttribution setLocation(String location);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/ProfileAttribution.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/ProfileId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.ProfileId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface ProfileId extends ValueProxy {
+
+  
+  @PropertyName("user")
+  String getUser();
+
+  @PropertyName("user")
+  ProfileId setUser(String user);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/ProfileId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Profile.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Profile.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Profile extends ValueProxy {
+
+  
+  @PropertyName("attribution")
+  ProfileAttribution getAttribution();
+
+  @PropertyName("attribution")
+  Profile setAttribution(ProfileAttribution attribution);
+
+  
+  @PropertyName("id")
+  ProfileId getId();
+
+  @PropertyName("id")
+  Profile setId(ProfileId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Profile setKind(String kind);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Profile.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Rule.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Rule.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Rule extends ValueProxy {
+
+  
+  @PropertyName("submissions")
+  RuleSubmissions getSubmissions();
+
+  @PropertyName("submissions")
+  Rule setSubmissions(RuleSubmissions submissions);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Rule.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/RuleSubmissions.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.RuleSubmissions.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface RuleSubmissions extends ValueProxy {
+
+  
+  @PropertyName("close")
+  Integer getClose();
+
+  @PropertyName("close")
+  RuleSubmissions setClose(Integer close);
+
+  
+  @PropertyName("open")
+  Integer getOpen();
+
+  @PropertyName("open")
+  RuleSubmissions setOpen(Integer open);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/RuleSubmissions.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCountersCounters.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SeriesCountersCounters.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SeriesCountersCounters extends ValueProxy {
+
+  
+  @PropertyName("all-votes")
+  Integer getAllVotes();
+
+  @PropertyName("all-votes")
+  SeriesCountersCounters setAllVotes(Integer allVotes);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCountersCounters.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCounters.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SeriesCounters.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SeriesCounters extends ValueProxy {
+
+  
+  @PropertyName("anonymousSubmissions")
+  Integer getAnonymousSubmissions();
+
+  @PropertyName("anonymousSubmissions")
+  SeriesCounters setAnonymousSubmissions(Integer anonymousSubmissions);
+
+  
+  @PropertyName("counters")
+  SeriesCountersCounters getCounters();
+
+  @PropertyName("counters")
+  SeriesCounters setCounters(SeriesCountersCounters counters);
+
+  
+  @PropertyName("else")
+  Integer getElse();
+
+  @PropertyName("else")
+  SeriesCounters setElse(Integer else__);
+
+  
+  @PropertyName("minus_votes")
+  Integer getMinusVotes();
+
+  @PropertyName("minus_votes")
+  SeriesCounters setMinusVotes(Integer minusVotes);
+
+  
+  @PropertyName("none_votes")
+  Integer getNoneVotes();
+
+  @PropertyName("none_votes")
+  SeriesCounters setNoneVotes(Integer noneVotes);
+
+  
+  @PropertyName("plus_votes")
+  Integer getPlusVotes();
+
+  @PropertyName("plus_votes")
+  SeriesCounters setPlusVotes(Integer plusVotes);
+
+  
+  @PropertyName("submissions")
+  Integer getSubmissions();
+
+  @PropertyName("submissions")
+  SeriesCounters setSubmissions(Integer submissions);
+
+  
+  @PropertyName("users")
+  String getUsers();
+
+  @PropertyName("users")
+  SeriesCounters setUsers(String users);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesCounters.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SeriesId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SeriesId extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  SeriesId setSeriesId(Integer seriesId);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Series.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Series.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Series extends ValueProxy {
+
+  
+  @PropertyName("anonymousSubmissionAllowed")
+  Boolean getAnonymousSubmissionAllowed();
+
+  @PropertyName("anonymousSubmissionAllowed")
+  Series setAnonymousSubmissionAllowed(Boolean anonymousSubmissionAllowed);
+
+  
+  @PropertyName("counters")
+  SeriesCounters getCounters();
+
+  @PropertyName("counters")
+  Series setCounters(SeriesCounters counters);
+
+  
+  @PropertyName("description")
+  String getDescription();
+
+  @PropertyName("description")
+  Series setDescription(String description);
+
+  
+  @PropertyName("id")
+  SeriesId getId();
+
+  @PropertyName("id")
+  Series setId(SeriesId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Series setKind(String kind);
+
+  
+  @PropertyName("name")
+  String getName();
+
+  @PropertyName("name")
+  Series setName(String name);
+
+  
+  @PropertyName("numTopics")
+  Integer getNumTopics();
+
+  @PropertyName("numTopics")
+  Series setNumTopics(Integer numTopics);
+
+  
+  @PropertyName("videoSubmissionAllowed")
+  Boolean getVideoSubmissionAllowed();
+
+  @PropertyName("videoSubmissionAllowed")
+  Series setVideoSubmissionAllowed(Boolean videoSubmissionAllowed);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Series.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesList.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SeriesList.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SeriesList extends ValueProxy {
+
+  
+  @PropertyName("items")
+  java.util.List<Series> getItems();
+
+  @PropertyName("items")
+  SeriesList setItems(java.util.List<Series> items);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  SeriesList setKind(String kind);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SeriesList.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionAttribution.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionAttribution.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionAttribution extends ValueProxy {
+
+  /** A member with a $ in the name */
+  @PropertyName("$avatarUrl")
+  String get$avatarUrl();
+
+  @PropertyName("$avatarUrl")
+  SubmissionAttribution set$avatarUrl(String $avatarUrl);
+
+  /** A member with a $ in the name, but if you strip it, you get a reserved word */
+  @PropertyName("$object")
+  String get$object();
+
+  @PropertyName("$object")
+  SubmissionAttribution set$object(String $object);
+
+  
+  @PropertyName("location")
+  String getLocation();
+
+  @PropertyName("location")
+  SubmissionAttribution setLocation(String location);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionAttribution.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionCounters.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionCounters.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionCounters extends ValueProxy {
+
+  
+  @PropertyName("minus_votes")
+  Integer getMinusVotes();
+
+  @PropertyName("minus_votes")
+  SubmissionCounters setMinusVotes(Integer minusVotes);
+
+  
+  @PropertyName("none_votes")
+  Integer getNoneVotes();
+
+  @PropertyName("none_votes")
+  SubmissionCounters setNoneVotes(Integer noneVotes);
+
+  
+  @PropertyName("plus_votes")
+  Integer getPlusVotes();
+
+  @PropertyName("plus_votes")
+  SubmissionCounters setPlusVotes(Integer plusVotes);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionCounters.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionId extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  SubmissionId setSeriesId(Integer seriesId);
+
+  
+  @PropertyName("submissionId")
+  Integer getSubmissionId();
+
+  @PropertyName("submissionId")
+  SubmissionId setSubmissionId(Integer submissionId);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Submission.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Submission.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Submission extends ValueProxy {
+
+  
+  @PropertyName("@attachmentUrl")
+  String getAttachmentUrl();
+
+  @PropertyName("@attachmentUrl")
+  Submission setAttachmentUrl(String attachmentUrl);
+
+  
+  @PropertyName("attribution")
+  SubmissionAttribution getAttribution();
+
+  @PropertyName("attribution")
+  Submission setAttribution(SubmissionAttribution attribution);
+
+  
+  @PropertyName("author")
+  String getAuthor();
+
+  @PropertyName("author")
+  Submission setAuthor(String author);
+
+  
+  @PropertyName("counters")
+  SubmissionCounters getCounters();
+
+  @PropertyName("counters")
+  Submission setCounters(SubmissionCounters counters);
+
+  
+  @PropertyName("created")
+  Integer getCreated();
+
+  @PropertyName("created")
+  Submission setCreated(Integer created);
+
+  
+  @PropertyName("geo")
+  java.util.List<LatLong> getGeo();
+
+  @PropertyName("geo")
+  Submission setGeo(java.util.List<LatLong> geo);
+
+  
+  @PropertyName("id")
+  SubmissionId getId();
+
+  @PropertyName("id")
+  Submission setId(SubmissionId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Submission setKind(String kind);
+
+  
+  @PropertyName("parentSubmissionId")
+  SubmissionParentSubmissionId getParentSubmissionId();
+
+  @PropertyName("parentSubmissionId")
+  Submission setParentSubmissionId(SubmissionParentSubmissionId parentSubmissionId);
+
+  
+  @PropertyName("text")
+  String getText();
+
+  @PropertyName("text")
+  Submission setText(String text);
+
+  
+  @PropertyName("topics")
+  java.util.List<ModeratorTopicsResourcePartial> getTopics();
+
+  @PropertyName("topics")
+  Submission setTopics(java.util.List<ModeratorTopicsResourcePartial> topics);
+
+  
+  @PropertyName("translations")
+  java.util.Map<String, Translation> getTranslations();
+
+  @PropertyName("translations")
+  Submission setTranslations(java.util.Map<String, Translation> translations);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Submission.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionList.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionList.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionList extends ValueProxy {
+
+  
+  @PropertyName("items")
+  java.util.List<Submission> getItems();
+
+  @PropertyName("items")
+  SubmissionList setItems(java.util.List<Submission> items);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  SubmissionList setKind(String kind);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionList.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionParentSubmissionId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionParentSubmissionId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionParentSubmissionId extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  SubmissionParentSubmissionId setSeriesId(Integer seriesId);
+
+  
+  @PropertyName("submissionId")
+  Integer getSubmissionId();
+
+  @PropertyName("submissionId")
+  SubmissionParentSubmissionId setSubmissionId(Integer submissionId);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionParentSubmissionId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionTranslations.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.SubmissionTranslations.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface SubmissionTranslations extends ValueProxy {
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/SubmissionTranslations.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TagId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TagId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TagId extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  TagId setSeriesId(Integer seriesId);
+
+  
+  @PropertyName("submissionId")
+  Integer getSubmissionId();
+
+  @PropertyName("submissionId")
+  TagId setSubmissionId(Integer submissionId);
+
+  
+  @PropertyName("tag")
+  String getTag();
+
+  @PropertyName("tag")
+  TagId setTag(String tag);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TagId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Tag.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Tag.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Tag extends ValueProxy {
+
+  
+  @PropertyName("geometry")
+  Geometry getGeometry();
+
+  @PropertyName("geometry")
+  Tag setGeometry(Geometry geometry);
+
+  
+  @PropertyName("id")
+  TagId getId();
+
+  @PropertyName("id")
+  Tag setId(TagId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Tag setKind(String kind);
+
+  
+  @PropertyName("text")
+  String getText();
+
+  @PropertyName("text")
+  Tag setText(String text);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Tag.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TagList.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TagList.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TagList extends ValueProxy {
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TagList.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2Counters.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Topic2Counters.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Topic2Counters extends ValueProxy {
+
+  
+  @PropertyName("minus_votes")
+  Integer getMinusVotes();
+
+  @PropertyName("minus_votes")
+  Topic2Counters setMinusVotes(Integer minusVotes);
+
+  
+  @PropertyName("none_votes")
+  Integer getNoneVotes();
+
+  @PropertyName("none_votes")
+  Topic2Counters setNoneVotes(Integer noneVotes);
+
+  
+  @PropertyName("plus_votes")
+  Integer getPlusVotes();
+
+  @PropertyName("plus_votes")
+  Topic2Counters setPlusVotes(Integer plusVotes);
+
+  
+  @PropertyName("submissions")
+  Integer getSubmissions();
+
+  @PropertyName("submissions")
+  Topic2Counters setSubmissions(Integer submissions);
+
+  
+  @PropertyName("users")
+  Integer getUsers();
+
+  @PropertyName("users")
+  Topic2Counters setUsers(Integer users);
+
+  
+  @PropertyName("videoSubmissions")
+  Integer getVideoSubmissions();
+
+  @PropertyName("videoSubmissions")
+  Topic2Counters setVideoSubmissions(Integer videoSubmissions);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2Counters.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2Id.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Topic2Id.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Topic2Id extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  Topic2Id setSeriesId(Integer seriesId);
+
+  
+  @PropertyName("topicId")
+  Integer getTopicId();
+
+  @PropertyName("topicId")
+  Topic2Id setTopicId(Integer topicId);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2Id.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Topic2.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Topic2 extends ValueProxy {
+
+  
+  @PropertyName("counters")
+  Topic2Counters getCounters();
+
+  @PropertyName("counters")
+  Topic2 setCounters(Topic2Counters counters);
+
+  
+  @PropertyName("description")
+  String getDescription();
+
+  @PropertyName("description")
+  Topic2 setDescription(String description);
+
+  
+  @PropertyName("featuredSubmission")
+  Submission getFeaturedSubmission();
+
+  @PropertyName("featuredSubmission")
+  Topic2 setFeaturedSubmission(Submission featuredSubmission);
+
+  
+  @PropertyName("id")
+  Topic2Id getId();
+
+  @PropertyName("id")
+  Topic2 setId(Topic2Id id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Topic2 setKind(String kind);
+
+  
+  @PropertyName("name")
+  String getName();
+
+  @PropertyName("name")
+  Topic2 setName(String name);
+
+  
+  @PropertyName("presenter")
+  String getPresenter();
+
+  @PropertyName("presenter")
+  Topic2 setPresenter(String presenter);
+
+  
+  @PropertyName("rules")
+  java.util.List<Rule> getRules();
+
+  @PropertyName("rules")
+  Topic2 setRules(java.util.List<Rule> rules);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic2.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicCounters.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicCounters.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicCounters extends ValueProxy {
+
+  
+  @PropertyName("minus_votes")
+  Integer getMinusVotes();
+
+  @PropertyName("minus_votes")
+  TopicCounters setMinusVotes(Integer minusVotes);
+
+  
+  @PropertyName("none_votes")
+  Integer getNoneVotes();
+
+  @PropertyName("none_votes")
+  TopicCounters setNoneVotes(Integer noneVotes);
+
+  
+  @PropertyName("plus_votes")
+  Integer getPlusVotes();
+
+  @PropertyName("plus_votes")
+  TopicCounters setPlusVotes(Integer plusVotes);
+
+  
+  @PropertyName("submissions")
+  Integer getSubmissions();
+
+  @PropertyName("submissions")
+  TopicCounters setSubmissions(Integer submissions);
+
+  
+  @PropertyName("users")
+  Integer getUsers();
+
+  @PropertyName("users")
+  TopicCounters setUsers(Integer users);
+
+  
+  @PropertyName("videoSubmissions")
+  Integer getVideoSubmissions();
+
+  @PropertyName("videoSubmissions")
+  TopicCounters setVideoSubmissions(Integer videoSubmissions);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicCounters.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicId extends ValueProxy {
+
+  
+  @PropertyName("seriesId")
+  Integer getSeriesId();
+
+  @PropertyName("seriesId")
+  TopicId setSeriesId(Integer seriesId);
+
+  
+  @PropertyName("topicId")
+  Integer getTopicId();
+
+  @PropertyName("topicId")
+  TopicId setTopicId(Integer topicId);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Topic.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Topic extends ValueProxy {
+
+  
+  @PropertyName("counters")
+  TopicCounters getCounters();
+
+  @PropertyName("counters")
+  Topic setCounters(TopicCounters counters);
+
+  
+  @PropertyName("description")
+  String getDescription();
+
+  @PropertyName("description")
+  Topic setDescription(String description);
+
+  
+  @PropertyName("id")
+  TopicId getId();
+
+  @PropertyName("id")
+  Topic setId(TopicId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Topic setKind(String kind);
+
+  
+  @PropertyName("name")
+  String getName();
+
+  @PropertyName("name")
+  Topic setName(String name);
+
+  
+  @PropertyName("presenter")
+  String getPresenter();
+
+  @PropertyName("presenter")
+  Topic setPresenter(String presenter);
+
+  
+  @PropertyName("rules")
+  TopicRules getRules();
+
+  @PropertyName("rules")
+  Topic setRules(TopicRules rules);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Topic.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicList.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicList.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicList extends ValueProxy {
+
+  
+  @PropertyName("items")
+  java.util.List<Topic> getItems();
+
+  @PropertyName("items")
+  TopicList setItems(java.util.List<Topic> items);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  TopicList setKind(String kind);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicList.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRules.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicRules.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicRules extends ValueProxy {
+
+  
+  @PropertyName("submissions")
+  TopicRulesSubmissions getSubmissions();
+
+  @PropertyName("submissions")
+  TopicRules setSubmissions(TopicRulesSubmissions submissions);
+
+  
+  @PropertyName("votes")
+  TopicRulesVotes getVotes();
+
+  @PropertyName("votes")
+  TopicRules setVotes(TopicRulesVotes votes);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRules.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRulesSubmissions.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicRulesSubmissions.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicRulesSubmissions extends ValueProxy {
+
+  
+  @PropertyName("close")
+  Integer getClose();
+
+  @PropertyName("close")
+  TopicRulesSubmissions setClose(Integer close);
+
+  
+  @PropertyName("open")
+  Integer getOpen();
+
+  @PropertyName("open")
+  TopicRulesSubmissions setOpen(Integer open);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRulesSubmissions.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRulesVotes.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.TopicRulesVotes.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface TopicRulesVotes extends ValueProxy {
+
+  
+  @PropertyName("close")
+  Integer getClose();
+
+  @PropertyName("close")
+  TopicRulesVotes setClose(Integer close);
+
+  
+  @PropertyName("open")
+  Integer getOpen();
+
+  @PropertyName("open")
+  TopicRulesVotes setOpen(Integer open);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/TopicRulesVotes.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Translation.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Translation.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Translation extends ValueProxy {
+
+  
+  @PropertyName("lang")
+  String getLang();
+
+  @PropertyName("lang")
+  Translation setLang(String lang);
+
+  
+  @PropertyName("text")
+  String getText();
+
+  @PropertyName("text")
+  Translation setText(String text);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Translation.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/VoteId.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.VoteId.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface VoteId extends ValueProxy {
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/VoteId.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/Vote.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.Vote.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface Vote extends ValueProxy {
+
+  
+  @PropertyName("flag")
+  String getFlag();
+
+  @PropertyName("flag")
+  Vote setFlag(String flag);
+
+  
+  @PropertyName("id")
+  VoteId getId();
+
+  @PropertyName("id")
+  Vote setId(VoteId id);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  Vote setKind(String kind);
+
+  
+  @PropertyName("vote")
+  String getVote();
+
+  @PropertyName("vote")
+  Vote setVote(String vote);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/Vote.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/model/VoteList.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package com.google.api.gwt.services.kitch_sink.shared.model;
+
+
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+
+
+/**
+ * Model definition for KitchSink.VoteList.
+ *
+ * This class models an object which will be transmitted to or from the KitchSink service.
+ *
+ * @author Google, Inc.
+ */
+@JsonRpcProxy
+public interface VoteList extends ValueProxy {
+
+  
+  @PropertyName("items")
+  java.util.List<Vote> getItems();
+
+  @PropertyName("items")
+  VoteList setItems(java.util.List<Vote> items);
+
+  
+  @PropertyName("kind")
+  String getKind();
+
+  @PropertyName("kind")
+  VoteList setKind(String kind);
+}
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/model/VoteList.java
+=== begin: ./com/google/api/gwt/services/kitch_sink/shared/package-info.java
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/**
+ * Support classes to facilitate interaction with v1 of the kitch_sink service.
+ *
+ * <p>
+ * An API with every strange thing in it
+ * </p>
+ *
+ * <p>
+ * To get started in your code, call {@code GWT.create(KitchSink.class)}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+package com.google.api.gwt.services.kitch_sink.shared;
+=== end: ./com/google/api/gwt/services/kitch_sink/shared/package-info.java

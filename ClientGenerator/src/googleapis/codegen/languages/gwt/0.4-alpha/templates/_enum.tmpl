@@ -1,0 +1,6 @@
+  public enum {{ enum.className }} {
+{% for name_value_desc in enum.pairs %}
+    {% doc_comment_if name_value_desc.2 %}
+    @PropertyName("{{ name_value_desc.1 }}") {{ name_value_desc.0 }},{% endfor %}
+    ;
+  }

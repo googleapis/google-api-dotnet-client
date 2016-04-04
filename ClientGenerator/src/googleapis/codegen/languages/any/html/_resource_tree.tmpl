@@ -1,0 +1,32 @@
+{% with resource_dir=dir|add:resource.wireName|add:"/" title_path=title_path|add:" "|add:resource.wireName %}
+
+{# Write the resource page. #}
+
+{% with filepath=dir|add:resource.wireName|add:".html" %}
+{% write filepath %}
+{% call_template _resource_page resource=resource title_path=title_path %}
+{% endwrite %}
+{% endwith %}
+
+
+{# Write the pages for its methods. #}
+
+{% for method in resource.methods %}
+{% with filepath=resource_dir|add:method.wireName|add:".html" %}
+{% write filepath %}
+{% call_template _method_page resource=resource method=method title_path=title_path %}
+{% endwrite %}
+{% endwith %}
+{% endfor %}
+
+
+{# Call this template for the resource's subresources. #}
+
+{% with dir=resource_dir %}
+{% for subres in resource.resources %}
+{% call_template _resource_tree resource=subres dir=dir title_path=title_path %}
+{% endfor %}
+{% endwith %}
+
+
+{% endwith %}

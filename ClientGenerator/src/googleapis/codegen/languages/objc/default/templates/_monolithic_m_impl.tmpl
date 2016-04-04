@@ -1,0 +1,34 @@
+{% language objc %}
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+// Classes:{% for model in api.topLevelModels %}
+//   {{ model.className }} (0 custom class methods, {{ model.properties|length }} custom properties){% endfor %}
+// ----------------------------------------------------------------------------
+
+#import "{{ api.monolithicSourceName }}.h"
+
+#if GTL_BUILT_AS_FRAMEWORK
+  #import "GTL/GTLObject.h"
+#else
+  #import "GTLObject.h"
+#endif
+
+
+{% call_template _constants_m_impl %}
+
+{# Emit model implementations #}
+{% for model in api.models %}
+{% call_template _model_m_impl model=model %}
+{% endfor %}
+
+{% if api.query %}
+{% call_template _query_m_impl %}
+{% endif %}
+{% call_template _service_m_impl %}

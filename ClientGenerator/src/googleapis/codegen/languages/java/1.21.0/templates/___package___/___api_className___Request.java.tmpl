@@ -1,0 +1,76 @@
+{% language java %}{% collapsenewlines %}{% call_template _file_header %}
+
+package {{ api.module.name }};
+
+/**
+ * {{ api.className }} request.
+ *
+ * @since 1.3
+ */
+@SuppressWarnings("javadoc")
+public abstract class {{ api.className }}Request<T> extends com.google.api.client.googleapis.services.json.AbstractGoogleJsonClientRequest<T> {
+
+  /**
+   * @param client Google client
+   * @param method HTTP Method
+   * @param uriTemplate URI template for the path relative to the base URL. If it starts with a "/"
+   *        the base path from the base URL will be stripped out. The URI template can also be a
+   *        full URL. URI template expansion is done using
+   *        {@link com.google.api.client.http.UriTemplate#expand(String, String, Object, boolean)}
+   * @param content A POJO that can be serialized into JSON or {@code null} for none
+   * @param responseClass response class to parse into
+   */
+  public {{ api.className }}Request(
+      {{ api.className }} client, String method, String uriTemplate, Object content, Class<T> responseClass) {
+{% filter noblanklines %}
+    super(
+        client,
+        method,
+        uriTemplate,
+        content,
+        responseClass);
+{% endfilter %}
+  }
+{% for param in api.parameters %}
+
+{% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.memberName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.memberName }};
+
+  /**{% filter block_comment %}
+   * {{ param.description }}
+   * {% if param.default %} [default: {{ param.default }}]{% endif %}
+   * {% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
+   * {% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %}
+   * {% endfilter %}
+   */
+  public {{ param.codeType }} {{ param.getterName }}() {
+    return {{ param.memberName }};
+  }
+
+{% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
+  public {{ api.className }}Request<T> {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
+    this.{{ param.memberName }} = {{ param.memberName }};
+    return this;
+  }{% endfor %}
+
+  @Override
+  public final {{ api.className }} getAbstractGoogleClient() {
+    return ({{ api.className }}) super.getAbstractGoogleClient();
+  }
+
+  @Override
+  public {{ api.className }}Request<T> setDisableGZipContent(boolean disableGZipContent) {
+    return ({{ api.className }}Request<T>) super.setDisableGZipContent(disableGZipContent);
+  }
+
+  @Override
+  public {{ api.className }}Request<T> setRequestHeaders(com.google.api.client.http.HttpHeaders headers) {
+    return ({{ api.className }}Request<T>) super.setRequestHeaders(headers);
+  }
+
+  @Override
+  public {{ api.className }}Request<T> set(String parameterName, Object value) {
+    return ({{ api.className }}Request<T>) super.set(parameterName, value);
+  }
+}{% endcollapsenewlines %}

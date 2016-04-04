@@ -1,0 +1,20 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.className }}.h
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+
+#import "{{ api.className }}Constants.h"
+
+{% for model in api.models %}#import "{{ model.className }}.h"
+{% endfor %}
+{% if api.query %}#import "{{ api.query }}.h"
+{% endif %}#import "{{ api.serviceName }}.h"

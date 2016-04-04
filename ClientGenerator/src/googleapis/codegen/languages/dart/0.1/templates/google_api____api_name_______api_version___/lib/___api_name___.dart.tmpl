@@ -1,0 +1,71 @@
+// Copyright 2012 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+{% comment %}
+  Renders an API class.
+  [api] the API to render.
+{% endcomment %}{% language dart %}#library('{{ api.name }}-{{ api.version }}');
+#import('dart:core', prefix: 'core');
+#import('dart:json');
+
+#import('package:google_api_common/utils.dart');
+#import('package:google_api_common/http.dart', prefix:'http');
+
+// API {{ api.className }}
+/**{% filter block_comment %}
+ * {{ api.description }}
+ * {% endfilter %}
+ */
+class {{ api.className }} extends core.Object {
+  /** The API root, such as [:https://www.googleapis.com:] */
+  final core.String baseUrl;
+  /** How we should identify ourselves to the service. */
+  http.Authenticator authenticator;
+  /** The client library version */
+  final core.String clientVersion = '{{ features.releaseVersion }}.{{ api.revision }}';
+  /** The application name, used in the user-agent header */
+  final core.String applicationName;
+  {{ api.className }} get _$service => this;
+  {% for r in api.resources %}{{ r.className }} _{{ r.codeName }};
+  {{ r.className }} get {{ r.codeName }} => _{{ r.codeName }};
+  {% endfor %}
+{% for param in api.parameters %}{% indent %}{% doc_comment_if param.description %}
+{% call_template _parameter_type %} {{ param.codeName }};{% endindent %}
+
+{% endfor %}
+  {{ api.className }}({this.baseUrl:{% literal api.rootUrl api.servicePath %}, applicationName, this.authenticator}) :
+      this.applicationName = (applicationName == null) ? null : applicationName
+          .replaceAll(const core.RegExp(r'\s+'), '_')
+          .replaceAll(const core.RegExp(r'[^-_.,0-9a-zA-Z]'), '')
+  { {% for r in api.resources %}
+    _{{ r.codeName }} = new {{ r.className }}._internal(this);{% endfor %}
+  }
+  core.String get userAgent {
+    var uaPrefix = (applicationName == null) ? "" : "$applicationName ";
+    return "${uaPrefix}{{ api.name }}/{{ api.version }}/{{ api.revision }} google-api-dart-client/${clientVersion}";
+  }
+{% for m in api.methods %}{% indent %}{% call_template _method method=m %}{% endindent %}{% endfor %}
+{% for s in api.authscopes %}
+  /** OAuth2 scope: {{ s.description }} */
+  static final core.String {{ s.name }}_SCOPE = {% literal s.value %};
+{% endfor %}}
+{% for r in api.resources %}
+{% call_template _resource resource=r %}
+{% endfor %}{% for model in api.models %}
+{% call_template _model_content model=model %}
+{% endfor %}{% for param in api.parameters %}{% if param.enumType %}
+{% call_template _enum type=param.enumType %}
+{% endif %}{% endfor %}{% for m in api.methods %}{% for param in m.parameters %}{% if param.enumType %}
+{% call_template _enum type=param.enumType %}
+{% endif %}{% endfor %}{% endfor %}

@@ -1,0 +1,5 @@
+// Demonstrate recursively calling templates to generate a tree of files.
+{% with dir="1" level=1 %}  // we need variables for call_template
+{% call_template _recursive_generate dir=dir level=level %}
+{% endwith %}
+{% halt %} // suppress output for this file.

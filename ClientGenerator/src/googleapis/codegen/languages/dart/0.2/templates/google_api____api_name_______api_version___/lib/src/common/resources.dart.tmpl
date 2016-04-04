@@ -1,0 +1,4 @@
+part of {{ api.name }}_{{ api.version }}_api_client;
+{% for r in api.resources %}
+{% call_template _resource resource=r %}
+{% endfor %}

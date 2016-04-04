@@ -1,0 +1,12 @@
+{% comment %}
+  Renders an enumeration type.
+  [param] the parameter with the enumerated type
+{% endcomment %}
+// Enum {{ param.parentPath|join:"." }}.{{ param.enumType.className }}
+// {{ param.description }}
+class {{ param.enumType.className }} {
+{% for element in param.enumType.elements %}
+  // {{ element.description }}
+  const {{ param.codeType }} {{ element.constantName }} = {% literal element.value %};
+{% endfor %}
+}

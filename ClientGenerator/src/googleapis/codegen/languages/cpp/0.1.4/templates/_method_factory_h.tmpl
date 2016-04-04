@@ -1,0 +1,58 @@
+{% if method.requestType and method.mediaUpload %}
+{% doc_comment noblock %}
+Creates a new {{ method.className }} instance.
+@deprecated
+
+@param[in] _credential_  Can be NULL.
+           NULL credentials will not authorize the request.{% for p in method.requiredParameters %}
+@param[in] {{ p.parameterName }} {{ p.description }}{% endfor %}{% if method.requestType and not method.mediaUpload %}
+@param[in] _content_ The data object to {{ method.name }}.{% endif %}
+
+@returns  The caller should <code>Execute</code> the method instance,
+          then destroy it when they are finished.
+{% enddoc_comment %}
+{{ method.className }}* New{{ method.undecoratedClassName }}(
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType and not method.mediaUpload %},
+    const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}) const;
+
+{% endif %}{% doc_comment noblock %}
+Creates a new {{ method.className }} instance.{% if method.deprecated %}
+@deprecated{% endif %}
+
+@param[in] _credential_  Can be NULL.
+           NULL credentials will not authorize the request.{% for p in method.requiredParameters %}
+@param[in] {{ p.parameterName }} {{ p.description }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %}
+@param[in] _metadata_ The metadata object to {{ method.name }}. If this is NULL then do not upload any metadata.{% else %}
+@param[in] _content_ The data object to {{ method.name }}.{% endif %}{% endif %}{% if method.mediaUpload %}
+@param[in] _media_content_type_ The content type of the data in the _media_content_reader_.
+@param[in] _media_content_reader_ The media content to {{ method.name }}. If
+this is NULL then do not upload any media and ignore _media_content_type_.{% endif %}
+@returns  The caller should <code>Execute</code> the method instance,
+          then destroy it when they are finished.
+{% enddoc_comment %}
+{{ method.className }}* New{{ method.undecoratedClassName }}(
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType %}{% if method.mediaUpload %},
+    const {{ method.requestType.packageRelativeClassName }}* _metadata_{% else %},
+    const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}{% endif %}{% if method.mediaUpload %},
+    const StringPiece& _media_content_type_,
+    {{ api.client_namespace }}::DataReader* _media_content_reader_{% endif %}) const;
+
+{% if method.isPageable %}{% doc_comment noblock %}
+Creates a pager for iterating over incremental result pages.{% if method.deprecated %}
+@deprecated{% endif %}
+@param[in] _credential_  NULL credentials will not authorize the request.{% for p in method.requiredParameters %}
+@param[in] {{ p.parameterName }} {{ p.description }}
+{% endfor %}{% if method.requestType and not method.mediaUpload %}
+@param[in] _content_ The data object to {{ method.name }}.
+{% endif %}
+
+@see {{ api.global_namespace }}{% if api.global_namespace != '' %}::{% endif %}{{ api.global_namespace }}::ServiceRequestPager
+{% enddoc_comment %}
+{{ method.className }}Pager* New{{ method.undecoratedClassName }}Pager(
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_{% for p in method.requiredParameters %},
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}{% endfor %}{% if method.requestType and not method.mediaUpload %},
+    const {{ method.requestType.packageRelativeClassName }}& _content_{% endif %}) const;
+{% endif %}
+

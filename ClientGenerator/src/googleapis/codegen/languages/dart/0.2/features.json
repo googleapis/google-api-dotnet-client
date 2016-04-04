@@ -1,0 +1,12 @@
+{
+  "language": "dart",
+  "description": "Dart libraries for Google APIs.",
+  "releaseVersion": "0.2",
+  "requires": [
+    {
+      "name": "Google API Dart Client",
+      "environments": ["*"],
+      "version": "0"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{% language objc %}@implementation {{ api.query }}
+
+{% if api.allParameters %}@dynamic {% for parameter in api.allParameters %}{% if not forloop.first %}, {% endif %}{{ parameter.codeName }}{% endfor %};
+{% endif %}{% if api.propertyToJSONKeyMap %}
++ (NSDictionary *)parameterNameMap {
+  NSDictionary *map = @{
+{% for parameter in api.allParameters %}{% if parameter.wireName != parameter.codeName %}    {% literal parameter.codeName %} : {% literal parameter.wireName %},
+{% endif %}{% endfor %}  };
+  return map;
+}
+{% endif %}{% if api.arrayPropertyToClassMap %}
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+{% for parameter in api.allParameters %}{% if parameter.type == 'array' %}    {% literal parameter.wireName %} : [{{ parameter.elementCodeType }} class],
+{% endif %}{% endfor %}  };
+  return map;
+}
+{% endif %}
+#pragma mark -
+// These create a {{ api.query }} object.
+{% for method in api.methods %}
++ (instancetype){{method.queryCodeName}} {
+  NSString *methodName = {% literal method.wireName %};
+  {{ api.query }} *query = [self queryWithMethodName:methodName];
+{% if method.responseType.codeType != 'void' %}  query.expectedObjectClass = [{{ method.responseType.codeType }} class];
+{% endif %}  return query;
+}
+{% endfor %}
+@end

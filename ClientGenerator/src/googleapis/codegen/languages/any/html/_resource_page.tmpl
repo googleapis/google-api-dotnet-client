@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/_static/css/screen.css" />
+<style>
+.demo { margin-left: 176px; max-width: 1040px; padding-top: 14px; }
+</style>
+</head>
+<body class="docs main">
+<div class="demo">
+<h1 class="page-title">{{ title_path.split|join:"."|capfirst }}</h1>
+<section id="overview">{{ resource.description }}</section>
+<section id="methods"><h2>Methods</h2>
+<dl>
+  {% for method in resource.methods %}
+  <dt>{{ method.wireName }}</dt>
+  <dd>{{ method.description }}</dd>
+  {% endfor %}
+</dl>
+</section>
+<section id="resource">
+<h2>Resource Representations</h2>
+{% with schema=resource.methods_dict.get.responseType %}{% if schema %}
+<pre class="prettyprint">{% call_template _resource_alt_json schema=schema %}</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Property Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% call_template _resource_property_row schema=schema %}
+  </tbody>
+</table>
+{% endif %}{% endwith %}
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{% if not model.isSchema %}{% for child in model.children %}{% call_template _model model child %}{% endfor %}{% else %}
+schema {{ model.fullClassName }} {{% indent %}
+{% call_template _model_content model model %}
+{% for child in model.children %}{% call_template _model model child %}
+{% endfor %}{% endindent %}}{% endif %}

@@ -1,0 +1,253 @@
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}
+ * {% endif %}
+ * Create a request for the method
+ * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+ *
+ * This request holds the parameters needed by the {{ api.name }}
+ * server.  After setting any optional parameters, call the
+ * {@link {{ method.className }}#execute()}
+ * method to invoke the remote operation.
+ * {% endfilter %}
+ * {% for param in method.requiredParameters %}
+ * @param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * @param content the {@link {{ method.requestType.fullClassName }}}{% endif %}
+ * @return the request
+ */
+public {{ method.className }} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.fullClassName }} content
+      {% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %}) throws java.io.IOException {
+  {{ method.className }} result = new {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}content{% end_parameter %}
+    {% endif %}
+  {% end_parameter_list %});
+  initialize(result);
+  return result;
+}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}
+ * {% endif %}
+ * Create a request for the method
+ * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+ *
+ * This request holds the parameters needed by the the {{ api.name }}
+ * server.  After setting any optional parameters, call the
+ * {@link {{ method.className }}#execute()}
+ * method to invoke the remote operation.
+ * {% endfilter %}
+ *
+ * <p>
+ * This method should be used for uploading media content.
+ * </p>
+ *
+ * {% for param in method.requiredParameters %}@param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+ * @param content the {@link {{ method.requestType.fullClassName }}} media metadata or {@code null} if none{% endif %}
+ * @param mediaContent The media HTTP content or {@code null} if none.
+ * @return the request
+ * @throws java.io.IOException if the initialization of the request fails
+ */
+public {{ method.className }} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.fullClassName }} content
+      {% end_parameter %}
+    {% endif %}
+    {% parameter %}
+      com.google.api.client.http.AbstractInputStreamContent mediaContent
+    {% end_parameter %}
+  {% end_parameter_list %}) throws java.io.IOException {
+  {{ method.className }} result = new {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}content{% end_parameter %}
+    {% endif %}
+      {% parameter %}mediaContent{% end_parameter %}
+  {% end_parameter_list %});
+  initialize(result);
+  return result;
+}{% endif %}
+
+public class {{ method.className }} extends {{ api.className }}Request<{{ method.responseType.fullClassName }}> {
+
+  private static final String REST_PATH = "{{ method.restPath }}";
+
+  {% for param in method.parameters %}
+    {% if param.pattern %}
+  private final java.util.regex.Pattern {{ param.constantName }}_PATTERN =
+      java.util.regex.Pattern.compile({% literal param.pattern %});
+    {% endif %}
+  {% endfor %}
+
+{% filter noblanklines %}
+  /**{% filter block_comment %}
+   * {% if method.description %}{{ method.description }}
+   * {% endif %}
+   * Create a request for the method
+   * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+   *
+   * This request holds the parameters needed by the the {{ api.name }}
+   * server.  After setting any optional parameters, call the
+   * {@link {{ method.className }}#execute()}
+   * method to invoke the remote operation.
+   * <p>
+   * {@link {{ method.className }}#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to initialize this
+   * instance immediately after invoking the constructor.
+   * </p>
+   * {% endfilter %}
+   * {% for param in method.requiredParameters %}
+   * @param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+   * @param content the {@link {{ method.requestType.fullClassName }}}{% endif %}
+   * @since 1.13
+   */
+  protected {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
+    {% endif %}
+    {% end_parameter_list %}) {
+    super({{ api.className }}.this, "{{ method.httpMethod }}", REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
+  {% for param in method.requiredParameters %}
+    this.{{ param.memberName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.memberName }}, "Required parameter {{ param.memberName }} must be specified.");
+    {% call_template _pattern_check_def param=param %}
+  {% endfor %}
+  {% if method.requestType and method.responseType.properties %}
+    {% call_template _required_param_def properties=method.responseType.properties %}
+  {% endif %}
+  {% call_template _alt_def method=method %}
+  {% if method.supportsMediaDownload %}
+    initializeMediaDownload();
+  {% endif %}
+  }
+{% endfilter %}
+
+{% filter noblanklines %}
+{% if method.simple_upload_supported or method.resumable_upload_supported %}
+  /**{% filter block_comment %}
+   * {% if method.description %}{{ method.description }}
+   * {% endif %}
+   * Create a request for the method
+   * "{% if resource %}{{ resource.wireName }}.{% endif %}{{ method.wireName }}".
+   *
+   * This request holds the parameters needed by the the {{ api.name }}
+   * server.  After setting any optional parameters, call the
+   * {@link {{ method.className }}#execute()}
+   * method to invoke the remote operation.
+   * <p>
+   * {@link {{ method.className }}#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must be called to initialize this
+   * instance immediately after invoking the constructor.
+   * </p>
+   * {% endfilter %}
+   *
+   * <p>
+   * This constructor should be used for uploading media content.
+   * </p>
+   *
+   * {% for param in method.requiredParameters %}@param {{ param.memberName }} {% emit_parameter_doc param %}{% endfor %}{% if method.requestType %}
+   * @param content the {@link {{ method.requestType.fullClassName }}} media metadata or {@code null} if none{% endif %}
+   * @param mediaContent The media HTTP content or {@code null} if none.
+   * @since 1.13
+   */
+  protected {{ method.className }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}{{ p.codeType }} {{ p.memberName }}{% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}{{ method.requestType.fullClassName }} content{% end_parameter %}
+    {% endif %}
+    {% parameter %}
+      com.google.api.client.http.AbstractInputStreamContent mediaContent
+    {% end_parameter %}
+    {% end_parameter_list %}) {
+    super({{ api.className }}.this, "{{ method.httpMethod }}", "/upload/" + getServicePath() + REST_PATH, {% if method.requestType %}content{% else %}null{% endif %}, {{ method.responseType.fullClassName }}.class);
+  {% for param in method.requiredParameters %}
+    this.{{ param.memberName }} = com.google.api.client.util.Preconditions.checkNotNull({{ param.memberName }}, "Required parameter {{ param.memberName }} must be specified.");
+  {% endfor %}
+    initializeMediaUpload(mediaContent);
+  {% call_template _alt_def method=method %}
+  }
+{% endif %}
+{% endfilter %}
+{% if method.supportsMediaDownload %}
+  @Override
+  public void executeMediaAndDownloadTo(java.io.OutputStream outputStream) throws java.io.IOException {
+    super.executeMediaAndDownloadTo(outputStream);
+  }
+
+  @Override
+  public java.io.InputStream executeMediaAsInputStream() throws java.io.IOException {
+    return super.executeMediaAsInputStream();
+  }
+
+  @Override
+  public com.google.api.client.http.HttpResponse executeMedia() throws java.io.IOException {
+    return super.executeMedia();
+  }
+{% endif %}
+{% ifequal method.httpMethod "GET" %}
+
+  @Override
+  public com.google.api.client.http.HttpResponse executeUsingHead() throws java.io.IOException {
+    return super.executeUsingHead();
+  }
+
+  @Override
+  public com.google.api.client.http.HttpRequest buildHttpRequestUsingHead() throws java.io.IOException {
+    return super.buildHttpRequestUsingHead();
+  }
+{% endifequal %}
+{% for param in api.parameters %}
+
+  @Override
+  public {{ method.className }} {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
+    return ({{ method.className }}) super.{{ param.setterName }}({{ param.memberName }});
+  }{% endfor %}
+{% for param in method.parameters %}
+{% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
+  @com.google.api.client.util.Key{% ifnotequal param.wireName param.memberName %}("{{ param.wireName }}"){% endifnotequal %}
+  private {{ param.codeType }} {{ param.memberName }};
+
+  /**{% filter block_comment %}{{ param.description }}
+{% if param.default %} [default: {{ param.default }}]{% endif %}
+{% if param.minimum %} [minimum: {{ param.minimum }}]{% endif %}
+{% if param.maximum %} [maximum: {{ param.maximum }}]{% endif %} {% endfilter %}
+   */
+  public {{ param.codeType }} {{ param.getterName }}() {
+    return {{ param.memberName }};
+  }
+
+{% indent 1 %}{% doc_comment_if param.description %}{% endindent %}
+  public {{ method.className }} {{ param.setterName }}({{ param.codeType }} {{ param.memberName }}) {
+{% filter noblanklines %}
+    {% call_template _pattern_check_def param=param %}
+    this.{{ param.memberName }} = {{ param.memberName }};
+    return this;
+{% endfilter %}
+  }
+{% ifequal param.codeType "java.lang.Boolean" %}{% ifnotequal param.default null %}
+{% call_template _bool_getter_content_def property=param %}
+{% endifnotequal %}{% endifequal %}{% endfor %}
+
+  @Override
+  public {{ method.className }} set(String parameterName, Object value) {
+    return ({{ method.className }}) super.set(parameterName, value);
+  }
+}

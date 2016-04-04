@@ -1,0 +1,57 @@
+{{ api.className }}BaseRequest::{{ api.className }}BaseRequest(
+      const {{ api.client_namespace }}::ClientService* service,
+      {{ api.client_namespace }}::AuthorizationCredential* credential,
+      {{ api.client_namespace }}::HttpRequest::HttpMethod method,
+      const StringPiece& uri_template){% indent 2 %}
+: {{ api.client_namespace }}::ClientServiceRequest(
+      service, credential, method, uri_template){% call_template _declare_method_attributes_cc parameters=api.parameters %}{% endindent %} {
+}
+
+{{ api.className }}BaseRequest::~{{ api.className }}BaseRequest() {
+}{% if api.parameters %}
+
+{% filter noblanklines %}
+{{ api.status_type }} {{ api.className }}BaseRequest::AppendVariable(
+    const StringPiece& variable_name,
+    const {{ api.client_namespace }}::UriTemplateConfig& config,
+    string* target) {
+{% for p in api.parameters %}
+  {% if p.location == 'path' %}
+  if (variable_name == {% literal p.wireName %}) {{% indent %}{% call_template _append_uri_template_variable_cc variable=p %}{% endindent %}
+    return {{ api.client_namespace }}::StatusOk();
+  }
+  {% endif %}
+{% endfor %}
+  return {{ api.client_namespace }}::StatusInvalidArgument(
+      StrCat("Unknown url variable='", variable_name, "'"));
+}
+{% endfilter %}
+
+{% filter noblanklines %}
+{{ api.status_type }} {{ api.className }}BaseRequest::AppendOptionalQueryParameters(
+    string* target) {
+  const char* sep = (target->find('?') == string::npos) ? "?" : "&";
+  {% for p in api.parameters %}
+    {% if p.location == 'query' %}
+      {% if p.required %}
+        {% call_template _append_query_parameter_cc variable=p %}
+      {% else %}
+      {# sorry for out-dent here #}
+  if (_have_{{p.memberName }}) {{% indent %}
+    {% call_template _append_query_parameter_cc variable=p %}{% endindent %}
+  }
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  return {{ api.client_namespace }}::ClientServiceRequest
+         ::AppendOptionalQueryParameters(target);
+}{% endfilter %}
+{% endif %}
+
+void {{ api.className }}BaseRequest::AddJsonContentToRequest(
+    const {{ api.client_namespace }}::JsonCppData *content) {
+  {{ api.client_namespace }}::HttpRequest* _http_request_ = mutable_http_request();
+  _http_request_->set_content_type(
+        {{ api.client_namespace }}::HttpRequest::ContentType_JSON);
+  _http_request_->set_content_reader(content->MakeJsonReader());
+}

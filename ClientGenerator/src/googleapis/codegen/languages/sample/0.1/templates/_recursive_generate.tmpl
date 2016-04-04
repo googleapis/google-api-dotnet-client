@@ -1,0 +1,23 @@
+{% comment %}
+  Demonstrate recursively calling templates to generate a tree of files.
+{% endcomment %}
+{% if level >= 5 %}{% halt %}{% endif %}
+
+{% with path=dir|add:"/"|add:"x.txt" %}
+{% write path %}// Path: {{ path }}.
+Content for level {{ level }}.
+{% endwrite %}
+{% endwith %}
+
+This text will never be in the output. Here is why.
+- It is not within the write block
+- so it collects in the overall call stack of src/recursive_generate.tmpl
+- which halts at the end, so this gets tossed.
+
+{% with level=level|add:"1" %}
+{% with level_str=level|stringformat:"d" %}
+{% with dir=dir|add:"/"|add:level_str %}
+  {% call_template _recursive_generate dir=dir level=level %}
+{% endwith %}
+{% endwith %}
+{% endwith %}

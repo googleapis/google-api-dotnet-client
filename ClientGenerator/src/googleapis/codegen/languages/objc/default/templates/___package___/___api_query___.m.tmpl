@@ -1,0 +1,23 @@
+{% language objc %}{% copyright_block %}
+{% call_template _time_stamp %}
+
+//
+//  {{ api.query }}.m
+//
+
+// ----------------------------------------------------------------------------
+// NOTE: This file is generated from Google APIs Discovery Service.
+// Service:
+//   {{ api.title }} ({{ api.name }}/{{ api.version }})
+// Description:
+//   {{ api.description }}
+// Classes:
+//   {{ api.query }} ({{ api.methods|length }} custom class methods, {{ api.allParameters|length }} custom properties)
+{% if api.documentationLink %}// Documentation:
+//   {{ api.documentationLink }}
+{% endif %}
+#import "{{ api.query }}.h"
+{% if api.importManager %}
+{% imports api %}{% endimports %}
+{% endif %}
+{% call_template _query_m_impl %}

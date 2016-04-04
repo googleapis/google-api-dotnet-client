@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="jar" name="gwt-{{ api.name }}-{{ api.version }}">
+  <property environment="env" />
+
+  <property name="gwtdir" value="${env.GWT_HOME}" />
+  <property name="baselibdir" value="${env.BASE_LIB_DIR}" />
+
+  <property name="src.dir" value="${basedir}/src" />
+  <property name="build.dir" value="${basedir}/build" />
+  <property name="build.classes.dir" value="${build.dir}/classes" />
+  <property name="build.dist.dir" value="${build.dir}/dist" />
+  <property name="build.javadoc.dir" value="${build.dir}/javadoc" />
+
+  <property name="release" value="{{ features.releaseVersion }}" />
+  <property name="debuglevel" value="source,lines,vars" />
+
+  <target name="verify" description="Check that necessary dependencies are found">
+    <available file="${gwtdir}/gwt-user.jar" property="foundgwtuserjar" />
+    <fail unless="foundgwtuserjar" message="Cannot find gwt-user.jar" />
+  </target>
+
+  <target name="build-base" description="Compiles base lib with javac">
+    <copy includeemptydirs="true" todir="${build.classes.dir}/com/google/api/gwt">
+      <fileset dir="${baselibdir}" excludes="**/oauth2/**,**/samples/**,**/opensource/**,package-info.class" />
+    </copy>
+
+    <javac srcdir="${baselibdir}" excludes="**/oauth2/**,**/samples/**" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}"/>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar-base" depends="build-base" description="Generates a JAR of the base library">
+    <mkdir dir="${build.dist.dir}/gwt-base-${release}" />
+    <jar jarfile="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar">
+      <fileset dir="${build.classes.dir}" />
+    </jar>
+  </target>
+
+  <target name="javac" depends="jar-base" description="Compiles the source files using javac">
+    <javac srcdir="${src.dir}" destdir="${build.classes.dir}">
+      <classpath>
+        <pathelement location="${build.classes.dir}" />
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="jar" depends="javac" description="Generates a jar of the generated source files">
+    <mkdir dir="${build.dist.dir}" />
+
+    <jar jarfile="${build.dist.dir}/gwt-{{ api.name }}-{{ api.version }}-${release}.jar">
+      <zipfileset src="${build.dist.dir}/gwt-base-${release}/gwt-base-${release}.jar" />
+      <fileset dir="${build.classes.dir}" />
+      <fileset dir="${src.dir}" />
+    </jar>
+  </target>
+
+  <target name="javadoc" depends="clean" description="Generates JavaDoc for the generated source files">
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.javadoc.dir}" />
+
+    <javadoc packagenames="com.google.api.gwt.services.*"
+        destdir="${build.javadoc.dir}"
+        encoding="UTF-8"
+        docencoding="UTF-8"
+        charset="UTF-8"
+        use="true"
+        author="true"
+        protected="true"
+        linksource="true"
+        additionalparam="-notimestamp"
+        windowtitle="Google API Client Library for GWT - {{ api.name }} {{ api.version }}">
+      <sourcepath>
+        <pathelement location="${src.dir}" />
+      </sourcepath>
+      <classpath>
+        <pathelement location="${gwtdir}/gwt-user.jar" />
+      </classpath>
+      <link href="http://google-web-toolkit.googlecode.com/svn/javadoc/latest/" />
+      <link href="http://docs.oracle.com/javase/6/docs/api" />
+    </javadoc>
+  </target>
+
+  <target name="clean" description="Remove generated files">
+    <delete dir="${build.dir}" />
+    <delete dir="${src.dir}" />
+
+    <mkdir dir="${src.dir}" />
+    <copy includeemptydirs="true" todir="${src.dir}">
+      <fileset dir="${basedir}" excludes="build.xml" />
+    </copy>
+  </target>
+</project>

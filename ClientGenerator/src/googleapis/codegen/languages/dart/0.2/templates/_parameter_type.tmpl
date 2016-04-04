@@ -1,0 +1,9 @@
+{% comment %}
+  Renders the type of a parameter.
+  [param] the parameter.
+
+TODO(timarmstrong): Re-enable this line once we're using enums again:
+{% if param.enumType %}{{ param.enumType.codeType }}{% else %}{{ param.codeType }}{% endif %}
+
+{% endcomment %}
+{{ param.codeType }}

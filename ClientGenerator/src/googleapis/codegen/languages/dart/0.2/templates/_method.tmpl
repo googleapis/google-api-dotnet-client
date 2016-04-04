@@ -1,0 +1,94 @@
+{% comment %}
+  Renders a method body.
+  [method] the method to render.
+{% endcomment %}
+{% collapsenewlines %}
+// Method {{ method.contextCodeType }}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}{% endif %}
+ * {% if method.requestType %}
+ * [request] - {{ method.requestType.className }} to send in this request.{% endif %}
+ * {% for p in method.requiredParameters %}
+ * {% emit_parameter_doc p %}{% endfor %}
+ * {% for p in method.optionalParameters %}
+ * {% emit_parameter_doc p %}{% endfor %}
+ *
+ * [optParams] - Additional query parameters.
+ * {% endfilter %}
+ */
+async.Future{% if method.responseType.className %}<{{ method.responseType.className }}>{% endif %} {{ method.codeName }}({% parameter_list %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.className }} request
+      {% end_parameter %}
+    {% endif %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}
+        {% call_template _parameter_type param=p %} {{ p.codeName }}
+      {% end_parameter %}
+    {% endfor %}
+    {% parameter %}
+    {% comment %}
+      Note: The group of optional named parameters in the parameter lists in
+      Dart is wrapped with '{' and '}'.
+    {% endcomment %}
+    {{ '{' }}{% parameter_list %}
+      {% for p in method.optionalParameters %}
+        {% parameter %}
+          {% call_template _parameter_type param=p %} {{ p.codeName }}
+        {% end_parameter %}
+      {% endfor %}
+      {% parameter %}core.Map optParams{% end_parameter %}
+    {% end_parameter_list %}{{ '}' }}
+    {% end_parameter %}
+  {% end_parameter_list %}) {
+  var completer = new async.Completer();
+  var url = {% literal method.path %};
+  var urlParams = new core.Map();
+  var queryParams = new core.Map();
+
+{% filter noblanklines %}
+  var paramErrors = new core.List();
+{% for p in method.requiredParameters %}
+  if ({{ p.codeName }} == null) paramErrors.add("{{ p.codeName }} is required");
+  if ({{ p.codeName }} != null) {% if p.location == 'path' %}urlParams{% else %}queryParams{% endif %}[{% literal p.wireName %}] = {{ p.codeName}};
+{% endfor %}
+{% for p in method.optionalParameters %}
+  if ({{ p.codeName }} != null) {% if p.location == 'path' %}urlParams{% else %}queryParams{% endif %}[{% literal p.wireName %}] = {{ p.codeName}};
+{% endfor %}
+{% endfilter %}
+  if (optParams != null) {
+    optParams.forEach((key, value) {
+      if (value != null && queryParams[key] == null) {
+        queryParams[key] = value;
+      }
+    });
+  }
+
+  if (!paramErrors.isEmpty) {
+    completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+    return completer.future;
+  }
+
+  var response;
+  response = _client.request({% parameter_list %}
+      {% parameter %}url{% end_parameter %}
+      {% parameter %}{% literal method.httpMethod %}{% end_parameter %}
+      {% if method.requestType %}
+          {% parameter %}body: request.toString(){% end_parameter %}
+      {% endif %}
+      {% parameter %}urlParams: urlParams{% end_parameter %}
+      {% parameter %}queryParams: queryParams{% end_parameter %}
+      {% end_parameter_list %});
+{% filter noblanklines %}
+  response
+{% if method.responseType.className %}
+    .then((data) => completer.complete(new {{ method.responseType.className }}.fromJson(data)))
+{% else %}
+    .then((data) => completer.complete(data))
+{% endif %}
+    .catchError((e) { completer.completeError(e); return true; });
+  return completer.future;
+{% endfilter %}
+}
+{% endcollapsenewlines %}

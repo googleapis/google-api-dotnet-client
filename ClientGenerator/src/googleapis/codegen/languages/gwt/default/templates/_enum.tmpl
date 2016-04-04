@@ -1,0 +1,7 @@
+  /** Possible values for {@link #{{ param.setterName }}({{ param.memberName }})}. */
+  public enum {{ enum.className }} {
+{% for element in enum.elements %}
+    {% doc_comment_if element.description %}
+    @PropertyName({% literal element.wireName %}) {{ element.constantName }},{% endfor %}
+    ;
+  }

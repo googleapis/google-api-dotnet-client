@@ -1,0 +1,26 @@
+{% language cpp %}{% copyright_block %}
+//
+//------------------------------------------------------------------------------
+{% call_template _time_stamp %}
+//
+//  Changes to this file may cause incorrect behavior and will be lost if
+//  the code is regenerated.
+//------------------------------------------------------------------------------
+#include "{{ api.include_path }}"
+
+{% imports api %}
+#include "{{ api.client_include_path }}/service/client_service.h"
+#include "{{ api.client_include_path }}/util/status.h"
+{% endimports %}
+{# TODO(ewiseblatt): 20121022 #}
+{# Add these into the above block when b/7399546 is fixed #}
+#include "{{ api.client_include_path }}/data/data_reader.h"
+#include "{{ api.client_include_path }}/transport/http_request.h"
+#include "{{ api.client_include_path }}/transport/http_transport.h"
+#include "{{ api.client_include_path }}/util/uri_utils.h"
+#include "{{ api.strings_include_path }}/strcat.h"
+
+namespace {{ api.module.name }} {
+{% if api.global_namespace %}using namespace {{ api.global_namespace }};{% endif %}
+{% call_template _service_impl_cc api=api %}
+}  // namespace {{ api.module.name }}

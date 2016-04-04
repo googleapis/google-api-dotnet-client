@@ -1,0 +1,23 @@
+{% language objc %}// ----------------------------------------------------------------------------
+//
+//   {{ model.className }}
+//
+
+@implementation {{ model.className }}
+{% if model.properties %}@dynamic {% for property in model.properties %}{% if not forloop.first %}, {% endif %}{{ property.codeName }}{% endfor %};
+{% endif %}{% if model.propertyToJSONKeyMap %}
++ (NSDictionary *)propertyToJSONKeyMap {
+  NSDictionary *map = @{
+{% for property in model.properties %}{% if property.wireName != property.codeName %}    {% literal property.codeName %} : {% literal property.wireName %},
+{% endif %}{% endfor %}  };
+  return map;
+}
+{% endif %}{% if model.arrayPropertyToClassMap %}
++ (NSDictionary *)arrayPropertyToClassMap {
+  NSDictionary *map = @{
+{% for property in model.properties %}{% if property.type == 'array' %}    {% literal property.wireName %} : [{{ property.elementCodeType }} class],
+{% endif %}{% endfor %}  };
+  return map;
+}
+{% endif %}
+@end

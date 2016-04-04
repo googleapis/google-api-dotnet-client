@@ -1,0 +1,32 @@
+{% comment %}
+  Renders a model class.
+  [model] the schema object for the type.
+{% endcomment %}// Schema {{ model.parentPath|join:"." }}.{{ model.className }}
+class {{ model.className }} extends IdentityHash {
+{% for property in model.properties %}  {% doc_comment_if property.description %}
+  {{ property.codeType }} {{ property.codeName }};
+
+{% endfor %}{% filter noblanklines %}
+  /** Parses an instance from its JSON representation. */
+  static {{ model.className }} parse(core.Map<core.String, core.Object> json) {
+    if (json == null) return null;
+    final result = new {{ model.className }}();
+{% for property in model.properties %}
+    result.{{ property.codeName }} = {% call_template _parse type=property.data_type %}(json[{% literal property.wireName %}]);
+{% endfor %}
+    return result;
+  }
+
+  /** Converts an instance to its JSON representation. */
+  static core.Object serialize({{ model.className }} value) {
+    if (value == null) return null;
+    final result = {};
+{% for property in model.properties %}
+    result[{% literal property.wireName %}] = {% call_template _serialize type=property.data_type %}(value.{{ property.codeName }});
+{% endfor %}
+    return result;
+  }
+
+  toString() => serialize(this).toString();
+}
+{% endfilter %}

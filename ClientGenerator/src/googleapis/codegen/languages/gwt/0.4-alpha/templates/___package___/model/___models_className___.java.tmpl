@@ -1,0 +1,43 @@
+{% language java %}{% copyright_block %}
+/*
+ * Warning! This file is generated. Modify at your own risk.
+ */
+
+package {{ model.module.name }};
+
+
+{% imports model %}
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.autobean.shared.Splittable;
+import com.google.web.bindery.requestfactory.shared.JsonRpcProxy;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
+{% endimports %}
+
+
+/**{% filter block_comment %}
+ * Model definition for {{ api.className }}.{{ model.className }}.
+ *
+ * {{ model.description }}
+ *
+ * This class models an object which will be transmitted to or from the
+ * {{ api.className }} service.
+ *
+ * @author Google, Inc.
+ * {% endfilter %}
+ */
+@JsonRpcProxy
+public interface {{ model.className }} extends ValueProxy {
+{% if model.arrayOf %}
+  @PropertyName("items")
+  {{ model.codeType }} getItems();
+
+  @PropertyName("items")
+  {{ model.className }} setItems({{ model.codeType }} items);
+{% endif %}{% for property in model.properties %}
+  {% doc_comment_if property.description %}
+  @PropertyName("{{ property.wireName }}")
+  {{ property.codeType }} get{{ property.codeName|capfirst }}();
+
+  @PropertyName("{{ property.wireName }}")
+  {{ model.className }} set{{ property.codeName|capfirst }}({{ property.codeType }} {{ property.codeName }});
+{% endfor %}}

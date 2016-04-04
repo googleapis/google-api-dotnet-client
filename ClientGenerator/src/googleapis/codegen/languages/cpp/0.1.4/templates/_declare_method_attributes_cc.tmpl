@@ -1,0 +1,12 @@
+{% noeol %}{% for p in parameters %}
+{% if p.required %},{% eol %}
+  {{ p.memberName }}({{ p.parameterName }}{% if p.parameterCodeType == 'StringPiece' %}.as_string(){% endif %})
+{% elif p.default %},{% eol %}
+  {{ p.memberName }}({% if p.data_type.json_type == 'string' and not p.isPrimitive %}"{{ p.default }}"{% else %}{{ p.default }}{% endif %})
+{% endif %}
+{% endfor %}
+{% for p in parameters %}
+{% if not p.required %},{% eol %}
+  _have_{{ p.memberName }}(false)
+{% endif %}
+{% endfor %}{% endnoeol %}

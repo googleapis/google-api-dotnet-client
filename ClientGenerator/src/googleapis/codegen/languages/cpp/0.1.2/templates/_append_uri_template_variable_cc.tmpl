@@ -1,0 +1,10 @@
+{% if variable.data_type.json_type == 'array' %}
+  {{ api.client_namespace }}::AppendIteratorToUrl(
+    {{ variable.memberName }}.begin(), {{ variable.memberName }}.end(),
+    "{{ variable.codeName }}", target);
+{% else %}
+  target->append({{ api.client_namespace }}::CppValueToEscapedUrlValue(
+      {{ variable.memberName }}));
+{% endif %}
+
+

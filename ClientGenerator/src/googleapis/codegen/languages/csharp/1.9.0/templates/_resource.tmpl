@@ -1,0 +1,17 @@
+/// <summary>The {% literal resource.wireName %} collection of methods.</summary>
+public class {{ resource.className }}Resource
+{
+{% indent %}private const string Resource = {% literal resource.codeName %};
+
+/// <summary>The service which this resource belongs to.</summary>
+private readonly Google.Apis.Services.IClientService service;
+
+/// <summary>Constructs a new resource.</summary>
+public {{ resource.className }}Resource(Google.Apis.Services.IClientService service)
+{
+{% indent %}this.service = service;
+{% for subr in resource.resources %}{{ subr.codeName }} = new {{ subr.className }}Resource(service);{% eol %}{% endfor %}{% endindent %}
+}
+{% for subr in resource.resources %}{% eol %}{% call_template _get_resource resource=subr %}{% eol %}
+{% call_template _resource resource=subr %}{% endfor %}
+{% for method in resource.methods %}{% eol %}{% call_template _method method=method service='service' %}{% eol %}{% endfor %}{% endindent %}}

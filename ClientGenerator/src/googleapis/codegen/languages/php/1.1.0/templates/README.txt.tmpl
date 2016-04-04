@@ -1,0 +1,10 @@
+PHP library for {{ api.title }} {{ api.version }}
+
+{% if options.include_timestamp %}
+Created on {{ tool.runDate }} at {{ tool.runTime }}{% endif %}
+
+Requirements:
+{% for preq in features.requires %}
+{{ preq.name }}, version {{ preq.version }}
+URL: {{ preq.downloadLink }}
+{% endfor %}

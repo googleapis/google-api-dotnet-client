@@ -1,0 +1,62 @@
+{% indent %}
+{% for p in parameters %}{% if not p.required %}
+{% doc_comment noblock %}
+Clears the '<code>{{ p.wireName }}</code>' attribute so it is no longer set.
+{% enddoc_comment %}
+void {{ p.unsetName }}() {
+  _have_{{p.memberName}} = false;
+  {{ api.client_namespace }}::ClearCppValueHelper(&{{ p.memberName}});
+}
+{% if p.isPrimitive %}
+
+{% doc_comment noblock %}
+Gets the optional '<code>{{ p.wireName }}</code>' attribute.
+
+If the value is not set then the default value will be returned.
+{% enddoc_comment %}
+{{ p.codeType }} {{ p.getterName }}() const { return {{ p.memberName}}; }
+
+{% doc_comment noblock %}
+Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
+@deprecated{% endif %}
+
+@param[in] value {{ p.description }}
+{% enddoc_comment %}
+void {{ p.setterName }}({{ p.codeType }} value) {
+  _have_{{p.memberName}} = true;
+  {{ p.memberName}} = value;
+}
+{% else %}
+
+{% doc_comment noblock %}
+Gets the optional '<code>{{ p.wireName }}</code>' attribute.
+
+If the value is not set then the default value will be returned.
+{% enddoc_comment %}
+const {{ p.codeType }}& {{ p.getterName }}() const { return {{ p.memberName}}; }
+
+{% doc_comment noblock %}
+Gets a modifiable pointer to the optional <code>{{ p.wireName }}</code>' attribute.
+
+@return  The value can be set by dereferencing the pointer.
+{% enddoc_comment %}
+{{ p.codeType }}* mutable_{{ p.codeName }}() {
+  _have_{{p.memberName}} = true;
+  return &{{ p.memberName}};
+}
+
+{% if p.codeType == 'string' %}
+{% doc_comment noblock %}
+Sets the '<code>{{ p.wireName }}</code>' attribute.{% if p.deprecated %}
+@deprecated{% endif %}
+
+@param[in] value {{ p.description }}
+{% enddoc_comment %}
+void {{ p.setterName }}(const {{ p.codeType }}& value) {
+  _have_{{p.memberName}} = true;
+  {{ p.memberName}} = value;
+}
+
+{% endif %}
+{% endif %}{% endif %}{% endfor %}
+{% endindent %}

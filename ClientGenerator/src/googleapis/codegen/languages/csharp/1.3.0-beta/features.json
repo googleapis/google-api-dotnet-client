@@ -1,0 +1,78 @@
+{
+  "language": "csharp",
+  "description": "C# libraries for Google APIs.",
+  "releaseVersion": "1.3.0-beta",
+  "baseClientLibrary": "1.3.0-beta",
+  "requires": [
+    {
+      "name": "Google DotNet C# Client",
+      "environments": ["*"],
+      "downloadLink": "https://code.google.com/p/google-api-dotnet-client/source/browse/1.3.0-beta/Generated/ZipFiles/google-api-dotnet-client-1.3.0-beta.binary.zip?repo=contrib",
+      "version": "${baseClientLibrary}"
+    },
+    {
+      "name": "DotNetOpenAuth",
+      "environments": ["*"],
+      "version": "4.0.0.11165",
+      "files": [
+        {
+          "type": "binary",
+          "path": "Lib/DotNetOpenAuth.dll"
+        },{
+          "type": "license",
+          "path": "dependencies/DotNetOpenAuth.LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "Log4net",
+      "environments": ["*"],
+      "version": "1.2.10.0",
+      "files": [
+        {
+          "type": "binary",
+          "path": "Lib/log4net.dll"
+        },{
+          "type": "license",
+          "path": "dependencies/log4net.LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "Newtonsoft Json Library",
+      "environments": ["*"],
+      "version": "4.0.2.0",
+      "files": [
+        {
+          "type": "binary",
+          "path": "Lib/Newtonsoft.Json.Net35.dll"
+        },{
+          "type": "license",
+          "path": "dependencies/Newtonsoft.Json.LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "Google APIs Client Authentication Library",
+      "environments": ["*"],
+      "version": "${baseClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "Lib/Google.Apis.Authentication.OAuth2.dll"
+        }
+      ]
+    },
+    {
+      "name": "Google APIs Client Library",
+      "environments": ["*"],
+      "version": "${baseClientLibrary}",
+      "files": [
+        {
+          "type": "binary",
+          "path": "Lib/Google.Apis.dll"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{% if method.mediaUpload %}{% for key,value in method.mediaUpload.protocols.items %}
+// static
+const {{ api.client_namespace }}::MediaUploadSpec
+{{ method.className }}::{{ key|upper }}_MEDIA_UPLOAD(
+    "{{ key }}", "{{ value.path }}", {{ value.multipart|lower }});
+
+{% endfor %}
+{{ api.status_type }} {{ method.className }}::Execute() {
+  {{ api.client_namespace }}::HttpRequest* request = mutable_http_request();
+  {{ api.status_type }} status =
+    _uploader_->BuildRequest(
+        request,
+        NewCallback(this, &{{ method.className }}::PrepareUrl));
+  if (!status.ok()) {
+    return status;
+  }
+
+  return _uploader_->Upload(request);
+}
+{% endif %}
+{% filter noblanklines %}
+
+{% if method.requestType and method.mediaUpload %}
+// Deprecated constructor did not take media upload arguments.
+{{ method.className }}::{{ method.className }}({% indent 1 %}
+  {% parameter_list %}
+  {% parameter %}
+    const {{ api.className }}* _service_
+  {% end_parameter %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+{% end_parameter_list %}){% endindent %}
+    : {{ api.className }}BaseRequest({% indent 2 %}
+{#-------------------------------------------------------------------------#}
+{# The base class constructor takes service, credential, HttpMethod, and   #}
+{# a url template.                                                         #}
+{#-------------------------------------------------------------------------#}
+  _service_, _credential_,
+  {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
+  StrCat(_service_->service_url(), "{{ method.path }}")){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}
+  _uploader_.reset(new {{ api.client_namespace }}::MediaUploader(
+      &SIMPLE_MEDIA_UPLOAD,
+      _service_->url_root(),
+      {{ api.client_namespace }}::JoinPath(
+          _service_->url_path(), "{{ method.path }}")));
+}
+{% endif %}
+
+// Standard constructor.
+{{ method.className }}::{{ method.className }}({% indent 1 %}
+  {% parameter_list %}
+  {#-----------------------------------------------------------#}
+  {# FIRST add standard _service_ and _credential_ parameters  #}
+  {#-----------------------------------------------------------#}
+  {% parameter %}
+    const {{ api.className }}* _service_
+  {% end_parameter %}
+  {% parameter %}
+    {{ api.client_namespace }}::AuthorizationCredential* _credential_
+  {% end_parameter %}
+  {#--------------------------------------------------------------#}
+  {# SECOND add the required parameters from the discovery spec.  #}
+  {#--------------------------------------------------------------#}
+  {% for p in method.requiredParameters %}{% parameter %}
+    const {{ p.parameterCodeType }}& {{ p.parameterName }}
+  {% end_parameter %}{% endfor %}
+  {#---------------------------------------------------------------------#}
+  {# FINALLY add the content parameter if the request will be posting a  #}
+  {# json object                                                         #}
+  {#---------------------------------------------------------------------#}
+  {% if method.requestType %}
+    {% if method.mediaUpload %}
+      {% parameter %}const {{ method.requestType.packageRelativeClassName }}* _metadata_{% end_parameter %}
+      {% parameter %}const StringPiece& _media_content_type_{% end_parameter %}
+      {% parameter %}{{ api.client_namespace }}::DataReader* _media_content_reader_{% end_parameter %}
+    {% else %}
+      {% parameter %}const {{ method.requestType.packageRelativeClassName }}& __request_content__{% end_parameter %}
+    {% endif %}
+  {% elif method.mediaUpload %}
+    {% parameter %}const StringPiece& _media_content_type_{% end_parameter %}
+    {% parameter %}{{ api.client_namespace }}::DataReader* _media_content_reader_{% end_parameter %}
+  {% endif %}{% end_parameter_list %}){% endindent %}
+    : {{ api.className }}BaseRequest({% indent 2 %}
+{#-------------------------------------------------------------------------#}
+{# The base class constructor takes service, credential, HttpMethod, and   #}
+{# a url template.                                                         #}
+{#-------------------------------------------------------------------------#}
+    _service_, _credential_,
+    {{ api.client_namespace }}::HttpRequest::{{ method.httpMethod }},
+    StrCat(_service_->service_url(), "{{ method.path }}")){% call_template _declare_method_attributes_cc parameters=method.parameters %} {{% endindent %}{% if method.mediaUpload %}
+{# TODO(ewiseblatt): We're assuming SIMPLE for now, but this should take #}
+{# the set of choices (a class variable) and allow them to be restricted #}
+{# later, such as by resetting the choices or setting the preferred choice #}
+  _uploader_.reset(new {{ api.client_namespace }}::MediaUploader(
+      &SIMPLE_MEDIA_UPLOAD,
+      _service_->url_root(),
+      {{ api.client_namespace }}::JoinPath(
+          _service_->url_path(), "{{ method.path }}")));{% if method.requestType %}
+  if (_metadata_) {
+    _uploader_->set_metadata(*_metadata_);
+  }{% endif %}
+  if (_media_content_reader_) {
+    _uploader_->set_media_content_reader(
+        _media_content_type_.as_string(), _media_content_reader_);
+  }
+{% elif method.requestType  %}
+  {{ api.client_namespace }}::HttpRequest* _http_request_ = mutable_http_request();
+  _http_request_->set_content_type(
+      {{ api.client_namespace }}::HttpRequest::ContentType_JSON);
+  _http_request_->set_content_reader(__request_content__.MakeJsonReader());
+{% endif %}
+}
+{% endfilter %}
+
+// Standard destructor.
+{{ method.className }}::~{{ method.className }}() {
+}
+
+{% filter noblanklines %}
+{% if method.queryParameters %}
+{{ api.status_type }} {{ method.className }}::AppendOptionalQueryParameters(string* target) {
+  const char* sep = (target->find('?') == string::npos) ? "?" : "&";{% indent %}
+{% for p in method.queryParameters %}{% if p.required %}{% call_template _append_query_parameter_cc variable=p %}{% else %}if (_have_{{p.memberName}}) {
+{% call_template _append_query_parameter_cc variable=p %}
+}{% endif %}
+{% endfor %}{% endindent %}
+  return {{ api.className }}BaseRequest::AppendOptionalQueryParameters(target);
+}
+{% endif %}
+{% endfilter %}
+{% filter noblanklines %}
+{% if method.parameters %}{{ api.status_type }} {{ method.className }}::AppendVariable(
+        const StringPiece& variable_name,
+        const {{ api.client_namespace }}::UriTemplateConfig& config,
+        string* target) {
+{% for p in method.requiredParameters %}
+  if (variable_name == {% literal p.wireName %}) {{% indent %}{% call_template _append_uri_template_variable_cc variable=p %}{% endindent %}
+    return {{ api.client_namespace }}::StatusOk();
+  }
+{% endfor %}{%if api.parameters %}
+  return {{ api.className }}BaseRequest::AppendVariable(
+      variable_name, config, target);
+{% else %}
+  return {{ api.client_namespace }}::StatusInvalidArgument(StrCat("Unexpected url variable name='", variable_name, "'"));
+{% endif %}
+}
+{% endif %}
+{% endfilter %}

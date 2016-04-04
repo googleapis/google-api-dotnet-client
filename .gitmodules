@@ -1,3 +1,0 @@
-[submodule "ClientGeneratorHttps"]
-	path = ClientGenerator
-	url = https://github.com/mmdriley/apis-client-generator

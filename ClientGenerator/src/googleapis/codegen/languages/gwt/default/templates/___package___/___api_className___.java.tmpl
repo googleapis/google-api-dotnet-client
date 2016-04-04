@@ -1,0 +1,72 @@
+{% language java %}{% copyright_block %}
+/*
+ * Warning! This file is generated. Modify at your own risk.
+
+ */
+
+package {{ api.module.name }};
+
+{% imports api %}
+import com.google.api.gwt.shared.AuthScope;
+import com.google.api.gwt.shared.EmptyResponse;
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
+import com.google.web.bindery.requestfactory.shared.JsonRpcContent;
+import com.google.web.bindery.requestfactory.shared.JsonRpcService;
+import com.google.web.bindery.requestfactory.shared.JsonRpcWireName;
+import com.google.web.bindery.requestfactory.shared.Request;
+import com.google.web.bindery.requestfactory.shared.RequestContext;
+import com.google.web.bindery.requestfactory.shared.RequestFactory;
+{% endimports %}
+
+/**
+ * Service definition for {{ api.className }} ({{ api.version }}).
+ *
+ * <p>
+ * {{ api.description }}
+ * </p>
+ *
+ * <p>
+ * For more information about this service, see the
+ * <a href="{{ api.documentationLink }}" target="_blank">API Documentation</a>
+ * </p>
+ *
+ * @author Google, Inc.
+ */
+public interface {{ api.className }} extends RequestFactory {
+{% if api.authscopes %}  /** Available authentiation scopes for use with this service. */
+  public enum {{ api.className }}AuthScope implements AuthScope {{% for authscope in api.authscopes %}
+
+    /** {{ authscope.description }} */
+    {{ authscope.name }}("{{ authscope.value }}"),{% endfor %}
+    ;
+    private final String scope;
+    private {{ api.className }}AuthScope(String scope) {
+      this.scope = scope;
+    }
+
+    /** The String value of this scope. */
+    @Override
+    public String getScope() {
+      return scope;
+    }
+  }{% endif %}
+{% for resource in api.resources %}{% indent %}
+{% call_template _resource resource=resource %}{% endindent %}{% endfor %}
+
+{% indent %}{% for resource in api.resources %}
+{% call_template _resource_ctors resource=resource %}{% endfor %}
+{% endindent %}
+
+{% if api.methods %}
+  /** Returns the top-level {@link #Context}. */
+  Context top_level();
+
+  /**
+   * The {@link RequestContext} used to call top-level methods.
+   */
+  @JsonRpcService
+  public interface Context extends RequestContext {{% indent 2 %}
+{% for method in api.methods %}{% call_template _method method=method %}{% endfor %}
+  {% endindent %}}
+{% endif %}
+}

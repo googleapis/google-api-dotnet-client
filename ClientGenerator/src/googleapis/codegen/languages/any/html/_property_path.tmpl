@@ -1,0 +1,11 @@
+{% noeol %}
+
+{% if schema.parent %}
+{% with parent=schema.parent %}{% call_template _property_path schema=parent %}{% endwith%}
+{% endif %}
+
+{% if schema.anonymous %}
+{{ schema.wireName }}.
+{% endif %}
+
+{% endnoeol %}

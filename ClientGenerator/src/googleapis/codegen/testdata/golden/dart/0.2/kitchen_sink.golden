@@ -1,0 +1,3785 @@
+=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
+library kitch_sink_v1_api_browser;
+
+import "kitch_sink_v1_api_client.dart";
+export "kitch_sink_v1_api_client.dart";
+
+import "dart:core" as core;
+import "dart:html" as html;
+import "dart:async" as async;
+import "dart:convert";
+import "package:js/js.dart" as js;
+import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
+
+part "src/browser/browserclient.dart";
+part "src/browser/kitch_sink.dart";
+
+=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_browser.dart
+=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
+library kitch_sink_v1_api_client;
+
+import "dart:core" as core;
+import "dart:async" as async;
+import "dart:convert";
+
+part "src/common/client.dart";
+part "src/common/schemas.dart";
+part "src/common/resources.dart";
+
+=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_client.dart
+=== begin: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
+library kitch_sink_v1_api_console;
+
+import "kitch_sink_v1_api_client.dart";
+export "kitch_sink_v1_api_client.dart";
+
+import "dart:core" as core;
+import "dart:io" as io;
+import "dart:async" as async;
+import "dart:uri" as uri;
+import "dart:convert";
+import "package:http/http.dart" as http;
+import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
+
+part "src/console/consoleclient.dart";
+part "src/console/kitch_sink.dart";
+
+=== end: ./google_api_kitch_sink_v1/lib/kitch_sink_v1_api_console.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
+part of kitch_sink_v1_api_browser;
+
+/**
+ * Base class for all Browser API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class BrowserClient extends Client {
+
+  oauth.OAuth2 _auth;
+  core.bool _jsClientLoaded = false;
+
+  BrowserClient([oauth.OAuth2 this._auth]) : super();
+
+  /**
+   * Loads the JS Client Library to make CORS-Requests
+   */
+  async.Future<core.bool> _loadJsClient() {
+    var completer = new async.Completer();
+
+    if (_jsClientLoaded) {
+      completer.complete(true);
+      return completer.future;
+    }
+
+    js.scoped((){
+      js.context.handleClientLoad =  new js.Callback.once(() {
+        _jsClientLoaded = true;
+        completer.complete(true);
+      });
+    });
+
+    html.ScriptElement script = new html.ScriptElement();
+    script.src = "http://apis.google.com/js/client.js?onload=handleClientLoad";
+    script.type = "text/javascript";
+    html.document.body.children.add(script);
+
+    return completer.future;
+  }
+
+  /**
+   * Makes a request via the JS Client Library to circumvent CORS-problems
+   */
+  async.Future _makeJsClientRequest(core.String requestUrl, core.String method, {core.String body, core.String contentType, core.Map queryParams}) {
+    var completer = new async.Completer();
+    var requestData = new core.Map();
+    requestData["path"] = requestUrl;
+    requestData["method"] = method;
+    requestData["headers"] = new core.Map();
+
+    if (queryParams != null) {
+      requestData["params"] = queryParams;
+    }
+
+    if (body != null) {
+      requestData["body"] = body;
+      requestData["headers"]["Content-Type"] = contentType;
+    }
+    if (makeAuthRequests && _auth != null && _auth.token != null) {
+      requestData["headers"]["Authorization"] = "${_auth.token.type} ${_auth.token.data}";
+    }
+
+    js.scoped(() {
+      var request = js.context.gapi.client.request(js.map(requestData));
+      var callback = new js.Callback.once((jsonResp, rawResp) {
+        if (jsonResp is core.bool && jsonResp == false) {
+          var raw = JSON.decode(rawResp);
+          if (raw["gapiRequest"]["data"]["status"] >= 400) {
+            completer.completeError(new APIRequestException("JS Client - ${raw["gapiRequest"]["data"]["status"]} ${raw["gapiRequest"]["data"]["statusText"]} - ${raw["gapiRequest"]["data"]["body"]}"));
+          } else {
+            completer.complete({});
+          }
+        } else {
+          completer.complete(js.context.JSON.stringify(jsonResp));
+        }
+      });
+      request.execute(callback);
+    });
+
+    return completer.future;
+  }
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams}) {
+    var request = new html.HttpRequest();
+    var completer = new async.Completer();
+
+    if (urlParams == null) urlParams = {};
+    if (queryParams == null) queryParams = {};
+
+    params.forEach((key, param) {
+      if (param != null && queryParams[key] == null) {
+        queryParams[key] = param;
+      }
+    });
+
+    var path;
+    if (requestUrl.substring(0,1) == "/") {
+      path ="$rootUrl${requestUrl.substring(1)}";
+    } else {
+      path ="$rootUrl$servicePath$requestUrl";
+    }
+    var url = new oauth.UrlPattern(path).generate(urlParams, queryParams);
+
+    request.onLoadEnd.listen((_) {
+      if (request.status == 200) {
+        var data = JSON.decode(request.responseText);
+        completer.complete(data);
+      } else {
+        if (request.status == 0) {
+          _loadJsClient().then((v) {
+            if (requestUrl.substring(0,1) == "/") {
+              path = requestUrl;
+            } else {
+              path ="$servicePath$requestUrl";
+            }
+            url = new oauth.UrlPattern(path).generate(urlParams, {});
+            _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
+              .then((response) {
+                var data = JSON.decode(response);
+                completer.complete(data);
+              })
+              .catchError((e) {
+                completer.completeError(e);
+                return true;
+              });
+          });
+        } else {
+          var error = "";
+          if (request.responseText != null) {
+            var errorJson;
+            try {
+              errorJson = JSON.decode(request.responseText);
+            } on core.FormatException {
+              errorJson = null;
+            }
+            if (errorJson != null && errorJson.containsKey("error")) {
+              error = "${errorJson["error"]["code"]} ${errorJson["error"]["message"]}";
+            }
+          }
+          if (error == "") {
+            error = "${request.status} ${request.statusText}";
+          }
+          completer.completeError(new APIRequestException(error));
+        }
+      }
+    });
+
+    request.open(method, url);
+    request.setRequestHeader("Content-Type", contentType);
+    if (makeAuthRequests && _auth != null) {
+      _auth.authenticate(request).then((request) => request.send(body));
+    } else {
+      request.send(body);
+    }
+
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_kitch_sink_v1/lib/src/browser/browserclient.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
+part of kitch_sink_v1_api_browser;
+
+/** Client to access the kitch_sink v1 API */
+/** An API with every strange thing in it */
+class KitchSinkApi extends BrowserClient {
+
+  FeaturedResource _featured;
+  FeaturedResource get featured => _featured;
+  GlobalResource _global;
+  GlobalResource get global => _global;
+  MyResource _my;
+  MyResource get my => _my;
+  MyrecentResource _myrecent;
+  MyrecentResource get myrecent => _myrecent;
+  ProfilesResource _profiles;
+  ProfilesResource get profiles => _profiles;
+  ResponsesResource _responses;
+  ResponsesResource get responses => _responses;
+  SeriesResource _series;
+  SeriesResource get series => _series;
+  SubmissionsResource _submissions;
+  SubmissionsResource get submissions => _submissions;
+  TagsResource _tags;
+  TagsResource get tags => _tags;
+  TopicsResource _topics;
+  TopicsResource get topics => _topics;
+  VotesResource _votes;
+  VotesResource get votes => _votes;
+
+
+  /** OAuth2 scope: A non googleapis.com scope */
+  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com/";
+
+  /** OAuth2 scope: a product level scope */
+  static const core.String PRODUCT_SCOPE = "https://www.googleapis.com/auth/product";
+
+  /** OAuth2 scope: A typical scope */
+  static const core.String USERINFO_EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+
+
+  /**
+   * Data format for the response.
+   * Added as queryParameter for each request.
+   */
+  core.String get alt => params["alt"];
+  set alt(core.String value) => params["alt"] = value;
+
+  /**
+   * Selector specifying which fields to include in a partial response.
+   * Added as queryParameter for each request.
+   */
+  core.String get fields => params["fields"];
+  set fields(core.String value) => params["fields"] = value;
+
+  /**
+   * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+   * Added as queryParameter for each request.
+   */
+  core.String get key => params["key"];
+  set key(core.String value) => params["key"] = value;
+
+  /**
+   * OAuth 2.0 token for the current user.
+   * Added as queryParameter for each request.
+   */
+  core.String get oauth_token => params["oauth_token"];
+  set oauth_token(core.String value) => params["oauth_token"] = value;
+
+  /**
+   * Returns response with indentations and line breaks.
+   * Added as queryParameter for each request.
+   */
+  core.bool get prettyPrint => params["prettyPrint"];
+  set prettyPrint(core.bool value) => params["prettyPrint"] = value;
+
+  /**
+   * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.
+   * Added as queryParameter for each request.
+   */
+  core.String get quotaUser => params["quotaUser"];
+  set quotaUser(core.String value) => params["quotaUser"] = value;
+
+  /**
+   * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+   * Added as queryParameter for each request.
+   */
+  core.String get userIp => params["userIp"];
+  set userIp(core.String value) => params["userIp"] = value;
+
+  KitchSinkApi([oauth.OAuth2 auth]) : super(auth) {
+     servicePath = "sink/v1/";
+     rootUrl = "https://www.googleapis.com/";
+    _featured = new FeaturedResource(this);
+    _global = new GlobalResource(this);
+    _my = new MyResource(this);
+    _myrecent = new MyrecentResource(this);
+    _profiles = new ProfilesResource(this);
+    _responses = new ResponsesResource(this);
+    _series = new SeriesResource(this);
+    _submissions = new SubmissionsResource(this);
+    _tags = new TagsResource(this);
+    _topics = new TopicsResource(this);
+    _votes = new VotesResource(this);
+  }
+}
+=== end: ./google_api_kitch_sink_v1/lib/src/browser/kitch_sink.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/common/client.dart
+part of kitch_sink_v1_api_client;
+
+/**
+ * Base class for all API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class Client {
+  core.String servicePath;
+  core.String rootUrl;
+  core.bool makeAuthRequests;
+  core.Map params;
+
+  static const _boundary = "-------314159265358979323846";
+  static const _delimiter = "\r\n--$_boundary\r\n";
+  static const _closeDelim = "\r\n--$_boundary--";
+
+  Client() {
+    params = new core.Map();
+    makeAuthRequests = false;
+  }
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams});
+
+  /**
+   * Joins [content] (encoded as Base64-String) with specified [contentType] and additional request [body] into one multipart-body and send a HTTPRequest with [method] (usually POST) to [requestUrl]
+   */
+  async.Future upload(core.String requestUrl, core.String method, core.String body, core.String content, core.String contentType, {core.Map urlParams, core.Map queryParams}) {
+    var multiPartBody = new core.StringBuffer();
+    if (contentType == null || contentType.isEmpty) {
+      contentType = "application/octet-stream";
+    }
+    multiPartBody
+    ..write(_delimiter)
+    ..write("Content-Type: application/json\r\n\r\n")
+    ..write(body)
+    ..write(_delimiter)
+    ..write("Content-Type: ")
+    ..write(contentType)
+    ..write("\r\n")
+    ..write("Content-Transfer-Encoding: base64\r\n")
+    ..write("\r\n")
+    ..write(content)
+    ..write(_closeDelim);
+
+    return request(requestUrl, method, body: multiPartBody.toString(), contentType: "multipart/mixed; boundary=\"$_boundary\"", urlParams: urlParams, queryParams: queryParams);
+  }
+}
+
+/// Base-class for all API Resources
+abstract class Resource {
+  /// The [Client] to be used for all requests
+  Client _client;
+
+  /// Create a new Resource, using the specified [Client] for requests
+  Resource(Client this._client);
+}
+
+/// Exception thrown when the HTTP Request to the API failed
+class APIRequestException implements core.Exception {
+  final core.String msg;
+  const APIRequestException([this.msg]);
+  core.String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
+}
+
+=== end: ./google_api_kitch_sink_v1/lib/src/common/client.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/common/resources.dart
+part of kitch_sink_v1_api_client;
+
+
+class FeaturedResource extends Resource {
+
+  FeaturedResource(Client client) : super(client) {
+  }
+
+}
+
+
+class FeaturedSeriesResourceResource extends Resource {
+
+  FeaturedSeriesResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method FeaturedResource.FeaturedSeriesResourceResource.List
+  /**
+   * Lists the featured series.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/featured";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class GlobalResource extends Resource {
+
+  GlobalResource(Client client) : super(client) {
+  }
+
+}
+
+
+class GlobalSeriesResourceResource extends Resource {
+
+  GlobalSeriesResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method GlobalResource.GlobalSeriesResourceResource.List
+  /**
+   * Searches the public series and returns the search results.
+   *
+   * [maxResults] - Maximum number of results to return. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [q] - Search query.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list({core.int maxResults, core.String q, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "search";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (maxResults != null) queryParams["max-results"] = maxResults;
+    if (q != null) queryParams["q"] = q;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class MyResource extends Resource {
+
+  MyResource(Client client) : super(client) {
+  }
+
+}
+
+
+class MySeriesResourceResource extends Resource {
+
+  MySeriesResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method MyResource.MySeriesResourceResource.List
+  /**
+   * Lists all series created by the authenticated user.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/@me/mine";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class MyrecentResource extends Resource {
+
+  MyrecentResource(Client client) : super(client) {
+  }
+
+}
+
+
+class MyrecentPrivateResourceResource extends Resource {
+
+  MyrecentPrivateResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method MyrecentResource.MyrecentPrivateResourceResource.List
+  /**
+   * Resource using a name which is a keyword in many languages, to check their handling.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/@me/recent";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class ProfilesResource extends Resource {
+
+  ProfilesResource(Client client) : super(client) {
+  }
+
+
+
+  // Method ProfilesResource.Get
+  /**
+   * Returns the profile information for the authenticated user.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Profile> get({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "profiles/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Profile.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method ProfilesResource.Update
+  /**
+   * Updates the profile information for the authenticated user.
+   *
+   * [request] - Profile to send in this request.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Profile> update(Profile request, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "profiles/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Profile.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class ResponsesResource extends Resource {
+
+  ResponsesResource(Client client) : super(client) {
+  }
+
+
+
+  // Method ResponsesResource.Insert
+  /**
+   * Inserts a response for the specified submission in the specified topic within the specified
+   * series.
+   *
+   * [request] - Submission to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [parentSubmissionId] - The decimal ID of the parent Submission within the Series. (Minimum: 0)
+   * (Maximum: 4294967295)
+   *
+   * [anonymous] - Set to true to mark the new submission as anonymous.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Submission> insert(Submission request, core.int seriesId, core.int topicId, core.int parentSubmissionId, {core.bool anonymous, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}/submissions/{parentSubmissionId}/responses";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (parentSubmissionId == null) paramErrors.add("parentSubmissionId is required");
+    if (parentSubmissionId != null) urlParams["parentSubmissionId"] = parentSubmissionId;
+    if (anonymous != null) queryParams["anonymous"] = anonymous;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Submission.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method ResponsesResource.List
+  /**
+   * Lists or searches the responses for the specified submission within the specified series and
+   * returns the search results.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [author] - Restricts the results to submissions by a specific author.
+   *
+   * [hasAttachedVideo] - Specifies whether to restrict to submissions that have videos attached.
+   *
+   * [q] - Search query.
+   *
+   * [sort] - Sort order.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SubmissionList> list(core.int seriesId, core.int submissionId, {core.String author, core.bool hasAttachedVideo, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/responses";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (author != null) queryParams["author"] = author;
+    if (hasAttachedVideo != null) queryParams["hasAttachedVideo"] = hasAttachedVideo;
+    if (q != null) queryParams["q"] = q;
+    if (sort != null) queryParams["sort"] = sort;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SubmissionList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class SeriesResource extends Resource {
+
+  SeriesResource(Client client) : super(client) {
+  }
+
+
+
+  // Method SeriesResource.Get
+  /**
+   * Returns the specified series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Series> get(core.int seriesId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Series.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method SeriesResource.Insert
+  /**
+   * Media method without request data.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Series> insert({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Series.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method SeriesResource.List
+  /**
+   * Searches the series and returns the search results.
+   *
+   * [maxResults] - Maximum number of results to return. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [q] - Search query.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list({core.int maxResults, core.String q, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (maxResults != null) queryParams["max-results"] = maxResults;
+    if (q != null) queryParams["q"] = q;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method SeriesResource.Update
+  /**
+   * Updates the specified series.
+   *
+   * [request] - Series to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Series> update(Series request, core.int seriesId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Series.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class SeriesResponsesResourceResource extends Resource {
+
+  SeriesResponsesResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method SeriesResource.SeriesResponsesResourceResource.List
+  /**
+   * Searches the responses for the specified series and returns the search results.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [q] - Search query - a required query parameter.
+   *
+   * [author] - Restricts the results to submissions by a specific author.
+   *
+   * [hasAttachedVideo] - Specifies whether to restrict to submissions that have videos attached.
+   *
+   * [maxResults] - Maximum number of results to return. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [sort] - Sort order.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SeriesList> list(core.int seriesId, core.String q, {core.String author, core.bool hasAttachedVideo, core.int maxResults, core.String sort, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/responses";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (q == null) paramErrors.add("q is required");
+    if (q != null) queryParams["q"] = q;
+    if (author != null) queryParams["author"] = author;
+    if (hasAttachedVideo != null) queryParams["hasAttachedVideo"] = hasAttachedVideo;
+    if (maxResults != null) queryParams["max-results"] = maxResults;
+    if (sort != null) queryParams["sort"] = sort;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SeriesList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+class SeriesSubmissionsResourceResource extends Resource {
+
+  SeriesSubmissionsResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method SeriesResource.SeriesSubmissionsResourceResource.List
+  /**
+   * Searches the submissions for the specified series and returns the search results.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [author] - Restricts the results to submissions by a specific author.
+   *
+   * [hasAttachedVideo] - Specifies whether to restrict to submissions that have videos attached.
+   *
+   * [lang] - The language code for the language the client prefers resuls in.
+   *
+   * [q] - Search query.
+   *
+   * [sort] - Sort order.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SubmissionList> list(core.int seriesId, {core.String author, core.bool hasAttachedVideo, core.String lang, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (author != null) queryParams["author"] = author;
+    if (hasAttachedVideo != null) queryParams["hasAttachedVideo"] = hasAttachedVideo;
+    if (lang != null) queryParams["lang"] = lang;
+    if (q != null) queryParams["q"] = q;
+    if (sort != null) queryParams["sort"] = sort;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SubmissionList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class SubmissionsResource extends Resource {
+
+  SubmissionsResource(Client client) : super(client) {
+  }
+
+
+
+  // Method SubmissionsResource.Get
+  /**
+   * Returns the specified submission within the specified series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [lang] - The language code for the language the client prefers resuls in.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Submission> get(core.int seriesId, core.int submissionId, {core.String lang, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (lang != null) queryParams["lang"] = lang;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Submission.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method SubmissionsResource.Insert
+  /**
+   * Inserts a new submission in the specified topic within the specified series.
+   *
+   * [request] - Submission to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [anonymous] - Set to true to mark the new submission as anonymous.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Submission> insert(Submission request, core.int seriesId, core.int topicId, {core.bool anonymous, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}/submissions";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (anonymous != null) queryParams["anonymous"] = anonymous;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Submission.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class TagsResource extends Resource {
+
+  TagsResource(Client client) : super(client) {
+  }
+
+
+
+  // Method TagsResource.Delete
+  /**
+   * Deletes the specified tag from the specified submission within the specified series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [tagId] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future delete(core.int seriesId, core.int submissionId, core.String tagId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/tags/{tagId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (tagId == null) paramErrors.add("tagId is required");
+    if (tagId != null) urlParams["tagId"] = tagId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(data))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TagsResource.Insert
+  /**
+   * Inserts a new tag for the specified submission within the specified series.
+   *
+   * [request] - Tag to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Tag> insert(Tag request, core.int seriesId, core.int submissionId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/tags";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Tag.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TagsResource.List
+  /**
+   * A method with a parameters named |id| and |else|
+   *
+   * [id] - id is a reserved word in Objective-C
+   *
+   * [else_] - A parameter name 'else'.
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<TagList> list(core.String id, core.String else_, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{id}/submissions/{else}/tags";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (id == null) paramErrors.add("id is required");
+    if (id != null) urlParams["id"] = id;
+    if (else_ == null) paramErrors.add("else_ is required");
+    if (else_ != null) urlParams["else"] = else_;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new TagList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class TopicsResource extends Resource {
+
+  TopicsResource(Client client) : super(client) {
+  }
+
+
+
+  // Method TopicsResource.Get
+  /**
+   * Returns the specified topic from the specified series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Topic2> get(core.int seriesId, core.int topicId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Topic2.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TopicsResource.Insert
+  /**
+   * Inserts a new topic into the specified series.
+   *
+   * [request] - Topic to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Topic> insert(Topic request, core.int seriesId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Topic.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TopicsResource.List
+  /**
+   * Searches the topics within the specified series and returns the search results.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [maxResults] - Maximum number of results to return. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [mode] -
+   *
+   * [q] - Search query.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<TopicList> list(core.int seriesId, {core.int maxResults, core.String mode, core.String q, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (maxResults != null) queryParams["max-results"] = maxResults;
+    if (mode != null) queryParams["mode"] = mode;
+    if (q != null) queryParams["q"] = q;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new TopicList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method TopicsResource.Update
+  /**
+   * Updates the specified topic within the specified series.
+   *
+   * [request] - Topic to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Topic> update(Topic request, core.int seriesId, core.int topicId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Topic.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class TopicsSubmissionsResourceResource extends Resource {
+
+  TopicsSubmissionsResourceResource(Client client) : super(client) {
+  }
+
+
+
+  // Method TopicsResource.TopicsSubmissionsResourceResource.List
+  /**
+   * Searches the submissions for the specified topic within the specified series and returns the
+   * search results.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [topicId] - The decimal ID of the Topic within the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [author] - Restricts the results to submissions by a specific author.
+   *
+   * [hasAttachedVideo] - Specifies whether to restrict to submissions that have videos attached.
+   *
+   * [q] - Search query.
+   *
+   * [sort] - Sort order.
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<SubmissionList> list(core.int seriesId, core.int topicId, {core.String author, core.bool hasAttachedVideo, core.String q, core.String sort, core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/topics/{topicId}/submissions";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (topicId == null) paramErrors.add("topicId is required");
+    if (topicId != null) urlParams["topicId"] = topicId;
+    if (author != null) queryParams["author"] = author;
+    if (hasAttachedVideo != null) queryParams["hasAttachedVideo"] = hasAttachedVideo;
+    if (q != null) queryParams["q"] = q;
+    if (sort != null) queryParams["sort"] = sort;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new SubmissionList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+
+class VotesResource extends Resource {
+
+  VotesResource(Client client) : super(client) {
+  }
+
+
+
+  // Method VotesResource.Get
+  /**
+   * Returns the votes by the authenticated user for the specified submission within the specified
+   * series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [userId] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Vote> get(core.int seriesId, core.int submissionId, {core.String userId, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/votes/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (userId != null) queryParams["userId"] = userId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Vote.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method VotesResource.Insert
+  /**
+   * Inserts a new vote by the authenticated user for the specified submission within the specified
+   * series.
+   *
+   * [request] - Vote to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Vote> insert(Vote request, core.int seriesId, core.int submissionId, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submissionId}/votes/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submissionId"] = submissionId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Vote.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method VotesResource.List
+  /**
+   * Lists the votes by the authenticated user for the given series.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [startIndex] - Index of the first result to be retrieved. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<VoteList> list(core.int seriesId, {core.int startIndex, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/votes/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (startIndex != null) queryParams["start-index"] = startIndex;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new VoteList.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method VotesResource.Update
+  /**
+   * Updates the votes by the authenticated user for the specified submission within the specified
+   * series.
+   *
+   * [request] - Vote to send in this request.
+   *
+   * [seriesId] - The decimal ID of the Series. (Minimum: 0) (Maximum: 4294967295)
+   *
+   * [submissionId] - The decimal ID of the Submission within the Series. (Minimum: 0) (Maximum:
+   * 4294967295)
+   *
+   * [userId] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<Vote> update(Vote request, core.int seriesId, core.int submissionId, {core.String userId, core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "series/{seriesId}/submissions/{submission_id}/votes/@me";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (seriesId == null) paramErrors.add("seriesId is required");
+    if (seriesId != null) urlParams["seriesId"] = seriesId;
+    if (submissionId == null) paramErrors.add("submissionId is required");
+    if (submissionId != null) urlParams["submission_id"] = submissionId;
+    if (userId != null) queryParams["userId"] = userId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new Vote.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_kitch_sink_v1/lib/src/common/resources.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/common/schemas.dart
+part of kitch_sink_v1_api_client;
+
+
+class Geometry {
+
+  core.String type;
+
+  /** Create new Geometry from JSON data. */
+  Geometry.fromJson(core.Map json) {
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+  }
+
+  /** Create JSON object for Geometry. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (type != null) {
+      output["type"] = type;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Geometry */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class GeometryCollection {
+
+  core.List<Geometry> geometries;
+
+  /** Create new GeometryCollection from JSON data. */
+  GeometryCollection.fromJson(core.Map json) {
+    if (json.containsKey("geometries")) {
+      geometries = [];
+      json["geometries"].forEach((item) {
+        geometries.add(new Geometry.fromJson(item));
+      });
+    }
+  }
+
+  /** Create JSON object for GeometryCollection. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (geometries != null) {
+      output["geometries"] = new core.List();
+      geometries.forEach((item) {
+        output["geometries"].add(item.toJson());
+      });
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeometryCollection */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class GeometryPolygon {
+
+  core.String coordinates;
+
+  /** Create new GeometryPolygon from JSON data. */
+  GeometryPolygon.fromJson(core.Map json) {
+    if (json.containsKey("coordinates")) {
+      coordinates = json["coordinates"];
+    }
+  }
+
+  /** Create JSON object for GeometryPolygon. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (coordinates != null) {
+      output["coordinates"] = coordinates;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeometryPolygon */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class GeometryReference {
+
+  core.String coordinates;
+
+  core.String type;
+
+  /** Create new GeometryReference from JSON data. */
+  GeometryReference.fromJson(core.Map json) {
+    if (json.containsKey("coordinates")) {
+      coordinates = json["coordinates"];
+    }
+    if (json.containsKey("type")) {
+      type = json["type"];
+    }
+  }
+
+  /** Create JSON object for GeometryReference. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (coordinates != null) {
+      output["coordinates"] = coordinates;
+    }
+    if (type != null) {
+      output["type"] = type;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of GeometryReference */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class LatLong {
+
+  core.double latitude;
+
+  core.String location;
+
+  core.double longitude;
+
+  /** Create new LatLong from JSON data. */
+  LatLong.fromJson(core.Map json) {
+    if (json.containsKey("latitude")) {
+      latitude = json["latitude"];
+    }
+    if (json.containsKey("location")) {
+      location = json["location"];
+    }
+    if (json.containsKey("longitude")) {
+      longitude = json["longitude"];
+    }
+  }
+
+  /** Create JSON object for LatLong. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (latitude != null) {
+      output["latitude"] = latitude;
+    }
+    if (location != null) {
+      output["location"] = location;
+    }
+    if (longitude != null) {
+      output["longitude"] = longitude;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of LatLong */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class ModeratorTopicsResourcePartial {
+
+  /** Create new ModeratorTopicsResourcePartial from JSON data. */
+  ModeratorTopicsResourcePartial.fromJson(core.Map json) {
+  }
+
+  /** Create JSON object for ModeratorTopicsResourcePartial. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+
+
+    return output;
+  }
+
+  /** Return String representation of ModeratorTopicsResourcePartial */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Profile {
+
+  ProfileAttribution attribution;
+
+  ProfileId id;
+
+  core.String kind;
+
+  /** Create new Profile from JSON data. */
+  Profile.fromJson(core.Map json) {
+    if (json.containsKey("attribution")) {
+      attribution = new ProfileAttribution.fromJson(json["attribution"]);
+    }
+    if (json.containsKey("id")) {
+      id = new ProfileId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON object for Profile. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (attribution != null) {
+      output["attribution"] = attribution.toJson();
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Profile */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class ProfileAttribution {
+
+  core.String avatarUrl;
+
+  core.String displayName;
+
+  LatLong geo;
+
+  core.String location;
+
+  /** Create new ProfileAttribution from JSON data. */
+  ProfileAttribution.fromJson(core.Map json) {
+    if (json.containsKey("avatarUrl")) {
+      avatarUrl = json["avatarUrl"];
+    }
+    if (json.containsKey("displayName")) {
+      displayName = json["displayName"];
+    }
+    if (json.containsKey("geo")) {
+      geo = new LatLong.fromJson(json["geo"]);
+    }
+    if (json.containsKey("location")) {
+      location = json["location"];
+    }
+  }
+
+  /** Create JSON object for ProfileAttribution. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (avatarUrl != null) {
+      output["avatarUrl"] = avatarUrl;
+    }
+    if (displayName != null) {
+      output["displayName"] = displayName;
+    }
+    if (geo != null) {
+      output["geo"] = geo.toJson();
+    }
+    if (location != null) {
+      output["location"] = location;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ProfileAttribution */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class ProfileId {
+
+  core.String user;
+
+  /** Create new ProfileId from JSON data. */
+  ProfileId.fromJson(core.Map json) {
+    if (json.containsKey("user")) {
+      user = json["user"];
+    }
+  }
+
+  /** Create JSON object for ProfileId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (user != null) {
+      output["user"] = user;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ProfileId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Rule {
+
+  RuleSubmissions submissions;
+
+  /** Create new Rule from JSON data. */
+  Rule.fromJson(core.Map json) {
+    if (json.containsKey("submissions")) {
+      submissions = new RuleSubmissions.fromJson(json["submissions"]);
+    }
+  }
+
+  /** Create JSON object for Rule. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (submissions != null) {
+      output["submissions"] = submissions.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Rule */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class RuleSubmissions {
+
+  core.int close;
+
+  core.int open;
+
+  /** Create new RuleSubmissions from JSON data. */
+  RuleSubmissions.fromJson(core.Map json) {
+    if (json.containsKey("close")) {
+      close = json["close"];
+    }
+    if (json.containsKey("open")) {
+      open = json["open"];
+    }
+  }
+
+  /** Create JSON object for RuleSubmissions. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (close != null) {
+      output["close"] = close;
+    }
+    if (open != null) {
+      output["open"] = open;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of RuleSubmissions */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Series {
+
+  core.bool anonymousSubmissionAllowed;
+
+  SeriesCounters counters;
+
+  core.String description;
+
+  SeriesId id;
+
+  core.String kind;
+
+  core.String name;
+
+  core.int numTopics;
+
+  core.bool videoSubmissionAllowed;
+
+  /** Create new Series from JSON data. */
+  Series.fromJson(core.Map json) {
+    if (json.containsKey("anonymousSubmissionAllowed")) {
+      anonymousSubmissionAllowed = json["anonymousSubmissionAllowed"];
+    }
+    if (json.containsKey("counters")) {
+      counters = new SeriesCounters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("id")) {
+      id = new SeriesId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("numTopics")) {
+      numTopics = json["numTopics"];
+    }
+    if (json.containsKey("videoSubmissionAllowed")) {
+      videoSubmissionAllowed = json["videoSubmissionAllowed"];
+    }
+  }
+
+  /** Create JSON object for Series. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (anonymousSubmissionAllowed != null) {
+      output["anonymousSubmissionAllowed"] = anonymousSubmissionAllowed;
+    }
+    if (counters != null) {
+      output["counters"] = counters.toJson();
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (numTopics != null) {
+      output["numTopics"] = numTopics;
+    }
+    if (videoSubmissionAllowed != null) {
+      output["videoSubmissionAllowed"] = videoSubmissionAllowed;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Series */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SeriesCounters {
+
+  core.int anonymousSubmissions;
+
+  SeriesCountersCounters counters;
+
+  core.int else_;
+
+  core.int minusVotes;
+
+  core.int noneVotes;
+
+  core.int plusVotes;
+
+  core.int submissions;
+
+  core.String users;
+
+  /** Create new SeriesCounters from JSON data. */
+  SeriesCounters.fromJson(core.Map json) {
+    if (json.containsKey("anonymousSubmissions")) {
+      anonymousSubmissions = json["anonymousSubmissions"];
+    }
+    if (json.containsKey("counters")) {
+      counters = new SeriesCountersCounters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("else")) {
+      else_ = json["else"];
+    }
+    if (json.containsKey("minus_votes")) {
+      minusVotes = json["minus_votes"];
+    }
+    if (json.containsKey("none_votes")) {
+      noneVotes = json["none_votes"];
+    }
+    if (json.containsKey("plus_votes")) {
+      plusVotes = json["plus_votes"];
+    }
+    if (json.containsKey("submissions")) {
+      submissions = json["submissions"];
+    }
+    if (json.containsKey("users")) {
+      users = json["users"];
+    }
+  }
+
+  /** Create JSON object for SeriesCounters. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (anonymousSubmissions != null) {
+      output["anonymousSubmissions"] = anonymousSubmissions;
+    }
+    if (counters != null) {
+      output["counters"] = counters.toJson();
+    }
+    if (else_ != null) {
+      output["else"] = else_;
+    }
+    if (minusVotes != null) {
+      output["minus_votes"] = minusVotes;
+    }
+    if (noneVotes != null) {
+      output["none_votes"] = noneVotes;
+    }
+    if (plusVotes != null) {
+      output["plus_votes"] = plusVotes;
+    }
+    if (submissions != null) {
+      output["submissions"] = submissions;
+    }
+    if (users != null) {
+      output["users"] = users;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SeriesCounters */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SeriesCountersCounters {
+
+  core.int allVotes;
+
+  /** Create new SeriesCountersCounters from JSON data. */
+  SeriesCountersCounters.fromJson(core.Map json) {
+    if (json.containsKey("all-votes")) {
+      allVotes = json["all-votes"];
+    }
+  }
+
+  /** Create JSON object for SeriesCountersCounters. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (allVotes != null) {
+      output["all-votes"] = allVotes;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SeriesCountersCounters */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SeriesId {
+
+  core.int seriesId;
+
+  /** Create new SeriesId from JSON data. */
+  SeriesId.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+  }
+
+  /** Create JSON object for SeriesId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SeriesId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SeriesList {
+
+  core.List<Series> items;
+
+  core.String kind;
+
+  /** Create new SeriesList from JSON data. */
+  SeriesList.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = [];
+      json["items"].forEach((item) {
+        items.add(new Series.fromJson(item));
+      });
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON object for SeriesList. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = new core.List();
+      items.forEach((item) {
+        output["items"].add(item.toJson());
+      });
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SeriesList */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Submission {
+
+  core.String @attachmentUrl;
+
+  SubmissionAttribution attribution;
+
+  core.String author;
+
+  SubmissionCounters counters;
+
+  core.int created;
+
+  core.List<LatLong> geo;
+
+  SubmissionId id;
+
+  core.String kind;
+
+  SubmissionParentSubmissionId parentSubmissionId;
+
+  core.String text;
+
+  core.List<ModeratorTopicsResourcePartial> topics;
+
+  core.Map<core.String, Translation> translations;
+
+  /** Create new Submission from JSON data. */
+  Submission.fromJson(core.Map json) {
+    if (json.containsKey("@attachmentUrl")) {
+      @attachmentUrl = json["@attachmentUrl"];
+    }
+    if (json.containsKey("attribution")) {
+      attribution = new SubmissionAttribution.fromJson(json["attribution"]);
+    }
+    if (json.containsKey("author")) {
+      author = json["author"];
+    }
+    if (json.containsKey("counters")) {
+      counters = new SubmissionCounters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("created")) {
+      created = json["created"];
+    }
+    if (json.containsKey("geo")) {
+      geo = [];
+      json["geo"].forEach((item) {
+        geo.add(new LatLong.fromJson(item));
+      });
+    }
+    if (json.containsKey("id")) {
+      id = new SubmissionId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("parentSubmissionId")) {
+      parentSubmissionId = new SubmissionParentSubmissionId.fromJson(json["parentSubmissionId"]);
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+    if (json.containsKey("topics")) {
+      topics = [];
+      json["topics"].forEach((item) {
+        topics.add(new ModeratorTopicsResourcePartial.fromJson(item));
+      });
+    }
+    if (json.containsKey("translations")) {
+      translations = json["translations"];
+    }
+  }
+
+  /** Create JSON object for Submission. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (@attachmentUrl != null) {
+      output["@attachmentUrl"] = @attachmentUrl;
+    }
+    if (attribution != null) {
+      output["attribution"] = attribution.toJson();
+    }
+    if (author != null) {
+      output["author"] = author;
+    }
+    if (counters != null) {
+      output["counters"] = counters.toJson();
+    }
+    if (created != null) {
+      output["created"] = created;
+    }
+    if (geo != null) {
+      output["geo"] = new core.List();
+      geo.forEach((item) {
+        output["geo"].add(item.toJson());
+      });
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (parentSubmissionId != null) {
+      output["parentSubmissionId"] = parentSubmissionId.toJson();
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+    if (topics != null) {
+      output["topics"] = new core.List();
+      topics.forEach((item) {
+        output["topics"].add(item.toJson());
+      });
+    }
+    if (translations != null) {
+      output["translations"] = translations;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Submission */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionAttribution {
+
+  /** A member with a $ in the name */
+  core.String $avatarUrl;
+
+  /** A member with a $ in the name, but if you strip it, you get a reserved word */
+  core.String $object;
+
+  core.String location;
+
+  /** Create new SubmissionAttribution from JSON data. */
+  SubmissionAttribution.fromJson(core.Map json) {
+    if (json.containsKey("\$avatarUrl")) {
+      $avatarUrl = json["\$avatarUrl"];
+    }
+    if (json.containsKey("\$object")) {
+      $object = json["\$object"];
+    }
+    if (json.containsKey("location")) {
+      location = json["location"];
+    }
+  }
+
+  /** Create JSON object for SubmissionAttribution. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if ($avatarUrl != null) {
+      output["\$avatarUrl"] = $avatarUrl;
+    }
+    if ($object != null) {
+      output["\$object"] = $object;
+    }
+    if (location != null) {
+      output["location"] = location;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionAttribution */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionCounters {
+
+  core.int minusVotes;
+
+  core.int noneVotes;
+
+  core.int plusVotes;
+
+  /** Create new SubmissionCounters from JSON data. */
+  SubmissionCounters.fromJson(core.Map json) {
+    if (json.containsKey("minus_votes")) {
+      minusVotes = json["minus_votes"];
+    }
+    if (json.containsKey("none_votes")) {
+      noneVotes = json["none_votes"];
+    }
+    if (json.containsKey("plus_votes")) {
+      plusVotes = json["plus_votes"];
+    }
+  }
+
+  /** Create JSON object for SubmissionCounters. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (minusVotes != null) {
+      output["minus_votes"] = minusVotes;
+    }
+    if (noneVotes != null) {
+      output["none_votes"] = noneVotes;
+    }
+    if (plusVotes != null) {
+      output["plus_votes"] = plusVotes;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionCounters */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionId {
+
+  core.int seriesId;
+
+  core.int submissionId;
+
+  /** Create new SubmissionId from JSON data. */
+  SubmissionId.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+    if (json.containsKey("submissionId")) {
+      submissionId = json["submissionId"];
+    }
+  }
+
+  /** Create JSON object for SubmissionId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+    if (submissionId != null) {
+      output["submissionId"] = submissionId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionList {
+
+  core.List<Submission> items;
+
+  core.String kind;
+
+  /** Create new SubmissionList from JSON data. */
+  SubmissionList.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = [];
+      json["items"].forEach((item) {
+        items.add(new Submission.fromJson(item));
+      });
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON object for SubmissionList. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = new core.List();
+      items.forEach((item) {
+        output["items"].add(item.toJson());
+      });
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionList */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionParentSubmissionId {
+
+  core.int seriesId;
+
+  core.int submissionId;
+
+  /** Create new SubmissionParentSubmissionId from JSON data. */
+  SubmissionParentSubmissionId.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+    if (json.containsKey("submissionId")) {
+      submissionId = json["submissionId"];
+    }
+  }
+
+  /** Create JSON object for SubmissionParentSubmissionId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+    if (submissionId != null) {
+      output["submissionId"] = submissionId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionParentSubmissionId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class SubmissionTranslations {
+
+  /** Create new SubmissionTranslations from JSON data. */
+  SubmissionTranslations.fromJson(core.Map json) {
+  }
+
+  /** Create JSON object for SubmissionTranslations. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+
+
+    return output;
+  }
+
+  /** Return String representation of SubmissionTranslations */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Tag {
+
+  Geometry geometry;
+
+  TagId id;
+
+  core.String kind;
+
+  core.String text;
+
+  /** Create new Tag from JSON data. */
+  Tag.fromJson(core.Map json) {
+    if (json.containsKey("geometry")) {
+      geometry = new Geometry.fromJson(json["geometry"]);
+    }
+    if (json.containsKey("id")) {
+      id = new TagId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON object for Tag. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (geometry != null) {
+      output["geometry"] = geometry.toJson();
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Tag */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TagId {
+
+  core.int seriesId;
+
+  core.int submissionId;
+
+  core.String tag;
+
+  /** Create new TagId from JSON data. */
+  TagId.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+    if (json.containsKey("submissionId")) {
+      submissionId = json["submissionId"];
+    }
+    if (json.containsKey("tag")) {
+      tag = json["tag"];
+    }
+  }
+
+  /** Create JSON object for TagId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+    if (submissionId != null) {
+      output["submissionId"] = submissionId;
+    }
+    if (tag != null) {
+      output["tag"] = tag;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TagId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TagList {
+
+  /** Create new TagList from JSON data. */
+  TagList.fromJson(core.Map json) {
+  }
+
+  /** Create JSON object for TagList. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+
+
+    return output;
+  }
+
+  /** Return String representation of TagList */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Topic {
+
+  TopicCounters counters;
+
+  core.String description;
+
+  TopicId id;
+
+  core.String kind;
+
+  core.String name;
+
+  core.String presenter;
+
+  TopicRules rules;
+
+  /** Create new Topic from JSON data. */
+  Topic.fromJson(core.Map json) {
+    if (json.containsKey("counters")) {
+      counters = new TopicCounters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("id")) {
+      id = new TopicId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("presenter")) {
+      presenter = json["presenter"];
+    }
+    if (json.containsKey("rules")) {
+      rules = new TopicRules.fromJson(json["rules"]);
+    }
+  }
+
+  /** Create JSON object for Topic. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (counters != null) {
+      output["counters"] = counters.toJson();
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (presenter != null) {
+      output["presenter"] = presenter;
+    }
+    if (rules != null) {
+      output["rules"] = rules.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Topic */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Topic2 {
+
+  Topic2Counters counters;
+
+  core.String description;
+
+  Submission featuredSubmission;
+
+  Topic2Id id;
+
+  core.String kind;
+
+  core.String name;
+
+  core.String presenter;
+
+  core.List<Rule> rules;
+
+  /** Create new Topic2 from JSON data. */
+  Topic2.fromJson(core.Map json) {
+    if (json.containsKey("counters")) {
+      counters = new Topic2Counters.fromJson(json["counters"]);
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("featuredSubmission")) {
+      featuredSubmission = new Submission.fromJson(json["featuredSubmission"]);
+    }
+    if (json.containsKey("id")) {
+      id = new Topic2Id.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("presenter")) {
+      presenter = json["presenter"];
+    }
+    if (json.containsKey("rules")) {
+      rules = [];
+      json["rules"].forEach((item) {
+        rules.add(new Rule.fromJson(item));
+      });
+    }
+  }
+
+  /** Create JSON object for Topic2. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (counters != null) {
+      output["counters"] = counters.toJson();
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (featuredSubmission != null) {
+      output["featuredSubmission"] = featuredSubmission.toJson();
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (presenter != null) {
+      output["presenter"] = presenter;
+    }
+    if (rules != null) {
+      output["rules"] = new core.List();
+      rules.forEach((item) {
+        output["rules"].add(item.toJson());
+      });
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Topic2 */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Topic2Counters {
+
+  core.int minusVotes;
+
+  core.int noneVotes;
+
+  core.int plusVotes;
+
+  core.int submissions;
+
+  core.int users;
+
+  core.int videoSubmissions;
+
+  /** Create new Topic2Counters from JSON data. */
+  Topic2Counters.fromJson(core.Map json) {
+    if (json.containsKey("minus_votes")) {
+      minusVotes = json["minus_votes"];
+    }
+    if (json.containsKey("none_votes")) {
+      noneVotes = json["none_votes"];
+    }
+    if (json.containsKey("plus_votes")) {
+      plusVotes = json["plus_votes"];
+    }
+    if (json.containsKey("submissions")) {
+      submissions = json["submissions"];
+    }
+    if (json.containsKey("users")) {
+      users = json["users"];
+    }
+    if (json.containsKey("videoSubmissions")) {
+      videoSubmissions = json["videoSubmissions"];
+    }
+  }
+
+  /** Create JSON object for Topic2Counters. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (minusVotes != null) {
+      output["minus_votes"] = minusVotes;
+    }
+    if (noneVotes != null) {
+      output["none_votes"] = noneVotes;
+    }
+    if (plusVotes != null) {
+      output["plus_votes"] = plusVotes;
+    }
+    if (submissions != null) {
+      output["submissions"] = submissions;
+    }
+    if (users != null) {
+      output["users"] = users;
+    }
+    if (videoSubmissions != null) {
+      output["videoSubmissions"] = videoSubmissions;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Topic2Counters */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Topic2Id {
+
+  core.int seriesId;
+
+  core.int topicId;
+
+  /** Create new Topic2Id from JSON data. */
+  Topic2Id.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+    if (json.containsKey("topicId")) {
+      topicId = json["topicId"];
+    }
+  }
+
+  /** Create JSON object for Topic2Id. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+    if (topicId != null) {
+      output["topicId"] = topicId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Topic2Id */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicCounters {
+
+  core.int minusVotes;
+
+  core.int noneVotes;
+
+  core.int plusVotes;
+
+  core.int submissions;
+
+  core.int users;
+
+  core.int videoSubmissions;
+
+  /** Create new TopicCounters from JSON data. */
+  TopicCounters.fromJson(core.Map json) {
+    if (json.containsKey("minus_votes")) {
+      minusVotes = json["minus_votes"];
+    }
+    if (json.containsKey("none_votes")) {
+      noneVotes = json["none_votes"];
+    }
+    if (json.containsKey("plus_votes")) {
+      plusVotes = json["plus_votes"];
+    }
+    if (json.containsKey("submissions")) {
+      submissions = json["submissions"];
+    }
+    if (json.containsKey("users")) {
+      users = json["users"];
+    }
+    if (json.containsKey("videoSubmissions")) {
+      videoSubmissions = json["videoSubmissions"];
+    }
+  }
+
+  /** Create JSON object for TopicCounters. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (minusVotes != null) {
+      output["minus_votes"] = minusVotes;
+    }
+    if (noneVotes != null) {
+      output["none_votes"] = noneVotes;
+    }
+    if (plusVotes != null) {
+      output["plus_votes"] = plusVotes;
+    }
+    if (submissions != null) {
+      output["submissions"] = submissions;
+    }
+    if (users != null) {
+      output["users"] = users;
+    }
+    if (videoSubmissions != null) {
+      output["videoSubmissions"] = videoSubmissions;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicCounters */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicId {
+
+  core.int seriesId;
+
+  core.int topicId;
+
+  /** Create new TopicId from JSON data. */
+  TopicId.fromJson(core.Map json) {
+    if (json.containsKey("seriesId")) {
+      seriesId = json["seriesId"];
+    }
+    if (json.containsKey("topicId")) {
+      topicId = json["topicId"];
+    }
+  }
+
+  /** Create JSON object for TopicId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (seriesId != null) {
+      output["seriesId"] = seriesId;
+    }
+    if (topicId != null) {
+      output["topicId"] = topicId;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicList {
+
+  core.List<Topic> items;
+
+  core.String kind;
+
+  /** Create new TopicList from JSON data. */
+  TopicList.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = [];
+      json["items"].forEach((item) {
+        items.add(new Topic.fromJson(item));
+      });
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON object for TopicList. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = new core.List();
+      items.forEach((item) {
+        output["items"].add(item.toJson());
+      });
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicList */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicRules {
+
+  TopicRulesSubmissions submissions;
+
+  TopicRulesVotes votes;
+
+  /** Create new TopicRules from JSON data. */
+  TopicRules.fromJson(core.Map json) {
+    if (json.containsKey("submissions")) {
+      submissions = new TopicRulesSubmissions.fromJson(json["submissions"]);
+    }
+    if (json.containsKey("votes")) {
+      votes = new TopicRulesVotes.fromJson(json["votes"]);
+    }
+  }
+
+  /** Create JSON object for TopicRules. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (submissions != null) {
+      output["submissions"] = submissions.toJson();
+    }
+    if (votes != null) {
+      output["votes"] = votes.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicRules */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicRulesSubmissions {
+
+  core.int close;
+
+  core.int open;
+
+  /** Create new TopicRulesSubmissions from JSON data. */
+  TopicRulesSubmissions.fromJson(core.Map json) {
+    if (json.containsKey("close")) {
+      close = json["close"];
+    }
+    if (json.containsKey("open")) {
+      open = json["open"];
+    }
+  }
+
+  /** Create JSON object for TopicRulesSubmissions. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (close != null) {
+      output["close"] = close;
+    }
+    if (open != null) {
+      output["open"] = open;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicRulesSubmissions */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class TopicRulesVotes {
+
+  core.int close;
+
+  core.int open;
+
+  /** Create new TopicRulesVotes from JSON data. */
+  TopicRulesVotes.fromJson(core.Map json) {
+    if (json.containsKey("close")) {
+      close = json["close"];
+    }
+    if (json.containsKey("open")) {
+      open = json["open"];
+    }
+  }
+
+  /** Create JSON object for TopicRulesVotes. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (close != null) {
+      output["close"] = close;
+    }
+    if (open != null) {
+      output["open"] = open;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TopicRulesVotes */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Translation {
+
+  core.String lang;
+
+  core.String text;
+
+  /** Create new Translation from JSON data. */
+  Translation.fromJson(core.Map json) {
+    if (json.containsKey("lang")) {
+      lang = json["lang"];
+    }
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON object for Translation. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (lang != null) {
+      output["lang"] = lang;
+    }
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Translation */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class Vote {
+
+  core.String flag;
+
+  VoteId id;
+
+  core.String kind;
+
+  core.String vote;
+
+  /** Create new Vote from JSON data. */
+  Vote.fromJson(core.Map json) {
+    if (json.containsKey("flag")) {
+      flag = json["flag"];
+    }
+    if (json.containsKey("id")) {
+      id = new VoteId.fromJson(json["id"]);
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("vote")) {
+      vote = json["vote"];
+    }
+  }
+
+  /** Create JSON object for Vote. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (flag != null) {
+      output["flag"] = flag;
+    }
+    if (id != null) {
+      output["id"] = id.toJson();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (vote != null) {
+      output["vote"] = vote;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of Vote */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class VoteId {
+
+  /** Create new VoteId from JSON data. */
+  VoteId.fromJson(core.Map json) {
+  }
+
+  /** Create JSON object for VoteId. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+
+
+    return output;
+  }
+
+  /** Return String representation of VoteId */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class VoteList {
+
+  core.List<Vote> items;
+
+  core.String kind;
+
+  /** Create new VoteList from JSON data. */
+  VoteList.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = [];
+      json["items"].forEach((item) {
+        items.add(new Vote.fromJson(item));
+      });
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON object for VoteList. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = new core.List();
+      items.forEach((item) {
+        output["items"].add(item.toJson());
+      });
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of VoteList */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+=== end: ./google_api_kitch_sink_v1/lib/src/common/schemas.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
+part of kitch_sink_v1_api_console;
+
+/**
+ * Base class for all Console API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class ConsoleClient extends Client {
+
+  oauth2.OAuth2Console _auth;
+
+  ConsoleClient([oauth2.OAuth2Console this._auth]) : super();
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams}) {
+    var completer = new async.Completer();
+
+    if (urlParams == null) urlParams = {};
+    if (queryParams == null) queryParams = {};
+
+    params.forEach((key, param) {
+      if (param != null && queryParams[key] == null) {
+        queryParams[key] = param;
+      }
+    });
+
+    var path;
+    if (requestUrl.substring(0,1) == "/") {
+      path ="$rootUrl${requestUrl.substring(1)}";
+    } else {
+      path ="$rootUrl$servicePath$requestUrl";
+    }
+
+    var url = new oauth2.UrlPattern(path).generate(urlParams, queryParams);
+
+    async.Future clientCallback(http.Client client) {
+      // A dummy completer is used for the 'withClient' method, this should
+      // go away after refactoring withClient in oauth2 package
+      var clientDummyCompleter = new async.Completer();
+
+      if (method.toLowerCase() == "get") {
+        client.get(url).then((http.Response response) {
+          var data = JSON.decode(response.body);
+          completer.complete(data);
+          clientDummyCompleter.complete(null);
+        }, onError: (async.AsyncError error) {
+          completer.completeError(new APIRequestException("onError: $error"));
+        });
+
+      } else if (method.toLowerCase() == "post" || method.toLowerCase() == "put" || method.toLowerCase() == "patch") {
+        // Workaround since http.Client does not properly support post for google apis
+        var postHttpClient = new io.HttpClient();
+
+        // On connection request set the content type and key if available.
+        postHttpClient.openUrl(method, uri.Uri.parse(url)).then((io.HttpClientRequest request) {
+          request.headers.set(io.HttpHeaders.CONTENT_TYPE, contentType);
+          if (makeAuthRequests && _auth != null) {
+            request.headers.set(io.HttpHeaders.AUTHORIZATION, "Bearer ${_auth.credentials.accessToken}");
+          }
+
+          request.write(body);
+          return request.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("POST HttpClientRequest error: $error")))
+        .then((io.HttpClientResponse response) {
+          // On connection response read in data from stream, on close parse as json and return.
+          core.StringBuffer onResponseBody = new core.StringBuffer();
+          response.transform(new io.StringDecoder()).listen((core.String data) => onResponseBody.write(data),
+              onError: (error) => completer.completeError(new APIRequestException("POST stream error: $error")),
+              onDone: () {
+                var data = JSON.decode(onResponseBody.toString());
+                completer.complete(data);
+                clientDummyCompleter.complete(null);
+                postHttpClient.close();
+              });
+        }, onError: (error) => completer.completeError(new APIRequestException("POST HttpClientResponse error: $error")));
+      } else if (method.toLowerCase() == "delete") {
+        var deleteHttpClient = new io.HttpClient();
+
+        deleteHttpClient.openUrl(method, uri.Uri.parse(url)).then((io.HttpClientRequest request) {
+          // On connection request set the content type and key if available.
+          request.headers.set(io.HttpHeaders.CONTENT_TYPE, contentType);
+          if (makeAuthRequests && _auth != null) {
+            request.headers.set(io.HttpHeaders.AUTHORIZATION, "Bearer ${_auth.credentials.accessToken}");
+          }
+
+          return request.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("DELETE HttpClientRequest error: $error")))
+        .then((io.HttpClientResponse response) {
+          // On connection response read in data from stream, on close parse as json and return.
+          // TODO: response.statusCode should be checked for errors.
+          completer.complete({});
+          clientDummyCompleter.complete(null);
+          deleteHttpClient.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("DELETE HttpClientResponse error: $error")));
+      } else {
+        // Method has not been implemented yet error
+        completer.completeError(new APIRequestException("$method Not implemented"));
+      }
+
+      return clientDummyCompleter.future;
+    };
+
+    if (makeAuthRequests && _auth != null) {
+      // Client wants an authenticated request.
+      _auth.withClient(clientCallback); // Should not care about the future here.
+    } else {
+      // Client wants a non authenticated request.
+      clientCallback(new http.Client()); // Should not care about the future here.
+    }
+
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_kitch_sink_v1/lib/src/console/consoleclient.dart
+=== begin: ./google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
+part of kitch_sink_v1_api_console;
+
+/** Client to access the kitch_sink v1 API */
+/** An API with every strange thing in it */
+class KitchSinkApi extends ConsoleClient {
+
+  FeaturedResource _featured;
+  FeaturedResource get featured => _featured;
+  GlobalResource _global;
+  GlobalResource get global => _global;
+  MyResource _my;
+  MyResource get my => _my;
+  MyrecentResource _myrecent;
+  MyrecentResource get myrecent => _myrecent;
+  ProfilesResource _profiles;
+  ProfilesResource get profiles => _profiles;
+  ResponsesResource _responses;
+  ResponsesResource get responses => _responses;
+  SeriesResource _series;
+  SeriesResource get series => _series;
+  SubmissionsResource _submissions;
+  SubmissionsResource get submissions => _submissions;
+  TagsResource _tags;
+  TagsResource get tags => _tags;
+  TopicsResource _topics;
+  TopicsResource get topics => _topics;
+  VotesResource _votes;
+  VotesResource get votes => _votes;
+
+
+  /** OAuth2 scope: A non googleapis.com scope */
+  static const core.String MAIL_GOOGLE_COM_SCOPE = "https://mail.google.com/";
+
+  /** OAuth2 scope: a product level scope */
+  static const core.String PRODUCT_SCOPE = "https://www.googleapis.com/auth/product";
+
+  /** OAuth2 scope: A typical scope */
+  static const core.String USERINFO_EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+
+
+  /**
+   * Data format for the response.
+   * Added as queryParameter for each request.
+   */
+  core.String get alt => params["alt"];
+  set alt(core.String value) => params["alt"] = value;
+
+  /**
+   * Selector specifying which fields to include in a partial response.
+   * Added as queryParameter for each request.
+   */
+  core.String get fields => params["fields"];
+  set fields(core.String value) => params["fields"] = value;
+
+  /**
+   * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+   * Added as queryParameter for each request.
+   */
+  core.String get key => params["key"];
+  set key(core.String value) => params["key"] = value;
+
+  /**
+   * OAuth 2.0 token for the current user.
+   * Added as queryParameter for each request.
+   */
+  core.String get oauth_token => params["oauth_token"];
+  set oauth_token(core.String value) => params["oauth_token"] = value;
+
+  /**
+   * Returns response with indentations and line breaks.
+   * Added as queryParameter for each request.
+   */
+  core.bool get prettyPrint => params["prettyPrint"];
+  set prettyPrint(core.bool value) => params["prettyPrint"] = value;
+
+  /**
+   * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.
+   * Added as queryParameter for each request.
+   */
+  core.String get quotaUser => params["quotaUser"];
+  set quotaUser(core.String value) => params["quotaUser"] = value;
+
+  /**
+   * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+   * Added as queryParameter for each request.
+   */
+  core.String get userIp => params["userIp"];
+  set userIp(core.String value) => params["userIp"] = value;
+
+  KitchSinkApi([oauth2.OAuth2Console auth]) : super(auth) {
+    servicePath = "sink/v1/";
+    rootUrl = "https://www.googleapis.com/";
+    _featured = new FeaturedResource(this);
+    _global = new GlobalResource(this);
+    _my = new MyResource(this);
+    _myrecent = new MyrecentResource(this);
+    _profiles = new ProfilesResource(this);
+    _responses = new ResponsesResource(this);
+    _series = new SeriesResource(this);
+    _submissions = new SubmissionsResource(this);
+    _tags = new TagsResource(this);
+    _topics = new TopicsResource(this);
+    _votes = new VotesResource(this);
+  }
+}
+=== end: ./google_api_kitch_sink_v1/lib/src/console/kitch_sink.dart
+=== begin: ./google_api_kitch_sink_v1/pubspec.yaml
+name: google_api_kitch_sink_v1
+description: >
+  An API with every strange thing in it
+version: 0.2.snapshot
+author: Sam McCall <sammccall@google.com>
+dependencies:
+  js: '>=0.0.18'
+  google_oauth2_client: '>=0.2.9'
+=== end: ./google_api_kitch_sink_v1/pubspec.yaml

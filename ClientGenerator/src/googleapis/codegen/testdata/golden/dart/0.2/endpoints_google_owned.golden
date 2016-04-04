@@ -1,0 +1,764 @@
+=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
+library helloworld_v1_api_browser;
+
+import "helloworld_v1_api_client.dart";
+export "helloworld_v1_api_client.dart";
+
+import "dart:core" as core;
+import "dart:html" as html;
+import "dart:async" as async;
+import "dart:convert";
+import "package:js/js.dart" as js;
+import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
+
+part "src/browser/browserclient.dart";
+part "src/browser/helloworld.dart";
+
+=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_browser.dart
+=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
+library helloworld_v1_api_client;
+
+import "dart:core" as core;
+import "dart:async" as async;
+import "dart:convert";
+
+part "src/common/client.dart";
+part "src/common/schemas.dart";
+part "src/common/resources.dart";
+
+=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_client.dart
+=== begin: ./google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
+library helloworld_v1_api_console;
+
+import "helloworld_v1_api_client.dart";
+export "helloworld_v1_api_client.dart";
+
+import "dart:core" as core;
+import "dart:io" as io;
+import "dart:async" as async;
+import "dart:uri" as uri;
+import "dart:convert";
+import "package:http/http.dart" as http;
+import "package:google_oauth2_client/google_oauth2_console.dart" as oauth2;
+
+part "src/console/consoleclient.dart";
+part "src/console/helloworld.dart";
+
+=== end: ./google_api_helloworld_v1/lib/helloworld_v1_api_console.dart
+=== begin: ./google_api_helloworld_v1/lib/src/browser/browserclient.dart
+part of helloworld_v1_api_browser;
+
+/**
+ * Base class for all Browser API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class BrowserClient extends Client {
+
+  oauth.OAuth2 _auth;
+  core.bool _jsClientLoaded = false;
+
+  BrowserClient([oauth.OAuth2 this._auth]) : super();
+
+  /**
+   * Loads the JS Client Library to make CORS-Requests
+   */
+  async.Future<core.bool> _loadJsClient() {
+    var completer = new async.Completer();
+
+    if (_jsClientLoaded) {
+      completer.complete(true);
+      return completer.future;
+    }
+
+    js.scoped((){
+      js.context.handleClientLoad =  new js.Callback.once(() {
+        _jsClientLoaded = true;
+        completer.complete(true);
+      });
+    });
+
+    html.ScriptElement script = new html.ScriptElement();
+    script.src = "http://apis.google.com/js/client.js?onload=handleClientLoad";
+    script.type = "text/javascript";
+    html.document.body.children.add(script);
+
+    return completer.future;
+  }
+
+  /**
+   * Makes a request via the JS Client Library to circumvent CORS-problems
+   */
+  async.Future _makeJsClientRequest(core.String requestUrl, core.String method, {core.String body, core.String contentType, core.Map queryParams}) {
+    var completer = new async.Completer();
+    var requestData = new core.Map();
+    requestData["path"] = requestUrl;
+    requestData["method"] = method;
+    requestData["headers"] = new core.Map();
+
+    if (queryParams != null) {
+      requestData["params"] = queryParams;
+    }
+
+    if (body != null) {
+      requestData["body"] = body;
+      requestData["headers"]["Content-Type"] = contentType;
+    }
+    if (makeAuthRequests && _auth != null && _auth.token != null) {
+      requestData["headers"]["Authorization"] = "${_auth.token.type} ${_auth.token.data}";
+    }
+
+    js.scoped(() {
+      var request = js.context.gapi.client.request(js.map(requestData));
+      var callback = new js.Callback.once((jsonResp, rawResp) {
+        if (jsonResp is core.bool && jsonResp == false) {
+          var raw = JSON.decode(rawResp);
+          if (raw["gapiRequest"]["data"]["status"] >= 400) {
+            completer.completeError(new APIRequestException("JS Client - ${raw["gapiRequest"]["data"]["status"]} ${raw["gapiRequest"]["data"]["statusText"]} - ${raw["gapiRequest"]["data"]["body"]}"));
+          } else {
+            completer.complete({});
+          }
+        } else {
+          completer.complete(js.context.JSON.stringify(jsonResp));
+        }
+      });
+      request.execute(callback);
+    });
+
+    return completer.future;
+  }
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams}) {
+    var request = new html.HttpRequest();
+    var completer = new async.Completer();
+
+    if (urlParams == null) urlParams = {};
+    if (queryParams == null) queryParams = {};
+
+    params.forEach((key, param) {
+      if (param != null && queryParams[key] == null) {
+        queryParams[key] = param;
+      }
+    });
+
+    var path;
+    if (requestUrl.substring(0,1) == "/") {
+      path ="$rootUrl${requestUrl.substring(1)}";
+    } else {
+      path ="$rootUrl$servicePath$requestUrl";
+    }
+    var url = new oauth.UrlPattern(path).generate(urlParams, queryParams);
+
+    request.onLoadEnd.listen((_) {
+      if (request.status == 200) {
+        var data = JSON.decode(request.responseText);
+        completer.complete(data);
+      } else {
+        if (request.status == 0) {
+          _loadJsClient().then((v) {
+            if (requestUrl.substring(0,1) == "/") {
+              path = requestUrl;
+            } else {
+              path ="$servicePath$requestUrl";
+            }
+            url = new oauth.UrlPattern(path).generate(urlParams, {});
+            _makeJsClientRequest(url, method, body: body, contentType: contentType, queryParams: queryParams)
+              .then((response) {
+                var data = JSON.decode(response);
+                completer.complete(data);
+              })
+              .catchError((e) {
+                completer.completeError(e);
+                return true;
+              });
+          });
+        } else {
+          var error = "";
+          if (request.responseText != null) {
+            var errorJson;
+            try {
+              errorJson = JSON.decode(request.responseText);
+            } on core.FormatException {
+              errorJson = null;
+            }
+            if (errorJson != null && errorJson.containsKey("error")) {
+              error = "${errorJson["error"]["code"]} ${errorJson["error"]["message"]}";
+            }
+          }
+          if (error == "") {
+            error = "${request.status} ${request.statusText}";
+          }
+          completer.completeError(new APIRequestException(error));
+        }
+      }
+    });
+
+    request.open(method, url);
+    request.setRequestHeader("Content-Type", contentType);
+    if (makeAuthRequests && _auth != null) {
+      _auth.authenticate(request).then((request) => request.send(body));
+    } else {
+      request.send(body);
+    }
+
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_helloworld_v1/lib/src/browser/browserclient.dart
+=== begin: ./google_api_helloworld_v1/lib/src/browser/helloworld.dart
+part of helloworld_v1_api_browser;
+
+/** Client to access the helloworld v1 API */
+/** helloworld API v1. */
+class EccoDomaniIeriApi extends BrowserClient {
+
+  GreetingsResource _greetings;
+  GreetingsResource get greetings => _greetings;
+
+
+  /** OAuth2 scope: View your email address */
+  static const core.String USERINFO_EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+
+
+  /**
+   * Data format for the response.
+   * Added as queryParameter for each request.
+   */
+  core.String get alt => params["alt"];
+  set alt(core.String value) => params["alt"] = value;
+
+  /**
+   * Selector specifying which fields to include in a partial response.
+   * Added as queryParameter for each request.
+   */
+  core.String get fields => params["fields"];
+  set fields(core.String value) => params["fields"] = value;
+
+  /**
+   * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+   * Added as queryParameter for each request.
+   */
+  core.String get key => params["key"];
+  set key(core.String value) => params["key"] = value;
+
+  /**
+   * OAuth 2.0 token for the current user.
+   * Added as queryParameter for each request.
+   */
+  core.String get oauth_token => params["oauth_token"];
+  set oauth_token(core.String value) => params["oauth_token"] = value;
+
+  /**
+   * Returns response with indentations and line breaks.
+   * Added as queryParameter for each request.
+   */
+  core.bool get prettyPrint => params["prettyPrint"];
+  set prettyPrint(core.bool value) => params["prettyPrint"] = value;
+
+  /**
+   * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.
+   * Added as queryParameter for each request.
+   */
+  core.String get quotaUser => params["quotaUser"];
+  set quotaUser(core.String value) => params["quotaUser"] = value;
+
+  /**
+   * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+   * Added as queryParameter for each request.
+   */
+  core.String get userIp => params["userIp"];
+  set userIp(core.String value) => params["userIp"] = value;
+
+  EccoDomaniIeriApi([oauth.OAuth2 auth]) : super(auth) {
+     servicePath = "helloworld/v1/";
+     rootUrl = "https://peer-pontus.appspot.com/_ah/api/";
+    _greetings = new GreetingsResource(this);
+  }
+}
+=== end: ./google_api_helloworld_v1/lib/src/browser/helloworld.dart
+=== begin: ./google_api_helloworld_v1/lib/src/common/client.dart
+part of helloworld_v1_api_client;
+
+/**
+ * Base class for all API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class Client {
+  core.String servicePath;
+  core.String rootUrl;
+  core.bool makeAuthRequests;
+  core.Map params;
+
+  static const _boundary = "-------314159265358979323846";
+  static const _delimiter = "\r\n--$_boundary\r\n";
+  static const _closeDelim = "\r\n--$_boundary--";
+
+  Client() {
+    params = new core.Map();
+    makeAuthRequests = false;
+  }
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams});
+
+  /**
+   * Joins [content] (encoded as Base64-String) with specified [contentType] and additional request [body] into one multipart-body and send a HTTPRequest with [method] (usually POST) to [requestUrl]
+   */
+  async.Future upload(core.String requestUrl, core.String method, core.String body, core.String content, core.String contentType, {core.Map urlParams, core.Map queryParams}) {
+    var multiPartBody = new core.StringBuffer();
+    if (contentType == null || contentType.isEmpty) {
+      contentType = "application/octet-stream";
+    }
+    multiPartBody
+    ..write(_delimiter)
+    ..write("Content-Type: application/json\r\n\r\n")
+    ..write(body)
+    ..write(_delimiter)
+    ..write("Content-Type: ")
+    ..write(contentType)
+    ..write("\r\n")
+    ..write("Content-Transfer-Encoding: base64\r\n")
+    ..write("\r\n")
+    ..write(content)
+    ..write(_closeDelim);
+
+    return request(requestUrl, method, body: multiPartBody.toString(), contentType: "multipart/mixed; boundary=\"$_boundary\"", urlParams: urlParams, queryParams: queryParams);
+  }
+}
+
+/// Base-class for all API Resources
+abstract class Resource {
+  /// The [Client] to be used for all requests
+  Client _client;
+
+  /// Create a new Resource, using the specified [Client] for requests
+  Resource(Client this._client);
+}
+
+/// Exception thrown when the HTTP Request to the API failed
+class APIRequestException implements core.Exception {
+  final core.String msg;
+  const APIRequestException([this.msg]);
+  core.String toString() => (msg == null) ? "APIRequestException" : "APIRequestException: $msg";
+}
+
+=== end: ./google_api_helloworld_v1/lib/src/common/client.dart
+=== begin: ./google_api_helloworld_v1/lib/src/common/resources.dart
+part of helloworld_v1_api_client;
+
+
+class GreetingsResource extends Resource {
+
+  GreetingsResource(Client client) : super(client) {
+  }
+
+
+
+  // Method GreetingsResource.Authed
+  /**
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<HelloGreeting> authed({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "hellogreeting/authed";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new HelloGreeting.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method GreetingsResource.GetGreeting
+  /**
+   * [id] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<HelloGreeting> getGreeting(core.int id, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "hellogreeting/{id}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (id == null) paramErrors.add("id is required");
+    if (id != null) urlParams["id"] = id;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new HelloGreeting.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method GreetingsResource.ListGreeting
+  /**
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<HelloGreetingCollection> listGreeting({core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "hellogreeting";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new HelloGreetingCollection.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+
+
+  // Method GreetingsResource.Multiply
+  /**
+   * [request] - HelloGreeting to send in this request.
+   *
+   * [times] -
+   *
+   * [optParams] - Additional query parameters.
+   */
+  async.Future<HelloGreeting> multiply(HelloGreeting request, core.int times, {core.Map optParams}) {
+    var completer = new async.Completer();
+    var url = "hellogreeting/{times}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (times == null) paramErrors.add("times is required");
+    if (times != null) urlParams["times"] = times;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      completer.completeError(new ArgumentError(paramErrors.join(" / ")));
+      return completer.future;
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    response
+      .then((data) => completer.complete(new HelloGreeting.fromJson(data)))
+      .catchError((e) { completer.completeError(e); return true; });
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_helloworld_v1/lib/src/common/resources.dart
+=== begin: ./google_api_helloworld_v1/lib/src/common/schemas.dart
+part of helloworld_v1_api_client;
+
+
+class HelloGreeting {
+
+  core.String message;
+
+  /** Create new HelloGreeting from JSON data. */
+  HelloGreeting.fromJson(core.Map json) {
+    if (json.containsKey("message")) {
+      message = json["message"];
+    }
+  }
+
+  /** Create JSON object for HelloGreeting. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (message != null) {
+      output["message"] = message;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of HelloGreeting */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+
+class HelloGreetingCollection {
+
+  /** Greeting that stores a message. */
+  core.List<HelloGreeting> items;
+
+  /** Create new HelloGreetingCollection from JSON data. */
+  HelloGreetingCollection.fromJson(core.Map json) {
+    if (json.containsKey("items")) {
+      items = [];
+      json["items"].forEach((item) {
+        items.add(new HelloGreeting.fromJson(item));
+      });
+    }
+  }
+
+  /** Create JSON object for HelloGreetingCollection. */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (items != null) {
+      output["items"] = new core.List();
+      items.forEach((item) {
+        output["items"].add(item.toJson());
+      });
+    }
+
+    return output;
+  }
+
+  /** Return String representation of HelloGreetingCollection */
+  core.String toString() => JSON.encode(this.toJson());
+}
+
+=== end: ./google_api_helloworld_v1/lib/src/common/schemas.dart
+=== begin: ./google_api_helloworld_v1/lib/src/console/consoleclient.dart
+part of helloworld_v1_api_console;
+
+/**
+ * Base class for all Console API clients, offering generic methods for HTTP Requests to the API
+ */
+abstract class ConsoleClient extends Client {
+
+  oauth2.OAuth2Console _auth;
+
+  ConsoleClient([oauth2.OAuth2Console this._auth]) : super();
+
+  /**
+   * Sends a HTTPRequest using [method] (usually GET or POST) to [requestUrl] using the specified [urlParams] and [queryParams]. Optionally include a [body] in the request.
+   */
+  async.Future request(core.String requestUrl, core.String method, {core.String body, core.String contentType:"application/json", core.Map urlParams, core.Map queryParams}) {
+    var completer = new async.Completer();
+
+    if (urlParams == null) urlParams = {};
+    if (queryParams == null) queryParams = {};
+
+    params.forEach((key, param) {
+      if (param != null && queryParams[key] == null) {
+        queryParams[key] = param;
+      }
+    });
+
+    var path;
+    if (requestUrl.substring(0,1) == "/") {
+      path ="$rootUrl${requestUrl.substring(1)}";
+    } else {
+      path ="$rootUrl$servicePath$requestUrl";
+    }
+
+    var url = new oauth2.UrlPattern(path).generate(urlParams, queryParams);
+
+    async.Future clientCallback(http.Client client) {
+      // A dummy completer is used for the 'withClient' method, this should
+      // go away after refactoring withClient in oauth2 package
+      var clientDummyCompleter = new async.Completer();
+
+      if (method.toLowerCase() == "get") {
+        client.get(url).then((http.Response response) {
+          var data = JSON.decode(response.body);
+          completer.complete(data);
+          clientDummyCompleter.complete(null);
+        }, onError: (async.AsyncError error) {
+          completer.completeError(new APIRequestException("onError: $error"));
+        });
+
+      } else if (method.toLowerCase() == "post" || method.toLowerCase() == "put" || method.toLowerCase() == "patch") {
+        // Workaround since http.Client does not properly support post for google apis
+        var postHttpClient = new io.HttpClient();
+
+        // On connection request set the content type and key if available.
+        postHttpClient.openUrl(method, uri.Uri.parse(url)).then((io.HttpClientRequest request) {
+          request.headers.set(io.HttpHeaders.CONTENT_TYPE, contentType);
+          if (makeAuthRequests && _auth != null) {
+            request.headers.set(io.HttpHeaders.AUTHORIZATION, "Bearer ${_auth.credentials.accessToken}");
+          }
+
+          request.write(body);
+          return request.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("POST HttpClientRequest error: $error")))
+        .then((io.HttpClientResponse response) {
+          // On connection response read in data from stream, on close parse as json and return.
+          core.StringBuffer onResponseBody = new core.StringBuffer();
+          response.transform(new io.StringDecoder()).listen((core.String data) => onResponseBody.write(data),
+              onError: (error) => completer.completeError(new APIRequestException("POST stream error: $error")),
+              onDone: () {
+                var data = JSON.decode(onResponseBody.toString());
+                completer.complete(data);
+                clientDummyCompleter.complete(null);
+                postHttpClient.close();
+              });
+        }, onError: (error) => completer.completeError(new APIRequestException("POST HttpClientResponse error: $error")));
+      } else if (method.toLowerCase() == "delete") {
+        var deleteHttpClient = new io.HttpClient();
+
+        deleteHttpClient.openUrl(method, uri.Uri.parse(url)).then((io.HttpClientRequest request) {
+          // On connection request set the content type and key if available.
+          request.headers.set(io.HttpHeaders.CONTENT_TYPE, contentType);
+          if (makeAuthRequests && _auth != null) {
+            request.headers.set(io.HttpHeaders.AUTHORIZATION, "Bearer ${_auth.credentials.accessToken}");
+          }
+
+          return request.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("DELETE HttpClientRequest error: $error")))
+        .then((io.HttpClientResponse response) {
+          // On connection response read in data from stream, on close parse as json and return.
+          // TODO: response.statusCode should be checked for errors.
+          completer.complete({});
+          clientDummyCompleter.complete(null);
+          deleteHttpClient.close();
+        }, onError: (error) => completer.completeError(new APIRequestException("DELETE HttpClientResponse error: $error")));
+      } else {
+        // Method has not been implemented yet error
+        completer.completeError(new APIRequestException("$method Not implemented"));
+      }
+
+      return clientDummyCompleter.future;
+    };
+
+    if (makeAuthRequests && _auth != null) {
+      // Client wants an authenticated request.
+      _auth.withClient(clientCallback); // Should not care about the future here.
+    } else {
+      // Client wants a non authenticated request.
+      clientCallback(new http.Client()); // Should not care about the future here.
+    }
+
+    return completer.future;
+  }
+}
+
+=== end: ./google_api_helloworld_v1/lib/src/console/consoleclient.dart
+=== begin: ./google_api_helloworld_v1/lib/src/console/helloworld.dart
+part of helloworld_v1_api_console;
+
+/** Client to access the helloworld v1 API */
+/** helloworld API v1. */
+class EccoDomaniIeriApi extends ConsoleClient {
+
+  GreetingsResource _greetings;
+  GreetingsResource get greetings => _greetings;
+
+
+  /** OAuth2 scope: View your email address */
+  static const core.String USERINFO_EMAIL_SCOPE = "https://www.googleapis.com/auth/userinfo.email";
+
+
+  /**
+   * Data format for the response.
+   * Added as queryParameter for each request.
+   */
+  core.String get alt => params["alt"];
+  set alt(core.String value) => params["alt"] = value;
+
+  /**
+   * Selector specifying which fields to include in a partial response.
+   * Added as queryParameter for each request.
+   */
+  core.String get fields => params["fields"];
+  set fields(core.String value) => params["fields"] = value;
+
+  /**
+   * API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+   * Added as queryParameter for each request.
+   */
+  core.String get key => params["key"];
+  set key(core.String value) => params["key"] = value;
+
+  /**
+   * OAuth 2.0 token for the current user.
+   * Added as queryParameter for each request.
+   */
+  core.String get oauth_token => params["oauth_token"];
+  set oauth_token(core.String value) => params["oauth_token"] = value;
+
+  /**
+   * Returns response with indentations and line breaks.
+   * Added as queryParameter for each request.
+   */
+  core.bool get prettyPrint => params["prettyPrint"];
+  set prettyPrint(core.bool value) => params["prettyPrint"] = value;
+
+  /**
+   * Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.
+   * Added as queryParameter for each request.
+   */
+  core.String get quotaUser => params["quotaUser"];
+  set quotaUser(core.String value) => params["quotaUser"] = value;
+
+  /**
+   * IP address of the site where the request originates. Use this if you want to enforce per-user limits.
+   * Added as queryParameter for each request.
+   */
+  core.String get userIp => params["userIp"];
+  set userIp(core.String value) => params["userIp"] = value;
+
+  EccoDomaniIeriApi([oauth2.OAuth2Console auth]) : super(auth) {
+    servicePath = "helloworld/v1/";
+    rootUrl = "https://peer-pontus.appspot.com/_ah/api/";
+    _greetings = new GreetingsResource(this);
+  }
+}
+=== end: ./google_api_helloworld_v1/lib/src/console/helloworld.dart
+=== begin: ./google_api_helloworld_v1/pubspec.yaml
+name: google_api_helloworld_v1
+description: >
+  helloworld API v1.
+version: 0.2.snapshot
+author: Sam McCall <sammccall@google.com>
+dependencies:
+  js: '>=0.0.18'
+  google_oauth2_client: '>=0.2.9'
+=== end: ./google_api_helloworld_v1/pubspec.yaml

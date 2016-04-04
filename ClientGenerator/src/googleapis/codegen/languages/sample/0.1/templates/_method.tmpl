@@ -1,0 +1,52 @@
+{% comment %}
+  Renders a method body.
+  [method] the method to render.
+{% endcomment %}
+
+// Method {{ method.contextCodeType }}
+/**{% filter block_comment %}
+ * {% if method.description %}{{ method.description }}{% endif %}
+ * {% endfilter %}
+ * {% if method.requestType %}
+ * [content] the {{ method.requestType.className }}{% endif %}{% for param in method.requiredParameters %}
+ * {% call_template _parameter_doc parameter=param %}{% endfor %}{% for param in method.optionalParameters %}
+ * {% call_template _parameter_doc parameter=param %}{% endfor %}
+ */
+{% filter noblanklines %}
+Future{% if method.responseType.className %}<{{ method.responseType.className }}>{% endif %} {{ method.codeName }}({% parameter_list %}
+    {% for p in method.requiredParameters %}
+      {% parameter %}
+        {% call_template _parameter_type param=p %} {{ p.parameterName }}
+      {% end_parameter %}
+    {% endfor %}
+    {% if method.requestType %}
+      {% parameter %}
+        {{ method.requestType.className }} content;
+      {% end_parameter %}
+    {% endif %}
+    {% for p in method.optionalParameters %}
+      {% parameter %}
+        {% if forloop.first %}{% templatetag openbrace %}{% endif %}
+        {% call_template _parameter_type param=p %} {{ p.parameterName }}
+        {% if forloop.last %}{% templatetag closebrace %}{% endif %}
+        {% end_parameter %}
+    {% endfor %}
+  {% end_parameter_list %}) {
+
+  {% for p in method.pathParameters %}
+  pathParams[{% literal p.wireName %}] = {{ p.parameterName }};
+  {% endfor %}
+
+  {% for p in method.queryParameters %}
+  // do something different with queryParameters
+  {% endfor %}
+
+  string path = {% literal method.path %};
+  string url = new UrlPattern(_service.rootUrl + "/" + path)
+      .expand(pathParams, queryParams);
+
+  request = new http.Request($url, {% literal method.httpMethod %})
+  // authentication might wrap the request here.
+  return request
+}
+{% endfilter %}

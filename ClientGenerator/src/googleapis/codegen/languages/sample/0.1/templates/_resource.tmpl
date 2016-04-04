@@ -1,0 +1,45 @@
+{% comment %}
+  Renders a top level resource class.
+{% endcomment %}
+{% collapsenewlines %}
+
+// Resource {{ resource.contextCodeType }}
+class {{ resource.className }} extends SomeRootClass {
+  {{ api.className }} service_handle;
+
+  // Loop over all resources here to declare variables
+  {% for r in resource.resources %}final {{ r.className }} {{ r.memberName }};
+  {% endfor %}
+
+  // Note that I just write this stuff with the indent I want
+  {% for r in resource.resources %},
+  {{ r.memberName }} = new {{ r.className }}(service_handle);
+  {% endfor %}
+
+{% indent %}
+// but here all the things are in an indent block because then I can control
+// how they are indenting better.
+{% for m in resource.methods %}
+{% indent %}{% call_template _method method=m %}{% endindent %}
+{% endfor %}}
+
+{% for m in resource.methods %}
+{% for param in m.parameters %}
+{% if param.enumType %}{% call_template _enum param=param %}{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% comment %}
+  We always end with a recursion down to sub.resources. In this sample we
+  put the subresources in the same class, so we want to indent their defs
+{% endcomment %}
+
+  // subresources
+{% for r in resource.resources %}
+{% indent %}{% call_template _resource resource=r %}{% endindent %}
+{% endfor %}
+
+{% endindent %}
+
+} // end of class definition
+{% endcollapsenewlines %}

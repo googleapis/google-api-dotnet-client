@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/_static/css/screen.css" />
+<style>
+.demo { margin-left: 176px; max-width: 1040px; padding-top: 14px; }
+</style>
+</head>
+<body class="docs main">
+<div class="demo">
+<h1 class="page-title">{{ title_path.split|join:"."|capfirst }}: {{ method.wireName }}</h1>
+<p>{{ m.description }}</p>
+<section id="request">
+<h2>Request</h2>
+<h3>HTTP Request</h3>
+<pre>{{ resource.httpMethod }} https://www.googleapis.com/{{ api.name }}/{{ api.version }}/{{ method.path }}</pre>
+<h3>Parameters</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if method.required_parameters %}
+    <tr id="required-parameters" class="alt">
+      <td colspan="3">
+        <b>Required Parameters</b>
+      </td>
+    </tr>
+    {% for p in method.required_parameters %}{% call_template _method_parameter_row param=p %}
+    {% endfor %}
+    {% endif %}
+    {% if method.optional_parameters %}
+    <tr id="optional-parameters" class="alt">
+      <td colspan="3">
+        <b>Optional Parameters</b>
+      </td>
+    </tr>
+    {% for p in method.optional_parameters %}{% call_template _method_parameter_row param=p %}
+    {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
+<h3>Request Body</h3>
+<p>{% if method.requestType %}{{ method.requestType.wireName }}{% else %}Do not supply a request body with this method.{% endif %}</p>
+</section>
+<section id="response">
+<h2>Response</h2>
+{% call_template _method_response method=method %}
+</section>
+</div>
+</body>
+</html>

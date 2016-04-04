@@ -1,0 +1,8 @@
+name: {{ api.owner|lower }}_api_{{ api.name }}_{{ api.version }}
+description: >{% indent %}
+{{ api.description }}{% endindent %}
+version: {{ features.releaseVersion }}.{{ api.revision }}
+author: Sam McCall <sammccall@google.com>
+dependencies:
+  js: '>=0.0.18'
+  google_oauth2_client: '>=0.2.9'

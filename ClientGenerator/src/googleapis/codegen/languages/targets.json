@@ -1,0 +1,85 @@
+{
+  "languages": {
+    "cpp": {
+      "displayName": "C++",
+      "description": "C++ libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        }
+      }
+    },
+    "csharp": {
+      "displayName": "CSharp",
+      "description": "CSharp libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        },
+        "legacy-for-dotnet-3.5": {
+          "path": "1.3.0-beta"
+        }
+      }
+    },
+    "dart": {
+      "displayName": "Dart",
+      "description": "Dart libraries for Google APIS.",
+      "variations": {
+        "default": {
+          "path": "0.2"
+        }
+      }
+    },
+    "gwt": {
+      "displayName": "GWT",
+      "description": "GWT libraries for Google APIS.",
+      "variations": {
+        "default": {
+          "path": "default"
+        },
+        "stable": {
+          "path": "0.4-alpha"
+        }
+      }
+    },
+    "java": {
+      "displayName": "Java",
+      "description": "Java libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        },
+        "stable": {
+          "path": "1.19.1"
+        }
+      }
+    },
+    "objc": {
+      "displayName": "Objective-C",
+      "description": "Objective-C libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "experimental"
+        }
+      }
+    },
+    "php": {
+      "displayName": "PHP",
+      "description": "PHP libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "default"
+        }
+      }
+    },
+    "python": {
+      "displayName": "Python",
+      "description": "Python libraries for Google APIs.",
+      "variations": {
+        "default": {
+          "path": "1.0"
+        }
+      }
+    }
+  }
+}

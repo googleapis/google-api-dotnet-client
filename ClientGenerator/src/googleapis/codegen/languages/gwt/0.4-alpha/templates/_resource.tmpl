@@ -1,0 +1,12 @@
+/**
+ * The {@link RequestContext} used to call methods on the "{{ resource.wireName }}" collection.
+ */
+@JsonRpcService
+public interface {{ resource.className }}Context extends RequestContext {
+{% for method in resource.methods %}{% indent %}
+{% call_template _method method=method %}{% endindent %}{% endfor %}
+}
+{% if resource.resources %}public interface {{ resource.className }} {
+{% for r in resource.resources %}{% indent %}
+{% call_template _resource resource=r %}{% endindent %}{% endfor %}
+}{% endif %}

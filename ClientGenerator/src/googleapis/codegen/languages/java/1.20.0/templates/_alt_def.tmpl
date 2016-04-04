@@ -1,0 +1,16 @@
+{% comment %}
+This template is used to determine when alt should be set to "json" in a method.
+set("alt", "json") is generated if any of the cases are true:
+* If method parameter alt!=json.
+* If method does not have an alt parameter and global parameter alt!=json.
+* If method does not have an alt parameter and global parameters does not have an alt parameter.
+{% endcomment %}
+{% if method.alt.default %}
+  {% ifnotequal method.alt.default "json" %}
+    set("alt", "json");
+  {% endifnotequal %}
+{% else %}
+  {% ifnotequal api.alt.default "json" %}
+    set("alt", "json");
+  {% endifnotequal %}
+{% endif %}

@@ -1,0 +1,13 @@
+{% comment %}
+  Renders a resource class.
+  [resource] the resource to render.
+{% endcomment %}
+class {{ resource.className }} extends Resource {
+
+  {{ resource.className }}(Client client) : super(client) {
+  }
+{% for m in resource.methods %}
+{% indent %}{% call_template _method method=m %}{% endindent %}{% endfor %}
+}
+{% for r in resource.resources %}
+{% call_template _resource resource=r %}{% endfor %}
