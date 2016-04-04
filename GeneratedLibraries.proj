@@ -123,6 +123,12 @@
     <RemoveDir Directories="DiscoveryJson;Src\Generated;NuPkgs\Generated" />
   </Target>
 
+  <Target Name="CleanGenerated">
+    <RemoveDir Directories="Src\Generated;NuPkgs\Generated" />
+  </Target>
+
+  <Target Name="Regenerate" DependsOnTargets="CleanGenerated;Generate" />
+
   <!-- Some common bundled targets. -->
   <Target Name="GenerateFromScratch" DependsOnTargets="Reset;Generate" />
   <Target Name="PackageFromScratch" DependsOnTargets="Reset;Package" />
