@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-search/'>DoubleClick Search API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160311 (435)
+ *      <tr><th>API Rev<td>20160323 (447)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>
@@ -1241,7 +1241,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
         public virtual System.Nullable<long> AgencyId { get; set; } 
 
-        /// <summary>This field is ignored.</summary>
+        /// <summary>Available to advertisers only after contacting DoubleClick Search customer support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionModel")]
         public virtual string AttributionModel { get; set; } 
 
@@ -1272,7 +1272,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversionTimestamp")]
         public virtual System.Nullable<ulong> ConversionTimestamp { get; set; } 
 
-        /// <summary>This field is ignored.</summary>
+        /// <summary>Available to advertisers only after contacting DoubleClick Search customer support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countMillis")]
         public virtual System.Nullable<long> CountMillis { get; set; } 
 

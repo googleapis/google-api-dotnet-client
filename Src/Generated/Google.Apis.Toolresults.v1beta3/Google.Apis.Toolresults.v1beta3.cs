@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160321 (445)
+ *      <tr><th>API Rev<td>20160329 (453)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2330,8 +2330,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// The maximum size of an execution message is 1 MiB.
     ///
-    /// An Execution can be updated until its state is set to COMPLETE at which point it becomes immutable. Next tag:
-    /// 12</summary>
+    /// An Execution can be updated until its state is set to COMPLETE at which point it becomes immutable.</summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the Execution status transitioned to COMPLETE.
@@ -2435,7 +2434,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// (descending). It can be used to group all the Executions of a continuous build.
     ///
     /// Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that
-    /// multiple histories will need to be used in order to order Executions per branch. Next tag: 7</summary>
+    /// multiple histories will need to be used in order to order Executions per branch.</summary>
     public class History : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A short human-readable (plain text) name to display in the UI. Maximum of 100 characters.
@@ -2462,9 +2461,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An image, with a link to the main image and a thumbnail.
-    ///
-    /// Next tag: 6</summary>
+    /// <summary>An image, with a link to the main image and a thumbnail.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An error explaining why the thumbnail could not be rendered.</summary>
@@ -2511,8 +2508,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A native process crashed on the device, producing a tombstone. It is unclear whether the crash was
         /// related to the app under test.
         ///
-        /// For example, OpenGL crashed, but it is unclear if the app is responsible. TODO(yinfu): Remove after all
-        /// reference from TestService are deleted.</summary>
+        /// For example, OpenGL crashed, but it is unclear if the app is responsible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeCrash")]
         public virtual System.Nullable<bool> NativeCrash { get; set; } 
 
@@ -2520,7 +2516,6 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Next tag: 3</summary>
     public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Executions.
@@ -2560,9 +2555,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A response containing the thumbnails in a step.
-    ///
-    /// Next tag: 3</summary>
+    /// <summary>A response containing the thumbnails in a step.</summary>
     public class ListStepThumbnailsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A continuation token to resume the query at the next item.
@@ -2704,6 +2697,19 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A stacktrace.</summary>
+    public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The stack trace message.
+        ///
+        /// Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exception")]
+        public virtual string Exception { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be:
@@ -2779,9 +2785,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the
     /// status of TestExecutionStep with id 100 to COMPLETE
     ///
-    /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.
-    ///
-    /// Next tag: 20</summary>
+    /// A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.</summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the step status was set to complete.
@@ -2994,6 +2998,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// Users can also add test results manually by using the test_result field. Next tag: 7</summary>
     public class TestExecutionStep : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Issues observed during the test execution.
+        ///
+        /// For example, if the mobile app under test crashed during the test, the error message and the stack trace
+        /// content can be recorded here to assist debugging.
+        ///
+        /// - In response: present if set by create or update - In create/update request: optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testIssues")]
+        public virtual System.Collections.Generic.IList<TestIssue> TestIssues { get; set; } 
+
         /// <summary>List of test suite overview contents. This could be parsed from xUnit XML log by server, or
         /// uploaded directly by user. This references should only be called when test suites are fully parsed or
         /// uploaded.
@@ -3023,12 +3036,27 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An abnormal event observed during the test execution.</summary>
+    public class TestIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A brief human-readable message describing the abnormal event.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        /// <summary>Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A summary of a test suite result either parsed from XML or uploaded directly by a user.
     ///
     /// Note: the API related comments are for StepService only. This message is also being used in ExecutionService in
-    /// a read only mode for the corresponding step.
-    ///
-    /// Next tag: 7</summary>
+    /// a read only mode for the corresponding step.</summary>
     public class TestSuiteOverview : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of test cases in error, typically set by the service by parsing the xml_source.
@@ -3089,9 +3117,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A single thumbnail, with its size and format.
-    ///
-    /// Next tag: 102</summary>
+    /// <summary>A single thumbnail, with its size and format.</summary>
     public class Thumbnail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The thumbnail's content type, i.e. "image/png".
@@ -3180,7 +3206,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     }    
 
     /// <summary>An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying
-    /// code. Next tag: 7</summary>
+    /// code.</summary>
     public class ToolExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full tokenized command line including the program name (equivalent to argv in a C program).

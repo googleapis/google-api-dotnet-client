@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160222 (417)
+ *      <tr><th>API Rev<td>20160321 (445)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -3981,8 +3981,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 
 
-        /// <summary>The database engine type and version. Can be MYSQL_5_5 or MYSQL_5_6. Defaults to MYSQL_5_6. The
-        /// databaseVersion can not be changed after instance creation.</summary>
+        /// <summary>The database engine type and version. The databaseVersion can not be changed after instance
+        /// creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7. Defaults to MYSQL_5_6. MYSQL_5_7 is applicable only to
+        /// Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; } 
 
@@ -4197,7 +4198,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedStringValues")]
         public virtual System.Collections.Generic.IList<string> AllowedStringValues { get; set; } 
 
-        /// <summary>The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or both.</summary>
+        /// <summary>The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or MYSQL_5_7. MYSQL_5_7 is
+        /// applicable only to Second Generation instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliesTo")]
         public virtual System.Collections.Generic.IList<string> AppliesTo { get; set; } 
 

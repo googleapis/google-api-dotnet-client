@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Taskqueue.v1beta1</id>
-        <version>1.11.1.0</version>
+        <version>1.12.0.0</version>
         <title>Google.Apis.Taskqueue.v1beta1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -14,7 +14,7 @@
           Google APIs Client Library for working with Taskqueue v1beta1.
           Supported Platforms:
 
-          - .NET Framework 4.5
+          - .NET Framework 4 and 4.5
 
           - Windows Store apps
 
@@ -30,15 +30,30 @@
         </description>
         <tags>Google</tags>
         <dependencies>
-            <group>
+            <!--
+              After v1.10.0 of Google.Apis, we
+              trimmed the list of supported target frameworks. For projects
+              still targeting e.g. .NET 4.0 we add a reference to an older
+              version of Google.Apis.
+            -->
+            <group targetFramework="portable-net45+netcore45+wpa81+wp8">
                 <dependency id="Google.Apis" version="1.11.1" />
                 <dependency id="Google.Apis.Auth" version="1.11.1" />
+            </group>
+            <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
+                <!-- Use [version] to require exact match. -->
+                <dependency id="Google.Apis" version="[1.10.0]" />
+                <dependency id="Google.Apis.Auth" version="[1.10.0]" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.dll" />
-        <file src="bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.pdb" />
-        <file src="bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.xml" />
+
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Taskqueue.v1beta1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Taskqueue.v1beta1.xml" />
     </files>
 </package>

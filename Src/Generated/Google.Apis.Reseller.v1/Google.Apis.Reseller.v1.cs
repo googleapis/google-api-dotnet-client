@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160229 (424)
+ *      <tr><th>API Rev<td>20160329 (453)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -1460,6 +1460,11 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for the ChangePlan rpc request.</summary>
     public class ChangePlanRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>External name of the deal code applicable for the subscription. This field is optional. If missing,
+        /// the deal price plan won't be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
+        public virtual string DealCode { get; set; } 
+
         /// <summary>Identifies the resource as a subscription change plan request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -1578,6 +1583,11 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
+        /// <summary>External name of the deal, if this subscription was provisioned under one. Otherwise this field
+        /// will be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
+        public virtual string DealCode { get; set; } 
+
         /// <summary>Identifies the resource as a Subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -1614,13 +1624,14 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
         public virtual string SubscriptionId { get; set; } 
 
-        /// <summary>field listing all current reasons the subscription is suspended. It is possible for a subscription
-        /// to have multiple suspension reasons. A subscription's status is SUSPENDED until all pending suspensions are
-        /// removed. Possible options include: - PENDING_TOS_ACCEPTANCE — The customer has not logged in and accepted
-        /// the Google Apps Resold Terms of Services. - RENEWAL_WITH_TYPE_CANCEL — The customer's commitment ended and
-        /// their service was cancelled at the end of their term. - RESELLER_INITIATED — A manual suspension invoked by
-        /// a Reseller. - TRIAL_ENDED — The customer's trial expired without a plan selected. - OTHER — The customer is
-        /// suspended for an internal Google reason (e.g. abuse or otherwise).</summary>
+        /// <summary>Read-only field containing an enumerable of all the current suspension reasons for a subscription.
+        /// It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's
+        /// STATUS is SUSPENDED until all pending suspensions are removed. Possible options include: -
+        /// PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the Google Apps Resold Terms of
+        /// Services. - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at
+        /// the end of their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. - TRIAL_ENDED - The
+        /// customer's trial expired without a plan selected. - OTHER - The customer is suspended for an internal Google
+        /// reason (e.g. abuse or otherwise).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; } 
 

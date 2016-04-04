@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/VQ3ImqJo4MGhKWHEWlCOs30sLeY\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/P9b4dbHBJNvklJYWy1Z1rmeMosc\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20160317",
+ "revision": "20160328",
  "title": "Compute Engine API",
  "description": "API for the Google Compute Engine service.",
  "ownerDomain": "google.com",
@@ -833,6 +833,10 @@
       "",
       ""
      ]
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services."
     },
     "selfLink": {
      "type": "string",

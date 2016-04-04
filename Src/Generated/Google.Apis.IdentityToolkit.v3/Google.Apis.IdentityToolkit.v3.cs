@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160304 (428)
+ *      <tr><th>API Rev<td>20160324 (448)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1438,9 +1438,17 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changeEmailTemplate")]
         public virtual EmailTemplate ChangeEmailTemplate { get; set; } 
 
+        /// <summary>Whether anonymous user is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAnonymousUser")]
+        public virtual System.Nullable<bool> EnableAnonymousUser { get; set; } 
+
         /// <summary>OAuth2 provider configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual System.Collections.Generic.IList<IdpConfig> IdpConfig { get; set; } 
+
+        /// <summary>Legacy reset password email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyResetPasswordTemplate")]
+        public virtual EmailTemplate LegacyResetPasswordTemplate { get; set; } 
 
         /// <summary>Project ID of the relying party.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -1589,9 +1597,17 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
         public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
 
+        /// <summary>Whether to enable anonymous user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAnonymousUser")]
+        public virtual System.Nullable<bool> EnableAnonymousUser { get; set; } 
+
         /// <summary>Oauth2 provider configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual System.Collections.Generic.IList<IdpConfig> IdpConfig { get; set; } 
+
+        /// <summary>Legacy reset password email template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyResetPasswordTemplate")]
+        public virtual EmailTemplate LegacyResetPasswordTemplate { get; set; } 
 
         /// <summary>Reset password email template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordTemplate")]
@@ -1847,6 +1863,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>OAuth2 provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; } 
+
+        /// <summary>OAuth2 client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

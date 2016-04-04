@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160320 (444)
+ *      <tr><th>API Rev<td>20160331 (455)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2586,12 +2586,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
         public virtual DatasetReference DatasetReference { get; set; } 
 
-        /// <summary>[Experimental] The default lifetime of all tables in the dataset, in milliseconds. The minimum
-        /// value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset
-        /// will have an expirationTime property set to the creation time plus the value in this property, and changing
-        /// the value will only affect new tables, not existing ones. When the expirationTime for a given table is
-        /// reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before
-        /// the table expires, or if you provide an explicit expirationTime when creating a table, that value takes
+        /// <summary>[Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is
+        /// 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will
+        /// have an expirationTime property set to the creation time plus the value in this property, and changing the
+        /// value will only affect new tables, not existing ones. When the expirationTime for a given table is reached,
+        /// that table will be deleted automatically. If a table's expirationTime is modified or removed before the
+        /// table expires, or if you provide an explicit expirationTime when creating a table, that value takes
         /// precedence over the default expiration time indicated by this property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTableExpirationMs")]
         public virtual System.Nullable<long> DefaultTableExpirationMs { get; set; } 
@@ -2945,6 +2945,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<ulong> TotalRows { get; set; } 
 
+    }    
+
+    public class IntervalPartitionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
+        public virtual System.Nullable<long> ExpirationMs { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class Job : Google.Apis.Requests.IDirectResponseSchema
@@ -3754,6 +3766,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; } 
 
+        /// <summary>[Experimental] List of partition configurations for this table. Currently only one configuration
+        /// can be specified and it can only be an interval partition with type daily.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionConfigurations")]
+        public virtual System.Collections.Generic.IList<TablePartitionConfiguration> PartitionConfigurations { get; set; } 
+
         /// <summary>[Optional] Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
@@ -3911,8 +3928,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Required] The field data type. Possible values include STRING, INTEGER, FLOAT, BOOLEAN, TIMESTAMP
-        /// or RECORD (where RECORD indicates that the field contains a nested schema).</summary>
+        /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN,
+        /// TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -3967,6 +3984,17 @@ namespace Google.Apis.Bigquery.v2.Data
             public virtual string Type { get; set; } 
 
         }
+    }    
+
+    /// <summary>[Required] A partition configuration. Only one type of partition should be configured.</summary>
+    public class TablePartitionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Pick one] Configures an interval partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual IntervalPartitionConfiguration Interval { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class TableReference : Google.Apis.Requests.IDirectResponseSchema

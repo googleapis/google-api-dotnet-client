@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160308 (432)
+ *      <tr><th>API Rev<td>20160328 (452)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -400,7 +400,8 @@ namespace Google.Apis.Vision.v1
 namespace Google.Apis.Vision.v1.Data
 {    
 
-    /// <summary>Request for performing Vision tasks over a user-provided image, with user-requested features.</summary>
+    /// <summary>Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested
+    /// features.</summary>
     public class AnnotateImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Requested features.</summary>
@@ -609,7 +610,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Set of detected entity features.</summary>
     public class EntityAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image region to which this entity belongs.</summary>
+        /// <summary>Image region to which this entity belongs. Not filled currently for LABEL_DETECTION
+        /// features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
@@ -735,9 +737,9 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The Feature indicates what type of image detection task to perform. Users describe the type of Vision
-    /// tasks to perform over images by using Features. Features encode the Vision vertical to operate on and the number
-    /// of top-scoring results to return.</summary>
+    /// <summary>The Feature indicates what type of image detection task to perform. Users describe the type of Google
+    /// Cloud Vision API tasks to perform over images by using Features. Features encode the Cloud Vision API vertical
+    /// to operate on and the number of top-scoring results to return.</summary>
     public class Feature : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of results of this type.</summary>
@@ -752,7 +754,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Client image to perform Vision tasks over.</summary>
+    /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Image content, represented as a stream of bytes.</summary>

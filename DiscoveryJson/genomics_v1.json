@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/CQJ4dPw4vpSssCLSlk9hwkD9j6I\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gtYK9w69GWo1KFQmTwdaLDN9s-8\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1",
  "name": "genomics",
  "version": "v1",
- "revision": "20160317",
+ "revision": "20160329",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
@@ -2519,7 +2519,7 @@
      "id": "genomics.variants.import",
      "path": "v1/variants:import",
      "httpMethod": "POST",
-     "description": "Creates variant data by asynchronously importing the provided information. For the definitions of variant sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) The variants for import will be merged with any existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call information from the new variant is added to the existing variant, and Variant info fields are merged as specified in InfoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
+     "description": "Creates variant data by asynchronously importing the provided information. For the definitions of variant sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) The variants for import will be merged with any existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call information from the new variant is added to the existing variant, and Variant info fields are merged as specified in infoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers are appended to the metadata already in a variant set.",
      "request": {
       "$ref": "ImportVariantsRequest"
      },
@@ -2650,7 +2650,7 @@
      "id": "genomics.variants.merge",
      "path": "v1/variants:merge",
      "httpMethod": "POST",
-     "description": "Merges the given variants with existing variants. For the definitions of variants and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call information from the new variant is added to the existing variant. Variant info fields are merged as specified in the InfoMergeConfig field of the MergeVariantsRequest.",
+     "description": "Merges the given variants with existing variants. For the definitions of variants and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics) Each variant will be merged with an existing variant that matches its reference sequence, start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call information from the new variant is added to the existing variant. Variant info fields are merged as specified in the infoMergeConfig field of the MergeVariantsRequest. Please exercise caution when using this method! It is easy to introduce mistakes in existing variants and difficult to back out of them. For example, suppose you were trying to merge a new variant with an existing one and both variants contain calls that belong to callsets with the same callset ID. // Existing variant - irrelevant fields trimmed for clarity { \"variantSetId\": \"10473108253681171589\", \"referenceName\": \"1\", \"start\": \"10582\", \"referenceBases\": \"G\", \"alternateBases\": [ \"A\" ], \"calls\": [ { \"callSetId\": \"10473108253681171589-0\", \"callSetName\": \"EXISTINGCALLSET\", \"genotype\": [ 0, 1 ], } ] } // New variant with conflicting call information { \"variantSetId\": \"10473108253681171589\", \"referenceName\": \"1\", \"start\": \"10582\", \"referenceBases\": \"G\", \"alternateBases\": [ \"A\" ], \"calls\": [ { \"callSetId\": \"10473108253681171589-0\", \"callSetName\": \"NEWCALLSET\", \"genotype\": [ 1, 1 ], } ] } The resulting merged variant would overwrite the existing calls with those from the new variant: { \"variantSetId\": \"10473108253681171589\", \"referenceName\": \"1\", \"start\": \"10582\", \"referenceBases\": \"G\", \"alternateBases\": [ \"A\" ], \"calls\": [ { \"callSetId\": \"10473108253681171589-0\", \"callSetName\": \"NEWCALLSET\", \"genotype\": [ 1, 1 ], } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the case.",
      "request": {
       "$ref": "MergeVariantsRequest"
      },

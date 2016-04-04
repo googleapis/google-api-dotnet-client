@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>Google Cloud Service Registry API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160225 (420)
+ *      <tr><th>API Rev<td>20160401 (456)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>
  *              https://developers.google.com/cloud-serviceregistry/</a>
@@ -522,10 +522,10 @@ namespace Google.Apis.ServiceRegistry.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -929,10 +929,10 @@ namespace Google.Apis.ServiceRegistry.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -1090,8 +1090,8 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The visibility of this endpoint. This must be a list of fully-qualified URLs to Compute Engine
-        /// networks.</summary>
+        /// <summary>The DNS Integration configuration for this endpoint. This must be a list of fully-qualified URLs to
+        /// Compute Engine networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual EndpointEndpointVisibility Visibility { get; set; } 
 
@@ -1175,7 +1175,7 @@ namespace Google.Apis.ServiceRegistry.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] Type of the resource. Always compute#operation for operation resources.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#operation for Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

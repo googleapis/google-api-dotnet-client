@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Vhnx4zZ8SuEciaFfePvjr4AMNX0\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Oi0KnpKPJva7LMe3W0nV9ypaEjo\"",
  "discoveryVersion": "v1",
  "id": "identitytoolkit:v3",
  "name": "identitytoolkit",
  "canonicalName": "Identity Toolkit",
  "version": "v3",
- "revision": "20160304",
+ "revision": "20160324",
  "title": "Google Identity Toolkit API",
  "description": "Help the third party sites to implement federated login.",
  "ownerDomain": "google.com",
@@ -378,12 +378,20 @@
      "$ref": "EmailTemplate",
      "description": "Change email template."
     },
+    "enableAnonymousUser": {
+     "type": "boolean",
+     "description": "Whether anonymous user is enabled."
+    },
     "idpConfig": {
      "type": "array",
      "description": "OAuth2 provider configuration.",
      "items": {
       "$ref": "IdpConfig"
      }
+    },
+    "legacyResetPasswordTemplate": {
+     "$ref": "EmailTemplate",
+     "description": "Legacy reset password email template."
     },
     "projectId": {
      "type": "string",
@@ -550,12 +558,20 @@
      "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
      "format": "int64"
     },
+    "enableAnonymousUser": {
+     "type": "boolean",
+     "description": "Whether to enable anonymous user."
+    },
     "idpConfig": {
      "type": "array",
      "description": "Oauth2 provider configuration.",
      "items": {
       "$ref": "IdpConfig"
      }
+    },
+    "legacyResetPasswordTemplate": {
+     "$ref": "EmailTemplate",
+     "description": "Legacy reset password email template."
     },
     "resetPasswordTemplate": {
      "$ref": "EmailTemplate",
@@ -818,6 +834,10 @@
     "provider": {
      "type": "string",
      "description": "OAuth2 provider."
+    },
+    "secret": {
+     "type": "string",
+     "description": "OAuth2 client secret."
     }
    }
   },

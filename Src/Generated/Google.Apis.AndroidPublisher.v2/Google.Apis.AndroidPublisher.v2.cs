@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160221 (416)
+ *      <tr><th>API Rev<td>20160324 (448)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6720,6 +6720,21 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; } 
 
+        /// <summary>The cancel reason of the subscription, if the subscription is not auto renewing. Possible values
+        /// are: - User cancelled the subscription - Subscription was cancelled by the system, for example because of a
+        /// billing problem</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
+        public virtual System.Nullable<int> CancelReason { get; set; } 
+
+        /// <summary>ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was
+        /// granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; } 
+
+        /// <summary>A developer-specified string that contains supplemental information about an order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
+        public virtual string DeveloperPayload { get; set; } 
+
         /// <summary>Time at which the subscription will expire, in milliseconds since Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
         public virtual System.Nullable<long> ExpiryTimeMillis { get; set; } 
@@ -6727,6 +6742,22 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The payment state of the subscription. Possible values are: - Payment pending - Payment
+        /// received</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
+        public virtual System.Nullable<int> PaymentState { get; set; } 
+
+        /// <summary>Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000
+        /// micro-units equal one unit of the currency. For example, if the subscription price is €1.99,
+        /// price_amount_micros is 1990000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceAmountMicros")]
+        public virtual System.Nullable<long> PriceAmountMicros { get; set; } 
+
+        /// <summary>ISO 4217 currency code for the subscription price. For example, if the price is specified in
+        /// British pounds sterling, price_currency_code is "GBP".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
+        public virtual string PriceCurrencyCode { get; set; } 
 
         /// <summary>Time at which the subscription was granted, in milliseconds since Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]

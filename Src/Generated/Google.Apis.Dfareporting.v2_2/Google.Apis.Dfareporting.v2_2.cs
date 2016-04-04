@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/reporting/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v2.2
- *      <tr><th>API Rev<td>20160128 (392)
+ *      <tr><th>API Rev<td>20160323 (447)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/reporting/'>
  *              https://developers.google.com/doubleclick-advertisers/reporting/</a>
@@ -15719,14 +15719,14 @@ namespace Google.Apis.Dfareporting.v2_2
 
             /// <summary>Select only placements that are associated with these compatibilities. WEB and WEB_INTERSTITIAL
             /// refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively.
-            /// APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO refers to rendering in in-
+            /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-
             /// stream video ads developed with the VAST standard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("compatibilities", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CompatibilitiesEnum> Compatibilities { get; set; }
 
             /// <summary>Select only placements that are associated with these compatibilities. WEB and WEB_INTERSTITIAL
             /// refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively.
-            /// APP and APP_INTERSTITIAL are for rendering in mobile apps.IN_STREAM_VIDEO refers to rendering in in-
+            /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in in-
             /// stream video ads developed with the VAST standard.</summary>
             public enum CompatibilitiesEnum
             {
@@ -25969,8 +25969,8 @@ namespace Google.Apis.Dfareporting.v2_2.Data
 
         /// <summary>Placement compatibility. WEB and WEB_INTERSTITIAL refer to rendering either on desktop or on mobile
         /// devices for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile
-        /// apps.IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This field
-        /// is required on insertion.</summary>
+        /// apps. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. This
+        /// field is required on insertion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
         public virtual string Compatibility { get; set; } 
 

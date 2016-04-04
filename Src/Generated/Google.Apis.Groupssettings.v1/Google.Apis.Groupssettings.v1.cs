@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>Groups Settings API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20140428 (0)
+ *      <tr><th>API Rev<td>20160323 (447)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>
  *              https://developers.google.com/google-apps/groups-settings/get_started</a>
@@ -541,13 +541,18 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spamModerationLevel")]
         public virtual string SpamModerationLevel { get; set; } 
 
-        /// <summary>Permission to contact owner of the group via web UI. Possbile values are: ANYONE_CAN_CONTACT
+        /// <summary>Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD ALL_MEMBERS_CAN_ADD
+        /// NONE_CAN_ADD</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoCanAdd")]
+        public virtual string WhoCanAdd { get; set; } 
+
+        /// <summary>Permission to contact owner of the group via web UI. Possible values are: ANYONE_CAN_CONTACT
         /// ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT ALL_MANAGERS_CAN_CONTACT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanContactOwner")]
         public virtual string WhoCanContactOwner { get; set; } 
 
-        /// <summary>Permissions to invite members. Possbile values are: ALL_MEMBERS_CAN_INVITE
-        /// ALL_MANAGERS_CAN_INVITE</summary>
+        /// <summary>Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE
+        /// NONE_CAN_INVITE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanInvite")]
         public virtual string WhoCanInvite { get; set; } 
 
@@ -556,8 +561,8 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanJoin")]
         public virtual string WhoCanJoin { get; set; } 
 
-        /// <summary>Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-        /// ALL_MEMBERS_CAN_LEAVE</summary>
+        /// <summary>Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE
+        /// NONE_CAN_LEAVE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanLeaveGroup")]
         public virtual string WhoCanLeaveGroup { get; set; } 
 
@@ -566,12 +571,12 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanPostMessage")]
         public virtual string WhoCanPostMessage { get; set; } 
 
-        /// <summary>Permissions to view group. Possbile values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW
+        /// <summary>Permissions to view group. Possible values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW
         /// ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanViewGroup")]
         public virtual string WhoCanViewGroup { get; set; } 
 
-        /// <summary>Permissions to view membership. Possbile values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW
+        /// <summary>Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW
         /// ALL_MANAGERS_CAN_VIEW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanViewMembership")]
         public virtual string WhoCanViewMembership { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160317 (441)
+ *      <tr><th>API Rev<td>20160329 (453)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -3078,7 +3078,7 @@ namespace Google.Apis.Genomics.v1
         /// merged with any existing variant that matches its reference sequence, start, end, reference bases, and
         /// alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call
         /// information from the new variant is added to the existing variant, and Variant info fields are merged as
-        /// specified in InfoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be
+        /// specified in infoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be
         /// moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers
         /// are appended to the metadata already in a variant set.</summary>
         /// <param name="body">The body of the request.</param>
@@ -3093,7 +3093,7 @@ namespace Google.Apis.Genomics.v1
         /// merged with any existing variant that matches its reference sequence, start, end, reference bases, and
         /// alternative bases. If no such variant exists, a new one will be created. When variants are merged, the call
         /// information from the new variant is added to the existing variant, and Variant info fields are merged as
-        /// specified in InfoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be
+        /// specified in infoMergeConfig. As a special case, for single-sample VCF files, QUAL and FILTER fields will be
         /// moved to the call level; these are sometimes interpreted in a call-specific context. Imported VCF headers
         /// are appended to the metadata already in a variant set.</summary>
         public class ImportRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Operation>
@@ -3146,8 +3146,21 @@ namespace Google.Apis.Genomics.v1
         /// google-genomics) Each variant will be merged with an existing variant that matches its reference sequence,
         /// start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
         /// When variants are merged, the call information from the new variant is added to the existing variant.
-        /// Variant info fields are merged as specified in the InfoMergeConfig field of the
-        /// MergeVariantsRequest.</summary>
+        /// Variant info fields are merged as specified in the infoMergeConfig field of the MergeVariantsRequest. Please
+        /// exercise caution when using this method! It is easy to introduce mistakes in existing variants and difficult
+        /// to back out of them. For example, suppose you were trying to merge a new variant with an existing one and
+        /// both variants contain calls that belong to callsets with the same callset ID. // Existing variant -
+        /// irrelevant fields trimmed for clarity { "variantSetId": "10473108253681171589", "referenceName": "1",
+        /// "start": "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
+        /// "10473108253681171589-0", "callSetName": "EXISTINGCALLSET", "genotype": [ 0, 1 ], } ] } // New variant with
+        /// conflicting call information { "variantSetId": "10473108253681171589", "referenceName": "1", "start":
+        /// "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
+        /// "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1 ], } ] } The resulting merged
+        /// variant would overwrite the existing calls with those from the new variant: { "variantSetId":
+        /// "10473108253681171589", "referenceName": "1", "start": "10582", "referenceBases": "G", "alternateBases": [
+        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1
+        /// ], } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
+        /// case.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual MergeRequest Merge(Google.Apis.Genomics.v1.Data.MergeVariantsRequest body)
         {
@@ -3159,8 +3172,21 @@ namespace Google.Apis.Genomics.v1
         /// google-genomics) Each variant will be merged with an existing variant that matches its reference sequence,
         /// start, end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
         /// When variants are merged, the call information from the new variant is added to the existing variant.
-        /// Variant info fields are merged as specified in the InfoMergeConfig field of the
-        /// MergeVariantsRequest.</summary>
+        /// Variant info fields are merged as specified in the infoMergeConfig field of the MergeVariantsRequest. Please
+        /// exercise caution when using this method! It is easy to introduce mistakes in existing variants and difficult
+        /// to back out of them. For example, suppose you were trying to merge a new variant with an existing one and
+        /// both variants contain calls that belong to callsets with the same callset ID. // Existing variant -
+        /// irrelevant fields trimmed for clarity { "variantSetId": "10473108253681171589", "referenceName": "1",
+        /// "start": "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
+        /// "10473108253681171589-0", "callSetName": "EXISTINGCALLSET", "genotype": [ 0, 1 ], } ] } // New variant with
+        /// conflicting call information { "variantSetId": "10473108253681171589", "referenceName": "1", "start":
+        /// "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
+        /// "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1 ], } ] } The resulting merged
+        /// variant would overwrite the existing calls with those from the new variant: { "variantSetId":
+        /// "10473108253681171589", "referenceName": "1", "start": "10582", "referenceBases": "G", "alternateBases": [
+        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1
+        /// ], } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
+        /// case.</summary>
         public class MergeRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Merge request.</summary>

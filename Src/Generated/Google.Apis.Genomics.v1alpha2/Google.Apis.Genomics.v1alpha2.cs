@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160317 (441)
+ *      <tr><th>API Rev<td>20160329 (453)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -859,17 +859,17 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>Optional. Pipelines with names that match this prefix should be returned. If unspecified, all
-            /// pipelines in the project, up to `pageSize`, will be returned.</summary>
+            /// <summary>Pipelines with names that match this prefix should be returned. If unspecified, all pipelines
+            /// in the project, up to `pageSize`, will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NamePrefix { get; set; }
 
-            /// <summary>Optional. Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
+            /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Optional. Token to use to indicate where to start getting results. If unspecified, returns the
-            /// first page of results.</summary>
+            /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
+            /// of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1102,8 +1102,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     {
         /// <summary>Specifies whether or not to delete the disk when the pipeline completes. This field is applicable
         /// only for newly created disks. See https://cloud.google.com/compute/docs/reference/latest/instances#resource
-        /// for more details. Optional. At create time means that an auto delete disk may be used. At run time, means it
-        /// should be used. Cannot be true at run time if false at create time.</summary>
+        /// for more details. By default, `autoDelete` is `false`. `autoDelete` will be enabled if set to `true` at
+        /// create time or run time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
         public virtual System.Nullable<bool> AutoDelete { get; set; } 
 
@@ -1125,7 +1125,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
 
-        /// <summary>The size of the disk. This field is not applicable for local SSD.</summary>
+        /// <summary>The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; } 
 
@@ -1330,7 +1330,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// the `run` method, or a pipeline can be defined and run all at once with the `run` method.</summary>
     public class Pipeline : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. User-specified description.</summary>
+        /// <summary>User-specified description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1401,7 +1401,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
         public virtual string DefaultValue { get; set; } 
 
-        /// <summary>Optional. Human-readable description.</summary>
+        /// <summary>Human-readable description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1423,20 +1423,24 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>The system resources for the pipeline run.</summary>
     public class PipelineResources : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The size of the boot disk. Defaults to 10 (GB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; } 
+
         /// <summary>Disks to attach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
 
-        /// <summary>Required at create time; optional at run time. The minimum number of cores to use.</summary>
+        /// <summary>The minimum number of cores to use. Defaults to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumCpuCores")]
         public virtual System.Nullable<int> MinimumCpuCores { get; set; } 
 
-        /// <summary>Required at create time; optional at run time. The minimum amount of RAM to use.</summary>
+        /// <summary>The minimum amount of RAM to use. Defaults to 3.75 (GB)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumRamGb")]
         public virtual System.Nullable<double> MinimumRamGb { get; set; } 
 
-        /// <summary>Optional. At create time means that preemptible machines may be used for the run. At run time,
-        /// means they should be used. Cannot be true at run time if false at create time.</summary>
+        /// <summary>At create time means that preemptible machines may be used for the run. At run time, means they
+        /// should be used. Cannot be true at run time if false at create time. Defaults to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
 
@@ -1461,7 +1465,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>The pipeline run arguments.</summary>
     public class RunPipelineArgs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. For callers to use in filtering operations returned by this request.</summary>
+        /// <summary>Client-specified pipeline operation identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
 
@@ -1523,14 +1527,14 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>A Google Cloud Service Account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Email address of the service account. 'default' is a valid option and uses the compute
-        /// service account associated with the project.</summary>
+        /// <summary>Email address of the service account. Defaults to `default`, which uses the compute service account
+        /// associated with the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>Required. List of scopes to be made available for this service account. Should include *
-        /// https://www.googleapis.com/auth/genomics * https://www.googleapis.com/auth/compute *
-        /// https://www.googleapis.com/auth/devstorage.full_control</summary>
+        /// <summary>List of scopes to be enabled for this service account on the pipeline virtual machine. The
+        /// following scopes are automatically included: * https://www.googleapis.com/auth/genomics *
+        /// https://www.googleapis.com/auth/compute * https://www.googleapis.com/auth/devstorage.full_control</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
 

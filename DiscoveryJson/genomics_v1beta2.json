@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/DGXUmmLvAlye32gxa1cK0WlmJaw\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gx3VB88GA2SUp8vqJdEjYk7aw9o\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160317",
+ "revision": "20160328",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",
@@ -994,7 +994,7 @@
   "QueryRange": {
    "id": "QueryRange",
    "type": "object",
-   "description": "A 0-based half-open genomic coordinate range for search requests.",
+   "description": "A 0-based half-open genomic coordinate range for search requests. reference_id or reference_name must be set.",
    "properties": {
     "end": {
      "type": "string",
@@ -1003,11 +1003,11 @@
     },
     "referenceId": {
      "type": "string",
-     "description": "The ID of the reference to query. At most one of referenceId and referenceName should be specified."
+     "description": "The ID of the reference to query."
     },
     "referenceName": {
      "type": "string",
-     "description": "The name of the reference to query, within the reference set associated with this query. At most one of referenceId and referenceName pshould be specified."
+     "description": "The name of the reference to query, within the reference set associated with this query."
     },
     "start": {
      "type": "string",

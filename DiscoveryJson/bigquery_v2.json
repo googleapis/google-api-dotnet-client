@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/py_gs2kdDAZXXZnVJ6_TXMoDidE\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9g2xXBM9B-0Yx9Ljtgkffd2LOxM\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20160320",
+ "revision": "20160331",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -253,7 +253,7 @@
     },
     "defaultTableExpirationMs": {
      "type": "string",
-     "description": "[Experimental] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.",
+     "description": "[Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.",
      "format": "int64"
     },
     "description": {
@@ -574,6 +574,19 @@
      "type": "string",
      "description": "The total number of rows in the complete query result set, which can be more than the number of rows in this single page of results. Present only when the query completes successfully.",
      "format": "uint64"
+    }
+   }
+  },
+  "IntervalPartitionConfiguration": {
+   "id": "IntervalPartitionConfiguration",
+   "type": "object",
+   "properties": {
+    "expirationMs": {
+     "type": "string",
+     "format": "int64"
+    },
+    "type": {
+     "type": "string"
     }
    }
   },
@@ -1373,6 +1386,13 @@
      "description": "[Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.",
      "format": "uint64"
     },
+    "partitionConfigurations": {
+     "type": "array",
+     "description": "[Experimental] List of partition configurations for this table. Currently only one configuration can be specified and it can only be an interval partition with type daily.",
+     "items": {
+      "$ref": "TablePartitionConfiguration"
+     }
+    },
     "schema": {
      "$ref": "TableSchema",
      "description": "[Optional] Describes the schema of this table."
@@ -1536,7 +1556,7 @@
     },
     "type": {
      "type": "string",
-     "description": "[Required] The field data type. Possible values include STRING, INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema)."
+     "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN, TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema)."
     }
    }
   },
@@ -1591,6 +1611,17 @@
      "type": "integer",
      "description": "The total number of tables in the dataset.",
      "format": "int32"
+    }
+   }
+  },
+  "TablePartitionConfiguration": {
+   "id": "TablePartitionConfiguration",
+   "type": "object",
+   "description": "[Required] A partition configuration. Only one type of partition should be configured.",
+   "properties": {
+    "interval": {
+     "$ref": "IntervalPartitionConfiguration",
+     "description": "[Pick one] Configures an interval partition."
     }
    }
   },

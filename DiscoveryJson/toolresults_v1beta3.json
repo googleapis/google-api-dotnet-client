@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/NshAwWLPw3DFha3tLDlRcFEbBHA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/HC-xXq9hBNVWAxaWXBeaTXVuckg\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20160321",
+ "revision": "20160329",
  "title": "Cloud Tool Results API",
  "description": "Read and publish results from Cloud Test Lab.",
  "ownerDomain": "google.com",
@@ -113,7 +113,7 @@
   "Execution": {
    "id": "Execution",
    "type": "object",
-   "description": "An Execution represents a collection of Steps. For instance, it could represent: - a mobile test executed across a range of device configurations - a jenkins job with a build step followed by a test step\n\nThe maximum size of an execution message is 1 MiB.\n\nAn Execution can be updated until its state is set to COMPLETE at which point it becomes immutable. Next tag: 12",
+   "description": "An Execution represents a collection of Steps. For instance, it could represent: - a mobile test executed across a range of device configurations - a jenkins job with a build step followed by a test step\n\nThe maximum size of an execution message is 1 MiB.\n\nAn Execution can be updated until its state is set to COMPLETE at which point it becomes immutable.",
    "properties": {
     "completionTime": {
      "$ref": "Timestamp",
@@ -189,7 +189,7 @@
   "History": {
    "id": "History",
    "type": "object",
-   "description": "A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build.\n\nNote that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch. Next tag: 7",
+   "description": "A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build.\n\nNote that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch.",
    "properties": {
     "displayName": {
      "type": "string",
@@ -208,7 +208,7 @@
   "Image": {
    "id": "Image",
    "type": "object",
-   "description": "An image, with a link to the main image and a thumbnail.\n\nNext tag: 6",
+   "description": "An image, with a link to the main image and a thumbnail.",
    "properties": {
     "error": {
      "$ref": "Status",
@@ -242,14 +242,13 @@
     },
     "nativeCrash": {
      "type": "boolean",
-     "description": "A native process crashed on the device, producing a tombstone. It is unclear whether the crash was related to the app under test.\n\nFor example, OpenGL crashed, but it is unclear if the app is responsible. TODO(yinfu): Remove after all reference from TestService are deleted."
+     "description": "A native process crashed on the device, producing a tombstone. It is unclear whether the crash was related to the app under test.\n\nFor example, OpenGL crashed, but it is unclear if the app is responsible."
     }
    }
   },
   "ListExecutionsResponse": {
    "id": "ListExecutionsResponse",
    "type": "object",
-   "description": "Next tag: 3",
    "properties": {
     "executions": {
      "type": "array",
@@ -285,7 +284,7 @@
   "ListStepThumbnailsResponse": {
    "id": "ListStepThumbnailsResponse",
    "type": "object",
-   "description": "A response containing the thumbnails in a step.\n\nNext tag: 3",
+   "description": "A response containing the thumbnails in a step.",
    "properties": {
     "nextPageToken": {
      "type": "string",
@@ -406,6 +405,17 @@
     }
    }
   },
+  "StackTrace": {
+   "id": "StackTrace",
+   "type": "object",
+   "description": "A stacktrace.",
+   "properties": {
+    "exception": {
+     "type": "string",
+     "description": "The stack trace message.\n\nRequired"
+    }
+   }
+  },
   "Status": {
    "id": "Status",
    "type": "object",
@@ -432,7 +442,7 @@
   "Step": {
    "id": "Step",
    "type": "object",
-   "description": "A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler).\n\nSteps can overlap (for instance two steps might have the same start time if some operations are done in parallel).\n\nHere is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates an TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE\n\nA Step can be updated until its state is set to COMPLETE at which points it becomes immutable.\n\nNext tag: 20",
+   "description": "A Step represents a single operation performed as part of Execution. A step can be used to represent the execution of a tool ( for example a test runner execution or an execution of a compiler).\n\nSteps can overlap (for instance two steps might have the same start time if some operations are done in parallel).\n\nHere is an example, let's consider that we have a continuous build is executing a test runner for each iteration. The workflow would look like: - user creates a Execution with id 1 - user creates an TestExecutionStep with id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to COMPLETE\n\nA Step can be updated until its state is set to COMPLETE at which points it becomes immutable.",
    "properties": {
     "completionTime": {
      "$ref": "Timestamp",
@@ -568,6 +578,13 @@
    "type": "object",
    "description": "A step that represents running tests.\n\nIt accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted.\n\nUsers can also add test results manually by using the test_result field. Next tag: 7",
    "properties": {
+    "testIssues": {
+     "type": "array",
+     "description": "Issues observed during the test execution.\n\nFor example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging.\n\n- In response: present if set by create or update - In create/update request: optional",
+     "items": {
+      "$ref": "TestIssue"
+     }
+    },
     "testSuiteOverviews": {
      "type": "array",
      "description": "List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded.\n\nThe maximum allowed number of test suite overviews per step is 1000.\n\n- In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)",
@@ -585,10 +602,25 @@
     }
    }
   },
+  "TestIssue": {
+   "id": "TestIssue",
+   "type": "object",
+   "description": "An abnormal event observed during the test execution.",
+   "properties": {
+    "errorMessage": {
+     "type": "string",
+     "description": "A brief human-readable message describing the abnormal event.\n\nRequired."
+    },
+    "stackTrace": {
+     "$ref": "StackTrace",
+     "description": "Optional."
+    }
+   }
+  },
   "TestSuiteOverview": {
    "id": "TestSuiteOverview",
    "type": "object",
-   "description": "A summary of a test suite result either parsed from XML or uploaded directly by a user.\n\nNote: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.\n\nNext tag: 7",
+   "description": "A summary of a test suite result either parsed from XML or uploaded directly by a user.\n\nNote: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.",
    "properties": {
     "errorCount": {
      "type": "integer",
@@ -634,7 +666,7 @@
   "Thumbnail": {
    "id": "Thumbnail",
    "type": "object",
-   "description": "A single thumbnail, with its size and format.\n\nNext tag: 102",
+   "description": "A single thumbnail, with its size and format.",
    "properties": {
     "contentType": {
      "type": "string",
@@ -677,7 +709,7 @@
   "ToolExecution": {
    "id": "ToolExecution",
    "type": "object",
-   "description": "An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code. Next tag: 7",
+   "description": "An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.",
    "properties": {
     "commandLineArguments": {
      "type": "array",

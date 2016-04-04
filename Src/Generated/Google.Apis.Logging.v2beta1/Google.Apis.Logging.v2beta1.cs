@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Google Cloud Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160104 (368)
+ *      <tr><th>API Rev<td>20160322 (446)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -491,16 +491,15 @@ namespace Google.Apis.Logging.v2beta1
             }
 
 
-            /// <summary>Optional. The maximum number of results to return from this request. Fewer results might be
-            /// returned. You must check for the `nextPageToken` result to determine if additional results are
-            /// available, which you can retrieve by passing the `nextPageToken` value in the `pageToken` parameter to
-            /// the next request.</summary>
+            /// <summary>Optional. The maximum number of results to return from this request. You must check for
+            /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve by
+            /// passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Optional. If the `pageToken` request parameter is supplied, then the next page of results in
-            /// the set are retrieved. The `pageToken` parameter must be set with the value of the `nextPageToken`
-            /// result parameter from the previous request.</summary>
+            /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is retrieved.
+            /// The `pageToken` parameter must be set to the value of the `nextPageToken` from the previous
+            /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -900,17 +899,15 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>Optional. If the `pageToken` request parameter is supplied, then the next page of results
-                /// in the set are retrieved. The `pageToken` parameter must be set with the value of the
-                /// `nextPageToken` result parameter from the previous request. The value of `projectName` must be the
-                /// same as in the previous request.</summary>
+                /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is
+                /// retrieved. The `pageToken` parameter must be set to the value of the `nextPageToken` from the
+                /// previous response. The value of `projectName` must be the same as in the previous request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Fewer results might be
-                /// returned. You must check for the `nextPageToken` result to determine if additional results are
-                /// available, which you can retrieve by passing the `nextPageToken` value in the `pageToken` parameter
-                /// to the next request.</summary>
+                /// <summary>Optional. The maximum number of results to return from this request. You must check for
+                /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve
+                /// by passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1261,7 +1258,7 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Lists sinks.</summary>
             /// <param name="projectName">Required. The resource name of the project containing the sinks. Example: `"projects/my-
-            /// logging-project"`, `"projects/01234567890"`.</param>
+            /// logging-project"`.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -1280,21 +1277,19 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>Required. The resource name of the project containing the sinks. Example: `"projects/my-
-                /// logging-project"`, `"projects/01234567890"`.</summary>
+                /// logging-project"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>Optional. If the `pageToken` request parameter is supplied, then the next page of results
-                /// in the set are retrieved. The `pageToken` parameter must be set with the value of the
-                /// `nextPageToken` result parameter from the previous request. The value of `projectName` must be the
-                /// same as in the previous request.</summary>
+                /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is
+                /// retrieved. The `pageToken` parameter must be set to the value of the `nextPageToken` from the
+                /// previous response. The value of `projectName` must be the same as in the previous request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Fewer results might be
-                /// returned. You must check for the `nextPageToken` result to determine if additional results are
-                /// available, which you can retrieve by passing the `nextPageToken` value in the `pageToken` parameter
-                /// to the next request.</summary>
+                /// <summary>Optional. The maximum number of results to return from this request. You must check for
+                /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve
+                /// by passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1444,9 +1439,23 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>A common proto for logging HTTP requests.</summary>
     public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The number of HTTP response bytes inserted into cache. Set only when a cache fill was
+        /// attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheFillBytes")]
+        public virtual System.Nullable<long> CacheFillBytes { get; set; } 
+
         /// <summary>Whether or not an entity was served from cache (with or without validation).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
+
+        /// <summary>Whether or not a cache lookup was attempted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheLookup")]
+        public virtual System.Nullable<bool> CacheLookup { get; set; } 
+
+        /// <summary>Whether or not the response was validated with the origin server before being served from cache.
+        /// This field is only meaningful if `cache_hit` is True.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheValidatedWithOriginServer")]
+        public virtual System.Nullable<bool> CacheValidatedWithOriginServer { get; set; } 
 
         /// <summary>The referer URL of the request, as defined in [HTTP/1.1 Header Field
         /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</summary>
@@ -1486,11 +1495,6 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; } 
 
-        /// <summary>Whether or not the response was validated with the origin server before being served from cache.
-        /// This field is only meaningful if `cache_hit` is True.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validatedWithOriginServer")]
-        public virtual System.Nullable<bool> ValidatedWithOriginServer { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1523,26 +1527,29 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Optional. How the results should be sorted. Presently, the only permitted values are `"timestamp"`
-        /// (default) and `"timestamp desc"`. The first option returns entries in order of increasing values of
+        /// <summary>Optional. How the results should be sorted. Presently, the only permitted values are `"timestamp
+        /// asc"` (default) and `"timestamp desc"`. The first option returns entries in order of increasing values of
         /// `LogEntry.timestamp` (oldest first), and the second option returns entries in order of decreasing timestamps
         /// (newest first). Entries with equal timestamps are returned in order of `LogEntry.insertId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
-        /// <summary>Optional. The maximum number of results to return from this request. Fewer results might be
-        /// returned. You must check for the `nextPageToken` result to determine if additional results are available,
-        /// which you can retrieve by passing the `nextPageToken` value in the `pageToken` parameter to the next
-        /// request.</summary>
+        /// <summary>Optional. The maximum number of results to return from this request. You must check for presence of
+        /// `nextPageToken` to determine if additional results are available, which you can retrieve by passing the
+        /// `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
-        /// <summary>Optional. If the `pageToken` request parameter is supplied, then the next page of results in the
-        /// set are retrieved. The `pageToken` parameter must be set with the value of the `nextPageToken` result
-        /// parameter from the previous request. The values of `projectIds`, `filter`, and `orderBy` must be the same as
-        /// in the previous request.</summary>
+        /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is retrieved. The
+        /// `pageToken` parameter must be set to the value of the `nextPageToken` from the previous response. The values
+        /// of `projectIds`, `filter`, and `orderBy` must be the same as in the previous request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
+
+        /// <summary>Optional. If true, read access to all projects is not required and results will be returned for the
+        /// subset of projects for which read access is permitted (empty subset is permitted).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
+        public virtual System.Nullable<bool> PartialSuccess { get; set; } 
 
         /// <summary>Required. One or more project IDs or project numbers from which to retrieve log entries. Examples
         /// of a project ID: `"my-project-1A"`, `"1234567890"`.</summary>
@@ -1560,11 +1567,16 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
 
-        /// <summary>If there are more results than were returned, then `nextPageToken` is given a value in the
-        /// response. To get the next batch of results, call this method again using the value of `nextPageToken` as
+        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>If partial_success is true, contains the project ids that had errors and the associated
+        /// errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIdErrors")]
+        public virtual System.Collections.Generic.IDictionary<string,Status> ProjectIdErrors { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1577,8 +1589,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<LogMetric> Metrics { get; set; } 
 
-        /// <summary>If there are more results than were returned, then `nextPageToken` is given a value in the
-        /// response. To get the next batch of results, call this method again using the value of `nextPageToken` as
+        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -1590,8 +1602,8 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>Result returned from ListMonitoredResourceDescriptors.</summary>
     public class ListMonitoredResourceDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If there are more results than were returned, then `nextPageToken` is returned in the response. To
-        /// get the next batch of results, call this method again using the value of `nextPageToken` as
+        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -1607,8 +1619,8 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>Result returned from `ListSinks`.</summary>
     public class ListSinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If there are more results than were returned, then `nextPageToken` is given a value in the
-        /// response. To get the next batch of results, call this method again using the value of `nextPageToken` as
+        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -1645,7 +1657,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. The resource name of the log to which this log entry belongs. The format of the name is
-        /// `projects//logs/</summary>
+        /// `"projects/ /logs/"`. Examples: `"projects/my-projectid/logs/syslog"`,
+        /// `"projects/1234567890/logs/library.googleapis.com%2Fbook_log"`. The log ID part of resource name must be
+        /// less than 512 characters long and can only include the following characters: upper and lower case
+        /// alphanumeric characters: [A-Za-z0-9]; and punctuation characters: forward-slash, underscore, hyphen, and
+        /// period. Forward-slash (`/`) characters in the log ID must be URL-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
@@ -1764,10 +1780,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>An [advanced logs filter](/logging/docs/view/advanced_filters) that defines the log entries to be
-        /// exported. The filter must be consistent with the log entry format designed by the `outputVersionFormat`
-        /// parameter, regardless of the format of the log entry that was originally written to Cloud Logging. Example:
-        /// `"logName:syslog AND severity>=ERROR"`.</summary>
+        /// <summary>An [advanced logs filter](/logging/docs/view/advanced_filters). Only log entries matching that
+        /// filter are exported. The filter must be consistent with the log entry format specified by the
+        /// `outputVersionFormat` parameter, regardless of the format of the log entry that was originally written to
+        /// Cloud Logging. Example (V2 format): `"logName=projects/my-projectid/logs/syslog AND
+        /// severity>=ERROR"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -1777,7 +1794,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The log entry version used when exporting log entries from this sink. This version does not have to
+        /// <summary>The log entry version to use for this sink's exported log entries. This version does not have to
         /// correspond to the version of the log entry when it was written to Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
@@ -1786,19 +1803,23 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A specific monitored resource or a group of monitored resources.</summary>
+    /// <summary>An object representing a resource that can be used for monitoring, logging, billing, or other purposes.
+    /// Examples include virtual machine instances, databases, and storage devices such as disks. The `type` field
+    /// identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the
+    /// `labels` field identifies the actual resource and its attributes according to the schema. For example, a
+    /// particular Compute Engine VM instance could be represented by the following object, because the
+    /// MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"` and `"zone"`: { "type":
+    /// "gce_instance", "labels": { "instance_id": "my-instance", "zone": "us-central1-a" }}</summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Values for some or all of the labels listed in the associated monitored resource descriptor. For
-        /// example, specify a specific Cloud SQL database by supplying values for both the `"database_id"` and `"zone"`
-        /// labels. Specify the set of all Cloud SQL databases in a particular location by supplying a value for only
-        /// the `"zone"` label.</summary>
+        /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
+        /// example, Cloud SQL databases use the labels `"database_id"` and `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The type of monitored resource. This field must match the value of the `type` field in a
-        /// MonitoredResourceDescriptor object. For example, `"cloudsql_database"` represents Cloud SQL
-        /// databases.</summary>
+        /// <summary>Required. The monitored resource type. This field must match the `type` field of a
+        /// MonitoredResourceDescriptor object. For example, the type of a Cloud SQL database is
+        /// `"cloudsql_database"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1806,25 +1827,39 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of a type of monitored resource.</summary>
+    /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
+    /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
+    /// `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM
+    /// instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method
+    /// that returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A detailed description of the monitored resource type, which is used in documentation.</summary>
+        /// <summary>Optional. A detailed description of the monitored resource type that might be used in
+        /// documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>A concise name for the monitored resource type, which is displayed in user interfaces. For example,
-        /// `"Cloud SQL Database"`.</summary>
+        /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
+        /// interfaces. For example, `"Google Cloud SQL Database"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>A set of labels that can be used to describe instances of this monitored resource type. For
-        /// example, Cloud SQL databases can be labeled with their `"database_id"` and their `"zone"`.</summary>
+        /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
+        /// an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and
+        /// `"zone"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
-        /// <summary>The monitored resource type. For example, the type `"cloudsql_database"` represents databases in
-        /// Google Cloud SQL.</summary>
+        /// <summary>Optional. The resource name of the monitored resource descriptor:
+        /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field
+        /// in this object and {project_id} is a project ID that provides API-specific context for accessing the type.
+        /// APIs that do not use project information can use the resource name format
+        /// `"monitoredResourceDescriptors/{type}"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Required. The monitored resource type. For example, the type `"cloudsql_database"` represents
+        /// databases in Google Cloud SQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1854,6 +1889,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// <summary>Whether this request is finished or active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finished")]
         public virtual System.Nullable<bool> Finished { get; set; } 
+
+        /// <summary>Whether this is the first RequestLog entry for this request. If an active request has several
+        /// RequestLog entries written to Cloud Logging, this field will be set for one of them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual System.Nullable<bool> First { get; set; } 
 
         /// <summary>Internet host and port number of the resource being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
@@ -2013,6 +2053,49 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
+    /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
+    /// Overview The `Status` message contains three pieces of data: error code, error message, and error details. The
+    /// error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The
+    /// error message should be a developer-facing English message that helps developers *understand* and *resolve* the
+    /// error. If a localized user-facing error message is needed, put the localized message in the error details or
+    /// localize it in the client. The optional error details may contain arbitrary information about the error. There
+    /// is a predefined set of error detail types in the package `google.rpc` which can be used for common error
+    /// conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is
+    /// not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and
+    /// different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions
+    /// in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message
+    /// can be used in a variety of environments, either with or without APIs, to provide a consistent developer
+    /// experience across different environments. Example uses of this error model include: - Partial errors. If a
+    /// service needs to return partial errors to the client, it may embed the `Status` in the normal response to
+    /// indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a
+    /// `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch
+    /// response, the `Status` message should be used directly inside batch response, one for each error sub-response. -
+    /// Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
+    /// those operations should be represented directly using the `Status` message. - Logging. If some API errors are
+    /// stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy
+    /// reasons.</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
+        /// APIs to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The parameters to WriteLogEntries.</summary>
     public class WriteLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2031,6 +2114,13 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// own `logName`. Example: `"projects/my-project/logs/syslog"`. See LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
+
+        /// <summary>Optional. Whether valid entries should be written even if some other entries fail due to
+        /// INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, the response status will be the
+        /// error associated with one of the failed entries and include error details in the form of
+        /// WriteLogEntriesPartialErrors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
+        public virtual System.Nullable<bool> PartialSuccess { get; set; } 
 
         /// <summary>Optional. A default monitored resource for those log entries in `entries` that do not specify their
         /// own `resource`.</summary>
