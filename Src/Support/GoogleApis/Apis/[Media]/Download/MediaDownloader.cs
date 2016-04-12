@@ -15,26 +15,28 @@ limitations under the License.
 */
 
 using System;
-using System.Linq;
 using System.IO;
-using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Logging;
 using Google.Apis.Media;
-using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Util;
 
 namespace Google.Apis.Download
 {
     /// <summary>
-    /// A media downloader implementation which handles media downloads. It supports downloading a media content in 
-    /// chunks, when each chunk size is defined by <see cref="ChunkSize"/>.
+    /// A media downloader implementation which handles media downloads.
     /// </summary>
     public class MediaDownloader : IMediaDownloader
     {
+        static MediaDownloader()
+        {
+            UriPatcher.PatchUriQuirks();
+        }
+
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<MediaDownloader>();
 
         /// <summary>The service which this downloader belongs to.</summary>
@@ -47,9 +49,10 @@ namespace Google.Apis.Download
 
         private int chunkSize = MaximumChunkSize;
         /// <summary>
-        /// Gets or sets the size of each chunk to download from the server.
-        /// Chunks can't be set to be a value bigger than <see cref="MaximumChunkSize"/>. Default value is 
-        /// <see cref="MaximumChunkSize"/>.
+        /// Gets or sets the amount of data that will be downloaded before notifying the caller of
+        /// the download's progress.
+        /// Must not exceed <see cref="MaximumChunkSize"/>.
+        /// Default value is <see cref="MaximumChunkSize"/>.
         /// </summary>
         public int ChunkSize
         {
@@ -148,8 +151,71 @@ namespace Google.Apis.Download
         #endregion
 
         /// <summary>
-        /// The core download logic. It downloads the media in parts, where each part's size is defined by 
-        /// <see cref="ChunkSize"/> (in bytes).
+        /// CountedBuffer bundles together a byte buffer and a count of valid bytes.
+        /// </summary>
+        private class CountedBuffer
+        {
+            public byte[] Data { get; set; }
+
+            /// <summary>
+            /// How many bytes at the beginning of Data are valid.
+            /// </summary>
+            public int Count { get; private set; }
+
+            public CountedBuffer(int size)
+            {
+                Data = new byte[size];
+                Count = 0;
+            }
+
+            /// <summary>
+            /// Returns true if the buffer contains no data.
+            /// </summary>
+            public bool IsEmpty { get { return Count == 0; } }
+
+            /// <summary>
+            /// Read data from stream until the stream is empty or the buffer is full.
+            /// </summary>
+            /// <param name="stream">Stream from which to read.</param>
+            /// <param name="cancellationToken">Cancellation token for the operation.</param>
+            public async Task Fill(Stream stream, CancellationToken cancellationToken)
+            {
+                // ReadAsync may return if it has *any* data available, so we loop.
+                while (Count < Data.Length)
+                {
+                    int read = await stream.ReadAsync(Data, Count, Data.Length - Count, cancellationToken).ConfigureAwait(false);
+                    if (read == 0) { break; }
+                    Count += read;
+                }
+            }
+
+            /// <summary>
+            /// Remove the first n bytes of the buffer. Move any remaining valid bytes to the beginning.
+            /// Trying to remove more bytes than the buffer contains just clears the buffer.
+            /// </summary>
+            /// <param name="n">The number of bytes to remove.</param>
+            public void RemoveFromFront(int n)
+            {
+                if (n >= Count)
+                {
+                    Count = 0;
+                }
+                else
+                {
+                    // Some valid data remains.
+                    Array.Copy(Data, n, Data, 0, Count - n);
+                    Count -= n;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The core download logic. We download the media and write it to an output stream
+        /// ChunkSize bytes at a time, raising the ProgressChanged event after each chunk.
+        /// 
+        /// The chunking behavior is largely a historical artifact: a previous implementation
+        /// issued multiple web requests, each for ChunkSize bytes. Now we do everything in
+        /// one request, but the API and client-visible behavior are retained for compatibility.
         /// </summary>
         /// <param name="url">The URL of the resource to download.</param>
         /// <param name="stream">The download will download the resource into this stream.</param>
@@ -166,96 +232,82 @@ namespace Google.Apis.Download
                 throw new ArgumentException("stream doesn't support write operations");
             }
 
-            RequestBuilder builder = null;
-
-            var uri = new Uri(url);
-            if (string.IsNullOrEmpty(uri.Query))
+            // Add alt=media to the query parameters.
+            var uri = new UriBuilder(url);
+            if (uri.Query == null || uri.Query.Length <= 1)
             {
-                builder = new RequestBuilder() { BaseUri = new Uri(url) };
+                uri.Query = "alt=media";
             }
             else
             {
-                builder = new RequestBuilder() { BaseUri = new Uri(url.Substring(0, url.IndexOf("?"))) };
-                // Remove '?' at the beginning.
-                var query = uri.Query.Substring(1);
-                var pairs = from parameter in query.Split('&')
-                            select parameter.Split('=');
-                // Add each query parameter. each pair contains the key [0] and then its value [1].
-                foreach (var p in pairs)
-                {
-                    var key = Uri.UnescapeDataString(p[0]);
-                    var value = p.Length == 2 ? Uri.UnescapeDataString(p[1]) : "";
-                    builder.AddParameter(RequestParameterType.Query, key, value);
-                }
+                // Remove the leading '?'. UriBuilder.Query doesn't round-trip.
+                uri.Query = uri.Query.Substring(1) + "&alt=media";
             }
-            builder.AddParameter(RequestParameterType.Query, "alt", "media");
 
-            long currentRequestFirstBytePos = 0;
+            var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
+
+            // Number of bytes sent to the caller's stream.
+            int bytesReturned = 0;
 
             try
             {
-                // This "infinite" loop stops when the "to" byte position in the "Content-Range" header is the last
-                // byte of the media ("length"-1 in the "Content-Range" header).
-                // e.g. "Content-Range: 200-299/300" - "to"(299) = "length"(300) - 1.
-                while (true)
+                // Signal SendAsync to return as soon as the response headers are read.
+                // We'll stream the content ourselves as it becomes available.
+                var completionOption = HttpCompletionOption.ResponseHeadersRead;
+
+                using (var response = await service.HttpClient.SendAsync(request, completionOption, cancellationToken).ConfigureAwait(false))
                 {
-                    var currentRequestLastBytePos = currentRequestFirstBytePos + ChunkSize - 1;
-
-                    // Create the request and set the Range header.
-                    var request = builder.CreateRequest();
-                    request.Headers.Range = new RangeHeaderValue(currentRequestFirstBytePos,
-                        currentRequestLastBytePos);
-
-                    using (var response = await service.HttpClient.SendAsync(request, cancellationToken).
-                        ConfigureAwait(false))
+                    if (!response.IsSuccessStatusCode)
                     {
-                        if (!response.IsSuccessStatusCode)
-                        {
-                            throw await MediaApiErrorHandling.ExceptionForResponseAsync(service, response).ConfigureAwait(false);
-                        }
+                        throw await MediaApiErrorHandling.ExceptionForResponseAsync(service, response).ConfigureAwait(false);
+                    }
 
-                        // Read the content and copy to the parameter's stream.
-                        var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                        responseStream.CopyTo(stream);
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        // We send ChunkSize bytes at a time to the caller, but we keep ChunkSize + 1 bytes
+                        // buffered. That way we can tell when we've reached the end of the response, even if the
+                        // response length is evenly divisible by ChunkSize, and we can avoid sending a Downloading
+                        // event followed by a Completed event with no bytes downloaded in between.
+                        //
+                        // This maintains the client-visible behavior of a previous implementation.
+                        var buffer = new CountedBuffer(ChunkSize + 1);
 
-                        // Read the headers and check if all the media content was already downloaded.
-                        var contentRange = response.Content.Headers.ContentRange;
-                        long mediaContentLength;
+                        while (true)
+                        {
+                            await buffer.Fill(responseStream, cancellationToken).ConfigureAwait(false);
 
-                        if (contentRange == null)
-                        {
-                            // Content range is null when the server doesn't adhere the media download protocol, in 
-                            // that case we got all the media in one chunk.
-                            currentRequestFirstBytePos = mediaContentLength =
-                                response.Content.Headers.ContentLength.Value;
-                        }
-                        else
-                        {
-                            currentRequestFirstBytePos = contentRange.To.Value + 1;
-                            mediaContentLength = contentRange.Length.Value;
-                        }
+                            // Send one chunk to the caller's stream.
+                            int bytesToReturn = Math.Min(ChunkSize, buffer.Count);
+                            await stream.WriteAsync(buffer.Data, 0, bytesToReturn, cancellationToken).ConfigureAwait(false);
+                            checked { bytesReturned += bytesToReturn; }
 
-                        if (currentRequestFirstBytePos == mediaContentLength)
-                        {
-                            var progress = new DownloadProgress(DownloadStatus.Completed, mediaContentLength);
-                            UpdateProgress(progress);
-                            return progress;
+                            buffer.RemoveFromFront(ChunkSize);
+                            if (buffer.IsEmpty)
+                            {
+                                // We had <= ChunkSize bytes buffered, so we've read and returned the entire response.
+                                // Skip sending a Downloading event. We'll send Completed instead.
+                                break;
+                            }
+
+                            UpdateProgress(new DownloadProgress(DownloadStatus.Downloading, bytesReturned));
                         }
                     }
 
-                    UpdateProgress(new DownloadProgress(DownloadStatus.Downloading, currentRequestFirstBytePos));
+                    var finalProgress = new DownloadProgress(DownloadStatus.Completed, bytesReturned);
+                    UpdateProgress(finalProgress);
+                    return finalProgress;
                 }
             }
             catch (TaskCanceledException ex)
             {
                 Logger.Error(ex, "Download media was canceled");
-                UpdateProgress(new DownloadProgress(ex, currentRequestFirstBytePos));
-                throw ex;
+                UpdateProgress(new DownloadProgress(ex, bytesReturned));
+                throw;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Exception occurred while downloading media");
-                var progress = new DownloadProgress(ex, currentRequestFirstBytePos);
+                var progress = new DownloadProgress(ex, bytesReturned);
                 UpdateProgress(progress);
                 return progress;
             }

@@ -17,10 +17,12 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +31,6 @@ using NUnit.Framework;
 
 using Google.Apis.Download;
 using Google.Apis.Json;
-using Google.Apis.Services;
 using Google.Apis.Requests;
 using Google.Apis.Util;
 
@@ -39,93 +40,173 @@ namespace Google.Apis.Tests.Apis.Download
     [TestFixture]
     class MediaDownloaderTest
     {
-        /// <summary>The content the "server" uses to send to the client.</summary>
+        /// <summary>A content string that will be returned and looked for.</summary>
         private static readonly byte[] MediaContent = Encoding.UTF8.GetBytes("Media content goes here. This is an example of test content.");
 
-        /// <summary> An handler which demonstrate a client download which contains multiple chunks. </summary>
-        private class MultipleChunksMessageHandler : CountableMessageHandler
+        /// <summary>
+        /// An error object that will be returned and looked for.
+        /// </summary>
+        private static readonly RequestError BadRequestError = new RequestError
         {
-            /// <summary>Gets or sets the chunk size to send.</summary>
-            public int ChunkSize { get; set; }
+            Code = 12345,
+            Message = "Bad Request!",
+            Errors = new[] { new SingleError { Message = "The request was malformed." } }
+        };
 
-            /// <summary>Gets or sets the status code in case we simulate an error.</summary>
-            public HttpStatusCode StatusCode { get; set; }
+        /// <summary>
+        /// An error string that will be returned and looked for.
+        /// </summary>
+        private const string NotFoundError = "No resource found by that name.";
 
-            /// <summary>Gets or sets the cancellation token used to cancel a request in the middle.</summary>
-            public CancellationTokenSource CancellationTokenSource { get; set; }
-
-            /// <summary>Gets or sets the request index we are going to cancel.</summary>
-            public int CancelRequestNum { get; set; }
-
-            /// <summary>Gets or sets the download Uri.</summary>
-            public Uri DownloadUri { get; set; }
-
-            /// <summary>Content to stream for success requests.</summary>
-            internal Stream StreamContent { get; set; }
-
-            /// <summary>Content to return (in UTF-8) for error requests.</summary>
-            internal string ErrorResponse { get; set; }
-
-            /// <summary>The number of bytes this "server" has sent so far.</summary>
-            private long bytesRead;
-
-            /// <summary>
-            /// Constructor which uses the given content for StreamContent.
-            /// </summary>
-            internal MultipleChunksMessageHandler(byte[] content)
+        /// <summary>
+        /// Get an available port. This is best-effort since the port may immediately be
+        /// used by another process.
+        /// </summary>
+        /// <returns>A port number</returns>
+        private static int GetOpenPort()
+        {
+            var tcpListener = new TcpListener(IPAddress.Loopback, 0);
+            try
             {
-                StreamContent = new MemoryStream(content);
+                tcpListener.Start();
+                return ((IPEndPoint)tcpListener.LocalEndpoint).Port;
             }
-
-            /// <summary>
-            /// Constructor which sets StreamContent to an initially-empty stream.
-            /// </summary>
-            internal MultipleChunksMessageHandler()
+            finally
             {
-                StreamContent = new MemoryStream();
+                tcpListener.Stop();
             }
+        }
 
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
-                CancellationToken cancellationToken)
+        /// <summary>
+        /// Prefix on which the test server will listen. {0} is replaced by port.
+        /// </summary>
+        private const string PrefixFormat = "http://localhost:{0}/download/";
+
+        /// <summary>
+        /// Prefix on which the test server is listening, e.g. "http://localhost:12345/path/".
+        /// </summary>
+        private string _httpPrefix;
+
+        /// <summary>
+        /// The Task running the test server.
+        /// </summary>
+        private Task _httpServerTask;
+
+        /// <summary>
+        /// Run a simple HTTP server that listens for a few test URIs.
+        /// The server exits when a client requests "/Quit".
+        /// </summary>
+        /// <param name="prefix">Prefix at which the server should listen</param>
+        private async Task RunTestServer(string prefix)
+        {
+            using (var httpListener = new HttpListener())
             {
-                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
+                httpListener.Prefixes.Add(prefix);
+                httpListener.Start();
 
-                if (Calls == CancelRequestNum && CancellationTokenSource != null)
+                while (httpListener.IsListening)
                 {
-                    CancellationTokenSource.Cancel();
+                    var context = await httpListener.GetContextAsync();
+
+                    var requestUri = context.Request.Url;
+                    var response = context.Response;
+
+                    if (requestUri.AbsolutePath.EndsWith("/Quit"))
+                    {
+                        // Shut down the HTTP server.
+                        response.Close();
+                        httpListener.Stop();
+                        continue;
+                    }
+
+                    // All downloader requests should include ?alt=media.
+                    Assert.AreEqual("media", context.Request.QueryString["alt"]);
+
+                    response.ContentType = "text/plain";
+                    response.SendChunked = true;  // Avoid having to set Content-Length.
+
+                    Stream outStream = new MemoryStream();
+
+                    if (requestUri.AbsolutePath.EndsWith("/EchoUrl"))
+                    {
+                        // Return the URL that we saw.
+                        byte[] uriBytes = Encoding.UTF8.GetBytes(requestUri.AbsoluteUri);
+                        outStream.Write(uriBytes, 0, uriBytes.Length);
+                    }
+                    else if (requestUri.AbsolutePath.EndsWith("/BadRequestJson"))
+                    {
+                        // Return 400 with a JSON-encoded error.
+                        var apiResponse = new StandardResponse<object> { Error = BadRequestError };
+                        var apiResponseText = new NewtonsoftJsonSerializer().Serialize(apiResponse);
+                        byte[] apiResponseBytes = Encoding.UTF8.GetBytes(apiResponseText);
+
+                        response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        outStream.Write(apiResponseBytes, 0, apiResponseBytes.Length);
+                    }
+                    else if (requestUri.AbsolutePath.EndsWith("/NotFoundPlainText"))
+                    {
+                        // Return 404 with a plaintext error.
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                        byte[] errorBytes = Encoding.UTF8.GetBytes(NotFoundError);
+                        outStream.Write(errorBytes, 0, errorBytes.Length);
+                    }
+                    else if (requestUri.AbsolutePath.EndsWith("/GzipContent"))
+                    {
+                        // Return gzip-compressed content.
+                        using (var gzipStream = new GZipStream(outStream, CompressionMode.Compress, true))
+                        {
+                            gzipStream.Write(MediaContent, 0, MediaContent.Length);
+                        }
+                        response.AddHeader("Content-Encoding", "gzip");
+                    }
+                    else
+                    {
+                        // Return plaintext content.
+                        outStream.Write(MediaContent, 0, MediaContent.Length);
+                    }
+
+                    outStream.Position = 0;
+
+                    // Provide rudimentary, non-robust support for Range.
+                    // MediaDownloader doesn't exercise this code anymore, but it was useful for
+                    // testing previous implementations that did. It remains for posterity.
+                    string rangeHeader = context.Request.Headers["Range"];
+                    if (rangeHeader != null && response.StatusCode == (int)HttpStatusCode.OK)
+                    {
+                        var range = RangeHeaderValue.Parse(rangeHeader);
+                        var firstRange = range.Ranges.First();
+
+                        long from = firstRange.From ?? 0;
+                        long to = Math.Min(outStream.Length - 1, firstRange.To ?? long.MaxValue);
+
+                        var contentRangeHeader = new ContentRangeHeaderValue(from, to, outStream.Length);
+                        response.AddHeader("Content-Range", contentRangeHeader.ToString());
+
+                        outStream.Position = from;
+                        outStream.SetLength(to + 1);
+                    }
+
+                    await outStream.CopyToAsync(response.OutputStream);
+
+                    response.Close();
                 }
-
-                // validate the request
-                Assert.That(request.RequestUri, Is.EqualTo(DownloadUri));
-                Assert.That(request.Headers.Range, Is.EqualTo(new RangeHeaderValue(bytesRead,
-                    bytesRead + ChunkSize - 1)));
-
-                // prepare the response to send back
-                var response = new HttpResponseMessage();
-                response.StatusCode = StatusCode;
-                if (StatusCode == HttpStatusCode.OK)
-                {
-                    // read the current data from the stream
-                    var contentLength = StreamContent.Length;
-                    byte[] buffer = new byte[ChunkSize];
-                    int currentRead = StreamContent.Read(buffer, 0, ChunkSize);
-                    var readStream = new MemoryStream(buffer, 0, currentRead);
-
-                    response.Content = new StreamContent(readStream);
-                    response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-                    response.Content.Headers.ContentLength = currentRead;
-                    response.Content.Headers.ContentRange = new ContentRangeHeaderValue(bytesRead,
-                        bytesRead + currentRead - 1, contentLength);
-
-                    bytesRead += currentRead;
-                }
-                else
-                {
-                    response.Content = new StreamContent(new MemoryStream(Encoding.UTF8.GetBytes(ErrorResponse)));
-                }
-                tcs.SetResult(response);
-                return tcs.Task;
             }
+        }
+
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+            // Start up the test HTTP server.
+            _httpPrefix = String.Format(PrefixFormat, GetOpenPort());
+            _httpServerTask = RunTestServer(_httpPrefix);
+        }
+
+        [OneTimeTearDown]
+        public async Task TearDown()
+        {
+            // Shut down the test HTTP server.
+            await new HttpClient().GetAsync(_httpPrefix + "Quit");
+            await _httpServerTask;
         }
 
         /// <summary>Tests that download works in case the server returns multiple chunks to the client.</summary>
@@ -134,6 +215,13 @@ namespace Google.Apis.Tests.Apis.Download
         {
             Subtest_Download_Chunks(2);
             Subtest_Download_Chunks(MediaContent.Length - 1);
+        }
+
+        /// <summary>Tests that download works in case the data is retrieved in multiple chunks and is gzipped.</summary>
+        [Test]
+        public void Download_MultipleChunksGzipped()
+        {
+            Subtest_Download_Chunks(2, true, 0, "GzipContent");
         }
 
         /// <summary>Tests that download works in case the server returns a single chunk to the client.</summary>
@@ -149,21 +237,24 @@ namespace Google.Apis.Tests.Apis.Download
         [Test]
         public void Download_SingleChunk_UriContainsQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a=1&b=2");
+            string url = _httpPrefix + "EchoUrl?a=1&b=2";
+            Assert.AreEqual(SimpleDownload(url), url + "&alt=media");
         }
 
         /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
         [Test]
         public void Download_SingleChunk_UriContainsEncodedQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a=foo%2Fbar");
+            string url = _httpPrefix + "EchoUrl?a=foo%2Fbar";
+            Assert.AreEqual(SimpleDownload(url), url + "&alt=media");
         }
 
         /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
         [Test]
         public void Download_SingleChunk_UriContainsValuelessQueryParameters()
         {
-            Subtest_Download_Chunks(MediaContent.Length, true, 0, "https://www.sample.com?a&b=1");
+            string url = _httpPrefix + "EchoUrl?a&b=1";
+            Assert.AreEqual(SimpleDownload(url), url + "&alt=media");
         }
 
         /// <summary>
@@ -197,36 +288,59 @@ namespace Google.Apis.Tests.Apis.Download
             Subtest_Download_Chunks(MediaContent.Length - 1, false, 1);
         }
 
+        /// <summary>
+        /// Uses MediaDownloader to download the contents of a URI.
+        /// Asserts that the download succeeded and returns the resulting content as a string.
+        /// </summary>
+        /// <param name="uri">Uri to download</param>
+        /// <returns></returns>
+        private string SimpleDownload(string uri)
+        {
+            using (var service = new MockClientService())
+            {
+                var downloader = new MediaDownloader(service);
+                var outputStream = new MemoryStream();
+                var result = downloader.Download(uri, outputStream);
+
+                Assert.AreEqual(result.Status, DownloadStatus.Completed);
+                Assert.IsNull(result.Exception);
+                Assert.AreEqual(result.BytesDownloaded, outputStream.Position);
+
+                return Encoding.UTF8.GetString(outputStream.GetBuffer(), 0, (int)outputStream.Position);
+            }
+        }
+
         /// <summary>A helper test to test sync and async downloads.</summary>
         /// <param name="chunkSize">The chunk size for each part.</param>
         /// <param name="sync">Indicates if this download should be synchronously or asynchronously.</param>
-        /// <param name="cancelRequest">Defines the request index to cancel the download request.</param>
-        /// <param name="downloadUri">The URI which contains the media to download.</param>
-        private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelRequest = 0,
-            string downloadUri = "http://www.sample.com")
+        /// <param name="cancelChunk">Defines the chunk at which to cancel the download request.</param>
+        /// <param name="target">Last component of the Uri to download</param>
+        private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelChunk = 0, string target = "content")
         {
-            var handler = new MultipleChunksMessageHandler(MediaContent);
-            handler.StatusCode = HttpStatusCode.OK;
-            handler.ChunkSize = chunkSize;
-            handler.DownloadUri = new Uri(downloadUri +
-                (downloadUri.Contains("?") ? "&" : "?") + "alt=media");
+            string downloadUri = _httpPrefix + target;
+            var cts = new CancellationTokenSource();
 
-            // support cancellation
-            if (cancelRequest > 0)
-            {
-                handler.CancelRequestNum = cancelRequest;
-            }
-            handler.CancellationTokenSource = new CancellationTokenSource();
-
-            int expectedCalls = (int)Math.Ceiling((double) MediaContent.Length / chunkSize);
-            using (var service = CreateMockClientService(handler))
+            using (var service = new MockClientService())
             {
                 var downloader = new MediaDownloader(service);
                 downloader.ChunkSize = chunkSize;
                 IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
+                int progressUpdates = 0;
+                long lastBytesDownloaded = 0;
                 downloader.ProgressChanged += (p) =>
                 {
+                    if (p.Status != DownloadStatus.Failed)
+                    {
+                        // We shouldn't receive duplicate notifications for the same range.
+                        Assert.That(p.BytesDownloaded, Is.GreaterThan(lastBytesDownloaded));
+                    }
+                    lastBytesDownloaded = p.BytesDownloaded;
+
                     progressList.Add(p);
+                    if (++progressUpdates == cancelChunk)
+                    {
+                        cts.Cancel();
+                    }
                 };
 
                 var outputStream = new MemoryStream();
@@ -238,11 +352,10 @@ namespace Google.Apis.Tests.Apis.Download
                 {
                     try
                     {
-                        var result = downloader.DownloadAsync(downloadUri, outputStream,
-                            handler.CancellationTokenSource.Token).Result;
+                        var result = downloader.DownloadAsync(downloadUri, outputStream, cts.Token).Result;
                         if (result.Exception == null)
                         {
-                            Assert.AreEqual(0, handler.CancelRequestNum);
+                            Assert.AreEqual(0, cancelChunk);
                         }
                         else
                         {
@@ -256,20 +369,16 @@ namespace Google.Apis.Tests.Apis.Download
                 }
 
                 var lastProgress = progressList.LastOrDefault();
-                if (cancelRequest > 0)
+                if (cancelChunk > 0)
                 {
-                    // the download was interrupted in the middle
-                    Assert.That(handler.Calls, Is.EqualTo(cancelRequest));
                     // last request should fail
                     Assert.NotNull(lastProgress);
                     Assert.NotNull(lastProgress.Exception);
                     Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
-                    Assert.That(lastProgress.BytesDownloaded, Is.EqualTo(chunkSize * cancelRequest));
+                    Assert.That(lastProgress.BytesDownloaded, Is.EqualTo(chunkSize * cancelChunk));
                 }
                 else
                 {
-                    // the download succeeded
-                    Assert.That(handler.Calls, Is.EqualTo(expectedCalls));
                     Assert.NotNull(lastProgress);
                     Assert.Null(lastProgress.Exception);
                     Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Completed));
@@ -285,22 +394,9 @@ namespace Google.Apis.Tests.Apis.Download
         [Test]
         public void Download_Error_JsonResponse()
         {
-            var downloadUri = "http://www.sample.com";
-            var chunkSize = 100;
-            var error = new RequestError { Code = 12345, Message = "Text", Errors = new[] { new SingleError { Message = "Nested error" } } };
-            var response = new StandardResponse<object> { Error = error };
-            var responseText = new NewtonsoftJsonSerializer().Serialize(response);
-
-            var handler = new MultipleChunksMessageHandler { ErrorResponse = responseText };
-            handler.StatusCode = HttpStatusCode.BadRequest;
-            handler.ChunkSize = chunkSize;
-            // The media downloader adds the parameter...
-            handler.DownloadUri = new Uri(downloadUri + "?alt=media");
-
-            using (var service = CreateMockClientService(handler))
+            using (var service = new MockClientService())
             {
                 var downloader = new MediaDownloader(service);
-                downloader.ChunkSize = chunkSize;
                 IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
                 downloader.ProgressChanged += (p) =>
                     {
@@ -308,36 +404,24 @@ namespace Google.Apis.Tests.Apis.Download
                     };
 
                 var outputStream = new MemoryStream();
-                downloader.Download(downloadUri, outputStream);
+                downloader.Download(_httpPrefix + "BadRequestJson", outputStream);
 
                 var lastProgress = progressList.LastOrDefault();
                 Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
                 GoogleApiException exception = (GoogleApiException) lastProgress.Exception;
-                Assert.That(exception.HttpStatusCode, Is.EqualTo(handler.StatusCode));
+                Assert.That(exception.HttpStatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
                 // Just a smattering of checks - if these two pass, it's surely okay.
-                Assert.That(exception.Error.Code, Is.EqualTo(error.Code));
-                Assert.That(exception.Error.Errors[0].Message, Is.EqualTo(error.Errors[0].Message));
+                Assert.That(exception.Error.Code, Is.EqualTo(BadRequestError.Code));
+                Assert.That(exception.Error.Errors[0].Message, Is.EqualTo(BadRequestError.Errors[0].Message));
             }
         }
 
         [Test]
-        [TestCase("Not Found")]
-        [TestCase("")]
-        public void Download_Error_PlaintextResponse(string responseText)
+        public void Download_Error_PlaintextResponse()
         {
-            var downloadUri = "http://www.sample.com";
-            var chunkSize = 100;
-
-            var handler = new MultipleChunksMessageHandler { ErrorResponse = responseText };
-            handler.StatusCode = HttpStatusCode.NotFound;
-            handler.ChunkSize = chunkSize;
-            // The media downloader adds the parameter...
-            handler.DownloadUri = new Uri(downloadUri + "?alt=media");
-
-            using (var service = CreateMockClientService(handler))
+            using (var service = new MockClientService())
             {
                 var downloader = new MediaDownloader(service);
-                downloader.ChunkSize = chunkSize;
                 IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
                 downloader.ProgressChanged += (p) =>
                 {
@@ -345,26 +429,15 @@ namespace Google.Apis.Tests.Apis.Download
                 };
 
                 var outputStream = new MemoryStream();
-                downloader.Download(downloadUri, outputStream);
+                downloader.Download(_httpPrefix + "NotFoundPlainText", outputStream);
 
                 var lastProgress = progressList.LastOrDefault();
                 Assert.That(lastProgress.Status, Is.EqualTo(DownloadStatus.Failed));
                 GoogleApiException exception = (GoogleApiException) lastProgress.Exception;
-                Assert.That(exception.HttpStatusCode, Is.EqualTo(handler.StatusCode));
-                Assert.That(exception.Message, Is.EqualTo(responseText));
+                Assert.That(exception.HttpStatusCode, Is.EqualTo(HttpStatusCode.NotFound));
+                Assert.That(exception.Message, Is.EqualTo(NotFoundError));
                 Assert.IsNull(exception.Error);
             }
-        }
-
-        /// <summary>
-        /// Creates a mock client service whose HTTP client factory uses the specified message handler.
-        /// </summary>
-        private static IClientService CreateMockClientService(HttpMessageHandler handler)
-        {
-            return new MockClientService(new BaseClientService.Initializer
-            {
-                HttpClientFactory = new MockHttpClientFactory(handler)
-            });
         }
     }
 }

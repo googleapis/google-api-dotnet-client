@@ -54,9 +54,9 @@ namespace Google.Apis.Util
     // As a class library, we can't control app.config or the entry assembly, so we can't take
     // either approach. Instead, we resort to reflection trickery to try to solve these problems
     // if we detect they exist. Sorry.
-    internal static class UriPatcher
+    public static class UriPatcher
     {
-        internal static void PatchUriQuirks()
+        public static void PatchUriQuirks()
         {
             var uriParser = typeof(System.Uri).Assembly.GetType("System.UriParser");
             if (uriParser == null) { return; }
