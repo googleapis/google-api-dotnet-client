@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160329 (453)
+ *      <tr><th>API Rev<td>20160411 (466)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>

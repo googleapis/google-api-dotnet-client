@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/gx3VB88GA2SUp8vqJdEjYk7aw9o\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/0rY6960z4jPibnyGbaLHoBDJWek\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160328",
+ "revision": "20160411",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",
@@ -1932,7 +1932,7 @@
     },
     "variantSetIds": {
      "type": "array",
-     "description": "At most one variant set ID must be provided. Only variants from this variant set will be returned. If omitted, a call set id must be included in the request.",
+     "description": "At most one variant set ID must be provided. Only variants from this variant set will be returned. If omitted, a call set id must be included in the request. Both this and call_set_ids may be set.",
      "items": {
       "type": "string"
      }
@@ -3543,7 +3543,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "Required. The ID of the variant set.",
+       "description": "The ID of the variant set.",
        "required": true,
        "location": "path"
       }
@@ -3620,7 +3620,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "The ID of the variant to be updated (must already exist).",
+       "description": "The ID of the variant set to be updated (must already exist).",
        "required": true,
        "location": "path"
       }
@@ -3664,7 +3664,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "The ID of the variant to be updated (must already exist).",
+       "description": "The ID of the variant set to be updated (must already exist).",
        "required": true,
        "location": "path"
       }

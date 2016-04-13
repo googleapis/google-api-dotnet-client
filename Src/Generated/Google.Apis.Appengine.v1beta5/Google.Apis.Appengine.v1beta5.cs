@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta5
- *      <tr><th>API Rev<td>20160314 (438)
+ *      <tr><th>API Rev<td>20160407 (462)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -567,9 +567,154 @@ namespace Google.Apis.Appengine.v1beta5
                 public VersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    instances = new InstancesResource(service);
 
                 }
 
+                private readonly InstancesResource instances;
+
+                /// <summary>Gets the Instances resource.</summary>
+                public virtual InstancesResource Instances
+                {
+                    get { return instances; }
+                }
+
+                /// <summary>The "instances" collection of methods.</summary>
+                public class InstancesResource
+                {
+                    private const string Resource = "instances";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public InstancesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Lists the instances of a version.</summary>
+                    /// <param name="appsId">Part of `name`. Name of the resource requested. For example:
+                    /// "apps/myapp/services/default/versions/v1".</param>
+                    /// <param name="servicesId">Part of `name`. See
+                    /// documentation of `appsId`.</param>
+                    /// <param name="versionsId">Part of `name`. See documentation of
+                    /// `appsId`.</param>
+                    public virtual ListRequest List(string appsId, string servicesId, string versionsId)
+                    {
+                        return new ListRequest(service, appsId, servicesId, versionsId);
+                    }
+
+                    /// <summary>Lists the instances of a version.</summary>
+                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.ListInstancesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId)
+                            : base(service)
+                        {
+                            AppsId = appsId;
+                            ServicesId = servicesId;
+                            VersionsId = versionsId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Part of `name`. Name of the resource requested. For example:
+                        /// "apps/myapp/services/default/versions/v1".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AppsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string VersionsId { get; private set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "appsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "appsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
 
                 /// <summary>Deploys new code and resource files to a version.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -1864,6 +2009,75 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Instances are the computing units that App Engine uses to automatically scale an application.</summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The App Engine release the instance is running on. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineRelease")]
+        public virtual string AppEngineRelease { get; set; } 
+
+        /// <summary>Availability of instance. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availability")]
+        public virtual string Availability { get; set; } 
+
+        /// <summary>Latency in milliseconds (averaged over the last minute). @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageLatency")]
+        public virtual System.Nullable<int> AverageLatency { get; set; } 
+
+        /// <summary>Number of errors since the instance was started. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Nullable<long> Errors { get; set; } 
+
+        /// <summary>The relative name/path of the instance within the version. Example: "instance-1"
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Memory usage (in bytes). @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
+        public virtual System.Nullable<long> MemoryUsage { get; set; } 
+
+        /// <summary>The full path to the Instance resource in the API. Example:
+        /// "apps/myapp/services/default/versions/v1/instances/instance-1" @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>QPS for this instance (averaged over the last minute). @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qps")]
+        public virtual System.Nullable<float> Qps { get; set; } 
+
+        /// <summary>Number of requests (since the clone was started). @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Nullable<int> Requests { get; set; } 
+
+        /// <summary>Time when instance was started. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual string StartTimestamp { get; set; } 
+
+        /// <summary>For VMEngines instances, the GCE VM ID of the instance. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; } 
+
+        /// <summary>For VMEngines instances, the name of GCE VM where the instance lives. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
+        public virtual string VmName { get; set; } 
+
+        /// <summary>For VMEngines instances, the status of GCE VM where the instance lives. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmStatus")]
+        public virtual string VmStatus { get; set; } 
+
+        /// <summary>For VMEngines instances, whether the instance has been unlocked. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmUnlocked")]
+        public virtual System.Nullable<bool> VmUnlocked { get; set; } 
+
+        /// <summary>For VMEngines instances, the zone where the GCE VM is located. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmZoneName")]
+        public virtual string VmZoneName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Python runtime third-party library required by the application.</summary>
     public class Library : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1874,6 +2088,21 @@ namespace Google.Apis.Appengine.v1beta5.Data
         /// <summary>The version of the library to select, or "latest".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for `Instances.ListInstances`.</summary>
+    public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The instances belonging to the requested version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
+
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

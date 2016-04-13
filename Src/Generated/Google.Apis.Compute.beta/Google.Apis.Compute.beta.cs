@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160328 (452)
+ *      <tr><th>API Rev<td>20160407 (462)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -10393,6 +10393,116 @@ namespace Google.Apis.Compute.beta
                         Name = "size",
                         IsRequired = true,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resizes the managed instance group. If you increase the size, the group creates new instances using
+        /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
+        /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
+        /// instances. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method. This method is an extended version of Resize and it supports more advanced
+        /// options.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where the
+        /// managed instance group is located.</param>
+        /// <param name="instanceGroupManager">The name of the managed
+        /// instance group.</param>
+        public virtual ResizeAdvancedRequest ResizeAdvanced(Google.Apis.Compute.beta.Data.InstanceGroupManagersResizeAdvancedRequest body, string project, string zone, string instanceGroupManager)
+        {
+            return new ResizeAdvancedRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Resizes the managed instance group. If you increase the size, the group creates new instances using
+        /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
+        /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
+        /// instances. You must separately verify the status of the creating or deleting actions with the
+        /// listmanagedinstances method. This method is an extended version of Resize and it supports more advanced
+        /// options.</summary>
+        public class ResizeAdvancedRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new ResizeAdvanced request.</summary>
+            public ResizeAdvancedRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstanceGroupManagersResizeAdvancedRequest body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where the managed instance group is located.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the managed instance group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstanceGroupManagersResizeAdvancedRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resizeAdvanced"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeAdvanced"; }
+            }
+
+            /// <summary>Initializes ResizeAdvanced parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -25866,18 +25976,26 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
-        /// <summary>The source image used to create this disk.
+        /// <summary>The source image used to create this disk. If the source image is deleted, this field will not be
+        /// set.
         ///
-        /// To create a disk with a private image, specify the image name in the following format:
+        /// To create a disk with one of the public operating system images, specify the image by its family name. For
+        /// example, specify family/debian-8 to use the latest Debian 8 image:
         ///
-        /// global/images/my-private-image
+        /// projects/debian-cloud/global/images/family/debian-8
         ///
-        /// To create a disk with a public image, specify the image name and the project that owns the image. For
-        /// example, you can use a Debian image from the debian-cloud project:
+        /// Alternatively, use a specific version of a public operating system image:
         ///
         /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
         ///
-        /// The vYYYYMMDD value is the image version. The fully-qualified URL also works in both examples.</summary>
+        /// To create a disk with a private image that you created, specify the image name in the following format:
+        ///
+        /// global/images/my-private-image
+        ///
+        /// You can also specify a private image by its image family, which returns the latest version of the image in
+        /// that family. Replace the image name with family/family-name:
+        ///
+        /// global/images/family/my-private-family</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
@@ -28014,6 +28132,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creating")]
         public virtual System.Nullable<int> Creating { get; set; } 
 
+        /// <summary>[Output Only] The number of instances that the managed instance group will attempt to create. The
+        /// group attempts to create each instance only once. If the group fails to create one of these instances, it
+        /// decreases the group's target_size value accordingly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatingWithoutRetries")]
+        public virtual System.Nullable<int> CreatingWithoutRetries { get; set; } 
+
         /// <summary>[Output Only] The number of instances in the managed instance group that are scheduled to be
         /// deleted or are currently being deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleting")]
@@ -28161,6 +28285,35 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The URL for one or more instances to recreate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstanceGroupManagersResizeAdvancedRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If this flag is true, we will attempt to create all instances resized up with this request only
+        /// once. In case of an error during creation, we will not create this instance, and we will decrease the
+        /// target_size. If the flag is false, we will keep trying to create each instance until we succeed.
+        ///
+        /// This flag matters only in the first attempt of creation of an instance. If an instance creation with this
+        /// flag succeeds, the instance behaves the same way as all the other instances created with the flag set to
+        /// false. In particular, consecutive instance creations (in case an instance dies and needs to be recreated)
+        /// will not fail after the first attempt.
+        ///
+        /// This flag is applicable only to the current resize request. It does not influence other resize requests in
+        /// any way.
+        ///
+        /// You can see which instances is being creating in which mode by calling the listManagedInstances
+        /// API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noCreationRetries")]
+        public virtual System.Nullable<bool> NoCreationRetries { get; set; } 
+
+        /// <summary>The number of running instances that the managed instance group should maintain at any given time.
+        /// The group automatically adds or removes instances to maintain the number of instances specified by this
+        /// parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
+        public virtual System.Nullable<int> TargetSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30443,7 +30596,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the Subnetwork resides.</summary>
+        /// <summary>URL of the region where the Subnetwork resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160329 (453)
+ *      <tr><th>API Rev<td>20160411 (466)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2995,7 +2995,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths
     /// are updated in order to append more files, however they can't be deleted.
     ///
-    /// Users can also add test results manually by using the test_result field. Next tag: 7</summary>
+    /// Users can also add test results manually by using the test_result field.</summary>
     public class TestExecutionStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Issues observed during the test execution.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160318 (442)
+ *      <tr><th>API Rev<td>20160405 (460)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3946,6 +3946,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedFixedPriceTerms")]
         public virtual DealTermsNonGuaranteedFixedPriceTerms NonGuaranteedFixedPriceTerms { get; set; } 
 
+        /// <summary>For deals with Cost Per Day billing, defines the timezone used to mark the boundaries of a day
+        /// (buyer-readonly)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerTimeZone")]
+        public virtual string SellerTimeZone { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4050,6 +4055,35 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitType")]
         public virtual string TimeUnitType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message carries publisher provided breakdown. E.g. {dimension_type: 'COUNTRY', [{dimension_value:
+    /// {id: 1, name: 'US'}}, {dimension_value: {id: 2, name: 'UK'}}]}</summary>
+    public class Dimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionType")]
+        public virtual string DimensionType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionValues")]
+        public virtual System.Collections.Generic.IList<DimensionDimensionValue> DimensionValues { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Value of the dimension.</summary>
+    public class DimensionDimensionValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Id of the dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>Name of the dimension mainly for debugging purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4437,9 +4471,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The configuration data for an Ad Exchange performance report list.
-    /// https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release
-    /// https://cs.corp.google.com/#piperdepot/google3/contentads/adx/tools/rtb_api/adxrtb.py</summary>
+    /// <summary>The configuration data for an Ad Exchange performance report list.</summary>
     public class PerformanceReportList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resource type.</summary>
@@ -4911,9 +4943,21 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
+        /// <summary>Publisher provided info on its audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; } 
+
         /// <summary>A pitch statement for the buyer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPitchStatement")]
         public virtual string BuyerPitchStatement { get; set; } 
+
+        /// <summary>Direct contact for the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directContact")]
+        public virtual ContactInformation DirectContact { get; set; } 
+
+        /// <summary>Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
+        public virtual string Exchange { get; set; } 
 
         /// <summary>Link to publisher's Google+ page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlusLink")]
@@ -4922,6 +4966,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>True, if this is the parent profile, which represents all domains owned by the publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isParent")]
         public virtual System.Nullable<bool> IsParent { get; set; } 
+
+        /// <summary>True, if this profile is published. Deprecated for state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPublished")]
+        public virtual System.Nullable<bool> IsPublished { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "adexchangebuyer#publisherProfileApiProto".</summary>
@@ -4948,10 +4996,22 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
         public virtual System.Nullable<int> ProfileId { get; set; } 
 
+        /// <summary>Programmatic contact for the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programmaticContact")]
+        public virtual ContactInformation ProgrammaticContact { get; set; } 
+
         /// <summary>The list of domains represented in this publisher profile. Empty if this is a parent
         /// profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherDomains")]
         public virtual System.Collections.Generic.IList<string> PublisherDomains { get; set; } 
+
+        /// <summary>Unique Id for publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
+        public virtual string PublisherProfileId { get; set; } 
+
+        /// <summary>Publisher provided forecasting information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProvidedForecast")]
+        public virtual PublisherProvidedForecast PublisherProvidedForecast { get; set; } 
 
         /// <summary>Link to publisher rate card</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateCardInfoLink")]
@@ -4961,9 +5021,36 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("samplePageLink")]
         public virtual string SamplePageLink { get; set; } 
 
+        /// <summary>Seller of the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seller")]
+        public virtual Seller Seller { get; set; } 
+
+        /// <summary>State of the publisher profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
         /// <summary>Publisher provided key metrics and rankings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topHeadlines")]
         public virtual System.Collections.Generic.IList<string> TopHeadlines { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message carries publisher provided forecasting information.</summary>
+    public class PublisherProvidedForecast : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Publisher provided dimensions. E.g. geo, sizes etc...</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
+
+        /// <summary>Publisher provided weekly impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyImpressions")]
+        public virtual System.Nullable<long> WeeklyImpressions { get; set; } 
+
+        /// <summary>Publisher provided weekly uniques.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyUniques")]
+        public virtual System.Nullable<long> WeeklyUniques { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

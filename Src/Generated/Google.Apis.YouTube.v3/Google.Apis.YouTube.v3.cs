@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160222 (417)
+ *      <tr><th>API Rev<td>20160406 (461)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -12761,6 +12761,24 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundStreamId")]
         public virtual string BoundStreamId { get; set; } 
 
+        /// <summary>The date and time that the live stream referenced by boundStreamId was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundStreamLastUpdateTimeMs")]
+        public virtual string BoundStreamLastUpdateTimeMsRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="BoundStreamLastUpdateTimeMsRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> BoundStreamLastUpdateTimeMs
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(BoundStreamLastUpdateTimeMsRaw);
+            }
+            set
+            {
+                BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
         [Newtonsoft.Json.JsonPropertyAttribute("closedCaptionsType")]
         public virtual string ClosedCaptionsType { get; set; } 
 
@@ -13211,6 +13229,15 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class LiveChatMessageDeletedDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedMessageId")]
+        public virtual string DeletedMessageId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class LiveChatMessageListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Etag of this resource.</summary>
@@ -13270,11 +13297,22 @@ namespace Google.Apis.YouTube.v3.Data
 
     }    
 
+    public class LiveChatMessageRetractedDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("retractedMessageId")]
+        public virtual string RetractedMessageId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the user that authored this message, this field is not always filled. textMessageEvent -
         /// the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the
-        /// user that just became a sponsor</summary>
+        /// user that just became a sponsor messageDeletedEvent - the moderator that took the action
+        /// messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took
+        /// the action</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; } 
 
@@ -13293,6 +13331,12 @@ namespace Google.Apis.YouTube.v3.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
         public virtual string LiveChatId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageDeletedDetails")]
+        public virtual LiveChatMessageDeletedDetails MessageDeletedDetails { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageRetractedDetails")]
+        public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; } 
 
         /// <summary>The date and time when the message was orignally published. The value is specified in ISO 8601
         /// (YYYY-MM-DDThh:mm:ss.sZ) format.</summary>
@@ -13321,6 +13365,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// as which fields will be present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userBannedDetails")]
+        public virtual LiveChatUserBannedMessageDetails UserBannedDetails { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13409,6 +13456,24 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The user's message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageText")]
         public virtual string MessageText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiveChatUserBannedMessageDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration of the ban. This property is only present if the banType is temporary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("banDurationSeconds")]
+        public virtual System.Nullable<ulong> BanDurationSeconds { get; set; } 
+
+        /// <summary>The type of ban.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("banType")]
+        public virtual string BanType { get; set; } 
+
+        /// <summary>The details of the user that was banned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedUserDetails")]
+        public virtual ChannelProfileDetails BannedUserDetails { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15689,7 +15754,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Branding properties for the watch.</summary>
+    /// <summary>Branding properties for the watch. All deprecated.</summary>
     public class WatchSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The text color for the video watch page's branded area.</summary>

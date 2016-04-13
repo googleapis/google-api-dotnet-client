@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160328 (452)
+ *      <tr><th>API Rev<td>20160331 (455)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4102,6 +4102,10 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Additional metadata about image media, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageMediaMetadata")]
         public virtual File.ImageMediaMetadataData ImageMediaMetadata { get; set; } 
+
+        /// <summary>Whether the file was created or opened by the requesting app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
+        public virtual System.Nullable<bool> IsAppAuthorized { get; set; } 
 
         /// <summary>This is always drive#file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

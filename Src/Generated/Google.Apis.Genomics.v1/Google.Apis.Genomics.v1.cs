@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160329 (453)
+ *      <tr><th>API Rev<td>20160411 (466)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -64,6 +64,8 @@ namespace Google.Apis.Genomics.v1
         public GenomicsService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            annotations = new AnnotationsResource(this);
+            annotationsets = new AnnotationsetsResource(this);
             callsets = new CallsetsResource(this);
             datasets = new DatasetsResource(this);
             operations = new OperationsResource(this);
@@ -120,6 +122,22 @@ namespace Google.Apis.Genomics.v1
         }
 
 
+
+        private readonly AnnotationsResource annotations;
+
+        /// <summary>Gets the Annotations resource.</summary>
+        public virtual AnnotationsResource Annotations
+        {
+            get { return annotations; }
+        }
+
+        private readonly AnnotationsetsResource annotationsets;
+
+        /// <summary>Gets the Annotationsets resource.</summary>
+        public virtual AnnotationsetsResource Annotationsets
+        {
+            get { return annotationsets; }
+        }
 
         private readonly CallsetsResource callsets;
 
@@ -382,6 +400,757 @@ namespace Google.Apis.Genomics.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "annotations" collection of methods.</summary>
+    public class AnnotationsResource
+    {
+        private const string Resource = "annotations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AnnotationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates one or more new annotations atomically. All annotations must belong to the same annotation
+        /// set. Caller must have WRITE permission for this annotation set. For optimal performance, batch positionally
+        /// adjacent annotations together. If the request has a systemic issue, such as an attempt to write to an
+        /// inaccessible annotation set, the entire RPC will fail accordingly. For lesser data issues, when possible an
+        /// error will be isolated to the corresponding batch entry in the response; the remaining well formed
+        /// annotations will be created normally. For details on the requirements for each individual annotation
+        /// resource, see CreateAnnotation.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchCreateRequest BatchCreate(Google.Apis.Genomics.v1.Data.BatchCreateAnnotationsRequest body)
+        {
+            return new BatchCreateRequest(service, body);
+        }
+
+        /// <summary>Creates one or more new annotations atomically. All annotations must belong to the same annotation
+        /// set. Caller must have WRITE permission for this annotation set. For optimal performance, batch positionally
+        /// adjacent annotations together. If the request has a systemic issue, such as an attempt to write to an
+        /// inaccessible annotation set, the entire RPC will fail accordingly. For lesser data issues, when possible an
+        /// error will be isolated to the corresponding batch entry in the response; the remaining well formed
+        /// annotations will be created normally. For details on the requirements for each individual annotation
+        /// resource, see CreateAnnotation.</summary>
+        public class BatchCreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.BatchCreateAnnotationsResponse>
+        {
+            /// <summary>Constructs a new BatchCreate request.</summary>
+            public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.BatchCreateAnnotationsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.BatchCreateAnnotationsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchCreate"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations:batchCreate"; }
+            }
+
+            /// <summary>Initializes BatchCreate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Creates a new annotation. Caller must have WRITE permission for the associated annotation set. The
+        /// following fields are required: * annotationSetId * referenceName or referenceId ### Transcripts For
+        /// annotations of type TRANSCRIPT, the following fields of transcript must be provided: * exons.start *
+        /// exons.end All other fields may be optionally specified, unless documented as being server-generated (for
+        /// example, the `id` field). The annotated range must be no longer than 100Mbp (mega base pairs). See the
+        /// Annotation resource for additional restrictions on each field.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Genomics.v1.Data.Annotation body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new annotation. Caller must have WRITE permission for the associated annotation set. The
+        /// following fields are required: * annotationSetId * referenceName or referenceId ### Transcripts For
+        /// annotations of type TRANSCRIPT, the following fields of transcript must be provided: * exons.start *
+        /// exons.end All other fields may be optionally specified, unless documented as being server-generated (for
+        /// example, the `id` field). The annotated range must be no longer than 100Mbp (mega base pairs). See the
+        /// Annotation resource for additional restrictions on each field.</summary>
+        public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Annotation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.Annotation body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.Annotation Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Deletes an annotation. Caller must have WRITE permission for the associated annotation
+        /// set.</summary>
+        /// <param name="annotationId">The ID of the annotation to be deleted.</param>
+        public virtual DeleteRequest Delete(string annotationId)
+        {
+            return new DeleteRequest(service, annotationId);
+        }
+
+        /// <summary>Deletes an annotation. Caller must have WRITE permission for the associated annotation
+        /// set.</summary>
+        public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string annotationId)
+                : base(service)
+            {
+                AnnotationId = annotationId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations/{annotationId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets an annotation. Caller must have READ permission for the associated annotation set.</summary>
+        /// <param name="annotationId">The ID of the annotation to be retrieved.</param>
+        public virtual GetRequest Get(string annotationId)
+        {
+            return new GetRequest(service, annotationId);
+        }
+
+        /// <summary>Gets an annotation. Caller must have READ permission for the associated annotation set.</summary>
+        public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Annotation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string annotationId)
+                : base(service)
+            {
+                AnnotationId = annotationId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation to be retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations/{annotationId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Searches for annotations that match the given criteria. Results are ordered by genomic coordinate
+        /// (by reference sequence, then position). Annotations with equivalent genomic coordinates are returned in an
+        /// unspecified order. This order is consistent, such that two queries for the same content (regardless of page
+        /// size) yield annotations in the same order across their respective streams of paginated responses. Caller
+        /// must have READ permission for the queried annotation sets.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SearchRequest Search(Google.Apis.Genomics.v1.Data.SearchAnnotationsRequest body)
+        {
+            return new SearchRequest(service, body);
+        }
+
+        /// <summary>Searches for annotations that match the given criteria. Results are ordered by genomic coordinate
+        /// (by reference sequence, then position). Annotations with equivalent genomic coordinates are returned in an
+        /// unspecified order. This order is consistent, such that two queries for the same content (regardless of page
+        /// size) yield annotations in the same order across their respective streams of paginated responses. Caller
+        /// must have READ permission for the queried annotation sets.</summary>
+        public class SearchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.SearchAnnotationsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.SearchAnnotationsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.SearchAnnotationsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "search"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations/search"; }
+            }
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Updates an annotation. Caller must have WRITE permission for the associated dataset.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="annotationId">The ID of the annotation to be updated.</param>
+        public virtual UpdateRequest Update(Google.Apis.Genomics.v1.Data.Annotation body, string annotationId)
+        {
+            return new UpdateRequest(service, body, annotationId);
+        }
+
+        /// <summary>Updates an annotation. Caller must have WRITE permission for the associated dataset.</summary>
+        public class UpdateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Annotation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.Annotation body, string annotationId)
+                : base(service)
+            {
+                AnnotationId = annotationId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationId { get; private set; }
+
+            /// <summary>An optional mask specifying which fields to update. Mutable fields are name, variant,
+            /// transcript, and info. If unspecified, all mutable fields will be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.Annotation Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotations/{annotationId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "annotationsets" collection of methods.</summary>
+    public class AnnotationsetsResource
+    {
+        private const string Resource = "annotationsets";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AnnotationsetsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a new annotation set. Caller must have WRITE permission for the associated dataset. The
+        /// following fields are required: * datasetId * referenceSetId All other fields may be optionally specified,
+        /// unless documented as being server-generated (for example, the `id` field).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Genomics.v1.Data.AnnotationSet body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new annotation set. Caller must have WRITE permission for the associated dataset. The
+        /// following fields are required: * datasetId * referenceSetId All other fields may be optionally specified,
+        /// unless documented as being server-generated (for example, the `id` field).</summary>
+        public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.AnnotationSet>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.AnnotationSet body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.AnnotationSet Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotationsets"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Deletes an annotation set. Caller must have WRITE permission for the associated annotation
+        /// set.</summary>
+        /// <param name="annotationSetId">The ID of the annotation set to be deleted.</param>
+        public virtual DeleteRequest Delete(string annotationSetId)
+        {
+            return new DeleteRequest(service, annotationSetId);
+        }
+
+        /// <summary>Deletes an annotation set. Caller must have WRITE permission for the associated annotation
+        /// set.</summary>
+        public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string annotationSetId)
+                : base(service)
+            {
+                AnnotationSetId = annotationSetId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation set to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationSetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationSetId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotationsets/{annotationSetId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationSetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationSetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets an annotation set. Caller must have READ permission for the associated dataset.</summary>
+        /// <param name="annotationSetId">The ID of the annotation set to be retrieved.</param>
+        public virtual GetRequest Get(string annotationSetId)
+        {
+            return new GetRequest(service, annotationSetId);
+        }
+
+        /// <summary>Gets an annotation set. Caller must have READ permission for the associated dataset.</summary>
+        public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.AnnotationSet>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string annotationSetId)
+                : base(service)
+            {
+                AnnotationSetId = annotationSetId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation set to be retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationSetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationSetId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotationsets/{annotationSetId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationSetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationSetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Searches for annotation sets that match the given criteria. Annotation sets are returned in an
+        /// unspecified order. This order is consistent, such that two queries for the same content (regardless of page
+        /// size) yield annotation sets in the same order across their respective streams of paginated responses. Caller
+        /// must have READ permission for the queried datasets.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SearchRequest Search(Google.Apis.Genomics.v1.Data.SearchAnnotationSetsRequest body)
+        {
+            return new SearchRequest(service, body);
+        }
+
+        /// <summary>Searches for annotation sets that match the given criteria. Annotation sets are returned in an
+        /// unspecified order. This order is consistent, such that two queries for the same content (regardless of page
+        /// size) yield annotation sets in the same order across their respective streams of paginated responses. Caller
+        /// must have READ permission for the queried datasets.</summary>
+        public class SearchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.SearchAnnotationSetsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.SearchAnnotationSetsRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.SearchAnnotationSetsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "search"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotationsets/search"; }
+            }
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Updates an annotation set. The update must respect all mutability restrictions and other invariants
+        /// described on the annotation set resource. Caller must have WRITE permission for the associated
+        /// dataset.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="annotationSetId">The ID of the annotation set to be updated.</param>
+        public virtual UpdateRequest Update(Google.Apis.Genomics.v1.Data.AnnotationSet body, string annotationSetId)
+        {
+            return new UpdateRequest(service, body, annotationSetId);
+        }
+
+        /// <summary>Updates an annotation set. The update must respect all mutability restrictions and other invariants
+        /// described on the annotation set resource. Caller must have WRITE permission for the associated
+        /// dataset.</summary>
+        public class UpdateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.AnnotationSet>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Genomics.v1.Data.AnnotationSet body, string annotationSetId)
+                : base(service)
+            {
+                AnnotationSetId = annotationSetId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the annotation set to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("annotationSetId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AnnotationSetId { get; private set; }
+
+            /// <summary>An optional mask specifying which fields to update. Mutable fields are name, source_uri, and
+            /// info. If unspecified, all mutable fields will be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Genomics.v1.Data.AnnotationSet Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/annotationsets/{annotationSetId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "annotationSetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "annotationSetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 
@@ -3152,14 +3921,14 @@ namespace Google.Apis.Genomics.v1
         /// both variants contain calls that belong to callsets with the same callset ID. // Existing variant -
         /// irrelevant fields trimmed for clarity { "variantSetId": "10473108253681171589", "referenceName": "1",
         /// "start": "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-        /// "10473108253681171589-0", "callSetName": "EXISTINGCALLSET", "genotype": [ 0, 1 ], } ] } // New variant with
+        /// "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 0, 1 ], } ] } // New variant with
         /// conflicting call information { "variantSetId": "10473108253681171589", "referenceName": "1", "start":
         /// "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-        /// "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1 ], } ] } The resulting merged
+        /// "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ], } ] } The resulting merged
         /// variant would overwrite the existing calls with those from the new variant: { "variantSetId":
         /// "10473108253681171589", "referenceName": "1", "start": "10582", "referenceBases": "G", "alternateBases": [
-        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1
-        /// ], } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
+        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
+        /// } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
         /// case.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual MergeRequest Merge(Google.Apis.Genomics.v1.Data.MergeVariantsRequest body)
@@ -3178,14 +3947,14 @@ namespace Google.Apis.Genomics.v1
         /// both variants contain calls that belong to callsets with the same callset ID. // Existing variant -
         /// irrelevant fields trimmed for clarity { "variantSetId": "10473108253681171589", "referenceName": "1",
         /// "start": "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-        /// "10473108253681171589-0", "callSetName": "EXISTINGCALLSET", "genotype": [ 0, 1 ], } ] } // New variant with
+        /// "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 0, 1 ], } ] } // New variant with
         /// conflicting call information { "variantSetId": "10473108253681171589", "referenceName": "1", "start":
         /// "10582", "referenceBases": "G", "alternateBases": [ "A" ], "calls": [ { "callSetId":
-        /// "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1 ], } ] } The resulting merged
+        /// "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ], } ] } The resulting merged
         /// variant would overwrite the existing calls with those from the new variant: { "variantSetId":
         /// "10473108253681171589", "referenceName": "1", "start": "10582", "referenceBases": "G", "alternateBases": [
-        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "NEWCALLSET", "genotype": [ 1, 1
-        /// ], } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
+        /// "A" ], "calls": [ { "callSetId": "10473108253681171589-0", "callSetName": "CALLSET0", "genotype": [ 1, 1 ],
+        /// } ] } This may be the desired outcome, but it is up to the user to determine if if that is indeed the
         /// case.</summary>
         public class MergeRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
@@ -3861,6 +4630,129 @@ namespace Google.Apis.Genomics.v1
 namespace Google.Apis.Genomics.v1.Data
 {    
 
+    /// <summary>An annotation describes a region of reference genome. The value of an annotation may be one of several
+    /// canonical types, supplemented by arbitrary info tags. An annotation is not inherently associated with a specific
+    /// sample or individual (though a client could choose to use annotations in this way). Example canonical annotation
+    /// types are `GENE` and `VARIANT`.</summary>
+    public class Annotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotation set to which this annotation belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationSetId")]
+        public virtual string AnnotationSetId { get; set; } 
+
+        /// <summary>The end position of the range on the reference, 0-based exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>The server-generated annotation ID, unique across all annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A map of additional read alignment information. This must be of the form map (string key mapping to
+        /// a list of string values).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<object>> Info { get; set; } 
+
+        /// <summary>The display name of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ID of the Google Genomics reference associated with this range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; } 
+
+        /// <summary>The display name corresponding to the reference specified by `referenceId`, for example `chr1`,
+        /// `1`, or `chrX`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceName")]
+        public virtual string ReferenceName { get; set; } 
+
+        /// <summary>Whether this range refers to the reverse strand, as opposed to the forward strand. Note that
+        /// regardless of this field, the start/end position of the range always refer to the forward strand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reverseStrand")]
+        public virtual System.Nullable<bool> ReverseStrand { get; set; } 
+
+        /// <summary>The start position of the range on the reference, 0-based inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>A transcript value represents the assertion that a particular region of the reference genome may be
+        /// transcribed as RNA. An alternative splicing pattern would be represented as a separate transcript object.
+        /// This field is only set for annotations of type `TRANSCRIPT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual Transcript Transcript { get; set; } 
+
+        /// <summary>The data type for this annotation. Must match the containing annotation set's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>A variant annotation, which describes the effect of a variant on the genome, the coding sequence,
+        /// and/or higher level consequences at the organism level e.g. pathogenicity. This field is only set for
+        /// annotations of type `VARIANT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variant")]
+        public virtual VariantAnnotation Variant { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An annotation set is a logical grouping of annotations that share consistent type information and
+    /// provenance. Examples of annotation sets include 'all genes from refseq', and 'all variant annotations from
+    /// ClinVar'.</summary>
+    public class AnnotationSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dataset to which this annotation set belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>The server-generated annotation set ID, unique across all annotation sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A map of additional read alignment information. This must be of the form map (string key mapping to
+        /// a list of string values).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<object>> Info { get; set; } 
+
+        /// <summary>The display name for this annotation set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ID of the reference set that defines the coordinate space for this set's annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSetId")]
+        public virtual string ReferenceSetId { get; set; } 
+
+        /// <summary>The source URI describing the file from which this annotation set was generated, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; } 
+
+        /// <summary>The type of annotations contained within this set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BatchCreateAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The annotations to be created. At most 4096 can be specified in a single request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BatchCreateAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting per-annotation entries, ordered consistently with the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<Entry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3948,6 +4840,45 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ClinicalCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The MedGen concept id associated with this gene. Search for these IDs at
+        /// http://www.ncbi.nlm.nih.gov/medgen/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conceptId")]
+        public virtual string ConceptId { get; set; } 
+
+        /// <summary>The set of external IDs for this condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
+        public virtual System.Collections.Generic.IList<ExternalId> ExternalIds { get; set; } 
+
+        /// <summary>A set of names for the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+
+        /// <summary>The OMIM id for this condition. Search for these IDs at http://omim.org/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omimId")]
+        public virtual string OmimId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CodingSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end of the coding sequence on this annotation's reference sequence, 0-based exclusive. Note
+        /// that this position is relative to the reference start, and *not* the containing annotation start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>The start of the coding sequence on this annotation's reference sequence, 0-based inclusive. Note
+        /// that this position is relative to the reference start, and *not* the containing annotation start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A bucket over which read coverage has been precomputed. A bucket corresponds to a specific range of the
     /// reference sequence.</summary>
     public class CoverageBucket : Google.Apis.Requests.IDirectResponseSchema
@@ -3995,6 +4926,45 @@ namespace Google.Apis.Genomics.v1.Data
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Entry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created annotation, if creation was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
+        public virtual Annotation Annotation { get; set; } 
+
+        /// <summary>The creation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Exon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end position of the exon on this annotation's reference sequence, 0-based exclusive. Note that
+        /// this is relative to the reference start, and *not* the containing annotation start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>The frame of this exon. Contains a value of 0, 1, or 2, which indicates the offset of the first
+        /// coding base of the exon within the reading frame of the coding DNA sequence, if any. This field is dependent
+        /// on the strandedness of this annotation (see Annotation.reverse_strand). For forward stranded annotations,
+        /// this offset is relative to the exon.start. For reverse strand annotations, this offset is relative to the
+        /// exon.end `- 1`. Unset if this exon does not intersect the coding sequence. Upon creation of a transcript,
+        /// the frame must be populated for all or none of the coding exons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frame")]
+        public virtual System.Nullable<int> Frame { get; set; } 
+
+        /// <summary>The start position of the exon on this annotation's reference sequence, 0-based inclusive. Note
+        /// that this is relative to the reference start, and **not** the containing annotation start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4074,6 +5044,20 @@ namespace Google.Apis.Genomics.v1.Data
         /// have WRITE access to this project. This project will also own the resulting export job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ExternalId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id used by the source of this data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The name of the source of this data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
+        public virtual string SourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4776,6 +5760,111 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SearchAnnotationSetsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dataset IDs to search within. Caller must have `READ` access to these
+        /// datasets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetIds")]
+        public virtual System.Collections.Generic.IList<string> DatasetIds { get; set; } 
+
+        /// <summary>Only return annotations sets for which a substring of the name matches this string (case
+        /// insensitive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The maximum number of results to return in a single page. If unspecified, defaults to 128. The
+        /// maximum value is 1024.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>The continuation token, which is used to page through large result sets. To get the next page of
+        /// results, set this parameter to the value of `nextPageToken` from the previous response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; } 
+
+        /// <summary>If specified, only annotation sets associated with the given reference set are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSetId")]
+        public virtual string ReferenceSetId { get; set; } 
+
+        /// <summary>If specified, only annotation sets that have any of these types are returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchAnnotationSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The matching annotation sets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationSets")]
+        public virtual System.Collections.Generic.IList<AnnotationSet> AnnotationSets { get; set; } 
+
+        /// <summary>The continuation token, which is used to page through large result sets. Provide this value in a
+        /// subsequent request to return the next page of results. This field will be empty if there aren't any
+        /// additional results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchAnnotationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The annotation sets to search within. The caller must have `READ` access to these
+        /// annotation sets. All queried annotation sets must have the same type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationSetIds")]
+        public virtual System.Collections.Generic.IList<string> AnnotationSetIds { get; set; } 
+
+        /// <summary>The end position of the range on the reference, 0-based exclusive. If referenceId or referenceName
+        /// must be specified, Defaults to the length of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>The maximum number of results to return in a single page. If unspecified, defaults to 256. The
+        /// maximum value is 2048.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; } 
+
+        /// <summary>The continuation token, which is used to page through large result sets. To get the next page of
+        /// results, set this parameter to the value of `nextPageToken` from the previous response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; } 
+
+        /// <summary>The ID of the reference to query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; } 
+
+        /// <summary>The name of the reference to query, within the reference set associated with this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceName")]
+        public virtual string ReferenceName { get; set; } 
+
+        /// <summary>The start position of the range on the reference, 0-based inclusive. If specified, referenceId or
+        /// referenceName must be specified. Defaults to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SearchAnnotationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The matching annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; } 
+
+        /// <summary>The continuation token, which is used to page through large result sets. Provide this value in a
+        /// subsequent request to return the next page of results. This field will be empty if there aren't any
+        /// additional results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The call set search request.</summary>
     public class SearchCallSetsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5307,6 +6396,36 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A transcript represents the assertion that a particular region of the reference genome may be
+    /// transcribed as RNA.</summary>
+    public class Transcript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range of the coding sequence for this transcript, if any. To determine the exact ranges of
+        /// coding sequence, intersect this range with those of the exons, if any. If there are any exons, the
+        /// codingSequence must start and end within them. Note that in some cases, the reference genome will not
+        /// exactly match the observed mRNA transcript e.g. due to variance in the source genome from reference. In
+        /// these cases, exon.frame will not necessarily match the expected reference reading frame and coding exon
+        /// reference bases cannot necessarily be concatenated to produce the original transcript mRNA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codingSequence")]
+        public virtual CodingSequence CodingSequence { get; set; } 
+
+        /// <summary>The exons that compose this transcript. This field should be unset for genomes where transcript
+        /// splicing does not occur, for example prokaryotes. Introns are regions of the transcript that are not
+        /// included in the spliced RNA product. Though not explicitly modeled here, intron ranges can be deduced; all
+        /// regions of this transcript that are not exons are introns. Exonic sequences do not necessarily code for a
+        /// translational product (amino acids). Only the regions of exons bounded by the codingSequence correspond to
+        /// coding DNA sequence. Exons are ordered by start position and may not overlap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exons")]
+        public virtual System.Collections.Generic.IList<Exon> Exons { get; set; } 
+
+        /// <summary>The annotation ID of the gene from which this transcript is transcribed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geneId")]
+        public virtual string GeneId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class UndeleteDatasetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -5378,6 +6497,46 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The ID of the variant set this variant belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantSetId")]
         public virtual string VariantSetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VariantAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternate allele for this variant. If multiple alternate alleles exist at this location, create
+        /// a separate variant for each one, as they may represent distinct conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateBases")]
+        public virtual string AlternateBases { get; set; } 
+
+        /// <summary>Describes the clinical significance of a variant. It is adapted from the ClinVar controlled
+        /// vocabulary for clinical significance described at:
+        /// http://www.ncbi.nlm.nih.gov/clinvar/docs/clinsig/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clinicalSignificance")]
+        public virtual string ClinicalSignificance { get; set; } 
+
+        /// <summary>The set of conditions associated with this variant. A condition describes the way a variant
+        /// influences human health.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ClinicalCondition> Conditions { get; set; } 
+
+        /// <summary>Effect of the variant on the coding sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effect")]
+        public virtual string Effect { get; set; } 
+
+        /// <summary>Google annotation ID of the gene affected by this variant. This should be provided when the variant
+        /// is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geneId")]
+        public virtual string GeneId { get; set; } 
+
+        /// <summary>Google annotation IDs of the transcripts affected by this variant. These should be provided when
+        /// the variant is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcriptIds")]
+        public virtual System.Collections.Generic.IList<string> TranscriptIds { get; set; } 
+
+        /// <summary>Type has been adapted from ClinVar's list of variant types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

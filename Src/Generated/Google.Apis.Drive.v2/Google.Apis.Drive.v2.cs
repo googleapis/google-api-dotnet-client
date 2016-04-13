@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160328 (452)
+ *      <tr><th>API Rev<td>20160331 (455)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -7652,6 +7652,10 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>Indexable text attributes for the file (can only be written)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexableText")]
         public virtual File.IndexableTextData IndexableText { get; set; } 
+
+        /// <summary>Whether the file was created or opened by the requesting app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
+        public virtual System.Nullable<bool> IsAppAuthorized { get; set; } 
 
         /// <summary>The type of file. This is always drive#file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/P9b4dbHBJNvklJYWy1Z1rmeMosc\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/8yKcUQVrBaHM0T3BDuGJG1hNTPk\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20160328",
+ "revision": "20160407",
  "title": "Compute Engine API",
  "description": "API for the Google Compute Engine service.",
  "ownerDomain": "google.com",
@@ -433,7 +433,7 @@
     },
     "sourceImage": {
      "type": "string",
-     "description": "The source image used to create this disk.\n\nTo create a disk with a private image, specify the image name in the following format:\n\nglobal/images/my-private-image \n\nTo create a disk with a public image, specify the image name and the project that owns the image. For example, you can use a Debian image from the debian-cloud project:\n\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD \n\nThe vYYYYMMDD value is the image version. The fully-qualified URL also works in both examples."
+     "description": "The source image used to create this disk. If the source image is deleted, this field will not be set.\n\nTo create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-8 to use the latest Debian 8 image:\n\nprojects/debian-cloud/global/images/family/debian-8 \n\nAlternatively, use a specific version of a public operating system image:\n\nprojects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD \n\nTo create a disk with a private image that you created, specify the image name in the following format:\n\nglobal/images/my-private-image \n\nYou can also specify a private image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:\n\nglobal/images/family/my-private-family"
     }
    }
   },
@@ -4917,7 +4917,7 @@
     },
     "region": {
      "type": "string",
-     "description": "[Output Only] URL of the region where the Subnetwork resides."
+     "description": "URL of the region where the Subnetwork resides."
     },
     "selfLink": {
      "type": "string",

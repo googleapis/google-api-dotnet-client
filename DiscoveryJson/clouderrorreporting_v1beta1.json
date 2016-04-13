@@ -49,11 +49,6 @@
                   "type": "string",
                   "location": "path"
                 },
-                "serviceFilter.environment": {
-                  "description": "The exact value to match against\n[`ServiceContext.environment`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.environment).",
-                  "type": "string",
-                  "location": "query"
-                },
                 "serviceFilter.service": {
                   "description": "The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).",
                   "type": "string",
@@ -127,15 +122,10 @@
                 },
                 "projectName": {
                   "required": true,
-                  "description": "The\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nRequired. Example: `my-project-123`.",
+                  "description": "The resource name of the Google Cloud Platform project. Written as\n`projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nRequired. Example: `projects/my-project-123`.",
                   "pattern": "^projects/[^/]*$",
                   "type": "string",
                   "location": "path"
-                },
-                "serviceFilter.environment": {
-                  "description": "The exact value to match against\n[`ServiceContext.environment`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.environment).",
-                  "type": "string",
-                  "location": "query"
                 },
                 "order": {
                   "enum": [
@@ -215,7 +205,7 @@
               "parameters": {
                 "name": {
                   "required": true,
-                  "description": "Group resource name.\nExample: projects/my-projectid/groups/my-groupid",
+                  "description": "Group resource name.\nExample: `projects/my-project-123/groups/my-groupid`",
                   "pattern": "^projects/[^/]*/groups/[^/]*$",
                   "type": "string",
                   "location": "path"
@@ -240,7 +230,7 @@
               "parameters": {
                 "groupName": {
                   "required": true,
-                  "description": "Group resource name. Required.\nExample: projects/my-project/groups/my-group",
+                  "description": "Group resource name. Required.\nExample: `projects/my-project-123/groups/my-group`",
                   "pattern": "^projects/[^/]*/groups/[^/]*$",
                   "type": "string",
                   "location": "path"
@@ -378,12 +368,8 @@
       "id": "ErrorContext"
     },
     "ServiceContext": {
-      "description": "Describes a running service that sends errors.\nServices can be deployed to multiple environments,\nfor example, `test` or `prod`. Their version changes over time and\nmultiple versions can run in parallel.",
+      "description": "Describes a running service that sends errors.\nIts version changes over time and multiple versions can run in parallel.",
       "properties": {
-        "environment": {
-          "description": "The identifier describes a set of running services that are\noperated as a single unit, such as `test`, `canary`, or `prod`.\nIf the error originates\nfrom Google App Engine logs, or if the identifier is empty, the value\nappears as `default`.",
-          "type": "string"
-        },
         "service": {
           "description": "An identifier of the service, such as the name of the executable, job, or\nGoogle App Engine module name. This field is expected to have a low number\nof values that are relatively stable over time, as opposed to\n`version`, which can be changed whenever new code is deployed.\n\nContains the module name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default module is used. If\nempty, the value is set to `default`.",
           "type": "string"
@@ -411,7 +397,7 @@
           }
         },
         "name": {
-          "description": "Group resource name.\nExample: projects/my-projectid/groups/my-groupid",
+          "description": "Group resource name.\nExample: `projects/my-project-123/groups/my-groupid`",
           "type": "string"
         }
       },
@@ -452,7 +438,7 @@
           "format": "google-datetime"
         },
         "message": {
-          "description": "Error message that was reported or logged by the service.",
+          "description": "The stack trace that was reported or logged by the service.",
           "type": "string"
         }
       },
@@ -550,7 +536,7 @@
       "id": "ListGroupStatsResponse"
     }
   },
-  "revision": "20160316",
+  "revision": "20160404",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

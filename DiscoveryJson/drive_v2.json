@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/hz7QwAZacK_jkUU4Gqfwxx-djO4\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/GTDpaocQE9NwB0Qlbrx8nJ-e_1c\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20160328",
+ "revision": "20160331",
  "title": "Drive API",
  "description": "The API to interact with Drive.",
  "ownerDomain": "google.com",
@@ -1101,6 +1101,10 @@
        "description": "The text to be indexed for this file."
       }
      }
+    },
+    "isAppAuthorized": {
+     "type": "boolean",
+     "description": "Whether the file was created or opened by the requesting app."
     },
     "kind": {
      "type": "string",

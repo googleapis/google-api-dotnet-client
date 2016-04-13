@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Google Cloud Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160316 (440)
+ *      <tr><th>API Rev<td>20160404 (459)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -414,11 +414,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
-                /// <summary>The exact value to match against [`ServiceContext.environment`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.environment).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.environment", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterEnvironment { get; set; }
-
                 /// <summary>The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
@@ -478,15 +473,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "timeRange.period", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timeRange.period",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.environment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.environment",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -566,8 +552,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Lists the specified groups.</summary>
-            /// <param name="projectName">The [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-            /// Required. Example: `my-project-123`.</param>
+            /// <param name="projectName">The resource name of the Google Cloud Platform project. Written as `projects/` plus the
+            /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Required. Example: `projects
+            /// /my-project-123`.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -585,8 +572,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>The [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
-                /// Required. Example: `my-project-123`.</summary>
+                /// <summary>The resource name of the Google Cloud Platform project. Written as `projects/` plus the
+                /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Required.
+                /// Example: `projects/my-project-123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
@@ -627,11 +615,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
                     PERIOD30DAYS,
                 }
-
-                /// <summary>The exact value to match against [`ServiceContext.environment`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.environment).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.environment", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterEnvironment { get; set; }
 
                 /// <summary>The sort order in which the results are returned. Default is `COUNT_DESC`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
@@ -738,15 +721,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "serviceFilter.environment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.environment",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "order", new Google.Apis.Discovery.Parameter
                         {
                             Name = "order",
@@ -847,7 +821,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Get the specified group.</summary>
-            /// <param name="groupName">Group resource name. Required. Example: projects/my-project/groups/my-group</param>
+            /// <param name="groupName">Group resource name. Required. Example: `projects/my-project-123/groups/my-
+            /// group`</param>
             public virtual GetRequest Get(string groupName)
             {
                 return new GetRequest(service, groupName);
@@ -865,7 +840,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Group resource name. Required. Example: projects/my-project/groups/my-group</summary>
+                /// <summary>Group resource name. Required. Example: `projects/my-project-123/groups/my-group`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupName { get; private set; }
 
@@ -908,7 +883,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Group resource name. Example: projects/my-projectid/groups/my-groupid</param>
+            /// <param name="name">Group resource name. Example: `projects/my-project-123/groups/my-groupid`</param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -927,7 +902,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Group resource name. Example: projects/my-projectid/groups/my-groupid</summary>
+                /// <summary>Group resource name. Example: `projects/my-project-123/groups/my-groupid`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1088,7 +1063,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; } 
 
-        /// <summary>Error message that was reported or logged by the service.</summary>
+        /// <summary>The stack trace that was reported or logged by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
@@ -1108,7 +1083,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; } 
 
-        /// <summary>Group resource name. Example: projects/my-projectid/groups/my-groupid</summary>
+        /// <summary>Group resource name. Example: `projects/my-project-123/groups/my-groupid`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1245,16 +1220,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a running service that sends errors. Services can be deployed to multiple environments, for
-    /// example, `test` or `prod`. Their version changes over time and multiple versions can run in parallel.</summary>
+    /// <summary>Describes a running service that sends errors. Its version changes over time and multiple versions can
+    /// run in parallel.</summary>
     public class ServiceContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier describes a set of running services that are operated as a single unit, such as
-        /// `test`, `canary`, or `prod`. If the error originates from Google App Engine logs, or if the identifier is
-        /// empty, the value appears as `default`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
-        public virtual string Environment { get; set; } 
-
         /// <summary>An identifier of the service, such as the name of the executable, job, or Google App Engine module
         /// name. This field is expected to have a low number of values that are relatively stable over time, as opposed
         /// to `version`, which can be changed whenever new code is deployed.

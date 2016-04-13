@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Oi0KnpKPJva7LMe3W0nV9ypaEjo\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/OT6z46RuVYmNSpc4ANwr5Pi-L-o\"",
  "discoveryVersion": "v1",
  "id": "identitytoolkit:v3",
  "name": "identitytoolkit",
  "canonicalName": "Identity Toolkit",
  "version": "v3",
- "revision": "20160324",
+ "revision": "20160407",
  "title": "Google Identity Toolkit API",
  "description": "Help the third party sites to implement federated login.",
  "ownerDomain": "google.com",
@@ -549,6 +549,13 @@
      "type": "string",
      "description": "Browser API key, needed when making http request to Apiary."
     },
+    "authorizedDomains": {
+     "type": "array",
+     "description": "Authorized domains for widget redirect.",
+     "items": {
+      "type": "string"
+     }
+    },
     "changeEmailTemplate": {
      "$ref": "EmailTemplate",
      "description": "Change email template."
@@ -928,6 +935,11 @@
      "type": "string",
      "description": "The new email the user attempts to change to."
     },
+    "passwordHash": {
+     "type": "string",
+     "description": "The user's hashed password.",
+     "format": "byte"
+    },
     "photoUrl": {
      "type": "string",
      "description": "The photo url of the user."
@@ -1222,6 +1234,10 @@
      "type": "integer",
      "description": "The lifetime in seconds of the OAuth2 access token.",
      "format": "int32"
+    },
+    "oauthIdToken": {
+     "type": "string",
+     "description": "The OIDC id token."
     },
     "oauthRequestToken": {
      "type": "string",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160328 (452)
+ *      <tr><th>API Rev<td>20160411 (466)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
@@ -4063,7 +4063,7 @@ namespace Google.Apis.Genomics.v1beta2
         }
 
         /// <summary>Gets a variant set by ID.</summary>
-        /// <param name="variantSetId">Required. The ID of the variant set.</param>
+        /// <param name="variantSetId">The ID of the variant set.</param>
         public virtual GetRequest Get(string variantSetId)
         {
             return new GetRequest(service, variantSetId);
@@ -4081,7 +4081,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>Required. The ID of the variant set.</summary>
+            /// <summary>The ID of the variant set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 
@@ -4287,7 +4287,7 @@ namespace Google.Apis.Genomics.v1beta2
         /// <summary>Updates a variant set's metadata. All other modifications are silently ignored. This method
         /// supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="variantSetId">The ID of the variant to be updated (must already exist).</param>
+        /// <param name="variantSetId">The ID of the variant set to be updated (must already exist).</param>
         public virtual PatchRequest Patch(Google.Apis.Genomics.v1beta2.Data.VariantSet body, string variantSetId)
         {
             return new PatchRequest(service, body, variantSetId);
@@ -4307,7 +4307,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the variant to be updated (must already exist).</summary>
+            /// <summary>The ID of the variant set to be updated (must already exist).</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 
@@ -4413,7 +4413,7 @@ namespace Google.Apis.Genomics.v1beta2
 
         /// <summary>Updates a variant set's metadata. All other modifications are silently ignored.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="variantSetId">The ID of the variant to be updated (must already exist).</param>
+        /// <param name="variantSetId">The ID of the variant set to be updated (must already exist).</param>
         public virtual UpdateRequest Update(Google.Apis.Genomics.v1beta2.Data.VariantSet body, string variantSetId)
         {
             return new UpdateRequest(service, body, variantSetId);
@@ -4432,7 +4432,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the variant to be updated (must already exist).</summary>
+            /// <summary>The ID of the variant set to be updated (must already exist).</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 
@@ -6129,7 +6129,7 @@ namespace Google.Apis.Genomics.v1beta2.Data
         public virtual string VariantName { get; set; } 
 
         /// <summary>At most one variant set ID must be provided. Only variants from this variant set will be returned.
-        /// If omitted, a call set id must be included in the request.</summary>
+        /// If omitted, a call set id must be included in the request. Both this and call_set_ids may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantSetIds")]
         public virtual System.Collections.Generic.IList<string> VariantSetIds { get; set; } 
 

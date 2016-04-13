@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/emwdUwZj4z8Lfj39vjO3dsDdRpA\"",
+ "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Nws4HL8c6p1u71-I5pz9eZTBJOg\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20160222",
+ "revision": "20160406",
  "title": "YouTube Data API",
- "description": "Programmatic access to YouTube features.",
+ "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -1965,6 +1965,7 @@
      "description": "The video's rating from Portugal's Comissão de Classificação de Espect´culos.",
      "enum": [
       "cceM12",
+      "cceM14",
       "cceM16",
       "cceM18",
       "cceM4",
@@ -1972,6 +1973,7 @@
       "cceUnrated"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -2763,9 +2765,13 @@
       "moctwP",
       "moctwPg",
       "moctwR",
+      "moctwR12",
+      "moctwR15",
       "moctwUnrated"
      ],
      "enumDescriptions": [
+      "",
+      "",
       "",
       "",
       "",
@@ -3792,6 +3798,11 @@
      "type": "string",
      "description": "This value uniquely identifies the live stream bound to the broadcast."
     },
+    "boundStreamLastUpdateTimeMs": {
+     "type": "string",
+     "description": "The date and time that the live stream referenced by boundStreamId was last updated.",
+     "format": "date-time"
+    },
     "closedCaptionsType": {
      "type": "string",
      "enum": [
@@ -4274,6 +4285,15 @@
     }
    }
   },
+  "LiveChatMessageDeletedDetails": {
+   "id": "LiveChatMessageDeletedDetails",
+   "type": "object",
+   "properties": {
+    "deletedMessageId": {
+     "type": "string"
+    }
+   }
+  },
   "LiveChatMessageListResponse": {
    "id": "LiveChatMessageListResponse",
    "type": "object",
@@ -4324,13 +4344,22 @@
     }
    }
   },
+  "LiveChatMessageRetractedDetails": {
+   "id": "LiveChatMessageRetractedDetails",
+   "type": "object",
+   "properties": {
+    "retractedMessageId": {
+     "type": "string"
+    }
+   }
+  },
   "LiveChatMessageSnippet": {
    "id": "LiveChatMessageSnippet",
    "type": "object",
    "properties": {
     "authorChannelId": {
      "type": "string",
-     "description": "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor"
+     "description": "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took the action"
     },
     "displayMessage": {
      "type": "string",
@@ -4347,6 +4376,12 @@
     "liveChatId": {
      "type": "string"
     },
+    "messageDeletedDetails": {
+     "$ref": "LiveChatMessageDeletedDetails"
+    },
+    "messageRetractedDetails": {
+     "$ref": "LiveChatMessageRetractedDetails"
+    },
     "publishedAt": {
      "type": "string",
      "description": "The date and time when the message was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
@@ -4362,11 +4397,14 @@
      "enum": [
       "chatEndedEvent",
       "fanFundingEvent",
+      "messageDeletedEvent",
+      "messageRetractedEvent",
       "newSponsorEvent",
       "sponsorOnlyModeEndedEvent",
       "sponsorOnlyModeStartedEvent",
       "textMessageEvent",
-      "tombstone"
+      "tombstone",
+      "userBannedEvent"
      ],
      "enumDescriptions": [
       "",
@@ -4375,8 +4413,14 @@
       "",
       "",
       "",
+      "",
+      "",
+      "",
       ""
      ]
+    },
+    "userBannedDetails": {
+     "$ref": "LiveChatUserBannedMessageDetails"
     }
    }
   },
@@ -4469,6 +4513,33 @@
     "messageText": {
      "type": "string",
      "description": "The user's message."
+    }
+   }
+  },
+  "LiveChatUserBannedMessageDetails": {
+   "id": "LiveChatUserBannedMessageDetails",
+   "type": "object",
+   "properties": {
+    "banDurationSeconds": {
+     "type": "string",
+     "description": "The duration of the ban. This property is only present if the banType is temporary.",
+     "format": "uint64"
+    },
+    "banType": {
+     "type": "string",
+     "description": "The type of ban.",
+     "enum": [
+      "permanent",
+      "temporary"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
+    "bannedUserDetails": {
+     "$ref": "ChannelProfileDetails",
+     "description": "The details of the user that was banned."
     }
    }
   },
@@ -6959,7 +7030,7 @@
   "WatchSettings": {
    "id": "WatchSettings",
    "type": "object",
-   "description": "Branding properties for the watch.",
+   "description": "Branding properties for the watch. All deprecated.",
    "properties": {
     "backgroundColor": {
      "type": "string",

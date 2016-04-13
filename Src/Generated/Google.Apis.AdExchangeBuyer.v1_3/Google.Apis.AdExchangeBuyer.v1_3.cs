@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20160318 (442)
+ *      <tr><th>API Rev<td>20160405 (460)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -2577,9 +2577,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The configuration data for an Ad Exchange performance report list.
-    /// https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release
-    /// https://cs.corp.google.com/#piperdepot/google3/contentads/adx/tools/rtb_api/adxrtb.py</summary>
+    /// <summary>The configuration data for an Ad Exchange performance report list.</summary>
     public class PerformanceReportList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resource type.</summary>
