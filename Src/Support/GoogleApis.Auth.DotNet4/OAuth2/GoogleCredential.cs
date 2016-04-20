@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : IConfigurableHttpClientInitializer, ITokenAccess
+    public class GoogleCredential : ICredential
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
