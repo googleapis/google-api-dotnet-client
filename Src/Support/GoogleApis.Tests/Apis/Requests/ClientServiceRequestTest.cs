@@ -41,7 +41,7 @@ namespace Google.Apis.Tests.Apis.Requests
     [TestFixture]
     public class ClientServiceRequestTest
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             // Uncomment to enable logging during tests

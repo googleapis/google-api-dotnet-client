@@ -4,8 +4,8 @@
 set -e
 
 # grab nunit runners
-nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
-NUNIT="${PWD}/testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe"
+nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
+NUNIT="${PWD}/testrunner/NUnit.ConsoleRunner.3.2.1/tools/nunit3-console.exe"
 
 cd Src/Support
 

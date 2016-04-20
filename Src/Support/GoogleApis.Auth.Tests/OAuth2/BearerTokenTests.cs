@@ -52,7 +52,7 @@ namespace Google.Apis.Auth.OAuth2
             var request = new HttpRequestMessage();
             request.Headers.Authorization = new AuthenticationHeaderValue("a", "1");
             var accessToken = new BearerToken.AuthorizationHeaderAccessMethod().GetAccessToken(request);
-            Assert.IsNullOrEmpty(accessToken);
+            Assert.That(accessToken, Is.Null.Or.Empty);
 
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", "abc");
             accessToken = new BearerToken.AuthorizationHeaderAccessMethod().GetAccessToken(request);
@@ -81,12 +81,12 @@ namespace Google.Apis.Auth.OAuth2
             // No query parameter at all.
             var request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com"));
             var accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
-            Assert.IsNullOrEmpty(accessToken);
+            Assert.That(accessToken, Is.Null.Or.Empty);
 
             // Different query parameter.
             request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com?a=1"));
             accessToken = new BearerToken.QueryParameterAccessMethod().GetAccessToken(request);
-            Assert.IsNullOrEmpty(accessToken);
+            Assert.That(accessToken, Is.Null.Or.Empty);
 
             // One query parameter and it's access_token.
             request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://sample.com?a=1&access_token=abc"));
