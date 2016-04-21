@@ -159,6 +159,11 @@ namespace Google.Apis.Tests.Apis.Download
                         }
                         response.AddHeader("Content-Encoding", "gzip");
                     }
+                    else if (requestUri.AbsolutePath.EndsWith("/NoContent"))
+                    {
+                        // Return 206 and no content.
+                        response.StatusCode = (int)HttpStatusCode.NoContent;
+                    }
                     else
                     {
                         // Return plaintext content.
@@ -387,6 +392,35 @@ namespace Google.Apis.Tests.Apis.Download
                     byte[] actual = outputStream.ToArray();
                     CollectionAssert.AreEqual(MediaContent, actual);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Tests that MediaDownloader properly handles an empty reply (206 No Content).
+        /// </summary>
+        [Test]
+        public void Download_NoContent()
+        {
+            using (var service = new MockClientService())
+            {
+                var downloader = new MediaDownloader(service);
+                IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
+                downloader.ProgressChanged += (p) =>
+                {
+                    progressList.Add(p);
+                };
+
+                var outputStream = new MemoryStream();
+                downloader.Download(_httpPrefix + "NoContent", outputStream);
+
+                // We expect only one event -- "completed".
+                Assert.That(progressList.Count, Is.EqualTo(1));
+
+                var progress = progressList[0];
+
+                Assert.That(progress.Status, Is.EqualTo(DownloadStatus.Completed));
+                Assert.That(progress.BytesDownloaded, Is.EqualTo(0));
+                Assert.That(outputStream.Length, Is.EqualTo(0));
             }
         }
 
