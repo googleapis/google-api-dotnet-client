@@ -383,6 +383,7 @@ namespace Google.Apis.Upload
             {
                 Logger.Error(ex, "MediaUpload - Exception occurred while initializing the upload");
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
+                return Progress;
             }
 
             return await UploadCoreAsync(cancellationToken).ConfigureAwait(false);
@@ -491,7 +492,12 @@ namespace Google.Apis.Upload
         {
             HttpRequestMessage request = CreateInitializeRequest();
             var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            return response.EnsureSuccessStatusCode().Headers.Location;
+            
+            if (!response.IsSuccessStatusCode)
+            {
+                throw await MediaApiErrorHandling.ExceptionForResponseAsync(Service, response).ConfigureAwait(false);
+            }
+            return response.Headers.Location;
         }
 
         /// <summary>
