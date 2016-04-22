@@ -33,6 +33,7 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests.Apis.Upload
 {
+    // TODO: Consider rewriting to use an actual HttpListener like MediaDownloaderTest.
     [TestFixture]
     class ResumableUploadTest
     {
@@ -209,6 +210,31 @@ anim id est laborum.";
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
                 tcs.SetResult(response);
                 return tcs.Task;
+            }
+        }
+
+        private class FailedInitializationMessageHandler : BaseMockMessageHandler
+        {
+            private readonly HttpStatusCode status;
+            private readonly byte[] content;
+            private readonly string contentType;
+
+            public FailedInitializationMessageHandler(HttpStatusCode status, byte[] content, string contentType)
+            {
+                this.status = status;
+                this.content = content;
+                this.contentType = contentType;
+            }
+
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var response = new HttpResponseMessage();
+                Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable"));
+                Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(),
+                    Is.EqualTo("text/plain"));
+                response.StatusCode = status;
+                response.Content = new ByteArrayContent(content);
+                return Task.FromResult(response);
             }
         }
 
@@ -1142,6 +1168,25 @@ anim id est laborum.";
                 // Valid chunk size.
                 upload.ChunkSize = MockResumableUpload.MinimumChunkSize;
                 upload.ChunkSize = MockResumableUpload.MinimumChunkSize * 2;
+            }
+        }
+
+        [Test]
+        public void InitializationRequestFails()
+        {
+            string errorText = "Missing foobar";
+            var handler = new FailedInitializationMessageHandler(
+                HttpStatusCode.BadRequest, Encoding.UTF8.GetBytes(errorText), "text/plain; charset=utf-8");
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }))
+            {
+                var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
+                var upload = new MockResumableUpload(service, stream, "text/plain", 100);
+                var progress = upload.Upload();
+                var exception = (GoogleApiException)progress.Exception;
+                Assert.AreEqual(errorText, exception.Message);
             }
         }
     }
