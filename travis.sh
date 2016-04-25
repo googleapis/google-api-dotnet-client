@@ -16,6 +16,6 @@ xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
 OUTDIR=bin/ReleaseSigned
 
 mono "${NUNIT}" \
-    "GoogleApis.Tests/${OUTDIR}/Google.Apis.Tests.dll" \
-    "GoogleApis.Auth.Tests/${OUTDIR}/Google.Apis.Auth.Tests.dll" \
-    "GoogleApis.Auth.DotNet4.Tests/${OUTDIR}/Google.Apis.Auth.DotNet4.Tests.dll"
+    "GoogleApis.Tests/${OUTDIR}/Google.Apis.Tests.exe" \
+    "GoogleApis.Auth.Tests/${OUTDIR}/Google.Apis.Auth.Tests.exe" \
+    "GoogleApis.Auth.DotNet4.Tests/${OUTDIR}/Google.Apis.Auth.DotNet4.Tests.exe"
