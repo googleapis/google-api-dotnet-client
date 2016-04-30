@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160226 (421)
+ *      <tr><th>API Rev<td>20160411 (466)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7577,6 +7577,16 @@ namespace Google.Apis.Books.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
+        /// <summary>The list of crm experiment ids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crmExperimentIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CrmExperimentIds { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("doc_id")]
+        public virtual string DocId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("doc_type")]
+        public virtual string DocType { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("dont_show_notification")]
         public virtual System.Nullable<bool> DontShowNotification { get; set; } 
 
@@ -8276,6 +8286,10 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("entitlementType")]
             public virtual System.Nullable<int> EntitlementType { get; set; } 
 
+            /// <summary>Information on the ability to share with the family.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("familySharing")]
+            public virtual UserInfoData.FamilySharingData FamilySharing { get; set; } 
+
             /// <summary>Whether or not the user shared this volume with the family.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isFamilySharedFromUser")]
             public virtual System.Nullable<bool> IsFamilySharedFromUser { get; set; } 
@@ -8284,11 +8298,13 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("isFamilySharedToUser")]
             public virtual System.Nullable<bool> IsFamilySharedToUser { get; set; } 
 
-            /// <summary>Whether or not this volume can be shared with the family by the user. This includes sharing
-            /// eligibility of both the volume and the user. If the value is true, the user can initiate a family
-            /// sharing action.</summary>
+            /// <summary>Deprecated: Replaced by familySharing.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isFamilySharingAllowed")]
             public virtual System.Nullable<bool> IsFamilySharingAllowed { get; set; } 
+
+            /// <summary>Deprecated: Replaced by familySharing.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("isFamilySharingDisabledByFop")]
+            public virtual System.Nullable<bool> IsFamilySharingDisabledByFop { get; set; } 
 
             /// <summary>Whether or not this volume is currently in "my books."</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isInMyBooks")]
@@ -8377,6 +8393,26 @@ namespace Google.Apis.Books.v1.Data
                         UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
                     }
                 }
+
+            }    
+
+            /// <summary>Information on the ability to share with the family.</summary>
+            public class FamilySharingData
+            {
+                /// <summary>The role of the user in the family.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("familyRole")]
+                public virtual string FamilyRole { get; set; } 
+
+                /// <summary>Whether or not this volume can be shared with the family by the user. This includes sharing
+                /// eligibility of both the volume and the user. If the value is true, the user can initiate a family
+                /// sharing action.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("isSharingAllowed")]
+                public virtual System.Nullable<bool> IsSharingAllowed { get; set; } 
+
+                /// <summary>Whether or not sharing this volume is temporarily disabled due to issues with the Family
+                /// Wallet.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("isSharingDisabledByFop")]
+                public virtual System.Nullable<bool> IsSharingDisabledByFop { get; set; } 
 
             }    
 

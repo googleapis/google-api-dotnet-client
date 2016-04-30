@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160407 (462)
+ *      <tr><th>API Rev<td>20160412 (467)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -612,10 +612,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -1012,10 +1012,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -1163,10 +1163,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -1563,10 +1563,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -2222,10 +2222,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -2540,10 +2540,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -2765,10 +2765,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -2916,10 +2916,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -3436,10 +3436,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -3906,10 +3906,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -4218,10 +4218,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -4622,10 +4622,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -5099,10 +5099,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -5465,10 +5465,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -5693,10 +5693,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -5972,10 +5972,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -6338,10 +6338,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -6876,10 +6876,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -7394,6 +7394,82 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Returns the latest image that is part of an image family and is not deprecated.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="family">Name of the image resource
+        /// to return.</param>
+        public virtual GetFromFamilyRequest GetFromFamily(string project, string family)
+        {
+            return new GetFromFamilyRequest(service, project, family);
+        }
+
+        /// <summary>Returns the latest image that is part of an image family and is not deprecated.</summary>
+        public class GetFromFamilyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Image>
+        {
+            /// <summary>Constructs a new GetFromFamily request.</summary>
+            public GetFromFamilyRequest(Google.Apis.Services.IClientService service, string project, string family)
+                : base(service)
+            {
+                Project = project;
+                Family = family;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the image resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("family", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Family { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getFromFamily"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/images/family/{family}"; }
+            }
+
+            /// <summary>Initializes GetFromFamily parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "family", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "family",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Creates an image in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -7507,10 +7583,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -7759,10 +7835,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -8283,10 +8359,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -9071,10 +9147,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -9478,10 +9554,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -9629,10 +9705,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -10229,10 +10305,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -10486,10 +10562,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -11326,10 +11402,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -12374,10 +12450,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -12599,10 +12675,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -12972,10 +13048,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -13656,10 +13732,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -13885,10 +13961,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -14249,10 +14325,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -14553,10 +14629,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -14919,10 +14995,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -15061,10 +15137,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -15242,8 +15318,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -15253,8 +15328,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, region, subnetwork);
         }
 
-        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Subnetwork>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -15461,10 +15535,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -15836,10 +15910,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -16286,10 +16360,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -16596,10 +16670,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -16998,10 +17072,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -17349,10 +17423,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -17853,10 +17927,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -18316,10 +18390,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -18718,10 +18792,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -19093,10 +19167,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -19489,10 +19563,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -19891,10 +19965,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -20231,10 +20305,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -20460,10 +20534,10 @@ namespace Google.Apis.Compute.v1
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: If you use filtering in the Beta API, you can also filter on nested
-            /// fields. For example, you could filter on instances that have set the scheduling.automaticRestart field
-            /// to true. In particular, use filtering on nested fields to take advantage of instance labels to organize
-            /// and filter results based on label values.
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
             ///
             /// The Beta API also supports filtering on multiple expressions by providing each separate expression
             /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
@@ -21931,7 +22005,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
-        /// <summary>The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH or SCTP.</summary>
+        /// <summary>The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or
+        /// ICMP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
@@ -22385,6 +22460,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
 
+        /// <summary>The name of the image family to which this image belongs. You can create disks by specifying an
+        /// image family instead of a specific image name. The image family always returns its latest image that is not
+        /// deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("family")]
+        public virtual string Family { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -22784,8 +22865,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] The fingerprint of the target pools information. You can use this optional field for
-        /// optimistic locking when you update the target pool entries.</summary>
+        /// <summary>[Output Only] The fingerprint of the resource data. You can use this optional field for optimistic
+        /// locking when you update the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -23914,8 +23995,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>[Output Only] An optional IPV4 internal network address assigned to the instance for this network
-        /// interface.</summary>
+        /// <summary>An IPV4 internal network address to assign to the instance for this network interface. If not
+        /// specified by user an unused internal IP is assigned by system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 
@@ -23923,8 +24004,8 @@ namespace Google.Apis.Compute.v1.Data
         /// not provide this property. If the network is in auto subnet mode, providing the subnetwork is optional. If
         /// the network is in custom subnet mode, then this field should be specified. If you specify this property, you
         /// can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: -
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/subnetworks/subnetwork -
-        /// zones/zone/subnetworks/subnetwork</summary>
+        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork -
+        /// regions/region/subnetworks/subnetwork</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160330 (454)
+ *      <tr><th>API Rev<td>20160414 (469)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -906,7 +906,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit acl and defaultObjectAcl properties.</summary>
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -1065,7 +1065,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit acl and defaultObjectAcl properties.</summary>
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -1187,7 +1187,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit acl and defaultObjectAcl properties.</summary>
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -1363,7 +1363,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit acl and defaultObjectAcl properties.</summary>
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -1554,7 +1554,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit acl and defaultObjectAcl properties.</summary>
+                /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -3206,7 +3206,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -3625,7 +3625,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -3853,7 +3853,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -4130,7 +4130,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -4200,7 +4200,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -4398,7 +4398,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -4659,7 +4659,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -4961,7 +4961,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
@@ -5160,7 +5160,7 @@ namespace Google.Apis.Storage.v1
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
-                /// <summary>Omit the acl property.</summary>
+                /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }

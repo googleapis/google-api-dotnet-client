@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/replica-pool/'>Replica Pool API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20150708 (188)
+ *      <tr><th>API Rev<td>20160321 (445)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/replica-pool/'>
  *              https://developers.google.com/compute/docs/replica-pool/</a>

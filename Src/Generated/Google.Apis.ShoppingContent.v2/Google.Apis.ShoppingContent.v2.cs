@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160331 (455)
+ *      <tr><th>API Rev<td>20160419 (474)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6766,7 +6766,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The reason for the cancellation.</summary>
+        /// <summary>The reason for the cancellation. Orders that are cancelled with a noIventory reason will lead to
+        /// the removal of the product from POG until you make an update to that product. This will not affect your
+        /// Shopping ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -6784,8 +6786,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user had a choice to opt in or out of providing marketing rights to the
-        /// merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
+        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
+        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
         /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout
         /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
@@ -8041,7 +8043,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
         public virtual System.Nullable<long> Multipack { get; set; } 
 
-        /// <summary>An identifier of the item.</summary>
+        /// <summary>An identifier of the item. Leading and trailing whitespaces are stripped and multiple whitespaces
+        /// are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the
+        /// products feed specification for details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
@@ -8057,7 +8061,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>Your category of the item (formatted as in product feeds specification).</summary>
+        /// <summary>Your category of the item (formatted as in products feed specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual string ProductType { get; set; } 
 
@@ -8069,7 +8073,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; } 
 
-        /// <summary>Date range during which the item is on sale (see product feed specifications).</summary>
+        /// <summary>Date range during which the item is on sale (see products feed specification).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePriceEffectiveDate")]
         public virtual string SalePriceEffectiveDate { get; set; } 
 
@@ -8674,8 +8678,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user had a choice to opt in or out of providing marketing rights to the
-        /// merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
+        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
+        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
         /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160408 (463)
+ *      <tr><th>API Rev<td>20160427 (482)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -4193,6 +4193,147 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
+        /// <summary>Finds approved products that match a query.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        public virtual ListRequest List(string enterpriseId)
+        {
+            return new ListRequest(service, enterpriseId);
+        }
+
+        /// <summary>Finds approved products that match a query.</summary>
+        public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>Whether to search amongst all products or only amongst approved ones. Only "true" is supported,
+            /// and should be specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("approved", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Approved { get; set; }
+
+            /// <summary>The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). Results are returned in
+            /// the language best matching it.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Language { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The search query as typed in the Google Play Store search box. If omitted, all approved apps
+            /// will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> StartIndex { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Token { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/products"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "approved", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "approved",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>This method has been deprecated. To programmatically approve applications, you must use the iframe
         /// mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information,
         /// see the  Play EMM API usage requirements.
@@ -6368,6 +6509,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class PageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("resultPerPage")]
+        public virtual System.Nullable<int> ResultPerPage { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual System.Nullable<int> TotalResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A permission represents some extra capability, to be granted to an Android app, which requires explicit
     /// consent. An enterprise admin must consent to these permissions on behalf of their users before an entitlement
     /// for the app can be created.
@@ -6553,6 +6709,31 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The matching products.</summary>
+    public class ProductsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#productsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>General pagination information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        /// <summary>Information about a product (e.g. an app) in the Google Play Store, for display to an enterprise
+        /// admin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual System.Collections.Generic.IList<Product> Product { get; set; } 
+
+        /// <summary>Pagination information for token pagination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Definition of a Google Play for Work store cluster, a list of products displayed as part of a store
     /// page.</summary>
     public class StoreCluster : Google.Apis.Requests.IDirectResponseSchema
@@ -6577,7 +6758,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// between elements with duplicate order is undefined.
         ///
         /// The value of this field is never visible to a user, it is used solely for the purpose of defining an
-        /// ordering. Maximum length is 20 characters.</summary>
+        /// ordering. Maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderInPage")]
         public virtual string OrderInPage { get; set; } 
 
@@ -6671,6 +6852,18 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual System.Collections.Generic.IList<LocalizedText> Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("previousPageToken")]
+        public virtual string PreviousPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

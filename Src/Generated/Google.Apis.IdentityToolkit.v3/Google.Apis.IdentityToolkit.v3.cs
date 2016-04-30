@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160407 (462)
+ *      <tr><th>API Rev<td>20160420 (475)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1697,10 +1697,6 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
-        /// <summary>Whether return sts id token and refresh token instead of gitkit token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("returnSecureToken")]
-        public virtual System.Nullable<bool> ReturnSecureToken { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1954,6 +1950,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The local ID of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
+        public virtual string LocalId { get; set; } 
+
         /// <summary>The new email the user attempts to change to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newEmail")]
         public virtual string NewEmail { get; set; } 
@@ -1983,6 +1983,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             /// <summary>The user's display name at the IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
             public virtual string DisplayName { get; set; } 
+
+            /// <summary>User's identifier at IDP.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("federatedId")]
+            public virtual string FederatedId { get; set; } 
 
             /// <summary>The user's photo url at the IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]

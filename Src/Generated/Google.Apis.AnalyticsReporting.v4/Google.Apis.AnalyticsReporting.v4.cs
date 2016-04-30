@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Analytics Reporting API V4 Version v4
+ *   Google Analytics Reporting API Version v4
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API V4</a>
+ *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160407 (462)
+ *      <tr><th>API Rev<td>20160426 (481)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Analytics Reporting API V4 can be found at
+ * The complete API documentation for using Google Analytics Reporting API can be found at
  * <a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>https://developers.google.com/analytics/devguides/reporting/core/v4/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.AnalyticsReporting.v4
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Analytics Reporting API V4.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Analytics Reporting API.</summary>
         public class Scope
         {
             /// <summary>View and manage your Google Analytics data</summary>

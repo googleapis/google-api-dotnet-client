@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160407 (462)
+ *      <tr><th>API Rev<td>20160428 (483)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -6503,6 +6503,11 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; } 
 
+        /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
+        /// players.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileSettings")]
+        public virtual ProfileSettings ProfileSettings { get; set; } 
+
         /// <summary>The player's title rewarded for their game activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -6872,6 +6877,22 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The score submissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scores")]
         public virtual System.Collections.Generic.IList<ScoreSubmission> Scores { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This is a JSON template for profile settings</summary>
+    public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
+        /// games#profileSettings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The player's current profile visibility. This field is visible to both 1P and 3P APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileVisible")]
+        public virtual System.Nullable<bool> ProfileVisible { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

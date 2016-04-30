@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/dTkaUd-rCucxxq6oWzywdkyn1n0\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/kK9jRjtG-k0CSMqOYYZaRcLO7Kk\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1",
  "name": "genomics",
  "version": "v1",
- "revision": "20160411",
+ "revision": "20160427",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
@@ -2207,6 +2207,10 @@
      "type": "string",
      "description": "The time at which the job was submitted to the Genomics service."
     },
+    "endTime": {
+     "type": "string",
+     "description": "The time at which the job stopped running."
+    },
     "request": {
      "type": "object",
      "description": "The original request that started the operation. Note that this will be in current version of the API. If the operation was started with v1beta2 API and a GetOperation is performed on v1 API, a v1 request will be returned.",
@@ -3519,7 +3523,7 @@
       },
       "updateMask": {
        "type": "string",
-       "description": "An optional mask specifying which fields to update. Supported fields: * metadata. Leaving `updateMask` unset is equivalent to specifying all mutable fields.",
+       "description": "An optional mask specifying which fields to update. Supported fields: * metadata. * name. * description. Leaving `updateMask` unset is equivalent to specifying all mutable fields.",
        "location": "query"
       }
      },

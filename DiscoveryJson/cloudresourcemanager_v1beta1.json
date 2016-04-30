@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/7EbyY-VAY04PT8kJyTAvwd_kJKM\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/7EbyY-VAY04PT8kJyTAvwd_kJKM\"",
  "discoveryVersion": "v1",
  "id": "cloudresourcemanager:v1beta1",
  "name": "cloudresourcemanager",

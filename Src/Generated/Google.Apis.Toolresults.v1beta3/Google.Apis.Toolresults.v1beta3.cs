@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20160428 (483)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2267,11 +2267,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// apply:
         ///
         /// * If no schema is provided, `https` is assumed. * The last segment of the URL's path must represent the
-        /// fully qualified name of the type (as in `path/google.protobuf.Duration`). * An HTTP GET on the URL must
-        /// yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to
-        /// cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup.
-        /// Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to
-        /// manage breaking changes.)
+        /// fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical
+        /// form (e.g., leading "." is not accepted). * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+        /// value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the
+        /// URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be
+        /// preserved on changes to types. (Use versioned type names to manage breaking changes.)
         ///
         /// Schemas other than `http`, `https` (or the empty schema) might be used with implementation specific
         /// semantics.</summary>

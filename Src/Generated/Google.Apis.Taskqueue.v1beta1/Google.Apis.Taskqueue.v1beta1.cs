@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/appengine/docs/python/taskqueue/rest'>TaskQueue API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20141111 (0)
+ *      <tr><th>API Rev<td>20160428 (483)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/appengine/docs/python/taskqueue/rest'>
  *              https://developers.google.com/appengine/docs/python/taskqueue/rest</a>

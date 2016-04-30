@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/30LWpyWjyzNN_fASMhUJw1kCKUM\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/15gLSDUvB_roSJwqiG_00huJjy8\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160408",
+ "revision": "20160427",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -584,6 +584,24 @@
     }
    }
   },
+  "PageInfo": {
+   "id": "PageInfo",
+   "type": "object",
+   "properties": {
+    "resultPerPage": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "startIndex": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "totalResults": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
   "Permission": {
    "id": "Permission",
    "type": "object",
@@ -749,6 +767,33 @@
     }
    }
   },
+  "ProductsListResponse": {
+   "id": "ProductsListResponse",
+   "type": "object",
+   "description": "The matching products.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#productsListResponse\".",
+     "default": "androidenterprise#productsListResponse"
+    },
+    "pageInfo": {
+     "$ref": "PageInfo",
+     "description": "General pagination information."
+    },
+    "product": {
+     "type": "array",
+     "description": "Information about a product (e.g. an app) in the Google Play Store, for display to an enterprise admin.",
+     "items": {
+      "$ref": "Product"
+     }
+    },
+    "tokenPagination": {
+     "$ref": "TokenPagination",
+     "description": "Pagination information for token pagination."
+    }
+   }
+  },
   "StoreCluster": {
    "id": "StoreCluster",
    "type": "object",
@@ -772,7 +817,7 @@
     },
     "orderInPage": {
      "type": "string",
-     "description": "String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined.\n\nThe value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 20 characters."
+     "description": "String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined.\n\nThe value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters."
     },
     "productId": {
      "type": "array",
@@ -864,6 +909,18 @@
      "items": {
       "$ref": "LocalizedText"
      }
+    }
+   }
+  },
+  "TokenPagination": {
+   "id": "TokenPagination",
+   "type": "object",
+   "properties": {
+    "nextPageToken": {
+     "type": "string"
+    },
+    "previousPageToken": {
+     "type": "string"
     }
    }
   },
@@ -2377,6 +2434,58 @@
      ],
      "response": {
       "$ref": "ProductPermissions"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "list": {
+     "id": "androidenterprise.products.list",
+     "path": "enterprises/{enterpriseId}/products",
+     "httpMethod": "GET",
+     "description": "Finds approved products that match a query.",
+     "parameters": {
+      "approved": {
+       "type": "boolean",
+       "description": "Whether to search amongst all products or only amongst approved ones. Only \"true\" is supported, and should be specified.",
+       "location": "query"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "language": {
+       "type": "string",
+       "description": "The BCP47 tag for the user's preferred language (e.g. \"en-US\", \"de\"). Results are returned in the language best matching it.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "format": "uint32",
+       "location": "query"
+      },
+      "query": {
+       "type": "string",
+       "description": "The search query as typed in the Google Play Store search box. If omitted, all approved apps will be returned.",
+       "location": "query"
+      },
+      "startIndex": {
+       "type": "integer",
+       "format": "uint32",
+       "location": "query"
+      },
+      "token": {
+       "type": "string",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId"
+     ],
+     "response": {
+      "$ref": "ProductsListResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/androidenterprise"

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/9WukAPmA5ytP1PY2pa6ISyUv5a0\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/zIS_1gV-utYsTH-_jyck_pPgUZY\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20160405",
+ "revision": "20160429",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -345,7 +345,8 @@
      }
     },
     "webPropertyCode": {
-     "type": "string"
+     "type": "string",
+     "description": "Web property id of the seller creating these orders"
     }
    }
   },
@@ -380,6 +381,10 @@
        "adexchangebuyer.creatives.insert"
       ]
      }
+    },
+    "adChoicesDestinationUrl": {
+     "type": "string",
+     "description": "The link to the Ad Preferences page. This is only supported for native ads."
     },
     "advertiserId": {
      "type": "array",
@@ -822,6 +827,10 @@
    "id": "DealTermsGuaranteedFixedPriceTerms",
    "type": "object",
    "properties": {
+    "billingInfo": {
+     "$ref": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
+     "description": "External billing info for this Deal. This field is relevant when external billing info such as price has a different currency code than DFP/AdX."
+    },
     "fixedPrices": {
      "type": "array",
      "description": "Fixed price for the specified buyer.",
@@ -838,6 +847,26 @@
      "type": "string",
      "description": "Count of guaranteed looks. Required for deal, optional for product.",
      "format": "int64"
+    }
+   }
+  },
+  "DealTermsGuaranteedFixedPriceTermsBillingInfo": {
+   "id": "DealTermsGuaranteedFixedPriceTermsBillingInfo",
+   "type": "object",
+   "properties": {
+    "currencyConversionTimeMs": {
+     "type": "string",
+     "description": "The timestamp (in ms since epoch) when the original reservation price for the deal was first converted to DFP currency. This is used to convert the contracted price into advertiser's currency without discrepancy.",
+     "format": "int64"
+    },
+    "originalContractedQuantity": {
+     "type": "string",
+     "description": "The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes publisher will book the deal with a impression buffer, however clients are billed using the original contracted quantity.",
+     "format": "int64"
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The original reservation price for the deal, if the currency code is different from the one used in negotiation."
     }
    }
   },
@@ -888,7 +917,8 @@
      "format": "int64"
     },
     "updateAction": {
-     "type": "string"
+     "type": "string",
+     "description": "Indicates an optional action to take on the proposal"
     }
    }
   },
@@ -1681,6 +1711,10 @@
    "type": "object",
    "description": "Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an product can become [0,1] deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.",
    "properties": {
+    "auctionTier": {
+     "type": "string",
+     "description": "Optional access type for this buyer."
+    },
     "buyer": {
      "$ref": "Buyer",
      "description": "The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer)."
@@ -1780,6 +1814,10 @@
      "type": "string",
      "description": "Id of the publisher profile for a given seller. A (seller.account_id, publisher_profile_id) pair uniquely identifies a publisher profile. Buyers can call the PublisherProfiles::List endpoint to get a list of publisher profiles for a given seller."
     },
+    "publisherProvidedForecast": {
+     "$ref": "PublisherProvidedForecast",
+     "description": "Publisher self-provided forecast information."
+    },
     "revisionNumber": {
      "type": "string",
      "description": "The revision number of the product. (readonly)",
@@ -1874,9 +1912,6 @@
      "type": "string",
      "description": "The role of the last user that either updated the proposal or left a comment. (readonly)"
     },
-    "lastUpdaterRole": {
-     "type": "string"
-    },
     "name": {
      "type": "string",
      "description": "The name for the proposal (updatable)"
@@ -1941,7 +1976,7 @@
      "description": "A pitch statement for the buyer"
     },
     "directContact": {
-     "$ref": "ContactInformation",
+     "type": "string",
      "description": "Direct contact for the publisher profile."
     },
     "exchange": {
@@ -1986,7 +2021,7 @@
      "format": "int32"
     },
     "programmaticContact": {
-     "$ref": "ContactInformation",
+     "type": "string",
      "description": "Programmatic contact for the publisher profile."
     },
     "publisherDomains": {
@@ -2712,9 +2747,14 @@
      "httpMethod": "GET",
      "description": "List all the deals for a given proposal",
      "parameters": {
+      "pqlQuery": {
+       "type": "string",
+       "description": "Query string to retrieve specific deals.",
+       "location": "query"
+      },
       "proposalId": {
        "type": "string",
-       "description": "The proposalId to get deals for.",
+       "description": "The proposalId to get deals for. To search across proposals specify order_id = '-' as part of the URL.",
        "required": true,
        "location": "path"
       }

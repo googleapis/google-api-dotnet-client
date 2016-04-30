@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/run'>Google Apps Script Execution API</a>
+ *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20150922 (264)
+ *      <tr><th>API Rev<td>20160426 (481)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/run'>
- *              https://developers.google.com/apps-script/execution/rest/v1/run</a>
+ *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
+ *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
  *      <tr><th>Discovery Name<td>script
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google Apps Script Execution API can be found at
- * <a href='https://developers.google.com/apps-script/execution/rest/v1/run'>https://developers.google.com/apps-script/execution/rest/v1/run</a>.
+ * <a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -120,6 +120,9 @@ namespace Google.Apis.Script.v1
 
             /// <summary>View and manage your Google Groups</summary>
             public static string Groups = "https://www.googleapis.com/auth/groups";
+
+            /// <summary>View and manage your spreadsheets in Google Drive</summary>
+            public static string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";

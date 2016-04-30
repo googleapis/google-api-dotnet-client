@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20160427 (482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -97,6 +97,9 @@ namespace Google.Apis.Genomics.v1alpha2
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View and manage your Google Compute Engine resources</summary>
+            public static string Compute = "https://www.googleapis.com/auth/compute";
 
             /// <summary>View and manage Genomics data</summary>
             public static string Genomics = "https://www.googleapis.com/auth/genomics";
@@ -1305,6 +1308,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; } 
 
+        /// <summary>The time at which the job stopped running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
         /// <summary>Optional event messages that were generated during the job's execution. This also contains any
         /// warnings that were generated during import or export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
@@ -1494,7 +1501,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual PipelineResources Resources { get; set; } 
 
-        /// <summary>Required. The Google Cloud Service Account that will be used to access data and services.</summary>
+        /// <summary>The Google Cloud Service Account that will be used to access data and services. By default, the
+        /// compute service account associated with `projectId` is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; } 
 

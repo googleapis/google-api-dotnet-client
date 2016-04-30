@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Fe-iic-UhGEBEcJmg8cunRD4uYA\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/7UfcSfFAO7dcJdZDCeg-kdhnb2E\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1alpha2",
  "name": "genomics",
  "version": "v1alpha2",
- "revision": "20160411",
+ "revision": "20160427",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",
@@ -105,6 +105,9 @@
    "scopes": {
     "https://www.googleapis.com/auth/cloud-platform": {
      "description": "View and manage your data across Google Cloud Platform services"
+    },
+    "https://www.googleapis.com/auth/compute": {
+     "description": "View and manage your Google Compute Engine resources"
     },
     "https://www.googleapis.com/auth/genomics": {
      "description": "View and manage Genomics data"
@@ -427,7 +430,7 @@
     },
     "serviceAccount": {
      "$ref": "ServiceAccount",
-     "description": "Required. The Google Cloud Service Account that will be used to access data and services."
+     "description": "The Google Cloud Service Account that will be used to access data and services. By default, the compute service account associated with `projectId` is used."
     },
     "clientId": {
      "type": "string",
@@ -646,6 +649,10 @@
      "type": "string",
      "description": "The time at which the job was submitted to the Genomics service."
     },
+    "endTime": {
+     "type": "string",
+     "description": "The time at which the job stopped running."
+    },
     "request": {
      "type": "object",
      "description": "The original request that started the operation. Note that this will be in current version of the API. If the operation was started with v1beta2 API and a GetOperation is performed on v1 API, a v1 request will be returned.",
@@ -805,6 +812,7 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/genomics"
      ]
     },

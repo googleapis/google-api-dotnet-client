@@ -12,9 +12,9 @@
       }
     }
   },
-  "description": "The Analytics Reporting API provides access to Analytics report data.",
+  "description": "Accesses Analytics report data.",
   "protocol": "rest",
-  "title": "Analytics Reporting API V4",
+  "title": "Google Analytics Reporting API",
   "resources": {
     "reports": {
       "methods": {
@@ -1048,14 +1048,14 @@
       "id": "PivotValueRegion"
     }
   },
-  "revision": "20160407",
+  "revision": "20160426",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version_module": "True",
-  "canonicalName": "Analytics Reporting",
+  "canonicalName": "AnalyticsReporting",
   "discoveryVersion": "v1",
   "baseUrl": "https://analyticsreporting.googleapis.com/",
   "name": "analyticsreporting",

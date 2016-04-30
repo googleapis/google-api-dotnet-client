@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20160427 (482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -4509,8 +4509,8 @@ namespace Google.Apis.Genomics.v1
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 
-            /// <summary>An optional mask specifying which fields to update. Supported fields: * metadata. Leaving
-            /// `updateMask` unset is equivalent to specifying all mutable fields.</summary>
+            /// <summary>An optional mask specifying which fields to update. Supported fields: * metadata. * name. *
+            /// description. Leaving `updateMask` unset is equivalent to specifying all mutable fields.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UpdateMask { get; set; }
 
@@ -5318,6 +5318,10 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The time at which the job was submitted to the Genomics service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; } 
+
+        /// <summary>The time at which the job stopped running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
 
         /// <summary>Optional event messages that were generated during the job's execution. This also contains any
         /// warnings that were generated during import or export.</summary>

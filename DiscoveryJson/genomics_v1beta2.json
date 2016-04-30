@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/0rY6960z4jPibnyGbaLHoBDJWek\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/Fuoff4Oj3mG5OLrVkmaZJ80RWuE\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160411",
+ "revision": "20160427",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",
@@ -902,7 +902,6 @@
   "MergeVariantsRequest": {
    "id": "MergeVariantsRequest",
    "type": "object",
-   "description": "",
    "properties": {
     "variants": {
      "type": "array",
@@ -1746,7 +1745,6 @@
   "SearchReferenceSetsRequest": {
    "id": "SearchReferenceSetsRequest",
    "type": "object",
-   "description": "",
    "properties": {
     "accessions": {
      "type": "array",
@@ -1797,7 +1795,6 @@
   "SearchReferencesRequest": {
    "id": "SearchReferencesRequest",
    "type": "object",
-   "description": "",
    "properties": {
     "accessions": {
      "type": "array",
@@ -3494,7 +3491,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "The ID of the variant set to be deleted.",
+       "description": "The ID of the variant set to be deleted. Required.",
        "required": true,
        "location": "path"
       }
@@ -3515,7 +3512,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "Required. The ID of the variant set that contains variant data which should be exported. The caller must have READ access to this variant set.",
+       "description": "The ID of the variant set that contains variant data which should be exported. Required. The caller must have READ access to this variant set.",
        "required": true,
        "location": "path"
       }
@@ -3543,7 +3540,7 @@
      "parameters": {
       "variantSetId": {
        "type": "string",
-       "description": "The ID of the variant set.",
+       "description": "The ID of the variant set. Required.",
        "required": true,
        "location": "path"
       }

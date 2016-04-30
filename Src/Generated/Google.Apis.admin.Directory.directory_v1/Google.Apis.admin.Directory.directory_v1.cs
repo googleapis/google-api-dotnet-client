@@ -8820,7 +8820,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     {
         /// <summary>List of alias objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
-        public virtual System.Collections.Generic.IList<Alias> AliasesValue { get; set; } 
+        public virtual System.Collections.Generic.IList<object> AliasesValue { get; set; } 
 
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]

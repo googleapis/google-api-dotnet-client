@@ -14,7 +14,7 @@
   },
   "description": "Google Cloud Datastore is a schemaless NoSQL datastore providing robust, scalable storage for your application.\n",
   "protocol": "rest",
-  "title": "Google Cloud Datastore API - NEW",
+  "title": "Google Cloud Datastore API",
   "resources": {
     "projects": {
       "methods": {
@@ -942,7 +942,7 @@
       "id": "LookupRequest"
     }
   },
-  "revision": "20160330",
+  "revision": "20160413",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

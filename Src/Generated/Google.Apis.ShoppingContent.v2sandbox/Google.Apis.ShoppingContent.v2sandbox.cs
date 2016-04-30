@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20160331 (455)
+ *      <tr><th>API Rev<td>20160419 (474)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1743,7 +1743,9 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The reason for the cancellation.</summary>
+        /// <summary>The reason for the cancellation. Orders that are cancelled with a noIventory reason will lead to
+        /// the removal of the product from POG until you make an update to that product. This will not affect your
+        /// Shopping ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -1761,8 +1763,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user had a choice to opt in or out of providing marketing rights to the
-        /// merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
+        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
+        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
         /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout
         /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
@@ -2872,8 +2874,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user had a choice to opt in or out of providing marketing rights to the
-        /// merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
+        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
+        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
         /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]

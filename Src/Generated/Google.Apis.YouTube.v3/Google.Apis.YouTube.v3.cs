@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160406 (461)
+ *      <tr><th>API Rev<td>20160426 (481)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -10928,6 +10928,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
 
+        /// <summary>The frame rate of the inbound video data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
+        public virtual string FrameRate { get; set; } 
+
         /// <summary>The ingestionInfo object contains information that YouTube provides that you need to transmit your
         /// RTMP or HTTP stream to YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionInfo")]
@@ -10936,6 +10940,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The method or protocol used to transmit the video stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionType")]
         public virtual string IngestionType { get; set; } 
+
+        /// <summary>The resolution of the inbound video data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12817,6 +12825,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// use to review the event content before the broadcast stream is shown publicly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitorStream")]
         public virtual MonitorStreamInfo MonitorStream { get; set; } 
+
+        /// <summary>The projection format of this broadcast. This defaults to rectangular.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projection")]
+        public virtual string Projection { get; set; } 
 
         /// <summary>Automatically start recording after the event goes live. The default value for this property is
         /// true.
@@ -15030,6 +15042,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The value of is_license_content indicates whether the video is licensed content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licensedContent")]
         public virtual System.Nullable<bool> LicensedContent { get; set; } 
+
+        /// <summary>Specifies the projection format of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projection")]
+        public virtual string Projection { get; set; } 
 
         /// <summary>The regionRestriction object contains information about the countries where a video is (or is not)
         /// viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160405 (460)
+ *      <tr><th>API Rev<td>20160429 (484)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -1623,7 +1623,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         }
 
         /// <summary>List all the deals for a given proposal</summary>
-        /// <param name="proposalId">The proposalId to get deals for.</param>
+        /// <param name="proposalId">The proposalId to get deals for. To search across proposals specify order_id = '-' as part
+        /// of the URL.</param>
         public virtual ListRequest List(string proposalId)
         {
             return new ListRequest(service, proposalId);
@@ -1641,9 +1642,14 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             }
 
 
-            /// <summary>The proposalId to get deals for.</summary>
+            /// <summary>The proposalId to get deals for. To search across proposals specify order_id = '-' as part of
+            /// the URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProposalId { get; private set; }
+
+            /// <summary>Query string to retrieve specific deals.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pqlQuery", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PqlQuery { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1675,6 +1681,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         Name = "proposalId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pqlQuery", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pqlQuery",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3524,6 +3539,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proposals")]
         public virtual System.Collections.Generic.IList<Proposal> Proposals { get; set; } 
 
+        /// <summary>Web property id of the seller creating these orders</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webPropertyCode")]
         public virtual string WebPropertyCode { get; set; } 
 
@@ -3552,6 +3568,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Account id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<int> AccountId { get; set; } 
+
+        /// <summary>The link to the Ad Preferences page. This is only supported for native ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adChoicesDestinationUrl")]
+        public virtual string AdChoicesDestinationUrl { get; set; } 
 
         /// <summary>Detected advertiser id, if any. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
@@ -3957,6 +3977,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
     public class DealTermsGuaranteedFixedPriceTerms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>External billing info for this Deal. This field is relevant when external billing info such as
+        /// price has a different currency code than DFP/AdX.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingInfo")]
+        public virtual DealTermsGuaranteedFixedPriceTermsBillingInfo BillingInfo { get; set; } 
+
         /// <summary>Fixed price for the specified buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
         public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
@@ -3969,6 +3994,29 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Count of guaranteed looks. Required for deal, optional for product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
         public virtual System.Nullable<long> GuaranteedLooks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DealTermsGuaranteedFixedPriceTermsBillingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp (in ms since epoch) when the original reservation price for the deal was first
+        /// converted to DFP currency. This is used to convert the contracted price into advertiser's currency without
+        /// discrepancy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionTimeMs")]
+        public virtual System.Nullable<long> CurrencyConversionTimeMs { get; set; } 
+
+        /// <summary>The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes
+        /// publisher will book the deal with a impression buffer, however clients are billed using the original
+        /// contracted quantity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalContractedQuantity")]
+        public virtual System.Nullable<long> OriginalContractedQuantity { get; set; } 
+
+        /// <summary>The original reservation price for the deal, if the currency code is different from the one used in
+        /// negotiation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4009,6 +4057,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proposalRevisionNumber")]
         public virtual System.Nullable<long> ProposalRevisionNumber { get; set; } 
 
+        /// <summary>Indicates an optional action to take on the proposal</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateAction")]
         public virtual string UpdateAction { get; set; } 
 
@@ -4694,6 +4743,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     /// buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.</summary>
     public class PricePerBuyer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional access type for this buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auctionTier")]
+        public virtual string AuctionTier { get; set; } 
+
         /// <summary>The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers
         /// match, and there's no more specific rule matching the buyer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
@@ -4796,6 +4849,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisherProfileId")]
         public virtual string PublisherProfileId { get; set; } 
 
+        /// <summary>Publisher self-provided forecast information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherProvidedForecast")]
+        public virtual PublisherProvidedForecast PublisherProvidedForecast { get; set; } 
+
         /// <summary>The revision number of the product. (readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionNumber")]
         public virtual System.Nullable<long> RevisionNumber { get; set; } 
@@ -4890,9 +4947,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdaterOrCommentorRole")]
         public virtual string LastUpdaterOrCommentorRole { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdaterRole")]
-        public virtual string LastUpdaterRole { get; set; } 
-
         /// <summary>The name for the proposal (updatable)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4953,7 +5007,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Direct contact for the publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directContact")]
-        public virtual ContactInformation DirectContact { get; set; } 
+        public virtual string DirectContact { get; set; } 
 
         /// <summary>Exchange where this publisher profile is from. E.g. AdX, Rubicon etc...</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
@@ -4998,7 +5052,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>Programmatic contact for the publisher profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticContact")]
-        public virtual ContactInformation ProgrammaticContact { get; set; } 
+        public virtual string ProgrammaticContact { get; set; } 
 
         /// <summary>The list of domains represented in this publisher profile. Empty if this is a parent
         /// profile.</summary>

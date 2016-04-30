@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/fmXUMBI6Gn2x3crK-Doz-fh96kI\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/fmXUMBI6Gn2x3crK-Doz-fh96kI\"",
  "discoveryVersion": "v1",
  "id": "storagetransfer:v1",
  "name": "storagetransfer",

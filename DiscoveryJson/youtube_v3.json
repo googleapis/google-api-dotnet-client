@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/Nws4HL8c6p1u71-I5pz9eZTBJOg\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/cp06s8fig2XQeaVGo3ZF8LHl4js\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20160406",
+ "revision": "20160426",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -722,6 +722,18 @@
       ]
      }
     },
+    "frameRate": {
+     "type": "string",
+     "description": "The frame rate of the inbound video data.",
+     "enum": [
+      "30fps",
+      "60fps"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "ingestionInfo": {
      "$ref": "IngestionInfo",
      "description": "The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube."
@@ -743,6 +755,26 @@
        "youtube.liveStreams.update"
       ]
      }
+    },
+    "resolution": {
+     "type": "string",
+     "description": "The resolution of the inbound video data.",
+     "enum": [
+      "1080p",
+      "1440p",
+      "240p",
+      "360p",
+      "480p",
+      "720p"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -3855,6 +3887,18 @@
      "$ref": "MonitorStreamInfo",
      "description": "The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly."
     },
+    "projection": {
+     "type": "string",
+     "description": "The projection format of this broadcast. This defaults to rectangular.",
+     "enum": [
+      "360",
+      "rectangular"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "recordFromStart": {
      "type": "boolean",
      "description": "Automatically start recording after the event goes live. The default value for this property is true.\n\n\n\nImportant: You must also set the enableDvr property's value to true if you want the playback to be available immediately after the broadcast ends. If you set this property's value to true but do not also set the enableDvr property to true, there may be a delay of around one day before the archived video will be available for playback.",
@@ -6204,6 +6248,18 @@
     "licensedContent": {
      "type": "boolean",
      "description": "The value of is_license_content indicates whether the video is licensed content."
+    },
+    "projection": {
+     "type": "string",
+     "description": "Specifies the projection format of the video.",
+     "enum": [
+      "360",
+      "rectangular"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "regionRestriction": {
      "$ref": "VideoContentDetailsRegionRestriction",

@@ -9,9 +9,9 @@
       }
     }
   },
-  "description": "The Google Cloud Vision API allows developers to easily integrate Google vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.",
+  "description": "Integrates Google Vision features, including image labeling, face, logo, and landmark detection, optical character recognition (OCR), and detection of explicit content, into applications.",
   "protocol": "rest",
-  "title": "Cloud Vision API",
+  "title": "Google Cloud Vision API",
   "resources": {
     "images": {
       "methods": {
@@ -38,10 +38,10 @@
   },
   "schemas": {
     "ImageSource": {
-      "description": "External image source (i.e. Google Cloud Storage image location).",
+      "description": "External image source (Google Cloud Storage image location).",
       "properties": {
         "gcsImageUri": {
-          "description": "Google Cloud Storage image URI. It must be in the following form:\n\"gs://bucket_name/object_name\". For more\ndetails, please see: https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported!",
+          "description": "Google Cloud Storage image URI. It must be in the following form:\n`gs://bucket_name/object_name`. For more\ndetails, please see: https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported!",
           "type": "string"
         }
       },
@@ -167,7 +167,7 @@
       "id": "Status"
     },
     "FaceAnnotation": {
-      "description": "A face annotation contains the results of face detection.",
+      "description": "A face annotation object contains the results of face detection.",
       "properties": {
         "tiltAngle": {
           "description": "Pitch angle. Indicates the upwards/downwards angle that the face is\npointing\nrelative to the image's horizontal plane. Range [-180,180].",
@@ -530,7 +530,7 @@
       "description": "Set of detected entity features.",
       "properties": {
         "mid": {
-          "description": "Knowledge Graph entity ID. Maps to a freebase entity ID.\n(for example, \"Google\" maps to: mid /m/045c7b).",
+          "description": "Opaque entity ID. Some IDs might be available in Knowledge Graph(KG).\nFor more details on KG please see:\nhttps://developers.google.com/knowledge-graph/",
           "type": "string"
         },
         "description": {
@@ -559,7 +559,7 @@
           "format": "float"
         },
         "boundingPoly": {
-          "description": "Image region to which this entity belongs. Not filled currently\nfor LABEL_DETECTION features.",
+          "description": "Image region to which this entity belongs. Not filled currently\nfor `LABEL_DETECTION` features. For `TEXT_DETECTION` (OCR), `boundingPoly`s\nare produced for the entire text detected in an image region, followed by\n`boundingPoly`s for each word within the detected text.",
           "$ref": "BoundingPoly"
         },
         "locations": {
@@ -849,7 +849,7 @@
       "id": "LatLng"
     }
   },
-  "revision": "20160328",
+  "revision": "20160420",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

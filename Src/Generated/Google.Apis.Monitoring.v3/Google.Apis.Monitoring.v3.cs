@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Google Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160321 (445)
+ *      <tr><th>API Rev<td>20160425 (480)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -519,11 +519,11 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>(required) The end of the interval. The interval includes this time.</summary>
+                    /// <summary>Required. The end of the interval. The interval includes this time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string IntervalEndTime { get; set; }
 
-                    /// <summary>(optional) If omitted, the interval is a point in time, `endTime`. If `startTime` is
+                    /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is
                     /// present, it must be earlier than (less than) `endTime`. The interval begins after `startTime`—it
                     /// does not include `startTime`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -1203,7 +1203,7 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Gets a single metric descriptor.</summary>
+            /// <summary>Gets a single metric descriptor. This method does not require a Stackdriver account.</summary>
             /// <param name="name">The metric descriptor on which to execute the request. The format is
             /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example value of `{metric_id}` is
             /// `"compute.googleapis.com/instance/disk/read_bytes_count"`.</param>
@@ -1212,7 +1212,7 @@ namespace Google.Apis.Monitoring.v3
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a single metric descriptor.</summary>
+            /// <summary>Gets a single metric descriptor. This method does not require a Stackdriver account.</summary>
             public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1267,7 +1267,8 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Lists metric descriptors that match a filter.</summary>
+            /// <summary>Lists metric descriptors that match a filter. This method does not require a Stackdriver
+            /// account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
             /// `"projects/{project_id_or_number}"`.</param>
             public virtual ListRequest List(string name)
@@ -1275,7 +1276,8 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists metric descriptors that match a filter.</summary>
+            /// <summary>Lists metric descriptors that match a filter. This method does not require a Stackdriver
+            /// account.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListMetricDescriptorsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1397,7 +1399,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Gets a single monitored resource descriptor.</summary>
+            /// <summary>Gets a single monitored resource descriptor. This method does not require a Stackdriver
+            /// account.</summary>
             /// <param name="name">The monitored resource descriptor to get. The format is
             /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`. The `{resource_type}` is a
             /// predefined type, such as `cloudsql_database`.</param>
@@ -1406,7 +1409,8 @@ namespace Google.Apis.Monitoring.v3
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a single monitored resource descriptor.</summary>
+            /// <summary>Gets a single monitored resource descriptor. This method does not require a Stackdriver
+            /// account.</summary>
             public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MonitoredResourceDescriptor>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1461,7 +1465,8 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Lists monitored resource descriptors that match a filter.</summary>
+            /// <summary>Lists monitored resource descriptors that match a filter. This method does not require a
+            /// Stackdriver account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
             /// `"projects/{project_id_or_number}"`.</param>
             public virtual ListRequest List(string name)
@@ -1469,7 +1474,8 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists monitored resource descriptors that match a filter.</summary>
+            /// <summary>Lists monitored resource descriptors that match a filter. This method does not require a
+            /// Stackdriver account.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListMonitoredResourceDescriptorsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1665,7 +1671,8 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Lists time series that match a filter.</summary>
+            /// <summary>Lists time series that match a filter. This method does not require a Stackdriver
+            /// account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
             /// "projects/{project_id_or_number}".</param>
             public virtual ListRequest List(string name)
@@ -1673,7 +1680,8 @@ namespace Google.Apis.Monitoring.v3
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists time series that match a filter.</summary>
+            /// <summary>Lists time series that match a filter. This method does not require a Stackdriver
+            /// account.</summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1698,11 +1706,11 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>(required) The end of the interval. The interval includes this time.</summary>
+                /// <summary>Required. The end of the interval. The interval includes this time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string IntervalEndTime { get; set; }
 
-                /// <summary>(optional) If omitted, the interval is a point in time, `endTime`. If `startTime` is
+                /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is
                 /// present, it must be earlier than (less than) `endTime`. The interval begins after `startTime`—it
                 /// does not include `startTime`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -2638,11 +2646,11 @@ namespace Google.Apis.Monitoring.v3.Data
     /// interval is the single point in time, `endTime`.</summary>
     public class TimeInterval : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>(required) The end of the interval. The interval includes this time.</summary>
+        /// <summary>Required. The end of the interval. The interval includes this time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
-        /// <summary>(optional) If omitted, the interval is a point in time, `endTime`. If `startTime` is present, it
+        /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is present, it
         /// must be earlier than (less than) `endTime`. The interval begins after `startTime`—it does not include
         /// `startTime`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]

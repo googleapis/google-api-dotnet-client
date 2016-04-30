@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Vision API Version v1
+ *   Google Cloud Vision API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
+ *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160328 (452)
+ *      <tr><th>API Rev<td>20160420 (475)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Vision API can be found at
+ * The complete API documentation for using Google Cloud Vision API can be found at
  * <a href='https://cloud.google.com/vision/'>https://cloud.google.com/vision/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.Vision.v1
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Vision API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Vision API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -610,8 +610,9 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Set of detected entity features.</summary>
     public class EntityAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image region to which this entity belongs. Not filled currently for LABEL_DETECTION
-        /// features.</summary>
+        /// <summary>Image region to which this entity belongs. Not filled currently for `LABEL_DETECTION` features. For
+        /// `TEXT_DETECTION` (OCR), `boundingPoly`s are produced for the entire text detected in an image region,
+        /// followed by `boundingPoly`s for each word within the detected text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
@@ -636,8 +637,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LocationInfo> Locations { get; set; } 
 
-        /// <summary>Knowledge Graph entity ID. Maps to a freebase entity ID. (for example, "Google" maps to: mid
-        /// /m/045c7b).</summary>
+        /// <summary>Opaque entity ID. Some IDs might be available in Knowledge Graph(KG). For more details on KG please
+        /// see: https://developers.google.com/knowledge-graph/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mid")]
         public virtual string Mid { get; set; } 
 
@@ -660,7 +661,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A face annotation contains the results of face detection.</summary>
+    /// <summary>A face annotation object contains the results of face detection.</summary>
     public class FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Anger likelihood.</summary>
@@ -802,10 +803,10 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>External image source (i.e. Google Cloud Storage image location).</summary>
+    /// <summary>External image source (Google Cloud Storage image location).</summary>
     public class ImageSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage image URI. It must be in the following form: "gs://bucket_name/object_name".
+        /// <summary>Google Cloud Storage image URI. It must be in the following form: `gs://bucket_name/object_name`.
         /// For more details, please see: https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage
         /// object versioning is not supported!</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsImageUri")]

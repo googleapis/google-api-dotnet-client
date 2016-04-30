@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20160427 (482)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
@@ -3932,7 +3932,7 @@ namespace Google.Apis.Genomics.v1beta2
 
         /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not
         /// reversible.</summary>
-        /// <param name="variantSetId">The ID of the variant set to be deleted.</param>
+        /// <param name="variantSetId">The ID of the variant set to be deleted. Required.</param>
         public virtual DeleteRequest Delete(string variantSetId)
         {
             return new DeleteRequest(service, variantSetId);
@@ -3951,7 +3951,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the variant set to be deleted.</summary>
+            /// <summary>The ID of the variant set to be deleted. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 
@@ -3994,7 +3994,7 @@ namespace Google.Apis.Genomics.v1beta2
 
         /// <summary>Exports variant set data to an external destination.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="variantSetId">Required. The ID of the variant set that contains variant data which should be exported.
+        /// <param name="variantSetId">The ID of the variant set that contains variant data which should be exported. Required.
         /// The caller must have READ access to this variant set.</param>
         public virtual ExportRequest Export(Google.Apis.Genomics.v1beta2.Data.ExportVariantSetRequest body, string variantSetId)
         {
@@ -4014,7 +4014,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>Required. The ID of the variant set that contains variant data which should be exported. The
+            /// <summary>The ID of the variant set that contains variant data which should be exported. Required. The
             /// caller must have READ access to this variant set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
@@ -4063,7 +4063,7 @@ namespace Google.Apis.Genomics.v1beta2
         }
 
         /// <summary>Gets a variant set by ID.</summary>
-        /// <param name="variantSetId">The ID of the variant set.</param>
+        /// <param name="variantSetId">The ID of the variant set. Required.</param>
         public virtual GetRequest Get(string variantSetId)
         {
             return new GetRequest(service, variantSetId);
@@ -4081,7 +4081,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the variant set.</summary>
+            /// <summary>The ID of the variant set. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("variantSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VariantSetId { get; private set; }
 

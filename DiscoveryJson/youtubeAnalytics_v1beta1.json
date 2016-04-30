@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"bRFOOrZKfO9LweMbPqu0kcu6De8/wytolOEnvwHHHxTR-iCKeZttdbw\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/wytolOEnvwHHHxTR-iCKeZttdbw\"",
  "discoveryVersion": "v1",
  "id": "youtubeAnalytics:v1beta1",
  "name": "youtubeAnalytics",

@@ -9,7 +9,7 @@
       }
     }
   },
-  "description": "Collects errors from Cloud Logging data or sent directly from client applications. Groups and counts similar errors to provide an overview on the health of the application and to enable further analysis.\n",
+  "description": "Google Stackdriver Error Reporting groups and counts similar errors from cloud services. The Google Stackdriver Error Reporting API provides read access to error groups and their associated errors.\n",
   "protocol": "rest",
   "title": "Google Cloud Error Reporting API",
   "resources": {
@@ -536,13 +536,14 @@
       "id": "ListGroupStatsResponse"
     }
   },
-  "revision": "20160404",
+  "revision": "20160422",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version_module": "True",
+  "canonicalName": "Clouderrorreporting",
   "discoveryVersion": "v1",
   "parameters": {
     "access_token": {

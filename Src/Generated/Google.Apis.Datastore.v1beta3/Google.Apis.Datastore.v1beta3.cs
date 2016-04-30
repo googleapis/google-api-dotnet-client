@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Datastore API - NEW Version v1beta3
+ *   Google Cloud Datastore API Version v1beta3
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API - NEW</a>
+ *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160330 (454)
+ *      <tr><th>API Rev<td>20160413 (468)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Datastore API - NEW can be found at
+ * The complete API documentation for using Google Cloud Datastore API can be found at
  * <a href='https://cloud.google.com/datastore/'>https://cloud.google.com/datastore/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.Datastore.v1beta3
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Datastore API - NEW.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Datastore API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

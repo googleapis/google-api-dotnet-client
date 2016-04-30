@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160408 (463)
+ *      <tr><th>API Rev<td>20160427 (482)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2561,7 +2561,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// data. The default value is 0. This property is useful if you have header rows in the file that should be
         /// skipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
-        public virtual System.Nullable<int> SkipLeadingRows { get; set; } 
+        public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2848,6 +2848,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
         public virtual CsvOptions CsvOptions { get; set; } 
 
+        /// <summary>[Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
+        public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; } 
+
         /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
         /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
         /// records, and if there are too many bad records, an invalid error is returned in the job result. The default
@@ -2869,11 +2873,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
 
-        /// <summary>[Required] The data format. For CSV files, specify "CSV". For newline-delimited JSON, specify
-        /// "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify
-        /// "DATASTORE_BACKUP". [Experimental] For Google Cloud Bigtable, specify "BIGTABLE". Please note that reading
-        /// from Google Cloud Bigtable is experimental and has to be enabled for your project. Please contact Google
-        /// Cloud Support to enable this for your project.</summary>
+        /// <summary>[Required] The data format. For CSV files, specify "CSV". For Google sheets, specify
+        /// "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify
+        /// "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google Cloud
+        /// Bigtable, specify "BIGTABLE". Please note that reading from Google Cloud Bigtable is experimental and has to
+        /// be enabled for your project. Please contact Google Cloud Support to enable this for your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; } 
 
@@ -2947,13 +2951,18 @@ namespace Google.Apis.Bigquery.v2.Data
 
     }    
 
-    public class IntervalPartitionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleSheetsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
-        public virtual System.Nullable<long> ExpirationMs { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
+        /// <summary>[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data.
+        /// The default value is 0. This property is useful if you have header rows that should be skipped. When
+        /// autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect
+        /// headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting
+        /// from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should
+        /// be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to
+        /// detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to
+        /// extract column names for the detected schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
+        public virtual System.Nullable<long> SkipLeadingRows { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3248,9 +3257,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
 
         /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
-        /// value is true. If set to false, the query will use BigQuery's updated SQL dialect with improved standards
-        /// compliance. When using BigQuery's updated SQL, the values of allowLargeResults and flattenResults are
-        /// ignored. Queries with useLegacySql set to false will be run as if allowLargeResults is true and
+        /// value is true. If set to false, the query will use BigQuery's standard SQL:
+        /// https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of
+        /// allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and
         /// flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
@@ -3447,6 +3456,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
         public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; } 
 
+        /// <summary>[Output-only, Experimental] The schema of the results. Present only for successful dry run of non-
+        /// legacy SQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual TableSchema Schema { get; set; } 
+
         /// <summary>[Output-only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
         public virtual System.Nullable<long> TotalBytesBilled { get; set; } 
@@ -3618,9 +3632,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> TimeoutMs { get; set; } 
 
         /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
-        /// value is true. If set to false, the query will use BigQuery's updated SQL dialect with improved standards
-        /// compliance. When using BigQuery's updated SQL, the values of allowLargeResults and flattenResults are
-        /// ignored. Queries with useLegacySql set to false will be run as if allowLargeResults is true and
+        /// value is true. If set to false, the query will use BigQuery's standard SQL:
+        /// https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of
+        /// allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and
         /// flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
@@ -3766,11 +3780,6 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; } 
 
-        /// <summary>[Experimental] List of partition configurations for this table. Currently only one configuration
-        /// can be specified and it can only be an interval partition with type daily.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partitionConfigurations")]
-        public virtual System.Collections.Generic.IList<TablePartitionConfiguration> PartitionConfigurations { get; set; } 
-
         /// <summary>[Optional] Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
@@ -3788,6 +3797,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] Reference describing the ID of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual TableReference TableReference { get; set; } 
+
+        /// <summary>[Experimental] If specified, configures time-based partitioning for this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
+        public virtual TimePartitioning TimePartitioning { get; set; } 
 
         /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
         /// BigQuery table. VIEW: A virtual table defined by a SQL query. EXTERNAL: A table that references data stored
@@ -3986,17 +3999,6 @@ namespace Google.Apis.Bigquery.v2.Data
         }
     }    
 
-    /// <summary>[Required] A partition configuration. Only one type of partition should be configured.</summary>
-    public class TablePartitionConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Pick one] Configures an interval partition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
-        public virtual IntervalPartitionConfiguration Interval { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class TableReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Required] The ID of the dataset containing this table.</summary>
@@ -4031,6 +4033,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Describes the fields in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TimePartitioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] Number of milliseconds for which to keep the storage for a partition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
+        public virtual System.Nullable<long> ExpirationMs { get; set; } 
+
+        /// <summary>[Required] The only type supported is DAY, which will generate one partition per day based on data
+        /// loading time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
