@@ -97,7 +97,9 @@ namespace Google.Apis.Upload
         /// <param name="path">The path for this media upload method.</param>
         /// <param name="httpMethod">The HTTP method to start this upload.</param>
         /// <param name="contentStream">The stream containing the content to upload.</param>
-        /// <param name="contentType">Content type of the content to be uploaded.</param>
+        /// <param name="contentType">Content type of the content to be uploaded. Some services
+        /// may allow this to be null; others require a content type to be specified and will
+        /// fail when the upload is started if the value is null.</param>
         /// <remarks>
         /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the upload is 
         /// completed.
@@ -106,11 +108,10 @@ namespace Google.Apis.Upload
         protected ResumableUpload(IClientService service, string path, string httpMethod, Stream contentStream,
             string contentType)
         {
-            service.ThrowIfNull("service");
-            path.ThrowIfNull("path");
-            httpMethod.ThrowIfNullOrEmpty("httpMethod");
-            contentStream.ThrowIfNull("stream");
-            contentType.ThrowIfNull("contentType");
+            service.ThrowIfNull(nameof(service));
+            path.ThrowIfNull(nameof(path));
+            httpMethod.ThrowIfNullOrEmpty(nameof(httpMethod));
+            contentStream.ThrowIfNull(nameof(contentStream));
 
             this.Service = service;
             this.Path = path;
@@ -731,7 +732,10 @@ namespace Google.Apis.Upload
             SetAllPropertyValues(builder);
 
             HttpRequestMessage request = builder.CreateRequest();
-            request.Headers.Add(PayloadContentTypeHeader, ContentType);
+            if (ContentType != null)
+            {
+                request.Headers.Add(PayloadContentTypeHeader, ContentType);
+            }
 
             // if the length is unknown at the time of this request, omit "X-Upload-Content-Length" header
             if (StreamLength != UnknownSize)
