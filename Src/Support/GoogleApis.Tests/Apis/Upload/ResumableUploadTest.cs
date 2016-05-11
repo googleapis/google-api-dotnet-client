@@ -173,6 +173,8 @@ anim id est laborum.";
             /// <summary>Gets or sets the path parameters which should be part of the initialize request.</summary>
             public string PathParameters { get; set; }
 
+            public string ExpectedContentType { get; set; } = "text/plain";
+
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
@@ -191,8 +193,12 @@ anim id est laborum.";
                         }
                         Assert.That(request.RequestUri.Query, Is.EqualTo("?uploadType=resumable" + QueryParameters));
 
-                        Assert.That(request.Headers.GetValues("X-Upload-Content-Type").First(),
-                            Is.EqualTo("text/plain"));
+                        // HttpRequestMessage doesn't make it terrible easy to get a header value speculatively...
+                        string actualContentType = request.Headers
+                            .Where(h => h.Key == "X-Upload-Content-Type")
+                            .Select(h => h.Value.FirstOrDefault())
+                            .FirstOrDefault();
+                        Assert.That(actualContentType, Is.EqualTo(ExpectedContentType));
                         Assert.That(request.Headers.GetValues("X-Upload-Content-Length").First(),
                             Is.EqualTo(StreamLength.ToString()));
 
@@ -602,6 +608,30 @@ anim id est laborum.";
 
                 int chunkSize = UploadTestData.Length + 10;
                 var upload = new MockResumableUpload(service, "", "POST", stream, "text/plain", chunkSize);
+                // Chunk size is bigger than the data we are sending.
+                upload.Upload();
+            }
+
+            Assert.That(handler.Calls, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void TestUploadNullContentType()
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
+            var handler = new SingleChunkMessageHandler()
+            {
+                StreamLength = stream.Length,
+                ExpectedContentType = null
+            };
+            using (var service = new MockClientService(new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            }))
+            {
+
+                int chunkSize = UploadTestData.Length + 10;
+                var upload = new MockResumableUpload(service, "", "POST", stream, null, chunkSize);
                 // Chunk size is bigger than the data we are sending.
                 upload.Upload();
             }
