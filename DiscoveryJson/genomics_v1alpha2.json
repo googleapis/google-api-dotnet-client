@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/7UfcSfFAO7dcJdZDCeg-kdhnb2E\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/PshG4dlrCTRM4ibsmRe3CdmGyA8\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1alpha2",
  "name": "genomics",
  "version": "v1alpha2",
- "revision": "20160427",
+ "revision": "20160510",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data. This API implements the Global Alliance for Genomics and Health (GA4GH) v0.5.1 API as well as several extensions.",
  "ownerDomain": "google.com",

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/zIS_1gV-utYsTH-_jyck_pPgUZY\"",
+ "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/002w-fCkY_zNzqAq_LEe_TgmEjM\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20160429",
+ "revision": "20160509",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -774,8 +774,12 @@
   "DealServingMetadataDealPauseStatus": {
    "id": "DealServingMetadataDealPauseStatus",
    "type": "object",
-   "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused.",
+   "description": "Tracks which parties (if any) have paused a deal. The deal is considered paused if has_buyer_paused || has_seller_paused. Each of the has_buyer_paused or the has_seller_paused bits can be set independently.",
    "properties": {
+    "firstPausedBy": {
+     "type": "string",
+     "description": "If the deal is paused, records which party paused the deal first."
+    },
     "hasBuyerPaused": {
      "type": "boolean"
     },
