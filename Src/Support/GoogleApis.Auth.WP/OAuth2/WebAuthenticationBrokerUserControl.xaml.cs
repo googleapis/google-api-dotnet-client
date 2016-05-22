@@ -61,8 +61,11 @@ namespace Google.Apis.Auth.OAuth2
             // The code or the error should be received by localhost.
             if (e.Uri.Host == "localhost")
             {
-                var query = e.Uri.Query.Substring(1);
-                tcsAuthorizationCodeResponse.TrySetResult(new AuthorizationCodeResponseUrl(query));
+                if (!string.IsNullOrEmpty(e.Uri.Query))
+                {
+                    var query = e.Uri.Query.Substring(1);
+                    tcsAuthorizationCodeResponse.TrySetResult(new AuthorizationCodeResponseUrl(query));
+                }
             }
         }
 
