@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/NxMjES6Nph-uJ1CR26v1mW7g7KU\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/NxMjES6Nph-uJ1CR26v1mW7g7KU\"",
  "discoveryVersion": "v1",
  "id": "analytics:v2.4",
  "name": "analytics",

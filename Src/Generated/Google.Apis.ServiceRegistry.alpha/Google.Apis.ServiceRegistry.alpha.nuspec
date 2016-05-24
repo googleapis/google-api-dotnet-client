@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.ServiceRegistry.alpha</id>
-        <version>1.13.0.490</version>
+        <version>1.13.0.501</version>
         <title>Google.Apis.ServiceRegistry.alpha Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

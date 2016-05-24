@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>Google Cloud Service Registry API</a>
+ *          <td><a href='https://cloud.google.com/service-registry/'>Google Cloud Service Registry API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160505 (490)
+ *      <tr><th>API Rev<td>20160516 (501)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/cloud-serviceregistry/'>
- *              https://developers.google.com/cloud-serviceregistry/</a>
+ *          <td><a href='https://cloud.google.com/service-registry/'>
+ *              https://cloud.google.com/service-registry/</a>
  *      <tr><th>Discovery Name<td>serviceregistry
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google Cloud Service Registry API can be found at
- * <a href='https://developers.google.com/cloud-serviceregistry/'>https://developers.google.com/cloud-serviceregistry/</a>.
+ * <a href='https://cloud.google.com/service-registry/'>https://cloud.google.com/service-registry/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

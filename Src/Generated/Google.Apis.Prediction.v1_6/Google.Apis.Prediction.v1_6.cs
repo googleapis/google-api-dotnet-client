@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>Prediction API</a>
  *      <tr><th>API Version<td>v1.6
- *      <tr><th>API Rev<td>20160304 (428)
+ *      <tr><th>API Rev<td>20160511 (496)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>
  *              https://developers.google.com/prediction/docs/developer-guide</a>
@@ -95,6 +95,9 @@ namespace Google.Apis.Prediction.v1_6
         /// <summary>Available OAuth 2.0 scopes for use with the Prediction API.</summary>
         public class Scope
         {
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
             /// <summary>Manage your data and permissions in Google Cloud Storage</summary>
             public static string DevstorageFullControl = "https://www.googleapis.com/auth/devstorage.full_control";
 

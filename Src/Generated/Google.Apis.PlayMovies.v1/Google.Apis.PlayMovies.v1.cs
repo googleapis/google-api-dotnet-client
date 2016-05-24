@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/playmoviespartner/'>Google Play Movies Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20150812 (223)
+ *      <tr><th>API Rev<td>20160518 (503)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/playmoviespartner/'>
  *              https://developers.google.com/playmoviespartner/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Playmoviespartner.v1
+namespace Google.Apis.PlayMovies.v1
 {
-    /// <summary>The Playmoviespartner Service.</summary>
-    public class PlaymoviespartnerService : Google.Apis.Services.BaseClientService
+    /// <summary>The PlayMovies Service.</summary>
+    public class PlayMoviesService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,12 +56,12 @@ namespace Google.Apis.Playmoviespartner.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public PlaymoviespartnerService() :
+        public PlayMoviesService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public PlaymoviespartnerService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public PlayMoviesService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             accounts = new AccountsResource(this);
@@ -110,11 +110,11 @@ namespace Google.Apis.Playmoviespartner.v1
         }
     }
 
-    ///<summary>A base abstract class for Playmoviespartner requests.</summary>
-    public abstract class PlaymoviespartnerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for PlayMovies requests.</summary>
+    public abstract class PlayMoviesBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new PlaymoviespartnerBaseServiceRequest instance.</summary>
-        protected PlaymoviespartnerBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new PlayMoviesBaseServiceRequest instance.</summary>
+        protected PlayMoviesBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -176,7 +176,7 @@ namespace Google.Apis.Playmoviespartner.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Playmoviespartner parameter list.</summary>
+        /// <summary>Initializes PlayMovies parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -314,6 +314,7 @@ namespace Google.Apis.Playmoviespartner.v1
         {
             this.service = service;
             avails = new AvailsResource(service);
+            components = new ComponentsResource(service);
             experienceLocales = new ExperienceLocalesResource(service);
             orders = new OrdersResource(service);
             storeInfos = new StoreInfosResource(service);
@@ -344,6 +345,82 @@ namespace Google.Apis.Playmoviespartner.v1
             }
 
 
+            /// <summary>Get an Avail given its avail group id and avail id.</summary>
+            /// <param name="accountId">REQUIRED. See _General rules_ for more information about this field.</param>
+            /// <param
+            /// name="availId">REQUIRED. Avail ID.</param>
+            public virtual GetRequest Get(string accountId, string availId)
+            {
+                return new GetRequest(service, accountId, availId);
+            }
+
+            /// <summary>Get an Avail given its avail group id and avail id.</summary>
+            public class GetRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.Avail>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string availId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    AvailId = availId;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED. See _General rules_ for more information about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>REQUIRED. Avail ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("availId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AvailId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/accounts/{accountId}/avails/{availId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "availId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "availId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>List Avails owned or managed by the partner. See _Authentication and Authorization rules_ and
             /// _List methods rules_ for more information about this method.</summary>
             /// <param name="accountId">REQUIRED. See _General rules_ for more information about this field.</param>
@@ -354,7 +431,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>List Avails owned or managed by the partner. See _Authentication and Authorization rules_ and
             /// _List methods rules_ for more information about this method.</summary>
-            public class ListRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.ListAvailsResponse>
+            public class ListRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ListAvailsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string accountId)
@@ -385,7 +462,9 @@ namespace Google.Apis.Playmoviespartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
 
-                /// <summary>Filter Avails that match a case-insensitive substring of the default Title name.</summary>
+                /// <summary>Filter that matches Avails with a `title_internal_alias`, `series_title_internal_alias`,
+                /// `season_title_internal_alias`, or `episode_title_internal_alias` that contains the given case-
+                /// insensitive title.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("title", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Title { get; set; }
 
@@ -394,13 +473,19 @@ namespace Google.Apis.Playmoviespartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("territories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Territories { get; set; }
 
-                /// <summary>Filter Avails that match a case-insensitive, partner-specific custom id.</summary>
+                /// <summary>Filter Avails that match a case-insensitive, partner-specific custom id. NOTE: this field
+                /// is deprecated and will be removed on V2; `alt_ids` should be used instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("altId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AltId { get; set; }
 
                 /// <summary>Filter Avails that match any of the given `video_id`s.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
+
+                /// <summary>Filter Avails that match (case-insensitive) any of the given partner-specific custom
+                /// ids.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("altIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AltIds { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -507,6 +592,437 @@ namespace Google.Apis.Playmoviespartner.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "altIds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "altIds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly ComponentsResource components;
+
+        /// <summary>Gets the Components resource.</summary>
+        public virtual ComponentsResource Components
+        {
+            get { return components; }
+        }
+
+        /// <summary>The "components" collection of methods.</summary>
+        public class ComponentsResource
+        {
+            private const string Resource = "components";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ComponentsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                type = new TypeResource(service);
+
+            }
+
+            private readonly TypeResource type;
+
+            /// <summary>Gets the Type resource.</summary>
+            public virtual TypeResource Type
+            {
+                get { return type; }
+            }
+
+            /// <summary>The "type" collection of methods.</summary>
+            public class TypeResource
+            {
+                private const string Resource = "type";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TypeResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Get a Component given its id.</summary>
+                /// <param name="accountId">REQUIRED. See _General rules_ for more information about this field.</param>
+                /// <param
+                /// name="componentId">REQUIRED. Component ID.</param>
+                /// <param name="type">REQUIRED. Component Type.</param>
+                public virtual GetRequest Get(string accountId, string componentId, GetRequest.TypeEnum type)
+                {
+                    return new GetRequest(service, accountId, componentId, type);
+                }
+
+                /// <summary>Get a Component given its id.</summary>
+                public class GetRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.Component>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string accountId, string componentId, GetRequest.TypeEnum type)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        ComponentId = componentId;
+                        Type = type;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED. See _General rules_ for more information about this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>REQUIRED. Component ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("componentId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ComponentId { get; private set; }
+
+                    /// <summary>REQUIRED. Component Type.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual TypeEnum Type { get; private set; }
+
+                    /// <summary>REQUIRED. Component Type.</summary>
+                    public enum TypeEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("COMPONENT_TYPE_UNSPECIFIED")]
+                        COMPONENTTYPEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("VIDEO")]
+                        VIDEO,
+                        [Google.Apis.Util.StringValueAttribute("AUDIO_20")]
+                        AUDIO20,
+                        [Google.Apis.Util.StringValueAttribute("AUDIO_51")]
+                        AUDIO51,
+                        [Google.Apis.Util.StringValueAttribute("SUBTITLE")]
+                        SUBTITLE,
+                        [Google.Apis.Util.StringValueAttribute("ARTWORK")]
+                        ARTWORK,
+                        [Google.Apis.Util.StringValueAttribute("METADATA")]
+                        METADATA,
+                    }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/accounts/{accountId}/components/{componentId}/type/{type}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "componentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "componentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "type", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "type",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>List Components owned or managed by the partner. See _Authentication and Authorization rules_
+            /// and _List methods rules_ for more information about this method.</summary>
+            /// <param name="accountId">REQUIRED. See _General rules_ for more information about this field.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>List Components owned or managed by the partner. See _Authentication and Authorization rules_
+            /// and _List methods rules_ for more information about this method.</summary>
+            public class ListRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ListComponentsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED. See _General rules_ for more information about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pphNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> PphNames { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
+
+                /// <summary>Filter Components that match a given title-level EIDR.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("titleLevelEidr", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TitleLevelEidr { get; set; }
+
+                /// <summary>Filter Components that match a given edit-level EIDR.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("editLevelEidr", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string EditLevelEidr { get; set; }
+
+                /// <summary>Filter Components that match one of the given status.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+                /// <summary>Filter Components that match one of the given status.</summary>
+                public enum StatusEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("STATUS_UNSPECIFIED")]
+                    STATUSUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("STATUS_APPROVED")]
+                    STATUSAPPROVED,
+                    [Google.Apis.Util.StringValueAttribute("STATUS_FAILED")]
+                    STATUSFAILED,
+                    [Google.Apis.Util.StringValueAttribute("STATUS_PROCESSING")]
+                    STATUSPROCESSING,
+                    [Google.Apis.Util.StringValueAttribute("STATUS_UNFULFILLED")]
+                    STATUSUNFULFILLED,
+                    [Google.Apis.Util.StringValueAttribute("STATUS_NOT_AVAILABLE")]
+                    STATUSNOTAVAILABLE,
+                }
+
+                /// <summary>Filter Components that match a case-insensitive partner-specific custom id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomId { get; set; }
+
+                /// <summary>InventoryID available in Common Manifest.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("inventoryId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string InventoryId { get; set; }
+
+                /// <summary>PresentationID available in Common Manifest.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("presentationId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PresentationId { get; set; }
+
+                /// <summary>PlayableSequenceID available in Common Manifest.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("playableSequenceId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PlayableSequenceId { get; set; }
+
+                /// <summary>Experience ID, as defined by Google.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("elId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ElId { get; set; }
+
+                /// <summary>Filter Components that match a case-insensitive, partner-specific Alternative Cut
+                /// ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("altCutId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AltCutId { get; set; }
+
+                /// <summary>Filter Components that match a case-insensitive substring of the physical name of the
+                /// delivered file.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filename", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filename { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/accounts/{accountId}/components"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pphNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pphNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "studioNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studioNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "titleLevelEidr", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "titleLevelEidr",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "editLevelEidr", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "editLevelEidr",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "status", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "status",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "customId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "inventoryId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "inventoryId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "presentationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "presentationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "playableSequenceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "playableSequenceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "elId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "elId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "altCutId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "altCutId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filename", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filename",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -547,7 +1063,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>Get an ExperienceLocale given its id. See _Authentication and Authorization rules_ and _Get
             /// methods rules_ for more information about this method.</summary>
-            public class GetRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.ExperienceLocale>
+            public class GetRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ExperienceLocale>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string accountId, string elId)
@@ -623,7 +1139,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>List ExperienceLocales owned or managed by the partner. See _Authentication and Authorization
             /// rules_ and _List methods rules_ for more information about this method.</summary>
-            public class ListRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.ListExperienceLocalesResponse>
+            public class ListRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ListExperienceLocalesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string accountId)
@@ -847,7 +1363,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>Get an Order given its id. See _Authentication and Authorization rules_ and _Get methods rules_
             /// for more information about this method.</summary>
-            public class GetRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.Order>
+            public class GetRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.Order>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string accountId, string orderId)
@@ -923,7 +1439,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>List Orders owned or managed by the partner. See _Authentication and Authorization rules_ and
             /// _List methods rules_ for more information about this method.</summary>
-            public class ListRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.ListOrdersResponse>
+            public class ListRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ListOrdersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string accountId)
@@ -954,7 +1470,8 @@ namespace Google.Apis.Playmoviespartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
 
-                /// <summary>Filter Orders that match a title name (case-insensitive, sub-string match).</summary>
+                /// <summary>Filter that matches Orders with a `name`, `show`, `season` or `episode` that contains the
+                /// given case-insensitive name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
 
@@ -982,6 +1499,10 @@ namespace Google.Apis.Playmoviespartner.v1
                 /// <summary>Filter Orders that match a case-insensitive, partner-specific custom id.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomId { get; set; }
+
+                /// <summary>Filter Orders that match any of the given `video_id`s.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1079,6 +1600,15 @@ namespace Google.Apis.Playmoviespartner.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "videoIds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "videoIds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -1144,7 +1674,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
                 /// <summary>Get a StoreInfo given its video id and country. See _Authentication and Authorization
                 /// rules_ and _Get methods rules_ for more information about this method.</summary>
-                public class GetRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.StoreInfo>
+                public class GetRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.StoreInfo>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string accountId, string videoId, string country)
@@ -1235,7 +1765,7 @@ namespace Google.Apis.Playmoviespartner.v1
 
             /// <summary>List StoreInfos owned or managed by the partner. See _Authentication and Authorization rules_
             /// and _List methods rules_ for more information about this method.</summary>
-            public class ListRequest : PlaymoviespartnerBaseServiceRequest<Google.Apis.Playmoviespartner.v1.Data.ListStoreInfosResponse>
+            public class ListRequest : PlayMoviesBaseServiceRequest<Google.Apis.PlayMovies.v1.Data.ListStoreInfosResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string accountId)
@@ -1276,13 +1806,22 @@ namespace Google.Apis.Playmoviespartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("countries", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Countries { get; set; }
 
-                /// <summary>Filter StoreInfos that match a case-insensitive substring of the default name.</summary>
+                /// <summary>Filter that matches StoreInfos with a `name` or `show_name` that contains the given case-
+                /// insensitive name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
 
                 /// <summary>Filter StoreInfos that match any of the given `video_id`s.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
+
+                /// <summary>Filter StoreInfos that match any of the given `mid`s.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("mids", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Mids { get; set; }
+
+                /// <summary>Filter StoreInfos that match any of the given `season_id`s.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("seasonIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> SeasonIds { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1389,6 +1928,24 @@ namespace Google.Apis.Playmoviespartner.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "mids", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "mids",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "seasonIds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "seasonIds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -1396,7 +1953,7 @@ namespace Google.Apis.Playmoviespartner.v1
     }
 }
 
-namespace Google.Apis.Playmoviespartner.v1.Data
+namespace Google.Apis.PlayMovies.v1.Data
 {    
 
     /// <summary>An Avail describes the Availability Window of a specific Edit in a given country, which means the
@@ -1408,6 +1965,10 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         /// <summary>Other identifier referring to the Edit, as defined by partner. Example: "GOOGLER_2006"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altId")]
         public virtual string AltId { get; set; } 
+
+        /// <summary>ID internally generated by Google to uniquely identify an Avail. Not part of EMA Specs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availId")]
+        public virtual string AvailId { get; set; } 
 
         /// <summary>Communicating an exempt category as defined by FCC regulations. It is not required for non-US
         /// Avails. Example: "1"</summary>
@@ -1565,6 +2126,109 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Component is an element (audio, video, subtitle, artwork, trailer, etc...) that is used in a set of
+    /// ExperienceLocales. A Component is owned by a Studio and managed either by the Studio itself or by one Post-
+    /// Production House. Each Component is identified by a `component_id` and its `type`.</summary>
+    public class Component : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Alternative Cut IDs, sometimes available in lieu of the main Edit-level EIDR IDs. This is
+        /// not an EIDR ID, but a Partner-provided ID. Example: "206346_79838".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altCutIds")]
+        public virtual System.Collections.Generic.IList<string> AltCutIds { get; set; } 
+
+        /// <summary>Timestamp when the Component was approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedTime")]
+        public virtual string ApprovedTime { get; set; } 
+
+        /// <summary>Detail about the type of the Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentDetailType")]
+        public virtual string ComponentDetailType { get; set; } 
+
+        /// <summary>ID internally generated by Google to uniquely identify the Component. Example:
+        /// 'wteyrc_647xc'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; } 
+
+        /// <summary>List of custom IDs (defined by the partner) linked to the ExperienceLocale using this Component.
+        /// Example: "R86241"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customIds")]
+        public virtual System.Collections.Generic.IList<string> CustomIds { get; set; } 
+
+        /// <summary>List of Edit-level EIDR IDs. Example: "10.5240/1489-49A2-3956-4B2D-FE16-6".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editLevelEidrs")]
+        public virtual System.Collections.Generic.IList<string> EditLevelEidrs { get; set; } 
+
+        /// <summary>IDs internally generated by Google to uniquely identify the ExperienceLocales for which the
+        /// Component is used. Example: 'KRZiVjY9h7t'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elIds")]
+        public virtual System.Collections.Generic.IList<string> ElIds { get; set; } 
+
+        /// <summary>File name of the Component when delivered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; } 
+
+        /// <summary>Language of the component, using the "BCP 47" format. Examples: "en", "en-US", "es",
+        /// "es-419".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
+
+        /// <summary>Default Edit name, usually in the language of the country of origin. Example: "Googlers,
+        /// The".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A simpler representation of the priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedPriority")]
+        public virtual string NormalizedPriority { get; set; } 
+
+        /// <summary>Type of the playable unit for which the Component is intended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playableUnitType")]
+        public virtual string PlayableUnitType { get; set; } 
+
+        /// <summary>Name of the post-production house that manages the Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pphName")]
+        public virtual string PphName { get; set; } 
+
+        /// <summary>Component priority, as defined by Google. The higher the value, the higher the priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<double> Priority { get; set; } 
+
+        /// <summary>Processing errors during XML file parsing. Example: 'Invalid input file'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingErrors")]
+        public virtual System.Collections.Generic.IList<string> ProcessingErrors { get; set; } 
+
+        /// <summary>Timestamp when the Component was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("receivedTime")]
+        public virtual string ReceivedTime { get; set; } 
+
+        /// <summary>Notes explaining why a Component has been rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionNote")]
+        public virtual string RejectionNote { get; set; } 
+
+        /// <summary>High-level status of the Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>Detailed status of the Component</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; } 
+
+        /// <summary>Name of the studio that owns the Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studioName")]
+        public virtual string StudioName { get; set; } 
+
+        /// <summary>List of Title-level EIDR IDs. Example: "10.5240/1489-49A2-3956-4B2D-FE16-5".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleLevelEidrs")]
+        public virtual System.Collections.Generic.IList<string> TitleLevelEidrs { get; set; } 
+
+        /// <summary>Type of the Component. Example: AUDIO_51</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An ExperienceLocale tracks the fulfillment of a Title in a country using a specific language, when
     /// delivered using component-based delivery. For example, a Title in Switzerland might have 3 ExperienceLocales:
     /// they both share the same country ("CH"), but each has different languages ("de", "fr", and "it"). Each
@@ -1689,6 +2353,29 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
+        /// <summary>See _List methods rules_ for more information about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to the 'ListComponents' method.</summary>
+    public class ListComponentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Components that match the request criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("components")]
+        public virtual System.Collections.Generic.IList<Component> Components { get; set; } 
+
+        /// <summary>See _List methods rules_ for info about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>See _List methods rules_ for more information about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1703,6 +2390,10 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         /// <summary>See _List methods rules_ for info about this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>See _List methods rules_ for more information about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1719,6 +2410,10 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orders")]
         public virtual System.Collections.Generic.IList<Order> Orders { get; set; } 
 
+        /// <summary>See _List methods rules_ for more information about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1733,6 +2428,10 @@ namespace Google.Apis.Playmoviespartner.v1.Data
         /// <summary>List of StoreInfos that match the request criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeInfos")]
         public virtual System.Collections.Generic.IList<StoreInfo> StoreInfos { get; set; } 
+
+        /// <summary>See _List methods rules_ for more information about this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Prediction.v1_2</id>
-        <version>1.13.0.428</version>
+        <version>1.13.0.496</version>
         <title>Google.Apis.Prediction.v1_2 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

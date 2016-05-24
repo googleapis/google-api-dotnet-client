@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160426 (481)
+ *      <tr><th>API Rev<td>20160509 (494)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -4370,6 +4370,10 @@ namespace Google.Apis.Compute.alpha
             public virtual string Disk { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Snapshot Body { get; set; }
 
@@ -4425,6 +4429,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "guestFlush", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "guestFlush",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33041,8 +33054,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// be set.
         ///
         /// If both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the
-        /// tag of the source matches the sourceTags property. The connection does not need to match both
-        /// properties.</summary>
+        /// tag of the source matches the sourceTags property. The connection does not need to match both properties.
+        ///
+        /// Source tags cannot be used to allow access to an instance's external IP address. Because tags are associated
+        /// with an instance, not an IP address, source tags can only be used to control traffic traveling from an
+        /// instance inside the same network as the firewall.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -33101,6 +33117,26 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates numeric value that can be either absolute or relative.</summary>
+    public class FixedOrPercent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Absolute value calculated based on mode: mode = fixed -> calculated = fixed = percent
+        /// -> calculated = ceiling(percent/100 * base_value)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculated")]
+        public virtual System.Nullable<int> Calculated { get; set; } 
+
+        /// <summary>fixed must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
+        public virtual System.Nullable<int> Fixed__ { get; set; } 
+
+        /// <summary>percent must belong to [0, 100].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34330,6 +34366,19 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual System.Nullable<int> TargetSize { get; set; } 
 
+        /// <summary>The update policy for this managed instance group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatePolicy")]
+        public virtual InstanceGroupManagerUpdatePolicy UpdatePolicy { get; set; } 
+
+        /// <summary>Versions supported by this IGM. User should set this field if they need fine-grained control over
+        /// how many instances in each version are run by this IGM. Versions are keyed by instanceTemplate. Every
+        /// instanceTemplate can appear at most once. This field overrides instanceTemplate field. If both
+        /// instanceTemplate and versions are set, the user receives a warning. "instanceTemplate: X" is semantically
+        /// equivalent to "versions [ { instanceTemplate: X } ]". Exactly one version must have targetSize field left
+        /// unset. Size of such a version will be calculated automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<InstanceGroupManagerVersion> Versions { get; set; } 
+
         /// <summary>The name of the zone where the managed instance group is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
@@ -34463,6 +34512,70 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum number of instances that can be created above the InstanceGroupManager.targetSize during
+        /// the update process. By default, a fixed value of 1 is used. Using maxSurge > 0 will cause instance names to
+        /// change during the update process. At least one of { maxSurge, maxUnavailable } must be greater than
+        /// 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
+        public virtual FixedOrPercent MaxSurge { get; set; } 
+
+        /// <summary>Maximum number of instances that can be unavailable during the update process. The instance is
+        /// considered available if all of the following conditions are satisfied: 1. instance's status is RUNNING 2.
+        /// instance's liveness health check result was observed to be HEALTHY at least once By default, a fixed value
+        /// of 1 is used. At least one of { maxSurge, maxUnavailable } must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
+        public virtual FixedOrPercent MaxUnavailable { get; set; } 
+
+        /// <summary>Minimum number of seconds to wait for after a newly created instance becomes available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minReadySec")]
+        public virtual System.Nullable<int> MinReadySec { get; set; } 
+
+        /// <summary>Minimal action to be taken on an instance. The order of action types is: REBOOT <
+        /// REPLACE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
+        public virtual string MinimalAction { get; set; } 
+
+        /// <summary>Standby mode of all the standby instances managed by the IGM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standbyMode")]
+        public virtual string StandbyMode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstanceGroupManagerVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
+        public virtual string InstanceTemplate { get; set; } 
+
+        /// <summary>If this field is set, IGM maintains a pool of standby instances created from instanceTemplate. The
+        /// number of standby instances is such that the total number of instances created from this instanceTemplate is
+        /// equal to InstanceGroupManager.targetSize regardless of what is the value of targetSize.fixed or
+        /// targetSize.percent. Standby instances are useful during the update, when the user wants to be able to
+        /// quickly rollout/rollback to the target version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepStandbyInstances")]
+        public virtual System.Nullable<bool> KeepStandbyInstances { get; set; } 
+
+        /// <summary>Tag describing the version. Changing it may trigger an action configured in UpdatePolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; } 
+
+        /// <summary>Intended number of instances that are created from instanceTemplate. The final number of instances
+        /// created from instanceTemplate will be equal to: * if expressed as fixed number: min(targetSize.fixed,
+        /// instanceGroupManager.targetSize), * if expressed as percent: ceiling(targetSize.percent *
+        /// InstanceGroupManager.targetSize). If unset, this version will handle all the remaining instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
+        public virtual FixedOrPercent TargetSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35165,7 +35278,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Whether this machine type has a shared CPU.</summary>
+        /// <summary>[Output Only] Whether this machine type has a shared CPU. See Shared-core machine types for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSharedCpu")]
         public virtual System.Nullable<bool> IsSharedCpu { get; set; } 
 
@@ -35357,6 +35471,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttempt")]
         public virtual ManagedInstanceLastAttempt LastAttempt { get; set; } 
 
+        /// <summary>[Output Only] Standby mode of the instance. This field is non-empty iff the instance is a
+        /// standby.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standbyMode")]
+        public virtual string StandbyMode { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -35542,8 +35661,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>An IPV4 internal network address to assign to the instance for this network interface. If not
-        /// specified by user an unused internal IP is assigned by system.</summary>
+        /// <summary>An IPv4 internal network address to assign to the instance for this network interface. If not
+        /// specified by the user, an unused internal IP is assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 

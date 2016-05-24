@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160510 (495)
+ *      <tr><th>API Rev<td>20160523 (508)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2407,6 +2407,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>If the test overran some time limit, and that is why it failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timedOut")]
         public virtual System.Nullable<bool> TimedOut { get; set; } 
+
+        /// <summary>If the robo was unable to crawl the app; perhaps because the app did not start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unableToCrawl")]
+        public virtual System.Nullable<bool> UnableToCrawl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

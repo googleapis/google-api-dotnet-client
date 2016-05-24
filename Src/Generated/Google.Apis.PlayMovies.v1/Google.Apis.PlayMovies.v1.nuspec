@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Reseller.v1sandbox</id>
-        <version>1.13.0.453</version>
-        <title>Google.Apis.Reseller.v1sandbox Client Library</title>
+        <id>Google.Apis.PlayMovies.v1</id>
+        <version>1.13.0.503</version>
+        <title>Google.Apis.PlayMovies.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <summary>Google Reseller v1sandbox API client library</summary>
+        <summary>Google Playmoviespartner v1 API client library</summary>
         <description>
-          Google APIs Client Library for working with Reseller v1sandbox.
+          Google APIs Client Library for working with Playmoviespartner v1.
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
@@ -23,7 +23,7 @@
           - Portable Class Libraries
 
           More documentation on the API is available at:
-          https://developers.google.com/api-client-library/dotnet/apis/reseller/v1sandbox
+          https://developers.google.com/api-client-library/dotnet/apis/playmoviespartner/v1
 
           The package source code is available at:
           https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -48,12 +48,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Reseller.v1sandbox.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Reseller.v1sandbox.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PlayMovies.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PlayMovies.v1.xml" />
     </files>
 </package>

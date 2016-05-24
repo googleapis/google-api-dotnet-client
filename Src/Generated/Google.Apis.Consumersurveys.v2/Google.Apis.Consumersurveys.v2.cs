@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Consumer Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160506 (491)
+ *      <tr><th>API Rev<td>20160519 (504)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -562,20 +562,22 @@ namespace Google.Apis.Consumersurveys.v2
         }
 
         /// <summary>Begins running a survey.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="resourceId"></param>
-        public virtual StartRequest Start(string resourceId)
+        public virtual StartRequest Start(Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest body, string resourceId)
         {
-            return new StartRequest(service, resourceId);
+            return new StartRequest(service, body, resourceId);
         }
 
         /// <summary>Begins running a survey.</summary>
         public class StartRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.SurveysStartResponse>
         {
             /// <summary>Constructs a new Start request.</summary>
-            public StartRequest(Google.Apis.Services.IClientService service, string resourceId)
+            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest body, string resourceId)
                 : base(service)
             {
                 ResourceId = resourceId;
+                Body = body;
                 InitParameters();
             }
 
@@ -584,6 +586,12 @@ namespace Google.Apis.Consumersurveys.v2
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
 
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -897,11 +905,32 @@ namespace Google.Apis.Consumersurveys.v2.Data
     /// <summary>Message defining the cost to run a given survey through API.</summary>
     public class SurveyCost : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cost per survey response in nano units of the given currency. To get the total cost for a survey,
+        /// multiply this value by wanted_response_count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costPerResponseNanos")]
+        public virtual System.Nullable<long> CostPerResponseNanos { get; set; } 
+
         /// <summary>Currency code that the cost is given in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; } 
 
-        /// <summary>Cost of survey in nano units of the given currency.</summary>
+        /// <summary>Threshold to start a survey automically if the quoted prices is at most this value. When a survey
+        /// has a Screener (threshold) question, it must go through an incidence pricing test to determine the final
+        /// cost per response. Typically the API consumer would have to make a followup call to start the survey given
+        /// the (previously not) known cost. If the survey has no threshold_answers, setting this property will return
+        /// an error. This property allows API callers to indicate the max price per response they'd be willing to pay
+        /// in advance of that test. If the price turns out to be lower than the specified autostart_max, the survey
+        /// should begin immediately and the user will be charged at the rate determined by the Incidence pricing test.
+        /// If the price turns out to be greater than the specified autostart_max the survey will not be started and the
+        /// user will instead be notified what price was determined by the incidence test. At that point they must raise
+        /// the value of this property to be greater than or equal to that cost before attempting to start the survey
+        /// again. This will immediately start the survey as long the incidence test was run within the last 21
+        /// days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCostPerResponseNanos")]
+        public virtual System.Nullable<long> MaxCostPerResponseNanos { get; set; } 
+
+        /// <summary>Cost of survey in nano units of the given currency. DEPRECATED in favor of
+        /// cost_per_response_nanos</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<long> Nanos { get; set; } 
 
@@ -1050,6 +1079,17 @@ namespace Google.Apis.Consumersurveys.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SurveysStartRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Threshold to start a survey automically if the quoted prices is less than or equal to this value.
+        /// See Survey.Cost for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCostPerResponseNanos")]
+        public virtual System.Nullable<long> MaxCostPerResponseNanos { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

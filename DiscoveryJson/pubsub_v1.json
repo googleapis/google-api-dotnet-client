@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/liyzgLngirW3xU7Tt2Pd1AnSK1c\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/liyzgLngirW3xU7Tt2Pd1AnSK1c\"",
  "discoveryVersion": "v1",
  "id": "pubsub:v1",
  "name": "pubsub",

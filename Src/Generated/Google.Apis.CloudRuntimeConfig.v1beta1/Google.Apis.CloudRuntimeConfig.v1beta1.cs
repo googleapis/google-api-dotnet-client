@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Runtime Configuration API Version v1beta1
+ *   Google Cloud RuntimeConfig API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/deployment-manager/docs/'>Google Cloud Runtime Configuration API</a>
+ *          <td><a href='https://cloud.google.com/deployment-manager/docs/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160510 (495)
+ *      <tr><th>API Rev<td>20160518 (503)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/docs/'>
  *              https://cloud.google.com/deployment-manager/docs/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Runtime Configuration API can be found at
+ * The complete API documentation for using Google Cloud RuntimeConfig API can be found at
  * <a href='https://cloud.google.com/deployment-manager/docs/'>https://cloud.google.com/deployment-manager/docs/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Runtimeconfig.v1beta1
+namespace Google.Apis.CloudRuntimeConfig.v1beta1
 {
-    /// <summary>The Runtimeconfig Service.</summary>
-    public class RuntimeconfigService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudRuntimeConfig Service.</summary>
+    public class CloudRuntimeConfigService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1beta1";
@@ -56,12 +56,12 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public RuntimeconfigService() :
+        public CloudRuntimeConfigService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public RuntimeconfigService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudRuntimeConfigService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             projects = new ProjectsResource(this);
@@ -91,7 +91,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Runtime Configuration API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud RuntimeConfig API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -113,11 +113,11 @@ namespace Google.Apis.Runtimeconfig.v1beta1
         }
     }
 
-    ///<summary>A base abstract class for Runtimeconfig requests.</summary>
-    public abstract class RuntimeconfigBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudRuntimeConfig requests.</summary>
+    public abstract class CloudRuntimeConfigBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new RuntimeconfigBaseServiceRequest instance.</summary>
-        protected RuntimeconfigBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudRuntimeConfigBaseServiceRequest instance.</summary>
+        protected CloudRuntimeConfigBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -204,7 +204,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Runtimeconfig parameter list.</summary>
+        /// <summary>Initializes CloudRuntimeConfig parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -405,7 +405,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
                 /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
-                public class GetRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Operation>
+                public class GetRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -488,7 +488,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The configuration parent, that will own the variable. Required, must a valid configuration name
                 /// within project_id.</param>
-                public virtual CreateRequest Create(Google.Apis.Runtimeconfig.v1beta1.Data.Variable body, string parent)
+                public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
@@ -497,10 +497,10 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// intermediate path elements. It is a FAILED_PRECONDITION error to create a variable with a name that
                 /// is a prefix of an existing variable name, or that has an existing variable name as a
                 /// prefix.</summary>
-                public class CreateRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Variable>
+                public class CreateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.Variable body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -516,7 +516,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Runtimeconfig.v1beta1.Data.Variable Body { get; set; }
+                    Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -569,7 +569,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// <summary>Deletes variable or variables. If name denotes a variable, that variable is deleted. If
                 /// name is a prefix and recursive is true, then all variables with that prefix are deleted, it's a
                 /// FAILED_PRECONDITION to delete a prefix without recursive being true.</summary>
-                public class DeleteRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Empty>
+                public class DeleteRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -643,7 +643,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 }
 
                 /// <summary>Gets the variable resource object.</summary>
-                public class GetRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Variable>
+                public class GetRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -705,7 +705,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
                 /// <summary>Lists variables within given RuntimeConfig object, matching optionally provided filter.
                 /// List contains only variable metadata, but not values.</summary>
-                public class ListRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.ListVariablesResponse>
+                public class ListRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.ListVariablesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -802,16 +802,16 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the variable to update. In the format of:
                 /// "projects/{project_id}/configs/{config_id}/variables/{variable_id}"</param>
-                public virtual UpdateRequest Update(Google.Apis.Runtimeconfig.v1beta1.Data.Variable body, string name)
+                public virtual UpdateRequest Update(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string name)
                 {
                     return new UpdateRequest(service, body, name);
                 }
 
                 /// <summary>Updates an existing variable with a new value.</summary>
-                public class UpdateRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Variable>
+                public class UpdateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.Variable body, string name)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -827,7 +827,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Runtimeconfig.v1beta1.Data.Variable Body { get; set; }
+                    Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -875,7 +875,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// VARIABLE_STATE_UNSPECIFIED.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the variable to retrieve.</param>
-                public virtual WatchRequest Watch(Google.Apis.Runtimeconfig.v1beta1.Data.WatchVariableRequest body, string name)
+                public virtual WatchRequest Watch(Google.Apis.CloudRuntimeConfig.v1beta1.Data.WatchVariableRequest body, string name)
                 {
                     return new WatchRequest(service, body, name);
                 }
@@ -885,10 +885,10 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// the last known value. If the operation deadline is set to a larger value than internal timeout
                 /// existing, current variable value will be returned and Variable state will be
                 /// VARIABLE_STATE_UNSPECIFIED.</summary>
-                public class WatchRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Variable>
+                public class WatchRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable>
                 {
                     /// <summary>Constructs a new Watch request.</summary>
-                    public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.WatchVariableRequest body, string name)
+                    public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.WatchVariableRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -903,7 +903,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Runtimeconfig.v1beta1.Data.WatchVariableRequest Body { get; set; }
+                    Google.Apis.CloudRuntimeConfig.v1beta1.Data.WatchVariableRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -976,7 +976,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The fully-qualified name of the configuration that will own the waiter. Required. Must be a
                 /// valid configuration name.</param>
-                public virtual CreateRequest Create(Google.Apis.Runtimeconfig.v1beta1.Data.Waiter body, string parent)
+                public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
@@ -986,10 +986,10 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 /// retrieved) prior to the resultant Operation completing. If the resultant Operation indicates a
                 /// failure, the failed Waiter resource will still exist and must be deleted prior to subsequent
                 /// creation attempts.</summary>
-                public class CreateRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Operation>
+                public class CreateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.Waiter body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -1005,7 +1005,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Runtimeconfig.v1beta1.Data.Waiter Body { get; set; }
+                    Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1054,7 +1054,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 }
 
                 /// <summary>Deletes the Waiter with the specified name.</summary>
-                public class DeleteRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Empty>
+                public class DeleteRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1114,7 +1114,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 }
 
                 /// <summary>Gets the Waiter resource with the specified name.</summary>
-                public class GetRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Waiter>
+                public class GetRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1175,7 +1175,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
                 }
 
                 /// <summary>List Waiters within the given RuntimeConfig resource.</summary>
-                public class ListRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.ListWaitersResponse>
+                public class ListRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.ListWaitersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1261,17 +1261,17 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The cloud project to which configuration belongs. Required. Must be a valid GCP
             /// project.</param>
-            public virtual CreateRequest Create(Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig body, string parent)
+            public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>CreateConfig creates a new config resource object. The configuration name must be unique within
             /// project.</summary>
-            public class CreateRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig>
+            public class CreateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -1287,7 +1287,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig Body { get; set; }
+                Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1336,7 +1336,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             }
 
             /// <summary>Deletes the config object.</summary>
-            public class DeleteRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.Empty>
+            public class DeleteRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1397,7 +1397,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             }
 
             /// <summary>Gets the config resource object.</summary>
-            public class GetRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig>
+            public class GetRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1458,7 +1458,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             }
 
             /// <summary>Lists all the config objects within project.</summary>
-            public class ListRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.ListConfigsResponse>
+            public class ListRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.ListConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1542,16 +1542,16 @@ namespace Google.Apis.Runtimeconfig.v1beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the config resource to update. Required. Must be a valid config
             /// resource.</param>
-            public virtual UpdateRequest Update(Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig body, string name)
+            public virtual UpdateRequest Update(Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string name)
             {
                 return new UpdateRequest(service, body, name);
             }
 
             /// <summary>Updates the config resource object. RuntimeConfig object must already exist.</summary>
-            public class UpdateRequest : RuntimeconfigBaseServiceRequest<Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig>
+            public class UpdateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig body, string name)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig body, string name)
                     : base(service)
                 {
                     Name = name;
@@ -1567,7 +1567,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Runtimeconfig.v1beta1.Data.RuntimeConfig Body { get; set; }
+                Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1611,7 +1611,7 @@ namespace Google.Apis.Runtimeconfig.v1beta1
     }
 }
 
-namespace Google.Apis.Runtimeconfig.v1beta1.Data
+namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
 {    
 
     /// <summary>The Cardinality condition is met when the count of `Variable` resources under the specified path prefix

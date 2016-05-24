@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160506 (491)
+ *      <tr><th>API Rev<td>20160519 (504)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>
  *              https://firebase.google.com/docs/storage/security/start</a>
@@ -96,6 +96,12 @@ namespace Google.Apis.FirebaseRulesAPI.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View and administer all your Firebase data and settings</summary>
+            public static string Firebase = "https://www.googleapis.com/auth/firebase";
+
+            /// <summary>View all your Firebase data and settings</summary>
+            public static string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
 
         }
 

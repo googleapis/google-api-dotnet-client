@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160503 (488)
+ *      <tr><th>API Rev<td>20160512 (497)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -409,11 +409,11 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     {
         /// <summary>This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users whose first visit date is
         /// between start date and end date defined in the DateRange. The date ranges should be aligned for cohort
-        /// requests. If the request contains cohort_nth_day it should be exactly one day long, if `ga:cohortNthWeek` it
-        /// should be aligned to the week boundary (starting at Sunday and ending Saturday), and for cohort_nth_month
-        /// the date range should be aligned to the month (starting at the first and ending on the last day of the
-        /// month). For LTV requests there are no such restrictions. You do not need to supply a date range for the
-        /// reportsRequest object.</summary>
+        /// requests. If the request contains `ga:cohortNthDay` it should be exactly one day long, if `ga:cohortNthWeek`
+        /// it should be aligned to the week boundary (starting at Sunday and ending Saturday), and for
+        /// `ga:cohortNthMonth` the date range should be aligned to the month (starting at the first and ending on the
+        /// last day of the month). For LTV requests there are no such restrictions. You do not need to supply a date
+        /// range for the `reportsRequest.dateRanges` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; } 
 
@@ -458,7 +458,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// Value report shows you how user value (Revenue) and engagement (Appviews, Goal Completions, Sessions, and
         /// Session Duration) grow during the 90 days after a user is acquired. - The metrics are calculated as a
         /// cumulative average per user per the time increment. - The cohort definition date ranges need not be aligned
-        /// to the calendar week and month boundaries.</summary>
+        /// to the calendar week and month boundaries. - The `viewId` must be an [app view
+        /// ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetimeValue")]
         public virtual System.Nullable<bool> LifetimeValue { get; set; } 
 
@@ -619,7 +620,9 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// <summary>The batch request containing multiple report request.</summary>
     public class GetReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Requests, each request will have a separate response.</summary>
+        /// <summary>Requests, each request will have a separate response. There can be a maximum of 5 requests. All
+        /// requests should have the same `dateRange`, `viewId`, `segments`, `samplingLevel`, and
+        /// `cohortGroup`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportRequests")]
         public virtual System.Collections.Generic.IList<ReportRequest> ReportRequests { get; set; } 
 
@@ -627,7 +630,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The main response class which holds the reports from the Reporting API batchRequest call.</summary>
+    /// <summary>The main response class which holds the reports from the Reporting API `batchGet` call.</summary>
     public class GetReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Responses corresponding to each of the request.</summary>
@@ -652,7 +655,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// numbers. Accepted operators include: Plus (+), Minus (-), Negation (Unary -), Divided by (/), Multiplied by
         /// (*), Parenthesis, Positive cardinal numbers (0-9), can include decimals and is limited to 1024 characters.
         /// Example `ga:totalRefunds/ga:users`, in most cases the metric expression is just a single metric name like
-        /// `ga:users`.</summary>
+        /// `ga:users`. Adding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics will result in unexpected
+        /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
 
@@ -785,8 +789,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 
-        /// <summary>Specifies the maximum number of groups to return. If set to -1, returns all groups. The default
-        /// value is 5.</summary>
+        /// <summary>Specifies the maximum number of groups to return. The default value is 10, also the maximum value
+        /// is 1,000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxGroupCount")]
         public virtual System.Nullable<int> MaxGroupCount { get; set; } 
 
@@ -927,15 +931,16 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     public class ReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cohort group associated with this request. If there is a cohort group in the request the
-        /// `ga:cohort` dimension must be present.</summary>
+        /// `ga:cohort` dimension must be present. All requests should have the same cohort definitions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohortGroup")]
         public virtual CohortGroup CohortGroup { get; set; } 
 
         /// <summary>Date ranges in the request. The request can have a maximum of 2 date ranges. The response will
         /// contain a set of metric values for each combination of the dimensions for each date range in the request.
         /// So, if there are two date ranges, there will be two set of metric values, one for the original date range
-        /// and one for the second date range. Date ranges should not be specified for cohorts or Lifetime value
-        /// requests.</summary>
+        /// and one for the second date range. The `reportRequest.dateRanges` field should not be specified for cohorts
+        /// or Lifetime value requests. If a date range is not provided, the default date range is (startDate: current
+        /// date - 7 days, endDate: current date - 1 day)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateRanges")]
         public virtual System.Collections.Generic.IList<DateRange> DateRanges { get; set; } 
 
@@ -950,7 +955,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 
         /// <summary>Dimension or metric filters that restrict the data returned for your request. To use the
-        /// filtersExpression, supply a dimension or metric on which to filter, followed by the filter expression. For
+        /// `filtersExpression`, supply a dimension or metric on which to filter, followed by the filter expression. For
         /// example, the following expression selects `ga:browser` dimension which starts with Firefox;
         /// `ga:browser=~^Firefox`. For more information on dimensions and metric filters, see [Filters
         /// reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).</summary>
@@ -978,18 +983,18 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricFilterClauses")]
         public virtual System.Collections.Generic.IList<MetricFilterClause> MetricFilterClauses { get; set; } 
 
-        /// <summary>Metrics (numbers) requested in the request.</summary>
+        /// <summary>Metrics, the quantitative measurements, requested in the request. Requests must specify at least
+        /// one metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
         /// <summary>Sort order on output rows. To compare two rows, the elements of the following are applied in order
-        /// until a difference is found.  All date ranges in the output get the same row order. The `order_by` field
-        /// gets applied first followed by the sorts in the `additional_ordering` fields.</summary>
+        /// until a difference is found.  All date ranges in the output get the same row order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]
         public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; } 
 
         /// <summary>Page size is for paging and specifies the maximum number of returned rows. Page size should be >=
-        /// 0. A query returns the default of 1000 rows. The Analytics Core Reporting API returns a maximum of 10,000
+        /// 0. A query returns the default of 1,000 rows. The Analytics Core Reporting API returns a maximum of 10,000
         /// rows per request, no matter how many you ask for. It can also return fewer rows than requested, if there
         /// aren't as many dimension segments as you expect. For instance, there are fewer than 300 possible values for
         /// `ga:country`, so when segmenting only by country, you can't get more than 300 rows, even if you set
@@ -1008,12 +1013,13 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual System.Collections.Generic.IList<Pivot> Pivots { get; set; } 
 
         /// <summary>The desired sampling level. If the sampling level is not specified the DEFAULT sampling level will
-        /// be used.</summary>
+        /// be used. All requests should have same `samplingLevel`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingLevel")]
         public virtual string SamplingLevel { get; set; } 
 
         /// <summary>Segment the data returned for the request. A segment definition helps look at a subset of the
-        /// segment request. A request can contain up to four segments.</summary>
+        /// segment request. A request can contain up to four segments. All requests should have the same segment
+        /// definitions. Requests with segments must have the `ga:segment` dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual System.Collections.Generic.IList<Segment> Segments { get; set; } 
 
@@ -1049,7 +1055,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSegment")]
         public virtual DynamicSegment DynamicSegment { get; set; } 
 
-        /// <summary>The segment ID of a built-in or custom segment, for example 'gaid::-3'.</summary>
+        /// <summary>The segment ID of a built-in or custom segment, for example `gaid::-3`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
         public virtual string SegmentId { get; set; } 
 
@@ -1073,7 +1079,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// <summary>Dimension filter specifies the filtering options on a dimension.</summary>
     public class SegmentDimensionFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Should the match be case sensitive, ignored for IN_LIST operator.</summary>
+        /// <summary>Should the match be case sensitive, ignored for `IN_LIST` operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
         public virtual System.Nullable<bool> CaseSensitive { get; set; } 
 
@@ -1085,11 +1091,11 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
         public virtual System.Collections.Generic.IList<string> Expressions { get; set; } 
 
-        /// <summary>Maximum comparison values for BETWEEN match type.</summary>
+        /// <summary>Maximum comparison values for `BETWEEN` match type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxComparisonValue")]
         public virtual string MaxComparisonValue { get; set; } 
 
-        /// <summary>Minimum comparison values for BETWEEN match type.</summary>
+        /// <summary>Minimum comparison values for `BETWEEN` match type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minComparisonValue")]
         public virtual string MinComparisonValue { get; set; } 
 
@@ -1157,7 +1163,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
         public virtual string ComparisonValue { get; set; } 
 
-        /// <summary>Max comparison value is only used for BETWEEN operator.</summary>
+        /// <summary>Max comparison value is only used for `BETWEEN` operator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxComparisonValue")]
         public virtual string MaxComparisonValue { get; set; } 
 

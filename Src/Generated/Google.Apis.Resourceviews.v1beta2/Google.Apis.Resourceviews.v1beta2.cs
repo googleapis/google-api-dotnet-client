@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/'>Google Compute Engine Instance Groups API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20150708 (188)
+ *      <tr><th>API Rev<td>20160512 (497)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/'>
  *              https://developers.google.com/compute/</a>

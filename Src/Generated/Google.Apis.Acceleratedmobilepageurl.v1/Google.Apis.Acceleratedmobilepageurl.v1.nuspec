@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Runtimeconfig.v1beta1</id>
-        <version>1.13.0.495</version>
-        <title>Google.Apis.Runtimeconfig.v1beta1 Client Library</title>
+        <id>Google.Apis.Acceleratedmobilepageurl.v1</id>
+        <version>1.13.0.503</version>
+        <title>Google.Apis.Acceleratedmobilepageurl.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <summary>Google Runtimeconfig v1beta1 API client library</summary>
+        <summary>Google Acceleratedmobilepageurl v1 API client library</summary>
         <description>
-          Google APIs Client Library for working with Runtimeconfig v1beta1.
+          Google APIs Client Library for working with Acceleratedmobilepageurl v1.
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
@@ -23,7 +23,7 @@
           - Portable Class Libraries
 
           More documentation on the API is available at:
-          https://developers.google.com/api-client-library/dotnet/apis/runtimeconfig/v1beta1
+          https://developers.google.com/api-client-library/dotnet/apis/acceleratedmobilepageurl/v1
 
           The package source code is available at:
           https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -38,22 +38,20 @@
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
                 <dependency id="Google.Apis" version="1.13.0" />
-                <dependency id="Google.Apis.Auth" version="1.13.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
                 <dependency id="Google.Apis" version="[1.10.0]" />
-                <dependency id="Google.Apis.Auth" version="[1.10.0]" />
             </group>
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Runtimeconfig.v1beta1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Runtimeconfig.v1beta1.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Acceleratedmobilepageurl.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Acceleratedmobilepageurl.v1.xml" />
     </files>
 </package>

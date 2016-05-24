@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>Prediction API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20160304 (428)
+ *      <tr><th>API Rev<td>20160511 (496)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/prediction/docs/developer-guide'>
  *              https://developers.google.com/prediction/docs/developer-guide</a>

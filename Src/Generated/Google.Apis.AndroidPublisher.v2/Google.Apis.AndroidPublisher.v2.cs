@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160507 (492)
+ *      <tr><th>API Rev<td>20160516 (501)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.AndroidPublisher.v2
             entitlements = new EntitlementsResource(this);
             inappproducts = new InappproductsResource(this);
             purchases = new PurchasesResource(this);
+            reviews = new ReviewsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -134,6 +135,14 @@ namespace Google.Apis.AndroidPublisher.v2
         public virtual PurchasesResource Purchases
         {
             get { return purchases; }
+        }
+
+        private readonly ReviewsResource reviews;
+
+        /// <summary>Gets the Reviews resource.</summary>
+        public virtual ReviewsResource Reviews
+        {
+            get { return reviews; }
         }
     }
 
@@ -6040,6 +6049,286 @@ namespace Google.Apis.AndroidPublisher.v2
             }
         }
     }
+
+    /// <summary>The "reviews" collection of methods.</summary>
+    public class ReviewsResource
+    {
+        private const string Resource = "reviews";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ReviewsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns a single review.</summary>
+        /// <param name="packageName">Unique identifier for the Android app for which we want reviews; for example,
+        /// "com.spiffygame".</param>
+        /// <param name="reviewId"></param>
+        public virtual GetRequest Get(string packageName, string reviewId)
+        {
+            return new GetRequest(service, packageName, reviewId);
+        }
+
+        /// <summary>Returns a single review.</summary>
+        public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.Review>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string packageName, string reviewId)
+                : base(service)
+            {
+                PackageName = packageName;
+                ReviewId = reviewId;
+                InitParameters();
+            }
+
+
+            /// <summary>Unique identifier for the Android app for which we want reviews; for example,
+            /// "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("reviewId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReviewId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{packageName}/reviews/{reviewId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "reviewId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reviewId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns a list of reviews.</summary>
+        /// <param name="packageName">Unique identifier for the Android app for which we want reviews; for example,
+        /// "com.spiffygame".</param>
+        public virtual ListRequest List(string packageName)
+        {
+            return new ListRequest(service, packageName);
+        }
+
+        /// <summary>Returns a list of reviews.</summary>
+        public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.ReviewsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string packageName)
+                : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+
+            /// <summary>Unique identifier for the Android app for which we want reviews; for example,
+            /// "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> StartIndex { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Token { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{packageName}/reviews"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Reply to a single review, or update an existing reply.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Unique identifier for the Android app for which we want reviews; for example,
+        /// "com.spiffygame".</param>
+        /// <param name="reviewId"></param>
+        public virtual ReplyRequest Reply(Google.Apis.AndroidPublisher.v2.Data.ReviewsReplyRequest body, string packageName, string reviewId)
+        {
+            return new ReplyRequest(service, body, packageName, reviewId);
+        }
+
+        /// <summary>Reply to a single review, or update an existing reply.</summary>
+        public class ReplyRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.ReviewsReplyResponse>
+        {
+            /// <summary>Constructs a new Reply request.</summary>
+            public ReplyRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v2.Data.ReviewsReplyRequest body, string packageName, string reviewId)
+                : base(service)
+            {
+                PackageName = packageName;
+                ReviewId = reviewId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Unique identifier for the Android app for which we want reviews; for example,
+            /// "com.spiffygame".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("reviewId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReviewId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v2.Data.ReviewsReplyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "reply"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{packageName}/reviews/{reviewId}:reply"; }
+            }
+
+            /// <summary>Initializes Reply parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "reviewId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "reviewId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.AndroidPublisher.v2.Data
@@ -6167,6 +6456,34 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>The ID of the edit that can be used in subsequent API calls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Comment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A comment from a developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerComment")]
+        public virtual DeveloperComment DeveloperComment { get; set; } 
+
+        /// <summary>A comment from a user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
+        public virtual UserComment UserComment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeveloperComment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The last time at which this comment was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual Timestamp LastModified { get; set; } 
+
+        /// <summary>The content of the comment, i.e. reply body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6674,6 +6991,73 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Review : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the user who wrote the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
+        public virtual string AuthorName { get; set; } 
+
+        /// <summary>A repeated field containing comments for the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+        public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
+
+        /// <summary>Unique identifier for this review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewId")]
+        public virtual string ReviewId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReviewReplyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the reply took effect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEdited")]
+        public virtual Timestamp LastEdited { get; set; } 
+
+        /// <summary>The reply text that was applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
+        public virtual string ReplyText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReviewsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<Review> Reviews { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReviewsReplyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text to set as the reply. Replies of more than approximately 350 characters will be rejected.
+        /// HTML tags will be stripped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replyText")]
+        public virtual string ReplyText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReviewsReplyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual ReviewReplyResult Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Season : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Inclusive end date of the recurrence period.</summary>
@@ -6799,6 +7183,18 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<long> Seconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class TokenPagination : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -6835,6 +7231,50 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UserComment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Integer Android SDK version of the user's device at the time the review was written, e.g. 23 is
+        /// Marshmallow. May be absent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidOsVersion")]
+        public virtual System.Nullable<int> AndroidOsVersion { get; set; } 
+
+        /// <summary>Integer version code of the app as installed at the time the review was written. May be
+        /// absent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersionCode")]
+        public virtual System.Nullable<int> AppVersionCode { get; set; } 
+
+        /// <summary>String version name of the app as installed at the time the review was written. May be
+        /// absent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersionName")]
+        public virtual string AppVersionName { get; set; } 
+
+        /// <summary>Codename for the reviewer's device, e.g. klte, flounder. May be absent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; } 
+
+        /// <summary>The last time at which this comment was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual Timestamp LastModified { get; set; } 
+
+        /// <summary>Language code for the reviewer. This is taken from the device settings so is not guaranteed to
+        /// match the language the review is written in. May be absent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewerLanguage")]
+        public virtual string ReviewerLanguage { get; set; } 
+
+        /// <summary>The star rating associated with the review, from 1 to 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
+        public virtual System.Nullable<int> StarRating { get; set; } 
+
+        /// <summary>The content of the comment, i.e. review body. In some cases users have been able to write a review
+        /// with separate title and body; in those cases the title and body are concatenated and separated by a tab
+        /// character.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

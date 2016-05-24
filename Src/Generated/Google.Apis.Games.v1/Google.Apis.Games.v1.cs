@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/'>Google Play Game Services API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160505 (490)
+ *      <tr><th>API Rev<td>20160519 (504)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/'>
  *              https://developers.google.com/games/services/</a>
@@ -396,6 +396,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -436,6 +440,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -517,6 +530,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("stepsToIncrement", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int StepsToIncrement { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>A randomly generated numeric ID for each request specified by the caller. This number is used
             /// at the server to ensure that the request is handled correctly across retries.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -565,6 +582,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
@@ -602,6 +628,10 @@ namespace Google.Apis.Games.v1
             /// <summary>A player ID. A value of me may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -676,6 +706,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -740,6 +779,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -770,6 +813,15 @@ namespace Google.Apis.Games.v1
                         Name = "achievementId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -811,6 +863,10 @@ namespace Google.Apis.Games.v1
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("steps", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Steps { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -854,6 +910,15 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -880,6 +945,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -914,6 +983,15 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -936,6 +1014,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -967,6 +1049,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1014,6 +1105,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -1071,6 +1166,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -1109,6 +1213,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1133,6 +1241,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1161,6 +1278,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1192,6 +1313,15 @@ namespace Google.Apis.Games.v1
                         Name = "applicationId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1235,6 +1365,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -1274,6 +1408,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -1322,6 +1465,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -1362,6 +1509,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -1414,6 +1570,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -1448,6 +1608,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -1501,6 +1670,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -1539,6 +1712,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -1567,6 +1749,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -1607,6 +1793,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -1672,6 +1867,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1696,6 +1895,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1738,6 +1946,10 @@ namespace Google.Apis.Games.v1
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
             }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -1794,6 +2006,15 @@ namespace Google.Apis.Games.v1
                         Name = "collection",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1871,6 +2092,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -1905,6 +2130,15 @@ namespace Google.Apis.Games.v1
                         Name = "playerId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1965,6 +2199,10 @@ namespace Google.Apis.Games.v1
                 Visible,
             }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -2011,6 +2249,15 @@ namespace Google.Apis.Games.v1
                         Name = "collection",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2083,6 +2330,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.PushTokenId Body { get; set; }
@@ -2113,6 +2364,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2135,6 +2395,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2166,6 +2430,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2227,6 +2500,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long RequestId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2278,6 +2555,15 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2322,6 +2608,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("questId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string QuestId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -2356,6 +2646,15 @@ namespace Google.Apis.Games.v1
                         Name = "questId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2395,6 +2694,10 @@ namespace Google.Apis.Games.v1
             /// <summary>A player ID. A value of me may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -2442,6 +2745,15 @@ namespace Google.Apis.Games.v1
                         Name = "playerId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2522,6 +2834,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("clientRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientRevision { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2551,6 +2867,15 @@ namespace Google.Apis.Games.v1
                     {
                         Name = "clientRevision",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -2597,6 +2922,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -2631,6 +2960,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -2669,6 +3007,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -2703,6 +3045,15 @@ namespace Google.Apis.Games.v1
                         Name = "roomId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2744,6 +3095,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2777,6 +3132,15 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2803,6 +3167,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the room.</summary>
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -2838,6 +3206,15 @@ namespace Google.Apis.Games.v1
                         Name = "roomId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2880,6 +3257,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the room.</summary>
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -2925,6 +3306,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -2963,6 +3353,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the room.</summary>
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -3008,6 +3402,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -3036,6 +3439,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -3076,6 +3483,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -3134,6 +3550,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("roomId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoomId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3174,6 +3594,15 @@ namespace Google.Apis.Games.v1
                         Name = "roomId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3270,6 +3699,10 @@ namespace Google.Apis.Games.v1
                 WEEKLY,
             }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The types of ranks to return. If the parameter is omitted, no ranks will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeRankType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<IncludeRankTypeEnum> IncludeRankType { get; set; }
@@ -3351,6 +3784,15 @@ namespace Google.Apis.Games.v1
                         Name = "timeSpan",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3459,6 +3901,10 @@ namespace Google.Apis.Games.v1
                 WEEKLY,
             }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3521,6 +3967,15 @@ namespace Google.Apis.Games.v1
                     {
                         Name = "timeSpan",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3621,6 +4076,10 @@ namespace Google.Apis.Games.v1
                 WEEKLY,
             }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3694,6 +4153,15 @@ namespace Google.Apis.Games.v1
                     {
                         Name = "timeSpan",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3784,6 +4252,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("score", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Score { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3836,6 +4308,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -3876,6 +4357,10 @@ namespace Google.Apis.Games.v1
             }
 
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3910,6 +4395,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
@@ -3963,6 +4457,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SnapshotId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -3997,6 +4495,15 @@ namespace Google.Apis.Games.v1
                         Name = "snapshotId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4038,6 +4545,10 @@ namespace Google.Apis.Games.v1
             /// <summary>A player ID. A value of me may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -4085,6 +4596,15 @@ namespace Google.Apis.Games.v1
                         Name = "playerId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4159,6 +4679,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4192,6 +4716,15 @@ namespace Google.Apis.Games.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -4214,6 +4747,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -4250,6 +4787,15 @@ namespace Google.Apis.Games.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -4285,6 +4831,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -4319,6 +4869,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4360,6 +4919,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4390,6 +4953,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4425,6 +4997,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the match.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -4470,6 +5046,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -4504,6 +5089,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The ID of the match.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>Get match data along with metadata.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeMatchData", Google.Apis.Util.RequestParameterType.Query)]
@@ -4543,6 +5132,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4591,6 +5189,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -4625,6 +5227,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4666,6 +5277,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -4700,6 +5315,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4745,6 +5369,10 @@ namespace Google.Apis.Games.v1
             /// <summary>The version of the match being updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("matchVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int MatchVersion { get; private set; }
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
@@ -4799,6 +5427,15 @@ namespace Google.Apis.Games.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "language", new Google.Apis.Discovery.Parameter
                     {
                         Name = "language",
@@ -4836,6 +5473,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>True if match data should be returned in the response. Note that not all data will necessarily
             /// be returned if include_match_data is true; the server may decide to only return data for some of the
@@ -4890,6 +5531,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "includeMatchData", new Google.Apis.Discovery.Parameter
                     {
@@ -4966,6 +5616,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -5005,6 +5659,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5050,6 +5713,10 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
+
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
 
             /// <summary>True if match data should be returned in the response. Note that not all data will necessarily
             /// be returned if include_match_data is true; the server may decide to only return data for some of the
@@ -5104,6 +5771,15 @@ namespace Google.Apis.Games.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "includeMatchData", new Google.Apis.Discovery.Parameter
                     {
@@ -5178,6 +5854,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("matchId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatchId { get; private set; }
 
+            /// <summary>The last-seen mutation timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consistencyToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ConsistencyToken { get; set; }
+
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
@@ -5218,6 +5898,15 @@ namespace Google.Apis.Games.v1
                         Name = "matchId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consistencyToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consistencyToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });

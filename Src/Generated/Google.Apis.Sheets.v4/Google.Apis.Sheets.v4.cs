@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160511 (496)
+ *      <tr><th>API Rev<td>20160519 (504)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -379,7 +379,7 @@ namespace Google.Apis.Sheets.v4
             /// <summary>Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the
             /// newly created sheet.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="spreadsheetId">The id of the spreadsheet containing the sheet to copy.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet containing the sheet to copy.</param>
             /// <param
             /// name="sheetId">The ID of the sheet to copy.</param>
             public virtual CopyToRequest CopyTo(Google.Apis.Sheets.v4.Data.CopySheetToAnotherSpreadsheetRequest body, string spreadsheetId, int sheetId)
@@ -402,7 +402,7 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                /// <summary>The id of the spreadsheet containing the sheet to copy.</summary>
+                /// <summary>The ID of the spreadsheet containing the sheet to copy.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
@@ -488,7 +488,7 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>Returns one or more ranges of values from a spreadsheet. The caller must specify the
             /// spreadsheet ID and one or more ranges.</summary>
-            /// <param name="spreadsheetId">The id of the spreadsheet to retrieve data from.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             public virtual BatchGetRequest BatchGet(string spreadsheetId)
             {
                 return new BatchGetRequest(service, spreadsheetId);
@@ -507,7 +507,7 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                /// <summary>The id of the spreadsheet to retrieve data from.</summary>
+                /// <summary>The ID of the spreadsheet to retrieve data from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
@@ -531,12 +531,12 @@ namespace Google.Apis.Sheets.v4
                 }
 
                 /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// ValueRenderOption option is FORMATTED_VALUE.</summary>
+                /// value_render_option is FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
 
                 /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// ValueRenderOption option is FORMATTED_VALUE.</summary>
+                /// value_render_option is FORMATTED_VALUE.</summary>
                 public enum DateTimeRenderOptionEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -641,17 +641,17 @@ namespace Google.Apis.Sheets.v4
 
             }
 
-            /// <summary>Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, a
-            /// valueInputOption, and one or more ValueRanges.</summary>
+            /// <summary>Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID,
+            /// a valueInputOption, and one or more ValueRanges.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="spreadsheetId">The id of the spreadsheet to update.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Sheets.v4.Data.BatchUpdateValuesRequest body, string spreadsheetId)
             {
                 return new BatchUpdateRequest(service, body, spreadsheetId);
             }
 
-            /// <summary>Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, a
-            /// valueInputOption, and one or more ValueRanges.</summary>
+            /// <summary>Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID,
+            /// a valueInputOption, and one or more ValueRanges.</summary>
             public class BatchUpdateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateValuesResponse>
             {
                 /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -664,7 +664,7 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                /// <summary>The id of the spreadsheet to update.</summary>
+                /// <summary>The ID of the spreadsheet to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
@@ -713,7 +713,7 @@ namespace Google.Apis.Sheets.v4
 
             /// <summary>Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a
             /// range.</summary>
-            /// <param name="spreadsheetId">The id of the spreadsheet to retrieve data from.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             /// <param name="range">The
             /// A1 notation of the values to retrieve.</param>
             public virtual GetRequest Get(string spreadsheetId, string range)
@@ -735,7 +735,7 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                /// <summary>The id of the spreadsheet to retrieve data from.</summary>
+                /// <summary>The ID of the spreadsheet to retrieve data from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
@@ -758,13 +758,13 @@ namespace Google.Apis.Sheets.v4
                     FORMULA,
                 }
 
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if the
-                /// ValueRenderOption option is FORMATTED_VALUE.</summary>
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
 
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if the
-                /// ValueRenderOption option is FORMATTED_VALUE.</summary>
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE.</summary>
                 public enum DateTimeRenderOptionEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
@@ -872,7 +872,7 @@ namespace Google.Apis.Sheets.v4
             /// <summary>Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and
             /// a valueInputOption.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="spreadsheetId">The id of the spreadsheet to update.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
             /// <param name="range">The A1 notation
             /// of the values to update.</param>
             public virtual UpdateRequest Update(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
@@ -895,7 +895,7 @@ namespace Google.Apis.Sheets.v4
                 }
 
 
-                /// <summary>The id of the spreadsheet to update.</summary>
+                /// <summary>The ID of the spreadsheet to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
@@ -985,14 +985,14 @@ namespace Google.Apis.Sheets.v4
         /// Each request is validated before being applied. If any request is not valid then the entire request will
         /// fail and nothing will be applied.
         ///
-        /// Some requests have replies to give you some information about how they applied. The replies will mirror the
-        /// requests.  For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2
-        /// empty replies, the actual reply, and another empty reply, in that order.
+        /// Some requests have replies to give you some information about how they are applied. The replies will mirror
+        /// the requests.  For example, if you applied 4 updates and the 3rd one had a reply, then the response will
+        /// have 2 empty replies, the actual reply, and another empty reply, in that order.
         ///
         /// Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect
-        /// exactly your changes after this completes, however it is guaranteed that all the updates in the request will
-        /// be applied atomically. Your changes may be altered with respect to collaborator changes. If there are no
-        /// collaborators, the spreadsheet should reflect your changes.</summary>
+        /// exactly your changes after this completes, however it is guaranteed that the updates in the request will be
+        /// applied together atomically. Your changes may be altered with respect to collaborator changes. If there are
+        /// no collaborators, the spreadsheet should reflect your changes.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="spreadsheetId">The spreadsheet to apply the updates to.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetRequest body, string spreadsheetId)
@@ -1005,14 +1005,14 @@ namespace Google.Apis.Sheets.v4
         /// Each request is validated before being applied. If any request is not valid then the entire request will
         /// fail and nothing will be applied.
         ///
-        /// Some requests have replies to give you some information about how they applied. The replies will mirror the
-        /// requests.  For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2
-        /// empty replies, the actual reply, and another empty reply, in that order.
+        /// Some requests have replies to give you some information about how they are applied. The replies will mirror
+        /// the requests.  For example, if you applied 4 updates and the 3rd one had a reply, then the response will
+        /// have 2 empty replies, the actual reply, and another empty reply, in that order.
         ///
         /// Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect
-        /// exactly your changes after this completes, however it is guaranteed that all the updates in the request will
-        /// be applied atomically. Your changes may be altered with respect to collaborator changes. If there are no
-        /// collaborators, the spreadsheet should reflect your changes.</summary>
+        /// exactly your changes after this completes, however it is guaranteed that the updates in the request will be
+        /// applied together atomically. Your changes may be altered with respect to collaborator changes. If there are
+        /// no collaborators, the spreadsheet should reflect your changes.</summary>
         public class BatchUpdateRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchUpdateSpreadsheetResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1125,12 +1125,14 @@ namespace Google.Apis.Sheets.v4
 
         }
 
-        /// <summary>Returns the spreadsheet at the given id. The caller must specify the spreadsheet ID.
+        /// <summary>Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID.
         ///
-        /// By default, data within grids will not be returned. You can include grid data one of two ways: specify a
-        /// field mask listing your desired fields (using the `fields` URL parameter in HTTP, or
-        /// `FieldMaskContext.response_mask` in the request extensions in an RPC), or by setting the includeGridData URL
-        /// parameter to true.  If a field mask is set, the `includeGridData` parameter is ignored.
+        /// By default, data within grids will not be returned. You can include grid data one of two ways:
+        ///
+        /// * Specify a field mask listing your desired fields using the `fields` URL parameter in HTTP
+        ///
+        /// * Set the includeGridData URL parameter to true.  If a field mask is set, the `includeGridData` parameter is
+        /// ignored
         ///
         /// For large spreadsheets, it is recommended to retrieve only the specific fields of the spreadsheet that you
         /// want.
@@ -1144,12 +1146,14 @@ namespace Google.Apis.Sheets.v4
             return new GetRequest(service, spreadsheetId);
         }
 
-        /// <summary>Returns the spreadsheet at the given id. The caller must specify the spreadsheet ID.
+        /// <summary>Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID.
         ///
-        /// By default, data within grids will not be returned. You can include grid data one of two ways: specify a
-        /// field mask listing your desired fields (using the `fields` URL parameter in HTTP, or
-        /// `FieldMaskContext.response_mask` in the request extensions in an RPC), or by setting the includeGridData URL
-        /// parameter to true.  If a field mask is set, the `includeGridData` parameter is ignored.
+        /// By default, data within grids will not be returned. You can include grid data one of two ways:
+        ///
+        /// * Specify a field mask listing your desired fields using the `fields` URL parameter in HTTP
+        ///
+        /// * Set the includeGridData URL parameter to true.  If a field mask is set, the `includeGridData` parameter is
+        /// ignored
         ///
         /// For large spreadsheets, it is recommended to retrieve only the specific fields of the spreadsheet that you
         /// want.
@@ -1348,7 +1352,8 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Adds a new sheet. When a sheet is added at a given index, all subsequent sheets' indexes are
-    /// incremented. To add an object sheet, use AddChartRequest instead.</summary>
+    /// incremented. To add an object sheet, use AddChartRequest instead and specify EmbeddedObjectPosition.sheetId or
+    /// EmbeddedObjectPosition.newSheet.</summary>
     public class AddSheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The properties the new sheet should have. All properties are optional. If a sheetId is specified,
@@ -1371,7 +1376,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Adds new cells to the last row with data in a sheet, inserting new rows into the sheet if
+    /// <summary>Adds new cells after the last row with data in a sheet, inserting new rows into the sheet if
     /// necessary.</summary>
     public class AppendCellsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1470,7 +1475,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// date.</summary>
     public class BasicChartDomain : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The data of the domain. For example, if charting stock prices over time, this be the data
+        /// <summary>The data of the domain. For example, if charting stock prices over time, this is the data
         /// representing the dates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual ChartData Domain { get; set; } 
@@ -1562,7 +1567,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The response when retrieving more than one range of values in a spreadsheet.</summary>
     public class BatchGetValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the spreadsheet to retrieve data from.</summary>
+        /// <summary>The ID of the spreadsheet the data was retrieved from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
         public virtual string SpreadsheetId { get; set; } 
 
@@ -1694,7 +1699,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual string Style { get; set; } 
 
-        /// <summary>The width of the border, in pixels. Border widths must be between 0 and 3 pixels.</summary>
+        /// <summary>The width of the border, in pixels. Border widths must be between 0 and 3 pixels,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
 
@@ -1760,17 +1766,19 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string Note { get; set; } 
 
         /// <summary>A pivot table anchored at this cell. The size of pivot table itself is computed dynamically based
-        /// on its data, grouping, filters, values, etc... Only the top-left cell of the pivot table contains the pivot
+        /// on its data, grouping, filters, values, etc. Only the top-left cell of the pivot table contains the pivot
         /// table definition. The other cells will contain the calculated values of the results of the pivot in their
-        /// effectiveValue fields.</summary>
+        /// effective_value fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivotTable")]
         public virtual PivotTable PivotTable { get; set; } 
 
-        /// <summary>Runs of rich text applied to subsections of the cell. Runs start at specific indexes in the text
-        /// and continue until the next run. Properties of a run will continue unless explicitly changed in a subsequent
-        /// run (and properties of the first run will continue the properties of the cell unless explicitly changed).
+        /// <summary>Runs of rich text applied to subsections of the cell.  Runs are only valid on user entered strings,
+        /// not formulas, bools, or numbers. Runs start at specific indexes in the text and continue until the next run.
+        /// Properties of a run will continue unless explicitly changed in a subsequent run (and properties of the first
+        /// run will continue the properties of the cell unless explicitly changed).
         ///
-        /// When writing, the new runs will overwrite any prior runs.</summary>
+        /// When writing, the new runs will overwrite any prior runs.  When writing a new user_entered_value, previous
+        /// runs will be erased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormatRuns")]
         public virtual System.Collections.Generic.IList<TextFormatRun> TextFormatRuns { get; set; } 
 
@@ -1800,7 +1808,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("borders")]
         public virtual Borders Borders { get; set; } 
 
-        /// <summary>The horizontal alignment of the value in cell.</summary>
+        /// <summary>The horizontal alignment of the value in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
         public virtual string HorizontalAlignment { get; set; } 
 
@@ -1824,7 +1832,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; } 
 
-        /// <summary>The vertical alignment of the value in cell.</summary>
+        /// <summary>The vertical alignment of the value in the cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
         public virtual string VerticalAlignment { get; set; } 
 
@@ -1875,8 +1883,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("basicChart")]
         public virtual BasicChartSpec BasicChart { get; set; } 
 
-        /// <summary>Determines how the charts will use hidden rows or columns. This value is only meaningful if the
-        /// ChartData.sourceRange is used for a domain or series.</summary>
+        /// <summary>Determines how the charts will use hidden rows or columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenDimensionStrategy")]
         public virtual string HiddenDimensionStrategy { get; set; } 
 
@@ -2178,7 +2185,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deletes the protected range with the given id.</summary>
+    /// <summary>Deletes the protected range with the given ID.</summary>
     public class DeleteProtectedRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the protected range to delete.</summary>
@@ -2349,7 +2356,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newSheet")]
         public virtual System.Nullable<bool> NewSheet { get; set; } 
 
-        /// <summary>The position the object is overlaid on top of a grid.</summary>
+        /// <summary>The position at which the object is overlaid on top of a grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlayPosition")]
         public virtual OverlayPosition OverlayPosition { get; set; } 
 
@@ -2406,7 +2413,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Criteria for showing/hiding rows in a filter, filter view.</summary>
+    /// <summary>Criteria for showing/hiding rows in a filter or filter view.</summary>
     public class FilterCriteria : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A condition that must be true for values to be shown. (This does not override hiddenValues -- if a
@@ -2436,13 +2443,13 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>The named range this filter view is backed by, if any.
         ///
-        /// When writing, only one of range or namedRangeId may be set.</summary>
+        /// When writing, only one of range or named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; } 
 
         /// <summary>The range this filter view covers.
         ///
-        /// When writing, only one of range or namedRangeId may be set.</summary>
+        /// When writing, only one of range or named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; } 
 
@@ -2492,9 +2499,9 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>True if the find value is a regex. The regular expression and replacement should follow Java regex
         /// rules at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html. The replacement string is
-        /// allowed to refer to capturing groups. For example, if one cell has the contents "`Google Sheets`" and
-        /// another has "`Google Docs`", then searching for `"o.* (.*)"` with a replacement of `"$1 Rocks`"` would
-        /// change the contents of the cells to "`GSheets Rocks`" and "`GDocs Rocks`" respectively.</summary>
+        /// allowed to refer to capturing groups. For example, if one cell has the contents `"Google Sheets"` and
+        /// another has `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of `"$1 Rocks"` would change
+        /// the contents of the cells to `"GSheets Rocks"` and `"GDocs Rocks"` respectively.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchByRegex")]
         public virtual System.Nullable<bool> SearchByRegex { get; set; } 
 
@@ -2514,8 +2521,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<int> FormulasChanged { get; set; } 
 
         /// <summary>The number of occurrences (possibly multiple within a cell) changed. For example, if replacing
-        /// "`e`" with "`o`" in "`Google Sheets`", this would be "`3`" because "`Google Sheets`" -> "`Googlo
-        /// Shoots`".</summary>
+        /// `"e"` with `"o"` in `"Google Sheets"`, this would be `"3"` because `"Google Sheets"` -> `"Googlo
+        /// Shoots"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrencesChanged")]
         public virtual System.Nullable<int> OccurrencesChanged { get; set; } 
 
@@ -2578,16 +2585,16 @@ namespace Google.Apis.Sheets.v4.Data
     public class GridData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata about the requested columns in the grid, starting with the column in
-        /// startColumn.</summary>
+        /// start_column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnMetadata")]
         public virtual System.Collections.Generic.IList<DimensionProperties> ColumnMetadata { get; set; } 
 
         /// <summary>The data in the grid, one entry per row, starting with the row in startRow. The values in RowData
-        /// will correspond to columns starting at startColumn.</summary>
+        /// will correspond to columns starting at start_column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowData")]
         public virtual System.Collections.Generic.IList<RowData> RowData { get; set; } 
 
-        /// <summary>Metadata about the requested rows in the grid, starting with the row in startRow.</summary>
+        /// <summary>Metadata about the requested rows in the grid, starting with the row in start_row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowMetadata")]
         public virtual System.Collections.Generic.IList<DimensionProperties> RowMetadata { get; set; } 
 
@@ -2634,17 +2641,17 @@ namespace Google.Apis.Sheets.v4.Data
     /// and the end index is exclusive -- [start_index, end_index). Missing indexes indicate the range is unbounded on
     /// that side.
     ///
-    /// For example, if "Sheet1" is grid ID 0, then:
+    /// For example, if `"Sheet1"` is sheet ID 0, then:
     ///
-    /// Sheet1!A1:A1 == sheet_id: 0, start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index: 1
+    /// `Sheet1!A1:A1 == sheet_id: 0, start_row_index: 0, end_row_index: 1, start_column_index: 0, end_column_index: 1`
     ///
-    /// Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4, start_column_index: 0, end_column_index: 2
+    /// `Sheet1!A3:B4 == sheet_id: 0, start_row_index: 2, end_row_index: 4, start_column_index: 0, end_column_index: 2`
     ///
-    /// Sheet1!A:B == sheet_id: 0, start_column_index: 0, end_column_index: 2
+    /// `Sheet1!A:B == sheet_id: 0, start_column_index: 0, end_column_index: 2`
     ///
-    /// Sheet1!A5:B == sheet_id: 0, start_row_index: 4, start_column_index: 0, end_column_index: 2
+    /// `Sheet1!A5:B == sheet_id: 0, start_row_index: 4, start_column_index: 0, end_column_index: 2`
     ///
-    /// Sheet1 == sheet_id:0
+    /// `Sheet1 == sheet_id:0`
     ///
     /// The start index must always be less than or equal to the end index. If the start index equals the end index,
     /// then the range is empty. Empty ranges are typically not meaningful and are usually rendered in the UI as
@@ -2685,7 +2692,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// For example, if row index 0 has red background and row index 1 has a green background, then inserting 2 rows
         /// at index 1 can inherit either the green or red background.  If `inheritFromBefore` is true, the two new rows
         /// will be red (because the row before the insertion point was red), whereas if `inheritFromBefore` is false,
-        /// the two new rows will be green (because the rows after the insertion point were green).</summary>
+        /// the two new rows will be green (because the row after the insertion point was green).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inheritFromBefore")]
         public virtual System.Nullable<bool> InheritFromBefore { get; set; } 
 
@@ -2697,7 +2704,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A single interpolation point a gradient conditional format. These pin the gradient color scale
+    /// <summary>A single interpolation point on a gradient conditional format. These pin the gradient color scale
     /// according to the color, type and value chosen.</summary>
     public class InterpolationPoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2740,8 +2747,8 @@ namespace Google.Apis.Sheets.v4.Data
         /// dimension) to make room for the moved dimensions. The source dimensions are removed from the grid, so the
         /// the data may end up in a different index than specified.
         ///
-        /// For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move "`1`" and "`2`" to between "`3`" and
-        /// "`4`", the source would be `ROWS [1..3)`,and the destination index would be "`4`" (the zero-based index of
+        /// For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move `"1"` and `"2"` to between `"3"` and
+        /// `"4"`, the source would be `ROWS [1..3)`,and the destination index would be `"4"` (the zero-based index of
         /// row 5). The end result would be `A1..A5` of `0, 3, 1, 2, 4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationIndex")]
         public virtual System.Nullable<int> DestinationIndex { get; set; } 
@@ -2773,14 +2780,15 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The number format of a cell. When updating, all fields must be set.</summary>
+    /// <summary>The number format of a cell.</summary>
     public class NumberFormat : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Pattern string used for formatting.</summary>
+        /// <summary>Pattern string used for formatting.  If not set, a default pattern based on the user's locale will
+        /// be used if necessary for the given type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; } 
 
-        /// <summary>The type of the number format.</summary>
+        /// <summary>The type of the number format. When writing, this field must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2917,7 +2925,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>The column offset of the source range that this grouping is based on.
         ///
-        /// For example, if the source was `C10:E15', a `sourceColumnOffset` of `0` means this group refers to column
+        /// For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this group refers to column
         /// `C`, whereas the offset `1` would refer to column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnOffset")]
         public virtual System.Nullable<int> SourceColumnOffset { get; set; } 
@@ -2948,7 +2956,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
         public virtual System.Collections.Generic.IList<ExtendedValue> Buckets { get; set; } 
 
-        /// <summary>The offset in the [PivotTable.values] list which the values in this grouping should be sorted
+        /// <summary>The offset in the PivotTable.values list which the values in this grouping should be sorted
         /// by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuesIndex")]
         public virtual System.Nullable<int> ValuesIndex { get; set; } 
@@ -2985,7 +2993,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// The filters will be applied before aggregating data into the pivot table. The map's key is the column offset
         /// of the source range that you want to filter, and the value is the criteria for that column.
         ///
-        /// For example, if the source was `C10:E15', a key of `0` will have the filter for column `C`, whereas the key
+        /// For example, if the source was `C10:E15`, a key of `0` will have the filter for column `C`, whereas the key
         /// `1` is for column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual System.Collections.Generic.IDictionary<string,PivotFilterCriteria> Criteria { get; set; } 
@@ -3024,7 +3032,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>The column offset of the source range that this value reads from.
         ///
-        /// For example, if the source was `C10:E15', a `sourceColumnOffset` of `0` means this value refers to column
+        /// For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this value refers to column
         /// `C`, whereas the offset `1` would refer to column `D`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceColumnOffset")]
         public virtual System.Nullable<int> SourceColumnOffset { get; set; } 
@@ -3046,14 +3054,14 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string Description { get; set; } 
 
         /// <summary>The users and groups with edit access to the protected range. This field is only visible to users
-        /// with edit access to the protected range and the document. Editors are not supported with warningOnly
+        /// with edit access to the protected range and the document. Editors are not supported with warning_only
         /// protection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editors")]
         public virtual Editors Editors { get; set; } 
 
         /// <summary>The named range this protected range is backed by, if any.
         ///
-        /// When writing, only one of range or namedRangeId may be set.</summary>
+        /// When writing, only one of range or named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; } 
 
@@ -3064,7 +3072,7 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The range that is being protected. The range may be fully unbounded, in which case this is
         /// considered a protected sheet.
         ///
-        /// When writing, only one of range or namedRangeId may be set.</summary>
+        /// When writing, only one of range or named_range_id may be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; } 
 
@@ -3078,11 +3086,11 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unprotectedRanges")]
         public virtual System.Collections.Generic.IList<GridRange> UnprotectedRanges { get; set; } 
 
-        /// <summary>True if this this protected range will show a warning when editing. Warning-based protection means
-        /// that every user can edit data in the protected range, except editing will prompt a warning asking the user
-        /// to confirm the edit.
+        /// <summary>True if this protected range will show a warning when editing. Warning-based protection means that
+        /// every user can edit data in the protected range, except editing will prompt a warning asking the user to
+        /// confirm the edit.
         ///
-        /// When warning: if this field is true, then editors is ignored. Additionally, if this field is changed from
+        /// When writing: if this field is true, then editors is ignored. Additionally, if this field is changed from
         /// true to false and the `editors` field is not set (nor included in the field mask), then the editors will be
         /// set to all the editors in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningOnly")]
@@ -3099,8 +3107,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// For example, if writing a cell with formula `=A1` into range B2:C4, B2 would be `=A1`, B3 would be `=A2`, B4
     /// would be `=A3`, C2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.
     ///
-    /// To keep the formula's ranges static, use the `$` indicator. For example, using the formula was `=$A$1`, neither
-    /// the row nor column would increment.</summary>
+    /// To keep the formula's ranges static, use the `$` indicator. For example, use the formula `=$A$1` to prevent both
+    /// the row and the column from incrementing.</summary>
     public class RepeatCellRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data to write.</summary>
@@ -3148,7 +3156,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addSheet")]
         public virtual AddSheetRequest AddSheet { get; set; } 
 
-        /// <summary>Appends cells to the last row with data in a sheet.</summary>
+        /// <summary>Appends cells after the last row with data in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appendCells")]
         public virtual AppendCellsRequest AppendCells { get; set; } 
 
@@ -3213,7 +3221,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateSheet")]
         public virtual DuplicateSheetRequest DuplicateSheet { get; set; } 
 
-        /// <summary>Finds and replace occurrences of some text with other text.</summary>
+        /// <summary>Finds and replaces occurrences of some text with other text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
         public virtual FindReplaceRequest FindReplace { get; set; } 
 
@@ -3567,10 +3575,15 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultFormat")]
         public virtual CellFormat DefaultFormat { get; set; } 
 
-        /// <summary>The locale of the spreadsheet in one of the following formats: * an ISO 639-1 language code such as
-        /// `en` * an ISO 639-2 language code such as `fil`, if no 639-1 code exists * a combination of the ISO language
-        /// code and country code, such as `en_US` Note: when updating this field, not all locales/languages are
-        /// supported.</summary>
+        /// <summary>The locale of the spreadsheet in one of the following formats:
+        ///
+        /// * an ISO 639-1 language code such as `en`
+        ///
+        /// * an ISO 639-2 language code such as `fil`, if no 639-1 code exists
+        ///
+        /// * a combination of the ISO language code and country code, such as `en_US`
+        ///
+        /// Note: when updating this field, not all locales/languages are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
@@ -3622,8 +3635,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A run of a text format. The format of this run continues until explicitly overridden in the next run.
-    /// When updating, all fields must be set.</summary>
+    /// <summary>A run of a text format. The format of this run continues until the start index of the next run. When
+    /// updating, all fields must be set.</summary>
     public class TextFormatRun : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The format of this run.  Absent values inherit the cell's format.</summary>
@@ -3771,7 +3784,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual ConditionalFormatRule Rule { get; set; } 
 
-        /// <summary>The sheet of the rule to move.  Required if newIndex is set, unused otherwise.</summary>
+        /// <summary>The sheet of the rule to move.  Required if new_index is set, unused otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; } 
 
@@ -3792,11 +3805,11 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual ConditionalFormatRule NewRule { get; set; } 
 
         /// <summary>The old index of the rule. Not set if a rule was replaced (because it is the same as
-        /// newIndex).</summary>
+        /// new_index).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldIndex")]
         public virtual System.Nullable<int> OldIndex { get; set; } 
 
-        /// <summary>The old (deleted) rule. Not set if a rule was moved (because it is the same as newRule).</summary>
+        /// <summary>The old (deleted) rule. Not set if a rule was moved (because it is the same as new_rule).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldRule")]
         public virtual ConditionalFormatRule OldRule { get; set; } 
 
@@ -3804,8 +3817,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates properties of dimensions within the specified range. It is an error to specify read only fields
-    /// in the field mask.</summary>
+    /// <summary>Updates properties of dimensions within the specified range.</summary>
     public class UpdateDimensionPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fields that should be updated.  At least one field must be specified. The root `properties` is
@@ -3842,7 +3854,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newPosition")]
         public virtual EmbeddedObjectPosition NewPosition { get; set; } 
 
-        /// <summary>The id of the object to moved.</summary>
+        /// <summary>The ID of the object to moved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual System.Nullable<int> ObjectId { get; set; } 
 
@@ -3878,8 +3890,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates properties of the named range with the specified namedRangeId. It is an error to specify read
-    /// only fields in the field mask.</summary>
+    /// <summary>Updates properties of the named range with the specified namedRangeId.</summary>
     public class UpdateNamedRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fields that should be updated.  At least one field must be specified. The root `namedRange` is
@@ -3915,8 +3926,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates properties of the sheet with the specified sheetId. It is an error to specify read only fields
-    /// in the field mask.</summary>
+    /// <summary>Updates properties of the sheet with the specified sheetId.</summary>
     public class UpdateSheetPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fields that should be updated.  At least one field must be specified. The root `properties` is
@@ -3933,8 +3943,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates properties of a spreadsheet. It is an error to specify read only fields in the field
-    /// mask.</summary>
+    /// <summary>Updates properties of a spreadsheet.</summary>
     public class UpdateSpreadsheetPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The fields that should be updated.  At least one field must be specified. The root 'properties' is
@@ -3983,11 +3992,12 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>The major dimension of the values.
         ///
-        /// For output, if the spreadsheet data is: A1=1,B1=2,A2=3,B2=4, then requesting range=A1:B2,majorDimension=ROWS
-        /// will return [[1,2],[3,4]], whereas requesting range=A1:B2,majorDimension=COLUMNS will return [[1,3],[2,4]].
+        /// For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+        /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+        /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.
         ///
-        /// For input, with range=A1:B2,majorDimension=ROWS then [[1,2],[3,4]] will set A1=1,B1=2,A2=3,B2=4. With
-        /// range=A1:B2,majorDimension=COLUMNS then [[1,2],[3,4]] will set A1=1,B1=3,A2=2,B2=4.
+        /// For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]` will set `A1=1,B1=2,A2=3,B2=4`. With
+        /// `range=A1:B2,majorDimension=COLUMNS` then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.
         ///
         /// When writing, if this field is not set, it defaults to ROWS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("majorDimension")]
@@ -4004,8 +4014,8 @@ namespace Google.Apis.Sheets.v4.Data
         ///
         /// For output, empty trailing rows and columns will not be included.
         ///
-        /// For input, supported value types are: bool, string, and double. Null and empty values will be skipped. To
-        /// set a cell to an empty value, set the string value to an empty string.</summary>
+        /// For input, supported value types are: bool, string, and double. Null values will be skipped. To set a cell
+        /// to an empty value, set the string value to an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
 

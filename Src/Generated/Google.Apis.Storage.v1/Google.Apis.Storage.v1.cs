@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160427 (482)
+ *      <tr><th>API Rev<td>20160504 (489)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5756,7 +5756,8 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
-        /// <summary>Content-Type of the object data.</summary>
+        /// <summary>Content-Type of the object data. If contentType is not specified, object downloads will be served
+        /// as application/octet-stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; } 
 

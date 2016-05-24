@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160316 (440)
+ *      <tr><th>API Rev<td>20160518 (503)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -984,6 +984,78 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         }
 
+        /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
+        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
+        /// Project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest body, string projectId)
+        {
+            return new GetAncestryRequest(service, body, projectId);
+        }
+
+        /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
+        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
+        /// Project.</summary>
+        public class GetAncestryRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryResponse>
+        {
+            /// <summary>Constructs a new GetAncestry request.</summary>
+            public GetAncestryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest body, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getAncestry"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/projects/{projectId}:getAncestry"; }
+            }
+
+            /// <summary>Initializes GetAncestry parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.</summary>
         /// <param name="body">The body of the request.</param>
@@ -1462,6 +1534,17 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 namespace Google.Apis.CloudResourceManager.v1beta1.Data
 {    
 
+    /// <summary>Identifying information for a single ancestor of a project.</summary>
+    public class Ancestor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource id of the ancestor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual ResourceId ResourceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1492,6 +1575,25 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request sent to the GetAncestry method.</summary>
+    public class GetAncestryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response from the GetAncestry method.</summary>
+    public class GetAncestryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ancestors are ordered from bottom to top of the resource hierarchy. The first ancestor is the
+        /// project itself, followed by the project's parent, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestor")]
+        public virtual System.Collections.Generic.IList<Ancestor> Ancestor { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

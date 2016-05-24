@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/AGY2FGWaHRZwgyAazem2sSX20dM\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/AGY2FGWaHRZwgyAazem2sSX20dM\"",
  "discoveryVersion": "v1",
  "id": "logging:v2beta1",
  "name": "logging",

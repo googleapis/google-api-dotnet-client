@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tools/cloud-trace'>Google Cloud Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151207 (340)
+ *      <tr><th>API Rev<td>20160518 (503)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tools/cloud-trace'>
  *              https://cloud.google.com/tools/cloud-trace</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Cloudtrace.v1
+namespace Google.Apis.CloudTrace.v1
 {
-    /// <summary>The Cloudtrace Service.</summary>
-    public class CloudtraceService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudTrace Service.</summary>
+    public class CloudTraceService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,12 +56,12 @@ namespace Google.Apis.Cloudtrace.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudtraceService() :
+        public CloudTraceService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudtraceService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudTraceService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             projects = new ProjectsResource(this);
@@ -97,6 +97,12 @@ namespace Google.Apis.Cloudtrace.v1
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>Write Trace data for a project or application</summary>
+            public static string TraceAppend = "https://www.googleapis.com/auth/trace.append";
+
+            /// <summary>Read Trace data for a project or application</summary>
+            public static string TraceReadonly = "https://www.googleapis.com/auth/trace.readonly";
+
         }
 
 
@@ -110,11 +116,11 @@ namespace Google.Apis.Cloudtrace.v1
         }
     }
 
-    ///<summary>A base abstract class for Cloudtrace requests.</summary>
-    public abstract class CloudtraceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudTrace requests.</summary>
+    public abstract class CloudTraceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudtraceBaseServiceRequest instance.</summary>
-        protected CloudtraceBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudTraceBaseServiceRequest instance.</summary>
+        protected CloudTraceBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -176,7 +182,7 @@ namespace Google.Apis.Cloudtrace.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Cloudtrace parameter list.</summary>
+        /// <summary>Initializes CloudTrace parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -351,7 +357,7 @@ namespace Google.Apis.Cloudtrace.v1
             }
 
             /// <summary>Gets a single trace by its ID.</summary>
-            public class GetRequest : CloudtraceBaseServiceRequest<Google.Apis.Cloudtrace.v1.Data.Trace>
+            public class GetRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Trace>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string projectId, string traceId)
@@ -425,7 +431,7 @@ namespace Google.Apis.Cloudtrace.v1
             }
 
             /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            public class ListRequest : CloudtraceBaseServiceRequest<Google.Apis.Cloudtrace.v1.Data.ListTracesResponse>
+            public class ListRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.ListTracesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string projectId)
@@ -591,25 +597,25 @@ namespace Google.Apis.Cloudtrace.v1
             }
         }
 
-        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
-        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
-        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
+        /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
+        /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
+        /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
         /// match, a new trace is created.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">ID of the Cloud project where the trace data is stored.</param>
-        public virtual PatchTracesRequest PatchTraces(Google.Apis.Cloudtrace.v1.Data.Traces body, string projectId)
+        public virtual PatchTracesRequest PatchTraces(Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
         {
             return new PatchTracesRequest(service, body, projectId);
         }
 
-        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
-        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
-        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
+        /// <summary>Sends new traces to Stackdriver Trace or updates existing traces. If the ID of a trace that you
+        /// send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by
+        /// the provided values, and any new fields provided are merged with the existing trace data. If the ID does not
         /// match, a new trace is created.</summary>
-        public class PatchTracesRequest : CloudtraceBaseServiceRequest<Google.Apis.Cloudtrace.v1.Data.Empty>
+        public class PatchTracesRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Empty>
         {
             /// <summary>Constructs a new PatchTraces request.</summary>
-            public PatchTracesRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudtrace.v1.Data.Traces body, string projectId)
+            public PatchTracesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
                 : base(service)
             {
                 ProjectId = projectId;
@@ -624,7 +630,7 @@ namespace Google.Apis.Cloudtrace.v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Cloudtrace.v1.Data.Traces Body { get; set; }
+            Google.Apis.CloudTrace.v1.Data.Traces Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -667,7 +673,7 @@ namespace Google.Apis.Cloudtrace.v1
     }
 }
 
-namespace Google.Apis.Cloudtrace.v1.Data
+namespace Google.Apis.CloudTrace.v1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
@@ -737,10 +743,10 @@ namespace Google.Apis.Cloudtrace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Name of the trace. The trace name is sanitized and displayed in the Cloud Trace tool in the Google
-        /// Developers Console. The name may be a method name or some other per-call site name. For the same executable
-        /// and the same call point, a best practice is to use a consistent name, which makes it easier to correlate
-        /// cross-trace spans.</summary>
+        /// <summary>Name of the trace. The trace name is sanitized and displayed in the Stackdriver Trace tool in the
+        /// {% dynamic print site_values.console_name %}. The name may be a method name or some other per-call site
+        /// name. For the same executable and the same call point, a best practice is to use a consistent name, which
+        /// makes it easier to correlate cross-trace spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

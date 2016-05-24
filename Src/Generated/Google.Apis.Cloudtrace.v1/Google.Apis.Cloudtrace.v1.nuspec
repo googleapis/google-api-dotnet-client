@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Cloudtrace.v1</id>
-        <version>1.13.0.340</version>
-        <title>Google.Apis.Cloudtrace.v1 Client Library</title>
+        <id>Google.Apis.CloudTrace.v1</id>
+        <version>1.13.0.503</version>
+        <title>Google.Apis.CloudTrace.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -48,12 +48,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Cloudtrace.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Cloudtrace.v1.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudTrace.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudTrace.v1.xml" />
     </files>
 </package>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160426 (481)
+ *      <tr><th>API Rev<td>20160509 (494)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -27323,8 +27323,11 @@ namespace Google.Apis.Compute.beta.Data
         /// be set.
         ///
         /// If both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the
-        /// tag of the source matches the sourceTags property. The connection does not need to match both
-        /// properties.</summary>
+        /// tag of the source matches the sourceTags property. The connection does not need to match both properties.
+        ///
+        /// Source tags cannot be used to allow access to an instance's external IP address. Because tags are associated
+        /// with an instance, not an IP address, source tags can only be used to control traffic traveling from an
+        /// instance inside the same network as the firewall.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -29172,7 +29175,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Whether this machine type has a shared CPU.</summary>
+        /// <summary>[Output Only] Whether this machine type has a shared CPU. See Shared-core machine types for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSharedCpu")]
         public virtual System.Nullable<bool> IsSharedCpu { get; set; } 
 
@@ -29544,8 +29548,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>An IPV4 internal network address to assign to the instance for this network interface. If not
-        /// specified by user an unused internal IP is assigned by system.</summary>
+        /// <summary>An IPv4 internal network address to assign to the instance for this network interface. If not
+        /// specified by the user, an unused internal IP is assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
         public virtual string NetworkIP { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"jQLIOHBVnDZie4rQHGH1WJF-INE/97tqdEKpOdg9xNdJ4MTbH8gZeVw\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/InJfaYgEs4kvxVpfe1cZDPrjhv0\"",
  "discoveryVersion": "v1",
  "id": "proximitybeacon:v1beta1",
  "name": "proximitybeacon",
  "version": "v1beta1",
- "revision": "20160504",
+ "revision": "20160429",
  "title": "Google Proximity Beacon API",
  "description": "Registers, manages, indexes, and searches beacons.",
  "ownerDomain": "google.com",
@@ -571,6 +571,13 @@
      "path": "v1beta1/beacons:register",
      "httpMethod": "POST",
      "description": "Registers a previously unregistered beacon given its `advertisedId`. These IDs are unique within the system. An ID can be registered only once. Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console project.",
+     "parameters": {
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the project the beacon will be registered to. If the project id is not specified then the project making the request is used. Optional.",
+       "location": "query"
+      }
+     },
      "request": {
       "$ref": "Beacon"
      },
@@ -593,6 +600,11 @@
        "required": true,
        "pattern": "^beacons/[^/]*$",
        "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the beacon to decommission. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -617,6 +629,11 @@
        "required": true,
        "pattern": "^beacons/[^/]*$",
        "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the beacon to request. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -650,6 +667,11 @@
        "description": "The maximum number of records to return for this request, up to a server-defined upper limit.",
        "format": "int32",
        "location": "query"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id to list beacons under. If not present then the project credential that made the request is used as the project. Optional.",
+       "location": "query"
       }
      },
      "response": {
@@ -671,6 +693,11 @@
        "required": true,
        "pattern": "^beacons/[^/]*$",
        "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the beacon to update. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -698,6 +725,11 @@
        "required": true,
        "pattern": "^beacons/[^/]*$",
        "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the beacon to activate. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -722,6 +754,11 @@
        "required": true,
        "pattern": "^beacons/[^/]*$",
        "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the beacon to deactivate. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -750,6 +787,11 @@
          "required": true,
          "pattern": "^beacons/[^/]*$",
          "location": "path"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "The project id of the project the attachment will belong to. If the project id is not specified then the project making the request is used. Optional.",
+         "location": "query"
         }
        },
        "parameterOrder": [
@@ -782,6 +824,11 @@
          "type": "string",
          "description": "Specifies the namespace and type of attachment to include in response in namespace/type format. Accepts `*/*` to specify \"all types in all namespaces\".",
          "location": "query"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "The project id to list beacon attachments under. This field can be used when \"*\" is specified to mean all attachment namespaces. Projects may have multiple attachments with multiple namespaces. If \"*\" is specified and the projectId string is empty, then the project making the request is used. Optional.",
+         "location": "query"
         }
        },
        "parameterOrder": [
@@ -806,6 +853,11 @@
          "required": true,
          "pattern": "^beacons/[^/]*/attachments/[^/]*$",
          "location": "path"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "The project id of the attachment to delete. If not provided, the project that is making the request is used. Optional.",
+         "location": "query"
         }
        },
        "parameterOrder": [
@@ -834,6 +886,11 @@
         "namespacedType": {
          "type": "string",
          "description": "Specifies the namespace and type of attachments to delete in `namespace/type` format. Accepts `*/*` to specify \"all types in all namespaces\". Optional.",
+         "location": "query"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "The project id to delete beacon attachments under. This field can be used when \"*\" is specified to mean all attachment namespaces. Projects may have multiple attachments with multiple namespaces. If \"*\" is specified and the projectId string is empty, then the project making the request is used. Optional.",
          "location": "query"
         }
        },
@@ -884,6 +941,11 @@
           "LOW_BATTERY"
          ],
          "location": "query"
+        },
+        "projectId": {
+         "type": "string",
+         "description": "Requests only diagnostic records for the given project id. If not set, then the project making the request will be used for looking up diagnostic records. Optional.",
+         "location": "query"
         }
        },
        "parameterOrder": [
@@ -907,8 +969,47 @@
      "path": "v1beta1/namespaces",
      "httpMethod": "GET",
      "description": "Lists all attachment namespaces owned by your Google Developers Console project. Attachment data associated with a beacon must include a namespaced type, and the namespace must be owned by your project. Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console project.",
+     "parameters": {
+      "projectId": {
+       "type": "string",
+       "description": "The project id to list namespaces under. Optional.",
+       "location": "query"
+      }
+     },
      "response": {
       "$ref": "ListNamespacesResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userlocation.beacon.registry"
+     ]
+    },
+    "update": {
+     "id": "proximitybeacon.namespaces.update",
+     "path": "v1beta1/{+namespaceName}",
+     "httpMethod": "PUT",
+     "description": "Updates the information about the specified namespace. Only the namespace visibility can be updated.",
+     "parameters": {
+      "namespaceName": {
+       "type": "string",
+       "description": "Resource name of this namespace. Namespaces names have the format: namespaces/namespace.",
+       "required": true,
+       "pattern": "^namespaces/[^/]*$",
+       "location": "path"
+      },
+      "projectId": {
+       "type": "string",
+       "description": "The project id of the namespace to update. If the project id is not specified then the project making the request is used. The project id must match the project that owns the beacon. Optional.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "namespaceName"
+     ],
+     "request": {
+      "$ref": "Namespace"
+     },
+     "response": {
+      "$ref": "Namespace"
      },
      "scopes": [
       "https://www.googleapis.com/auth/userlocation.beacon.registry"

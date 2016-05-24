@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing APIs</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160428 (483)
+ *      <tr><th>API Rev<td>20160520 (505)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -670,7 +670,6 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response type for threat list update requests.</summary>
     public class FetchThreatListUpdatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list updates requested by the clients.</summary>
@@ -705,7 +704,6 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response type for requests to find full hashes.</summary>
     public class FindFullHashesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The full hashes that matched the requested prefixes.</summary>
@@ -741,7 +739,6 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response type for requests to find threat matches.</summary>
     public class FindThreatMatchesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The threat list matches.</summary>
@@ -752,7 +749,6 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A collection of lists available for download by the client.</summary>
     public class ListThreatListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The lists available for download by the client.</summary>
@@ -774,8 +770,8 @@ namespace Google.Apis.Safebrowsing.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
         public virtual string PlatformType { get; set; } 
 
-        /// <summary>The current state of the client for the requested list (the encrypted ClientState that was sent to
-        /// the client from the previous update request).</summary>
+        /// <summary>The current state of the client for the requested list (the encrypted client state that was
+        /// received from the last successful list update).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -895,12 +891,12 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual System.Nullable<long> FirstValue { get; set; } 
 
         /// <summary>The number of entries that are delta encoded in the encoded data. If only a single integer was
-        /// encoded, this will be zero and the single value will be stored in first_value.</summary>
+        /// encoded, this will be zero and the single value will be stored in `first_value`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numEntries")]
         public virtual System.Nullable<int> NumEntries { get; set; } 
 
-        /// <summary>The Golomb-Rice parameter which is a number between 2 and 28. This field is missing (that is, zero)
-        /// if num_entries is zero.</summary>
+        /// <summary>The Golomb-Rice parameter, which is a number between 2 and 28. This field is missing (that is,
+        /// zero) if `num_entries` is zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceParameter")]
         public virtual System.Nullable<int> RiceParameter { get; set; } 
 
@@ -912,7 +908,13 @@ namespace Google.Apis.Safebrowsing.v4.Data
     /// should be set.</summary>
     public class ThreatEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash.</summary>
+        /// <summary>The digest of an executable in SHA256 format. The API supports both binary and hex
+        /// digests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual string Digest { get; set; } 
+
+        /// <summary>A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. This field is in
+        /// binary format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
         public virtual string Hash { get; set; } 
 

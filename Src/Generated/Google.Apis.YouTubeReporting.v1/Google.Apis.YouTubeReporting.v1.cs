@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160419 (474)
+ *      <tr><th>API Rev<td>20160517 (502)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -933,8 +933,7 @@ namespace Google.Apis.YouTubeReporting.v1
 
         /// <summary>Method for media download. Download is supported on the URI
         /// `/v1/media/{+name}?alt=media`.</summary>
-        /// <param name="resourceName">Name of the media that is being downloaded. See
-        /// ByteStream.ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
@@ -954,7 +953,7 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded. See ByteStream.ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1158,6 +1157,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; } 
 
+        /// <summary>The date/time when this job will expire/expired. After a job expired, no new reports are
+        /// generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTime { get; set; } 
+
         /// <summary>The server-generated ID of the job (max. 40 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -1256,6 +1260,10 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
+        /// <summary>The date/time when the job this report belongs to will expire/expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobExpireTime")]
+        public virtual string JobExpireTime { get; set; } 
+
         /// <summary>The ID of the job that created this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
@@ -1271,6 +1279,10 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     /// <summary>A report type.</summary>
     public class ReportType : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The date/time when this report type was/will be deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecateTime")]
+        public virtual string DeprecateTime { get; set; } 
+
         /// <summary>The ID of the report type (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 

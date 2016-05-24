@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160428 (483)
+ *      <tr><th>API Rev<td>20160517 (502)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -96,11 +96,28 @@ namespace Google.Apis.Classroom.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Classroom API.</summary>
         public class Scope
         {
+            /// <summary>View instructions for teacher-assigned work in your Google Classroom classes</summary>
+            public static string ClassroomCourseWorkReadonly = "https://www.googleapis.com/auth/classroom.course-work.readonly";
+
             /// <summary>Manage your Google Classroom classes</summary>
             public static string ClassroomCourses = "https://www.googleapis.com/auth/classroom.courses";
 
             /// <summary>View your Google Classroom classes</summary>
             public static string ClassroomCoursesReadonly = "https://www.googleapis.com/auth/classroom.courses.readonly";
+
+            /// <summary>Manage your course work and view your grades in Google Classroom</summary>
+            public static string ClassroomCourseworkMe = "https://www.googleapis.com/auth/classroom.coursework.me";
+
+            /// <summary>View your course work and grades in Google Classroom</summary>
+            public static string ClassroomCourseworkMeReadonly = "https://www.googleapis.com/auth/classroom.coursework.me.readonly";
+
+            /// <summary>Manage course work and grades for students in the Google Classroom classes you teach and view
+            /// the course work and grades for classes you administer</summary>
+            public static string ClassroomCourseworkStudents = "https://www.googleapis.com/auth/classroom.coursework.students";
+
+            /// <summary>View course work and grades for students in the Google Classroom classes you teach or
+            /// administer</summary>
+            public static string ClassroomCourseworkStudentsReadonly = "https://www.googleapis.com/auth/classroom.coursework.students.readonly";
 
             /// <summary>View the email addresses of people in your classes</summary>
             public static string ClassroomProfileEmails = "https://www.googleapis.com/auth/classroom.profile.emails";
@@ -113,6 +130,13 @@ namespace Google.Apis.Classroom.v1
 
             /// <summary>View your Google Classroom class rosters</summary>
             public static string ClassroomRostersReadonly = "https://www.googleapis.com/auth/classroom.rosters.readonly";
+
+            /// <summary>View your course work and grades in Google Classroom</summary>
+            public static string ClassroomStudentSubmissionsMeReadonly = "https://www.googleapis.com/auth/classroom.student-submissions.me.readonly";
+
+            /// <summary>View course work and grades for students in the Google Classroom classes you teach or
+            /// administer</summary>
+            public static string ClassroomStudentSubmissionsStudentsReadonly = "https://www.googleapis.com/auth/classroom.student-submissions.students.readonly";
 
         }
 
@@ -347,6 +371,7 @@ namespace Google.Apis.Classroom.v1
         {
             this.service = service;
             aliases = new AliasesResource(service);
+            courseWork = new CourseWorkResource(service);
             students = new StudentsResource(service);
             teachers = new TeachersResource(service);
 
@@ -602,6 +627,1264 @@ namespace Google.Apis.Classroom.v1
                             Name = "courseId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly CourseWorkResource courseWork;
+
+        /// <summary>Gets the CourseWork resource.</summary>
+        public virtual CourseWorkResource CourseWork
+        {
+            get { return courseWork; }
+        }
+
+        /// <summary>The "courseWork" collection of methods.</summary>
+        public class CourseWorkResource
+        {
+            private const string Resource = "courseWork";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CourseWorkResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                studentSubmissions = new StudentSubmissionsResource(service);
+
+            }
+
+            private readonly StudentSubmissionsResource studentSubmissions;
+
+            /// <summary>Gets the StudentSubmissions resource.</summary>
+            public virtual StudentSubmissionsResource StudentSubmissions
+            {
+                get { return studentSubmissions; }
+            }
+
+            /// <summary>The "studentSubmissions" collection of methods.</summary>
+            public class StudentSubmissionsResource
+            {
+                private const string Resource = "studentSubmissions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public StudentSubmissionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted
+                /// to access the requested course, course work, or student submission or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual GetRequest Get(string courseId, string courseWorkId, string id)
+                {
+                    return new GetRequest(service, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted
+                /// to access the requested course, course work, or student submission or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
+                public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns a list of student submissions that the requester is permitted to view, factoring in
+                /// the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
+                /// submissions for multiple course work items. Course students may only view their own work. Course
+                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifer of the student work to request. If `user_id` is
+                /// specified, this may be set to the string literal `"-"` to request student work for all course work in the specified
+                /// course.</param>
+                public virtual ListRequest List(string courseId, string courseWorkId)
+                {
+                    return new ListRequest(service, courseId, courseWorkId);
+                }
+
+                /// <summary>Returns a list of student submissions that the requester is permitted to view, factoring in
+                /// the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student
+                /// submissions for multiple course work items. Course students may only view their own work. Course
+                /// teachers and domain administrators may view all student submissions. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is
+                /// malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
+                public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListStudentSubmissionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string courseId, string courseWorkId)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifer of the student work to request. If `user_id` is specified, this may be set to
+                    /// the string literal `"-"` to request student work for all course work in the specified
+                    /// course.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
+                    /// the specified identifier. The identifier can be one of the following: * the numeric identifier
+                    /// for the user * the email address of the user * the string literal `"me"`, indicating the
+                    /// requesting user</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserId { get; set; }
+
+                    /// <summary>Requested submission states. If specified, returned student submissions match one of
+                    /// the specified submission states.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                    /// <summary>Requested submission states. If specified, returned student submissions match one of
+                    /// the specified submission states.</summary>
+                    public enum StatesEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("SUBMISSION_STATE_UNSPECIFIED")]
+                        SUBMISSIONSTATEUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("NEW")]
+                        NEW__,
+                        [Google.Apis.Util.StringValueAttribute("CREATED")]
+                        CREATED,
+                        [Google.Apis.Util.StringValueAttribute("TURNED_IN")]
+                        TURNEDIN,
+                        [Google.Apis.Util.StringValueAttribute("RETURNED")]
+                        RETURNED,
+                        [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
+                        RECLAIMEDBYSTUDENT,
+                    }
+
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("late", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<LateEnum> Late { get; set; }
+
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    public enum LateEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
+                        LATEVALUESUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
+                        LATEONLY,
+                        [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
+                        NOTLATEONLY,
+                    }
+
+                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
+                    /// assign a maximum. The server may return fewer than the specified number of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent
+                    /// page of results should be returned. The list request must be otherwise identical to the one that
+                    /// resulted in this token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "states", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "states",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "late", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "late",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Modifies attachments of student submission. Attachments may only be added to student
+                /// submissions whose type is `ASSIGNMENT`. This request must be made by the Developer Console project
+                /// of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, if the user
+                /// is not permitted to modify attachments on the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual ModifyAttachmentsRequest ModifyAttachments(Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest body, string courseId, string courseWorkId, string id)
+                {
+                    return new ModifyAttachmentsRequest(service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Modifies attachments of student submission. Attachments may only be added to student
+                /// submissions whose type is `ASSIGNMENT`. This request must be made by the Developer Console project
+                /// of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, if the user
+                /// is not permitted to modify attachments on the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.</summary>
+                public class ModifyAttachmentsRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
+                {
+                    /// <summary>Constructs a new ModifyAttachments request.</summary>
+                    public ModifyAttachmentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest body, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.ModifyAttachmentsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "modifyAttachments"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments"; }
+                    }
+
+                    /// <summary>Initializes ModifyAttachments parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates one or more fields of a student submission. See
+                /// google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change
+                /// them. This request must be made by the Developer Console project of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+                /// developer project did not create the corresponding course work, if the user is not permitted to make
+                /// the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if
+                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
+                /// does not exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.StudentSubmission body, string courseId, string courseWorkId, string id)
+                {
+                    return new PatchRequest(service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Updates one or more fields of a student submission. See
+                /// google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change
+                /// them. This request must be made by the Developer Console project of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting
+                /// developer project did not create the corresponding course work, if the user is not permitted to make
+                /// the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if
+                /// the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission
+                /// does not exist.</summary>
+                public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.StudentSubmission body, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+                    /// <summary>Mask that identifies which fields on the student submission to update. This field is
+                    /// required to do an update. The update fails if invalid fields are specified. The following fields
+                    /// may be specified by teachers: * `draft_grade` * `assigned_grade`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UpdateMask { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.StudentSubmission Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "patch"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "PATCH"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}"; }
+                    }
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Reclaims a student submission on behalf of the student that owns it. Reclaiming a student
+                /// submission transfers ownership of attached Drive files to the student and update the submission
+                /// state. Only the student that ownes the requested student submission may call this method, and only
+                /// for a student submission that has been turned in. This request must be made by the Developer Console
+                /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
+                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
+                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+                /// if the requested course, course work, or student submission does not exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual ReclaimRequest Reclaim(Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                {
+                    return new ReclaimRequest(service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Reclaims a student submission on behalf of the student that owns it. Reclaiming a student
+                /// submission transfers ownership of attached Drive files to the student and update the submission
+                /// state. Only the student that ownes the requested student submission may call this method, and only
+                /// for a student submission that has been turned in. This request must be made by the Developer Console
+                /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
+                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
+                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
+                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
+                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+                /// if the requested course, course work, or student submission does not exist.</summary>
+                public class ReclaimRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Reclaim request.</summary>
+                    public ReclaimRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.ReclaimStudentSubmissionRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "reclaim"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim"; }
+                    }
+
+                    /// <summary>Initializes Reclaim parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns a student submission. Returning a student submission transfers ownership of
+                /// attached Drive files to the student and may also update the submission state. Unlike the Classroom
+                /// application, returning a student submission does not set assignedGrade to the draftGrade value. Only
+                /// a teacher of the course that contains the requested student submission may call this method. This
+                /// request must be made by the Developer Console project of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, return the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual ClassroomReturnRequest ClassroomReturn(Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                {
+                    return new ClassroomReturnRequest(service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Returns a student submission. Returning a student submission transfers ownership of
+                /// attached Drive files to the student and may also update the submission state. Unlike the Classroom
+                /// application, returning a student submission does not set assignedGrade to the draftGrade value. Only
+                /// a teacher of the course that contains the requested student submission may call this method. This
+                /// request must be made by the Developer Console project of the [OAuth client
+                /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, return the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.</summary>
+                public class ClassroomReturnRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new ClassroomReturn request.</summary>
+                    public ClassroomReturnRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.ReturnStudentSubmissionRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "return"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return"; }
+                    }
+
+                    /// <summary>Initializes ClassroomReturn parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Turns in a student submission. Turning in a student submission transfers ownership of
+                /// attached Drive files to the teacher and may also update the submission state. This may only be
+                /// called by the student that owns the specified student submission. This request must be made by the
+                /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
+                /// used to create the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+                /// an alias.</param>
+                /// <param name="courseWorkId">Identifier of the course work.</param>
+                /// <param
+                /// name="id">Identifier of the student submission.</param>
+                public virtual TurnInRequest TurnIn(Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                {
+                    return new TurnInRequest(service, body, courseId, courseWorkId, id);
+                }
+
+                /// <summary>Turns in a student submission. Turning in a student submission transfers ownership of
+                /// attached Drive files to the teacher and may also update the submission state. This may only be
+                /// called by the student that owns the specified student submission. This request must be made by the
+                /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
+                /// used to create the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
+                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
+                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
+                /// not exist.</summary>
+                public class TurnInRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new TurnIn request.</summary>
+                    public TurnInRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest body, string courseId, string courseWorkId, string id)
+                        : base(service)
+                    {
+                        CourseId = courseId;
+                        CourseWorkId = courseWorkId;
+                        Id = id;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned
+                    /// identifier or an alias.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseId { get; private set; }
+
+                    /// <summary>Identifier of the course work.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CourseWorkId { get; private set; }
+
+                    /// <summary>Identifier of the student submission.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Id { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Classroom.v1.Data.TurnInStudentSubmissionRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "turnIn"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn"; }
+                    }
+
+                    /// <summary>Initializes TurnIn parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "courseWorkId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseWorkId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Creates course work. The resulting course work (and corresponding student submissions) are
+            /// associated with the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to
+            /// modify course work and student submissions must be made with an OAuth client ID from the associated
+            /// Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create course work in the requested
+            /// course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+            /// requested course does not exist.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.CourseWork body, string courseId)
+            {
+                return new CreateRequest(service, body, courseId);
+            }
+
+            /// <summary>Creates course work. The resulting course work (and corresponding student submissions) are
+            /// associated with the Developer Console project of the [OAuth client
+            /// ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to
+            /// modify course work and student submissions must be made with an OAuth client ID from the associated
+            /// Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the
+            /// requesting user is not permitted to access the requested course, create course work in the requested
+            /// course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the
+            /// requested course does not exist.</summary>
+            public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.CourseWork body, string courseId)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.CourseWork Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWork"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting user is not permitted to access the requested course or course work, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// course work does not exist.</summary>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            /// <param name="id">Identifier of the course work.</param>
+            public virtual GetRequest Get(string courseId, string id)
+            {
+                return new GetRequest(service, courseId, id);
+            }
+
+            /// <summary>Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if
+            /// the requesting user is not permitted to access the requested course or course work, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or
+            /// course work does not exist.</summary>
+            public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string courseId, string id)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    Id = id;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Identifier of the course work.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWork/{id}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a list of course work that the requester is permitted to view. Course students may only
+            /// view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+            /// to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+            /// `NOT_FOUND` if the requested course does not exist.</summary>
+            /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
+            /// an alias.</param>
+            public virtual ListRequest List(string courseId)
+            {
+                return new ListRequest(service, courseId);
+            }
+
+            /// <summary>Returns a list of course work that the requester is permitted to view. Course students may only
+            /// view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
+            /// to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. *
+            /// `NOT_FOUND` if the requested course does not exist.</summary>
+            public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListCourseWorkResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string courseId)
+                    : base(service)
+                {
+                    CourseId = courseId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Identifier of the course. This identifier can be either the Classroom-assigned identifier
+                /// or an alias.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CourseId { get; private set; }
+
+                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
+                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CourseWorkStatesEnum> CourseWorkStates { get; set; }
+
+                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
+                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                public enum CourseWorkStatesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("COURSE_WORK_STATE_UNSPECIFIED")]
+                    COURSEWORKSTATEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
+                    PUBLISHED,
+                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
+                    DRAFT,
+                    [Google.Apis.Util.StringValueAttribute("DELETED")]
+                    DELETED,
+                }
+
+                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
+                /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
+                /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
+                /// asc,updateTime desc`, `updateTime,dueDate desc`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/courses/{courseId}/courseWork"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "courseId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "courseWorkStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkStates",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2342,6 +3625,56 @@ namespace Google.Apis.Classroom.v1
 namespace Google.Apis.Classroom.v1.Data
 {    
 
+    /// <summary>Additional details for assignments.</summary>
+    public class Assignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Drive folder where attachments from student submissions are placed. This is only populated for
+        /// course teachers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentWorkFolder")]
+        public virtual DriveFolder StudentWorkFolder { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Student work for an assignment.</summary>
+    public class AssignmentSubmission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attachments added by the student. Drive files that correspond to materials with a share mode of
+        /// SUBMISSION_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some
+        /// attachment metadata is only populated if the requesting user has permission to access it. Identifier and
+        /// alternate_link fields are available, but others (e.g. title) may not be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Attachment added to student assignment work. When creating attachments, only the Link field may be
+    /// specified.</summary>
+    public class Attachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Drive file attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual DriveFile DriveFile { get; set; } 
+
+        /// <summary>Google Forms attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("form")]
+        public virtual Form Form { get; set; } 
+
+        /// <summary>Link attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
+
+        /// <summary>Youtube video attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youTubeVideo")]
+        public virtual YouTubeVideo YouTubeVideo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Course in Classroom.</summary>
     public class Course : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2349,11 +3682,20 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
+        /// <summary>The email address of a Google group containing all members of the course. This group does not
+        /// accept email and can only be used for permissions. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseGroupEmail")]
+        public virtual string CourseGroupEmail { get; set; } 
+
+        /// <summary>Sets of materials that appear on the "about" page of this course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseMaterialSets")]
+        public virtual System.Collections.Generic.IList<CourseMaterialSet> CourseMaterialSets { get; set; } 
+
         /// <summary>State of the course. If unspecified, the default state is `PROVISIONED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courseState")]
         public virtual string CourseState { get; set; } 
 
-        /// <summary>Creation time of the course. Specifying this field in a course update mask will result in an error.
+        /// <summary>Creation time of the course. Specifying this field in a course update mask results in an error.
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; } 
@@ -2369,15 +3711,15 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("descriptionHeading")]
         public virtual string DescriptionHeading { get; set; } 
 
-        /// <summary>Enrollment code to use when joining this course. Specifying this field in a course update mask will
-        /// result in an error. Read-only.</summary>
+        /// <summary>Enrollment code to use when joining this course. Specifying this field in a course update mask
+        /// results in an error. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentCode")]
         public virtual string EnrollmentCode { get; set; } 
 
         /// <summary>Identifier for this course assigned by Classroom. When creating a course, you may optionally set
         /// this identifier to an alias string in the request to create a corresponding alias. The `id` is still
         /// assigned by Classroom and cannot be updated after the course is created. Specifying this field in a course
-        /// update mask will result in an error.</summary>
+        /// update mask results in an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -2389,7 +3731,7 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>The identifier of the owner of a course. When specified as a parameter of a create course request,
         /// this field is required. The identifier can be one of the following: * the numeric identifier for the user *
         /// the email address of the user * the string literal `"me"`, indicating the requesting user This must be set
-        /// in a create request. Specifying this field in a course update mask will result in an `INVALID_ARGUMENT`
+        /// in a create request. Specifying this field in a course update mask results in an `INVALID_ARGUMENT`
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerId")]
         public virtual string OwnerId { get; set; } 
@@ -2404,8 +3746,18 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("section")]
         public virtual string Section { get; set; } 
 
-        /// <summary>Time of the most recent update to this course. Specifying this field in a course update mask will
-        /// result in an error. Read-only.</summary>
+        /// <summary>Information about a Drive Folder that is shared with all teachers of the course. This field will
+        /// only be set for teachers of the course and domain administrators. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teacherFolder")]
+        public virtual DriveFolder TeacherFolder { get; set; } 
+
+        /// <summary>The email address of a Google group containing all teachers of the course. This group does not
+        /// accept email and can only be used for permissions. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teacherGroupEmail")]
+        public virtual string TeacherGroupEmail { get; set; } 
+
+        /// <summary>Time of the most recent update to this course. Specifying this field in a course update mask
+        /// results in an error. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTime { get; set; } 
 
@@ -2433,12 +3785,226 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A material attached to a course as part of a material set.</summary>
+    public class CourseMaterial : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Drive file attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual DriveFile DriveFile { get; set; } 
+
+        /// <summary>Google Forms attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("form")]
+        public virtual Form Form { get; set; } 
+
+        /// <summary>Link atatchment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
+
+        /// <summary>Youtube video attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youTubeVideo")]
+        public virtual YouTubeVideo YouTubeVideo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of materials that appears on the "About" page of the course. These materials might include a
+    /// syllabus, schedule, or other background information relating to the course as a whole.</summary>
+    public class CourseMaterialSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Materials attached to this set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<CourseMaterial> Materials { get; set; } 
+
+        /// <summary>Title for this set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Course work created by a teacher for students of the course.</summary>
+    public class CourseWork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Absolute link to this course work in the Classroom web UI. This is only populated if `state` is
+        /// `PUBLISHED`. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>Assignment details. This is populated only when `work_type` is `ASSIGNMENT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignment")]
+        public virtual Assignment Assignment { get; set; } 
+
+        /// <summary>Whether this course work item is associated with the Developer Console project making the request.
+        /// See google.classroom.Work.CreateCourseWork for more details. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
+        public virtual System.Nullable<bool> AssociatedWithDeveloper { get; set; } 
+
+        /// <summary>Identifier of the course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; } 
+
+        /// <summary>Timestamp when this course work was created. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; } 
+
+        /// <summary>Optional description of this course work. If set, the description must be a valid UTF-8 string
+        /// containing no more than 30,000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Optional date, in UTC, that submissions for this this course work are due. This must be specified
+        /// if `due_time` is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueDate")]
+        public virtual Date DueDate { get; set; } 
+
+        /// <summary>Optional time of day, in UTC, that submissions for this this course work are due. This must be
+        /// specified if `due_date` is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
+        public virtual TimeOfDay DueTime { get; set; } 
+
+        /// <summary>Classroom-assigned identifier of this course work, unique per course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Additional materials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<Material> Materials { get; set; } 
+
+        /// <summary>Maximum grade for this course work. If zero or unspecified, this assignment is considered ungraded.
+        /// This must be an integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPoints")]
+        public virtual System.Nullable<double> MaxPoints { get; set; } 
+
+        /// <summary>Multiple choice question details. This is populated only when `work_type` is
+        /// `MULTIPLE_CHOICE_QUESTION`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceQuestion")]
+        public virtual MultipleChoiceQuestion MultipleChoiceQuestion { get; set; } 
+
+        /// <summary>Status of this course work.. If unspecified, the default state is `DRAFT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Setting to determine when students are allowed to modify submissions. If unspecified, the default
+        /// value is `MODIFIABLE_UNTIL_TURNED_IN`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionModificationMode")]
+        public virtual string SubmissionModificationMode { get; set; } 
+
+        /// <summary>Title of this course work. The title must be a valid UTF-8 string containing between 1 and 3000
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>Timestamp of the most recent change to this course work. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTime { get; set; } 
+
+        /// <summary>Type of this course work. The type is set when the course work is created and cannot be changed.
+        /// When creating course work, this must be `ASSIGNMENT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workType")]
+        public virtual string WorkType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
+    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
+    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
+    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+        /// year/month where the day is not significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; } 
+
+        /// <summary>Month of year. Must be from 1 to 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; } 
+
+        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of a Google Drive file.</summary>
+    public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL that can be used to access the Drive item. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>Drive API resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>URL of a thumbnail image of the Drive item. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; } 
+
+        /// <summary>Title of the Drive item. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of a Google Drive folder.</summary>
+    public class DriveFolder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL that can be used to access the Drive folder. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>Drive API resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Title of the Drive folder. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
     /// JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Google Forms item.</summary>
+    public class Form : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of the form.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formUrl")]
+        public virtual string FormUrl { get; set; } 
+
+        /// <summary>URL of the form responses document. Only set if respsonses have been recorded and only when the
+        /// requesting user is an editor of the form. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseUrl")]
+        public virtual string ResponseUrl { get; set; } 
+
+        /// <summary>URL of a thumbnail image of the Form. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; } 
+
+        /// <summary>Title of the Form. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2479,12 +4045,48 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>URL item.</summary>
+    public class Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of a thumbnail image of the target URL. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; } 
+
+        /// <summary>Title of the target of the URL. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>URL to link to. This must be a valid UTF-8 string containing between 1 and 2024
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response when listing course aliases.</summary>
     public class ListCourseAliasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The course aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<CourseAlias> Aliases { get; set; } 
+
+        /// <summary>Token identifying the next page of results to return. If empty, no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response when listing course work.</summary>
+    public class ListCourseWorkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Course work items that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWork")]
+        public virtual System.Collections.Generic.IList<CourseWork> CourseWork { get; set; } 
 
         /// <summary>Token identifying the next page of results to return. If empty, no further results are
         /// available.</summary>
@@ -2527,6 +4129,22 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response when listing student submissions.</summary>
+    public class ListStudentSubmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying the next page of results to return. If empty, no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Student work that matches the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentSubmissions")]
+        public virtual System.Collections.Generic.IList<StudentSubmission> StudentSubmissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response when listing students.</summary>
     public class ListStudentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2559,6 +4177,63 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Material attached to course work. When creating attachments, only the Link field may be
+    /// specified.</summary>
+    public class Material : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Drive file material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual SharedDriveFile DriveFile { get; set; } 
+
+        /// <summary>Google Forms material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("form")]
+        public virtual Form Form { get; set; } 
+
+        /// <summary>Link material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
+
+        /// <summary>YouTube video material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideo")]
+        public virtual YouTubeVideo YoutubeVideo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to modify the attachments of a student submission.</summary>
+    public class ModifyAttachmentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attachments to add. This may only contain link attachments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addAttachments")]
+        public virtual System.Collections.Generic.IList<Attachment> AddAttachments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Additional details for multiple-choice questions.</summary>
+    public class MultipleChoiceQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Possible choices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choices")]
+        public virtual System.Collections.Generic.IList<string> Choices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Student work for a multiple-choice question.</summary>
+    public class MultipleChoiceSubmission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Student's select choice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details of the user's name.</summary>
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2578,6 +4253,46 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to reclaim a student submission.</summary>
+    public class ReclaimStudentSubmissionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to return a student submission.</summary>
+    public class ReturnStudentSubmissionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Drive file that is used as material for course work.</summary>
+    public class SharedDriveFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Drive file details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFile")]
+        public virtual DriveFile DriveFile { get; set; } 
+
+        /// <summary>Mechanism by which students access the Drive item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareMode")]
+        public virtual string ShareMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Student work for a short answer question.</summary>
+    public class ShortAnswerSubmission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Student response to a short-answer question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Student in a course.</summary>
     public class Student : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2589,9 +4304,93 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual UserProfile Profile { get; set; } 
 
+        /// <summary>Information about a Drive Folder for this student's work in this course. Only visible to the
+        /// student and domain administrators. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentWorkFolder")]
+        public virtual DriveFolder StudentWorkFolder { get; set; } 
+
         /// <summary>Identifier of the user. When specified as a parameter of a request, this identifier can be one of
         /// the following: * the numeric identifier for the user * the email address of the user * the string literal
         /// `"me"`, indicating the requesting user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Student submission for course work. StudentSubmission items are generated when a CourseWork item is
+    /// created. StudentSubmissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time
+    /// or update time.</summary>
+    public class StudentSubmission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Absolute link to the submission in the Classroom web UI. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>Optional grade. If unset, no grade was set. This must be an integer value. This may be modified
+        /// only by course teachers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedGrade")]
+        public virtual System.Nullable<double> AssignedGrade { get; set; } 
+
+        /// <summary>Submission content when course_work_type is ASSIGNMENT .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignmentSubmission")]
+        public virtual AssignmentSubmission AssignmentSubmission { get; set; } 
+
+        /// <summary>Whether this student submission is associated with the Developer Console project making the
+        /// request. See google.classroom.Work.CreateCourseWork for more details. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedWithDeveloper")]
+        public virtual System.Nullable<bool> AssociatedWithDeveloper { get; set; } 
+
+        /// <summary>Identifier of the course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
+        public virtual string CourseId { get; set; } 
+
+        /// <summary>Identifier for the course work this corresponds to. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWorkId")]
+        public virtual string CourseWorkId { get; set; } 
+
+        /// <summary>Type of course work this submission is for. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("courseWorkType")]
+        public virtual string CourseWorkType { get; set; } 
+
+        /// <summary>Creation time of this submission.. This may be unset if the student has not accessed this item.
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; } 
+
+        /// <summary>Optional pending grade. If unset, no grade was set. This must be an integer value. This is only
+        /// visible to and modifiable by course teachers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftGrade")]
+        public virtual System.Nullable<double> DraftGrade { get; set; } 
+
+        /// <summary>Classroom-assigned Identifier for the student submission. This is unique among submissions for the
+        /// relevant course work. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Whether this submission is late. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("late")]
+        public virtual System.Nullable<bool> Late { get; set; } 
+
+        /// <summary>Submission content when course_work_type is MUTIPLE_CHOICE_QUESTION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceSubmission")]
+        public virtual MultipleChoiceSubmission MultipleChoiceSubmission { get; set; } 
+
+        /// <summary>Submission content when course_work_type is SHORT_ANSWER_QUESTION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortAnswerSubmission")]
+        public virtual ShortAnswerSubmission ShortAnswerSubmission { get; set; } 
+
+        /// <summary>State of this submission. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Last update time of this submission. This may be unset if the student has not accessed this item.
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTime { get; set; } 
+
+        /// <summary>Identifier for the student that owns this submission. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
 
@@ -2620,6 +4419,40 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
+    /// An API may chose to allow leap seconds. Related types are google.type.Date and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
+        /// "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; } 
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; } 
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
+        /// allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to turn in a student submission.</summary>
+    public class TurnInStudentSubmissionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Global information for a user.</summary>
     public class UserProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2642,6 +4475,29 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>URL of user's profile photo. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
         public virtual string PhotoUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>YouTube video item.</summary>
+    public class YouTubeVideo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL that can be used to view the YouTube video. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
+        public virtual string AlternateLink { get; set; } 
+
+        /// <summary>YouTube API resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>URL of a thumbnail image of the YouTube video. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; } 
+
+        /// <summary>Title of the YouTube video. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160420 (475)
+ *      <tr><th>API Rev<td>20160510 (495)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1785,6 +1785,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to verify a custom token</summary>
     public class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
+        /// migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
+        public virtual System.Nullable<long> DelegatedProjectNumber { get; set; } 
+
         /// <summary>Instance id token of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
