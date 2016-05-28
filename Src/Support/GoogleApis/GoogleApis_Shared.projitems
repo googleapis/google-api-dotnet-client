@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IMediaDownloader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\MediaDownloader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\MediaApiErrorHandling.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\IUploadSessionData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\IUploadProgress.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Upload\ResumableUpload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
