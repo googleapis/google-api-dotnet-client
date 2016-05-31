@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Reseller.v1</id>
-        <version>1.13.0.453</version>
+        <version>1.13.1.453</version>
         <title>Google.Apis.Reseller.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -37,8 +37,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.13.0" />
-                <dependency id="Google.Apis.Auth" version="1.13.0" />
+                <dependency id="Google.Apis" version="1.13.1" />
+                <dependency id="Google.Apis.Auth" version="1.13.1" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
