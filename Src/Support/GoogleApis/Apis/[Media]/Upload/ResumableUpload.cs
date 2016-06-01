@@ -343,11 +343,13 @@ namespace Google.Apis.Upload
 
         #region UploadSessionData
         /// <summary>
-        /// <para>Event called when an UploadUri is created.</para>
-        /// <para>Not needed if the application program will not support resuming after a program restart.</para>
-        /// <para>Within the event, persist the UploadUri to storage.</para>
-        /// <para>It is strongly recommended that the full path filename (or other media identifier) is also stored so that it can be compared to the current open filename (media) upon restart.</para>
+        /// Event called when an UploadUri is created. 
+        /// Not needed if the application program will not support resuming after a program restart.
         /// </summary>
+        /// <remarks>
+        /// Within the event, persist the UploadUri to storage.
+        /// It is strongly recommended that the full path filename (or other media identifier) is also stored so that it can be compared to the current open filename (media) upon restart.
+        /// </remarks>
         public event Action<IUploadSessionData> UploadSessionData;
         /// <summary>
         /// Data to be passed to the application program to allow resuming an upload after a program restart.
@@ -355,7 +357,7 @@ namespace Google.Apis.Upload
         private class ResumeableUploadSessionData : IUploadSessionData
         {
             /// <summary>
-            /// Create a ResumeableUploadSessionData instance.
+            /// Create a ResumeableUploadSessionData instance to pass the UploadUri to the client.
             /// </summary>
             /// <param name="uploadUri">The resumable session URI.</param>
             public ResumeableUploadSessionData(Uri uploadUri)
@@ -427,68 +429,78 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>
-        /// <para>Resumes the upload from the last point it was interrupted.</para>
-        /// <para>Use when resuming and the program was not restarted.</para>
+        /// Resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was not restarted.
         /// </summary>
         public IUploadProgress Resume()
         {
             return ResumeAsync(CancellationToken.None, null).Result;
         }
         /// <summary>
-        /// <para>Resumes the upload from the last point it was interrupted.</para>
-        /// <para>Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.</para>
-        /// <para>In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-        /// <para>to persistent storage for use with Resume() or ResumeAsync() upon a program restart.</para>
-        /// <para>It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the</para>
-        /// <para>program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.</para>
-        /// <para>You do not need to seek to restart point in the media file.</para>
+        /// Resumes the upload from the last point it was interrupted.
+        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
         /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
         public IUploadProgress Resume(Uri uploadUri)
         {
             return ResumeAsync(CancellationToken.None, uploadUri).Result;
         }
         /// <summary>
-        /// <para>Asynchronously resumes the upload from the last point it was interrupted.</para> 
-        /// <para>You do not need to seek to restart point in the media file.</para>
+        /// Asynchronously resumes the upload from the last point it was interrupted.
         /// </summary>
+        /// <remarks>
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         public Task<IUploadProgress> ResumeAsync()
         {
             return ResumeAsync(CancellationToken.None, null);
         }
         /// <summary>
-        /// <para>Asynchronously resumes the upload from the last point it was interrupted.</para>
-        /// <para>Use when resuming and the program was not restarted.</para>
-        /// <para>You do not need to seek to restart point in the media file.</para>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was not restarted.
         /// </summary>
+        /// <remarks>
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         /// <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
         public Task<IUploadProgress> ResumeAsync(CancellationToken cancellationToken)
         {
             return ResumeAsync(cancellationToken, null);
         }
         /// <summary>
-        /// <para>Asynchronously resumes the upload from the last point it was interrupted.</para>
-        /// <para>Use when resuming and the program was restarted.</para>
-        /// <para>In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-        /// <para>to persistent storage for use with Resume() or ResumeAsync() upon a program restart.</para>
-        /// <para>It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the</para>
-        /// <para>program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.</para>
-        /// <para>You do not need to seek to restart point in the media file.</para>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was restarted.
         /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
         public Task<IUploadProgress> ResumeAsync(Uri uploadUri)
         {
             return ResumeAsync(CancellationToken.None, uploadUri);
         }
         /// <summary>
-        /// <para>Asynchronously resumes the upload from the last point it was interrupted.</para>
-        /// <para>Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.</para>
-        /// <para>In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
-        /// <para>to persistent storage for use with Resume() or ResumeAsync() upon a program restart.</para>
-        /// <para>It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the</para>
-        /// <para>program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.</para>
-        /// <para>You do not need to seek to restart point in the media file.</para>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
         /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         /// <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
         /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
         public async Task<IUploadProgress> ResumeAsync(CancellationToken cancellationToken, Uri uploadUri)

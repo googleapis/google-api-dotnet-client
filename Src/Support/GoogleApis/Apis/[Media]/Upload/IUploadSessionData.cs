@@ -17,12 +17,19 @@ limitations under the License.
 namespace Google.Apis.Upload
 {
     /// <summary>
-    /// Interface IUploadSessionData
+    /// Interface IUploadSessionData: Provides UploadUri for client to persist. Allows resuming upload after a program restart.
     /// </summary>
+    /// <remarks>
+    /// Defines the data passed from the ResumeableUpload Class upon initiation of an upload.
+    /// When the client application adds an event handler for the UploadSessionData Event, the data
+    /// defined in this interface (currently the UploadURI) is passed as a parameter to the event handler procedure.
+    /// An event handler for the UploadSessionData Event is only required if the application will support resuming the
+    /// upload after a program restart.
+    /// </remarks>
     public interface IUploadSessionData
     {
         /// <summary>
-        /// The resumable session URI.
+        /// The resumable session URI (UploadUri)
         /// </summary>
         System.Uri UploadUri { get; }
     }
