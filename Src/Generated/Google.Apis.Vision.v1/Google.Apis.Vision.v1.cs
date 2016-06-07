@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160606 (522)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -758,7 +758,8 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image content, represented as a stream of bytes.</summary>
+        /// <summary>Image content, represented as a stream of bytes. Note: as with all `bytes` fields, protobuffers use
+        /// a pure binary representation, whereas JSON representations use base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
@@ -774,13 +775,12 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Image context.</summary>
     public class ImageContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of languages to use for TEXT_DETECTION. In most cases, an empty value will yield the best
-        /// results as it will allow text detection to automatically detect the text language. For languages based on
-        /// the latin alphabet a hint is not needed. In rare cases, when the language of the text in the image is known
-        /// in advance, setting this hint will help get better results (although it will hurt a great deal if the hint
-        /// is wrong). Text detection will return an error if one or more of the languages specified here are not
-        /// supported. The exact list of supported languages are specified here:
-        /// https://cloud.google.com/translate/v2/using_rest#language-params</summary>
+        /// <summary>List of languages to use for TEXT_DETECTION. In most cases, an empty value yields the best results
+        /// since it enables automatic language detection. For languages based on the Latin alphabet, setting
+        /// `language_hints` is not needed. In rare cases, when the language of the text in the image is known, setting
+        /// a hint will help get better results (although it will be a significant hindrance if the hint is wrong). Text
+        /// detection returns an error if one or more of the specified languages is not one of the [supported
+        /// languages](/translate/v2/translate-reference#supported_languages).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 

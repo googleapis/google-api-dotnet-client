@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160531 (516)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -6888,7 +6888,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The user's primary email, e.g. "jsmith@example.com".</summary>
+        /// <summary>The user's primary email address, e.g. "jsmith@example.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; } 
 

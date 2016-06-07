@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Compute.alpha</id>
-        <version>1.13.1.504</version>
+        <version>1.13.1.510</version>
         <title>Google.Apis.Compute.alpha Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Consumer Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160602 (518)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Consumersurveys.v2
+namespace Google.Apis.ConsumerSurveys.v2
 {
-    /// <summary>The Consumersurveys Service.</summary>
-    public class ConsumersurveysService : Google.Apis.Services.BaseClientService
+    /// <summary>The ConsumerSurveys Service.</summary>
+    public class ConsumerSurveysService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v2";
@@ -56,14 +56,15 @@ namespace Google.Apis.Consumersurveys.v2
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ConsumersurveysService() :
+        public ConsumerSurveysService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ConsumersurveysService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public ConsumerSurveysService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            mobileapppanels = new MobileapppanelsResource(this);
             results = new ResultsResource(this);
             surveys = new SurveysResource(this);
         }
@@ -108,6 +109,14 @@ namespace Google.Apis.Consumersurveys.v2
 
 
 
+        private readonly MobileapppanelsResource mobileapppanels;
+
+        /// <summary>Gets the Mobileapppanels resource.</summary>
+        public virtual MobileapppanelsResource Mobileapppanels
+        {
+            get { return mobileapppanels; }
+        }
+
         private readonly ResultsResource results;
 
         /// <summary>Gets the Results resource.</summary>
@@ -125,11 +134,11 @@ namespace Google.Apis.Consumersurveys.v2
         }
     }
 
-    ///<summary>A base abstract class for Consumersurveys requests.</summary>
-    public abstract class ConsumersurveysBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for ConsumerSurveys requests.</summary>
+    public abstract class ConsumerSurveysBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ConsumersurveysBaseServiceRequest instance.</summary>
-        protected ConsumersurveysBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new ConsumerSurveysBaseServiceRequest instance.</summary>
+        protected ConsumerSurveysBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -175,7 +184,7 @@ namespace Google.Apis.Consumersurveys.v2
         [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UserIp { get; set; }
 
-        /// <summary>Initializes Consumersurveys parameter list.</summary>
+        /// <summary>Initializes ConsumerSurveys parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -246,6 +255,237 @@ namespace Google.Apis.Consumersurveys.v2
         }
     }
 
+    /// <summary>The "mobileapppanels" collection of methods.</summary>
+    public class MobileapppanelsResource
+    {
+        private const string Resource = "mobileapppanels";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MobileapppanelsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves a MobileAppPanel that is available to the authenticated user.</summary>
+        /// <param name="panelId">External URL ID for the panel.</param>
+        public virtual GetRequest Get(string panelId)
+        {
+            return new GetRequest(service, panelId);
+        }
+
+        /// <summary>Retrieves a MobileAppPanel that is available to the authenticated user.</summary>
+        public class GetRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanel>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string panelId)
+                : base(service)
+            {
+                PanelId = panelId;
+                InitParameters();
+            }
+
+
+            /// <summary>External URL ID for the panel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("panelId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PanelId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "mobileAppPanels/{panelId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "panelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "panelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the MobileAppPanels available to the authenticated user.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists the MobileAppPanels available to the authenticated user.</summary>
+        public class ListRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanelsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> StartIndex { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Token { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "mobileAppPanels"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "startIndex", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startIndex",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a MobileAppPanel. Currently the only property that can be updated is the owners
+        /// property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="panelId">External URL ID for the panel.</param>
+        public virtual UpdateRequest Update(Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanel body, string panelId)
+        {
+            return new UpdateRequest(service, body, panelId);
+        }
+
+        /// <summary>Updates a MobileAppPanel. Currently the only property that can be updated is the owners
+        /// property.</summary>
+        public class UpdateRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanel>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanel body, string panelId)
+                : base(service)
+            {
+                PanelId = panelId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>External URL ID for the panel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("panelId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PanelId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ConsumerSurveys.v2.Data.MobileAppPanel Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "mobileAppPanels/{panelId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "panelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "panelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "results" collection of methods.</summary>
     public class ResultsResource
     {
@@ -272,7 +512,7 @@ namespace Google.Apis.Consumersurveys.v2
 
         /// <summary>Retrieves any survey results that have been produced so far. Results are formatted as an Excel
         /// file.</summary>
-        public class GetRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.SurveyResults>
+        public class GetRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveyResults>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string surveyUrlId)
@@ -372,7 +612,7 @@ namespace Google.Apis.Consumersurveys.v2
         }
 
         /// <summary>Retrieves information about the specified survey.</summary>
-        public class GetRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.Survey>
+        public class GetRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.Survey>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string surveyUrlId)
@@ -426,16 +666,16 @@ namespace Google.Apis.Consumersurveys.v2
 
         /// <summary>Creates a survey.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Consumersurveys.v2.Data.Survey body)
+        public virtual InsertRequest Insert(Google.Apis.ConsumerSurveys.v2.Data.Survey body)
         {
             return new InsertRequest(service, body);
         }
 
         /// <summary>Creates a survey.</summary>
-        public class InsertRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.Survey>
+        public class InsertRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.Survey>
         {
             /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Consumersurveys.v2.Data.Survey body)
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ConsumerSurveys.v2.Data.Survey body)
                 : base(service)
             {
                 Body = body;
@@ -445,7 +685,7 @@ namespace Google.Apis.Consumersurveys.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Consumersurveys.v2.Data.Survey Body { get; set; }
+            Google.Apis.ConsumerSurveys.v2.Data.Survey Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -484,7 +724,7 @@ namespace Google.Apis.Consumersurveys.v2
         }
 
         /// <summary>Lists the surveys owned by the authenticated user.</summary>
-        public class ListRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.SurveysListResponse>
+        public class ListRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -564,16 +804,16 @@ namespace Google.Apis.Consumersurveys.v2
         /// <summary>Begins running a survey.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceId"></param>
-        public virtual StartRequest Start(Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest body, string resourceId)
+        public virtual StartRequest Start(Google.Apis.ConsumerSurveys.v2.Data.SurveysStartRequest body, string resourceId)
         {
             return new StartRequest(service, body, resourceId);
         }
 
         /// <summary>Begins running a survey.</summary>
-        public class StartRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.SurveysStartResponse>
+        public class StartRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveysStartResponse>
         {
             /// <summary>Constructs a new Start request.</summary>
-            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest body, string resourceId)
+            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.ConsumerSurveys.v2.Data.SurveysStartRequest body, string resourceId)
                 : base(service)
             {
                 ResourceId = resourceId;
@@ -588,7 +828,7 @@ namespace Google.Apis.Consumersurveys.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Consumersurveys.v2.Data.SurveysStartRequest Body { get; set; }
+            Google.Apis.ConsumerSurveys.v2.Data.SurveysStartRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -637,7 +877,7 @@ namespace Google.Apis.Consumersurveys.v2
         }
 
         /// <summary>Stops a running survey.</summary>
-        public class StopRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.SurveysStopResponse>
+        public class StopRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveysStopResponse>
         {
             /// <summary>Constructs a new Stop request.</summary>
             public StopRequest(Google.Apis.Services.IClientService service, string resourceId)
@@ -692,16 +932,16 @@ namespace Google.Apis.Consumersurveys.v2
         /// <summary>Updates a survey. Currently the only property that can be updated is the owners property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="surveyUrlId">External URL ID for the survey.</param>
-        public virtual UpdateRequest Update(Google.Apis.Consumersurveys.v2.Data.Survey body, string surveyUrlId)
+        public virtual UpdateRequest Update(Google.Apis.ConsumerSurveys.v2.Data.Survey body, string surveyUrlId)
         {
             return new UpdateRequest(service, body, surveyUrlId);
         }
 
         /// <summary>Updates a survey. Currently the only property that can be updated is the owners property.</summary>
-        public class UpdateRequest : ConsumersurveysBaseServiceRequest<Google.Apis.Consumersurveys.v2.Data.Survey>
+        public class UpdateRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.Survey>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Consumersurveys.v2.Data.Survey body, string surveyUrlId)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ConsumerSurveys.v2.Data.Survey body, string surveyUrlId)
                 : base(service)
             {
                 SurveyUrlId = surveyUrlId;
@@ -716,7 +956,7 @@ namespace Google.Apis.Consumersurveys.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Consumersurveys.v2.Data.Survey Body { get; set; }
+            Google.Apis.ConsumerSurveys.v2.Data.Survey Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -759,7 +999,7 @@ namespace Google.Apis.Consumersurveys.v2
     }
 }
 
-namespace Google.Apis.Consumersurveys.v2.Data
+namespace Google.Apis.ConsumerSurveys.v2.Data
 {    
 
     public class FieldMask : Google.Apis.Requests.IDirectResponseSchema
@@ -769,6 +1009,66 @@ namespace Google.Apis.Consumersurveys.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of an individual pre-defined panel object defining a targeted audience of opinion
+    /// rewards mobile app users.</summary>
+    public class MobileAppPanel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country code for the country of the users that the panel contains. Uses standard ISO 3166-1
+        /// 2-character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom. Any
+        /// survey created targeting this panel must also target the corresponding country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>Whether or not the panel is accessible to all API users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPublicPanel")]
+        public virtual System.Nullable<bool> IsPublicPanel { get; set; } 
+
+        /// <summary>Language code that the panel can target. For instance, 'en-US'. Uses standard BCP47 language codes.
+        /// See specification. Any survey created targeting this panel must also target the corresponding
+        /// language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
+
+        /// <summary>Unique panel ID string. This corresponds to the mobile_app_panel_id used in Survey Insert
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileAppPanelId")]
+        public virtual string MobileAppPanelId { get; set; } 
+
+        /// <summary>Human readable name of the audience panel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>List of email addresses for users who can target members of this panel. Must contain at least the
+        /// address of the user making the API call for panels that are not public. This field will be empty for public
+        /// panels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owners")]
+        public virtual System.Collections.Generic.IList<string> Owners { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class MobileAppPanelsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        /// <summary>Unique request ID used for logging and debugging. Please include in any error reporting or
+        /// troubleshooting requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
+
+        /// <summary>An individual predefined panel of Opinion Rewards mobile users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<MobileAppPanel> Resources { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -839,7 +1139,7 @@ namespace Google.Apis.Consumersurveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questions")]
         public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; } 
 
-        /// <summary>State that the survey is in. Can be modified to start, stop, or pause survey.</summary>
+        /// <summary>State that the survey is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -890,7 +1190,7 @@ namespace Google.Apis.Consumersurveys.v2.Data
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
         /// <summary>Key for predefined panel that causes survey to be sent to a predefined set of Opinion Rewards App
-        /// users. PopulationSource must be set to ANDROID_APP_PANEL to use this field.</summary>
+        /// users. You must set PopulationSource to ANDROID_APP_PANEL to use this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppPanelId")]
         public virtual string MobileAppPanelId { get; set; } 
 
@@ -914,18 +1214,17 @@ namespace Google.Apis.Consumersurveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; } 
 
-        /// <summary>Threshold to start a survey automically if the quoted prices is at most this value. When a survey
+        /// <summary>Threshold to start a survey automatically if the quoted price is at most this value. When a survey
         /// has a Screener (threshold) question, it must go through an incidence pricing test to determine the final
-        /// cost per response. Typically the API consumer would have to make a followup call to start the survey given
-        /// the (previously not) known cost. If the survey has no threshold_answers, setting this property will return
-        /// an error. This property allows API callers to indicate the max price per response they'd be willing to pay
-        /// in advance of that test. If the price turns out to be lower than the specified autostart_max, the survey
-        /// should begin immediately and the user will be charged at the rate determined by the Incidence pricing test.
-        /// If the price turns out to be greater than the specified autostart_max the survey will not be started and the
-        /// user will instead be notified what price was determined by the incidence test. At that point they must raise
-        /// the value of this property to be greater than or equal to that cost before attempting to start the survey
-        /// again. This will immediately start the survey as long the incidence test was run within the last 21
-        /// days.</summary>
+        /// cost per response. Typically you will have to make a followup call to start the survey giving the final
+        /// computed cost per response. If the survey has no threshold_answers, setting this property will return an
+        /// error. By specifying this property, you indicate the max price per response you are willing to pay in
+        /// advance of the incidence test. If the price turns out to be lower than the specified value, the survey will
+        /// begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price
+        /// turns out to be greater than the specified value the survey will not be started and you will instead be
+        /// notified what price was determined by the incidence test. At that point, you must raise the value of this
+        /// property to be greater than or equal to that cost before attempting to start the survey again. This will
+        /// immediately start the survey as long the incidence test was run within the last 21 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCostPerResponseNanos")]
         public virtual System.Nullable<long> MaxCostPerResponseNanos { get; set; } 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Clouddebugger.v2</id>
-        <version>1.13.1.433</version>
-        <title>Google.Apis.Clouddebugger.v2 Client Library</title>
+        <id>Google.Apis.CloudDebugger.v2</id>
+        <version>1.13.1.518</version>
+        <title>Google.Apis.CloudDebugger.v2 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -48,12 +48,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Clouddebugger.v2.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Clouddebugger.v2.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudDebugger.v2.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudDebugger.v2.xml" />
     </files>
 </package>

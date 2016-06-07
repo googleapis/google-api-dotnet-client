@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160510 (495)
+ *      <tr><th>API Rev<td>20160603 (519)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1504,6 +1504,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("captchaResponse")]
         public virtual string CaptchaResponse { get; set; } 
 
+        /// <summary>The timestamp when the account is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
+        public virtual System.Nullable<long> CreatedAt { get; set; } 
+
         /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
         /// migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
@@ -1540,6 +1544,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>Instance id token of the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
+
+        /// <summary>Last login timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLoginAt")]
+        public virtual System.Nullable<long> LastLoginAt { get; set; } 
 
         /// <summary>The local ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]
@@ -1873,6 +1881,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
         public virtual string Secret { get; set; } 
 
+        /// <summary>Whitelisted client IDs for audience check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whitelistedAudiences")]
+        public virtual System.Collections.Generic.IList<string> WhitelistedAudiences { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2072,6 +2084,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Template for an individual account info.</summary>
     public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
+        public virtual System.Nullable<long> CreatedAt { get; set; } 
+
         /// <summary>Whether the user is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
@@ -2087,6 +2103,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>Whether the email has been verified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
         public virtual System.Nullable<bool> EmailVerified { get; set; } 
+
+        /// <summary>last login timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLoginAt")]
+        public virtual System.Nullable<long> LastLoginAt { get; set; } 
 
         /// <summary>The local ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localId")]

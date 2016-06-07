@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160509 (494)
+ *      <tr><th>API Rev<td>20160606 (522)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3645,6 +3645,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Detected languages for this creative. Read-only. This field should not be set in
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languages")]
+        public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
+
         /// <summary>If nativeAd is set, HTMLSnippet and videoURL should not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeAd")]
         public virtual Creative.NativeAdData NativeAd { get; set; } 
@@ -3697,6 +3702,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         public class CorrectionsData
         {
+            /// <summary>All known serving contexts containing serving status information.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+            public virtual System.Collections.Generic.IList<CorrectionsData.ContextsData> Contexts { get; set; } 
+
             /// <summary>Additional details about the correction.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("details")]
             public virtual System.Collections.Generic.IList<string> Details { get; set; } 
@@ -3705,6 +3714,30 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("reason")]
             public virtual string Reason { get; set; } 
 
+            
+
+            public class ContextsData
+            {
+                /// <summary>Only set when contextType=AUCTION_TYPE. Represents the auction types this correction
+                /// applies to.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("auctionType")]
+                public virtual System.Collections.Generic.IList<string> AuctionType { get; set; } 
+
+                /// <summary>The type of context (e.g., location, platform, auction type, SSL-ness).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("contextType")]
+                public virtual string ContextType { get; set; } 
+
+                /// <summary>Only set when contextType=LOCATION. Represents the geo criterias this correction applies
+                /// to.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("geoCriteriaId")]
+                public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaId { get; set; } 
+
+                /// <summary>Only set when contextType=PLATFORM. Represents the platforms this correction applies
+                /// to.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+                public virtual System.Collections.Generic.IList<string> Platform { get; set; } 
+
+            }
         }    
 
         /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
@@ -4012,6 +4045,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionTimeMs")]
         public virtual System.Nullable<long> CurrencyConversionTimeMs { get; set; } 
 
+        /// <summary>The DFP line item id associated with this deal. For features like CPD, buyers can retrieve the DFP
+        /// line item for billing reconciliation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dfpLineItemId")]
+        public virtual System.Nullable<long> DfpLineItemId { get; set; } 
+
         /// <summary>The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes
         /// publisher will book the deal with a impression buffer, however clients are billed using the original
         /// contracted quantity.</summary>
@@ -4135,9 +4173,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; } 
 
-        /// <summary>Name of the dimension mainly for debugging purposes.</summary>
+        /// <summary>Name of the dimension mainly for debugging purposes, except for the case of CREATIVE_SIZE. For
+        /// CREATIVE_SIZE, strings are used instead of ids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Percent of total impressions for a dimension type. e.g. {dimension_type: 'GENDER',
+        /// [{dimension_value: {id: 1, name: 'MALE', percentage: 60}}]} Gender MALE is 60% of all impressions which have
+        /// gender.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
+        public virtual System.Nullable<int> Percentage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5184,6 +5229,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>For regular or video creative size type, specifies the size of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual TargetingValueSize Size { get; set; } 
+
+        /// <summary>The skippable ad type for video size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippableAdType")]
+        public virtual string SkippableAdType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

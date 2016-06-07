@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>Google Cloud Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160309 (433)
+ *      <tr><th>API Rev<td>20160602 (518)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>
  *              https://cloud.google.com/tools/cloud-debugger</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Clouddebugger.v2
+namespace Google.Apis.CloudDebugger.v2
 {
-    /// <summary>The Clouddebugger Service.</summary>
-    public class ClouddebuggerService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudDebugger Service.</summary>
+    public class CloudDebuggerService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v2";
@@ -56,12 +56,12 @@ namespace Google.Apis.Clouddebugger.v2
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public ClouddebuggerService() :
+        public CloudDebuggerService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public ClouddebuggerService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudDebuggerService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             controller = new ControllerResource(this);
@@ -125,11 +125,11 @@ namespace Google.Apis.Clouddebugger.v2
         }
     }
 
-    ///<summary>A base abstract class for Clouddebugger requests.</summary>
-    public abstract class ClouddebuggerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudDebugger requests.</summary>
+    public abstract class CloudDebuggerBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new ClouddebuggerBaseServiceRequest instance.</summary>
-        protected ClouddebuggerBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudDebuggerBaseServiceRequest instance.</summary>
+        protected CloudDebuggerBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -191,7 +191,7 @@ namespace Google.Apis.Clouddebugger.v2
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Clouddebugger parameter list.</summary>
+        /// <summary>Initializes CloudDebugger parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -400,7 +400,7 @@ namespace Google.Apis.Clouddebugger.v2
                 /// agent does not need to check if a breakpoint has changed when it encounters the same breakpoint on a
                 /// successive call. Moreover, an agent should remember the breakpoints that are completed until the
                 /// controller removes them from the active list to avoid setting those breakpoints again.</summary>
-                public class ListRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.ListActiveBreakpointsResponse>
+                public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListActiveBreakpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId)
@@ -492,7 +492,7 @@ namespace Google.Apis.Clouddebugger.v2
                 /// <param name="debuggeeId">Identifies the debuggee being debugged.</param>
                 /// <param name="id">Breakpoint
                 /// identifier, unique in the scope of the debuggee.</param>
-                public virtual UpdateRequest Update(Google.Apis.Clouddebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
+                public virtual UpdateRequest Update(Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
                 {
                     return new UpdateRequest(service, body, debuggeeId, id);
                 }
@@ -502,10 +502,10 @@ namespace Google.Apis.Clouddebugger.v2
                 /// value does not change the breakpoint specification. Updates to the `location`, `condition` and
                 /// `expression` fields should not alter the breakpoint semantics. These may only make changes such as
                 /// canonicalizing a value or snapping the location to the correct line of code.</summary>
-                public class UpdateRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.UpdateActiveBreakpointResponse>
+                public class UpdateRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointResponse>
                 {
                     /// <summary>Constructs a new Update request.</summary>
-                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouddebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
+                    public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest body, string debuggeeId, string id)
                         : base(service)
                     {
                         DebuggeeId = debuggeeId;
@@ -525,7 +525,7 @@ namespace Google.Apis.Clouddebugger.v2
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Clouddebugger.v2.Data.UpdateActiveBreakpointRequest Body { get; set; }
+                    Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -582,7 +582,7 @@ namespace Google.Apis.Clouddebugger.v2
             /// method. This allows the controller service to disable the agent or recover from any data loss. If the
             /// debuggee is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
             /// <param name="body">The body of the request.</param>
-            public virtual RegisterRequest Register(Google.Apis.Clouddebugger.v2.Data.RegisterDebuggeeRequest body)
+            public virtual RegisterRequest Register(Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body)
             {
                 return new RegisterRequest(service, body);
             }
@@ -592,10 +592,10 @@ namespace Google.Apis.Clouddebugger.v2
             /// should call this method again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller
             /// method. This allows the controller service to disable the agent or recover from any data loss. If the
             /// debuggee is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
-            public class RegisterRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.RegisterDebuggeeResponse>
+            public class RegisterRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeResponse>
             {
                 /// <summary>Constructs a new Register request.</summary>
-                public RegisterRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouddebugger.v2.Data.RegisterDebuggeeRequest body)
+                public RegisterRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body)
                     : base(service)
                 {
                     Body = body;
@@ -605,7 +605,7 @@ namespace Google.Apis.Clouddebugger.v2
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Clouddebugger.v2.Data.RegisterDebuggeeRequest Body { get; set; }
+                Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -713,7 +713,7 @@ namespace Google.Apis.Clouddebugger.v2
                 }
 
                 /// <summary>Deletes the breakpoint from the debuggee.</summary>
-                public class DeleteRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.Empty>
+                public class DeleteRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId)
@@ -803,7 +803,7 @@ namespace Google.Apis.Clouddebugger.v2
                 }
 
                 /// <summary>Gets breakpoint information.</summary>
-                public class GetRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.GetBreakpointResponse>
+                public class GetRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.GetBreakpointResponse>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string debuggeeId, string breakpointId)
@@ -891,7 +891,7 @@ namespace Google.Apis.Clouddebugger.v2
                 }
 
                 /// <summary>Lists all breakpoints for the debuggee.</summary>
-                public class ListRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.ListBreakpointsResponse>
+                public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListBreakpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string debuggeeId)
@@ -1040,16 +1040,16 @@ namespace Google.Apis.Clouddebugger.v2
                 /// <summary>Sets the breakpoint to the debuggee.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="debuggeeId">ID of the debuggee where the breakpoint is to be set.</param>
-                public virtual SetRequest Set(Google.Apis.Clouddebugger.v2.Data.Breakpoint body, string debuggeeId)
+                public virtual SetRequest Set(Google.Apis.CloudDebugger.v2.Data.Breakpoint body, string debuggeeId)
                 {
                     return new SetRequest(service, body, debuggeeId);
                 }
 
                 /// <summary>Sets the breakpoint to the debuggee.</summary>
-                public class SetRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.SetBreakpointResponse>
+                public class SetRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.SetBreakpointResponse>
                 {
                     /// <summary>Constructs a new Set request.</summary>
-                    public SetRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouddebugger.v2.Data.Breakpoint body, string debuggeeId)
+                    public SetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDebugger.v2.Data.Breakpoint body, string debuggeeId)
                         : base(service)
                     {
                         DebuggeeId = debuggeeId;
@@ -1069,7 +1069,7 @@ namespace Google.Apis.Clouddebugger.v2
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Clouddebugger.v2.Data.Breakpoint Body { get; set; }
+                    Google.Apis.CloudDebugger.v2.Data.Breakpoint Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1127,7 +1127,7 @@ namespace Google.Apis.Clouddebugger.v2
             }
 
             /// <summary>Lists all the debuggees that the user can set breakpoints to.</summary>
-            public class ListRequest : ClouddebuggerBaseServiceRequest<Google.Apis.Clouddebugger.v2.Data.ListDebuggeesResponse>
+            public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListDebuggeesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service)
@@ -1209,7 +1209,7 @@ namespace Google.Apis.Clouddebugger.v2
     }
 }
 
-namespace Google.Apis.Clouddebugger.v2.Data
+namespace Google.Apis.CloudDebugger.v2.Data
 {    
 
     /// <summary>An alias to a repo revision.</summary>

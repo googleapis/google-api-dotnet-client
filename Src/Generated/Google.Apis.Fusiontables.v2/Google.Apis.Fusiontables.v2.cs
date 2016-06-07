@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fusiontables'>Fusion Tables API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160317 (441)
+ *      <tr><th>API Rev<td>20160526 (511)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fusiontables'>
  *              https://developers.google.com/fusiontables</a>
@@ -3475,9 +3475,9 @@ namespace Google.Apis.Fusiontables.v2.Data
         /// 1,234.56 NUMBER_INTEGERfor example 1235 NUMBER_NO_SEPARATORfor example 1234.56 NUMBER_PERCENTfor example
         /// 123,456% NUMBER_SCIENTIFICfor example 1E3 STRING_EIGHT_LINE_IMAGEDisplays thumbnail images as tall as eight
         /// lines of text STRING_FOUR_LINE_IMAGEDisplays thumbnail images as tall as four lines of text
-        /// STRING_JSON_TEXTAllows JSON editing of text in UI STRING_LINKTreats cell as a link (must start with http://
-        /// or https://) STRING_ONE_LINE_IMAGEDisplays thumbnail images as tall as one line of text
-        /// STRING_VIDEO_OR_MAPDisplay a video or map thumbnail</summary>
+        /// STRING_JSON_TEXTAllows editing of text as JSON in UI STRING_JSON_LISTAllows editing of text as a JSON list
+        /// in UI STRING_LINKTreats cell as a link (must start with http:// or https://) STRING_ONE_LINE_IMAGEDisplays
+        /// thumbnail images as tall as one line of text STRING_VIDEO_OR_MAPDisplay a video or map thumbnail</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatPattern")]
         public virtual string FormatPattern { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160520 (505)
+ *      <tr><th>API Rev<td>20160526 (511)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4785,6 +4785,11 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
+            /// <summary>Whether to remove the expiration date.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RemoveExpiration { get; set; }
+
             /// <summary>Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if
             /// the specified role is not 'owner'.</summary>
             /// [default: false]
@@ -4840,6 +4845,15 @@ namespace Google.Apis.Drive.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "removeExpiration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "removeExpiration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "transferOwnership", new Google.Apis.Discovery.Parameter
                     {
                         Name = "transferOwnership",
@@ -4883,6 +4897,11 @@ namespace Google.Apis.Drive.v2
             /// <summary>The ID for the permission.</summary>
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
+
+            /// <summary>Whether to remove the expiration date.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RemoveExpiration { get; set; }
 
             /// <summary>Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if
             /// the specified role is not 'owner'.</summary>
@@ -4936,6 +4955,15 @@ namespace Google.Apis.Drive.v2
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "removeExpiration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "removeExpiration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -8176,6 +8204,24 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The ETag of the permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
+
+        /// <summary>The time at which this permission will expire (RFC 3339 date-time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
+        public virtual string ExpirationDateRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> ExpirationDate
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationDateRaw);
+            }
+            set
+            {
+                ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The ID of the user this permission refers to, and identical to the permissionId in the About and
         /// Files resources. When making a drive.permissions.insert request, exactly one of the id or value fields must

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160525 (510)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -10450,10 +10450,9 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
@@ -10462,10 +10461,9 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ImageList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22299,6 +22297,107 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
+        /// NOT create or update the router.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to query.</param>
+        public virtual PreviewRequest Preview(Google.Apis.Compute.alpha.Data.Router body, string project, string region, string router)
+        {
+            return new PreviewRequest(service, body, project, region, router);
+        }
+
+        /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
+        /// NOT create or update the router.</summary>
+        public class PreviewRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.RoutersPreviewResponse>
+        {
+            /// <summary>Constructs a new Preview request.</summary>
+            public PreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Router body, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Router Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "preview"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}/preview"; }
+            }
+
+            /// <summary>Initializes Preview parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -31569,16 +31668,19 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Encrypts or decrypts a disk using a customer-supplied encryption key.
         ///
-        /// If you are creating a new disk, encrypts the new disk using an encryption key that you provide. If you are
-        /// attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-
-        /// supplied encryption key.
+        /// If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide.
+        /// If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the
+        /// customer-supplied encryption key.
         ///
         /// If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to
         /// use this resource at a later time. For example, you must provide the key when you create a snapshot or an
         /// image from the disk or when you attach the disk to a virtual machine instance.
         ///
         /// If you do not provide an encryption key, then the disk will be encrypted using an automatically generated
-        /// key and you do not need to provide a key to use the disk later.</summary>
+        /// key and you do not need to provide a key to use the disk later.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to
+        /// encrypt disks in a managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
@@ -31686,7 +31788,10 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string SourceImage { get; set; } 
 
         /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
-        /// by a customer-supplied encryption key.</summary>
+        /// by a customer-supplied encryption key.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances
+        /// in a managed instance group if the source images are encrypted with your own keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
@@ -32080,11 +32185,6 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>This field designates whether this is a failover backend. More than one failover backend can be
-        /// configured for a given BackendService.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failover")]
-        public virtual System.Nullable<bool> Failover { get; set; } 
-
         /// <summary>The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of
         /// instances that serve traffic. Member virtual machine instances from each instance group must live in the
         /// same zone as the instance group itself. No two backends in a backend service are allowed to use same
@@ -32199,6 +32299,18 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message containing backend SSL policies.</summary>
+    public class BackendSSLPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of PEM-encoded peer certificates, from which the public keys are extracted for authenticating
+        /// the backend service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinnedPeerCertificates")]
+        public virtual System.Collections.Generic.IList<string> PinnedPeerCertificates { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A BackendService resource. This resource defines a group of backend virtual machines and their serving
     /// capacity.</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
@@ -32208,6 +32320,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// value for TTL is one day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
         public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
+
+        /// <summary>Backend SSL policies to enforce.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendSslPolicy")]
+        public virtual BackendSSLPolicy BackendSslPolicy { get; set; } 
 
         /// <summary>The list of backends that serve this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
@@ -32228,19 +32344,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>If true, enable Cloud CDN for this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
         public virtual System.Nullable<bool> EnableCDN { get; set; } 
-
-        /// <summary>The value of the field must be in [0, 1]. If set, 'backends[].failover' must be set. They together
-        /// define the fallback behavior of the primary backend: if the ratio of the healthy VMs in the primary backend
-        /// is at or below this number, traffic arriving at the load-balanced IP will be directed to the failover
-        /// backend.
-        ///
-        /// In case where 'failoverRatio' is not set or all the VMs in the backup backend are unhealthy, the traffic
-        /// will be directed back to the primary backend in the "force" mode, where traffic will be spread to the
-        /// healthy VMs with the best effort, or to all VMs when no VM is healthy.
-        ///
-        /// This field can only be used for regional BackendServices.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failoverRatio")]
-        public virtual System.Nullable<float> FailoverRatio { get; set; } 
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint
@@ -32421,7 +32524,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sys")]
         public virtual string Sys { get; set; } 
 
-        /// <summary>The object of the condition. Exactly one of these must be set.</summary>
+        /// <summary>DEPRECATED. Use 'values' instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -32591,6 +32694,16 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Internal use only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where the disk resides. Only applicable for regional
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>URLs of the zones where the disk should be replicated to. Only applicable for regional
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; } 
 
         /// <summary>[Output Only] Server-defined fully-qualified URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -33206,6 +33319,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// must have disjoint port ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
+
+        /// <summary>When the load balancing scheme is INTERNAL, a single port or a list of single ports may be
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+        public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional forwarding rule resides. This field is not
         /// applicable to global forwarding rules.</summary>
@@ -34025,7 +34143,10 @@ namespace Google.Apis.Compute.alpha.Data
         ///
         /// If you do not provide an encryption key when creating the instance, then the local SSD and in-memory
         /// contents will be encrypted using an automatically generated key and you do not need to provide a key to
-        /// start the instance later.</summary>
+        /// start the instance later.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to
+        /// encrypt local SSDs and in-memory content in a managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceEncryptionKey")]
         public virtual CustomerEncryptionKey InstanceEncryptionKey { get; set; } 
 
@@ -34093,12 +34214,12 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Service
         /// accounts generate access tokens that can be accessed through the metadata server and used to authenticate
-        /// applications on the instance. See Authenticating from Google Compute Engine for more information.</summary>
+        /// applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -34537,7 +34658,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minReadySec")]
         public virtual System.Nullable<int> MinReadySec { get; set; } 
 
-        /// <summary>Minimal action to be taken on an instance. The order of action types is: REBOOT <
+        /// <summary>Minimal action to be taken on an instance. The order of action types is: RESTART <
         /// REPLACE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
@@ -34566,7 +34687,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keepStandbyInstances")]
         public virtual System.Nullable<bool> KeepStandbyInstances { get; set; } 
 
-        /// <summary>Tag describing the version. Changing it may trigger an action configured in UpdatePolicy.</summary>
+        /// <summary>Tag describing the version. Used to trigger rollout of a target version even if instance_template
+        /// remains unchanged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
 
@@ -34936,7 +35058,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Enables instances created based on this template to send packets with source IP addresses other
         /// than their own and receive packets with destination IP addresses other than their own. If these instances
         /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the canIpForward documentation for more information.</summary>
+        /// unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -34949,6 +35072,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
+
+        /// <summary>Labels to apply to instances that are created from this template. Each label key/value pair must
+        /// comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The machine type to use for instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
@@ -35475,6 +35603,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// standby.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standbyMode")]
         public virtual string StandbyMode { get; set; } 
+
+        /// <summary>[Output Only] Tag describing the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36850,7 +36982,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RouterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Best routes for this router.</summary>
+        /// <summary>Best routes for this router's network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestRoutes")]
         public virtual System.Collections.Generic.IList<Route> BestRoutes { get; set; } 
 
@@ -36920,6 +37052,16 @@ namespace Google.Apis.Compute.alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual RouterStatus Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RoutersPreviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preview of given router.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual Router Resource { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/yVFlONAWS2QCeG4AMiKQTq0Fjds\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/BZUxf6UxCzric6TayTsVx-DTOUg\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160519",
+ "revision": "20160531",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -940,7 +940,7 @@
     },
     "primaryEmail": {
      "type": "string",
-     "description": "The user's primary email, e.g. \"jsmith@example.com\"."
+     "description": "The user's primary email address, e.g. \"jsmith@example.com\"."
     }
    }
   },

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160520 (505)
+ *      <tr><th>API Rev<td>20160526 (511)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2778,6 +2778,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
 
+            /// <summary>Whether to remove the expiration date.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RemoveExpiration { get; set; }
+
             /// <summary>Whether to transfer ownership to the specified user and downgrade the current owner to a
             /// writer. This parameter is required as an acknowledgement of the side effect.</summary>
             /// [default: false]
@@ -2830,6 +2835,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "removeExpiration", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "removeExpiration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4547,6 +4561,24 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The email address of the user or group to which this permission refers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
+
+        /// <summary>The time at which this permission will expire (RFC 3339 date-time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> ExpirationTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationTimeRaw);
+            }
+            set
+            {
+                ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The ID of this permission. This is a unique identifier for the grantee, and is published in User
         /// resources as permissionId.</summary>

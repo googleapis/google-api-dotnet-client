@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160525 (510)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -8928,10 +8928,9 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
@@ -8940,10 +8939,9 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ImageList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -26126,16 +26124,19 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>Encrypts or decrypts a disk using a customer-supplied encryption key.
         ///
-        /// If you are creating a new disk, encrypts the new disk using an encryption key that you provide. If you are
-        /// attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-
-        /// supplied encryption key.
+        /// If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide.
+        /// If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the
+        /// customer-supplied encryption key.
         ///
         /// If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to
         /// use this resource at a later time. For example, you must provide the key when you create a snapshot or an
         /// image from the disk or when you attach the disk to a virtual machine instance.
         ///
         /// If you do not provide an encryption key, then the disk will be encrypted using an automatically generated
-        /// key and you do not need to provide a key to use the disk later.</summary>
+        /// key and you do not need to provide a key to use the disk later.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to
+        /// encrypt disks in a managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
@@ -26243,7 +26244,10 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string SourceImage { get; set; } 
 
         /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
-        /// by a customer-supplied encryption key.</summary>
+        /// by a customer-supplied encryption key.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances
+        /// in a managed instance group if the source images are encrypted with your own keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
         public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
@@ -26579,6 +26583,12 @@ namespace Google.Apis.Compute.beta.Data
     /// capacity.</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
+        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
+        /// value for TTL is one day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
+        public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
+
         /// <summary>The list of backends that serve this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<Backend> Backends { get; set; } 
@@ -26649,6 +26659,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Type of session affinity to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
+        public virtual string SessionAffinity { get; set; } 
 
         /// <summary>How many seconds to wait for the backend before considering it a failed request. Default is 30
         /// seconds.</summary>
@@ -28121,12 +28135,12 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Service
         /// accounts generate access tokens that can be accessed through the metadata server and used to authenticate
-        /// applications on the instance. See Authenticating from Google Compute Engine for more information.</summary>
+        /// applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -28874,7 +28888,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Enables instances created based on this template to send packets with source IP addresses other
         /// than their own and receive packets with destination IP addresses other than their own. If these instances
         /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the canIpForward documentation for more information.</summary>
+        /// unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -30454,7 +30469,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class RouterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Best routes for this router.</summary>
+        /// <summary>Best routes for this router's network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestRoutes")]
         public virtual System.Collections.Generic.IList<Route> BestRoutes { get; set; } 
 
@@ -32105,6 +32120,11 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] URL of the region where the VPN tunnel resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
+        public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
 
         /// <summary>URL of router resource to be used for dynamic routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("router")]

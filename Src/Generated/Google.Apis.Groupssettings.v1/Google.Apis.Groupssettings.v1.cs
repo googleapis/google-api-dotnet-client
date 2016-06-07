@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>Groups Settings API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160323 (447)
+ *      <tr><th>API Rev<td>20160525 (510)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>
  *              https://developers.google.com/google-apps/groups-settings/get_started</a>
@@ -470,6 +470,10 @@ namespace Google.Apis.Groupssettings.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("archiveOnly")]
         public virtual string ArchiveOnly { get; set; } 
 
+        /// <summary>Custom footer text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFooterText")]
+        public virtual string CustomFooterText { get; set; } 
+
         /// <summary>Default email to which reply to any message should go.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customReplyTo")]
         public virtual string CustomReplyTo { get; set; } 
@@ -485,6 +489,10 @@ namespace Google.Apis.Groupssettings.v1.Data
         /// <summary>Email id of the group</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>Whether to include custom footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeCustomFooter")]
+        public virtual string IncludeCustomFooter { get; set; } 
 
         /// <summary>If this groups should be included in global address list or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeInGlobalAddressList")]

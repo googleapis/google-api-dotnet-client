@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160525 (510)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -87,6 +87,7 @@ namespace Google.Apis.Compute.v1
             projects = new ProjectsResource(this);
             regionOperations = new RegionOperationsResource(this);
             regions = new RegionsResource(this);
+            routers = new RoutersResource(this);
             routes = new RoutesResource(this);
             snapshots = new SnapshotsResource(this);
             sslCertificates = new SslCertificatesResource(this);
@@ -333,6 +334,14 @@ namespace Google.Apis.Compute.v1
         public virtual RegionsResource Regions
         {
             get { return regions; }
+        }
+
+        private readonly RoutersResource routers;
+
+        /// <summary>Gets the Routers resource.</summary>
+        public virtual RoutersResource Routers
+        {
+            get { return routers; }
         }
 
         private readonly RoutesResource routes;
@@ -7540,10 +7549,9 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
@@ -7552,10 +7560,9 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the list of private images available to the specified project. Private images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
-        /// including publicly-available images, like Debian 7. If you want to get a list of publicly-available images,
-        /// use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.
-        ///
-        /// See Accessing images for more information.</summary>
+        /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
+        /// use this method to make a request to the respective image project, such as debian-cloud or windows-
+        /// cloud.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ImageList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -12206,6 +12213,107 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
+        /// information, see Restart an instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to start.</param>
+        public virtual StartWithEncryptionKeyRequest StartWithEncryptionKey(Google.Apis.Compute.v1.Data.InstancesStartWithEncryptionKeyRequest body, string project, string zone, string instance)
+        {
+            return new StartWithEncryptionKeyRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
+        /// information, see Restart an instance.</summary>
+        public class StartWithEncryptionKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new StartWithEncryptionKey request.</summary>
+            public StartWithEncryptionKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstancesStartWithEncryptionKeyRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to start.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstancesStartWithEncryptionKeyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "startWithEncryptionKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/startWithEncryptionKey"; }
+            }
+
+            /// <summary>Initializes StartWithEncryptionKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a
         /// later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped,
         /// but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will
@@ -14046,6 +14154,848 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "routers" collection of methods.</summary>
+    public class RoutersResource
+    {
+        private const string Resource = "routers";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RoutersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves an aggregated list of routers.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of routers.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/routers"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified Router resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string router)
+        {
+            return new DeleteRequest(service, project, region, router);
+        }
+
+        /// <summary>Deletes the specified Router resource.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified Router resource. Get a list of available routers by making a list()
+        /// request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to return.</param>
+        public virtual GetRequest Get(string project, string region, string router)
+        {
+            return new GetRequest(service, project, region, router);
+        }
+
+        /// <summary>Returns the specified Router resource. Get a list of available routers by making a list()
+        /// request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Router>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves runtime information of the specified router.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to query.</param>
+        public virtual GetRouterStatusRequest GetRouterStatus(string project, string region, string router)
+        {
+            return new GetRouterStatusRequest(service, project, region, router);
+        }
+
+        /// <summary>Retrieves runtime information of the specified router.</summary>
+        public class GetRouterStatusRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterStatusResponse>
+        {
+            /// <summary>Constructs a new GetRouterStatus request.</summary>
+            public GetRouterStatusRequest(Google.Apis.Services.IClientService service, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getRouterStatus"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}/getRouterStatus"; }
+            }
+
+            /// <summary>Initializes GetRouterStatus parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a Router resource in the specified project and region using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Router body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a Router resource in the specified project and region using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Router body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Router Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RouterList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
+            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
+            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
+            /// values.
+            ///
+            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
+            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
+            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
+            /// the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to update.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+        {
+            return new PatchRequest(service, body, project, region, router);
+        }
+
+        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Router Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the entire content of the Router resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+        {
+            return new UpdateRequest(service, body, project, region, router);
+        }
+
+        /// <summary>Updates the entire content of the Router resource.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Router Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -20849,6 +21799,24 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
 
+        /// <summary>Encrypts or decrypts a disk using a customer-supplied encryption key.
+        ///
+        /// If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide.
+        /// If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the
+        /// customer-supplied encryption key.
+        ///
+        /// If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to
+        /// use this resource at a later time. For example, you must provide the key when you create a snapshot or an
+        /// image from the disk or when you attach the disk to a virtual machine instance.
+        ///
+        /// If you do not provide an encryption key, then the disk will be encrypted using an automatically generated
+        /// key and you do not need to provide a key to use the disk later.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to
+        /// encrypt disks in a managed instance group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
+        public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
+
         /// <summary>Assigns a zero-based index to this disk, where 0 is reserved for the boot disk. For example, if you
         /// have many disks attached to an instance, each disk would have a unique index number. If not specified, the
         /// server will choose an appropriate value.</summary>
@@ -20947,6 +21915,14 @@ namespace Google.Apis.Compute.v1.Data
         /// global/images/family/my-private-family</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
+        /// by a customer-supplied encryption key.
+        ///
+        /// Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances
+        /// in a managed instance group if the source images are encrypted with your own keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21402,6 +22378,38 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a customer-supplied encryption key</summary>
+    public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies a 256-bit customer-supplied encryption key, encoded in base64 to either encrypt or
+        /// decrypt this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawKey")]
+        public virtual string RawKey { get; set; } 
+
+        /// <summary>[Output only] The base64 encoded SHA-256 hash of the customer-supplied encryption key that protects
+        /// this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CustomerEncryptionKeyProtectedDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Decrypts data associated with the disk with a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
+        public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
+
+        /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only
+        /// applicable for persistent disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Deprecation status for a public resource.</summary>
     public class DeprecationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21447,6 +22455,18 @@ namespace Google.Apis.Compute.v1.Data
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Encrypts the disk using a customer-supplied encryption key.
+        ///
+        /// After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk
+        /// later (e.g. to create a disk snapshot or an image, or to attach the disk to a virtual machine).
+        ///
+        /// Customer-supplied encryption keys do not protect access to metadata of the disk.
+        ///
+        /// If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an
+        /// automatically generated key and you do not need to provide a key to use the disk later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
+        public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -21517,6 +22537,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
+        /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
+
         /// <summary>[Output Only] The ID value of the image used to create this disk. This value identifies the exact
         /// image that was used to create this persistent disk. For example, if you created the persistent disk from an
         /// image that was later deleted and recreated under the same name, the source image ID would identify the exact
@@ -21530,6 +22555,11 @@ namespace Google.Apis.Compute.v1.Data
         /// projects/project/global/snapshots/snapshot - global/snapshots/snapshot</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source snapshot. Required if the source snapshot is
+        /// protected by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceSnapshotEncryptionKey { get; set; } 
 
         /// <summary>[Output Only] The unique ID of the snapshot used to create this disk. This value identifies the
         /// exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk
@@ -22474,6 +23504,18 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
+        /// <summary>Encrypts the image using a customer-supplied encryption key.
+        ///
+        /// After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image
+        /// later (e.g. to create a disk from the image).
+        ///
+        /// Customer-supplied encryption keys do not protect access to metadata of the disk.
+        ///
+        /// If you do not provide an encryption key when creating the image, then the disk will be encrypted using an
+        /// automatically generated key and you do not need to provide a key to use the image later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageEncryptionKey")]
+        public virtual CustomerEncryptionKey ImageEncryptionKey { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#image for images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -22505,6 +23547,11 @@ namespace Google.Apis.Compute.v1.Data
         /// projects/project/zones/zone/disk/disk - zones/zone/disks/disk</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source disk. Required if the source disk is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceDiskEncryptionKey { get; set; } 
 
         /// <summary>The ID value of the disk used to create this image. This value may be used to determine whether the
         /// image was taken from the current or a previous instance of a given disk name.</summary>
@@ -22660,12 +23707,12 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Service
         /// accounts generate access tokens that can be accessed through the metadata server and used to authenticate
-        /// applications on the instance. See Authenticating from Google Compute Engine for more information.</summary>
+        /// applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -23348,7 +24395,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Enables instances created based on this template to send packets with source IP addresses other
         /// than their own and receive packets with destination IP addresses other than their own. If these instances
         /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the canIpForward documentation for more information.</summary>
+        /// unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -23563,6 +24611,21 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class InstancesStartWithEncryptionKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Array of disks associated with this instance that are protected with a customer-supplied encryption
+        /// key.
+        ///
+        /// In order to start the instance, the disk url and its corresponding key must be provided.
+        ///
+        /// If the disk is not protected with a customer-supplied encryption key it should not be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CustomerEncryptionKeyProtectedDisk> Disks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A license resource.</summary>
     public class License : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23616,6 +24679,11 @@ namespace Google.Apis.Compute.v1.Data
         /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageSpaceGb")]
         public virtual System.Nullable<int> ImageSpaceGb { get; set; } 
+
+        /// <summary>[Output Only] Whether this machine type has a shared CPU. See Shared-core machine types for more
+        /// information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSharedCpu")]
+        public virtual System.Nullable<bool> IsSharedCpu { get; set; } 
 
         /// <summary>[Output Only] The type of the resource. Always compute#machineType for machine types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -24403,6 +25471,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>[Output Only] Default service account used by VMs running in this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultServiceAccount")]
+        public virtual string DefaultServiceAccount { get; set; } 
+
         /// <summary>An optional textual description of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -24711,6 +25783,322 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Router resource.</summary>
+    public class Router : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bgp")]
+        public virtual RouterBgp Bgp { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bgpPeers")]
+        public virtual System.Collections.Generic.IList<RouterBgpPeer> BgpPeers { get; set; } 
+
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
+        public virtual System.Collections.Generic.IList<RouterInterface> Interfaces { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#router for routers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>URI of the network to which this router belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>[Output Only] URI of the region where the router resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of routers.</summary>
+    public class RouterAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A map of scoped router lists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,RoutersScopedList> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RouterBgp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit.
+        /// The value will be fixed for this router resource. All VPN tunnels that link to this router will have the
+        /// same local ASN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asn")]
+        public virtual System.Nullable<long> Asn { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>BGP information that needs to be configured into the routing stack to establish the BGP peering. It
+    /// must specify peer ASN and either interface name, IP, or peer IP. Reference:
+    /// https://tools.ietf.org/html/rfc4273</summary>
+    public class RouterBgpPeer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The priority of routes advertised to this BGP peer. In the case where there is more than one
+        /// matching route of maximum length, the routes with lowest priority value win.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutePriority")]
+        public virtual System.Nullable<long> AdvertisedRoutePriority { get; set; } 
+
+        /// <summary>Name of the interface the BGP peer is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interfaceName")]
+        public virtual string InterfaceName { get; set; } 
+
+        /// <summary>IP address of the interface inside Google Cloud Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Peer BGP Autonomous System Number (ASN). For VPN use case, this value can be different for every
+        /// tunnel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerAsn")]
+        public virtual System.Nullable<long> PeerAsn { get; set; } 
+
+        /// <summary>IP address of the BGP interface outside Google cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
+        public virtual string PeerIpAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linked_vpn_tunnel) or IP
+    /// address + range (specified in ip_range).</summary>
+    public class RouterInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IP address and range of the interface. The IP range must be in the RFC3927 link-local IP space. The
+        /// value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it
+        /// represents the IP address of the interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRange")]
+        public virtual string IpRange { get; set; } 
+
+        /// <summary>URI of linked VPN tunnel. It must be in the same region as the router. Each interface can have at
+        /// most one linked resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
+        public virtual string LinkedVpnTunnel { get; set; } 
+
+        /// <summary>Name of this interface entry. The name must be 1-63 characters long and comply with
+        /// RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of Router resources.</summary>
+    public class RouterList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of Router resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Router> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#router for routers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RouterStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Best routes for this router's network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestRoutes")]
+        public virtual System.Collections.Generic.IList<Route> BestRoutes { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("bgpPeerStatus")]
+        public virtual System.Collections.Generic.IList<RouterStatusBgpPeerStatus> BgpPeerStatus { get; set; } 
+
+        /// <summary>URI of the network to which this router belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RouterStatusBgpPeerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Routes that were advertised to the remote BGP peer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutes")]
+        public virtual System.Collections.Generic.IList<Route> AdvertisedRoutes { get; set; } 
+
+        /// <summary>IP address of the local BGP interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>URL of the VPN tunnel that this BGP peer controls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
+        public virtual string LinkedVpnTunnel { get; set; } 
+
+        /// <summary>Name of this BGP peer. Unique within the Routers resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Number of routes learned from the remote BGP Peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numLearnedRoutes")]
+        public virtual System.Nullable<long> NumLearnedRoutes { get; set; } 
+
+        /// <summary>IP address of the remote BGP interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
+        public virtual string PeerIpAddress { get; set; } 
+
+        /// <summary>BGP state as specified in RFC1771.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Status of the BGP peer: {UP, DOWN}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>Time this session has been up. Format: 14 years, 51 weeks, 6 days, 23 hours, 59 minutes, 59
+        /// seconds</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uptime")]
+        public virtual string Uptime { get; set; } 
+
+        /// <summary>Time this session has been up, in seconds. Format: 145</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uptimeSeconds")]
+        public virtual string UptimeSeconds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RouterStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual RouterStatus Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RoutersScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of routers contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routers")]
+        public virtual System.Collections.Generic.IList<Router> Routers { get; set; } 
+
+        /// <summary>Informational warning which replaces the list of routers when the list is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual RoutersScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Informational warning which replaces the list of routers when the list is empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
     /// <summary>Sets the scheduling options for an Instance.</summary>
     public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24811,9 +26199,28 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>Encrypts the snapshot using a customer-supplied encryption key.
+        ///
+        /// After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the
+        /// image later For example, you must provide the encryption key when you create a disk from the encrypted
+        /// snapshot in a future request.
+        ///
+        /// Customer-supplied encryption keys do not protect access to metadata of the disk.
+        ///
+        /// If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted
+        /// using an automatically generated key and you do not need to provide a key to use the snapshot
+        /// later.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SnapshotEncryptionKey { get; set; } 
+
         /// <summary>[Output Only] The source disk used to create this snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source disk. Required if the source disk is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceDiskEncryptionKey { get; set; } 
 
         /// <summary>[Output Only] The ID value of the disk used to create this snapshot. This value may be used to
         /// determine whether the snapshot was taken from the current or a previous instance of a given disk
@@ -26170,6 +27577,15 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] URL of the region where the VPN tunnel resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
+        public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
+
+        /// <summary>URL of router resource to be used for dynamic routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("router")]
+        public virtual string Router { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Oauth2.v1</id>
-        <version>1.13.1.509</version>
+        <version>1.13.1.518</version>
         <title>Google.Apis.Oauth2.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.AppState.v1</id>
-        <version>1.13.1.508</version>
+        <version>1.13.1.516</version>
         <title>Google.Apis.AppState.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

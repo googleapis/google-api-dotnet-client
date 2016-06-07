@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Games.v1</id>
-        <version>1.13.1.508</version>
+        <version>1.13.1.515</version>
         <title>Google.Apis.Games.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

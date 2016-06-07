@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>Google OAuth2 API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160524 (509)
+ *      <tr><th>API Rev<td>20160602 (518)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/accounts/docs/OAuth2'>
  *              https://developers.google.com/accounts/docs/OAuth2</a>

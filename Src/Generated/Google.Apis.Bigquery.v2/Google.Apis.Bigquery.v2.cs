@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160511 (496)
+ *      <tr><th>API Rev<td>20160526 (511)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4081,6 +4081,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] A query that BigQuery executes when the view is referenced.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
+
+        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL for this view. The default value is
+        /// true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
+        /// reference/ Queries and views that reference this view must use the same flag value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
+        public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
         /// <summary>[Experimental] Describes user-defined function resources used in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]

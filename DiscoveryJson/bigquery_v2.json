@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/xJN8TIpPcg1NGIZr6unBuM4TVZg\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/07E0qLkq3o7f8SkcNVom0FFgfOc\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20160511",
+ "revision": "20160526",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1721,6 +1721,10 @@
     "query": {
      "type": "string",
      "description": "[Required] A query that BigQuery executes when the view is referenced."
+    },
+    "useLegacySql": {
+     "type": "boolean",
+     "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value."
     },
     "userDefinedFunctionResources": {
      "type": "array",

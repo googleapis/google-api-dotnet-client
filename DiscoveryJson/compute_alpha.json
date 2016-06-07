@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/uqb9E4kAFZ28DQ67-GXdVtr8OWs\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/8dyHhDvOmo6xIdIbp-CMSYoUDEU\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20160519",
+ "revision": "20160525",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -347,7 +347,7 @@
     },
     "diskEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
-     "description": "Encrypts or decrypts a disk using a customer-supplied encryption key.\n\nIf you are creating a new disk, encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.\n\nIf you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.\n\nIf you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later."
+     "description": "Encrypts or decrypts a disk using a customer-supplied encryption key.\n\nIf you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.\n\nIf you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.\n\nIf you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.\n\nInstance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group."
     },
     "index": {
      "type": "integer",
@@ -453,7 +453,7 @@
     },
     "sourceImageEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
-     "description": "The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key."
+     "description": "The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.\n\nInstance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys."
     }
    }
   },
@@ -894,10 +894,6 @@
      "type": "string",
      "description": "An optional description of this resource. Provide this property when you create the resource."
     },
-    "failover": {
-     "type": "boolean",
-     "description": "This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService."
-    },
     "group": {
      "type": "string",
      "description": "The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of instances that serve traffic. Member virtual machine instances from each instance group must live in the same zone as the instance group itself. No two backends in a backend service are allowed to use same Instance Group resource.\n\nNote that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial URL."
@@ -1002,6 +998,20 @@
     }
    }
   },
+  "BackendSSLPolicy": {
+   "id": "BackendSSLPolicy",
+   "type": "object",
+   "description": "Message containing backend SSL policies.",
+   "properties": {
+    "pinnedPeerCertificates": {
+     "type": "array",
+     "description": "List of PEM-encoded peer certificates, from which the public keys are extracted for authenticating the backend service.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
   "BackendService": {
    "id": "BackendService",
    "type": "object",
@@ -1011,6 +1021,10 @@
      "type": "integer",
      "description": "Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.",
      "format": "int32"
+    },
+    "backendSslPolicy": {
+     "$ref": "BackendSSLPolicy",
+     "description": "Backend SSL policies to enforce."
     },
     "backends": {
      "type": "array",
@@ -1033,11 +1047,6 @@
     "enableCDN": {
      "type": "boolean",
      "description": "If true, enable Cloud CDN for this BackendService."
-    },
-    "failoverRatio": {
-     "type": "number",
-     "description": "The value of the field must be in [0, 1]. If set, 'backends[].failover' must be set. They together define the fallback behavior of the primary backend: if the ratio of the healthy VMs in the primary backend is at or below this number, traffic arriving at the load-balanced IP will be directed to the failover backend.\n\nIn case where 'failoverRatio' is not set or all the VMs in the backup backend are unhealthy, the traffic will be directed back to the primary backend in the \"force\" mode, where traffic will be spread to the healthy VMs with the best effort, or to all VMs when no VM is healthy.\n\nThis field can only be used for regional BackendServices.",
-     "format": "float"
     },
     "fingerprint": {
      "type": "string",
@@ -1277,7 +1286,7 @@
     },
     "value": {
      "type": "string",
-     "description": "The object of the condition. Exactly one of these must be set."
+     "description": "DEPRECATED. Use 'values' instead."
     },
     "values": {
      "type": "array",
@@ -1437,6 +1446,17 @@
     "options": {
      "type": "string",
      "description": "Internal use only."
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the disk resides. Only applicable for regional resources."
+    },
+    "replicaZones": {
+     "type": "array",
+     "description": "URLs of the zones where the disk should be replicated to. Only applicable for regional resources.",
+     "items": {
+      "type": "string"
+     }
     },
     "selfLink": {
      "type": "string",
@@ -2085,6 +2105,13 @@
     "portRange": {
      "type": "string",
      "description": "Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges."
+    },
+    "ports": {
+     "type": "array",
+     "description": "When the load balancing scheme is INTERNAL, a single port or a list of single ports may be specified.",
+     "items": {
+      "type": "string"
+     }
     },
     "region": {
      "type": "string",
@@ -2923,7 +2950,7 @@
     },
     "instanceEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
-     "description": "Encrypts or decrypts data for an instance with a customer-supplied encryption key.\n\nIf you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.\n\nIf you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.\n\nIf you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later."
+     "description": "Encrypts or decrypts data for an instance with a customer-supplied encryption key.\n\nIf you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.\n\nIf you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.\n\nIf you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.\n\nInstance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group."
     },
     "kind": {
      "type": "string",
@@ -2976,14 +3003,14 @@
     },
     "serviceAccounts": {
      "type": "array",
-     "description": "A list of service accounts, with their specified scopes, authorized for this instance. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Authenticating from Google Compute Engine for more information.",
+     "description": "A list of service accounts, with their specified scopes, authorized for this instance. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.",
      "items": {
       "$ref": "ServiceAccount"
      }
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, and TERMINATED.",
+     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.",
      "enum": [
       "PROVISIONING",
       "RUNNING",
@@ -3452,10 +3479,10 @@
     },
     "minimalAction": {
      "type": "string",
-     "description": "Minimal action to be taken on an instance. The order of action types is: REBOOT \u003c REPLACE.",
+     "description": "Minimal action to be taken on an instance. The order of action types is: RESTART \u003c REPLACE.",
      "enum": [
-      "REBOOT",
-      "REPLACE"
+      "REPLACE",
+      "RESTART"
      ],
      "enumDescriptions": [
       "",
@@ -3498,7 +3525,7 @@
     },
     "tag": {
      "type": "string",
-     "description": "Tag describing the version. Changing it may trigger an action configured in UpdatePolicy."
+     "description": "Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged."
     },
     "targetSize": {
      "$ref": "FixedOrPercent",
@@ -3913,7 +3940,7 @@
    "properties": {
     "canIpForward": {
      "type": "boolean",
-     "description": "Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the canIpForward documentation for more information."
+     "description": "Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more information."
     },
     "description": {
      "type": "string",
@@ -3924,6 +3951,13 @@
      "description": "An array of disks that are associated with the instances that are created from this template.",
      "items": {
       "$ref": "AttachedDisk"
+     }
+    },
+    "labels": {
+     "type": "object",
+     "description": "Labels to apply to instances that are created from this template. Each label key/value pair must comply with RFC1035. Label values may be empty.",
+     "additionalProperties": {
+      "type": "string"
      }
     },
     "machineType": {
@@ -4555,6 +4589,10 @@
      "enumDescriptions": [
       ""
      ]
+    },
+    "tag": {
+     "type": "string",
+     "description": "[Output Only] Tag describing the version."
     }
    }
   },
@@ -6116,7 +6154,7 @@
    "properties": {
     "bestRoutes": {
      "type": "array",
-     "description": "Best routes for this router.",
+     "description": "Best routes for this router's network.",
      "items": {
       "$ref": "Route"
      }
@@ -6204,6 +6242,16 @@
     },
     "result": {
      "$ref": "RouterStatus"
+    }
+   }
+  },
+  "RoutersPreviewResponse": {
+   "id": "RoutersPreviewResponse",
+   "type": "object",
+   "properties": {
+    "resource": {
+     "$ref": "Router",
+     "description": "Preview of given router."
     }
    }
   },
@@ -12424,7 +12472,7 @@
      "id": "compute.images.list",
      "path": "{project}/global/images",
      "httpMethod": "GET",
-     "description": "Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 7. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.\n\nSee Accessing images for more information.",
+     "description": "Retrieves the list of private images available to the specified project. Private images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -17190,6 +17238,51 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "preview": {
+     "id": "compute.routers.preview",
+     "path": "{project}/regions/{region}/routers/{router}/preview",
+     "httpMethod": "POST",
+     "description": "Preview fields auto-generated during router create and update operations. Calling this method does NOT create or update the router.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "router": {
+       "type": "string",
+       "description": "Name of the Router resource to query.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "router"
+     ],
+     "request": {
+      "$ref": "Router"
+     },
+     "response": {
+      "$ref": "RoutersPreviewResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
     "testIamPermissions": {
