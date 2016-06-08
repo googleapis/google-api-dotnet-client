@@ -1,8 +1,8 @@
 {
   "id": "acceleratedmobilepageurl:v1",
-  "description": "This API contains a single method, [batchGet](/amp/cache/reference/acceleratedmobilepageurl/rest/v1/ampUrls/batchGet). Call this method to retrieve the AMP URL (and equivalent AMP Cache URL) for given public URL(s). For more information, see [Link to AMP Content](/amp/cache/use-amp-url).\n",
+  "description": "This API contains a single method, batchGet. Call this method to retrieve the AMP URL (and equivalent AMP Cache URL) for given public URL(s).\n",
   "protocol": "rest",
-  "title": "Accelerated Mobile Page (AMP) URL API",
+  "title": "Accelerated Mobile Pages (AMP) URL API",
   "resources": {
     "ampUrls": {
       "methods": {
@@ -64,7 +64,7 @@
           ],
           "enumDescriptions": [
             "Not specified error.",
-            "Indicates the requested URL is not found in the index.",
+            "Indicates the requested URL is not found for some reason -- for example,\nwe receive an HTTP error code 404 when it is crawled.",
             "Indicates no AMP URL has been found in the HTML of the requested URL.",
             "Indicates some kind of application error occurred at the server.\nClient advised to retry.",
             "Indicates the requested URL is a valid AMP URL.",
@@ -115,7 +115,7 @@
       "id": "BatchGetAmpUrlsResponse"
     }
   },
-  "revision": "20160518",
+  "revision": "20160524",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
