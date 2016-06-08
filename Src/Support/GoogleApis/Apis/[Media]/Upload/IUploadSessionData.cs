@@ -17,7 +17,7 @@ limitations under the License.
 namespace Google.Apis.Upload
 {
     /// <summary>
-    /// Interface IUploadSessionData: Provides UploadUri for client to persist. Allows resuming upload after a program restart.
+    /// Interface IUploadSessionData: Provides UploadUri for client to persist. Allows resuming an upload after a program restart for seekable ContentStreams.
     /// </summary>
     /// <remarks>
     /// Defines the data passed from the ResumeableUpload Class upon initiation of an upload.

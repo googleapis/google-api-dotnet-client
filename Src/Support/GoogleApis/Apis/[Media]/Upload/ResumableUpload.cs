@@ -415,7 +415,10 @@ namespace Google.Apis.Upload
             try
             {
                 UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
-                SendUploadSessionData(new ResumeableUploadSessionData(UploadUri));
+                if (ContentStream.CanSeek)
+                {
+                    SendUploadSessionData(new ResumeableUploadSessionData(UploadUri));
+                }
                 Logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
             }
             catch (Exception ex)
@@ -437,8 +440,9 @@ namespace Google.Apis.Upload
             return ResumeAsync(CancellationToken.None, null).Result;
         }
         /// <summary>
-        /// Resumes the upload from the last point it was interrupted.
-        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
+        /// Resumes the upload from the last point it was interrupted. 
+        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted. 
+        /// Implemented only for ContentStreams where .CanSeek is True.
         /// </summary>
         /// <remarks>
         /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
@@ -477,6 +481,7 @@ namespace Google.Apis.Upload
         /// <summary>
         /// Asynchronously resumes the upload from the last point it was interrupted. 
         /// Use when resuming and the program was restarted.
+        /// Implemented only for ContentStreams where .CanSeek is True.
         /// </summary>
         /// <remarks>
         /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
@@ -493,6 +498,7 @@ namespace Google.Apis.Upload
         /// <summary>
         /// Asynchronously resumes the upload from the last point it was interrupted. 
         /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
+        /// Implemented only for ContentStreams where .CanSeek is True.
         /// </summary>
         /// <remarks>
         /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
@@ -509,9 +515,16 @@ namespace Google.Apis.Upload
             // provided upon a program restart to resume a previously interrupted upload.
             if (uploadUri != null)
             {
-                Logger.Info("Resuming after program restart: UploadUri={0}", uploadUri);
-                UploadUri = uploadUri;
-                StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
+                if (ContentStream.CanSeek)
+                {
+                    Logger.Info("Resuming after program restart: UploadUri={0}", uploadUri);
+                    UploadUri = uploadUri;
+                    StreamLength =  ContentStream.Length;
+                }
+                else
+                {
+                    throw new NotImplementedException("Resume after program restart not allowed when ContentStream.CanSeek is false");
+                }
             }
             if (UploadUri == null)
             {
