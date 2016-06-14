@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160526 (511)
+ *      <tr><th>API Rev<td>20160606 (522)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2456,7 +2456,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] The type to convert the value in cells of this column. The values are expected to be
         /// encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
-        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. 'type' can also be
+        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be
         /// set at the column family level. However, the setting at this level takes precedence if 'type' is set at both
         /// levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -2493,7 +2493,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] The type to convert the value in cells of this column family. The values are expected to
         /// be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
-        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Defaut type is BYTES. This can be
+        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be
         /// overridden for a specific column by listing that column in 'columns' and specifying a type for it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 

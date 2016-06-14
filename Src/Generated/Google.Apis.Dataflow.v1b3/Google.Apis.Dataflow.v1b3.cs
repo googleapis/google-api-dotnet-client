@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160331 (455)
+ *      <tr><th>API Rev<td>20160606 (522)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -1049,6 +1049,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// <summary>The kind of filter to use.</summary>
                 public enum FilterEnum
                 {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
                     [Google.Apis.Util.StringValueAttribute("ALL")]
                     ALL,
                     [Google.Apis.Util.StringValueAttribute("TERMINATED")]
@@ -1335,9 +1337,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A progress measurement of a WorkItem by a worker.</summary>
     public class ApproximateReportedProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total amount of parallelism in the portion of input of this work item that has already been
-        /// consumed. In the first two examples above (see remaining_parallelism), the value should be 30 or 3
-        /// respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of
+        /// <summary>Total amount of parallelism in the portion of input of this task that has already been consumed and
+        /// is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or
+        /// 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of
         /// parallelism in this work item. If specified, must be finite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumedParallelism")]
         public virtual ReportedParallelism ConsumedParallelism { get; set; } 
@@ -1351,17 +1353,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual Position Position { get; set; } 
 
-        /// <summary>Total amount of parallelism in the input of this WorkItem that has not been consumed yet (i.e. can
-        /// be delegated to a new WorkItem via dynamic splitting). "Amount of parallelism" refers to how many non-empty
-        /// parts of the input can be read in parallel. This does not necessarily equal number of records. An input that
-        /// can be read in parallel down to the individual records is called "perfectly splittable". An example of non-
-        /// perfectly parallelizable input is a block-compressed file format where a block of records has to be read as
-        /// a whole, but different blocks can be read in parallel. Examples: * If we have read 30 records out of 50 in a
-        /// perfectly splittable 50-record input, this value should be 20. * If we are reading through block 3 in a
-        /// block-compressed file consisting of 5 blocks, this value should be 2 (since blocks 4 and 5 can be processed
-        /// in parallel by new work items via dynamic splitting). * If we are reading through the last block in a block-
-        /// compressed file, or reading or processing the last record in a perfectly splittable input, this value should
-        /// be 0, because the remainder of the work item cannot be further split.</summary>
+        /// <summary>Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this
+        /// task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for
+        /// finished. "Amount of parallelism" refers to how many non-empty parts of the input can be read in parallel.
+        /// This does not necessarily equal number of records. An input that can be read in parallel down to the
+        /// individual records is called "perfectly splittable". An example of non-perfectly parallelizable input is a
+        /// block-compressed file format where a block of records has to be read as a whole, but different blocks can be
+        /// read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly
+        /// splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through
+        /// block 3 in a block-compressed file consisting of 5 blocks, this value should be 3 (since blocks 4 and 5 can
+        /// be processed in parallel by new tasks via dynamic splitting and the current task remains processing block
+        /// 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last
+        /// record in a perfectly splittable input, this value should be 1, because apart from the current task, no
+        /// additional remainder can be split off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remainingParallelism")]
         public virtual ReportedParallelism RemainingParallelism { get; set; } 
 
@@ -1609,6 +1613,32 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A metric value representing a list of floating point numbers.</summary>
+    public class FloatingPointList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Elements of the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Elements { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A representation of a floating point mean metric contribution.</summary>
+    public class FloatingPointMean : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of values being aggregated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual SplitInt64 Count { get; set; } 
+
+        /// <summary>The sum of all values being aggregated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual System.Nullable<double> Sum { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An input of an instruction, as a reference to an output of a producer instruction.</summary>
     public class InstructionInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1640,6 +1670,32 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>System-defined name of this output. Unique across the workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemName")]
         public virtual string SystemName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A metric value representing a list of integers.</summary>
+    public class IntegerList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Elements of the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<SplitInt64> Elements { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A representation of an integer mean metric contribution.</summary>
+    public class IntegerMean : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of values being aggregated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual SplitInt64 Count { get; set; } 
+
+        /// <summary>The sum of all values being aggregated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual SplitInt64 Sum { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1948,6 +2004,22 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The metric short id is returned to the user alongside an offset into
+    /// ReportWorkItemStatusRequest</summary>
+    public class MetricShortId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The index of the corresponding metric in the ReportWorkItemStatusRequest. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricIndex")]
+        public virtual System.Nullable<int> MetricIndex { get; set; } 
+
+        /// <summary>The service-generated short identifier for the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortId")]
+        public virtual System.Nullable<long> ShortId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Identifies a metric, by describing the source which generated the metric.</summary>
     public class MetricStructuredName : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2045,6 +2117,23 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// some SideInputInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Basic metadata about a metric.</summary>
+    public class NameAndKind : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean",
+        /// "Set", "And", and "Or". The specified aggregation kind is case-insensitive. If omitted, this is not an
+        /// aggregated value but instead a single metric sample value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2630,6 +2719,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A representation of an int64, n, that is immune to precision loss when encoded in JSON.</summary>
+    public class SplitInt64 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The high order bits, including the sign: n >> 32.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highBits")]
+        public virtual System.Nullable<int> HighBits { get; set; } 
+
+        /// <summary>The low order bits: n & 0xffffffff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowBits")]
+        public virtual System.Nullable<long> LowBits { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>State family configuration.</summary>
     public class StateFamilyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2740,6 +2844,29 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration information for a single streaming computation.</summary>
+    public class StreamingComputationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for this computation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computationId")]
+        public virtual string ComputationId { get; set; } 
+
+        /// <summary>Instructions that comprise the computation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
+        public virtual System.Collections.Generic.IList<ParallelInstruction> Instructions { get; set; } 
+
+        /// <summary>Stage name of this computation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageName")]
+        public virtual string StageName { get; set; } 
+
+        /// <summary>System defined name for this computation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemName")]
+        public virtual string SystemName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Describes full or partial data disk assignment information of the computation ranges.</summary>
     public class StreamingComputationRanges : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2770,6 +2897,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>A type of streaming computation task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskType")]
         public virtual string TaskType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A task that carries configuration information for streaming computations.</summary>
+    public class StreamingConfigTask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set of computation configuration information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingComputationConfigs")]
+        public virtual System.Collections.Generic.IList<StreamingComputationConfig> StreamingComputationConfigs { get; set; } 
+
+        /// <summary>Map from user step names to state families.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userStepToStateFamilyNameMap")]
+        public virtual System.Collections.Generic.IDictionary<string,string> UserStepToStateFamilyNameMap { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2820,6 +2962,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Identifies the particular stream within the streaming Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamId")]
         public virtual string StreamId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A metric value representing a list of strings.</summary>
+    public class StringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Elements of the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<string> Elements { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2998,9 +3151,72 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streamingComputationTask")]
         public virtual StreamingComputationTask StreamingComputationTask { get; set; } 
 
+        /// <summary>Additional information for StreamingConfigTask WorkItems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingConfigTask")]
+        public virtual StreamingConfigTask StreamingConfigTask { get; set; } 
+
         /// <summary>Additional information for StreamingSetupTask WorkItems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingSetupTask")]
         public virtual StreamingSetupTask StreamingSetupTask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An update to a metric sent from a worker. Unlike MetricUpdate, this format does not support: messages:
+    /// use WorkerMessage API CloudMetrics: use MetricUpdate until this includes structured names</summary>
+    public class WorkItemMetricUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value for And, Or.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolean")]
+        public virtual System.Nullable<bool> Boolean { get; set; } 
+
+        /// <summary>True if this metric is reported as the total cumulative aggregate value accumulated since the
+        /// worker started working on this WorkItem. By default this is false, indicating that this metric is reported
+        /// as a delta that is not associated with any WorkItem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
+        public virtual System.Nullable<bool> Cumulative { get; set; } 
+
+        /// <summary>Floating point value for Sum, Max, Min.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPoint")]
+        public virtual System.Nullable<double> FloatingPoint { get; set; } 
+
+        /// <summary>List of floating point numbers, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointList")]
+        public virtual FloatingPointList FloatingPointList { get; set; } 
+
+        /// <summary>Floating point mean aggregation value for Mean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointMean")]
+        public virtual FloatingPointMean FloatingPointMean { get; set; } 
+
+        /// <summary>Integer value for Sum, Max, Min.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integer")]
+        public virtual SplitInt64 Integer { get; set; } 
+
+        /// <summary>List of integers, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerList")]
+        public virtual IntegerList IntegerList { get; set; } 
+
+        /// <summary>Integer mean aggregation value for Mean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerMean")]
+        public virtual IntegerMean IntegerMean { get; set; } 
+
+        /// <summary>Value for internally-defined metrics use by the Dataflow service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internal")]
+        public virtual object Internal__ { get; set; } 
+
+        /// <summary>Metric name and aggregation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameAndKind")]
+        public virtual NameAndKind NameAndKind { get; set; } 
+
+        /// <summary>The service-generated short identifier for this metric. The short_id -> (name, metadata) mapping is
+        /// constant for the lifetime of a job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortId")]
+        public virtual System.Nullable<long> ShortId { get; set; } 
+
+        /// <summary>List of strings, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringList")]
+        public virtual StringList StringList { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3016,6 +3232,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Time at which the current lease will expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseExpireTime")]
         public virtual string LeaseExpireTime { get; set; } 
+
+        /// <summary>The short ids that workers should use in subsequent metric updates. Workers should strive to use
+        /// short ids whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g.
+        /// if the worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a
+        /// subset of the metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricShortId")]
+        public virtual System.Collections.Generic.IList<MetricShortId> MetricShortId { get; set; } 
 
         /// <summary>The index value to use for the next report sent by the worker. Note: If the report call fails for
         /// whatever reason, the worker should reuse this index for subsequent report attempts.</summary>
@@ -3059,7 +3282,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Status> Errors { get; set; } 
 
-        /// <summary>Worker output metrics (counters) for this WorkItem.</summary>
+        /// <summary>DEPRECATED in favor of worker_metric_update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricUpdates")]
         public virtual System.Collections.Generic.IList<MetricUpdate> MetricUpdates { get; set; } 
 
@@ -3116,6 +3339,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Identifies the WorkItem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workItemId")]
         public virtual string WorkItemId { get; set; } 
+
+        /// <summary>Worker output metrics (counters) for this WorkItem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workItemMetricUpdates")]
+        public virtual System.Collections.Generic.IList<WorkItemMetricUpdate> WorkItemMetricUpdates { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3302,7 +3529,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Collections.Generic.IDictionary<string,object> PoolArgs { get; set; } 
 
         /// <summary>Subnetwork to which VMs will be assigned, if desired. Expected to be of the form
-        /// "zones/ZONE/subnetworks/SUBNETWORK".</summary>
+        /// "regions/REGION/subnetworks/SUBNETWORK".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160426 (481)
+ *      <tr><th>API Rev<td>20160608 (524)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -2667,6 +2667,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Name of the type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>[Output Only] The Operation that most recently ran, or is currently running, on this
+        /// type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; } 
 
         /// <summary>[Output Only] Self link for the type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

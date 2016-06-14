@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160504 (489)
+ *      <tr><th>API Rev<td>20160603 (519)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5379,7 +5379,8 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versioning")]
         public virtual Bucket.VersioningData Versioning { get; set; } 
 
-        /// <summary>The bucket's website configuration.</summary>
+        /// <summary>The bucket's website configuration, controlling how the service behaves when accessing bucket
+        /// contents as a web site. See the Static Website Examples for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("website")]
         public virtual Bucket.WebsiteData Website { get; set; } 
 
@@ -5505,15 +5506,19 @@ namespace Google.Apis.Storage.v1.Data
 
         }    
 
-        /// <summary>The bucket's website configuration.</summary>
+        /// <summary>The bucket's website configuration, controlling how the service behaves when accessing bucket
+        /// contents as a web site. See the Static Website Examples for more information.</summary>
         public class WebsiteData
         {
-            /// <summary>Behaves as the bucket's directory index where missing objects are treated as potential
-            /// directories.</summary>
+            /// <summary>If the requested object path is missing, the service will ensure the path has a trailing '/',
+            /// append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html
+            /// objects to represent directory pages.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("mainPageSuffix")]
             public virtual string MainPageSuffix { get; set; } 
 
-            /// <summary>The custom object to return when a requested resource is not found.</summary>
+            /// <summary>If the requested object path is missing, and any mainPageSuffix object is missing, if
+            /// applicable, the service will return the named object from this bucket as the content for a 404 Not Found
+            /// result.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("notFoundPage")]
             public virtual string NotFoundPage { get; set; } 
 

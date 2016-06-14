@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160524 (509)
+ *      <tr><th>API Rev<td>20160607 (523)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1173,6 +1173,29 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes a GCE resource that is being managed by a running pipeline.</summary>
+    public class GCE : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the disks that were created for this pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
+        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; } 
+
+        /// <summary>The instance on which the operation is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
+
+        /// <summary>The machine type of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        /// <summary>The availability zone in which the instance resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The read group set import response.</summary>
     public class ImportReadGroupSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1326,6 +1349,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// will be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 
+
+        /// <summary>Runtime metadata on this Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> RuntimeMetadata { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1527,6 +1554,18 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The already created pipeline to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineId")]
         public virtual string PipelineId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Runtime metadata that will be populated in the runtimeMetadata field of the Operation associated with a
+    /// RunPipeline execution.</summary>
+    public class RuntimeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Execution information specific to Google Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gce")]
+        public virtual GCE Gce { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

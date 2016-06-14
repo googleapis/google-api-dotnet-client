@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/deployment-manager/docs/'>Google Cloud RuntimeConfig API</a>
+ *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160524 (509)
+ *      <tr><th>API Rev<td>20160608 (524)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/deployment-manager/docs/'>
- *              https://cloud.google.com/deployment-manager/docs/</a>
+ *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
+ *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
  *      <tr><th>Discovery Name<td>runtimeconfig
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google Cloud RuntimeConfig API can be found at
- * <a href='https://cloud.google.com/deployment-manager/docs/'>https://cloud.google.com/deployment-manager/docs/</a>.
+ * <a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>https://cloud.google.com/deployment-manager/runtime-configurator/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

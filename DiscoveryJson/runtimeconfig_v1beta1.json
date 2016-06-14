@@ -764,7 +764,7 @@
       "id": "ListVariablesResponse"
     }
   },
-  "revision": "20160524",
+  "revision": "20160608",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
@@ -863,7 +863,7 @@
       "location": "query"
     }
   },
-  "documentationLink": "https://cloud.google.com/deployment-manager/docs/",
+  "documentationLink": "https://cloud.google.com/deployment-manager/runtime-configurator/",
   "ownerDomain": "google.com",
   "batchPath": "batch",
   "servicePath": "",

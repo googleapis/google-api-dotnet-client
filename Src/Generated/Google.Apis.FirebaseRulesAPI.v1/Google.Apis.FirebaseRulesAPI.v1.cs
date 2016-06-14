@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160519 (504)
+ *      <tr><th>API Rev<td>20160606 (522)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>
  *              https://firebase.google.com/docs/storage/security/start</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160520 (505)
+ *      <tr><th>API Rev<td>20160602 (518)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5416,6 +5416,16 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Decision tree for "complicated" shipping cost calculation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costRuleTree")]
         public virtual AccountShippingShippingServiceCostRule CostRuleTree { get; set; } 
+
+        /// <summary>The maximum number of days in transit. Must be a value between 0 and 250 included. A value of 0
+        /// means same day delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDaysInTransit")]
+        public virtual System.Nullable<ulong> MaxDaysInTransit { get; set; } 
+
+        /// <summary>The minimum number of days in transit. Must be a value between 0 and maxDaysIntransit included. A
+        /// value of 0 means same day delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDaysInTransit")]
+        public virtual System.Nullable<ulong> MinDaysInTransit { get; set; } 
 
         /// <summary>The name of this shipping service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
