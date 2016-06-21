@@ -15,7 +15,7 @@ xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
 
 OUTDIR=bin/ReleaseSigned
 
-mono "${NUNIT}" "--test=Google.Apis.Tests.Apis.Upload.ImprovedResumableUploadTest" \
+mono "${NUNIT}" "--where=test=~ImprovedResumableUploadTest" \
     "GoogleApis.Tests/${OUTDIR}/Google.Apis.Tests.exe" \
     "GoogleApis.Auth.Tests/${OUTDIR}/Google.Apis.Auth.Tests.exe" \
     "GoogleApis.Auth.DotNet4.Tests/${OUTDIR}/Google.Apis.Auth.DotNet4.Tests.exe"
