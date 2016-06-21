@@ -187,7 +187,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 public string Id { get; }
                 public string HttpPrefix => $"{_server.HttpPrefix}{Id}/";
 
-                private void Log(params string[] lines)
+                public void Log(params string[] lines)
                 {
                     var now = DateTime.UtcNow;
                     File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog-{Id}", lines.Select(x => $"{now:HH:mm:ss.ffffff}: {x}"));
@@ -374,6 +374,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 }
                 if (_length == null || Bytes.Count < _length.Value)
                 {
+                    Log($"Content-Range: ${request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
                     response.StatusCode = 308;
                     // If no bytes have been uploaded, no "Range" header is returned.
                     if (Bytes.Count > 0)
@@ -397,7 +398,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         HandleHeaders(request, response);
                         return null;
                     default:
-                        throw new InvalidOperationException();
+                        throw new InvalidOperationExceptio<n();
                 }
             }
         }
