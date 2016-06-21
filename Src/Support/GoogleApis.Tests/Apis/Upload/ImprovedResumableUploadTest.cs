@@ -48,7 +48,7 @@ namespace Google.Apis.Tests.Apis.Upload
         {
             var now = DateTime.UtcNow;
             File.AppendAllText($"/home/travis/build/google/google-api-dotnet-client/serverlog-tests",
-                $"{now:HH:mm:ss.ffffff}: {caller}: {values}\n");
+                $"{now:HH:mm:ss.ffffff}: Handler={handler.Id} {caller}: {values}\n");
         }
 
         /// <summary>
