@@ -176,12 +176,12 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 private TestServer _server;
 
-                public Handler(TestServer server)
+                public Handler(TestServer server, [CallerMemberName] string caller = null)
                 {
                     _server = server;
                     Id = Interlocked.Increment(ref handlerId).ToString("000");
                     _server.RegisterHandler(this);
-                    Log("Started handler");
+                    Log($"Started handler for {caller}");
                 }
 
                 public string Id { get; }
