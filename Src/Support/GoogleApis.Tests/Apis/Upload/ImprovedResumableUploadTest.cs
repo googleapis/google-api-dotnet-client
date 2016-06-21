@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,6 +43,13 @@ namespace Google.Apis.Tests.Apis.Upload
             "anim id est laborum.";
         static readonly byte[] uploadTestBytes = Encoding.UTF8.GetBytes(UploadTestData);
         static readonly int uploadLength = uploadTestBytes.Length;
+
+        public void LogTest(object values, [CallerMemberName] string caller = null)
+        {
+            var now = DateTime.UtcNow;
+            File.AppendAllText($"/home/travis/build/google/google-api-dotnet-client/serverlog-tests",
+                $"{now:HH:mm:ss.ffffff}: {caller}: {values}\n");
+        }
 
         /// <summary>
         /// Stream that doesn't support seeking.
@@ -298,6 +306,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values("", "text/plain")] string contentType,
             [Values(0, 10)] int chunkSizeDelta)
         {
+            LogTest(new { knownSize, contentType, chunkSizeDelta });
             using (var server = new SingleChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
@@ -325,6 +334,7 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadEmptyFile(
             [Values(true, false)] bool knownSize)
         {
+            LogTest(new { knownSize });
             using (var server = new SingleChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
@@ -401,6 +411,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(100, 400, 1000)] int chunkSize)
         {
+            LogTest(new { knownSize, chunkSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
@@ -422,6 +433,7 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadProgress(
             [Values(true, false)] bool knownSize)
         {
+            LogTest(new { knownSize });
             int chunkSize = 200;
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
@@ -488,6 +500,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
         {
+            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length });
             string jsonError =
                 @"{ ""error"": {
                     ""errors"": [
@@ -529,6 +542,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
         {
+            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length });
             string plainTextError = "Not Found";
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, plainTextError))
             using (var service = new MockClientService(server.HttpPrefix))
@@ -556,6 +570,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 100 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
+            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
             expectedCallCount += dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.ServiceUnavailable))
@@ -588,6 +603,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(100, 400, 1000)] int chunkSize,
             [Values(4096, 51, 100)] int bufferSize)
         {
+            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize, bufferSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
                 + dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
@@ -618,6 +634,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
+            LogTest(new { dodgyBytesLength = dodgyBytes.Length, chunkSize });
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
             using (var service = new MockClientService(server.HttpPrefix))
             {
@@ -648,6 +665,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadWithUploaderRestart_UnknownSize()
         {
+            LogTest(null);
             // Unknown stream size not supported, exception always thrown
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
@@ -694,6 +712,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(1, 2, 3, 4, 5)] int cancelOnCall)
         {
+            LogTest(new { knownSize, cancelOnCall });
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
             using (var service = new MockClientService(server.HttpPrefix))
@@ -755,6 +774,7 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(80, 150)] int partialSize,
             [Values(100, 200)] int chunkSize)
         {
+            LogTest(new { knownSize, partialSize, chunkSize });
             var actualChunkSize = Math.Min(partialSize, chunkSize);
             var expectedCallCount = (uploadLength + actualChunkSize - 1) / actualChunkSize + 1;
             using (var server = new MultiChunkPartialServer(_server, partialSize))
@@ -825,6 +845,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadWithQueryAndPathParameters()
         {
+            LogTest(null);
             var id = 123;
             var queryA = "valuea";
             var queryB = "VALUEB";
@@ -928,6 +949,7 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadWithRequestAndResponseBody(
             [Values(false)] bool gzipEnabled) // TODO: Also with zip
         {
+            LogTest(new { gzipEnabled });
             var body = new TestRequest
             {
                 Name = "test object",
@@ -970,6 +992,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestChunkSize()
         {
+            LogTest(null);
             using (var service = new MockClientService(new BaseClientService.Initializer()))
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));

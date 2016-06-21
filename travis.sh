@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # Script run by Travis CI
 
-set -e
-
 # grab nunit runners
 nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
 NUNIT="${PWD}/testrunner/NUnit.ConsoleRunner.3.2.1/tools/nunit3-console.exe"
