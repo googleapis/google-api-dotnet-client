@@ -398,7 +398,7 @@ namespace Google.Apis.Tests.Apis.Upload
                         HandleHeaders(request, response);
                         return null;
                     default:
-                        throw new InvalidOperationExceptio<n();
+                        throw new InvalidOperationException();
                 }
             }
         }
