@@ -461,8 +461,8 @@ namespace Google.Apis.Tests.Apis.Upload
         private class MultiChunkBadServer : MultiChunkServer
         {
             public MultiChunkBadServer(TestServer server,
-                int[] failAtBytes, HttpStatusCode errorCode, string errorMsg = null)
-                : base(server)
+                int[] failAtBytes, HttpStatusCode errorCode, string errorMsg = null, [CallerMemberName] string caller = null)
+                : base(server, caller)
             {
                 _failAtBytes = new List<int>(failAtBytes);
                 _errorCode = errorCode;
@@ -682,8 +682,8 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkCancellableServer : MultiChunkServer
         {
-            public MultiChunkCancellableServer(TestServer server, int cancelOnCall)
-                : base(server)
+            public MultiChunkCancellableServer(TestServer server, int cancelOnCall, [CallerMemberName] string caller = null)
+                : base(server, caller)
             {
                 _cancelOnCall = cancelOnCall;
                 _cancellationSource = new CancellationTokenSource();
@@ -739,8 +739,8 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkPartialServer : MultiChunkServer
         {
-            public MultiChunkPartialServer(TestServer server, int partialSize)
-                : base(server)
+            public MultiChunkPartialServer(TestServer server, int partialSize, [CallerMemberName] string caller = null)
+                : base(server, caller)
             {
                 _partialSize = partialSize;
             }
@@ -794,8 +794,8 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkQueriedServer : MultiChunkServer
         {
-            public MultiChunkQueriedServer(TestServer server, string initialPathAndQuery)
-                : base(server)
+            public MultiChunkQueriedServer(TestServer server, string initialPathAndQuery, [CallerMemberName] string caller = null)
+                : base(server, caller)
             {
                 _initialPathAndQuery = initialPathAndQuery;
             }
@@ -906,8 +906,8 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkRequestResponseServer<TRequest, TResponse> : MultiChunkServer
         {
-            public MultiChunkRequestResponseServer(TestServer server, TResponse expectedResponse)
-                : base(server)
+            public MultiChunkRequestResponseServer(TestServer server, TResponse expectedResponse, [CallerMemberName] string caller = null)
+                : base(server, caller)
             {
                 _expectedResponse = expectedResponse;
             }
