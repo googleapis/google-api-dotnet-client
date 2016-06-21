@@ -44,7 +44,7 @@ namespace Google.Apis.Tests.Apis.Upload
         static readonly byte[] uploadTestBytes = Encoding.UTF8.GetBytes(UploadTestData);
         static readonly int uploadLength = uploadTestBytes.Length;
 
-        public void LogTest(object values, [CallerMemberName] string caller = null)
+        private void LogTest(TestServer.Handler handler, object values, [CallerMemberName] string caller = null)
         {
             var now = DateTime.UtcNow;
             File.AppendAllText($"/home/travis/build/google/google-api-dotnet-client/serverlog-tests",
@@ -306,10 +306,10 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values("", "text/plain")] string contentType,
             [Values(0, 10)] int chunkSizeDelta)
         {
-            LogTest(new { knownSize, contentType, chunkSizeDelta });
             using (var server = new SingleChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, contentType, chunkSizeDelta });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(
                     service, "SingleChunk", "POST", content, contentType, uploadLength + chunkSizeDelta);
@@ -334,10 +334,10 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadEmptyFile(
             [Values(true, false)] bool knownSize)
         {
-            LogTest(new { knownSize });
             using (var server = new SingleChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize });
                 var content = knownSize ? new MemoryStream(new byte[0]) : new UnknownSizeMemoryStream(new byte[0]);
                 var uploader = new MockResumableUpload(service, "SingleChunk", "POST", content, "text/plain", 100);
                 var progress = uploader.Upload();
@@ -411,11 +411,11 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(100, 400, 1000)] int chunkSize)
         {
-            LogTest(new { knownSize, chunkSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, chunkSize });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 var progress = uploader.Upload();
@@ -433,11 +433,11 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadProgress(
             [Values(true, false)] bool knownSize)
         {
-            LogTest(new { knownSize });
             int chunkSize = 200;
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 var progress = new List<IUploadProgress>();
@@ -500,7 +500,6 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
         {
-            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length });
             string jsonError =
                 @"{ ""error"": {
                     ""errors"": [
@@ -518,6 +517,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, jsonError))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, dodgyBytesLength = dodgyBytes.Length });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100);
                 IUploadProgress lastProgress = null;
@@ -542,11 +542,11 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
         {
-            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length });
             string plainTextError = "Not Found";
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, plainTextError))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, dodgyBytesLength = dodgyBytes.Length });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", 100);
                 IUploadProgress lastProgress = null;
@@ -570,12 +570,12 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 100 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
-            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
             expectedCallCount += dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.ServiceUnavailable))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 var progress = uploader.Upload();
@@ -603,12 +603,12 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(100, 400, 1000)] int chunkSize,
             [Values(4096, 51, 100)] int bufferSize)
         {
-            LogTest(new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize, bufferSize });
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize
                 + dodgyBytes.Length * 2;
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, dodgyBytesLength = dodgyBytes.Length, chunkSize, bufferSize });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 uploader.BufferSize = bufferSize;
@@ -634,10 +634,10 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
-            LogTest(new { dodgyBytesLength = dodgyBytes.Length, chunkSize });
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { dodgyBytesLength = dodgyBytes.Length, chunkSize });
                 var content = new MemoryStream(uploadTestBytes);
                 Uri uploadUri = null;
                 IUploadProgress progress;
@@ -665,11 +665,11 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadWithUploaderRestart_UnknownSize()
         {
-            LogTest(null);
             // Unknown stream size not supported, exception always thrown
             using (var server = new MultiChunkServer(_server))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, null);
                 var content = new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "whatever", "PUT", content, "", 100);
                 var url = new Uri("http://what.ever/");
@@ -712,11 +712,11 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(true, false)] bool knownSize,
             [Values(1, 2, 3, 4, 5)] int cancelOnCall)
         {
-            LogTest(new { knownSize, cancelOnCall });
             int chunkSize = 100;
             using (var server = new MultiChunkCancellableServer(_server, cancelOnCall))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, cancelOnCall });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 if (cancelOnCall == 1)
@@ -774,12 +774,12 @@ namespace Google.Apis.Tests.Apis.Upload
             [Values(80, 150)] int partialSize,
             [Values(100, 200)] int chunkSize)
         {
-            LogTest(new { knownSize, partialSize, chunkSize });
             var actualChunkSize = Math.Min(partialSize, chunkSize);
             var expectedCallCount = (uploadLength + actualChunkSize - 1) / actualChunkSize + 1;
             using (var server = new MultiChunkPartialServer(_server, partialSize))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, new { knownSize, partialSize, chunkSize });
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 var progress = uploader.Upload();
@@ -845,7 +845,6 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadWithQueryAndPathParameters()
         {
-            LogTest(null);
             var id = 123;
             var queryA = "valuea";
             var queryB = "VALUEB";
@@ -853,6 +852,7 @@ namespace Google.Apis.Tests.Apis.Upload
             using (var server = new MultiChunkQueriedServer(_server, pathAndQuery))
             using (var service = new MockClientService(server.HttpPrefix))
             {
+                LogTest(server, null);
                 var content = new MemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUploadWithParameters(service, "testPath/{id}", "POST", content, "text/plain", 100)
                 {
@@ -949,7 +949,6 @@ namespace Google.Apis.Tests.Apis.Upload
         public void TestUploadWithRequestAndResponseBody(
             [Values(false)] bool gzipEnabled) // TODO: Also with zip
         {
-            LogTest(new { gzipEnabled });
             var body = new TestRequest
             {
                 Name = "test object",
@@ -967,6 +966,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 GZipEnabled = gzipEnabled
             }, server.HttpPrefix))
             {
+                LogTest(server, new { gzipEnabled });
                 var content = new MemoryStream(uploadTestBytes);
                 var uploader = new MockResumableUploadWithResponse<TestRequest, TestResponse>(
                     service, "MultiChunk", "POST", content, "text/plain", 100)
@@ -992,7 +992,6 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestChunkSize()
         {
-            LogTest(null);
             using (var service = new MockClientService(new BaseClientService.Initializer()))
             {
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(UploadTestData));
