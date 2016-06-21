@@ -173,10 +173,17 @@ namespace Google.Apis.Tests.Apis.Upload
                     _server = server;
                     Id = Interlocked.Increment(ref handlerId).ToString();
                     _server.RegisterHandler(this);
+                    Log("Started handler");
                 }
 
                 public string Id { get; }
                 public string HttpPrefix => $"{_server.HttpPrefix}{Id}/";
+
+                private void Log(params string[] lines)
+                {
+                    var now = DateTime.UtcNow;
+                    File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog-{Id}", lines.Select(x => $"{now:HH:mm:ss.ffffff}: {x}"));
+                }
 
                 public string RemovePrefix(string s)
                 {
@@ -194,7 +201,9 @@ namespace Google.Apis.Tests.Apis.Upload
                     HttpListenerRequest request, HttpListenerResponse response)
                 {
                     Requests.Add(new RequestInfo(request));
-                    return HandleCall(request, response);
+                    var ret = HandleCall(request, response);
+                    Log($"Request to {request.Url}; response code {response.StatusCode}");
+                    return ret;
                 }
 
                 protected abstract Task<IEnumerable<byte>> HandleCall(
