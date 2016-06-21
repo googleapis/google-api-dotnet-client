@@ -47,8 +47,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.PlatformSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.PlatformServices.Tests_Net45", "GoogleApis.Auth.DotNet4.Tests\GoogleApis.Auth.PlatformServices.Tests_Net45.csproj", "{5A731729-8E99-4930-AE77-FA3524673DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.PageStreaming.Tests", "GoogleApis.PageStreaming.Tests\GoogleApis.PageStreaming.Tests.csproj", "{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GoogleApis.Core\GoogleApis.Core_Shared.projitems*{db18f3a6-b16a-477b-a7b1-c2b116d1bfb0}*SharedItemsImports = 4
@@ -882,54 +880,6 @@ Global
 		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseTravis|x64.Build.0 = ReleaseSigned|Any CPU
 		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseTravis|x86.ActiveCfg = ReleaseSigned|Any CPU
 		{5A731729-8E99-4930-AE77-FA3524673DA3}.ReleaseTravis|x86.Build.0 = ReleaseSigned|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|ARM.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|Win32.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|x64.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Debug|x86.Build.0 = Debug|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|ARM.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|ARM.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Win32.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|Win32.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|x64.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|x64.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|x86.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.Release|x86.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Any CPU.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Any CPU.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|ARM.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|ARM.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Mixed Platforms.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Win32.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|Win32.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|x64.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|x64.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|x86.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseSigned|x86.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Any CPU.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Any CPU.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|ARM.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|ARM.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Mixed Platforms.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Win32.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|Win32.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|x64.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|x64.Build.0 = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|x86.ActiveCfg = Release|Any CPU
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8}.ReleaseTravis|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -938,7 +888,6 @@ Global
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC} = {53189F27-5960-4300-955F-FDF1780F02A8}
 		{548D6C9B-A97B-4316-91AC-9AAD35202884} = {53189F27-5960-4300-955F-FDF1780F02A8}
 		{5A731729-8E99-4930-AE77-FA3524673DA3} = {53189F27-5960-4300-955F-FDF1780F02A8}
-		{0167C1EE-2A4B-47A2-AB2B-0C43D4B359A8} = {53189F27-5960-4300-955F-FDF1780F02A8}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = GoogleApis\GoogleApis.csproj
