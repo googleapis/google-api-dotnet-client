@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160525 (510)
+ *      <tr><th>API Rev<td>20160617 (533)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -20082,6 +20082,92 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified
+        /// UrlMap.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="urlMap">Name of the UrlMap scoping
+        /// this request.</param>
+        public virtual InvalidateCacheRequest InvalidateCache(Google.Apis.Compute.v1.Data.CacheInvalidationRule body, string project, string urlMap)
+        {
+            return new InvalidateCacheRequest(service, body, project, urlMap);
+        }
+
+        /// <summary>Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified
+        /// UrlMap.</summary>
+        public class InvalidateCacheRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new InvalidateCache request.</summary>
+            public InvalidateCacheRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.CacheInvalidationRule body, string project, string urlMap)
+                : base(service)
+            {
+                Project = project;
+                UrlMap = urlMap;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the UrlMap scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UrlMap { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.CacheInvalidationRule Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "invalidateCache"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/urlMaps/{urlMap}/invalidateCache"; }
+            }
+
+            /// <summary>Initializes InvalidateCache parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "urlMap", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "urlMap",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves the list of UrlMap resources available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
@@ -22269,6 +22355,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>If true, enable Cloud CDN for this BackendService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
+        public virtual System.Nullable<bool> EnableCDN { get; set; } 
+
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint
         /// must be provided in order to update the BackendService.</summary>
@@ -22349,8 +22439,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Contains a list of BackendService resources.</summary>
     public class BackendServiceList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -22363,10 +22452,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
+        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -22378,16 +22464,25 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a customer-supplied encryption key</summary>
     public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies a 256-bit customer-supplied encryption key, encoded in base64 to either encrypt or
-        /// decrypt this resource.</summary>
+        /// <summary>Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt
+        /// or decrypt this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawKey")]
         public virtual string RawKey { get; set; } 
 
-        /// <summary>[Output only] The base64 encoded SHA-256 hash of the customer-supplied encryption key that protects
-        /// this resource.</summary>
+        /// <summary>[Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that
+        /// protects this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; } 
 
@@ -23520,7 +23615,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Any applicable publicly visible licenses.</summary>
+        /// <summary>Any applicable license URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
@@ -23892,6 +23987,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An Instance Template Manager resource.</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The base instance name to use for instances in this group. The value must be 1-58 characters long.

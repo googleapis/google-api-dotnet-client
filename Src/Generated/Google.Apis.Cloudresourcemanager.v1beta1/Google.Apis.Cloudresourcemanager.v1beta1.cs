@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160518 (503)
+ *      <tr><th>API Rev<td>20160617 (533)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -329,28 +329,35 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
 
-        /// <summary>Fetches an Organization resource identified by the specified `organization_id`.</summary>
-        /// <param name="organizationId">The id of the Organization resource to fetch.</param>
-        public virtual GetRequest Get(string organizationId)
+        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
+        /// <param name="name">The resource name of the Organization to fetch. Its format is "organizations/[organization_id]".
+        /// For example, "organizations/1234".</param>
+        public virtual GetRequest Get(string name)
         {
-            return new GetRequest(service, organizationId);
+            return new GetRequest(service, name);
         }
 
-        /// <summary>Fetches an Organization resource identified by the specified `organization_id`.</summary>
+        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Organization>
         {
             /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string organizationId)
+            public GetRequest(Google.Apis.Services.IClientService service, string name)
                 : base(service)
             {
-                OrganizationId = organizationId;
+                Name = name;
                 InitParameters();
             }
 
 
-            /// <summary>The id of the Organization resource to fetch.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("organizationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string OrganizationId { get; private set; }
+            /// <summary>The resource name of the Organization to fetch. Its format is
+            /// "organizations/[organization_id]". For example, "organizations/1234".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The id of the Organization resource to fetch. This field is deprecated and will be removed in
+            /// v1. Use name instead.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organizationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrganizationId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -368,7 +375,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1beta1/organizations/{organizationId}"; }
+                get { return "v1beta1/{+name}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -377,11 +384,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]*$",
+                    });
+                RequestParameters.Add(
                     "organizationId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "organizationId",
-                        IsRequired = true,
-                        ParameterType = "path",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -390,7 +406,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists.</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        /// For backward compatibility, the resource provided may also be the organization_id. This will not be
+        /// supported in v1.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
         /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
@@ -401,7 +419,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists.</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        /// For backward compatibility, the resource provided may also be the organization_id. This will not be
+        /// supported in v1.</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -442,7 +462,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1beta1/organizations/{resource}:getIamPolicy"; }
+                get { return "v1beta1/{+resource}:getIamPolicy"; }
             }
 
             /// <summary>Initializes GetIamPolicy parameter list.</summary>
@@ -457,7 +477,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^organizations/[^/]*$",
                     });
             }
 
@@ -558,7 +578,10 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         }
 
-        /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123". For backward
+        /// compatibility, the resource provided may also be the organization_id. This will not be supported in
+        /// v1.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
         /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
@@ -568,7 +591,10 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy.</summary>
+        /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123". For backward
+        /// compatibility, the resource provided may also be the organization_id. This will not be supported in
+        /// v1.</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -609,7 +635,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1beta1/organizations/{resource}:setIamPolicy"; }
+                get { return "v1beta1/{+resource}:setIamPolicy"; }
             }
 
             /// <summary>Initializes SetIamPolicy parameter list.</summary>
@@ -624,13 +650,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^organizations/[^/]*$",
                     });
             }
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Organization.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
+        /// the organization's resource name, e.g. "organizations/123". For backward compatibility, the resource
+        /// provided may also be the organization_id. This will not be supported in v1.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
         /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
@@ -640,7 +668,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Organization.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
+        /// the organization's resource name, e.g. "organizations/123". For backward compatibility, the resource
+        /// provided may also be the organization_id. This will not be supported in v1.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -681,7 +711,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1beta1/organizations/{resource}:testIamPermissions"; }
+                get { return "v1beta1/{+resource}:testIamPermissions"; }
             }
 
             /// <summary>Initializes TestIamPermissions parameter list.</summary>
@@ -696,38 +726,38 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^organizations/[^/]*$",
                     });
             }
 
         }
 
-        /// <summary>Updates an Organization resource identified by the specified `organization_id`.</summary>
+        /// <summary>Updates an Organization resource identified by the specified resource name.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="organizationId">An immutable id for the Organization that is assigned on creation. This should be
-        /// omitted when creating a new Organization. This field is read-only.</param>
-        public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string organizationId)
+        /// <param name="name">Output Only. The resource name of the organization. This is the organization's relative path in
+        /// the API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</param>
+        public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string name)
         {
-            return new UpdateRequest(service, body, organizationId);
+            return new UpdateRequest(service, body, name);
         }
 
-        /// <summary>Updates an Organization resource identified by the specified `organization_id`.</summary>
+        /// <summary>Updates an Organization resource identified by the specified resource name.</summary>
         public class UpdateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Organization>
         {
             /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string organizationId)
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1beta1.Data.Organization body, string name)
                 : base(service)
             {
-                OrganizationId = organizationId;
+                Name = name;
                 Body = body;
                 InitParameters();
             }
 
 
-            /// <summary>An immutable id for the Organization that is assigned on creation. This should be omitted when
-            /// creating a new Organization. This field is read-only.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("organizationId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string OrganizationId { get; private set; }
+            /// <summary>Output Only. The resource name of the organization. This is the organization's relative path in
+            /// the API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -751,7 +781,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1beta1/organizations/{organizationId}"; }
+                get { return "v1beta1/{+name}"; }
             }
 
             /// <summary>Initializes Update parameter list.</summary>
@@ -760,13 +790,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "organizationId", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "organizationId",
+                        Name = "name",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^organizations/[^/]*$",
                     });
             }
 
@@ -850,11 +880,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// deletion. This method will only affect the Project if the following criteria are met: + The Project does not
         /// have a billing account associated with it. + The Project has a lifecycle state of ACTIVE. This method
         /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
-        /// time, at which point the lifecycle state changes to DELETE_IN_PROGRESS. Until the deletion completes, you
-        /// can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains
-        /// visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project
-        /// is not retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for
-        /// this Project.</summary>
+        /// time, at which point the project is no longer accessible. Until the deletion completes, you can check the
+        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
+        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
+        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// Project.</summary>
         /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
         public virtual DeleteRequest Delete(string projectId)
         {
@@ -865,11 +895,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// deletion. This method will only affect the Project if the following criteria are met: + The Project does not
         /// have a billing account associated with it. + The Project has a lifecycle state of ACTIVE. This method
         /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
-        /// time, at which point the lifecycle state changes to DELETE_IN_PROGRESS. Until the deletion completes, you
-        /// can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains
-        /// visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project
-        /// is not retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for
-        /// this Project.</summary>
+        /// time, at which point the project is no longer accessible. Until the deletion completes, you can check the
+        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
+        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
+        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
+        /// Project.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1226,14 +1256,22 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy. The
-        /// following constraints apply when using `setIamPolicy()`: + Project currently supports only `user:{emailid}`
-        /// and `serviceAccount:{emailid}` members in a `Binding` of a `Policy`. + To be added as an `owner`, a user
-        /// must be invited via Cloud Platform console and must accept the invitation. + Members cannot be added to more
-        /// than one role in the same policy. + There must be at least one owner who has accepted the Terms of Service
-        /// (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the
-        /// policy will fail. + Calling this method requires enabling the App Engine Admin API. Note: Removing service
-        /// accounts from policies or changing their roles can render services completely inoperable. It is important to
-        /// understand how the service account is being used before removing or updating its roles.</summary>
+        /// following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and
+        /// `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted only to
+        /// `user` and `serviceAccount`. + Service accounts can be made owners of a project directly without any
+        /// restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must
+        /// accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be
+        /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
+        /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
+        /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
+        /// the Terms of Service (ToS) will be rejected. + Members cannot be added to more than one role in the same
+        /// policy. + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the
+        /// policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
+        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
+        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. + Calling this method
+        /// requires enabling the App Engine Admin API. Note: Removing service accounts from policies or changing their
+        /// roles can render services completely inoperable. It is important to understand how the service account is
+        /// being used before removing or updating its roles.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
         /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
@@ -1244,14 +1282,22 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy. The
-        /// following constraints apply when using `setIamPolicy()`: + Project currently supports only `user:{emailid}`
-        /// and `serviceAccount:{emailid}` members in a `Binding` of a `Policy`. + To be added as an `owner`, a user
-        /// must be invited via Cloud Platform console and must accept the invitation. + Members cannot be added to more
-        /// than one role in the same policy. + There must be at least one owner who has accepted the Terms of Service
-        /// (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the
-        /// policy will fail. + Calling this method requires enabling the App Engine Admin API. Note: Removing service
-        /// accounts from policies or changing their roles can render services completely inoperable. It is important to
-        /// understand how the service account is being used before removing or updating its roles.</summary>
+        /// following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and
+        /// `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted only to
+        /// `user` and `serviceAccount`. + Service accounts can be made owners of a project directly without any
+        /// restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must
+        /// accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be
+        /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
+        /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
+        /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
+        /// the Terms of Service (ToS) will be rejected. + Members cannot be added to more than one role in the same
+        /// policy. + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the
+        /// policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
+        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
+        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. + Calling this method
+        /// requires enabling the App Engine Admin API. Note: Removing service accounts from policies or changing their
+        /// roles can render services completely inoperable. It is important to understand how the service account is
+        /// being used before removing or updating its roles.</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1387,8 +1433,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, as indicated by a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored. The caller
-        /// must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
@@ -1398,8 +1443,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, as indicated by a lifecycle state of DELETE_IN_PROGRESS, the Project cannot be restored. The caller
-        /// must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -1657,8 +1701,18 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
+        /// <summary>The organization's current lifecycle state. Assigned by the server. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
+        public virtual string LifecycleState { get; set; } 
+
+        /// <summary>Output Only. The resource name of the organization. This is the organization's relative path in the
+        /// API. Its format is "organizations/[organization_id]". For example, "organizations/1234".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
         /// <summary>An immutable id for the Organization that is assigned on creation. This should be omitted when
-        /// creating a new Organization. This field is read-only.</summary>
+        /// creating a new Organization. This field is read-only. This field is deprecated and will be removed in v1.
+        /// Use name instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
         public virtual string OrganizationId { get; set; } 
 
@@ -1734,9 +1788,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
-        /// <summary>The user-assigned name of the Project. It must be 4 to 30 characters. Allowed characters are:
-        /// lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
-        /// Example: My Project Read-write.</summary>
+        /// <summary>The user-assigned display name of the Project. It must be 4 to 30 characters. Allowed characters
+        /// are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        /// point. Example: My Project Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1769,8 +1823,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Required field representing the resource type this id is for. At present, the only valid type is
-        /// "organization".</summary>
+        /// <summary>Required field representing the resource type this id is for. At present, the valid types are
+        /// "project" and "organization".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

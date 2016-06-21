@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20160531 (516)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7898,9 +7898,19 @@ namespace Google.Apis.Books.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("moreFromAuthors")]
             public virtual NotificationData.MoreFromAuthorsData MoreFromAuthors { get; set; } 
 
+            [Newtonsoft.Json.JsonPropertyAttribute("moreFromSeries")]
+            public virtual NotificationData.MoreFromSeriesData MoreFromSeries { get; set; } 
+
             
 
             public class MoreFromAuthorsData
+            {
+                [Newtonsoft.Json.JsonPropertyAttribute("opted_state")]
+                public virtual string OptedState { get; set; } 
+
+            }    
+
+            public class MoreFromSeriesData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("opted_state")]
                 public virtual string OptedState { get; set; } 
@@ -8178,6 +8188,10 @@ namespace Google.Apis.Books.v1.Data
                 /// <summary>The finsky offer type (e.g., PURCHASE=0 RENTAL=3)</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("finskyOfferType")]
                 public virtual System.Nullable<int> FinskyOfferType { get; set; } 
+
+                /// <summary>Indicates whether the offer is giftable.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("giftable")]
+                public virtual System.Nullable<bool> Giftable { get; set; } 
 
                 /// <summary>Offer list (=undiscounted) price in Micros.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("listPrice")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/instance-groups/manager/v1beta2'>Google Compute Engine Instance Group Manager API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160509 (494)
+ *      <tr><th>API Rev<td>20160512 (497)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/instance-groups/manager/v1beta2'>
  *              https://developers.google.com/compute/docs/instance-groups/manager/v1beta2</a>

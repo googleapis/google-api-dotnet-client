@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151021 (293)
+ *      <tr><th>API Rev<td>20160609 (525)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -782,7 +782,8 @@ namespace Google.Apis.Fitness.v1
 
             }
 
-            /// <summary>Delete the data source if there are no datapoints associated with it</summary>
+            /// <summary>Deletes the specified data source. The request will fail if the data source contains any data
+            /// points.</summary>
             /// <param name="userId">Retrieve a data source for the person identified. Use me to indicate the authenticated user.
             /// Only me is supported at this time.</param>
             /// <param name="dataSourceId">The data stream ID of the data source
@@ -792,7 +793,8 @@ namespace Google.Apis.Fitness.v1
                 return new DeleteRequest(service, userId, dataSourceId);
             }
 
-            /// <summary>Delete the data source if there are no datapoints associated with it</summary>
+            /// <summary>Deletes the specified data source. The request will fail if the data source contains any data
+            /// points.</summary>
             public class DeleteRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -860,7 +862,7 @@ namespace Google.Apis.Fitness.v1
 
             }
 
-            /// <summary>Returns a data source identified by a data stream ID.</summary>
+            /// <summary>Returns the specified data source.</summary>
             /// <param name="userId">Retrieve a data source for the person identified. Use me to indicate the authenticated user.
             /// Only me is supported at this time.</param>
             /// <param name="dataSourceId">The data stream ID of the data source
@@ -870,7 +872,7 @@ namespace Google.Apis.Fitness.v1
                 return new GetRequest(service, userId, dataSourceId);
             }
 
-            /// <summary>Returns a data source identified by a data stream ID.</summary>
+            /// <summary>Returns the specified data source.</summary>
             public class GetRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -939,8 +941,8 @@ namespace Google.Apis.Fitness.v1
             }
 
             /// <summary>Lists all data sources that are visible to the developer, using the OAuth scopes provided. The
-            /// list is not exhaustive: the user may have private data sources that are only visible to other developers
-            /// or calls using other scopes.</summary>
+            /// list is not exhaustive; the user may have private data sources that are only visible to other
+            /// developers, or calls using other scopes.</summary>
             /// <param name="userId">List data sources for the person identified. Use me to indicate the authenticated user. Only me
             /// is supported at this time.</param>
             public virtual ListRequest List(string userId)
@@ -949,8 +951,8 @@ namespace Google.Apis.Fitness.v1
             }
 
             /// <summary>Lists all data sources that are visible to the developer, using the OAuth scopes provided. The
-            /// list is not exhaustive: the user may have private data sources that are only visible to other developers
-            /// or calls using other scopes.</summary>
+            /// list is not exhaustive; the user may have private data sources that are only visible to other
+            /// developers, or calls using other scopes.</summary>
             public class ListRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.ListDataSourcesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1018,11 +1020,10 @@ namespace Google.Apis.Fitness.v1
 
             }
 
-            /// <summary>Updates a given data source. It is an error to modify the data source's data stream ID, data
-            /// type, type, stream name or device information apart from the device version. Changing these fields would
-            /// require a new unique data stream ID and separate data source.
+            /// <summary>Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device
+            /// properties with the exception of version, cannot be modified.
             ///
-            /// Data sources are identified by their data stream ID. This method supports patch semantics.</summary>
+            /// Data sources are identified by their dataStreamId. This method supports patch semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">Update the data source for the person identified. Use me to indicate the authenticated user.
             /// Only me is supported at this time.</param>
@@ -1033,11 +1034,10 @@ namespace Google.Apis.Fitness.v1
                 return new PatchRequest(service, body, userId, dataSourceId);
             }
 
-            /// <summary>Updates a given data source. It is an error to modify the data source's data stream ID, data
-            /// type, type, stream name or device information apart from the device version. Changing these fields would
-            /// require a new unique data stream ID and separate data source.
+            /// <summary>Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device
+            /// properties with the exception of version, cannot be modified.
             ///
-            /// Data sources are identified by their data stream ID. This method supports patch semantics.</summary>
+            /// Data sources are identified by their dataStreamId. This method supports patch semantics.</summary>
             public class PatchRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1112,11 +1112,10 @@ namespace Google.Apis.Fitness.v1
 
             }
 
-            /// <summary>Updates a given data source. It is an error to modify the data source's data stream ID, data
-            /// type, type, stream name or device information apart from the device version. Changing these fields would
-            /// require a new unique data stream ID and separate data source.
+            /// <summary>Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device
+            /// properties with the exception of version, cannot be modified.
             ///
-            /// Data sources are identified by their data stream ID.</summary>
+            /// Data sources are identified by their dataStreamId.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">Update the data source for the person identified. Use me to indicate the authenticated user.
             /// Only me is supported at this time.</param>
@@ -1127,11 +1126,10 @@ namespace Google.Apis.Fitness.v1
                 return new UpdateRequest(service, body, userId, dataSourceId);
             }
 
-            /// <summary>Updates a given data source. It is an error to modify the data source's data stream ID, data
-            /// type, type, stream name or device information apart from the device version. Changing these fields would
-            /// require a new unique data stream ID and separate data source.
+            /// <summary>Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device
+            /// properties with the exception of version, cannot be modified.
             ///
-            /// Data sources are identified by their data stream ID.</summary>
+            /// Data sources are identified by their dataStreamId.</summary>
             public class UpdateRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.DataSource>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1746,7 +1744,6 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>See: google3/java/com/google/android/apps/heart/platform/api/Application.java</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An optional URI that can be used to link back to the application.</summary>
@@ -1807,6 +1804,25 @@ namespace Google.Apis.Fitness.v1.Data
         /// that contain no data will be included in the response with an empty dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationMillis")]
         public virtual System.Nullable<long> DurationMillis { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("period")]
+        public virtual BucketByTimePeriod Period { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BucketByTimePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>org.joda.timezone.DateTimeZone</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneId")]
+        public virtual string TimeZoneId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<int> Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1886,6 +1902,9 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("application")]
         public virtual Application Application { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("dataQualityStandard")]
+        public virtual System.Collections.Generic.IList<string> DataQualityStandard { get; set; } 
+
         /// <summary>A unique identifier for the data stream produced by this data source. The identifier includes:
         ///
         /// - The physical device's manufacturer, model, and serial number (UID). - The application's package name or
@@ -1941,7 +1960,6 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>See: google3/java/com/google/android/apps/heart/platform/api/DataType.java</summary>
     public class DataType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A field represents one dimension of a data type.</summary>

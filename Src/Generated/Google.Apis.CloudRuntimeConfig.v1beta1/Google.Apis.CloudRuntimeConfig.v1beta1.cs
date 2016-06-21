@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160608 (524)
+ *      <tr><th>API Rev<td>20160613 (529)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -1732,6 +1732,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`ListConfigs()` returns the following response. The order of returned objects is arbitrary; that is, it
+    /// is not ordered in any particular way.</summary>
     public class ListConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of the configurations in the project. The order of returned objects is arbitrary; that is,
@@ -1750,6 +1752,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response for the `ListVariables()` method.</summary>
     public class ListVariablesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This token allows you to get the next page of results for list requests. If the number of results

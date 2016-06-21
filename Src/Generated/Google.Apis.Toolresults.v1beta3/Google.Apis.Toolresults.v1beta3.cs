@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160611 (527)
+ *      <tr><th>API Rev<td>20160620 (536)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2243,6 +2243,10 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); }
     ///
+    /// Example 3: Pack and unpack a message in Python.
+    ///
+    /// foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ...
+    ///
     /// The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the
     /// type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for
     /// example "foo.bar.com/x/y.z" will yield type name "y.z".
@@ -2508,13 +2512,6 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructureFailure")]
         public virtual System.Nullable<bool> InfrastructureFailure { get; set; } 
-
-        /// <summary>A native process crashed on the device, producing a tombstone. It is unclear whether the crash was
-        /// related to the app under test.
-        ///
-        /// For example, OpenGL crashed, but it is unclear if the app is responsible.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nativeCrash")]
-        public virtual System.Nullable<bool> NativeCrash { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

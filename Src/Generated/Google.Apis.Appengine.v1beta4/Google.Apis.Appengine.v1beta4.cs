@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160407 (462)
+ *      <tr><th>API Rev<td>20160614 (530)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -930,7 +930,20 @@ namespace Google.Apis.Appengine.v1beta4
 
                 }
 
-                /// <summary>Updates an existing version. Note: UNIMPLEMENTED.</summary>
+                /// <summary>Updates the specified Version resource. You can specify the following fields depending on
+                /// the App Engine environment and type of scaling that the version resource uses: *
+                /// [`serving_status`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.serving_status): For Version
+                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. *
+                /// [`instance_class`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.instance_class): For Version
+                /// resources that run in the App Engine standard environment. *
+                /// [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
+                /// resources that use automatic scaling and run in the App Engine standard environment. *
+                /// [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
+                /// resources that use automatic scaling and run in the App Engine standard environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="appsId">Part of `name`. Name of the resource to update. For example:
                 /// "apps/myapp/modules/default/versions/1".</param>
@@ -942,7 +955,20 @@ namespace Google.Apis.Appengine.v1beta4
                     return new PatchRequest(service, body, appsId, modulesId, versionsId);
                 }
 
-                /// <summary>Updates an existing version. Note: UNIMPLEMENTED.</summary>
+                /// <summary>Updates the specified Version resource. You can specify the following fields depending on
+                /// the App Engine environment and type of scaling that the version resource uses: *
+                /// [`serving_status`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.serving_status): For Version
+                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. *
+                /// [`instance_class`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.instance_class): For Version
+                /// resources that run in the App Engine standard environment. *
+                /// [`automatic_scaling.min_idle_instances`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
+                /// resources that use automatic scaling and run in the App Engine standard environment. *
+                /// [`automatic_scaling.max_idle_instances`](/appengine/docs/admin-
+                /// api/reference/rest/v1beta4/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
+                /// resources that use automatic scaling and run in the App Engine standard environment.</summary>
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2050,15 +2076,17 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
         public virtual string StartTimestamp { get; set; } 
 
-        /// <summary>For VMEngines instances, the GCE VM ID of the instance. @OutputOnly</summary>
+        /// <summary>For VMEngines instances, the Compute Engine VM ID of the instance. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
         public virtual string VmId { get; set; } 
 
-        /// <summary>For VMEngines instances, the name of GCE VM where the instance lives. @OutputOnly</summary>
+        /// <summary>For VMEngines instances, the name of the Compute Engine VM where the instance lives.
+        /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
         public virtual string VmName { get; set; } 
 
-        /// <summary>For VMEngines instances, the status of GCE VM where the instance lives. @OutputOnly</summary>
+        /// <summary>For VMEngines instances, the status of the Compute Engine VM where the instance lives.
+        /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmStatus")]
         public virtual string VmStatus { get; set; } 
 
@@ -2066,7 +2094,7 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmUnlocked")]
         public virtual System.Nullable<bool> VmUnlocked { get; set; } 
 
-        /// <summary>For VMEngines instances, the zone where the GCE VM is located. @OutputOnly</summary>
+        /// <summary>For VMEngines instances, the zone where the Compute Engine VM is located. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmZoneName")]
         public virtual string VmZoneName { get; set; } 
 
@@ -2145,6 +2173,13 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.cloud.location.Location.</summary>
+    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2289,6 +2324,36 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string OperationType { get; set; } 
 
         /// <summary>Resource that this operation is acting on. Example: "apps/myapp/modules/default".
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>The user who requested this operation. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
+    public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp that this operation was completed. (Not present if the operation is still in progress.)
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>Timestamp that this operation was received. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
+        public virtual string InsertTime { get; set; } 
+
+        /// <summary>API method name that initiated the operation. Example: "google.appengine.v1.Version.CreateVersion".
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>Resource that this operation is acting on. Example: "apps/myapp/services/default".
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 

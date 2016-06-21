@@ -545,6 +545,7 @@
       "id": "Status"
     },
     "ListConfigsResponse": {
+      "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
       "type": "object",
       "properties": {
         "nextPageToken": {
@@ -747,6 +748,7 @@
       "id": "WatchVariableRequest"
     },
     "ListVariablesResponse": {
+      "description": "Response for the `ListVariables()` method.",
       "type": "object",
       "properties": {
         "variables": {
@@ -764,7 +766,7 @@
       "id": "ListVariablesResponse"
     }
   },
-  "revision": "20160608",
+  "revision": "20160613",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160606 (522)
+ *      <tr><th>API Rev<td>20160613 (529)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -11882,7 +11882,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 67</summary>
+    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 68</summary>
     public class ContentRating : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The video's Australian Classification Board (ACB) or Australian Communications and Media Authority
@@ -12012,6 +12012,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The video's rating from South Africa's Film and Publication Board.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fpbRating")]
         public virtual string FpbRating { get; set; } 
+
+        /// <summary>Reasons that explain why the video received its FPB (South Africa) rating.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fpbRatingReasons")]
+        public virtual System.Collections.Generic.IList<string> FpbRatingReasons { get; set; } 
 
         /// <summary>The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fskRating")]

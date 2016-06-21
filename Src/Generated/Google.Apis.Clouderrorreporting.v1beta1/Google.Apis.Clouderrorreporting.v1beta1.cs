@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160517 (502)
+ *      <tr><th>API Rev<td>20160608 (524)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -369,8 +369,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Lists the specified events.</summary>
-            /// <param name="projectName">The resource name of the Google Cloud Platform project. Required. Example: projects/my-
-            /// project</param>
+            /// <param name="projectName">[Required] The resource name of the Google Cloud Platform project. Written as `projects/`
+            /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
+            /// project-123`.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -388,8 +389,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>The resource name of the Google Cloud Platform project. Required. Example: projects/my-
-                /// project</summary>
+                /// <summary>[Required] The resource name of the Google Cloud Platform project. Written as `projects/`
+                /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+                /// Example: `projects/my-project-123`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
@@ -414,25 +416,25 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
-                /// <summary>The exact value to match against [`ServiceContext.service`](/error-
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterService { get; set; }
 
-                /// <summary>The group for which events shall be returned. Required.</summary>
+                /// <summary>[Required] The group for which events shall be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GroupId { get; set; }
 
-                /// <summary>The exact value to match against [`ServiceContext.version`](/error-
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.version`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterVersion { get; set; }
 
-                /// <summary>The maximum number of results to return per response.</summary>
+                /// <summary>[Optional] The maximum number of results to return per response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A `next_page_token` provided by a previous response.</summary>
+                /// <summary>[Optional] A `next_page_token` provided by a previous response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -552,9 +554,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Lists the specified groups.</summary>
-            /// <param name="projectName">The resource name of the Google Cloud Platform project. Written as `projects/` plus the
-            /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Required. Example: `projects
-            /// /my-project-123`.</param>
+            /// <param name="projectName">[Required] The resource name of the Google Cloud Platform project. Written as projects/
+            /// plus the Google Cloud Platform project ID.
+            ///
+            /// Example: projects/my-project-123.</param>
             public virtual ListRequest List(string projectName)
             {
                 return new ListRequest(service, projectName);
@@ -572,18 +575,19 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>The resource name of the Google Cloud Platform project. Written as `projects/` plus the
-                /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Required.
-                /// Example: `projects/my-project-123`.</summary>
+                /// <summary>[Required] The resource name of the Google Cloud Platform project. Written as projects/
+                /// plus the Google Cloud Platform project ID.
+                ///
+                /// Example: projects/my-project-123.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>The alignment of the timed counts to be returned. Default is
+                /// <summary>[Optional] The alignment of the timed counts to be returned. Default is
                 /// `ALIGNMENT_EQUAL_AT_END`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alignment", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AlignmentEnum> Alignment { get; set; }
 
-                /// <summary>The alignment of the timed counts to be returned. Default is
+                /// <summary>[Optional] The alignment of the timed counts to be returned. Default is
                 /// `ALIGNMENT_EQUAL_AT_END`.</summary>
                 public enum AlignmentEnum
                 {
@@ -616,11 +620,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
-                /// <summary>The sort order in which the results are returned. Default is `COUNT_DESC`.</summary>
+                /// <summary>[Optional] The sort order in which the results are returned. Default is
+                /// `COUNT_DESC`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<OrderEnum> Order { get; set; }
 
-                /// <summary>The sort order in which the results are returned. Default is `COUNT_DESC`.</summary>
+                /// <summary>[Optional] The sort order in which the results are returned. Default is
+                /// `COUNT_DESC`.</summary>
                 public enum OrderEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("GROUP_ORDER_UNSPECIFIED")]
@@ -635,37 +641,37 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     AFFECTEDUSERSDESC,
                 }
 
-                /// <summary>List all `ErrorGroupStats` with these IDs. If not specified, all error group stats with a
-                /// non-zero error count for the given selection criteria are returned.</summary>
+                /// <summary>[Optional] List all ErrorGroupStats with these IDs. If not specified, all error group stats
+                /// with a non-zero error count for the given selection criteria are returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> GroupId { get; set; }
 
-                /// <summary>The exact value to match against [`ServiceContext.service`](/error-
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterService { get; set; }
 
-                /// <summary>Time where the timed counts shall be aligned if rounded alignment is chosen. Default is
-                /// 00:00 UTC.</summary>
+                /// <summary>[Optional] Time where the timed counts shall be aligned if rounded alignment is chosen.
+                /// Default is 00:00 UTC.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object AlignmentTime { get; set; }
 
-                /// <summary>The exact value to match against [`ServiceContext.version`](/error-
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.version`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ServiceFilterVersion { get; set; }
 
-                /// <summary>The maximum number of results to return per response. Default is 20.</summary>
+                /// <summary>[Optional] The maximum number of results to return per response. Default is 20.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The preferred duration for a single returned `TimedCount`. If not set, no timed counts are
-                /// returned.</summary>
+                /// <summary>[Optional] The preferred duration for a single returned `TimedCount`. If not set, no timed
+                /// counts are returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object TimedCountDuration { get; set; }
 
-                /// <summary>A `next_page_token` provided by a previous response. To view additional results, pass this
-                /// token along with the identical query parameters as the first request.</summary>
+                /// <summary>[Optional] A `next_page_token` provided by a previous response. To view additional results,
+                /// pass this token along with the identical query parameters as the first request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -821,8 +827,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
 
             /// <summary>Get the specified group.</summary>
-            /// <param name="groupName">Group resource name. Required. Example: `projects/my-project-123/groups/my-
-            /// group`</param>
+            /// <param name="groupName">[Required] The group resource name. Written as projects/projectID/groups/group_name. Call
+            ///
+            /// groupStats.list to return a list of groups belonging to this project.
+            ///
+            /// Example: projects/my-project-123/groups/my-group</param>
             public virtual GetRequest Get(string groupName)
             {
                 return new GetRequest(service, groupName);
@@ -840,7 +849,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Group resource name. Required. Example: `projects/my-project-123/groups/my-group`</summary>
+                /// <summary>[Required] The group resource name. Written as projects/projectID/groups/group_name. Call
+                ///
+                /// groupStats.list to return a list of groups belonging to this project.
+                ///
+                /// Example: projects/my-project-123/groups/my-group</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupName { get; private set; }
 
@@ -883,7 +896,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Group resource name. Example: `projects/my-project-123/groups/my-groupid`</param>
+            /// <param name="name">The group resource name. Example: projects/my-project-123/groups/my-groupid</param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -902,7 +915,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
 
-                /// <summary>Group resource name. Example: `projects/my-project-123/groups/my-groupid`</summary>
+                /// <summary>The group resource name. Example: projects/my-project-123/groups/my-groupid</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -951,8 +964,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         }
 
         /// <summary>Deletes all error events of a given project.</summary>
-        /// <param name="projectName">The resource name of the Google Cloud Platform project. Required. Example: `projects/my-
-        /// project`.</param>
+        /// <param name="projectName">[Required] The resource name of the Google Cloud Platform project. Written as `projects/`
+        /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
+        /// project-123`.</param>
         public virtual DeleteEventsRequest DeleteEvents(string projectName)
         {
             return new DeleteEventsRequest(service, projectName);
@@ -970,8 +984,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             }
 
 
-            /// <summary>The resource name of the Google Cloud Platform project. Required. Example: `projects/my-
-            /// project`.</summary>
+            /// <summary>[Required] The resource name of the Google Cloud Platform project. Written as `projects/` plus
+            /// the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example:
+            /// `projects/my-project-123`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectName { get; private set; }
 
@@ -1026,7 +1041,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
 
     /// <summary>A description of the context in which an error occurred. This data should be provided by the
     /// application when reporting an error, unless the error report has been generated automatically from Google App
-    /// Engine logs. All fields are optional.</summary>
+    /// Engine logs.</summary>
     public class ErrorContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The HTTP request which was processed when the error was triggered.</summary>
@@ -1067,7 +1082,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
-        /// <summary>The service_context for which this error was reported.</summary>
+        /// <summary>The `ServiceContext` for which this error was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
         public virtual ServiceContext ServiceContext { get; set; } 
 
@@ -1083,7 +1098,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; } 
 
-        /// <summary>Group resource name. Example: `projects/my-project-123/groups/my-groupid`</summary>
+        /// <summary>The group resource name. Example: projects/my-project-123/groups/my-groupid</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1155,8 +1170,8 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     }    
 
     /// <summary>HTTP request data that is related to a reported error. This data should be provided by the application
-    /// when reporting an error, unless the error report has been generated automatically from Google App Engine logs.
-    /// All fields are optional.</summary>
+    /// when reporting an error, unless the error report has been generated automatically from Google App Engine
+    /// logs.</summary>
     public class HttpRequestContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of HTTP request, such as `GET`, `POST`, etc.</summary>
