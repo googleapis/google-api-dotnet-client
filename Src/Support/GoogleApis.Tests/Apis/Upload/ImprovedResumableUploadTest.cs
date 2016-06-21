@@ -190,7 +190,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 private void Log(params string[] lines)
                 {
                     var now = DateTime.UtcNow;
-                    File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog-{Id}", lines.Select(x => $"{now:HH:mm:ss.ffffff}: {x}"));
+                    File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog-{Id:000}", lines.Select(x => $"{now:HH:mm:ss.ffffff}: {x}"));
                 }
 
                 public string RemovePrefix(string s)
