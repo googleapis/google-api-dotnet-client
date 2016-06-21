@@ -498,7 +498,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadInBadServer_NotFound_JsonError(
             [Values(true, false)] bool knownSize,
-            [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
+            [Values(new[] { 410 })] int[] dodgyBytes)
         {
             string jsonError =
                 @"{ ""error"": {
@@ -540,7 +540,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadInBadServer_NotFound_PlainTextError(
             [Values(true, false)] bool knownSize,
-            [Values(new[] { 0 }, new[] { 100 }, new[] { 410 })] int[] dodgyBytes)
+            [Values(new[] { 410 })] int[] dodgyBytes)
         {
             string plainTextError = "Not Found";
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound, plainTextError))
@@ -567,7 +567,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadInBadServer_ServerUnavailable(
             [Values(true, false)] bool knownSize,
-            [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 100 })] int[] dodgyBytes,
+            [Values(new[] { 0, 100 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
@@ -599,7 +599,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Category(IgnoreOnTravis)]
         public void TestUploadInBadServer_NeedsResume(
             [Values(true, false)] bool knownSize,
-            [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
+            [Values(new[] { 0, 410 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize,
             [Values(4096, 51, 100)] int bufferSize)
         {
@@ -631,7 +631,7 @@ namespace Google.Apis.Tests.Apis.Upload
         [Test, Combinatorial]
         // This is the only test currently run on travis.
         public void TestUploadInBadServer_UploaderRestart(
-            [Values(new[] { 0 }, new[] { 100 }, new[] { 410 }, new[] { 0, 410 })] int[] dodgyBytes,
+            [Values(new[] { 0, 410 })] int[] dodgyBytes,
             [Values(100, 400, 1000)] int chunkSize)
         {
             using (var server = new MultiChunkBadServer(_server, dodgyBytes, HttpStatusCode.NotFound))
