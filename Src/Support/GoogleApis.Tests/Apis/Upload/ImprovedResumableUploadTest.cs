@@ -176,7 +176,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 private TestServer _server;
 
-                public Handler(TestServer server, [CallerMemberName] string caller = null)
+                public Handler(TestServer server, string caller)
                 {
                     _server = server;
                     Id = Interlocked.Increment(ref handlerId).ToString("000");
@@ -263,7 +263,7 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class SingleChunkServer : TestServer.Handler
         {
-            public SingleChunkServer(TestServer server) : base(server) { }
+            public SingleChunkServer(TestServer server, [CallerMemberName] string caller = null) : base(server, caller) { }
 
             protected override Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
             {
@@ -357,7 +357,7 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkServer : TestServer.Handler
         {
-            public MultiChunkServer(TestServer server) : base(server) { }
+            public MultiChunkServer(TestServer server, [CallerMemberName] string caller = null) : base(server, caller) { }
 
             public List<byte> Bytes { get; } = new List<byte>();
             private int? _length;
