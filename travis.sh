@@ -21,7 +21,7 @@ mono "${NUNIT}" "--where=test=~ImprovedResumableUploadTest" \
 for i in /home/travis/build/google/google-api-dotnet-client/serverlog*; do
   echo Log $i
   cat $i
-  echo ---------------
+  echo ----------------
 done
 
 
