@@ -374,6 +374,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 }
                 if (_length == null || Bytes.Count < _length.Value)
                 {
+                    Log($"Returning a 308: Bytes.Count={Bytes.Count}");
                     //Log($"Content-Range: ${request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
                     response.StatusCode = 308;
                     // If no bytes have been uploaded, no "Range" header is returned.
