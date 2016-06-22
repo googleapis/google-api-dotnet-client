@@ -9,7 +9,7 @@ cd Src/Support
 
 # Build ReleaseTravis configuration that skips all Windows projects
 # as they are tricky to build under Mono.
-xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
+xbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln > /dev/null 2> /dev/null
 
 OUTDIR=bin/ReleaseSigned
 
