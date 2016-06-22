@@ -207,7 +207,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 public void Log(string line)
                 {
-                    _server.Log($"Handler ${Id}: {line}");
+                    _server.Log($"Handler {Id}: {line}");
                 }
 
                 public string RemovePrefix(string s)
