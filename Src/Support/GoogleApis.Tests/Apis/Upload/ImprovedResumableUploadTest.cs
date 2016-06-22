@@ -383,7 +383,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
             protected void HandleHeaders(HttpListenerRequest request, HttpListenerResponse response)
             {
-                Log($"Length before parse: ${_length}; Content-Range: ${request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
+                Log($"Length before parse: {_length}; Content-Range: {request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
                 if (_length == null)
                 {
                     int length;
