@@ -18,10 +18,4 @@ mono "${NUNIT}" "--where=test=~ImprovedResumableUploadTest" \
     "GoogleApis.Auth.Tests/${OUTDIR}/Google.Apis.Auth.Tests.exe" \
     "GoogleApis.Auth.DotNet4.Tests/${OUTDIR}/Google.Apis.Auth.DotNet4.Tests.exe"
 
-for i in /home/travis/build/google/google-api-dotnet-client/serverlog*; do
-  echo Log $i
-  cat $i
-  echo ----------------
-done
-
-
+cat /home/travis/build/google/google-api-dotnet-client/serverlog.txt

@@ -44,11 +44,11 @@ namespace Google.Apis.Tests.Apis.Upload
         static readonly byte[] uploadTestBytes = Encoding.UTF8.GetBytes(UploadTestData);
         static readonly int uploadLength = uploadTestBytes.Length;
 
+
         private void LogTest(TestServer.Handler handler, object values, [CallerMemberName] string caller = null)
         {
-            var now = DateTime.UtcNow;
-            File.AppendAllText($"/home/travis/build/google/google-api-dotnet-client/serverlog-tests",
-                $"{now:HH:mm:ss.ffffff}: Handler={handler.Id} {caller}: {values}\n");
+            _server.Log("----------------");
+            _server.Log("Test starting: Handler={handler.Id} {caller}: {values}");
         }
 
         /// <summary>
@@ -132,8 +132,26 @@ namespace Google.Apis.Tests.Apis.Upload
 
             private readonly HttpListener _httpListener;
             private readonly Task _httpTask;
+            private readonly List<string> _log = new List<string>();
 
             public string HttpPrefix { get; }
+
+            public void Log(string line)
+            {
+                var now = DateTime.UtcNow;
+                lock (_log)
+                {
+                    _log.Add(DateTime.UtcNow.ToString("HH:mm:ss.ffffff") + line);
+                }
+            }
+
+            public void DumpLogs()
+            {
+                lock (_log)
+                {
+                    File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog.txt", _log);
+                }
+            }
 
             private async Task RunServer()
             {
@@ -187,10 +205,9 @@ namespace Google.Apis.Tests.Apis.Upload
                 public string Id { get; }
                 public string HttpPrefix => $"{_server.HttpPrefix}{Id}/";
 
-                public void Log(params string[] lines)
+                public void Log(string line)
                 {
-                    var now = DateTime.UtcNow;
-                    File.AppendAllLines($"/home/travis/build/google/google-api-dotnet-client/serverlog-{Id}", lines.Select(x => $"{now:HH:mm:ss.ffffff}: {x}"));
+                    _server.Log($"Handler ${Id}: {line}");
                 }
 
                 public string RemovePrefix(string s)
@@ -292,9 +309,11 @@ namespace Google.Apis.Tests.Apis.Upload
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
+            _server.DumpLogs();
             _server.Dispose();
             _server = null;
         }
+
 
         /// <summary>
         /// Upload completes in a single chunk.
@@ -374,8 +393,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 }
                 if (_length == null || Bytes.Count < _length.Value)
                 {
-                    Log($"Returning a 308: Bytes.Count={Bytes.Count}");
-                    //Log($"Content-Range: ${request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
+                    Log($"Content-Range: ${request.Headers["Content-Range"]}; Bytes.Count: {Bytes.Count}");
                     response.StatusCode = 308;
                     // If no bytes have been uploaded, no "Range" header is returned.
                     if (Bytes.Count > 0)
