@@ -48,7 +48,7 @@ namespace Google.Apis.Tests.Apis.Upload
         private void LogTest(TestServer.Handler handler, object values, [CallerMemberName] string caller = null)
         {
             _server.Log("----------------");
-            _server.Log("Test starting: Handler={handler.Id} {caller}: {values}");
+            _server.Log($"Test starting: Handler={handler.Id} {caller}: {values}");
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var now = DateTime.UtcNow;
                 lock (_log)
                 {
-                    _log.Add(DateTime.UtcNow.ToString("HH:mm:ss.ffffff") + line);
+                    _log.Add(DateTime.UtcNow.ToString("HH:mm:ss.ffffff") + " " + line);
                 }
             }
 
