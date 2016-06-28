@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160526 (511)
+ *      <tr><th>API Rev<td>20160621 (537)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -660,6 +660,11 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Only return draft messages matching the specified query. Supports the same query format as
+                /// the Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Q { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -715,6 +720,15 @@ namespace Google.Apis.Gmail.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "q", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "q",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

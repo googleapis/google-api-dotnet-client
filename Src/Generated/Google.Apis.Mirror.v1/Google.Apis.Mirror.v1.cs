@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/glass'>Google Mirror API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151206 (339)
+ *      <tr><th>API Rev<td>20160616 (532)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/glass'>
  *              https://developers.google.com/glass</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160615 (531)
+ *      <tr><th>API Rev<td>20160622 (538)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -4879,6 +4879,29 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes a Compute Engine resource that is being managed by a running pipeline.</summary>
+    public class ComputeEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names of the disks that were created for this pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
+        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; } 
+
+        /// <summary>The instance on which the operation is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; } 
+
+        /// <summary>The machine type of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; } 
+
+        /// <summary>The availability zone in which the instance resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A bucket over which read coverage has been precomputed. A bucket corresponds to a specific range of the
     /// reference sequence.</summary>
     public class CoverageBucket : Google.Apis.Requests.IDirectResponseSchema
@@ -5058,29 +5081,6 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The name of the source of this data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Describes a GCE resource that is being managed by a running pipeline.</summary>
-    public class GCE : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The names of the disks that were created for this pipeline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
-        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; } 
-
-        /// <summary>The instance on which the operation is running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
-        public virtual string InstanceName { get; set; } 
-
-        /// <summary>The machine type of the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; } 
-
-        /// <summary>The availability zone in which the instance resides.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5331,6 +5331,15 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Optional time of when event finished. An event can have a start time and no finish time. If an
+        /// event has a finish time, there must be a start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>Optional time of when event started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5338,6 +5347,10 @@ namespace Google.Apis.Genomics.v1.Data
     /// <summary>Metadata describing an Operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; } 
+
         /// <summary>The time at which the job was submitted to the Genomics service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTime { get; set; } 
@@ -5364,6 +5377,10 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>Runtime metadata on this Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeMetadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> RuntimeMetadata { get; set; } 
+
+        /// <summary>The time at which the job began to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5796,8 +5813,8 @@ namespace Google.Apis.Genomics.v1.Data
     public class RuntimeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Execution information specific to Google Compute Engine.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gce")]
-        public virtual GCE Gce { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngine")]
+        public virtual ComputeEngine ComputeEngine { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

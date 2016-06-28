@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160616 (532)
+ *      <tr><th>API Rev<td>20160617 (533)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -181,9 +181,6 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>Data format for the response.</summary>
         public enum AltEnum
         {
-            /// <summary>Responses with Content-Type of text/csv</summary>
-            [Google.Apis.Util.StringValueAttribute("csv")]
-            Csv,
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
@@ -1211,9 +1208,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Data format for the response.</summary>
             public enum AltEnum
             {
-                /// <summary>Responses with Content-Type of text/csv</summary>
-                [Google.Apis.Util.StringValueAttribute("csv")]
-                Csv,
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
@@ -3240,6 +3234,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// will fail (without incurring a charge). If unspecified, this will be set to your project default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBillingTier")]
         public virtual System.Nullable<int> MaximumBillingTier { get; set; } 
+
+        /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
+        /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
+        public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
 
         /// <summary>[Deprecated] This property is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]

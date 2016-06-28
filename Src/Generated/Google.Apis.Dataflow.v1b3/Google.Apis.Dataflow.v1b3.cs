@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160606 (522)
+ *      <tr><th>API Rev<td>20160627 (543)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -1455,6 +1455,147 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>CounterMetadata includes all static non-name non-value counter attributes.</summary>
+    public class CounterMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-readable description of the counter semantics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Counter aggregation kind.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A string referring to the unit type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherUnits")]
+        public virtual string OtherUnits { get; set; } 
+
+        /// <summary>System defined Units, see above enum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardUnits")]
+        public virtual string StandardUnits { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies a counter within a per-job namespace. Counters whose structured names are the same get
+    /// merged into a single value for the job.</summary>
+    public class CounterStructuredName : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the optimized step being executed by the workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentStepName")]
+        public virtual string ComponentStepName { get; set; } 
+
+        /// <summary>Name of the stage. An execution step contains multiple component steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStepName")]
+        public virtual string ExecutionStepName { get; set; } 
+
+        /// <summary>Counter name. Not necessarily globally-unique, but unique within the context of the other fields.
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>System generated name of the original step in the user's graph, before optimization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalStepName")]
+        public virtual string OriginalStepName { get; set; } 
+
+        /// <summary>A string containing the origin of the counter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherOrigin")]
+        public virtual string OtherOrigin { get; set; } 
+
+        /// <summary>Portion of this counter, either key or value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portion")]
+        public virtual string Portion { get; set; } 
+
+        /// <summary>One of the standard Origins defined above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardOrigin")]
+        public virtual string StandardOrigin { get; set; } 
+
+        /// <summary>ID of a particular worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
+        public virtual string WorkerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single message which encapsulates structured name and metadata for a given counter.</summary>
+    public class CounterStructuredNameAndMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata associated with a counter</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual CounterMetadata Metadata { get; set; } 
+
+        /// <summary>Structured name of the counter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual CounterStructuredName Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An update to a Counter sent from a worker.</summary>
+    public class CounterUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value for And, Or.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolean")]
+        public virtual System.Nullable<bool> Boolean { get; set; } 
+
+        /// <summary>True if this counter is reported as the total cumulative aggregate value accumulated since the
+        /// worker started working on this WorkItem. By default this is false, indicating that this counter is reported
+        /// as a delta.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
+        public virtual System.Nullable<bool> Cumulative { get; set; } 
+
+        /// <summary>Floating point value for Sum, Max, Min.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPoint")]
+        public virtual System.Nullable<double> FloatingPoint { get; set; } 
+
+        /// <summary>List of floating point numbers, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointList")]
+        public virtual FloatingPointList FloatingPointList { get; set; } 
+
+        /// <summary>Floating point mean aggregation value for Mean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointMean")]
+        public virtual FloatingPointMean FloatingPointMean { get; set; } 
+
+        /// <summary>Integer value for Sum, Max, Min.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integer")]
+        public virtual SplitInt64 Integer { get; set; } 
+
+        /// <summary>List of integers, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerList")]
+        public virtual IntegerList IntegerList { get; set; } 
+
+        /// <summary>Integer mean aggregation value for Mean.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integerMean")]
+        public virtual IntegerMean IntegerMean { get; set; } 
+
+        /// <summary>Value for internally-defined counters used by the Dataflow service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internal")]
+        public virtual object Internal__ { get; set; } 
+
+        /// <summary>Counter name and aggregation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameAndKind")]
+        public virtual NameAndKind NameAndKind { get; set; } 
+
+        /// <summary>The service-generated short identifier for this counter. The short_id -> (name, metadata) mapping
+        /// is constant for the lifetime of a job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortId")]
+        public virtual System.Nullable<long> ShortId { get; set; } 
+
+        /// <summary>List of strings, for Set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringList")]
+        public virtual StringList StringList { get; set; } 
+
+        /// <summary>Counter structured name and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredNameAndMetadata")]
+        public virtual CounterStructuredNameAndMetadata StructuredNameAndMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Identifies the location of a custom souce.</summary>
     public class CustomSourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2122,16 +2263,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Basic metadata about a metric.</summary>
+    /// <summary>Basic metadata about a counter.</summary>
     public class NameAndKind : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean",
-        /// "Set", "And", and "Or". The specified aggregation kind is case-insensitive. If omitted, this is not an
-        /// aggregated value but instead a single metric sample value.</summary>
+        /// <summary>Counter aggregation kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the metric.</summary>
+        /// <summary>Name of the counter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3163,65 +3302,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An update to a metric sent from a worker. Unlike MetricUpdate, this format does not support: messages:
-    /// use WorkerMessage API CloudMetrics: use MetricUpdate until this includes structured names</summary>
-    public class WorkItemMetricUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Boolean value for And, Or.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boolean")]
-        public virtual System.Nullable<bool> Boolean { get; set; } 
-
-        /// <summary>True if this metric is reported as the total cumulative aggregate value accumulated since the
-        /// worker started working on this WorkItem. By default this is false, indicating that this metric is reported
-        /// as a delta that is not associated with any WorkItem.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
-        public virtual System.Nullable<bool> Cumulative { get; set; } 
-
-        /// <summary>Floating point value for Sum, Max, Min.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("floatingPoint")]
-        public virtual System.Nullable<double> FloatingPoint { get; set; } 
-
-        /// <summary>List of floating point numbers, for Set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointList")]
-        public virtual FloatingPointList FloatingPointList { get; set; } 
-
-        /// <summary>Floating point mean aggregation value for Mean.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("floatingPointMean")]
-        public virtual FloatingPointMean FloatingPointMean { get; set; } 
-
-        /// <summary>Integer value for Sum, Max, Min.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integer")]
-        public virtual SplitInt64 Integer { get; set; } 
-
-        /// <summary>List of integers, for Set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integerList")]
-        public virtual IntegerList IntegerList { get; set; } 
-
-        /// <summary>Integer mean aggregation value for Mean.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integerMean")]
-        public virtual IntegerMean IntegerMean { get; set; } 
-
-        /// <summary>Value for internally-defined metrics use by the Dataflow service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("internal")]
-        public virtual object Internal__ { get; set; } 
-
-        /// <summary>Metric name and aggregation type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nameAndKind")]
-        public virtual NameAndKind NameAndKind { get; set; } 
-
-        /// <summary>The service-generated short identifier for this metric. The short_id -> (name, metadata) mapping is
-        /// constant for the lifetime of a job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shortId")]
-        public virtual System.Nullable<long> ShortId { get; set; } 
-
-        /// <summary>List of strings, for Set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stringList")]
-        public virtual StringList StringList { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The Dataflow service's idea of the current state of a WorkItem being processed by a worker.</summary>
     public class WorkItemServiceState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3273,6 +3353,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("completed")]
         public virtual System.Nullable<bool> Completed { get; set; } 
 
+        /// <summary>Worker output counters for this WorkItem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counterUpdates")]
+        public virtual System.Collections.Generic.IList<CounterUpdate> CounterUpdates { get; set; } 
+
         /// <summary>See documentation of stop_position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicSourceSplit")]
         public virtual DynamicSourceSplit DynamicSourceSplit { get; set; } 
@@ -3282,7 +3366,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Status> Errors { get; set; } 
 
-        /// <summary>DEPRECATED in favor of worker_metric_update.</summary>
+        /// <summary>DEPRECATED in favor of counter_updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricUpdates")]
         public virtual System.Collections.Generic.IList<MetricUpdate> MetricUpdates { get; set; } 
 
@@ -3339,10 +3423,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Identifies the WorkItem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workItemId")]
         public virtual string WorkItemId { get; set; } 
-
-        /// <summary>Worker output metrics (counters) for this WorkItem.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workItemMetricUpdates")]
-        public virtual System.Collections.Generic.IList<WorkItemMetricUpdate> WorkItemMetricUpdates { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
