@@ -304,6 +304,7 @@ namespace Google.Apis.Http
                 }
                 catch (Exception ex)
                 {
+                    EventLogger?.Invoke($"ConfigurableMessageHandler got exception {ex}");
                     lastException = ex;
                 }
 
