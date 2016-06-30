@@ -37,6 +37,7 @@ namespace Google.Apis.Http
     /// </summary>
     public class ConfigurableMessageHandler : DelegatingHandler
     {
+        public static Action<string> EventLogger;
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ConfigurableMessageHandler>();
 
@@ -291,10 +292,19 @@ namespace Google.Apis.Http
                 try
                 {
                     // Send the request!
+                    IEnumerable<string> values;
+                    string xlog = "";
+                    if (request.Headers.TryGetValues("XLOG", out values))
+                    {
+                        xlog = string.Join(", ", values);
+                    }
+                    EventLogger?.Invoke($"ConfigurableMessageHandler sending request; numTries={triesRemaining}; XLOG={xlog}");
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                    EventLogger?.Invoke($"ConfigurableMessageHandler got response {response.StatusCode}");
                 }
                 catch (Exception ex)
                 {
+                    EventLogger?.Invoke($"ConfigurableMessageHandler got exception {ex}");
                     lastException = ex;
                 }
 
