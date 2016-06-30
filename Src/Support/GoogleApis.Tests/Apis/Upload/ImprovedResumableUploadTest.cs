@@ -1,4 +1,5 @@
-﻿using Google.Apis.Json;
+﻿using Google.Apis.Http;
+using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Upload;
 using Google.Apis.Util;
@@ -197,6 +198,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 {
                     _server = server;
                     ResumableUpload<object>.EventLogger = server.Log;
+                    ConfigurableMessageHandler.EventLogger = server.Log;
                     Id = Interlocked.Increment(ref handlerId).ToString("000");
                     _server.RegisterHandler(this);
                     Log("----------------");
