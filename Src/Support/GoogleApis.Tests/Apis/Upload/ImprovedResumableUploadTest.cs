@@ -196,6 +196,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 public Handler(TestServer server, string caller)
                 {
                     _server = server;
+                    ResumableUpload<object>.EventLogger = server.Log;
                     Id = Interlocked.Increment(ref handlerId).ToString("000");
                     _server.RegisterHandler(this);
                     Log("----------------");
@@ -637,12 +638,13 @@ namespace Google.Apis.Tests.Apis.Upload
                 var uploader = new MockResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 uploader.BufferSize = bufferSize;
                 var progress = uploader.Upload();
-                int sanity = 0;
-                while (progress.Status == UploadStatus.Failed && sanity++ < 10)
+                int resumptions = 0;
+                while (progress.Status == UploadStatus.Failed && resumptions++ < 10)
                 {
-                    _server.Log("About to resume");
+                    _server.Log("About to resume");                    
                     progress = uploader.Resume();
                 }
+                Assert.That(resumptions, Is.EqualTo(dodgyBytes.Length));
                 Assert.That(progress.Status, Is.EqualTo(UploadStatus.Completed));
                 Assert.That(server.Requests.Count, Is.EqualTo(expectedCallCount));
                 Assert.That(server.Bytes, Is.EqualTo(uploadTestBytes));

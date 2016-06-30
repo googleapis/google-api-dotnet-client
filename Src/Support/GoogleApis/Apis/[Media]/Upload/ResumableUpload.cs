@@ -45,6 +45,8 @@ namespace Google.Apis.Upload
     /// </typeparam>
     public class ResumableUpload<TRequest>
     {
+        public static Action<string> EventLogger;
+
         #region Constants
 
         /// <summary>The class logger.</summary>
@@ -233,6 +235,7 @@ namespace Google.Apis.Upload
 
             public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
+                EventLogger?.Invoke($"ServerErrorCallback.HandleResponse; status = {args.Response.StatusCode}");
                 var result = false;
                 var statusCode = (int)args.Response.StatusCode;
                 // Handle the error if and only if all the following conditions occur:
@@ -666,6 +669,8 @@ namespace Google.Apis.Upload
         /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
         private async Task<bool> HandleResponse(HttpResponseMessage response)
         {
+            EventLogger?.Invoke($"ResumableUpload.HandleResponse; status = {response.StatusCode}");
+
             if (response.IsSuccessStatusCode)
             {
                 MediaCompleted(response);
