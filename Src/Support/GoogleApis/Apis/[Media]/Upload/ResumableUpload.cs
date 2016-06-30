@@ -88,6 +88,8 @@ namespace Google.Apis.Upload
         /// <summary>Content-Range header value for the body upload of zero length files.</summary>
         private const string ZeroByteContentRangeHeader = "bytes */0";
 
+        private int requestCount = 0;
+
         #endregion // Constants
 
         #region Construction
@@ -544,15 +546,18 @@ namespace Google.Apis.Upload
             }.CreateRequest();
             request.SetEmptyContent().Headers.Add("Content-Range", range);
 
+            int requestId = Interlocked.Increment(ref requestCount);
             try
             {
                 HttpResponseMessage response;
                 using (var callback = new ServerErrorCallback(this))
                 {
+                    EventLogger?.Invoke($"Sending request {requestId}");
                     response = await Service.HttpClient.SendAsync(request, cancellationToken)
                       .ConfigureAwait(false);
                 }
 
+                EventLogger?.Invoke($"Handling response to request {requestId}: {response.StatusCode}");
                 if (await HandleResponse(response).ConfigureAwait(false))
                 {
                     // All the media was successfully upload.
@@ -562,12 +567,14 @@ namespace Google.Apis.Upload
             }
             catch (TaskCanceledException ex)
             {
+                EventLogger?.Invoke($"Request ID {requestId}: Awooga 1: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 throw ex;
             }
             catch (Exception ex)
             {
+                EventLogger?.Invoke($"Request ID {requestId}: Awooga 2: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Exception occurred while resuming uploading media", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 return Progress;
@@ -669,8 +676,6 @@ namespace Google.Apis.Upload
         /// <returns><c>True</c> if the entire media has been completely uploaded.</returns>
         private async Task<bool> HandleResponse(HttpResponseMessage response)
         {
-            EventLogger?.Invoke($"ResumableUpload.HandleResponse; status = {response.StatusCode}");
-
             if (response.IsSuccessStatusCode)
             {
                 MediaCompleted(response);
