@@ -47,7 +47,6 @@ namespace Google.Apis.Tests.Apis.Upload
 
         private void LogTest(TestServer.Handler handler, object values, [CallerMemberName] string caller = null)
         {
-            _server.Log("----------------");
             _server.Log($"Test starting: Handler={handler.Id} {caller}: {values}");
         }
 
@@ -199,6 +198,7 @@ namespace Google.Apis.Tests.Apis.Upload
                     _server = server;
                     Id = Interlocked.Increment(ref handlerId).ToString("000");
                     _server.RegisterHandler(this);
+                    Log("----------------");
                     Log($"Started handler for {caller}");
                 }
 
@@ -227,7 +227,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 {
                     Requests.Add(new RequestInfo(request));
                     var ret = HandleCall(request, response);
-                    Log($"Request to {request.Url}; response code {response.StatusCode}");
+                    Log($"Request to {request.Url}; response code {response.StatusCode}; Range {response.Headers["Range"]}");
                     return ret;
                 }
 
@@ -636,6 +636,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 int sanity = 0;
                 while (progress.Status == UploadStatus.Failed && sanity++ < 10)
                 {
+                    _server.Log("About to resume");
                     progress = uploader.Resume();
                 }
                 Assert.That(progress.Status, Is.EqualTo(UploadStatus.Completed));
