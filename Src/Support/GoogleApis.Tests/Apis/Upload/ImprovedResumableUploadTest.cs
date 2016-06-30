@@ -228,7 +228,7 @@ namespace Google.Apis.Tests.Apis.Upload
                     HttpListenerRequest request, HttpListenerResponse response)
                 {
                     int requestId = Interlocked.Increment(ref requestCount);
-                    Log($"Start of request {requestId} to {request.Url}");
+                    Log($"Start of request {requestId} to {request.Url}; XLOG={request.Headers["XLOG"]}");
                     Requests.Add(new RequestInfo(request));
                     var ret = HandleCall(request, response);
                     Log($"End of request {requestId}. Response code {response.StatusCode}; Range {response.Headers["Range"]}");

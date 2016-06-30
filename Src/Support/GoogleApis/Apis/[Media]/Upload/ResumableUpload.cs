@@ -552,12 +552,13 @@ namespace Google.Apis.Upload
                 HttpResponseMessage response;
                 using (var callback = new ServerErrorCallback(this))
                 {
-                    EventLogger?.Invoke($"Client: Sending request {requestId}");
+                    EventLogger?.Invoke($"ResumeAsync: Sending request C{requestId}");
+                    request.Headers.Add("XLOG", $"C{requestId}");
                     response = await Service.HttpClient.SendAsync(request, cancellationToken)
                       .ConfigureAwait(false);
                 }
 
-                EventLogger?.Invoke($"Client: Handling response to request {requestId}: {response.StatusCode}");
+                EventLogger?.Invoke($"ResumeAsync: Handling response to request C{requestId}: {response.StatusCode}");
                 if (await HandleResponse(response).ConfigureAwait(false))
                 {
                     // All the media was successfully upload.
@@ -567,14 +568,14 @@ namespace Google.Apis.Upload
             }
             catch (TaskCanceledException ex)
             {
-                EventLogger?.Invoke($"Client: Request ID {requestId}: Awooga 1: {ex}");
+                EventLogger?.Invoke($"ResumeAsync: Request ID C{requestId}: Awooga 1: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 throw ex;
             }
             catch (Exception ex)
             {
-                EventLogger?.Invoke($"Client: Request ID {requestId}: Awooga 2: {ex}");
+                EventLogger?.Invoke($"ResumeAsync: Request ID C{requestId}: Awooga 2: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Exception occurred while resuming uploading media", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 return Progress;
@@ -623,8 +624,12 @@ namespace Google.Apis.Upload
         private async Task<Uri> InitializeUpload(CancellationToken cancellationToken)
         {
             HttpRequestMessage request = CreateInitializeRequest();
+            int requestId = Interlocked.Increment(ref requestCount);
+            request.Headers.Add("XLOG", $"C{requestId}");
+            EventLogger?.Invoke($"InitializeUpload: request C{requestId}");
             var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            
+            EventLogger?.Invoke($"InitializeUpload: response for C{requestId} had status {response.StatusCode}");
+
             if (!response.IsSuccessStatusCode)
             {
                 throw await MediaApiErrorHandling.ExceptionForResponseAsync(Service, response).ConfigureAwait(false);
@@ -668,10 +673,11 @@ namespace Google.Apis.Upload
                 BytesClientSent - 1);
 
             int requestId = Interlocked.Increment(ref requestCount);
-            EventLogger?.Invoke($"Client: SendNextChunkAsync request {requestId}");
+            request.Headers.Add("XLOG", $"C{requestId}");
+            EventLogger?.Invoke($"SendNextChunkAsync request C{requestId}");
             HttpResponseMessage response = await Service.HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
-            EventLogger?.Invoke($"Client: SendNextChunkAsync response for {requestId} had status {response.StatusCode}");
+            EventLogger?.Invoke($"SendNextChunkAsync response for C{requestId} had status {response.StatusCode}");
             return await HandleResponse(response).ConfigureAwait(false);
         }
 
