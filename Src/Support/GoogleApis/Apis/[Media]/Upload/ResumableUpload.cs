@@ -552,12 +552,12 @@ namespace Google.Apis.Upload
                 HttpResponseMessage response;
                 using (var callback = new ServerErrorCallback(this))
                 {
-                    EventLogger?.Invoke($"Sending request {requestId}");
+                    EventLogger?.Invoke($"Client: Sending request {requestId}");
                     response = await Service.HttpClient.SendAsync(request, cancellationToken)
                       .ConfigureAwait(false);
                 }
 
-                EventLogger?.Invoke($"Handling response to request {requestId}: {response.StatusCode}");
+                EventLogger?.Invoke($"Client: Handling response to request {requestId}: {response.StatusCode}");
                 if (await HandleResponse(response).ConfigureAwait(false))
                 {
                     // All the media was successfully upload.
@@ -567,14 +567,14 @@ namespace Google.Apis.Upload
             }
             catch (TaskCanceledException ex)
             {
-                EventLogger?.Invoke($"Request ID {requestId}: Awooga 1: {ex}");
+                EventLogger?.Invoke($"Client: Request ID {requestId}: Awooga 1: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Task was canceled", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 throw ex;
             }
             catch (Exception ex)
             {
-                EventLogger?.Invoke($"Request ID {requestId}: Awooga 2: {ex}");
+                EventLogger?.Invoke($"Client: Request ID {requestId}: Awooga 2: {ex}");
                 Logger.Error(ex, "MediaUpload[{0}] - Exception occurred while resuming uploading media", UploadUri);
                 UpdateProgress(new ResumableUploadProgress(ex, BytesServerReceived));
                 return Progress;
@@ -667,8 +667,11 @@ namespace Google.Apis.Upload
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
+            int requestId = Interlocked.Increment(ref requestCount);
+            EventLogger?.Invoke($"Client: SendNextChunkAsync request {requestId}");
             HttpResponseMessage response = await Service.HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
+            EventLogger?.Invoke($"Client: SendNextChunkAsync response for {requestId} had status {response.StatusCode}");
             return await HandleResponse(response).ConfigureAwait(false);
         }
 
