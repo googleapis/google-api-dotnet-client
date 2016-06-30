@@ -203,6 +203,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 }
 
                 public string Id { get; }
+                private int requestCount = 0;
                 public string HttpPrefix => $"{_server.HttpPrefix}{Id}/";
 
                 public void Log(string line)
@@ -225,9 +226,11 @@ namespace Google.Apis.Tests.Apis.Upload
                 public Task<IEnumerable<byte>> HandleCall0(
                     HttpListenerRequest request, HttpListenerResponse response)
                 {
+                    int requestId = Interlocked.Increment(ref requestCount);
+                    Log($"Start of request {requestId} to {request.Url}");
                     Requests.Add(new RequestInfo(request));
                     var ret = HandleCall(request, response);
-                    Log($"Request to {request.Url}; response code {response.StatusCode}; Range {response.Headers["Range"]}");
+                    Log($"End of request {requestId}. Response code {response.StatusCode}; Range {response.Headers["Range"]}");
                     return ret;
                 }
 
@@ -495,8 +498,9 @@ namespace Google.Apis.Tests.Apis.Upload
 
             protected override Task<IEnumerable<byte>> HandleCall(HttpListenerRequest request, HttpListenerResponse response)
             {
-
-                if (RemovePrefix(request.Url.PathAndQuery) == uploadPath &&
+                string path = RemovePrefix(request.Url.PathAndQuery);
+                Log($"Path={path}; FailAtBytes=[{string.Join(", ", _failAtBytes)}]; Bytes.Count={Bytes.Count}; ContentLength={request.ContentLength64}");
+                if (path == uploadPath &&
                     _failAtBytes.Any() &&
                     _failAtBytes[0] >= Bytes.Count && _failAtBytes[0] < Bytes.Count + request.ContentLength64)
                 {
