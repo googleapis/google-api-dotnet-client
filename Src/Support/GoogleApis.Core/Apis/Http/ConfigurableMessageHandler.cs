@@ -292,7 +292,13 @@ namespace Google.Apis.Http
                 try
                 {
                     // Send the request!
-                    EventLogger?.Invoke($"ConfigurableMessageHandler sending request; numTries={numTries}");
+                    IEnumerable<string> values;
+                    string xlog = "";
+                    if (request.Headers.TryGetValues("XLOG", out values))
+                    {
+                        xlog = string.Join(", ", values);
+                    }
+                    EventLogger?.Invoke($"ConfigurableMessageHandler sending request; numTries={triesRemaining}; XLOG={xlog}");
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                     EventLogger?.Invoke($"ConfigurableMessageHandler got response {response.StatusCode}");
                 }
