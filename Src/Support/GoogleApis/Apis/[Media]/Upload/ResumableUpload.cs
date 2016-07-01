@@ -152,13 +152,14 @@ namespace Google.Apis.Upload
         /// <summary>
         /// Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
         /// content length is unknown, for resending it in case of server error.
+        /// Only used with a non-seekable stream.
         /// </summary>
         private byte[] LastMediaRequest { get; set; }
 
-        /// <summary>Gets or sets cached byte which indicates whether the end of stream has been reached.</summary>
-        private byte[] CachedByte { get; set; }
-
-        /// <summary>Gets or sets the last request length.</summary>
+        /// <summary>
+        /// Gets or sets the last request length.
+        /// Only used with a non-seekable stream.
+        /// </summary>
         private int LastMediaLength { get; set; }
 
         /// <summary>
@@ -325,8 +326,7 @@ namespace Google.Apis.Upload
         private void UpdateProgress(ResumableUploadProgress progress)
         {
             Progress = progress;
-            if (ProgressChanged != null)
-                ProgressChanged(progress);
+            ProgressChanged?.Invoke(progress);
         }
 
         /// <summary>
@@ -339,6 +339,40 @@ namespace Google.Apis.Upload
             return Progress;
         }
 
+        #endregion
+
+        #region UploadSessionData
+        /// <summary>
+        /// Event called when an UploadUri is created. 
+        /// Not needed if the application program will not support resuming after a program restart.
+        /// </summary>
+        /// <remarks>
+        /// Within the event, persist the UploadUri to storage.
+        /// It is strongly recommended that the full path filename (or other media identifier) is also stored so that it can be compared to the current open filename (media) upon restart.
+        /// </remarks>
+        public event Action<IUploadSessionData> UploadSessionData;
+        /// <summary>
+        /// Data to be passed to the application program to allow resuming an upload after a program restart.
+        /// </summary>
+        private class ResumeableUploadSessionData : IUploadSessionData
+        {
+            /// <summary>
+            /// Create a ResumeableUploadSessionData instance to pass the UploadUri to the client.
+            /// </summary>
+            /// <param name="uploadUri">The resumable session URI.</param>
+            public ResumeableUploadSessionData(Uri uploadUri)
+            {
+                UploadUri = uploadUri;
+            }
+            public Uri UploadUri { get; private set; }
+        }
+        /// <summary>
+        /// Send data (UploadUri) to application so it can store it to persistent storage.
+        /// </summary>
+        private void SendUploadSessionData(ResumeableUploadSessionData sessionData)
+        {
+            UploadSessionData?.Invoke(sessionData);
+        }
         #endregion
 
         #region Upload Implementation
@@ -378,6 +412,10 @@ namespace Google.Apis.Upload
             try
             {
                 UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
+                if (ContentStream.CanSeek)
+                {
+                    SendUploadSessionData(new ResumeableUploadSessionData(UploadUri));
+                }
                 Logger.Debug("MediaUpload[{0}] - Start uploading...", UploadUri);
             }
             catch (Exception ex)
@@ -390,22 +428,101 @@ namespace Google.Apis.Upload
             return await UploadCoreAsync(cancellationToken).ConfigureAwait(false);
         }
 
-        /// <summary>Resumes the upload form the last point it was interrupted.</summary>
+        /// <summary>
+        /// Resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was not restarted.
+        /// </summary>
         public IUploadProgress Resume()
         {
-            return ResumeAsync(CancellationToken.None).Result;
+            return ResumeAsync(null, CancellationToken.None).Result;
         }
-
-        /// <summary>Asynchronously resumes the upload form the last point it was interrupted.</summary>
+        /// <summary>
+        /// Resumes the upload from the last point it was interrupted. 
+        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted. 
+        /// Implemented only for ContentStreams where .CanSeek is True.
+        /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
+        /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+        public IUploadProgress Resume(Uri uploadUri)
+        {
+            return ResumeAsync(uploadUri, CancellationToken.None).Result;
+        }
+        /// <summary>
+        /// Asynchronously resumes the upload from the last point it was interrupted.
+        /// </summary>
+        /// <remarks>
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
         public Task<IUploadProgress> ResumeAsync()
         {
-            return ResumeAsync(CancellationToken.None);
+            return ResumeAsync(null, CancellationToken.None);
         }
-
-        /// <summary>Asynchronously resumes the upload form the last point it was interrupted.</summary>
-        /// <param name="cancellationToken">A cancellation token to cancel operation.</param>
-        public async Task<IUploadProgress> ResumeAsync(CancellationToken cancellationToken)
+        /// <summary>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was not restarted.
+        /// </summary>
+        /// <remarks>
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
+        /// <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
+        public Task<IUploadProgress> ResumeAsync(CancellationToken cancellationToken)
         {
+            return ResumeAsync(null, cancellationToken);
+        }
+        /// <summary>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when resuming and the program was restarted.
+        /// Implemented only for ContentStreams where .CanSeek is True.
+        /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
+        /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+        public Task<IUploadProgress> ResumeAsync(Uri uploadUri)
+        {
+            return ResumeAsync(uploadUri, CancellationToken.None);
+        }
+        /// <summary>
+        /// Asynchronously resumes the upload from the last point it was interrupted. 
+        /// Use when the program was restarted and you wish to resume the upload that was in progress when the program was halted.
+        /// Implemented only for ContentStreams where .CanSeek is True.
+        /// </summary>
+        /// <remarks>
+        /// In your application's UploadSessionData Event Handler, store UploadUri.AbsoluteUri property value (resumable session URI string value)
+        /// to persistent storage for use with Resume() or ResumeAsync() upon a program restart.
+        /// It is strongly recommended that the FullPathFilename of the media file that is being uploaded is saved also so that a subsequent execution of the
+        /// program can compare the saved FullPathFilename value to the FullPathFilename of the media file that it has opened for uploading.
+        /// You do not need to seek to restart point in the ContentStream file.
+        /// </remarks>
+        /// <param name="uploadUri">VideosResource.InsertMediaUpload UploadUri property value that was saved to persistent storage during a prior execution.</param>
+        /// <param name="cancellationToken">A cancellation token to cancel the asynchronous operation.</param>
+        public async Task<IUploadProgress> ResumeAsync(Uri uploadUri, CancellationToken cancellationToken)
+        {
+            // When called with uploadUri parameter of non-null value, the UploadUri is being
+            // provided upon a program restart to resume a previously interrupted upload.
+            if (uploadUri != null)
+            {
+                if (ContentStream.CanSeek)
+                {
+                    Logger.Info("Resuming after program restart: UploadUri={0}", uploadUri);
+                    UploadUri = uploadUri;
+                    StreamLength =  ContentStream.Length;
+                }
+                else
+                {
+                    throw new NotImplementedException("Resume after program restart not allowed when ContentStream.CanSeek is false");
+                }
+            }
             if (UploadUri == null)
             {
                 Logger.Info("There isn't any upload in progress, so starting to upload again");
@@ -522,15 +639,11 @@ namespace Google.Apis.Upload
                 }.CreateRequest();
 
             // Prepare next chunk to send.
-            if (StreamLength != UnknownSize)
-            {
-                PrepareNextChunkKnownSize(request, stream, cancellationToken);
-            }
-            else
-            {
-                PrepareNextChunkUnknownSize(request, stream, cancellationToken);
-            }
-            BytesClientSent = BytesServerReceived + LastMediaLength;
+            int contentLength = ContentStream.CanSeek
+                ? PrepareNextChunkKnownSize(request, stream, cancellationToken)
+                : PrepareNextChunkUnknownSize(request, stream, cancellationToken);
+
+            BytesClientSent = BytesServerReceived + contentLength;
 
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
@@ -552,7 +665,10 @@ namespace Google.Apis.Upload
             else if (response.StatusCode == (HttpStatusCode)308)
             {
                 // The upload protocol uses 308 to indicate that there is more data expected from the server.
-                BytesServerReceived = GetNextByte(response.Headers.GetValues("Range").First());
+                // If the server has received no bytes, it indicates this by not including
+                // a Range header in the response..
+                var range = response.Headers.FirstOrDefault(x => x.Key == "Range").Value?.First();
+                BytesServerReceived = GetNextByte(range);
                 Logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
             }
@@ -571,75 +687,47 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        private void PrepareNextChunkUnknownSize(HttpRequestMessage request, Stream stream,
+        private int PrepareNextChunkUnknownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
-            // We save the current request, so we would be able to resend those bytes in case of a server error.
             if (LastMediaRequest == null)
             {
-                LastMediaRequest = new byte[ChunkSize];
+                // Initialise state
+                // ChunkSize + 1 to give room for one extra byte for end-of-stream checking
+                LastMediaRequest = new byte[ChunkSize + 1];
+                LastMediaLength = 0;
             }
-
-            LastMediaLength = 0;
-
-            // If the number of bytes received by the server isn't equal to the amount of bytes the client sent, copy
-            // the required bytes from the last request and resend them to the server.
-            if (BytesClientSent != BytesServerReceived)
+            // Re-use any bytes the server hasn't received
+            int copyCount = (int)(BytesClientSent - BytesServerReceived)
+                + Math.Max(0, LastMediaLength - ChunkSize);
+            if (LastMediaLength != copyCount)
             {
-                int copyBytes = (int)(BytesClientSent - BytesServerReceived);
-                Buffer.BlockCopy(LastMediaRequest, ChunkSize - copyBytes, LastMediaRequest, 0, copyBytes);
-                LastMediaLength = copyBytes;
+                Buffer.BlockCopy(LastMediaRequest, LastMediaLength - copyCount, LastMediaRequest, 0, copyCount);
+                LastMediaLength = copyCount;
             }
-
-            bool shouldRead = true;
-            if (CachedByte == null)
+            // Read any more required bytes from stream, to form the next chunk
+            while (LastMediaLength < ChunkSize + 1 && StreamLength == UnknownSize)
             {
-                // Create a new cached byte which will be used to verify if we reached the end of stream.
-                CachedByte = new byte[1];
-            }
-            else if (LastMediaLength != ChunkSize)
-            {
-                // Read the last cached byte, and add it to the current request.
-                LastMediaRequest[LastMediaLength++] = CachedByte[0];
-            }
-            else
-            {
-                // The whole bytes from last request should be resent, no need to read data from stream in this request
-                // and no need to update the cached byte.
-                shouldRead = false;
-            }
-
-            if (shouldRead)
-            {
-                int len = 0;
-                // Read bytes form the stream to lastMediaRequest byte array.
-                while (true)
+                cancellationToken.ThrowIfCancellationRequested();
+                int readSize = Math.Min(BufferSize, ChunkSize + 1 - LastMediaLength);
+                int len = stream.Read(LastMediaRequest, LastMediaLength, readSize);
+                LastMediaLength += len;
+                if (len == 0)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-
-                    len = stream.Read(LastMediaRequest, LastMediaLength,
-                        (int)Math.Min(BufferSize, ChunkSize - LastMediaLength));
-                    if (len == 0) break;
-                    LastMediaLength += len;
-                }
-
-                // Check if there is still data to read from stream, and cache the first byte in catchedByte.
-                if (0 == stream.Read(CachedByte, 0, 1))
-                {
-                    // EOF - now we know the stream's length.
-                    StreamLength = LastMediaLength + BytesServerReceived;
-                    CachedByte = null;
+                    // Stream ended, so we know the length
+                    StreamLength = BytesServerReceived + LastMediaLength;
                 }
             }
-
             // Set Content-Length and Content-Range.
-            var byteArrayContent = new ByteArrayContent(LastMediaRequest, 0, LastMediaLength);
-            byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, LastMediaLength));
+            int contentLength = Math.Min(ChunkSize, LastMediaLength);
+            var byteArrayContent = new ByteArrayContent(LastMediaRequest, 0, contentLength);
+            byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, contentLength));
             request.Content = byteArrayContent;
+            return contentLength;
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        private void PrepareNextChunkKnownSize(HttpRequestMessage request, Stream stream,
+        private int PrepareNextChunkKnownSize(HttpRequestMessage request, Stream stream,
             CancellationToken cancellationToken)
         {
             int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
@@ -650,7 +738,7 @@ namespace Google.Apis.Upload
 
             // If the number of bytes received by the server isn't equal to the amount of bytes the client sent, we 
             // need to change the position of the input stream, otherwise we can continue from the current position.
-            if (BytesClientSent != BytesServerReceived)
+            if (stream.Position != BytesServerReceived)
             {
                 stream.Position = BytesServerReceived;
             }
@@ -674,13 +762,13 @@ namespace Google.Apis.Upload
             request.Content = new StreamContent(ms);
             request.Content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkSize));
 
-            LastMediaLength = chunkSize;
+            return chunkSize;
         }
 
         /// <summary>Returns the next byte index need to be sent.</summary>
         private long GetNextByte(string range)
         {
-            return long.Parse(range.Substring(range.IndexOf('-') + 1)) + 1;
+            return range == null ? 0 : long.Parse(range.Substring(range.IndexOf('-') + 1)) + 1;
         }
 
         /// <summary>
@@ -738,7 +826,7 @@ namespace Google.Apis.Upload
             }
 
             // if the length is unknown at the time of this request, omit "X-Upload-Content-Length" header
-            if (StreamLength != UnknownSize)
+            if (ContentStream.CanSeek)
             {
                 request.Headers.Add(PayloadContentLengthHeader, StreamLength.ToString());
             }
