@@ -109,11 +109,7 @@ namespace Google.Apis.Download
         /// </summary>
         private void UpdateProgress(IDownloadProgress progress)
         {
-            var changed = ProgressChanged;
-            if (changed != null)
-            {
-                changed(progress);
-            }
+            ProgressChanged?.Invoke(progress);
         }
 
         #endregion

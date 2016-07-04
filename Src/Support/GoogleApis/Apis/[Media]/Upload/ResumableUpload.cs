@@ -942,8 +942,7 @@ namespace Google.Apis.Upload
             base.ProcessResponse(response);
             ResponseBody = Service.DeserializeResponse<TResponse>(response).Result;
 
-            if (ResponseReceived != null)
-                ResponseReceived(ResponseBody);
+            ResponseReceived?.Invoke(ResponseBody);
         }
 
         #endregion // Overrides
