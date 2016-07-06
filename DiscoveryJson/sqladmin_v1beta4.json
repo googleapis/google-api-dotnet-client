@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o_-sS2PEVGnMkQqyJ497hboiLWw\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/esBlgEZbCNXqrd_p_tAJhSFnCOM\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20160509",
+ "revision": "20160630",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -348,7 +348,7 @@
       },
       "name": {
        "type": "string",
-       "description": "The name of the failover replica."
+       "description": "The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances."
       }
      }
     },
@@ -1063,7 +1063,7 @@
    "properties": {
     "activationPolicy": {
      "type": "string",
-     "description": "The activation policy for this instance. This specifies when the instance should be activated and is applicable only when the instance state is RUNNABLE. This can be one of the following.\nALWAYS: The instance should always be active.\nNEVER: The instance should never be activated.\nON_DEMAND: The instance is activated upon receiving requests; only applicable to First Generation instances."
+     "description": "The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. The activation policy cannot be updated together with other settings for Second Generation instances. Valid values:\nALWAYS: The instance is on; it is not deactivated by inactivity.\nNEVER: The instance is off; it is not activated, even if a connection request arrives.\nON_DEMAND: The instance responds to incoming requests, and turns itself off when not in use. Instances with PER_USE pricing turn off after 15 minutes of inactivity. Instances with PER_PACKAGE pricing turn off after 12 hours of inactivity."
     },
     "authorizedGaeApplications": {
      "type": "array",

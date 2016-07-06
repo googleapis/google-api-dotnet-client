@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Drive.v2</id>
-        <version>1.13.1.532</version>
+        <version>1.14.0.543</version>
         <title>Google.Apis.Drive.v2 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -37,8 +37,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.13.1" />
-                <dependency id="Google.Apis.Auth" version="1.13.1" />
+                <dependency id="Google.Apis" version="1.14.0" />
+                <dependency id="Google.Apis.Auth" version="1.14.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->

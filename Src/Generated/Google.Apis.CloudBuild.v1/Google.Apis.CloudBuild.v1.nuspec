@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.Autoscaler.v1beta2</id>
-        <version>1.13.1.496</version>
-        <title>Google.Apis.Autoscaler.v1beta2 Client Library</title>
+        <id>Google.Apis.CloudBuild.v1</id>
+        <version>1.14.0.544</version>
+        <title>Google.Apis.CloudBuild.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <summary>Google Autoscaler v1beta2 API client library</summary>
+        <summary>Google Cloudbuild v1 API client library</summary>
         <description>
-          Google APIs Client Library for working with Autoscaler v1beta2.
+          Google APIs Client Library for working with Cloudbuild v1.
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
@@ -23,7 +23,7 @@
           - Portable Class Libraries
 
           More documentation on the API is available at:
-          https://developers.google.com/api-client-library/dotnet/apis/autoscaler/v1beta2
+          https://developers.google.com/api-client-library/dotnet/apis/cloudbuild/v1
 
           The package source code is available at:
           https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -37,8 +37,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.13.1" />
-                <dependency id="Google.Apis.Auth" version="1.13.1" />
+                <dependency id="Google.Apis" version="1.14.0" />
+                <dependency id="Google.Apis.Auth" version="1.14.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
@@ -48,12 +48,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.Autoscaler.v1beta2.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.Autoscaler.v1beta2.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudBuild.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudBuild.v1.xml" />
     </files>
 </package>

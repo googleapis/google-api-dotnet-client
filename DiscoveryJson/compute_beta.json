@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/_-9nV79Itmkx6phJSvWZm5CDvrQ\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Txw-FDxlR2Izptnmn1naBlgfC7c\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20160617",
+ "revision": "20160628",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -493,6 +493,10 @@
        "compute.instanceGroups.insert"
       ]
      }
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope)."
     },
     "selfLink": {
      "type": "string",
@@ -2764,6 +2768,10 @@
      "type": "string",
      "description": "The URL of the network to which all instances in the instance group belong."
     },
+    "region": {
+     "type": "string",
+     "description": "The URL of the region where the instance group is located."
+    },
     "selfLink": {
      "type": "string",
      "description": "[Output Only] The URL for this instance group. The server generates this URL."
@@ -2879,6 +2887,18 @@
      "type": "string",
      "description": "An optional description of this resource. Provide this property when you create the resource."
     },
+    "failoverAction": {
+     "type": "string",
+     "description": "The action to perform in case of zone failure (set only for Regional instance group managers).",
+     "enum": [
+      "NO_FAILOVER",
+      "UNKNOWN"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "fingerprint": {
      "type": "string",
      "description": "[Output Only] The fingerprint of the resource data. You can use this optional field for optimistic locking when you update the resource.",
@@ -2918,6 +2938,10 @@
      "items": {
       "$ref": "NamedPort"
      }
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the managed instance group resides."
     },
     "selfLink": {
      "type": "string",
