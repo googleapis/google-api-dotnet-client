@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160630 (546)
+ *      <tr><th>API Rev<td>20160704 (550)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>
@@ -339,6 +339,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             this.service = service;
             clients = new ClientsResource(service);
+            filterSets = new FilterSetsResource(service);
 
         }
 
@@ -1334,11 +1335,1598 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             }
         }
+        private readonly FilterSetsResource filterSets;
+
+        /// <summary>Gets the FilterSets resource.</summary>
+        public virtual FilterSetsResource FilterSets
+        {
+            get { return filterSets; }
+        }
+
+        /// <summary>The "filterSets" collection of methods.</summary>
+        public class FilterSetsResource
+        {
+            private const string Resource = "filterSets";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FilterSetsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                filteredBids = new FilteredBidsResource(service);
+                filteredImpressions = new FilteredImpressionsResource(service);
+                filteredRequests = new FilteredRequestsResource(service);
+                losingBids = new LosingBidsResource(service);
+                responseErrors = new ResponseErrorsResource(service);
+                responsesWithoutBids = new ResponsesWithoutBidsResource(service);
+
+            }
+
+            private readonly FilteredBidsResource filteredBids;
+
+            /// <summary>Gets the FilteredBids resource.</summary>
+            public virtual FilteredBidsResource FilteredBids
+            {
+                get { return filteredBids; }
+            }
+
+            /// <summary>The "filteredBids" collection of methods.</summary>
+            public class FilteredBidsResource
+            {
+                private const string Resource = "filteredBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilteredBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    creatives = new CreativesResource(service);
+                    details = new DetailsResource(service);
+
+                }
+
+                private readonly CreativesResource creatives;
+
+                /// <summary>Gets the Creatives resource.</summary>
+                public virtual CreativesResource Creatives
+                {
+                    get { return creatives; }
+                }
+
+                /// <summary>The "creatives" collection of methods.</summary>
+                public class CreativesResource
+                {
+                    private const string Resource = "creatives";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CreativesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        details = new DetailsResource(service);
+
+                    }
+
+                    private readonly DetailsResource details;
+
+                    /// <summary>Gets the Details resource.</summary>
+                    public virtual DetailsResource Details
+                    {
+                        get { return details; }
+                    }
+
+                    /// <summary>The "details" collection of methods.</summary>
+                    public class DetailsResource
+                    {
+                        private const string Resource = "details";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public DetailsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+
+                        }
+
+
+                        /// <summary>List all details associated with a specific reason for which bids were filtered and
+                        /// a specific creative that was filtered for that reason, with the number of bids filtered for
+                        /// each detail.</summary>
+                        /// <param name="accountId">Account ID of the buyer.</param>
+                        /// <param name="filterSetId">The ID of the filter set
+                        /// to apply.</param>
+                        /// <param name="creativeStatusId">The ID of the creative status for which to retrieve a
+                        /// breakdown by detail. See creative-status-codes.</param>
+                        /// <param name="creativeId">The creative ID for which
+                        /// to retrieve a breakdown by detail.</param>
+                        public virtual ListRequest List(long accountId, int filterSetId, int creativeStatusId, string creativeId)
+                        {
+                            return new ListRequest(service, accountId, filterSetId, creativeStatusId, creativeId);
+                        }
+
+                        /// <summary>List all details associated with a specific reason for which bids were filtered and
+                        /// a specific creative that was filtered for that reason, with the number of bids filtered for
+                        /// each detail.</summary>
+                        public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusAndCreativeBreakdownByDetailResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId, int creativeStatusId, string creativeId)
+                                : base(service)
+                            {
+                                AccountId = accountId;
+                                FilterSetId = filterSetId;
+                                CreativeStatusId = creativeStatusId;
+                                CreativeId = creativeId;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Account ID of the buyer.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual long AccountId { get; private set; }
+
+                            /// <summary>The ID of the filter set to apply.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual int FilterSetId { get; private set; }
+
+                            /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
+                            /// creative-status-codes.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual int CreativeStatusId { get; private set; }
+
+                            /// <summary>The creative ID for which to retrieve a breakdown by detail.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string CreativeId { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "list"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives/{creativeId}/details"; }
+                            }
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "accountId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "accountId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "filterSetId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filterSetId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "creativeStatusId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "creativeStatusId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "creativeId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "creativeId",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>List all creatives associated with a specific reason for which bids were filtered, with
+                    /// the number of bids filtered for each creative.</summary>
+                    /// <param name="accountId">Account ID of the buyer.</param>
+                    /// <param name="filterSetId">The ID of the filter set
+                    /// to apply.</param>
+                    /// <param name="creativeStatusId">The ID of the creative status for which to retrieve a
+                    /// breakdown by creative. See creative-status-codes.</param>
+                    public virtual ListRequest List(long accountId, int filterSetId, int creativeStatusId)
+                    {
+                        return new ListRequest(service, accountId, filterSetId, creativeStatusId);
+                    }
+
+                    /// <summary>List all creatives associated with a specific reason for which bids were filtered, with
+                    /// the number of bids filtered for each creative.</summary>
+                    public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByCreativeResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId, int creativeStatusId)
+                            : base(service)
+                        {
+                            AccountId = accountId;
+                            FilterSetId = filterSetId;
+                            CreativeStatusId = creativeStatusId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AccountId { get; private set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int FilterSetId { get; private set; }
+
+                        /// <summary>The ID of the creative status for which to retrieve a breakdown by creative. See
+                        /// creative-status-codes.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int CreativeStatusId { get; private set; }
+
+                        /// <summary>Requested page size. The server may return fewer than requested. If unspecified,
+                        /// the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A token identifying a page of results the server should return. Typically, this is
+                        /// the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the
+                        /// previous call to the accounts.filterSets.filteredBids.creatives.list method.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "accountId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "accountId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "creativeStatusId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "creativeStatusId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly DetailsResource details;
+
+                /// <summary>Gets the Details resource.</summary>
+                public virtual DetailsResource Details
+                {
+                    get { return details; }
+                }
+
+                /// <summary>The "details" collection of methods.</summary>
+                public class DetailsResource
+                {
+                    private const string Resource = "details";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DetailsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>List all details associated with a specific reason for which bids were filtered, with
+                    /// the number of bids filtered for each detail.</summary>
+                    /// <param name="accountId">Account ID of the buyer.</param>
+                    /// <param name="filterSetId">The ID of the filter set
+                    /// to apply.</param>
+                    /// <param name="creativeStatusId">The ID of the creative status for which to retrieve a
+                    /// breakdown by detail. See creative-status-codes.</param>
+                    public virtual ListRequest List(long accountId, int filterSetId, int creativeStatusId)
+                    {
+                        return new ListRequest(service, accountId, filterSetId, creativeStatusId);
+                    }
+
+                    /// <summary>List all details associated with a specific reason for which bids were filtered, with
+                    /// the number of bids filtered for each detail.</summary>
+                    public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusBreakdownByDetailResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId, int creativeStatusId)
+                            : base(service)
+                        {
+                            AccountId = accountId;
+                            FilterSetId = filterSetId;
+                            CreativeStatusId = creativeStatusId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual long AccountId { get; private set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int FilterSetId { get; private set; }
+
+                        /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
+                        /// creative-status-codes.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual int CreativeStatusId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/details"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "accountId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "accountId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "creativeStatusId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "creativeStatusId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>List all reasons for which bids were filtered, with the number of bids filtered for each
+                /// reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons for which bids were filtered, with the number of bids filtered for each
+                /// reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly FilteredImpressionsResource filteredImpressions;
+
+            /// <summary>Gets the FilteredImpressions resource.</summary>
+            public virtual FilteredImpressionsResource FilteredImpressions
+            {
+                get { return filteredImpressions; }
+            }
+
+            /// <summary>The "filteredImpressions" collection of methods.</summary>
+            public class FilteredImpressionsResource
+            {
+                private const string Resource = "filteredImpressions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilteredImpressionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all reasons that caused an impression to be filtered (i.e. not considered as an
+                /// inventory match), with the number of impressions that were filtered for each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons that caused an impression to be filtered (i.e. not considered as an
+                /// inventory match), with the number of impressions that were filtered for each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredImpressionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredImpressions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly FilteredRequestsResource filteredRequests;
+
+            /// <summary>Gets the FilteredRequests resource.</summary>
+            public virtual FilteredRequestsResource FilteredRequests
+            {
+                get { return filteredRequests; }
+            }
+
+            /// <summary>The "filteredRequests" collection of methods.</summary>
+            public class FilteredRequestsResource
+            {
+                private const string Resource = "filteredRequests";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FilteredRequestsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all reasons that caused a bid request not to be sent for an impression, with the
+                /// number of bid requests not sent for each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons that caused a bid request not to be sent for an impression, with the
+                /// number of bid requests not sent for each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredRequestsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredRequests"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly LosingBidsResource losingBids;
+
+            /// <summary>Gets the LosingBids resource.</summary>
+            public virtual LosingBidsResource LosingBids
+            {
+                get { return losingBids; }
+            }
+
+            /// <summary>The "losingBids" collection of methods.</summary>
+            public class LosingBidsResource
+            {
+                private const string Resource = "losingBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LosingBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all reasons for which bids lost in the auction, with the number of bids that lost for
+                /// each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons for which bids lost in the auction, with the number of bids that lost for
+                /// each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListLosingBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/losingBids"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly ResponseErrorsResource responseErrors;
+
+            /// <summary>Gets the ResponseErrors resource.</summary>
+            public virtual ResponseErrorsResource ResponseErrors
+            {
+                get { return responseErrors; }
+            }
+
+            /// <summary>The "responseErrors" collection of methods.</summary>
+            public class ResponseErrorsResource
+            {
+                private const string Resource = "responseErrors";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ResponseErrorsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all errors that occurred in bid responses, with the number of bid responses affected
+                /// for each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all errors that occurred in bid responses, with the number of bid responses affected
+                /// for each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListResponseErrorsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responseErrors"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly ResponsesWithoutBidsResource responsesWithoutBids;
+
+            /// <summary>Gets the ResponsesWithoutBids resource.</summary>
+            public virtual ResponsesWithoutBidsResource ResponsesWithoutBids
+            {
+                get { return responsesWithoutBids; }
+            }
+
+            /// <summary>The "responsesWithoutBids" collection of methods.</summary>
+            public class ResponsesWithoutBidsResource
+            {
+                private const string Resource = "responsesWithoutBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ResponsesWithoutBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all reasons for which bid responses were considered to have no applicable bids, with
+                /// the number of bid responses affected for each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, int filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons for which bid responses were considered to have no applicable bids, with
+                /// the number of bid responses affected for each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListResponsesWithoutBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual int FilterSetId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responsesWithoutBids"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, long accountId)
+            {
+                return new CreateRequest(service, body, accountId);
+            }
+
+            /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
+            public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, long accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Whether the filter set is transient, or should be persisted indefinitely. By default,
+                /// filter sets are not transient. If transient, it will be available for at least 1 hour after
+                /// creation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("isTransient", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IsTransient { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "isTransient", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "isTransient",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="filterSetId">The ID of the filter set
+            /// to delete.</param>
+            public virtual DeleteRequest Delete(long accountId, int filterSetId)
+            {
+                return new DeleteRequest(service, accountId, filterSetId);
+            }
+
+            /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
+            public class DeleteRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    FilterSetId = filterSetId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>The ID of the filter set to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int FilterSetId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="filterSetId">The ID of the filter set
+            /// to get.</param>
+            public virtual GetRequest Get(long accountId, int filterSetId)
+            {
+                return new GetRequest(service, accountId, filterSetId);
+            }
+
+            /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    FilterSetId = filterSetId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>The ID of the filter set to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int FilterSetId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets all metrics that are measured in terms of number of bids.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="filterSetId">The ID of the filter set
+            /// to apply.</param>
+            public virtual GetBidMetricsRequest GetBidMetrics(long accountId, int filterSetId)
+            {
+                return new GetBidMetricsRequest(service, accountId, filterSetId);
+            }
+
+            /// <summary>Gets all metrics that are measured in terms of number of bids.</summary>
+            public class GetBidMetricsRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.BidMetrics>
+            {
+                /// <summary>Constructs a new GetBidMetrics request.</summary>
+                public GetBidMetricsRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    FilterSetId = filterSetId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>The ID of the filter set to apply.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int FilterSetId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getBidMetrics"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidMetrics"; }
+                }
+
+                /// <summary>Initializes GetBidMetrics parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets all metrics that are measured in terms of number of impressions.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="filterSetId">The ID of the filter set
+            /// to apply.</param>
+            public virtual GetImpressionMetricsRequest GetImpressionMetrics(long accountId, int filterSetId)
+            {
+                return new GetImpressionMetricsRequest(service, accountId, filterSetId);
+            }
+
+            /// <summary>Gets all metrics that are measured in terms of number of impressions.</summary>
+            public class GetImpressionMetricsRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ImpressionMetrics>
+            {
+                /// <summary>Constructs a new GetImpressionMetrics request.</summary>
+                public GetImpressionMetricsRequest(Google.Apis.Services.IClientService service, long accountId, int filterSetId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    FilterSetId = filterSetId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>The ID of the filter set to apply.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int FilterSetId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getImpressionMetrics"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/impressionMetrics"; }
+                }
+
+                /// <summary>Initializes GetImpressionMetrics parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists all filter sets for the account with the given account ID.</summary>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            public virtual ListRequest List(long accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>Lists all filter sets for the account with the given account ID.</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilterSetsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the server
+                /// will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of ListFilterSetsResponse.nextPageToken returned from the previous call to the
+                /// accounts.rtbBreakout.filterSets.list method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/filterSets"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
     }
 }
 
 namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 {    
+
+    /// <summary>An absolute date range, specified by its start date and end date. The supported range of dates begins
+    /// 30 days before today and ends today. Validity checked upon filter set creation. If a filter set with an absolute
+    /// date range is run at a later date more than 30 days after start_date, it will fail.</summary>
+    public class AbsoluteDateRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end date of the range (inclusive). Must be within the 30 days leading up to current date, and
+        /// must be equal to or after start_date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual Date EndDate { get; set; } 
+
+        /// <summary>The start date of the range (inclusive). Must be within the 30 days leading up to current date, and
+        /// must be equal to or before end_date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual Date StartDate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The set of metrics that are measured in numbers of bids, representing how many bids were considered
+    /// eligible at each stage of the bidding funnel.</summary>
+    public class BidMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bids that Ad Exchange received from the buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bids")]
+        public virtual System.Nullable<long> Bids { get; set; } 
+
+        /// <summary>The number of bids that were permitted to compete in the auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidsInAuction")]
+        public virtual System.Nullable<long> BidsInAuction { get; set; } 
+
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The number of bids that won an impression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionsWon")]
+        public virtual System.Nullable<long> ImpressionsWon { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of impressions for which the corresponding callouts had the specified status.</summary>
+    public class CalloutStatusFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the callout status. See callout-status-codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calloutStatusId")]
+        public virtual System.Nullable<int> CalloutStatusId { get; set; } 
+
+        /// <summary>The number of impressions associated with the specified status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
+        public virtual System.Nullable<long> ImpressionCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A client resource represents a client buyeran agency, a brand, or an advertiser customer of the sponsor
     /// buyer. Users associated with the client buyer have restricted access to the Ad Exchange Marketplace and certain
@@ -1453,6 +3041,196 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The number of bids for a given creative.</summary>
+    public class CreativeFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bids associated with the specified creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
+        public virtual System.Nullable<long> BidCount { get; set; } 
+
+        /// <summary>The ID of the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual string CreativeId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of bids with the specified creative status.</summary>
+    public class CreativeStatusFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bids associated with the specified status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
+        public virtual System.Nullable<long> BidCount { get; set; } 
+
+        /// <summary>The ID of the creative status. See creative-status-codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
+        public virtual System.Nullable<int> CreativeStatusId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
+    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
+    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
+    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+        /// year/month where the day is not significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; } 
+
+        /// <summary>Month of year. Must be from 1 to 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; } 
+
+        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of bids, among those with a given creative status, that had the specified detail.</summary>
+    public class DetailFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bids associated with the specified detail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
+        public virtual System.Nullable<long> BidCount { get; set; } 
+
+        /// <summary>The ID of the detail. The associated value can be looked up in the dictionary file corresponding to
+        /// the DetailType in the response message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailId")]
+        public virtual System.Nullable<int> DetailId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of filters that is applied to a request for data from the RtbTroubleshootingService. Within a
+    /// filter set, an AND operation is performed across the filters represented by each field. An OR operation is
+    /// performed across the filters represented by the multiple values of a repeated field. E.g. "format=VIDEO AND
+    /// deal_id=12 AND (web_property_id=34 OR web_property_id=56)"</summary>
+    public class FilterSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An absolute date range, defined by a start date and an end date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteDateRange")]
+        public virtual AbsoluteDateRange AbsoluteDateRange { get; set; } 
+
+        /// <summary>The ID of the buyer account on which to filter; optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerAccountId")]
+        public virtual System.Nullable<long> BuyerAccountId { get; set; } 
+
+        /// <summary>The ID of the creative on which to filter; optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual string CreativeId { get; set; } 
+
+        /// <summary>The ID of the deal on which to filter; optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
+        public virtual System.Nullable<long> DealId { get; set; } 
+
+        /// <summary>The ID of the filter set; unique within the account of the filter set owner. The value of this
+        /// field is ignored in create operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSetId")]
+        public virtual System.Nullable<int> FilterSetId { get; set; } 
+
+        /// <summary>The account ID of the buyer who owns this filter set. The value of this field is ignored in create
+        /// operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSetOwnerAccountId")]
+        public virtual System.Nullable<long> FilterSetOwnerAccountId { get; set; } 
+
+        /// <summary>The format on which to filter; optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; } 
+
+        /// <summary>The platform on which to filter; optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; } 
+
+        /// <summary>A relative date range, defined by an offset from today and a duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDateRange")]
+        public virtual RelativeDateRange RelativeDateRange { get; set; } 
+
+        /// <summary>The list of IDs of web properties on which to filter; may be empty. The filters represented by
+        /// multiple web property IDs are ORed together (i.e. if non-empty, results must match any one of the web
+        /// properties).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> WebPropertyIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of impressions filtered due to the specified status.</summary>
+    public class FilteredImpressionStatusFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of impressions associated with the specified status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
+        public virtual System.Nullable<long> ImpressionCount { get; set; } 
+
+        /// <summary>The status for which impressions were filtered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The set of metrics that are measured in numbers of impressions, representing how many impressions were
+    /// considered eligible at each stage of the bidding funnel.</summary>
+    public class ImpressionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of impressions available to the buyer on Ad Exchange. In some cases this value may be
+        /// unavailable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableImpressions")]
+        public virtual System.Nullable<long> AvailableImpressions { get; set; } 
+
+        /// <summary>The number of impressions for which Ad Exchange sent the buyer a bid request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidRequests")]
+        public virtual System.Nullable<long> BidRequests { get; set; } 
+
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The number of impressions that match the buyer's inventory pretargeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryMatches")]
+        public virtual System.Nullable<long> InventoryMatches { get; set; } 
+
+        /// <summary>The number of impressions for which Ad Exchange received a response from the buyer that contained
+        /// at least one applicable bid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsesWithBids")]
+        public virtual System.Nullable<long> ResponsesWithBids { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The number of impressions for which the buyer successfully sent a response to Ad
+        /// Exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulResponses")]
+        public virtual System.Nullable<long> SuccessfulResponses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListClientUserInvitationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The returned list of client users.</summary>
@@ -1496,6 +3274,277 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all details associated with a given filtered bid reason and a given
+    /// creative.</summary>
+    public class ListCreativeStatusAndCreativeBreakdownByDetailResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the creative associated with a bid filtered from the auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual string CreativeId { get; set; } 
+
+        /// <summary>The ID of the creative status that identifies the reason the bid was filtered before the auction.
+        /// See creative-status-codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
+        public virtual System.Nullable<int> CreativeStatusId { get; set; } 
+
+        /// <summary>The type of detail that the detail IDs represent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
+        public virtual string DetailType { get; set; } 
+
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all detail IDs with their associated bid counts. There is a fixed set of details, hence
+        /// results are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<DetailFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all creatives associated with a given filtered bid reason.</summary>
+    public class ListCreativeStatusBreakdownByCreativeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the creative status that identifies the reason the bid was filtered before the auction.
+        /// See creative-status-codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
+        public virtual System.Nullable<int> CreativeStatusId { get; set; } 
+
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of creative IDs with their associated bid counts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<CreativeFrequency> Frequencies { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the
+        /// ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the
+        /// accounts.filterSets.filteredBids.creatives.list method to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all details associated with a given filtered bid reason.</summary>
+    public class ListCreativeStatusBreakdownByDetailResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the creative status that identifies the reason the bid was filtered before the auction.
+        /// See creative-status-codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeStatusId")]
+        public virtual System.Nullable<int> CreativeStatusId { get; set; } 
+
+        /// <summary>The type of detail that the detail IDs represent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
+        public virtual string DetailType { get; set; } 
+
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all detail IDs with their associated bid counts. There is a fixed set of details, hence
+        /// results are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<DetailFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing filter sets.</summary>
+    public class ListFilterSetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The filter sets belonging to the buyer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSets")]
+        public virtual System.Collections.Generic.IList<FilterSet> FilterSets { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the
+        /// ListFilterSetsRequest.pageToken field in the subsequent call to the accounts.filterSets.list method to
+        /// retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that bids were filtered from the auction.</summary>
+    public class ListFilteredBidsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all creative status IDs, identifying the reason the bids were filtered from the auction,
+        /// with their associated bid counts. See creative-status-codes. There is a fixed set of statuses, hence results
+        /// are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<CreativeStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that impressions were filtered (i.e. not considered as an
+    /// inventory match) for the buyer.</summary>
+    public class ListFilteredImpressionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all statuses identifying the reason the bid request was filtered, with their associated
+        /// impression counts. There is a fixed set of statuses, hence results are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<FilteredImpressionStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that bid requests were filtered and not sent to the
+    /// buyer.</summary>
+    public class ListFilteredRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all callout status IDs, identifying the reason the bid request was filtered, with their
+        /// associated impression counts. See callout-status-codes. There is a fixed set of statuses, hence results are
+        /// not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<CalloutStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that bids lost in the auction.</summary>
+    public class ListLosingBidsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all creative status IDs with their associated bid counts. See creative-status-codes. There
+        /// is a fixed set of statuses, hence results are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<CreativeStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that bid responses resulted in an error.</summary>
+    public class ListResponseErrorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all callout status IDs, identifying the error in the bid responses, with their associated
+        /// impression counts. See callout-status-codes. There is a fixed set of statuses, hence results are not
+        /// paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<CalloutStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons that bid responses were considered to have no applicable
+    /// bids.</summary>
+    public class ListResponsesWithoutBidsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp marking the end of the range (exclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>List of all statuses with their associated impression counts. There is a fixed set of statuses,
+        /// hence results are not paged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencies")]
+        public virtual System.Collections.Generic.IList<ResponsesWithoutBidsStatusFrequency> Frequencies { get; set; } 
+
+        /// <summary>The timestamp marking the start of the range (inclusive) for which data is included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A relative date range, specified by an offset and a duration. The supported range of dates begins 30
+    /// days before today and ends today. I.e. the limits for these values are: offset_days >= 0 duration_days >= 1
+    /// offset_days + duration_days <= 30</summary>
+    public class RelativeDateRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of days in the requested date range. E.g. for a range spanning today, 1. For a range
+        /// spanning the last 7 days, 7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationDays")]
+        public virtual System.Nullable<int> DurationDays { get; set; } 
+
+        /// <summary>The end date of the filter set, specified as the number of days before today. E.g. for a range
+        /// where the last date is today, 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offsetDays")]
+        public virtual System.Nullable<int> OffsetDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of impressions for which the corresponding response had no applicable bids, as described by
+    /// the specified status.</summary>
+    public class ResponsesWithoutBidsStatusFrequency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of impressions associated with the specified status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
+        public virtual System.Nullable<long> ImpressionCount { get; set; } 
+
+        /// <summary>The status that caused the bid response to be considered to have no applicable bids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

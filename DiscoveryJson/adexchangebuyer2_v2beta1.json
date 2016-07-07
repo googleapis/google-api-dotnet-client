@@ -9,12 +9,598 @@
       }
     }
   },
-  "description": "Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations.",
+  "description": "Accesses the latest features for managing Ad Exchange accounts and Real-Time Bidding configurations and auction metrics.",
   "protocol": "rest",
   "title": "Ad Exchange Buyer API II",
   "resources": {
     "accounts": {
       "resources": {
+        "filterSets": {
+          "resources": {
+            "responsesWithoutBids": {
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.responsesWithoutBids.list",
+                  "response": {
+                    "$ref": "ListResponsesWithoutBidsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all reasons for which bid responses were considered to have no\napplicable bids, with the number of bid responses affected for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responsesWithoutBids",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responsesWithoutBids",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            },
+            "responseErrors": {
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.responseErrors.list",
+                  "response": {
+                    "$ref": "ListResponseErrorsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all errors that occurred in bid responses, with the number of bid\nresponses affected for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responseErrors",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/responseErrors",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            },
+            "losingBids": {
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.losingBids.list",
+                  "response": {
+                    "$ref": "ListLosingBidsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all reasons for which bids lost in the auction, with the number of\nbids that lost for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/losingBids",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/losingBids",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            },
+            "filteredBids": {
+              "resources": {
+                "creatives": {
+                  "resources": {
+                    "details": {
+                      "methods": {
+                        "list": {
+                          "id": "adexchangebuyer2.accounts.filterSets.filteredBids.creatives.details.list",
+                          "response": {
+                            "$ref": "ListCreativeStatusAndCreativeBreakdownByDetailResponse"
+                          },
+                          "parameterOrder": [
+                            "accountId",
+                            "filterSetId",
+                            "creativeStatusId",
+                            "creativeId"
+                          ],
+                          "description": "List all details associated with a specific reason for which bids were\nfiltered and a specific creative that was filtered for that reason, with\nthe number of bids filtered for each detail.",
+                          "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives/{creativeId}/details",
+                          "httpMethod": "GET",
+                          "parameters": {
+                            "filterSetId": {
+                              "description": "The ID of the filter set to apply.",
+                              "required": true,
+                              "location": "path",
+                              "type": "integer",
+                              "format": "int32"
+                            },
+                            "creativeStatusId": {
+                              "description": "The ID of the creative status for which to retrieve a breakdown by detail.\nSee creative-status-codes.",
+                              "required": true,
+                              "location": "path",
+                              "type": "integer",
+                              "format": "int32"
+                            },
+                            "creativeId": {
+                              "description": "The creative ID for which to retrieve a breakdown by detail.",
+                              "required": true,
+                              "location": "path",
+                              "type": "string"
+                            },
+                            "accountId": {
+                              "description": "Account ID of the buyer.",
+                              "required": true,
+                              "location": "path",
+                              "type": "string",
+                              "format": "int64"
+                            }
+                          },
+                          "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives/{creativeId}/details",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/adexchange.buyer"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "methods": {
+                    "list": {
+                      "id": "adexchangebuyer2.accounts.filterSets.filteredBids.creatives.list",
+                      "response": {
+                        "$ref": "ListCreativeStatusBreakdownByCreativeResponse"
+                      },
+                      "parameterOrder": [
+                        "accountId",
+                        "filterSetId",
+                        "creativeStatusId"
+                      ],
+                      "description": "List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative.",
+                      "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives",
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "filterSetId": {
+                          "description": "The ID of the filter set to apply.",
+                          "required": true,
+                          "location": "path",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "creativeStatusId": {
+                          "description": "The ID of the creative status for which to retrieve a breakdown by\ncreative.\nSee creative-status-codes.",
+                          "required": true,
+                          "location": "path",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "pageSize": {
+                          "description": "Requested page size. The server may return fewer than requested.\nIf unspecified, the server will pick an appropriate default.",
+                          "location": "query",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "accountId": {
+                          "description": "Account ID of the buyer.",
+                          "required": true,
+                          "location": "path",
+                          "type": "string",
+                          "format": "int64"
+                        },
+                        "pageToken": {
+                          "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the\naccounts.filterSets.filteredBids.creatives.list method.",
+                          "location": "query",
+                          "type": "string"
+                        }
+                      },
+                      "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                      ]
+                    }
+                  }
+                },
+                "details": {
+                  "methods": {
+                    "list": {
+                      "id": "adexchangebuyer2.accounts.filterSets.filteredBids.details.list",
+                      "response": {
+                        "$ref": "ListCreativeStatusBreakdownByDetailResponse"
+                      },
+                      "parameterOrder": [
+                        "accountId",
+                        "filterSetId",
+                        "creativeStatusId"
+                      ],
+                      "description": "List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail.",
+                      "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/details",
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "filterSetId": {
+                          "description": "The ID of the filter set to apply.",
+                          "required": true,
+                          "location": "path",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "creativeStatusId": {
+                          "description": "The ID of the creative status for which to retrieve a breakdown by detail.\nSee creative-status-codes.",
+                          "required": true,
+                          "location": "path",
+                          "type": "integer",
+                          "format": "int32"
+                        },
+                        "accountId": {
+                          "description": "Account ID of the buyer.",
+                          "required": true,
+                          "location": "path",
+                          "type": "string",
+                          "format": "int64"
+                        }
+                      },
+                      "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/details",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/adexchange.buyer"
+                      ]
+                    }
+                  }
+                }
+              },
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.filteredBids.list",
+                  "response": {
+                    "$ref": "ListFilteredBidsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            },
+            "filteredImpressions": {
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.filteredImpressions.list",
+                  "response": {
+                    "$ref": "ListFilteredImpressionsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all reasons that caused an impression to be filtered (i.e. not\nconsidered as an inventory match), with the number of impressions that were\nfiltered for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredImpressions",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredImpressions",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            },
+            "filteredRequests": {
+              "methods": {
+                "list": {
+                  "id": "adexchangebuyer2.accounts.filterSets.filteredRequests.list",
+                  "response": {
+                    "$ref": "ListFilteredRequestsResponse"
+                  },
+                  "parameterOrder": [
+                    "accountId",
+                    "filterSetId"
+                  ],
+                  "description": "List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason.",
+                  "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredRequests",
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "filterSetId": {
+                      "description": "The ID of the filter set to apply.",
+                      "required": true,
+                      "location": "path",
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "accountId": {
+                      "description": "Account ID of the buyer.",
+                      "required": true,
+                      "location": "path",
+                      "type": "string",
+                      "format": "int64"
+                    }
+                  },
+                  "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredRequests",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/adexchange.buyer"
+                  ]
+                }
+              }
+            }
+          },
+          "methods": {
+            "getBidMetrics": {
+              "id": "adexchangebuyer2.accounts.filterSets.getBidMetrics",
+              "response": {
+                "$ref": "BidMetrics"
+              },
+              "parameterOrder": [
+                "accountId",
+                "filterSetId"
+              ],
+              "description": "Gets all metrics that are measured in terms of number of bids.",
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidMetrics",
+              "httpMethod": "GET",
+              "parameters": {
+                "filterSetId": {
+                  "description": "The ID of the filter set to apply.",
+                  "required": true,
+                  "location": "path",
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/bidMetrics",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            },
+            "list": {
+              "id": "adexchangebuyer2.accounts.filterSets.list",
+              "response": {
+                "$ref": "ListFilterSetsResponse"
+              },
+              "parameterOrder": [
+                "accountId"
+              ],
+              "description": "Lists all filter sets for the account with the given account ID.",
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets",
+              "httpMethod": "GET",
+              "parameters": {
+                "pageSize": {
+                  "description": "Requested page size. The server may return fewer than requested.\nIf unspecified, the server will pick an appropriate default.",
+                  "location": "query",
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                },
+                "pageToken": {
+                  "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilterSetsResponse.nextPageToken\nreturned from the previous call to the\naccounts.rtbBreakout.filterSets.list method.",
+                  "location": "query",
+                  "type": "string"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            },
+            "get": {
+              "id": "adexchangebuyer2.accounts.filterSets.get",
+              "response": {
+                "$ref": "FilterSet"
+              },
+              "parameterOrder": [
+                "accountId",
+                "filterSetId"
+              ],
+              "description": "Retrieves the requested filter set for the account with the given account\nID.",
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}",
+              "httpMethod": "GET",
+              "parameters": {
+                "filterSetId": {
+                  "description": "The ID of the filter set to get.",
+                  "required": true,
+                  "location": "path",
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            },
+            "create": {
+              "id": "adexchangebuyer2.accounts.filterSets.create",
+              "response": {
+                "$ref": "FilterSet"
+              },
+              "parameterOrder": [
+                "accountId"
+              ],
+              "description": "Creates the specified filter set for the account with the given account ID.",
+              "request": {
+                "$ref": "FilterSet"
+              },
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets",
+              "httpMethod": "POST",
+              "parameters": {
+                "isTransient": {
+                  "description": "Whether the filter set is transient, or should be persisted indefinitely.\nBy default, filter sets are not transient.\nIf transient, it will be available for at least 1 hour after creation.",
+                  "location": "query",
+                  "type": "boolean"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            },
+            "getImpressionMetrics": {
+              "id": "adexchangebuyer2.accounts.filterSets.getImpressionMetrics",
+              "response": {
+                "$ref": "ImpressionMetrics"
+              },
+              "parameterOrder": [
+                "accountId",
+                "filterSetId"
+              ],
+              "description": "Gets all metrics that are measured in terms of number of impressions.",
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/impressionMetrics",
+              "httpMethod": "GET",
+              "parameters": {
+                "filterSetId": {
+                  "description": "The ID of the filter set to apply.",
+                  "required": true,
+                  "location": "path",
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/impressionMetrics",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            },
+            "delete": {
+              "id": "adexchangebuyer2.accounts.filterSets.delete",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "accountId",
+                "filterSetId"
+              ],
+              "description": "Deletes the requested filter set from the account with the given account\nID.",
+              "flatPath": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}",
+              "httpMethod": "DELETE",
+              "parameters": {
+                "filterSetId": {
+                  "description": "The ID of the filter set to delete.",
+                  "required": true,
+                  "location": "path",
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "accountId": {
+                  "description": "Account ID of the buyer.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string",
+                  "format": "int64"
+                }
+              },
+              "path": "v2beta1/accounts/{accountId}/filterSets/{filterSetId}",
+              "scopes": [
+                "https://www.googleapis.com/auth/adexchange.buyer"
+              ]
+            }
+          }
+        },
         "clients": {
           "resources": {
             "users": {
@@ -414,6 +1000,62 @@
     }
   },
   "schemas": {
+    "BidMetrics": {
+      "description": "The set of metrics that are measured in numbers of bids, representing how\nmany bids were considered eligible at each stage of the bidding funnel.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "bids": {
+          "description": "The number of bids that Ad Exchange received from the buyer.",
+          "type": "string",
+          "format": "int64"
+        },
+        "bidsInAuction": {
+          "description": "The number of bids that were permitted to compete in the auction.",
+          "type": "string",
+          "format": "int64"
+        },
+        "impressionsWon": {
+          "description": "The number of bids that won an impression.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "BidMetrics"
+    },
+    "ListResponseErrorsResponse": {
+      "description": "Response message for listing all reasons that bid responses resulted in an\nerror.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all callout status IDs, identifying the error in the bid responses,\nwith their associated impression counts.\nSee callout-status-codes.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "CalloutStatusFrequency"
+          }
+        }
+      },
+      "id": "ListResponseErrorsResponse"
+    },
     "ClientUser": {
       "description": "A client user is created under a client buyer and has restricted access to\nthe Ad Exchange Marketplace and certain other sections\nof the Ad Exchange Buyer UI based on the role\ngranted to the associated client buyer.\n\nThe only way a new client user can be created is via accepting an\nemail invitation\n(see the\naccounts.clients.invitations.create\nmethod).\n\nAll fields are required unless otherwise specified.",
       "type": "object",
@@ -451,6 +1093,213 @@
       },
       "id": "ClientUser"
     },
+    "CreativeFrequency": {
+      "description": "The number of bids for a given creative.",
+      "type": "object",
+      "properties": {
+        "creativeId": {
+          "description": "The ID of the creative.",
+          "type": "string"
+        },
+        "bidCount": {
+          "description": "The number of bids associated with the specified creative.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "CreativeFrequency"
+    },
+    "CreativeStatusFrequency": {
+      "description": "The number of bids with the specified creative status.",
+      "type": "object",
+      "properties": {
+        "creativeStatusId": {
+          "description": "The ID of the creative status.\nSee creative-status-codes.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "bidCount": {
+          "description": "The number of bids associated with the specified status.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "CreativeStatusFrequency"
+    },
+    "FilterSet": {
+      "description": "A set of filters that is applied to a request for data from the\nRtbTroubleshootingService. Within a filter set, an AND operation is performed\nacross the filters represented by each field. An OR operation is performed\nacross the filters represented by the multiple values of a repeated field.\nE.g.\n\"format=VIDEO AND deal_id=12 AND (web_property_id=34 OR web_property_id=56)\"",
+      "type": "object",
+      "properties": {
+        "format": {
+          "description": "The format on which to filter; optional.",
+          "enum": [
+            "FORMAT_UNSPECIFIED",
+            "DISPLAY",
+            "VIDEO"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined format; indicates that no format filter\nwill be applied.",
+            "The ad impression is display format (i.e. an image).",
+            "The ad impression is video format."
+          ],
+          "type": "string"
+        },
+        "relativeDateRange": {
+          "description": "A relative date range, defined by an offset from today and a duration.",
+          "$ref": "RelativeDateRange"
+        },
+        "creativeId": {
+          "description": "The ID of the creative on which to filter; optional.",
+          "type": "string"
+        },
+        "dealId": {
+          "description": "The ID of the deal on which to filter; optional.",
+          "type": "string",
+          "format": "int64"
+        },
+        "buyerAccountId": {
+          "description": "The ID of the buyer account on which to filter; optional.",
+          "type": "string",
+          "format": "int64"
+        },
+        "filterSetOwnerAccountId": {
+          "description": "The account ID of the buyer who owns this filter set.\nThe value of this field is ignored in create operations.",
+          "type": "string",
+          "format": "int64"
+        },
+        "absoluteDateRange": {
+          "description": "An absolute date range, defined by a start date and an end date.",
+          "$ref": "AbsoluteDateRange"
+        },
+        "webPropertyIds": {
+          "description": "The list of IDs of web properties on which to filter; may be empty.\nThe filters represented by multiple web property IDs are ORed together\n(i.e. if non-empty, results must match any one of the web properties).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "platform": {
+          "description": "The platform on which to filter; optional.",
+          "enum": [
+            "PLATFORM_UNSPECIFIED",
+            "DESKTOP",
+            "TABLET_WEB",
+            "TABLET_APP",
+            "MOBILE_WEB",
+            "MOBILE_APP"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined platform; indicates that no platform\nfilter will be applied.",
+            "The ad impression appears on a desktop.",
+            "The ad impression appears on a tablet, on the web.",
+            "The ad impression appears on a tablet, in an app.",
+            "The ad impression appears on a mobile device, on the web.",
+            "The ad impression appears on a mobile device, in an app."
+          ],
+          "type": "string"
+        },
+        "filterSetId": {
+          "description": "The ID of the filter set; unique within the account of the filter set\nowner.\nThe value of this field is ignored in create operations.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "FilterSet"
+    },
+    "RelativeDateRange": {
+      "description": "A relative date range, specified by an offset and a duration.\nThe supported range of dates begins 30 days before today and ends today.\nI.e. the limits for these values are:\noffset_days \u003e= 0\nduration_days \u003e= 1\noffset_days + duration_days \u003c= 30",
+      "type": "object",
+      "properties": {
+        "offsetDays": {
+          "description": "The end date of the filter set, specified as the number of days before\ntoday. E.g. for a range where the last date is today, 0.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "durationDays": {
+          "description": "The number of days in the requested date range. E.g. for a range spanning\ntoday, 1. For a range spanning the last 7 days, 7.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "RelativeDateRange"
+    },
+    "ListResponsesWithoutBidsResponse": {
+      "description": "Response message for listing all reasons that bid responses were considered\nto have no applicable bids.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all statuses with their associated impression counts.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "ResponsesWithoutBidsStatusFrequency"
+          }
+        }
+      },
+      "id": "ListResponsesWithoutBidsResponse"
+    },
+    "ResponsesWithoutBidsStatusFrequency": {
+      "description": "The number of impressions for which the corresponding response had no\napplicable bids, as described by the specified status.",
+      "type": "object",
+      "properties": {
+        "impressionCount": {
+          "description": "The number of impressions associated with the specified status.",
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "description": "The status that caused the bid response to be considered to have no\napplicable bids.",
+          "enum": [
+            "STATUS_UNSPECIFIED",
+            "RESPONSES_WITHOUT_BIDS",
+            "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT",
+            "RESPONSES_WITHOUT_BIDS_FOR_DEAL"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined status.\nThis value will never be returned in responses.",
+            "The response had no bids.",
+            "The response had no bids for the specified account, though it may have\nincluded bids on behalf of other accounts.",
+            "The response had no bids for the specified deal, though it may have\nincluded bids on other deals on behalf of the account to which the deal\nbelongs."
+          ],
+          "type": "string"
+        }
+      },
+      "id": "ResponsesWithoutBidsStatusFrequency"
+    },
+    "FilteredImpressionStatusFrequency": {
+      "description": "The number of impressions filtered due to the specified status.",
+      "type": "object",
+      "properties": {
+        "impressionCount": {
+          "description": "The number of impressions associated with the specified status.",
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "description": "The status for which impressions were filtered.",
+          "enum": [
+            "STATUS_UNSPECIFIED",
+            "PRETARGETING_CONFIGURATIONS"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined status.\nThis value will never be returned in responses.",
+            "The impression was filtered because it did not match the buyer's\npretargeting configurations."
+          ],
+          "type": "string"
+        }
+      },
+      "id": "FilteredImpressionStatusFrequency"
+    },
     "ClientUserInvitation": {
       "description": "An invitation for a new client user to get access to the AdExchange Buyer UI.\n\nAll fields are required unless otherwise specified.",
       "type": "object",
@@ -472,6 +1321,186 @@
       },
       "id": "ClientUserInvitation"
     },
+    "ListCreativeStatusBreakdownByCreativeResponse": {
+      "description": "Response message for listing all creatives associated with a given filtered\nbid reason.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "creativeStatusId": {
+          "description": "The ID of the creative status that identifies the reason the bid was\nfiltered before the auction.\nSee creative-status-codes.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frequencies": {
+          "description": "List of creative IDs with their associated bid counts.",
+          "type": "array",
+          "items": {
+            "$ref": "CreativeFrequency"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.filteredBids.creatives.list\nmethod to retrieve the next page of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListCreativeStatusBreakdownByCreativeResponse"
+    },
+    "ImpressionMetrics": {
+      "description": "The set of metrics that are measured in numbers of impressions, representing\nhow many impressions were considered eligible at each stage of the bidding\nfunnel.",
+      "type": "object",
+      "properties": {
+        "responsesWithBids": {
+          "description": "The number of impressions for which Ad Exchange received a response from\nthe buyer that contained at least one applicable bid.",
+          "type": "string",
+          "format": "int64"
+        },
+        "inventoryMatches": {
+          "description": "The number of impressions that match the buyer's inventory pretargeting.",
+          "type": "string",
+          "format": "int64"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "successfulResponses": {
+          "description": "The number of impressions for which the buyer successfully sent a response\nto Ad Exchange.",
+          "type": "string",
+          "format": "int64"
+        },
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "bidRequests": {
+          "description": "The number of impressions for which Ad Exchange sent the buyer a bid\nrequest.",
+          "type": "string",
+          "format": "int64"
+        },
+        "availableImpressions": {
+          "description": "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "ImpressionMetrics"
+    },
+    "ListLosingBidsResponse": {
+      "description": "Response message for listing all reasons that bids lost in the auction.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all creative status IDs with their associated bid counts.\nSee creative-status-codes.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "CreativeStatusFrequency"
+          }
+        }
+      },
+      "id": "ListLosingBidsResponse"
+    },
+    "ListFilteredImpressionsResponse": {
+      "description": "Response message for listing all reasons that impressions were filtered (i.e.\nnot considered as an inventory match) for the buyer.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all statuses identifying the reason the bid request was filtered,\nwith their associated impression counts.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "FilteredImpressionStatusFrequency"
+          }
+        }
+      },
+      "id": "ListFilteredImpressionsResponse"
+    },
+    "AbsoluteDateRange": {
+      "description": "An absolute date range, specified by its start date and end date.\nThe supported range of dates begins 30 days before today and ends today.\nValidity checked upon filter set creation. If a filter set with an absolute\ndate range is run at a later date more than 30 days after start_date, it will\nfail.",
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "description": "The start date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor before end_date.",
+          "$ref": "Date"
+        },
+        "endDate": {
+          "description": "The end date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor after start_date.",
+          "$ref": "Date"
+        }
+      },
+      "id": "AbsoluteDateRange"
+    },
+    "ListFilteredRequestsResponse": {
+      "description": "Response message for listing all reasons that bid requests were filtered and\nnot sent to the buyer.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all callout status IDs, identifying the reason the bid request was\nfiltered, with their associated impression counts.\nSee callout-status-codes.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "CalloutStatusFrequency"
+          }
+        }
+      },
+      "id": "ListFilteredRequestsResponse"
+    },
+    "ListFilterSetsResponse": {
+      "description": "Response message for listing filter sets.",
+      "type": "object",
+      "properties": {
+        "filterSets": {
+          "description": "The filter sets belonging to the buyer.",
+          "type": "array",
+          "items": {
+            "$ref": "FilterSet"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results.",
+          "type": "string"
+        }
+      },
+      "id": "ListFilterSetsResponse"
+    },
     "ListClientUserInvitationsResponse": {
       "type": "object",
       "properties": {
@@ -489,6 +1518,97 @@
       },
       "id": "ListClientUserInvitationsResponse"
     },
+    "CalloutStatusFrequency": {
+      "description": "The number of impressions for which the corresponding callouts had the\nspecified status.",
+      "type": "object",
+      "properties": {
+        "impressionCount": {
+          "description": "The number of impressions associated with the specified status.",
+          "type": "string",
+          "format": "int64"
+        },
+        "calloutStatusId": {
+          "description": "The ID of the callout status.\nSee callout-status-codes.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "CalloutStatusFrequency"
+    },
+    "DetailFrequency": {
+      "description": "The number of bids, among those with a given creative status, that had the\nspecified detail.",
+      "type": "object",
+      "properties": {
+        "detailId": {
+          "description": "The ID of the detail. The associated value can be looked up in the\ndictionary file corresponding to the DetailType in the response message.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "bidCount": {
+          "description": "The number of bids associated with the specified detail.",
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "id": "DetailFrequency"
+    },
+    "ListCreativeStatusAndCreativeBreakdownByDetailResponse": {
+      "description": "Response message for listing all details associated with a given filtered bid\nreason and a given creative.",
+      "type": "object",
+      "properties": {
+        "creativeId": {
+          "description": "The ID of the creative associated with a bid filtered from the auction.",
+          "type": "string"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "detailType": {
+          "description": "The type of detail that the detail IDs represent.",
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "CREATIVE_ATTRIBUTE",
+            "VENDOR",
+            "SENSITIVE_CATEGORY",
+            "PRODUCT_CATEGORY"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined status.\nThis value will never be returned in responses.",
+            "Indicates that the detail ID refers to a creative attribute; see\npublisher-excludable-creative-attributes.",
+            "Indicates that the detail ID refers to a vendor; see\nvendors.",
+            "Indicates that the detail ID refers to a sensitive category; see\nad-sensitive-categories.",
+            "Indicates that the detail ID refers to a product category; see\nad-product-categories."
+          ],
+          "type": "string"
+        },
+        "frequencies": {
+          "description": "List of all detail IDs with their associated bid counts.\nThere is a fixed set of details, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "DetailFrequency"
+          }
+        },
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "creativeStatusId": {
+          "description": "The ID of the creative status that identifies the reason the bid was\nfiltered before the auction.\nSee creative-status-codes.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "ListCreativeStatusAndCreativeBreakdownByDetailResponse"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
     "ListClientUsersResponse": {
       "type": "object",
       "properties": {
@@ -505,6 +1625,53 @@
         }
       },
       "id": "ListClientUsersResponse"
+    },
+    "ListCreativeStatusBreakdownByDetailResponse": {
+      "description": "Response message for listing all details associated with a given filtered bid\nreason.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "creativeStatusId": {
+          "description": "The ID of the creative status that identifies the reason the bid was\nfiltered before the auction.\nSee creative-status-codes.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frequencies": {
+          "description": "List of all detail IDs with their associated bid counts.\nThere is a fixed set of details, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "DetailFrequency"
+          }
+        },
+        "detailType": {
+          "description": "The type of detail that the detail IDs represent.",
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "CREATIVE_ATTRIBUTE",
+            "VENDOR",
+            "SENSITIVE_CATEGORY",
+            "PRODUCT_CATEGORY"
+          ],
+          "enumDescriptions": [
+            "A placeholder for an undefined status.\nThis value will never be returned in responses.",
+            "Indicates that the detail ID refers to a creative attribute; see\npublisher-excludable-creative-attributes.",
+            "Indicates that the detail ID refers to a vendor; see\nvendors.",
+            "Indicates that the detail ID refers to a sensitive category; see\nad-sensitive-categories.",
+            "Indicates that the detail ID refers to a product category; see\nad-product-categories."
+          ],
+          "type": "string"
+        }
+      },
+      "id": "ListCreativeStatusBreakdownByDetailResponse"
     },
     "Client": {
       "description": "A client resource represents a client buyer&mdash;an agency,\na brand, or an advertiser customer of the sponsor buyer.\nUsers associated with the client buyer have restricted access to\nthe Ad Exchange Marketplace and certain other sections\nof the Ad Exchange Buyer UI based on the role\ngranted to the client buyer.\nAll fields are required unless otherwise specified.",
@@ -581,6 +1748,52 @@
       },
       "id": "Client"
     },
+    "Date": {
+      "description": "Represents a whole calendar date, e.g. date of birth. The time of day and\ntime zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. The day may be 0 to\nrepresent a year and month where the day is not significant, e.g. credit card\nexpiration date. The year may be 0 to represent a month and day independent\nof year, e.g. anniversary date. Related types are google.type.TimeOfDay\nand `google.protobuf.Timestamp`.",
+      "type": "object",
+      "properties": {
+        "month": {
+          "description": "Month of year. Must be from 1 to 12.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "Date"
+    },
+    "ListFilteredBidsResponse": {
+      "description": "Response message for listing all reasons that bids were filtered from the\nauction.",
+      "type": "object",
+      "properties": {
+        "startTime": {
+          "description": "The timestamp marking the start of the range (inclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "endTime": {
+          "description": "The timestamp marking the end of the range (exclusive) for which data is\nincluded.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "frequencies": {
+          "description": "List of all creative status IDs, identifying the reason the bids were\nfiltered from the auction, with their associated bid counts.\nSee creative-status-codes.\nThere is a fixed set of statuses, hence results are not paged.",
+          "type": "array",
+          "items": {
+            "$ref": "CreativeStatusFrequency"
+          }
+        }
+      },
+      "id": "ListFilteredBidsResponse"
+    },
     "ListClientsResponse": {
       "type": "object",
       "properties": {
@@ -599,7 +1812,7 @@
       "id": "ListClientsResponse"
     }
   },
-  "revision": "20160630",
+  "revision": "20160704",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

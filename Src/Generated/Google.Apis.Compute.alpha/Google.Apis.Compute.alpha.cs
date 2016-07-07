@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160628 (544)
+ *      <tr><th>API Rev<td>20160624 (540)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -753,7 +753,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -862,7 +862,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -953,7 +953,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -1048,7 +1048,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -1174,7 +1174,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -1300,7 +1300,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -1445,7 +1445,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -1554,7 +1554,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -1647,7 +1647,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -1740,7 +1740,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -1866,7 +1866,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -1994,7 +1994,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -2093,7 +2093,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -2190,7 +2190,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -2292,7 +2292,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendBucket", new Google.Apis.Discovery.Parameter
@@ -2370,7 +2370,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendBucket", new Google.Apis.Discovery.Parameter
@@ -2448,7 +2448,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -2527,7 +2527,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -2637,7 +2637,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -2750,7 +2750,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendBucket", new Google.Apis.Discovery.Parameter
@@ -2834,7 +2834,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -2918,7 +2918,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -3002,7 +3002,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendBucket", new Google.Apis.Discovery.Parameter
@@ -3095,7 +3095,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendService", new Google.Apis.Discovery.Parameter
@@ -3173,7 +3173,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendService", new Google.Apis.Discovery.Parameter
@@ -3257,7 +3257,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendService", new Google.Apis.Discovery.Parameter
@@ -3338,7 +3338,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -3448,7 +3448,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -3563,7 +3563,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendService", new Google.Apis.Discovery.Parameter
@@ -3647,7 +3647,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -3735,7 +3735,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "backendService", new Google.Apis.Discovery.Parameter
@@ -3871,7 +3871,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -3982,7 +3982,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4117,7 +4117,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4289,7 +4289,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -4410,7 +4410,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4514,7 +4514,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4607,7 +4607,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4708,7 +4708,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4843,7 +4843,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -4969,7 +4969,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -5070,7 +5070,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -5169,7 +5169,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -5271,7 +5271,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "firewall", new Google.Apis.Discovery.Parameter
@@ -5347,7 +5347,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "firewall", new Google.Apis.Discovery.Parameter
@@ -5424,7 +5424,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -5534,7 +5534,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -5647,7 +5647,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "firewall", new Google.Apis.Discovery.Parameter
@@ -5731,7 +5731,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -5815,7 +5815,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "firewall", new Google.Apis.Discovery.Parameter
@@ -5951,7 +5951,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -6061,7 +6061,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6153,7 +6153,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6248,7 +6248,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6376,7 +6376,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6505,7 +6505,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6604,7 +6604,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -6706,7 +6706,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "address", new Google.Apis.Discovery.Parameter
@@ -6784,7 +6784,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "address", new Google.Apis.Discovery.Parameter
@@ -6863,7 +6863,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -6973,7 +6973,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -7084,7 +7084,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -7177,7 +7177,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "forwardingRule", new Google.Apis.Discovery.Parameter
@@ -7255,7 +7255,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "forwardingRule", new Google.Apis.Discovery.Parameter
@@ -7334,7 +7334,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -7444,7 +7444,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -7557,7 +7557,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "forwardingRule", new Google.Apis.Discovery.Parameter
@@ -7641,7 +7641,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -7777,7 +7777,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -7880,7 +7880,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "operation", new Google.Apis.Discovery.Parameter
@@ -7958,7 +7958,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "operation", new Google.Apis.Discovery.Parameter
@@ -8077,7 +8077,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -8197,7 +8197,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "healthCheck", new Google.Apis.Discovery.Parameter
@@ -8275,7 +8275,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "healthCheck", new Google.Apis.Discovery.Parameter
@@ -8354,7 +8354,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -8464,7 +8464,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -8577,7 +8577,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "healthCheck", new Google.Apis.Discovery.Parameter
@@ -8661,7 +8661,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -8747,7 +8747,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "healthCheck", new Google.Apis.Discovery.Parameter
@@ -8840,7 +8840,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpHealthCheck", new Google.Apis.Discovery.Parameter
@@ -8918,7 +8918,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpHealthCheck", new Google.Apis.Discovery.Parameter
@@ -8997,7 +8997,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -9107,7 +9107,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -9220,7 +9220,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpHealthCheck", new Google.Apis.Discovery.Parameter
@@ -9304,7 +9304,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -9390,7 +9390,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpHealthCheck", new Google.Apis.Discovery.Parameter
@@ -9483,7 +9483,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpsHealthCheck", new Google.Apis.Discovery.Parameter
@@ -9561,7 +9561,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpsHealthCheck", new Google.Apis.Discovery.Parameter
@@ -9640,7 +9640,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -9750,7 +9750,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -9863,7 +9863,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpsHealthCheck", new Google.Apis.Discovery.Parameter
@@ -9947,7 +9947,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -10033,7 +10033,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "httpsHealthCheck", new Google.Apis.Discovery.Parameter
@@ -10126,7 +10126,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "image", new Google.Apis.Discovery.Parameter
@@ -10213,7 +10213,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "image", new Google.Apis.Discovery.Parameter
@@ -10289,7 +10289,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "image", new Google.Apis.Discovery.Parameter
@@ -10306,8 +10306,8 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Returns the latest image that is part of an image family and is not deprecated.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="family">Name of the image resource
-        /// to return.</param>
+        /// <param name="family">Name of the image family to
+        /// search for.</param>
         public virtual GetFromFamilyRequest GetFromFamily(string project, string family)
         {
             return new GetFromFamilyRequest(service, project, family);
@@ -10330,7 +10330,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the image resource to return.</summary>
+            /// <summary>Name of the image family to search for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("family", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Family { get; private set; }
 
@@ -10365,7 +10365,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "family", new Google.Apis.Discovery.Parameter
@@ -10442,7 +10442,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -10560,7 +10560,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -10673,7 +10673,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -10757,7 +10757,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -10875,7 +10875,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11003,7 +11003,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -11117,7 +11117,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11225,7 +11225,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11319,7 +11319,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11420,7 +11420,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11548,7 +11548,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11673,7 +11673,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11781,7 +11781,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11891,7 +11891,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -11924,12 +11924,14 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Resizes the managed instance group. If you increase the size, the group creates new instances using
-        /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
-        /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
-        /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method. This method is an extended version of Resize and it supports more advanced
-        /// options.</summary>
+        /// <summary>Resizes the managed instance group with advanced configuration options like disabling creation
+        /// retries. This is an extended version of the resize method.
+        ///
+        /// If you increase the size of the instance group, the group creates new instances using the current instance
+        /// template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when
+        /// the resize actions are scheduled even if the group has not yet added or deleted any instances. You must
+        /// separately verify the status of the creating, creatingWithoutRetries, or deleting actions with the get or
+        /// listmanagedinstances method.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -11941,12 +11943,14 @@ namespace Google.Apis.Compute.alpha
             return new ResizeAdvancedRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Resizes the managed instance group. If you increase the size, the group creates new instances using
-        /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
-        /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
-        /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method. This method is an extended version of Resize and it supports more advanced
-        /// options.</summary>
+        /// <summary>Resizes the managed instance group with advanced configuration options like disabling creation
+        /// retries. This is an extended version of the resize method.
+        ///
+        /// If you increase the size of the instance group, the group creates new instances using the current instance
+        /// template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when
+        /// the resize actions are scheduled even if the group has not yet added or deleted any instances. You must
+        /// separately verify the status of the creating, creatingWithoutRetries, or deleting actions with the get or
+        /// listmanagedinstances method.</summary>
         public class ResizeAdvancedRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new ResizeAdvanced request.</summary>
@@ -12010,7 +12014,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12110,7 +12114,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12212,7 +12216,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12320,7 +12324,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12419,7 +12423,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12538,7 +12542,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12666,7 +12670,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -12780,7 +12784,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12873,7 +12877,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -12968,7 +12972,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13094,7 +13098,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13272,7 +13276,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13410,7 +13414,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13510,7 +13514,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13609,7 +13613,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -13715,7 +13719,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "instanceTemplate", new Google.Apis.Discovery.Parameter
@@ -13793,7 +13797,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "instanceTemplate", new Google.Apis.Discovery.Parameter
@@ -13874,7 +13878,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -13986,7 +13990,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -14097,7 +14101,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -14211,7 +14215,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14348,7 +14352,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -14465,7 +14469,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14558,7 +14562,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14663,7 +14667,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14779,7 +14783,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14881,7 +14885,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -14974,7 +14978,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15077,7 +15081,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15190,7 +15194,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15316,7 +15320,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15434,7 +15438,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15539,7 +15543,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15656,7 +15660,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15757,7 +15761,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15858,7 +15862,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -15957,7 +15961,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16056,7 +16060,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16155,7 +16159,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16254,7 +16258,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16347,7 +16351,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16448,7 +16452,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16545,7 +16549,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16642,7 +16646,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16741,7 +16745,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -16845,7 +16849,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "license", new Google.Apis.Discovery.Parameter
@@ -16981,7 +16985,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -17092,7 +17096,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -17227,7 +17231,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -17356,7 +17360,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "network", new Google.Apis.Discovery.Parameter
@@ -17434,7 +17438,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "network", new Google.Apis.Discovery.Parameter
@@ -17511,7 +17515,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -17621,7 +17625,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -17724,7 +17728,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "network", new Google.Apis.Discovery.Parameter
@@ -17808,7 +17812,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -17894,7 +17898,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -17962,7 +17966,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -18030,7 +18034,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -18100,7 +18104,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -18170,7 +18174,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -18260,7 +18264,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18351,7 +18355,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18444,7 +18448,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18570,7 +18574,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18698,7 +18702,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18797,7 +18801,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -18894,7 +18898,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19003,7 +19007,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19095,7 +19099,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19194,7 +19198,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19291,7 +19295,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19419,7 +19423,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19550,7 +19554,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19649,7 +19653,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19753,7 +19757,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19879,7 +19883,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -19971,7 +19975,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20078,7 +20082,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20170,7 +20174,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20271,7 +20275,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20399,7 +20403,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20520,7 +20524,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20627,7 +20631,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20734,7 +20738,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20842,7 +20846,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -20944,7 +20948,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21045,7 +21049,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21144,7 +21148,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21253,7 +21257,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21388,7 +21392,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21569,7 +21573,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21705,7 +21709,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21804,7 +21808,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -21912,7 +21916,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22003,7 +22007,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22138,7 +22142,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22269,7 +22273,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22388,7 +22392,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -22551,7 +22555,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -22660,7 +22664,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22753,7 +22757,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22844,7 +22848,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -22939,7 +22943,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23065,7 +23069,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23191,7 +23195,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23292,7 +23296,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23391,7 +23395,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23490,7 +23494,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -23592,7 +23596,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "route", new Google.Apis.Discovery.Parameter
@@ -23670,7 +23674,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "route", new Google.Apis.Discovery.Parameter
@@ -23747,7 +23751,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -23857,7 +23861,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -23968,7 +23972,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -24069,7 +24073,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "snapshot", new Google.Apis.Discovery.Parameter
@@ -24147,7 +24151,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "snapshot", new Google.Apis.Discovery.Parameter
@@ -24266,7 +24270,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -24379,7 +24383,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -24463,7 +24467,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -24556,7 +24560,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "sslCertificate", new Google.Apis.Discovery.Parameter
@@ -24634,7 +24638,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "sslCertificate", new Google.Apis.Discovery.Parameter
@@ -24713,7 +24717,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -24823,7 +24827,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -24934,7 +24938,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -25070,7 +25074,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -25179,7 +25183,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25278,7 +25282,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25369,7 +25373,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25462,7 +25466,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25555,7 +25559,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25681,7 +25685,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25807,7 +25811,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -25906,7 +25910,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -26008,7 +26012,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpProxy", new Google.Apis.Discovery.Parameter
@@ -26086,7 +26090,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpProxy", new Google.Apis.Discovery.Parameter
@@ -26165,7 +26169,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -26275,7 +26279,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -26386,7 +26390,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpProxy", new Google.Apis.Discovery.Parameter
@@ -26470,7 +26474,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -26563,7 +26567,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpsProxy", new Google.Apis.Discovery.Parameter
@@ -26641,7 +26645,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpsProxy", new Google.Apis.Discovery.Parameter
@@ -26720,7 +26724,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -26830,7 +26834,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -26941,7 +26945,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpsProxy", new Google.Apis.Discovery.Parameter
@@ -27025,7 +27029,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetHttpsProxy", new Google.Apis.Discovery.Parameter
@@ -27109,7 +27113,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -27245,7 +27249,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -27354,7 +27358,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -27447,7 +27451,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -27542,7 +27546,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -27668,7 +27672,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -27794,7 +27798,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -27911,7 +27915,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28011,7 +28015,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28139,7 +28143,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -28248,7 +28252,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28341,7 +28345,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28443,7 +28447,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28538,7 +28542,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28664,7 +28668,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28790,7 +28794,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28890,7 +28894,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -28994,7 +28998,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -29102,7 +29106,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -29204,7 +29208,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetSslProxy", new Google.Apis.Discovery.Parameter
@@ -29282,7 +29286,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetSslProxy", new Google.Apis.Discovery.Parameter
@@ -29361,7 +29365,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -29471,7 +29475,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -29582,7 +29586,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetSslProxy", new Google.Apis.Discovery.Parameter
@@ -29666,7 +29670,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetSslProxy", new Google.Apis.Discovery.Parameter
@@ -29750,7 +29754,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "targetSslProxy", new Google.Apis.Discovery.Parameter
@@ -29834,7 +29838,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -29970,7 +29974,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -30079,7 +30083,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -30172,7 +30176,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -30267,7 +30271,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -30393,7 +30397,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -30519,7 +30523,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -30621,7 +30625,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -30699,7 +30703,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -30778,7 +30782,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
             }
 
@@ -30855,7 +30859,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -30974,7 +30978,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -31085,7 +31089,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -31169,7 +31173,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "resource", new Google.Apis.Discovery.Parameter
@@ -31253,7 +31257,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -31339,7 +31343,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "urlMap", new Google.Apis.Discovery.Parameter
@@ -31475,7 +31479,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -31584,7 +31588,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -31677,7 +31681,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -31772,7 +31776,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -31898,7 +31902,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -32024,7 +32028,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "region", new Google.Apis.Discovery.Parameter
@@ -32132,7 +32136,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -32223,7 +32227,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -32358,7 +32362,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -32489,7 +32493,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "zone", new Google.Apis.Discovery.Parameter
@@ -32608,7 +32612,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -32655,7 +32659,8 @@ namespace Google.Apis.Compute.alpha
 namespace Google.Apis.Compute.alpha.Data
 {    
 
-    /// <summary>An access configuration attached to an instance's network interface.</summary>
+    /// <summary>An access configuration attached to an instance's network interface. Only one access config per
+    /// instance is supported.</summary>
     public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Type of the resource. Always compute#accessConfig for access configs.</summary>
@@ -33378,14 +33383,18 @@ namespace Google.Apis.Compute.alpha.Data
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is
-        /// UTILIZATION. Valid values are UTILIZATION and RATE.</summary>
+        /// UTILIZATION. Valid values are UTILIZATION and RATE.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
         /// <summary>A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE).
         /// Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on
         /// balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or
-        /// RPS. Valid range is [0.0,1.0].</summary>
+        /// RPS. Valid range is [0.0,1.0].
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityScaler")]
         public virtual System.Nullable<float> CapacityScaler { get; set; } 
 
@@ -33400,36 +33409,48 @@ namespace Google.Apis.Compute.alpha.Data
         /// Instance Group resource.
         ///
         /// Note that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial
-        /// URL.</summary>
+        /// URL.
+        ///
+        /// When the BackendService has load balancing scheme INTERNAL, the instance group must be in a zone within the
+        /// same region as the BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
         /// <summary>The max number of simultaneous connections for the group. Can be used with either CONNECTION or
         /// UTILIZATION balancing modes. For CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be
-        /// set.</summary>
+        /// set.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
         public virtual System.Nullable<int> MaxConnections { get; set; } 
 
         /// <summary>The max number of simultaneous connections that a single backend instance can handle. This is used
         /// to calculate the capacity of the group. Can be used in either CONNECTION or UTILIZATION balancing modes. For
-        /// CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.</summary>
+        /// CONNECTION mode, either maxConnections or maxConnectionsPerInstance must be set.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConnectionsPerInstance")]
         public virtual System.Nullable<int> MaxConnectionsPerInstance { get; set; } 
 
         /// <summary>The max requests per second (RPS) of the group. Can be used with either RATE or UTILIZATION
-        /// balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be
-        /// set.</summary>
+        /// balancing modes, but required if RATE mode. For RATE mode, either maxRate or maxRatePerInstance must be set.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRate")]
         public virtual System.Nullable<int> MaxRate { get; set; } 
 
         /// <summary>The max requests per second (RPS) that a single backend instance can handle.This is used to
         /// calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or
-        /// maxRatePerInstance must be set.</summary>
+        /// maxRatePerInstance must be set.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRatePerInstance")]
         public virtual System.Nullable<float> MaxRatePerInstance { get; set; } 
 
         /// <summary>Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization target for the
-        /// group. The default is 0.8. Valid range is [0.0, 1.0].</summary>
+        /// group. The default is 0.8. Valid range is [0.0, 1.0].
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUtilization")]
         public virtual System.Nullable<float> MaxUtilization { get; set; } 
 
@@ -33526,7 +33547,9 @@ namespace Google.Apis.Compute.alpha.Data
     {
         /// <summary>Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
         /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
-        /// value for TTL is one day.</summary>
+        /// value for TTL is one day.
+        ///
+        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
         public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
 
@@ -33550,7 +33573,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>If true, enable Cloud CDN for this BackendService.</summary>
+        /// <summary>If true, enable Cloud CDN for this BackendService.
+        ///
+        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
         public virtual System.Nullable<bool> EnableCDN { get; set; } 
 
@@ -33561,8 +33586,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this
-        /// BackendService. Currently at most one health check can be specified, and a health check is
-        /// required.</summary>
+        /// BackendService. Currently at most one health check can be specified, and a health check is required.
+        ///
+        /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
@@ -33586,19 +33612,24 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Deprecated in favor of portName. The TCP port to connect on the backend. The default value is
-        /// 80.</summary>
+        /// <summary>Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
+        ///
+        /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; } 
 
         /// <summary>Name of backend port. The same name should appear in the instance groups referenced by this
-        /// service. Required.</summary>
+        /// service. Required when the load balancing scheme is EXTERNAL.
+        ///
+        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portName")]
         public virtual string PortName { get; set; } 
 
         /// <summary>The protocol this BackendService uses to communicate with backends.
         ///
-        /// Possible values are HTTP, HTTPS, HTTP2, TCP and SSL.</summary>
+        /// Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+        ///
+        /// For internal load balancing, the possible values are TCP and UDP, and the default is TCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
@@ -33611,7 +33642,14 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Type of session affinity to use.</summary>
+        /// <summary>Type of session affinity to use. The default is NONE.
+        ///
+        /// When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.
+        ///
+        /// When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or
+        /// CLIENT_IP_PORT_PROTO.
+        ///
+        /// When the protocol is UDP, this field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
         public virtual string SessionAffinity { get; set; } 
 
@@ -33884,7 +33922,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastDetachTimestamp")]
         public virtual string LastDetachTimestamp { get; set; } 
 
-        /// <summary>[Output Only] Any applicable publicly visible licenses.</summary>
+        /// <summary>Any applicable publicly visible licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
 
@@ -34464,20 +34502,29 @@ namespace Google.Apis.Compute.alpha.Data
     /// forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Value of the reserved IP address that this forwarding rule is serving on behalf of. For global
-        /// forwarding rules, the address must be a global IP; for regional forwarding rules, the address must live in
-        /// the same region as the forwarding rule. If left empty (default value), an ephemeral IP from the same scope
-        /// (global or regional) will be assigned.</summary>
+        /// <summary>The IP address that this forwarding rule is serving on behalf of.
+        ///
+        /// For global forwarding rules, the address must be a global IP; for regional forwarding rules, the address
+        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IP
+        /// from the same scope (global or regional) will be assigned.
+        ///
+        /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
+        /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
+        /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
+        /// network configured for this forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
-        /// <summary>The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or
-        /// ICMP.</summary>
+        /// <summary>The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP, AH, SCTP or ICMP.
+        ///
+        /// When the load balancing scheme is INTERNAL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
-        /// <summary>The BackendService resource to receive the matched traffic. This field should only be used for
-        /// Forwarding Rules with LB scheme INTERNAL.</summary>
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// For internal load balancing, this field identifies the BackendService resource to receive the matched
+        /// traffic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
         public virtual string BackendService { get; set; } 
 
@@ -34500,9 +34547,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>When used for load balancing, this signifies what the ForwardingRule will be used for and can only
-        /// take the following values: INTERNAL (Internal Network Load Balancing) and EXTERNAL (External HTTP(S) Load
-        /// Balancing).</summary>
+        /// <summary>This signifies what the ForwardingRule will be used for and can only take the following values:
+        /// INTERNAL EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing
+        /// (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
+        /// External TCP/UDP LB, SSL Proxy)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
@@ -34514,19 +34562,28 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>This field identifies the network that the load balanced IP should belong to, for this Forwarding
-        /// Rule. This field should only be used for Forwarding Rules with LB scheme INTERNAL.</summary>
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// For internal load balancing, this field identifies the network that the load balanced IP should belong to
+        /// for this Forwarding Rule. If this field is not specified, the default network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
         /// <summary>Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the
         /// specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair
-        /// must have disjoint port ranges.</summary>
+        /// must have disjoint port ranges.
+        ///
+        /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>When the load balancing scheme is INTERNAL, a single port or a list of single ports may be
-        /// specified.</summary>
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
+        /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
+        /// forwarding rule. If the port list is not provided then all ports are allowed to pass through.
+        ///
+        /// You may specify a maximum of up to 5 ports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
 
@@ -34539,10 +34596,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>This field identifies the subnetwork that the load balanced IP should belong to, for this
-        /// Forwarding Rule.
+        /// <summary>This field is not used for external load balancing.
         ///
-        /// This field should only be used for Forwarding Rules with LB scheme INTERNAL.
+        /// For internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to
+        /// for this Forwarding Rule.
         ///
         /// If the network specified is in auto subnet mode, this field is optional. However, if the network is in
         /// custom subnet mode, a subnetwork must be specified.</summary>
@@ -34553,7 +34610,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of a type appropriate
         /// to the target object. For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires
-        /// HTTPS traffic.</summary>
+        /// HTTPS traffic.
+        ///
+        /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -34691,6 +34750,17 @@ namespace Google.Apis.Compute.alpha.Data
         /// "").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Features supported by the guest os.</summary>
+    public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of supported feature..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35177,9 +35247,13 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The name of the image family to which this image belongs. You can create disks by specifying an
         /// image family instead of a specific image name. The image family always returns its latest image that is not
-        /// deprecated.</summary>
+        /// deprecated. The name of the image family must comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; } 
+
+        /// <summary>Features of the guest os, valid for bootable images only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -35420,7 +35494,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Name { get; set; } 
 
         /// <summary>An array of configurations for this interface. This specifies how this interface is configured to
-        /// interact with other network services, such as connecting to the internet.</summary>
+        /// interact with other network services, such as connecting to the internet. Only one interface is supported
+        /// per instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
@@ -35623,7 +35698,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Instance Template Manager resource.</summary>
+    /// <summary>An Instance Group Manager resource.</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The autohealing policy for this managed instance group. You can specify only one value.</summary>
@@ -35690,6 +35765,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
 
+        /// <summary>[Output Only] The list of instance actions and the number of instances in this managed instance
+        /// group that are pending for each of those actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingActions")]
+        public virtual InstanceGroupManagerPendingActionsSummary PendingActions { get; set; } 
+
         /// <summary>[Output Only] URL of the region where the managed instance group resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
@@ -35737,13 +35817,16 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Nullable<int> Abandoning { get; set; } 
 
         /// <summary>[Output Only] The number of instances in the managed instance group that are scheduled to be
-        /// created or are currently being created. If the group fails to create one of these instances, it tries again
-        /// until it creates the instance successfully.</summary>
+        /// created or are currently being created. If the group fails to create any of these instances, it tries again
+        /// until it creates the instance successfully.
+        ///
+        /// If you have disabled creation retries, this field will not be populated; instead, the creatingWithoutRetries
+        /// field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creating")]
         public virtual System.Nullable<int> Creating { get; set; } 
 
         /// <summary>[Output Only] The number of instances that the managed instance group will attempt to create. The
-        /// group attempts to create each instance only once. If the group fails to create one of these instances, it
+        /// group attempts to create each instance only once. If the group fails to create any of these instances, it
         /// decreases the group's target_size value accordingly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatingWithoutRetries")]
         public virtual System.Nullable<int> CreatingWithoutRetries { get; set; } 
@@ -35859,6 +35942,32 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class InstanceGroupManagerPendingActionsSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creating")]
+        public virtual System.Nullable<int> Creating { get; set; } 
+
+        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleting")]
+        public virtual System.Nullable<int> Deleting { get; set; } 
+
+        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// recreated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recreating")]
+        public virtual System.Nullable<int> Recreating { get; set; } 
+
+        /// <summary>[Output Only] The number of instances in the managed instance group that are pending to be
+        /// restarted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
+        public virtual System.Nullable<int> Restarting { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Maximum number of instances that can be created above the InstanceGroupManager.targetSize during
@@ -35884,10 +35993,6 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
-        /// <summary>Standby mode of all the standby instances managed by the IGM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("standbyMode")]
-        public virtual string StandbyMode { get; set; } 
-
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -35899,14 +36004,6 @@ namespace Google.Apis.Compute.alpha.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
         public virtual string InstanceTemplate { get; set; } 
-
-        /// <summary>If this field is set, IGM maintains a pool of standby instances created from instanceTemplate. The
-        /// number of standby instances is such that the total number of instances created from this instanceTemplate is
-        /// equal to InstanceGroupManager.targetSize regardless of what is the value of targetSize.fixed or
-        /// targetSize.percent. Standby instances are useful during the update, when the user wants to be able to
-        /// quickly rollout/rollback to the target version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keepStandbyInstances")]
-        public virtual System.Nullable<bool> KeepStandbyInstances { get; set; } 
 
         /// <summary>Tag describing the version. Used to trigger rollout of a target version even if instance_template
         /// remains unchanged.</summary>
@@ -35967,19 +36064,20 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupManagersResizeAdvancedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If this flag is true, we will attempt to create all instances resized up with this request only
-        /// once. In case of an error during creation, we will not create this instance, and we will decrease the
-        /// target_size. If the flag is false, we will keep trying to create each instance until we succeed.
+        /// <summary>If this flag is true, the managed instance group attempts to create all instances initiated by this
+        /// resize request only once. If there is an error during creation, the managed instance group does not retry
+        /// create this instance, and we will decrease the targetSize of the request instead. If the flag is false, the
+        /// group attemps to recreate each instance continuously until it succeeds.
         ///
-        /// This flag matters only in the first attempt of creation of an instance. If an instance creation with this
-        /// flag succeeds, the instance behaves the same way as all the other instances created with the flag set to
-        /// false. In particular, consecutive instance creations (in case an instance dies and needs to be recreated)
-        /// will not fail after the first attempt.
+        /// This flag matters only in the first attempt of creation of an instance. After an instance is successfully
+        /// created while this flag is enabled, the instance behaves the same way as all the other instances created
+        /// with a regular resize request. In particular, if a running instance dies unexpectedly at a later time and
+        /// needs to be recreated, this mode does not affect the recreation behavior in that scenario.
         ///
         /// This flag is applicable only to the current resize request. It does not influence other resize requests in
         /// any way.
         ///
-        /// You can see which instances is being creating in which mode by calling the listManagedInstances
+        /// You can see which instances is being creating in which mode by calling the get or listManagedInstances
         /// API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noCreationRetries")]
         public virtual System.Nullable<bool> NoCreationRetries { get; set; } 
@@ -36800,13 +36898,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// actions for this instance. - CREATING The managed instance group is creating this instance. If the group
         /// fails to create this instance, it will try again until it is successful. - CREATING_WITHOUT_RETRIES The
         /// managed instance group is attempting to create this instance only once. If the group fails to create this
-        /// instance, it does not try again and the group's target_size value is decreased. - RECREATING The managed
-        /// instance group is recreating this instance. - DELETING The managed instance group is permanently deleting
-        /// this instance. - ABANDONING The managed instance group is abandoning this instance. The instance will be
-        /// removed from the instance group and from any target pools that are associated with this group. - RESTARTING
-        /// The managed instance group is restarting the instance. - REFRESHING The managed instance group is applying
-        /// configuration changes to the instance without stopping it. For example, the group can update the target pool
-        /// list for an instance without stopping that instance.</summary>
+        /// instance, it does not try again and the group's targetSize value is decreased instead. - RECREATING The
+        /// managed instance group is recreating this instance. - DELETING The managed instance group is permanently
+        /// deleting this instance. - ABANDONING The managed instance group is abandoning this instance. The instance
+        /// will be removed from the instance group and from any target pools that are associated with this group. -
+        /// RESTARTING The managed instance group is restarting the instance. - REFRESHING The managed instance group is
+        /// applying configuration changes to the instance without stopping it. For example, the group can update the
+        /// target pool list for an instance without stopping that instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentAction")]
         public virtual string CurrentAction { get; set; } 
 
@@ -37004,8 +37102,8 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A network interface resource attached to an instance.</summary>
     public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of configurations for this interface. Currently, ONE_TO_ONE_NAT is the only access config
-        /// supported. If there are no accessConfigs specified, then this instance will have no external internet
+        /// <summary>An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT,
+        /// is supported. If there are no accessConfigs specified, then this instance will have no external internet
         /// access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; } 
@@ -38750,6 +38848,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP
+        /// addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
 
         /// <summary>URL of the region where the Subnetwork resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
