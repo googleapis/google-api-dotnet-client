@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160706 (552)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -2706,8 +2706,7 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Exports a read group set to a BAM file in Google Cloud Storage. For the definitions of read group
         /// sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
         /// /fundamentals-of-google-genomics) Note that currently there may be some differences between exported BAM
-        /// files and the original BAM file at the time of import. See
-        /// [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for caveats.</summary>
+        /// files and the original BAM file at the time of import. See ImportReadGroupSets for caveats.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="readGroupSetId">Required. The ID of the read group set to export. The caller must have READ access to
         /// this read group set.</param>
@@ -2719,8 +2718,7 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Exports a read group set to a BAM file in Google Cloud Storage. For the definitions of read group
         /// sets and other genomics resources, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
         /// /fundamentals-of-google-genomics) Note that currently there may be some differences between exported BAM
-        /// files and the original BAM file at the time of import. See
-        /// [ImportReadGroupSets](google.genomics.v1.ReadServiceV1.ImportReadGroupSets) for caveats.</summary>
+        /// files and the original BAM file at the time of import. See ImportReadGroupSets for caveats.</summary>
         public class ExportRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Operation>
         {
             /// <summary>Constructs a new Export request.</summary>

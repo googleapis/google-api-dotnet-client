@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta5
- *      <tr><th>API Rev<td>20160614 (530)
+ *      <tr><th>API Rev<td>20160629 (545)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -594,6 +594,347 @@ namespace Google.Apis.Appengine.v1beta5
 
                     }
 
+
+                    /// <summary>Enable debugging of this VM instance. This call allows you to SSH to the VM. While the
+                    /// VM is in debug mode, it continues to serve live traffic. After you're done debugging an
+                    /// instance, delete the instance; the system creates a new instance when needed. You can't debug a
+                    /// non-VM instance.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="appsId">Part of `name`. Name of the resource requested. For example:
+                    /// "apps/myapp/services/default/versions/v1/instances/instance-1".</param>
+                    /// <param name="servicesId">Part of
+                    /// `name`. See documentation of `appsId`.</param>
+                    /// <param name="versionsId">Part of `name`. See documentation of
+                    /// `appsId`.</param>
+                    /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
+                    public virtual DebugRequest Debug(Google.Apis.Appengine.v1beta5.Data.DebugInstanceRequest body, string appsId, string servicesId, string versionsId, string instancesId)
+                    {
+                        return new DebugRequest(service, body, appsId, servicesId, versionsId, instancesId);
+                    }
+
+                    /// <summary>Enable debugging of this VM instance. This call allows you to SSH to the VM. While the
+                    /// VM is in debug mode, it continues to serve live traffic. After you're done debugging an
+                    /// instance, delete the instance; the system creates a new instance when needed. You can't debug a
+                    /// non-VM instance.</summary>
+                    public class DebugRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Debug request.</summary>
+                        public DebugRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta5.Data.DebugInstanceRequest body, string appsId, string servicesId, string versionsId, string instancesId)
+                            : base(service)
+                        {
+                            AppsId = appsId;
+                            ServicesId = servicesId;
+                            VersionsId = versionsId;
+                            InstancesId = instancesId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Part of `name`. Name of the resource requested. For example:
+                        /// "apps/myapp/services/default/versions/v1/instances/instance-1".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AppsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string VersionsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("instancesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string InstancesId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Appengine.v1beta5.Data.DebugInstanceRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "debug"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug"; }
+                        }
+
+                        /// <summary>Initializes Debug parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "appsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "appsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "instancesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "instancesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Stops a running instance.</summary>
+                    /// <param name="appsId">Part of `name`. Name of the resource requested. For example:
+                    /// "apps/myapp/services/default/versions/v1/instances/instance-1".</param>
+                    /// <param name="servicesId">Part of
+                    /// `name`. See documentation of `appsId`.</param>
+                    /// <param name="versionsId">Part of `name`. See documentation of
+                    /// `appsId`.</param>
+                    /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
+                    public virtual DeleteRequest Delete(string appsId, string servicesId, string versionsId, string instancesId)
+                    {
+                        return new DeleteRequest(service, appsId, servicesId, versionsId, instancesId);
+                    }
+
+                    /// <summary>Stops a running instance.</summary>
+                    public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId)
+                            : base(service)
+                        {
+                            AppsId = appsId;
+                            ServicesId = servicesId;
+                            VersionsId = versionsId;
+                            InstancesId = instancesId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Part of `name`. Name of the resource requested. For example:
+                        /// "apps/myapp/services/default/versions/v1/instances/instance-1".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AppsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string VersionsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("instancesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string InstancesId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "appsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "appsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "instancesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "instancesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets instance information.</summary>
+                    /// <param name="appsId">Part of `name`. Name of the resource requested. For example:
+                    /// "apps/myapp/services/default/versions/v1/instances/instance-1".</param>
+                    /// <param name="servicesId">Part of
+                    /// `name`. See documentation of `appsId`.</param>
+                    /// <param name="versionsId">Part of `name`. See documentation of
+                    /// `appsId`.</param>
+                    /// <param name="instancesId">Part of `name`. See documentation of `appsId`.</param>
+                    public virtual GetRequest Get(string appsId, string servicesId, string versionsId, string instancesId)
+                    {
+                        return new GetRequest(service, appsId, servicesId, versionsId, instancesId);
+                    }
+
+                    /// <summary>Gets instance information.</summary>
+                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Instance>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string appsId, string servicesId, string versionsId, string instancesId)
+                            : base(service)
+                        {
+                            AppsId = appsId;
+                            ServicesId = servicesId;
+                            VersionsId = versionsId;
+                            InstancesId = instancesId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Part of `name`. Name of the resource requested. For example:
+                        /// "apps/myapp/services/default/versions/v1/instances/instance-1".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AppsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string VersionsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("instancesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string InstancesId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1beta5/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "appsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "appsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "servicesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servicesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "versionsId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "versionsId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "instancesId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "instancesId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
 
                     /// <summary>Lists the instances of a version.</summary>
                     /// <param name="appsId">Part of `name`. Name of the resource requested. For example:
@@ -1910,6 +2251,13 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetUtilization")]
         public virtual System.Nullable<double> TargetUtilization { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `Instances.DebugInstance`.</summary>
+    public class DebugInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

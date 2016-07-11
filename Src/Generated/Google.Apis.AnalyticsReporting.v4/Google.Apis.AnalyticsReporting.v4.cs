@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160616 (532)
+ *      <tr><th>API Rev<td>20160708 (554)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -435,7 +435,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     ///
     /// "cohortGroup": { "cohorts": [{ "name": "cohort 1", "type": "FIRST_VISIT_DATE", "dateRange": { "startDate":
     /// "2015-08-01", "endDate": "2015-08-01" } },{ "name": "cohort 2" "type": "FIRST_VISIT_DATE" "dateRange": {
-    /// "startDate": "2015-07-01", "endDate": "2015-07-01" } }] } </summary>
+    /// "startDate": "2015-07-01", "endDate": "2015-07-01" } }] }</summary>
     public class CohortGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The definition for the cohort.</summary>

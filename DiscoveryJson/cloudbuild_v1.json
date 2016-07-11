@@ -234,7 +234,7 @@
           "type": "array",
           "items": {
             "additionalProperties": {
-              "description": "Properties of the object. Contains field @ype with type URL.",
+              "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
             },
             "type": "object"
@@ -298,7 +298,7 @@
         "metadata": {
           "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
           "additionalProperties": {
-            "description": "Properties of the object. Contains field @ype with type URL.",
+            "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
           "type": "object"
@@ -306,7 +306,7 @@
         "response": {
           "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
           "additionalProperties": {
-            "description": "Properties of the object. Contains field @ype with type URL.",
+            "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
           "type": "object"
@@ -610,7 +610,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160706",
+  "revision": "20160707",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

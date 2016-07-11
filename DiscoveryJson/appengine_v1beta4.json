@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/JDymrl7cTvTgc8y6o_7KAyRtSLk\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/GcbV6anwRuj7kkpeB4eWTFxciL4\"",
  "discoveryVersion": "v1",
  "id": "appengine:v1beta4",
  "name": "appengine",
  "version": "v1beta4",
- "revision": "20160614",
+ "revision": "20160629",
  "title": "Google App Engine Admin API",
  "description": "Provisions and manages App Engine applications.",
  "ownerDomain": "google.com",
@@ -1047,24 +1047,6 @@
     }
    }
   },
-  "ListInstancesResponse": {
-   "id": "ListInstancesResponse",
-   "type": "object",
-   "description": "Response message for `Instances.ListInstances`.",
-   "properties": {
-    "instances": {
-     "type": "array",
-     "description": "The instances belonging to the requested version.",
-     "items": {
-      "$ref": "Instance"
-     }
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "Continuation token for fetching the next page of results."
-    }
-   }
-  },
   "Instance": {
    "id": "Instance",
    "type": "object",
@@ -1141,6 +1123,29 @@
      "description": "For VMEngines instances, whether the instance has been unlocked. @OutputOnly"
     }
    }
+  },
+  "ListInstancesResponse": {
+   "id": "ListInstancesResponse",
+   "type": "object",
+   "description": "Response message for `Instances.ListInstances`.",
+   "properties": {
+    "instances": {
+     "type": "array",
+     "description": "The instances belonging to the requested version.",
+     "items": {
+      "$ref": "Instance"
+     }
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "Continuation token for fetching the next page of results."
+    }
+   }
+  },
+  "DebugInstanceRequest": {
+   "id": "DebugInstanceRequest",
+   "type": "object",
+   "description": "Request message for `Instances.DebugInstance`."
   },
   "ListOperationsResponse": {
    "id": "ListOperationsResponse",
@@ -1642,6 +1647,94 @@
        "resources": {
         "instances": {
          "methods": {
+          "delete": {
+           "id": "appengine.apps.modules.versions.instances.delete",
+           "path": "v1beta4/apps/{appsId}/modules/{modulesId}/versions/{versionsId}/instances/{instancesId}",
+           "httpMethod": "DELETE",
+           "description": "Stops a running instance.",
+           "parameters": {
+            "appsId": {
+             "type": "string",
+             "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/modules/default/versions/v1/instances/instance-1\".",
+             "required": true,
+             "location": "path"
+            },
+            "modulesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "versionsId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "instancesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "appsId",
+            "modulesId",
+            "versionsId",
+            "instancesId"
+           ],
+           "response": {
+            "$ref": "Operation"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
+          },
+          "get": {
+           "id": "appengine.apps.modules.versions.instances.get",
+           "path": "v1beta4/apps/{appsId}/modules/{modulesId}/versions/{versionsId}/instances/{instancesId}",
+           "httpMethod": "GET",
+           "description": "Gets instance information.",
+           "parameters": {
+            "appsId": {
+             "type": "string",
+             "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/modules/default/versions/v1/instances/instance-1\".",
+             "required": true,
+             "location": "path"
+            },
+            "modulesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "versionsId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "instancesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "appsId",
+            "modulesId",
+            "versionsId",
+            "instancesId"
+           ],
+           "response": {
+            "$ref": "Instance"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
+          },
           "list": {
            "id": "appengine.apps.modules.versions.instances.list",
            "path": "v1beta4/apps/{appsId}/modules/{modulesId}/versions/{versionsId}/instances",
@@ -1685,6 +1778,53 @@
            ],
            "response": {
             "$ref": "ListInstancesResponse"
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
+          },
+          "debug": {
+           "id": "appengine.apps.modules.versions.instances.debug",
+           "path": "v1beta4/apps/{appsId}/modules/{modulesId}/versions/{versionsId}/instances/{instancesId}:debug",
+           "httpMethod": "POST",
+           "description": "Enable debugging of this VM instance. This call allows you to SSH to the VM. While the VM is in debug mode, it continues to serve live traffic. After you're done debugging an instance, delete the instance; the system creates a new instance when needed. You can't debug a non-VM instance.",
+           "parameters": {
+            "appsId": {
+             "type": "string",
+             "description": "Part of `name`. Name of the resource requested. For example: \"apps/myapp/modules/default/versions/v1/instances/instance-1\".",
+             "required": true,
+             "location": "path"
+            },
+            "modulesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "versionsId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            },
+            "instancesId": {
+             "type": "string",
+             "description": "Part of `name`. See documentation of `appsId`.",
+             "required": true,
+             "location": "path"
+            }
+           },
+           "parameterOrder": [
+            "appsId",
+            "modulesId",
+            "versionsId",
+            "instancesId"
+           ],
+           "request": {
+            "$ref": "DebugInstanceRequest"
+           },
+           "response": {
+            "$ref": "Operation"
            },
            "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"

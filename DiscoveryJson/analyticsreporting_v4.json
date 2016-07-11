@@ -915,7 +915,7 @@
       "id": "ReportRow"
     },
     "CohortGroup": {
-      "description": "Defines a cohort group.\nFor example:\n\n    \"cohortGroup\": {\n      \"cohorts\": [{\n        \"name\": \"cohort 1\",\n        \"type\": \"FIRST_VISIT_DATE\",\n        \"dateRange\": { \"startDate\": \"2015-08-01\", \"endDate\": \"2015-08-01\" }\n      },{\n        \"name\": \"cohort 2\"\n         \"type\": \"FIRST_VISIT_DATE\"\n         \"dateRange\": { \"startDate\": \"2015-07-01\", \"endDate\": \"2015-07-01\" }\n      }]\n    }\n",
+      "description": "Defines a cohort group.\nFor example:\n\n    \"cohortGroup\": {\n      \"cohorts\": [{\n        \"name\": \"cohort 1\",\n        \"type\": \"FIRST_VISIT_DATE\",\n        \"dateRange\": { \"startDate\": \"2015-08-01\", \"endDate\": \"2015-08-01\" }\n      },{\n        \"name\": \"cohort 2\"\n         \"type\": \"FIRST_VISIT_DATE\"\n         \"dateRange\": { \"startDate\": \"2015-07-01\", \"endDate\": \"2015-07-01\" }\n      }]\n    }",
       "type": "object",
       "properties": {
         "lifetimeValue": {
@@ -1048,7 +1048,7 @@
       "id": "PivotValueRegion"
     }
   },
-  "revision": "20160616",
+  "revision": "20160708",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

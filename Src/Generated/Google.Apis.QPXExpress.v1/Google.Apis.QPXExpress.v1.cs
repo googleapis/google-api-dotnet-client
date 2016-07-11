@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/qpx-express'>QPX Express API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160307 (431)
+ *      <tr><th>API Rev<td>20160708 (554)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/qpx-express'>
  *              http://developers.google.com/qpx-express</a>
@@ -1024,6 +1024,10 @@ namespace Google.Apis.QPXExpress.v1.Data
         /// <summary>The number of solutions to return, maximum 500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutions")]
         public virtual System.Nullable<int> Solutions { get; set; } 
+
+        /// <summary>IATA country code representing the point of ticketing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticketingCountry")]
+        public virtual string TicketingCountry { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

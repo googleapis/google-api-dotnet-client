@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20150820 (231)
+ *      <tr><th>API Rev<td>20160707 (553)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -838,6 +838,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>A URL provided by this administrative body for information on absentee voting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absenteeVotingInfoUrl")]
         public virtual string AbsenteeVotingInfoUrl { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLines")]
+        public virtual System.Collections.Generic.IList<string> AddressLines { get; set; } 
 
         /// <summary>A URL provided by this administrative body to give contest information to the voter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ballotInfoUrl")]
