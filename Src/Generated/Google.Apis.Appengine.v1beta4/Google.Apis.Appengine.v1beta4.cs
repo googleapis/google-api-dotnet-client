@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160629 (545)
+ *      <tr><th>API Rev<td>20160711 (557)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -313,11 +313,211 @@ namespace Google.Apis.Appengine.v1beta4
         public AppsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            locations = new LocationsResource(service);
             modules = new ModulesResource(service);
             operations = new OperationsResource(service);
 
         }
 
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
+        }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Get information about a location.</summary>
+            /// <param name="appsId">Part of `name`. Resource name for the location.</param>
+            /// <param name="locationsId">Part
+            /// of `name`. See documentation of `appsId`.</param>
+            public virtual GetRequest Get(string appsId, string locationsId)
+            {
+                return new GetRequest(service, appsId, locationsId);
+            }
+
+            /// <summary>Get information about a location.</summary>
+            public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Location>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string appsId, string locationsId)
+                    : base(service)
+                {
+                    AppsId = appsId;
+                    LocationsId = locationsId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Part of `name`. Resource name for the location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AppsId { get; private set; }
+
+                /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string LocationsId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta4/apps/{appsId}/locations/{locationsId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "locationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="appsId">Part of `name`. The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string appsId)
+            {
+                return new ListRequest(service, appsId);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId)
+                    : base(service)
+                {
+                    AppsId = appsId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Part of `name`. The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AppsId { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta4/apps/{appsId}/locations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "appsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "appsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly ModulesResource modules;
 
         /// <summary>Gets the Modules resource.</summary>
@@ -1973,6 +2173,65 @@ namespace Google.Apis.Appengine.v1beta4
             }
         }
 
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
+        /// excludes an App Engine application. For details about creating a project without an application, see the
+        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
+        /// /creating-project).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Appengine.v1beta4.Data.Application body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
+        /// excludes an App Engine application. For details about creating a project without an application, see the
+        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
+        /// /creating-project).</summary>
+        public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta4.Data.Application body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Appengine.v1beta4.Data.Application Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta4/apps"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Gets information about an application.</summary>
         /// <param name="appsId">Part of `name`. Name of the application to get. For example: "apps/myapp".</param>
         public virtual GetRequest Get(string appsId)
@@ -2125,7 +2384,8 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
-        /// <summary>The relative name/path of the application. Example: "myapp".</summary>
+        /// <summary>The identifier of the Application resource. This identifier is equivalent to the project ID of the
+        /// Google Cloud Platform project where you want to deploy your application. Example: "myapp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -2136,7 +2396,7 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>The full path to the application in the API. Example: "apps/myapp". @OutputOnly</summary>
+        /// <summary>The full path to the Application resource in the API. Example: "apps/myapp". @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2480,6 +2740,21 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for LocationService.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for `Modules.ListModules`.</summary>
     public class ListModulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2520,6 +2795,27 @@ namespace Google.Apis.Appengine.v1beta4.Data
         /// <summary>The versions belonging to the requested application module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
+        /// east1"}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>Resource name for the location, which may vary between implementations. Example: `"projects
+        /// /example-project/locations/us-east1"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

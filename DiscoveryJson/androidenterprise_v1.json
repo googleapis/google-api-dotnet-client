@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/E5iYX7nET5eBfIqh_ZhsT-ALi7A\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1RjmJ_qP2oWoO3TZiowI1c1EgE0\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160704",
+ "revision": "20160706",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -836,7 +836,7 @@
     },
     "productPricing": {
      "type": "string",
-     "description": "Whether this product is free, free with in-app purchases, or paid."
+     "description": "Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this means the product is not generally available anymore (even though it might still be available to people who own it)."
     },
     "requiresContainerApp": {
      "type": "boolean",
@@ -2873,7 +2873,7 @@
      "id": "androidenterprise.products.list",
      "path": "enterprises/{enterpriseId}/products",
      "httpMethod": "GET",
-     "description": "Finds approved products that match a query.",
+     "description": "Finds approved products that match a query, or all approved products if there is no query.",
      "parameters": {
       "approved": {
        "type": "boolean",
@@ -2899,7 +2899,7 @@
       },
       "query": {
        "type": "string",
-       "description": "The search query as typed in the Google Play Store search box. If omitted, all approved apps will be returned (using the pagination parameters).",
+       "description": "The search query as typed in the Google Play Store search box. If omitted, all approved apps will be returned (using the pagination parameters), including apps that are not available in the store (e.g. unpublished apps).",
        "location": "query"
       },
       "token": {

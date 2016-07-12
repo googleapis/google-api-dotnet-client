@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o1_z1CbRPHsRk2bKVvPV4P6PAt0\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/PN4XIIKLvFT7FU0OtRuE3nmP_ao\"",
  "discoveryVersion": "v1",
  "id": "appengine:v1beta5",
  "name": "appengine",
  "version": "v1beta5",
- "revision": "20160629",
+ "revision": "20160711",
  "title": "Google App Engine Admin API",
  "description": "Provisions and manages App Engine applications.",
  "ownerDomain": "google.com",
@@ -197,11 +197,11 @@
    "properties": {
     "name": {
      "type": "string",
-     "description": "The full path to the application in the API. Example: \"apps/myapp\". @OutputOnly"
+     "description": "The full path to the Application resource in the API. Example: \"apps/myapp\". @OutputOnly"
     },
     "id": {
      "type": "string",
-     "description": "The relative name/path of the application. Example: \"myapp\"."
+     "description": "The identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: \"myapp\"."
     },
     "dispatchRules": {
      "type": "array",
@@ -1132,6 +1132,50 @@
    "type": "object",
    "description": "Request message for `Instances.DebugInstance`."
   },
+  "ListLocationsResponse": {
+   "id": "ListLocationsResponse",
+   "type": "object",
+   "description": "The response message for LocationService.ListLocations.",
+   "properties": {
+    "locations": {
+     "type": "array",
+     "description": "A list of locations that matches the specified filter in the request.",
+     "items": {
+      "$ref": "Location"
+     }
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "The standard List next-page token."
+    }
+   }
+  },
+  "Location": {
+   "id": "Location",
+   "type": "object",
+   "description": "A resource that represents Google Cloud Platform location.",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Resource name for the location, which may vary between implementations. Example: `\"projects/example-project/locations/us-east1\"`"
+    },
+    "labels": {
+     "type": "object",
+     "description": "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}",
+     "additionalProperties": {
+      "type": "string"
+     }
+    },
+    "metadata": {
+     "type": "object",
+     "description": "Service-specific metadata. For example the available capacity at the given location.",
+     "additionalProperties": {
+      "type": "any",
+      "description": "Properties of the object. Contains field @ype with type URL."
+     }
+    }
+   }
+  },
   "OperationMetadata": {
    "id": "OperationMetadata",
    "type": "object",
@@ -1226,6 +1270,21 @@
  "resources": {
   "apps": {
    "methods": {
+    "create": {
+     "id": "appengine.apps.create",
+     "path": "v1beta5/apps",
+     "httpMethod": "POST",
+     "description": "Creates an App Engine application for a Google Cloud Platform project. This requires a project that excludes an App Engine application. For details about creating a project without an application, see the [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs/creating-project).",
+     "request": {
+      "$ref": "Application"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform"
+     ]
+    },
     "get": {
      "id": "appengine.apps.get",
      "path": "v1beta5/apps/{appsId}",
@@ -1873,6 +1932,79 @@
          }
         }
        }
+      }
+     }
+    },
+    "locations": {
+     "methods": {
+      "list": {
+       "id": "appengine.apps.locations.list",
+       "path": "v1beta5/apps/{appsId}/locations",
+       "httpMethod": "GET",
+       "description": "Lists information about the supported locations for this service.",
+       "parameters": {
+        "appsId": {
+         "type": "string",
+         "description": "Part of `name`. The resource that owns the locations collection, if applicable.",
+         "required": true,
+         "location": "path"
+        },
+        "filter": {
+         "type": "string",
+         "description": "The standard list filter.",
+         "location": "query"
+        },
+        "pageSize": {
+         "type": "integer",
+         "description": "The standard list page size.",
+         "format": "int32",
+         "location": "query"
+        },
+        "pageToken": {
+         "type": "string",
+         "description": "The standard list page token.",
+         "location": "query"
+        }
+       },
+       "parameterOrder": [
+        "appsId"
+       ],
+       "response": {
+        "$ref": "ListLocationsResponse"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
+      },
+      "get": {
+       "id": "appengine.apps.locations.get",
+       "path": "v1beta5/apps/{appsId}/locations/{locationsId}",
+       "httpMethod": "GET",
+       "description": "Get information about a location.",
+       "parameters": {
+        "appsId": {
+         "type": "string",
+         "description": "Part of `name`. Resource name for the location.",
+         "required": true,
+         "location": "path"
+        },
+        "locationsId": {
+         "type": "string",
+         "description": "Part of `name`. See documentation of `appsId`.",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "appsId",
+        "locationsId"
+       ],
+       "response": {
+        "$ref": "Location"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/cloud-platform"
+       ]
       }
      }
     }

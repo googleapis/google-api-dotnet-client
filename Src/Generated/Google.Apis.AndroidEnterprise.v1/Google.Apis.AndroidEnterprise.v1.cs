@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160704 (550)
+ *      <tr><th>API Rev<td>20160706 (552)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -4606,14 +4606,16 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Finds approved products that match a query.</summary>
+        /// <summary>Finds approved products that match a query, or all approved products if there is no
+        /// query.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual ListRequest List(string enterpriseId)
         {
             return new ListRequest(service, enterpriseId);
         }
 
-        /// <summary>Finds approved products that match a query.</summary>
+        /// <summary>Finds approved products that match a query, or all approved products if there is no
+        /// query.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4645,7 +4647,8 @@ namespace Google.Apis.AndroidEnterprise.v1
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>The search query as typed in the Google Play Store search box. If omitted, all approved apps
-            /// will be returned (using the pagination parameters).</summary>
+            /// will be returned (using the pagination parameters), including apps that are not available in the store
+            /// (e.g. unpublished apps).</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
@@ -7905,7 +7908,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>Whether this product is free, free with in-app purchases, or paid.</summary>
+        /// <summary>Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this
+        /// means the product is not generally available anymore (even though it might still be available to people who
+        /// own it).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPricing")]
         public virtual string ProductPricing { get; set; } 
 
