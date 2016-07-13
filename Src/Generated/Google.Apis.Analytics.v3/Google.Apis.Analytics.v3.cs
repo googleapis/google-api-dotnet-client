@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160401 (456)
+ *      <tr><th>API Rev<td>20160624 (540)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -11949,7 +11949,9 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual string Dimensions { get; set; } 
 
-        /// <summary>The type of download you need to use for the report data file.</summary>
+        /// <summary>The type of download you need to use for the report data file. Possible values include
+        /// `GOOGLE_DRIVE` and `GOOGLE_CLOUD_STORAGE`. If the value is `GOOGLE_DRIVE`, see the `driveDownloadDetails`
+        /// field. If the value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails` field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadType")]
         public virtual string DownloadType { get; set; } 
 

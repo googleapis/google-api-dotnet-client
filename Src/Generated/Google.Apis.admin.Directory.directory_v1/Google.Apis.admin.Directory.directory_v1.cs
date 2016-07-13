@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20160323 (447)
+ *      <tr><th>API Rev<td>20160623 (539)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -1318,14 +1318,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
 
-        /// <summary>Retrives a customer.</summary>
+        /// <summary>Retrieves a customer.</summary>
         /// <param name="customerKey">Id of the customer to be retrieved</param>
         public virtual GetRequest Get(string customerKey)
         {
             return new GetRequest(service, customerKey);
         }
 
-        /// <summary>Retrives a customer.</summary>
+        /// <summary>Retrieves a customer.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1917,7 +1917,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Retrives a domain of the customer.</summary>
+        /// <summary>Retrieves a domain of the customer.</summary>
         /// <param name="customer">Immutable id of the Google Apps account.</param>
         /// <param name="domainName">Name of
         /// domain to be retrieved</param>
@@ -1926,7 +1926,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new GetRequest(service, customer, domainName);
         }
 
-        /// <summary>Retrives a domain of the customer.</summary>
+        /// <summary>Retrieves a domain of the customer.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Domains>
         {
             /// <summary>Constructs a new Get request.</summary>

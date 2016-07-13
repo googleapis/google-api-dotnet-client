@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rR5KtGkUMGICtJVpSsF4OCZZlC4\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Owafb3MHMkggApMMVqFKchg9biA\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20160323",
+ "revision": "20160623",
  "title": "Admin Directory API",
  "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -2682,7 +2682,7 @@
      "id": "directory.customers.get",
      "path": "customers/{customerKey}",
      "httpMethod": "GET",
-     "description": "Retrives a customer.",
+     "description": "Retrieves a customer.",
      "parameters": {
       "customerKey": {
        "type": "string",
@@ -2906,7 +2906,7 @@
      "id": "directory.domains.get",
      "path": "customer/{customer}/domains/{domainName}",
      "httpMethod": "GET",
-     "description": "Retrives a domain of the customer.",
+     "description": "Retrieves a domain of the customer.",
      "parameters": {
       "customer": {
        "type": "string",
