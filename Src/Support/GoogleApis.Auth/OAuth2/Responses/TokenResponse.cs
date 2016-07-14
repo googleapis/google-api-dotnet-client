@@ -54,6 +54,12 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public string Scope { get; set; }
 
+        /// <summary>
+        /// Gets or sets the id_token
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id_token")]
+        public string IdToken { get; set; }
+
         /// <summary>The date and time that this token was issued. <remarks>
         /// It should be set by the CLIENT after the token was received from the server.
         /// </remarks> 
