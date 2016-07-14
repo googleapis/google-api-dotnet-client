@@ -16,6 +16,8 @@
           Supported Platforms:
 
           - .NET Framework 4.5
+		  
+		  - NetStandard1.3
 
           - Windows Store apps
 
@@ -34,6 +36,11 @@
 
           <dependency id="Google.Apis.Core" version="$version$" />
           <dependency id="Zlib.Portable.Signed" version="1.11.0" />
+        </group>
+        <group targetFramework="netstandard1.3">
+          <dependency id="NETStandard.Library" version="1.6.0" />
+          <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+          <dependency id="Google.Apis.Core" version="$version$" />
         </group>
         <group>
           <!-- Fallback group, used if nothing else matches. -->
@@ -75,6 +82,10 @@
       <file src="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.pdb" />
       <file src="Src\Support\GoogleApis\Portable\bin\ReleaseSigned\Google.Apis.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.xml" />
       
+      <file src="Src\Support\GoogleApis\NetStandard\bin\ReleaseSigned\Google.Apis.dll" target="lib\netstandard1.3\Google.Apis.dll" />
+      <file src="Src\Support\GoogleApis\NetStandard\bin\ReleaseSigned\Google.Apis.pdb" target="lib\netstandard1.3\Google.Apis.pdb" />
+      <file src="Src\Support\GoogleApis\NetStandard\bin\ReleaseSigned\Google.Apis.xml" target="lib\netstandard1.3\Google.Apis.xml" />
+
       <file src="Resources\License.txt" target="License.txt" />
     </files>
 </package>

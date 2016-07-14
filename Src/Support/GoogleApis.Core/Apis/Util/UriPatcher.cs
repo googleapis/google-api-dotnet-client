@@ -58,7 +58,7 @@ namespace Google.Apis.Util
     {
         public static void PatchUriQuirks()
         {
-            var uriParser = typeof(System.Uri).Assembly.GetType("System.UriParser");
+            var uriParser = typeof(System.Uri).GetTypeInfo().Assembly.GetType("System.UriParser");
             if (uriParser == null) { return; }
 
             // Is "%2f" unescaped for http: or https: URIs?

@@ -122,7 +122,7 @@ namespace Google.Apis.Requests.Parameters
                 var value = property.GetValue(request, null);
 
                 // Call action with the type name and value.
-                if (propertyType.IsValueType || value != null)
+                if (propertyType.GetTypeInfo().IsValueType || value != null)
                 {
                     if (attribute.Type == RequestParameterType.UserDefinedQueries)
                     {

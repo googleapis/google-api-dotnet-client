@@ -32,7 +32,7 @@ namespace Google.Apis.Util
         [VisibleForTestOnly]
         public static string GetLibraryVersion()
         {
-            return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
+            return Regex.Match(typeof(Utilities).GetTypeInfo().Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
         }
 
         /// <summary>
@@ -67,15 +67,6 @@ namespace Google.Apis.Util
         internal static bool IsNullOrEmpty<T>(this IEnumerable<T> coll)
         {
             return coll == null || coll.Count() == 0;
-        }
-
-        /// <summary>
-        /// A Google.Apis utility method for returning the first matching custom attribute (or <c>null</c>) of the specified member.
-        /// </summary>
-        public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
-        {
-            object[] results = info.GetCustomAttributes(typeof(T), false);
-            return results.Length == 0 ? null : (T)results[0];
         }
 
         /// <summary>Returns the defined string value of an Enum.</summary>
@@ -116,7 +107,7 @@ namespace Google.Apis.Util
                 return null;
             }
 
-            if (o.GetType().IsEnum)
+            if (o.GetType().GetTypeInfo().IsEnum)
             {
                 // Try to convert the Enum value using the StringValue attribute.
                 var enumType = o.GetType();

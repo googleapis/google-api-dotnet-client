@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 
 using Google.Apis.Testing;
 
-#if NET45
+#if (NET45 || NETSTANDARD)
 using TaskEx = System.Threading.Tasks.Task;
 #endif
 
