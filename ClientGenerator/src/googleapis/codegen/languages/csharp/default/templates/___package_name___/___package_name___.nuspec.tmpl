@@ -16,6 +16,8 @@
 
           - .NET Framework 4 and 4.5
 
+          - NetStandard1.3
+
           - Windows Store apps
 
           - Windows Phone 8 and 8.1
@@ -30,6 +32,10 @@
         </description>
         <tags>Google</tags>
         <dependencies>
+            <group targetFramework="netstandard1.3">
+                <dependency id="Google.Apis" version="{{ features.releaseVersion }}" />{% if api.authscopes %}
+                <dependency id="Google.Apis.Auth" version="{{ features.releaseVersion }}" />{% endif %}
+            </group>
             <!--
               After v{{ features.oldCompatibleVersion }} of Google.Apis, we
               trimmed the list of supported target frameworks. For projects
@@ -48,6 +54,10 @@
         </dependencies>
     </metadata>
     <files>
+        <file src="NetStandard\bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\netstandard1.3\{{ api.module.name }}.dll" />
+        <file src="NetStandard\bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\netstandard1.3\{{ api.module.name }}.pdb" />
+        <file src="NetStandard\bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\netstandard1.3\{{ api.module.name }}.xml" />
+
         <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.dll" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.dll" />
         <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.pdb" />
         <file src="Profile259\bin\ReleaseSigned\{{ api.module.name }}.xml" target="lib\portable-net45+netcore45+wpa81+wp8\{{ api.module.name }}.xml" />
