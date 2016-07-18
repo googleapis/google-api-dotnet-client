@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160708 (554)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -6874,7 +6874,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quotaType")]
         public virtual string QuotaType { get; set; } 
 
-        /// <summary>The number of remaining change ids.</summary>
+        /// <summary>The number of remaining change ids, limited to no more than 2500.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remainingChangeIds")]
         public virtual System.Nullable<long> RemainingChangeIds { get; set; } 
 

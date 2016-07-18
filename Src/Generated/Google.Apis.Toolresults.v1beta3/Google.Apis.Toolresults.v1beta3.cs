@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160711 (557)
+ *      <tr><th>API Rev<td>20160715 (561)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -3197,7 +3197,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; } 
 
-        /// <summary>Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from from
+        /// <summary>Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from
         /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; } 

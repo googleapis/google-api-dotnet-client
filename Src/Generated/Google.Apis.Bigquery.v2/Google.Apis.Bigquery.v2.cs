@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160629 (545)
+ *      <tr><th>API Rev<td>20160709 (555)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -568,6 +568,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("all", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> All { get; set; }
 
+            /// <summary>An expression for filtering the results of the request by label. The syntax is "labels.[:]".
+            /// Multiple filters can be ANDed together by connecting with a space. Example: "labels.department:receiving
+            /// labels.active". See https://cloud.google.com/bigquery/docs/labeling-
+            /// datasets#filtering_datasets_using_labels for details.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -613,6 +620,15 @@ namespace Google.Apis.Bigquery.v2
                     "all", new Google.Apis.Discovery.Parameter
                     {
                         Name = "all",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2612,6 +2628,15 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>[Experimental] The labels associated with this dataset. You can use these to organize and group
+        /// your datasets. You can set this property when inserting or updating a dataset. Label keys and values can be
+        /// no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes.
+        /// International characters are allowed. Label values are optional. Label keys must start with a letter and
+        /// must be unique within a dataset. Both keys and values are additionally constrained to be <= 128 bytes in
+        /// size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>[Output-only] The date when this dataset or any of its tables was last modified, in milliseconds
         /// since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
@@ -2708,6 +2733,11 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>The resource type. This property always returns the value "bigquery#dataset".</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; } 
+
+            /// <summary>[Experimental] The labels associated with this dataset. You can use these to organize and group
+            /// your datasets.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+            public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         }
     }    

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160630 (546)
+ *      <tr><th>API Rev<td>20160712 (558)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -488,6 +488,90 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     "id", new Google.Apis.Discovery.Parameter
                     {
                         Name = "id",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a new backup run on demand.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param
+        /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual InsertRequest Insert(Google.Apis.SQLAdmin.v1beta4.Data.BackupRun body, string project, string instance)
+        {
+            return new InsertRequest(service, body, project, instance);
+        }
+
+        /// <summary>Creates a new backup run on demand.</summary>
+        public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.BackupRun body, string project, string instance)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.BackupRun Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/backupRuns"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -3741,6 +3825,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>A database instance backup run resource.</summary>
     public class BackupRun : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The description of this run, only applicable to on-demand backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>The time the backup operation completed in UTC timezone in RFC 3339 format, for example
         /// 2012-11-15T16:19:00.094Z.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
@@ -3823,6 +3911,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The status of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>The type of this run; can be either "AUTOMATED" or "ON_DEMAND".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The start time of the backup window during which this the backup was attempted in RFC 3339 format,
         /// for example 2012-11-15T16:19:00.094Z.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160711 (557)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -3440,8 +3440,8 @@ namespace Google.Apis.Gmail.v1
 
 
                 /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
-                /// to the recipient and the resource's verification status will be set to `pending`; otherwise, the
-                /// resource will be created with verification status set to `accepted`.</summary>
+                /// to the recipient and the resource's verification status will be set to pending; otherwise, the
+                /// resource will be created with verification status set to accepted.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -3451,8 +3451,8 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
-                /// to the recipient and the resource's verification status will be set to `pending`; otherwise, the
-                /// resource will be created with verification status set to `accepted`.</summary>
+                /// to the recipient and the resource's verification status will be set to pending; otherwise, the
+                /// resource will be created with verification status set to accepted.</summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3762,9 +3762,9 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to
                 /// connect to the SMTP service to validate the configuration before creating the alias. If ownership
                 /// verification is required for the alias, a message will be sent to the email address and the
-                /// resource's verification status will be set to `pending`; otherwise, the resource will be created
-                /// with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML
-                /// before saving it with the alias.</summary>
+                /// resource's verification status will be set to pending; otherwise, the resource will be created with
+                /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
+                /// saving it with the alias.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -3776,9 +3776,9 @@ namespace Google.Apis.Gmail.v1
                 /// <summary>Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to
                 /// connect to the SMTP service to validate the configuration before creating the alias. If ownership
                 /// verification is required for the alias, a message will be sent to the email address and the
-                /// resource's verification status will be set to `pending`; otherwise, the resource will be created
-                /// with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML
-                /// before saving it with the alias.</summary>
+                /// resource's verification status will be set to pending; otherwise, the resource will be created with
+                /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
+                /// saving it with the alias.</summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4242,7 +4242,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Sends a verification email to the specified send-as alias address. The verification status
-                /// must be `pending`.</summary>
+                /// must be pending.</summary>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be verified.</param>
@@ -4252,7 +4252,7 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Sends a verification email to the specified send-as alias address. The verification status
-                /// must be `pending`.</summary>
+                /// must be pending.</summary>
                 public class VerifyRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Verify request.</summary>
@@ -6228,9 +6228,7 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>POP settings for an account.</summary>
     public class PopSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The range of messages which are accessible via POP. Setting this to FROM_NOW_ON causes any existing
-        /// messages to become inaccessible and causes all future messages to become accessible. Setting this to
-        /// ALL_MAIL causes all messages to become accessible, even if they have been fetched previously.</summary>
+        /// <summary>The range of messages which are accessible via POP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessWindow")]
         public virtual string AccessWindow { get; set; } 
 
@@ -6278,8 +6276,8 @@ namespace Google.Apis.Gmail.v1.Data
 
         /// <summary>Whether this address is selected as the default "From:" address in situations such as composing a
         /// new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address,
-        /// so the only legal value that clients may write to this field is `true`. Changing this from `false` to `true`
-        /// for an address will result in this field becoming `false` for the other previous default address.</summary>
+        /// so the only legal value that clients may write to this field is true. Changing this from false to true for
+        /// an address will result in this field becoming false for the other previous default address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; } 
 
@@ -6387,8 +6385,8 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual System.Nullable<bool> EnableAutoReply { get; set; } 
 
         /// <summary>An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will
-        /// automatically reply only to messages that it receives before the end time. If both `startTime` and `endTime`
-        /// are specified, `startTime` must precede `endTime`.</summary>
+        /// automatically reply only to messages that it receives before the end time. If both startTime and endTime are
+        /// specified, startTime must precede endTime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; } 
 
@@ -6416,8 +6414,8 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual System.Nullable<bool> RestrictToDomain { get; set; } 
 
         /// <summary>An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will
-        /// automatically reply only to messages that it receives after the start time. If both `startTime` and
-        /// `endTime` are specified, `startTime` must precede `endTime`.</summary>
+        /// automatically reply only to messages that it receives after the start time. If both startTime and endTime
+        /// are specified, startTime must precede endTime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; } 
 

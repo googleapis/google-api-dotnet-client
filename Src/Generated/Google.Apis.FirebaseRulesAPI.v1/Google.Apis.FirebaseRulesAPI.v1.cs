@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160706 (552)
+ *      <tr><th>API Rev<td>20160712 (558)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security/start'>
  *              https://firebase.google.com/docs/storage/security/start</a>
@@ -543,7 +543,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
 
             }
 
-            /// <summary>Get a `Release` by name. </summary>
+            /// <summary>Get a `Release` by name.</summary>
             /// <param name="name">Resource name of the `Release`.
             ///
             /// Format: `projects/{project_id}/releases/{release_id}`</param>
@@ -552,7 +552,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Get a `Release` by name. </summary>
+            /// <summary>Get a `Release` by name.</summary>
             public class GetRequest : FirebaseRulesAPIBaseServiceRequest<Google.Apis.FirebaseRulesAPI.v1.Data.Release>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -755,7 +755,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
             /// release name list filter, but in many ways the structured paths provide a clearer picture of the relationship
             /// between `Release` instances.
             ///
-            /// Format: `projects/{project_id}/releases/{release_id}` </param>
+            /// Format: `projects/{project_id}/releases/{release_id}`</param>
             public virtual UpdateRequest Update(Google.Apis.FirebaseRulesAPI.v1.Data.Release body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -796,7 +796,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                 /// equally well with the release name list filter, but in many ways the structured paths provide a
                 /// clearer picture of the relationship between `Release` instances.
                 ///
-                /// Format: `projects/{project_id}/releases/{release_id}` </summary>
+                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1388,7 +1388,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1.Data
         /// with the release name list filter, but in many ways the structured paths provide a clearer picture of the
         /// relationship between `Release` instances.
         ///
-        /// Format: `projects/{project_id}/releases/{release_id}` </summary>
+        /// Format: `projects/{project_id}/releases/{release_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

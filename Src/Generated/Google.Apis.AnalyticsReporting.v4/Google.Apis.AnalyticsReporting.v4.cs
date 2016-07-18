@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160708 (554)
+ *      <tr><th>API Rev<td>20160714 (560)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -513,7 +513,9 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A dimension in the request.</summary>
+    /// <summary>[Dimensions](https://support.google.com/analytics/answer/1033861) are attributes of your data. For
+    /// example, the dimension `ga:city` indicates the city, for example, "Paris" or "New York", from which a session
+    /// originates.</summary>
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If non-empty, we place dimension values into buckets after string to int64. Dimension values that
@@ -641,7 +643,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A metric in the request.</summary>
+    /// <summary>[Metrics](https://support.google.com/analytics/answer/1033861) are the quantitative measurements. For
+    /// example, the metric `ga:users` indicates the total number of users for the requested time period.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An alias for the metric expression is an alternate name for the expression. The alias can be used
@@ -785,7 +788,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterClauses")]
         public virtual System.Collections.Generic.IList<DimensionFilterClause> DimensionFilterClauses { get; set; } 
 
-        /// <summary>A list of dimensions to show as pivot columns.</summary>
+        /// <summary>A list of dimensions to show as pivot columns. A Pivot can have a maximum of 4
+        /// dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 
@@ -794,7 +798,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxGroupCount")]
         public virtual System.Nullable<int> MaxGroupCount { get; set; } 
 
-        /// <summary>Metrics to aggregate and return.</summary>
+        /// <summary>The pivot metrics. Pivot metrics are part of the restriction on total number of metrics in the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
@@ -956,7 +961,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterClauses")]
         public virtual System.Collections.Generic.IList<DimensionFilterClause> DimensionFilterClauses { get; set; } 
 
-        /// <summary>Dimensions requested in the request.</summary>
+        /// <summary>The dimensions requested. Requests can have a total of 7 dimensions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 
@@ -989,8 +994,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricFilterClauses")]
         public virtual System.Collections.Generic.IList<MetricFilterClause> MetricFilterClauses { get; set; } 
 
-        /// <summary>Metrics, the quantitative measurements, requested in the request. Requests must specify at least
-        /// one metric.</summary>
+        /// <summary>The metrics requested. Requests must specify at least one metric. Requests can have a total of 10
+        /// metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
@@ -1014,7 +1019,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>The pivot definitions.</summary>
+        /// <summary>The pivot definitions. Requests can have a maximum of 2 pivots.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivots")]
         public virtual System.Collections.Generic.IList<Pivot> Pivots { get; set; } 
 

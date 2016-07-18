@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160705 (551)
+ *      <tr><th>API Rev<td>20160712 (558)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -524,6 +524,88 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Report an individual error event.
+            ///
+            /// This endpoint accepts either an OAuth token, or an API key for authentication. To use an API key, append
+            /// it to the URL as the value of a `key` parameter. For example: POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
+            /// project/events:report?key=123ABC456</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectName">[Required] The resource name of the Google Cloud Platform project. Written as `projects/`
+            /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-
+            /// project-123`.</param>
+            public virtual ReportRequest Report(Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
+            {
+                return new ReportRequest(service, body, projectName);
+            }
+
+            /// <summary>Report an individual error event.
+            ///
+            /// This endpoint accepts either an OAuth token, or an API key for authentication. To use an API key, append
+            /// it to the URL as the value of a `key` parameter. For example: POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-
+            /// project/events:report?key=123ABC456</summary>
+            public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
+            {
+                /// <summary>Constructs a new Report request.</summary>
+                public ReportRequest(Google.Apis.Services.IClientService service, Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent body, string projectName)
+                    : base(service)
+                {
+                    ProjectName = projectName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>[Required] The resource name of the Google Cloud Platform project. Written as `projects/`
+                /// plus the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+                /// Example: `projects/my-project-123`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectName { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Clouderrorreporting.v1beta1.Data.ReportedErrorEvent Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "report"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta1/{+projectName}/events:report"; }
+                }
+
+                /// <summary>Initializes Report parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]*$",
                         });
                 }
 
@@ -1230,6 +1312,40 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// the first request, to view the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for reporting an individual error event. Data may be added to this message in the
+    /// future.</summary>
+    public class ReportErrorEventResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An error event which is reported to the Error Reporting system.</summary>
+    public class ReportedErrorEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] A description of the context in which the error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual ErrorContext Context { get; set; } 
+
+        /// <summary>[Optional] Time when the event occurred. If not provided, the time when the event was received by
+        /// the Error Reporting system will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; } 
+
+        /// <summary>[Required] A message describing the error. The message can contain an exception stack in one of the
+        /// supported programming languages and formats. In that case, the message is parsed and detailed exception
+        /// information is returned when retrieving the error event again.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>[Required] The service context in which this error has occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceContext")]
+        public virtual ServiceContext ServiceContext { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

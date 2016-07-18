@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/cu0AKiE9l6beoFg45o9OYvacUsA\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/FjHEYXZVYRm-Uqcc6nzWODTa2L0\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20160627",
+ "revision": "20160708",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -299,7 +299,7 @@
     },
     "remainingChangeIds": {
      "type": "string",
-     "description": "The number of remaining change ids.",
+     "description": "The number of remaining change ids, limited to no more than 2500.",
      "format": "int64"
     },
     "rootFolderId": {
