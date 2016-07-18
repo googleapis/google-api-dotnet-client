@@ -55,13 +55,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth_NetStandard
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.PlatformServices_NetStandard", "GoogleApis.Auth.NetStandard\GoogleApis.Auth.PlatformServices_NetStandard.csproj", "{F813BBCD-A81B-4216-A172-1DFDDDCC512F}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GoogleApis.Auth.PlatformServices_Shared", "GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.shproj", "{7B616621-A92F-4B9A-95F1-E372B5304820}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GoogleApis.Auth\GoogleApis.Auth_Shared.projitems*{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}*SharedItemsImports = 4
 		GoogleApis\GoogleApis_Shared.projitems*{0e73cb06-de95-493e-8de3-114e41ddd0c9}*SharedItemsImports = 13
 		GoogleApis.Auth\GoogleApis.Auth_Shared.projitems*{3ef3c1a9-a3cb-41c9-88c3-6b226ca051be}*SharedItemsImports = 4
 		GoogleApis\GoogleApis_Shared.projitems*{453c7ff3-a3eb-4968-998f-9770d6c4e7b8}*SharedItemsImports = 4
+		GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems*{7b616621-a92f-4b9a-95f1-e372b5304820}*SharedItemsImports = 13
 		GoogleApis\GoogleApis_Shared.projitems*{826cf988-eee8-4b75-8f53-b7e851a17baa}*SharedItemsImports = 4
+		GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems*{8cfbf8d2-64cb-4703-a5b0-f9ef4de41fa7}*SharedItemsImports = 4
 		GoogleApis.Core\GoogleApis.Core_Shared.projitems*{a6df7ada-7d48-4715-9c94-70dcbc07ea37}*SharedItemsImports = 4
 		GoogleApis.Auth\GoogleApis.Auth_Shared.projitems*{a86f6f7c-b84b-4fa2-88a5-e115358551fa}*SharedItemsImports = 4
 		GoogleApis.Core\GoogleApis.Core_Shared.projitems*{b195969c-aaa6-47f8-928e-691ad872fd03}*SharedItemsImports = 13
@@ -69,6 +73,7 @@ Global
 		GoogleApis\GoogleApis_Shared.projitems*{e06dcdd2-b8e0-4bf0-b572-a825e8dc1fa2}*SharedItemsImports = 4
 		GoogleApis.Auth\GoogleApis.Auth_Shared.projitems*{e77ee0da-471c-4bb6-9035-7d78e5d569fe}*SharedItemsImports = 13
 		GoogleApis.Core\GoogleApis.Core_Shared.projitems*{e83c6d98-c348-4944-ad7f-c4e428141079}*SharedItemsImports = 4
+		GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems*{f813bbcd-a81b-4216-a172-1dfdddcc512f}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

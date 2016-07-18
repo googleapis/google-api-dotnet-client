@@ -96,22 +96,30 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
+#if NETSTANDARD
                 RSA rsa = certificate.GetRSAPrivateKey();
                 RSAParameters rsaParameters = rsa.ExportParameters(true);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
+#else
+                // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
+                RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
+                byte[] privateKeyBlob = rsa.ExportCspBlob(true);
+                Key = new RSACryptoServiceProvider();
+                Key.ImportCspBlob(privateKeyBlob);
+#endif
                 return this;
             }
         }
 
-        #region Constants
+#region Constants
 
         private const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
         private const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
 
-        #endregion
+#endregion
 
-        #region Readonly fields
+#region Readonly fields
 
         /// <summary>Unix epoch as a <c>DateTime</c></summary>
         protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -121,7 +129,7 @@ namespace Google.Apis.Auth.OAuth2
         private readonly IEnumerable<string> scopes;
         private readonly RSACryptoServiceProvider key;
 
-        #endregion
+#endregion
 
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
         public string Id { get { return id; } }
@@ -153,7 +161,7 @@ namespace Google.Apis.Auth.OAuth2
             key = initializer.Key.ThrowIfNull("initializer.Key");
         }
 
-        #region ServiceCredential overrides
+#region ServiceCredential overrides
 
         /// <summary>
         /// Requests a new token as specified in 
@@ -199,7 +207,7 @@ namespace Google.Apis.Auth.OAuth2
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
 
-        #endregion
+#endregion
     
         /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.

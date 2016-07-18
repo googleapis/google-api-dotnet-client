@@ -17,6 +17,10 @@ limitations under the License.
 using System;
 using System.Reflection;
 
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
+
 namespace Google.Apis.Util
 {
     // UriPatcher lets us work around some unfortunate behaviors in the .NET Framework's

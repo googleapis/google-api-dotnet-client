@@ -23,7 +23,7 @@ And the following are not available < 1.1:
 
 ## Targeting NetStandard1.1
 
-we could probably target `NetStandard1.1` without too much problem.
+We could probably target `NetStandard1.1` without too much problem.
 
 * **System.Diagnostics.Process**:
   Remove support for launching a browser, simply display the URL to visit using
@@ -33,7 +33,7 @@ we could probably target `NetStandard1.1` without too much problem.
   functionally that we require.
 * **System.Reflection.TypeExtensions**:
   Providing our own compatibility extension methods is fairly simple.
-  It'll be a 100 or so lines of code.
+  It'll be 100 or so lines of code.
 * **System.Net.Sockets**:
   The available-port finding in `MediaDownloaderTest.cs` should be easily
   refactorable.
@@ -43,5 +43,5 @@ Moving from targeting 1.3 to targeting 1.1 will be a non-breaking change.
 
 ## Targeting NetStandard1.0
 
-This is unrealistic due to the extension use of `System.Net.Http` throughout
+This is unrealistic due to the extensive use of `System.Net.Http` throughout
 these support libraries.

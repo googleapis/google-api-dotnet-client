@@ -125,7 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompatExtensions.cs" />
+    <Compile Include="Compatibility\ReflectionExtensions.cs" />
   </ItemGroup>
   <Import Project="..\GoogleApis.Core_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

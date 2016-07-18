@@ -22,6 +22,9 @@ using System.Reflection;
 
 using Google.Apis.Logging;
 using Google.Apis.Util;
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
 
 namespace Google.Apis.Requests.Parameters
 {

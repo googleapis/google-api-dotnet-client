@@ -38,8 +38,6 @@ namespace Google.Apis.Auth.OAuth2
         public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
-            var tcs = new TaskCompletionSource<AuthorizationCodeResponseUrl>();
-
             var authorizationUrl = url.Build().ToString();
 
             Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
@@ -54,11 +52,7 @@ namespace Google.Apis.Auth.OAuth2
 
             Logger.Debug("Code is: \"{0}\"", code);
 
-            tcs.SetResult(new AuthorizationCodeResponseUrl
-                {
-                    Code = code
-                });
-            return tcs.Task;
+            return Task.FromResult(new AuthorizationCodeResponseUrl { Code = code });
         }
     }
 }

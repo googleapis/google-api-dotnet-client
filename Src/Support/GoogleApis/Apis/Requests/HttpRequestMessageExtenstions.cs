@@ -19,7 +19,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 
-#if (NET45 || NETSTANDARD)
+#if NET45 || NETSTANDARD
 using System.IO.Compression;
 #else
 using Ionic.Zlib;
