@@ -17,6 +17,8 @@
 
           - .NET Framework 4.5
 
+		  - NetStandard1.3
+
           - Windows Store apps
 
           - Windows Phone 8 and 8.1
@@ -32,6 +34,14 @@
             -->
             <dependency id="BouncyCastle" version="1.7.0" />
 
+            <dependency id="Google.Apis.Core" version="$version$" />
+          </group>
+          <group targetFramework="netstandard1.3">
+            <dependency id="NETStandard.Library" version="1.6.0" />
+            <dependency id="System.Net.Requests" version="4.0.11" />
+            <dependency id="System.Security.Cryptography.Csp" version="4.0.0" />
+            <dependency id="System.Diagnostics.Process" version="4.1.0" />
+            <dependency id="Portable.BouncyCastle" version="1.8.1.1" />
             <dependency id="Google.Apis.Core" version="$version$" />
           </group>
           <group>
@@ -72,6 +82,13 @@
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.dll" />
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.pdb" />
       <file src="Src\Support\GoogleApis.Auth\Portable\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Auth.xml" />
+      
+      <file src="Src\Support\GoogleApis.Auth\NetStandard\bin\ReleaseSigned\Google.Apis.Auth.dll" target="lib\netstandard1.3\Google.Apis.Auth.dll" />
+      <file src="Src\Support\GoogleApis.Auth\NetStandard\bin\ReleaseSigned\Google.Apis.Auth.pdb" target="lib\netstandard1.3\Google.Apis.Auth.pdb" />
+      <file src="Src\Support\GoogleApis.Auth\NetStandard\bin\ReleaseSigned\Google.Apis.Auth.xml" target="lib\netstandard1.3\Google.Apis.Auth.xml" />
+      <file src="Src\Support\GoogleApis.Auth.NetStandard\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.dll" target="lib\netstandard1.3\Google.Apis.Auth.PlatformServices.dll" />
+      <file src="Src\Support\GoogleApis.Auth.NetStandard\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.pdb" target="lib\netstandard1.3\Google.Apis.Auth.PlatformServices.pdb" />
+      <file src="Src\Support\GoogleApis.Auth.NetStandard\bin\ReleaseSigned\Google.Apis.Auth.PlatformServices.xml" target="lib\netstandard1.3\Google.Apis.Auth.PlatformServices.xml" />
       
       <file src="Resources\License.txt" target="License.txt" />
     </files>
