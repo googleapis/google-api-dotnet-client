@@ -19,7 +19,9 @@ We target `NetStandard1.3` because of the following are not available in < 1.3:
 And the following are not available < 1.1:
 
 * **System.Net.Http**:
-  This used extensively throughout all three support libraries.
+  Used extensively throughout all three support libraries.
+* **System.IO.Compression**:
+  Used in GZip compressed HTTP connections.
 
 ## Targeting NetStandard1.1
 
