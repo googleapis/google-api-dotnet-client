@@ -7,14 +7,16 @@
     "dotnet-test-nunit": "3.4.0-beta-1"
   },
 
+  "compile": "../GoogleApis.Tests/**/*.cs",
+
   "exclude": [
-    "Program.cs",
-    "Apis/*/*.cs",
-    "[Mock]/CountableMessageHandler.cs",
-    "[Mock]/MockBackOffHandler.cs",
-    "[Mock]/MockClientService.cs",
-    "[Mock]/MockHttpClientFactory.cs",
-    "[Mock]/MockMessageHandler.cs"
+    "../GoogleApis.Tests/Program.cs",
+    "../GoogleApis.Tests/Apis/*/*.cs",
+    "../GoogleApis.Tests/[Mock]/CountableMessageHandler.cs",
+    "../GoogleApis.Tests/[Mock]/MockBackOffHandler.cs",
+    "../GoogleApis.Tests/[Mock]/MockClientService.cs",
+    "../GoogleApis.Tests/[Mock]/MockHttpClientFactory.cs",
+    "../GoogleApis.Tests/[Mock]/MockMessageHandler.cs"
   ],
 
   "testRunner": "nunit",
