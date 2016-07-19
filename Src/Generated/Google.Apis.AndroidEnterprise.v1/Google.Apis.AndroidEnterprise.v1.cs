@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160706 (552)
+ *      <tr><th>API Rev<td>20160712 (558)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -2101,7 +2101,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         ///
         /// Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys
         /// resource.</summary>
-        /// <param name="enterpriseId"></param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string enterpriseId)
         {
             return new GetServiceAccountRequest(service, enterpriseId);
@@ -2130,7 +2130,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-
+            /// <summary>The ID of the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EnterpriseId { get; private set; }
 
@@ -2193,14 +2193,16 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Returns the store layout resource.</summary>
+        /// <summary>Returns the store layout resource for the enterprise. If store layout has not been set, or if store
+        /// layout has no homepage set, returns a NOT_FOUND error.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetStoreLayoutRequest GetStoreLayout(string enterpriseId)
         {
             return new GetStoreLayoutRequest(service, enterpriseId);
         }
 
-        /// <summary>Returns the store layout resource.</summary>
+        /// <summary>Returns the store layout resource for the enterprise. If store layout has not been set, or if store
+        /// layout has no homepage set, returns a NOT_FOUND error.</summary>
         public class GetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new GetStoreLayout request.</summary>
@@ -6580,10 +6582,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Creates a new EMM-managed user.
-        ///
-        /// The required details of the user are passed in the Users resource in the body of the request. Specifically,
-        /// the accountIdentifier, accountType, and displayName fields must be provided.</summary>
+        /// <summary>Inserts a new resource into this collection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
@@ -6591,10 +6590,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new InsertRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Creates a new EMM-managed user.
-        ///
-        /// The required details of the user are passed in the Users resource in the body of the request. Specifically,
-        /// the accountIdentifier, accountType, and displayName fields must be provided.</summary>
+        /// <summary>Inserts a new resource into this collection.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -6654,8 +6650,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Looks up a user by their primary email address. This is only supported for Google-managed users.
-        /// Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
+        /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="email">The exact primary email
@@ -6665,8 +6661,8 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, email);
         }
 
-        /// <summary>Looks up a user by their primary email address. This is only supported for Google-managed users.
-        /// Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the
+        /// <summary>Looks up a user by primary email address. This is only supported for Google-managed users. Lookup
+        /// of the id is not needed for EMM-managed users because the id is already returned in the result of the
         /// Users.insert call.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.UsersListResponse>
         {
@@ -6736,9 +6732,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Updates the details of an EMM-managed user.
         ///
-        /// This only works with EMM-managed users. Pass the new details in Users resource in the request body. Only the
-        /// displayName field can be changed. Other fields must either be unset or have the currently active value. This
-        /// method supports patch semantics.</summary>
+        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
+        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
+        /// or have the currently active value. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -6750,9 +6746,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Updates the details of an EMM-managed user.
         ///
-        /// This only works with EMM-managed users. Pass the new details in Users resource in the request body. Only the
-        /// displayName field can be changed. Other fields must either be unset or have the currently active value. This
-        /// method supports patch semantics.</summary>
+        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
+        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
+        /// or have the currently active value. This method supports patch semantics.</summary>
         public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -6988,9 +6984,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Updates the details of an EMM-managed user.
         ///
-        /// This only works with EMM-managed users. Pass the new details in Users resource in the request body. Only the
-        /// displayName field can be changed. Other fields must either be unset or have the currently active
-        /// value.</summary>
+        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
+        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
+        /// or have the currently active value.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -7002,9 +6998,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Updates the details of an EMM-managed user.
         ///
-        /// This only works with EMM-managed users. Pass the new details in Users resource in the request body. Only the
-        /// displayName field can be changed. Other fields must either be unset or have the currently active
-        /// value.</summary>
+        /// Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users
+        /// resource in the request body. Only the displayName field can be changed. Other fields must either be unset
+        /// or have the currently active value.</summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -7394,20 +7390,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An enterprise resource represents the binding between an EMM and a specific organization.
-    ///
-    /// That binding can be instantiated in one of two different ways using this API as follows:
-    ///
-    /// - For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount
-    /// (in conjunction with artifacts obtained from the Admin console and the Google Developers console) and submitted
-    /// to the EMM through a more-or-less manual process.
-    ///
-    /// - An alternative process that takes advantage of Google-provided mechanisms (Android for Work Sign-up UI) that
-    /// expedite the process involves Enterprises.generateSignupUrl, Enterprises.completeSignup,
-    /// Enterprises.getServiceAccount  (optional), and Enterprises.setAccount.
-    ///
-    /// The overall processes are very different and involve different identity models, but as an EMM, you can support
-    /// either or both approaches in your EMM console. See EMM Developer's Guide for details.</summary>
+    /// <summary>An enterprise resource represents the binding between an EMM and a specific organization. That binding
+    /// can be instantiated in one of two different ways using this API as follows: - For Google managed domain
+    /// customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with
+    /// artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-
+    /// or-less manual process. - For Android for Work Accounts customers, the process involves using
+    /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the Android for Work Sign-up UI
+    /// (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or
+    /// both approaches in your EMM console. See Create an Enterprise for details.</summary>
     public class Enterprise : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrators of the enterprise. This is only supported for enterprises created via the EMM-
@@ -7424,11 +7414,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of the enterprise, e.g. "Example Inc".</summary>
+        /// <summary>The name of the enterprise, for example, "Example, Inc".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The enterprise's primary domain, e.g. "example.com".</summary>
+        /// <summary>The enterprise's primary domain, such as "example.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryDomain")]
         public virtual string PrimaryDomain { get; set; } 
 
@@ -8202,8 +8192,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The ID of the store page to be used as the homepage. The homepage will be used as the first page
         /// shown in the Google Play for Work store.
         ///
-        /// If there is no homepage set, an empty store is shown. The homepage can be unset (by not specifying it) to
-        /// empty the store.
+        /// If a homepage has not been set, the play store shown on devices will be empty. Not specifying a homepage on
+        /// a store layout effectively empties the store.
         ///
         /// If there exists at least one page, this field must be set to the ID of a valid page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homepageId")]
@@ -8295,29 +8285,27 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Users resource represents an account associated with an enterprise. The account may be specific to a
     /// device or to an individual user (who can then use the account across multiple devices). The account may provide
-    /// access to Google Play for Work only, or to other Google services, depending on the identity model used: - Google
-    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail).
-    ///
-    /// - Android for Work accounts identity model provides a dynamic means for enterprises to create user or device
-    /// accounts as needed. These accounts provide access to Google Play for Work only.</summary>
+    /// access to Google Play for Work only, or to other Google services, depending on the identity model: - Google
+    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). - Android
+    /// for Work Accounts identity model provides a dynamic means for enterprises to create user or device accounts as
+    /// needed. These accounts provide access to Google Play for Work only.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id as used by the EMM for this user, e.g. "user342" or "asset#44418". Will always be set for
-        /// EMM managed users and not set for Google managed users. For privacy sensitive deployments it should not be
-        /// possible to identify the individual with this identifier.</summary>
+        /// <summary>A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use
+        /// personally identifiable information (PII) for this property. Must always be set for EMM-managed users. Not
+        /// set for Google-managed users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIdentifier")]
         public virtual string AccountIdentifier { get; set; } 
 
-        /// <summary>The type of account that this user represents. A "deviceAccount" is specific to a single device
-        /// while a "userAccount" represents a traditional user account, i.e. one that can be installed on multiple
-        /// devices. "googleManaged" users will always be a "userAccount" but "emmManaged" users can be either a
-        /// "userAccount" or a "deviceAccount".</summary>
+        /// <summary>The type of account that this user represents. A userAccount can be installed on multiple devices,
+        /// but a deviceAccount is specific to a single device. An EMM-managed user (emmManaged) can be either type
+        /// (userAccount, deviceAccount), but a Google-managed user (googleManaged) is always a userAccount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
         public virtual string AccountType { get; set; } 
 
-        /// <summary>The user's name as it is to be presented in user interfaces, e.g. "John". Can optionally be set for
-        /// EMM managed users and will not be set for Google managed users. For privacy sensitive deployments this
-        /// should be left unset or set to something generic.</summary>
+        /// <summary>The name that will appear in user interfaces. Setting this property is optional when creating EMM-
+        /// managed users. If you do set this property, use something generic about the organization (such as "Example,
+        /// Inc.") or your name (as EMM). Not used for Google-managed user accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -8330,8 +8318,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The entity that manages the user. With "googleManaged" users, the source of truth is Google so EMMs
-        /// have to make sure a Google account exists for the user. With "emmManaged" users, the EMM is in
+        /// <summary>The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs
+        /// have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in
         /// charge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 

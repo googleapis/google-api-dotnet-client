@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160715 (561)
+ *      <tr><th>API Rev<td>20160717 (563)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>

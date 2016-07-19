@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20160623 (539)
+ *      <tr><th>API Rev<td>20160715 (561)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -9476,6 +9476,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Role of member</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
+
+        /// <summary>Status of member (Immutable)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>Type of member (Immutable)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
