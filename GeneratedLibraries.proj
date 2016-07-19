@@ -104,6 +104,12 @@
     <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile259\packages.config -PackagesDirectory Src\Generated\packages" />
     <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile328\packages.config -PackagesDirectory Src\Generated\packages" />
 
+    <!--
+      All NetStandard projects need restoring.
+      Runing "nuget restore" in the base directory does this.
+    -->
+    <Exec Command="nuget restore Src\Generated -PackagesDirectory Src\Generated\packages" />
+    
     <MSBuild Projects="@(Project)" BuildInParallel="True" Targets="Build" />
   </Target>
 
