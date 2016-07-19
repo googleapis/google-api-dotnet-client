@@ -1,0 +1,28 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Google.Apis.Core": "1.14",
+    "Nunit": "3.4.0",
+    "dotnet-test-nunit": "3.4.0-beta-1"
+  },
+
+  "exclude": ["Apis/*/*.cs", "[Mock]/*.cs", "Program.cs"],    
+
+  "testRunner": "nunit",
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "netcoreapp1.0",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}
