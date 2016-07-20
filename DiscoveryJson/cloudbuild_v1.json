@@ -273,6 +273,10 @@
       "description": "Provenance of the source. Ways to find the original source, or verify that\nsome source was used for this build.",
       "type": "object",
       "properties": {
+        "resolvedStorageSource": {
+          "description": "A copy of the build's source.storage_source, if exists, with any\ngenerations resolved.",
+          "$ref": "StorageSource"
+        },
         "fileHashes": {
           "description": "Hash(es) of the build source, which can be used to verify that the original\nsource integrity was maintained in the build. Note that FileHashes will\nonly be populated if BuildOptions has requested a SourceProvenanceHash.\n\nThe keys to this map are file paths used as build source and the values\ncontain the hash values for those files.\n\nIf the build source came in a single package such as a gzipped tarfile\n(.tar.gz), the FileHash will be for the single path to that file.\n@OutputOnly",
           "additionalProperties": {
@@ -610,7 +614,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160714",
+  "revision": "20160719",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

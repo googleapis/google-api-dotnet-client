@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160714 (560)
+ *      <tr><th>API Rev<td>20160719 (565)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1179,6 +1179,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// the single path to that file. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
+
+        /// <summary>A copy of the build's source.storage_source, if exists, with any generations resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
+        public virtual StorageSource ResolvedStorageSource { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

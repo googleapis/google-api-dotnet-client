@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160717 (563)
+ *      <tr><th>API Rev<td>20160719 (565)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2310,7 +2310,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos;
     ///
-    /// if (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }</summary>
+    /// if (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }
+    ///
+    /// Example 3: Compute Duration from datetime.timedelta in Python.
+    ///
+    /// td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)</summary>
     public class Duration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one
@@ -3187,8 +3191,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// Example 5: Compute Timestamp from current time in Python.
     ///
-    /// now = time.time() seconds = int(now) nanos = int((now - seconds) * 10**9) timestamp = Timestamp(seconds=seconds,
-    /// nanos=nanos)</summary>
+    /// timestamp = Timestamp() timestamp.GetCurrentTime()</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions

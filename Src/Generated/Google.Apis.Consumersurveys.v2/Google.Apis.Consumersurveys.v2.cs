@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Consumer Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160602 (518)
+ *      <tr><th>API Rev<td>20160718 (564)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -603,6 +603,66 @@ namespace Google.Apis.ConsumerSurveys.v2
 
         }
 
+
+        /// <summary>Removes a survey from view in all user GET requests.</summary>
+        /// <param name="surveyUrlId">External URL ID for the survey.</param>
+        public virtual DeleteRequest Delete(string surveyUrlId)
+        {
+            return new DeleteRequest(service, surveyUrlId);
+        }
+
+        /// <summary>Removes a survey from view in all user GET requests.</summary>
+        public class DeleteRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveysDeleteResponse>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string surveyUrlId)
+                : base(service)
+            {
+                SurveyUrlId = surveyUrlId;
+                InitParameters();
+            }
+
+
+            /// <summary>External URL ID for the survey.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("surveyUrlId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SurveyUrlId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "surveys/{surveyUrlId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "surveyUrlId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "surveyUrlId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
 
         /// <summary>Retrieves information about the specified survey.</summary>
         /// <param name="surveyUrlId">External URL ID for the survey.</param>
@@ -1357,6 +1417,17 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         /// <summary>External survey ID as viewable by survey owners in the editor view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surveyUrlId")]
         public virtual string SurveyUrlId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SurveysDeleteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique request ID used for logging and debugging. Please include in any error reporting or
+        /// troubleshooting requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

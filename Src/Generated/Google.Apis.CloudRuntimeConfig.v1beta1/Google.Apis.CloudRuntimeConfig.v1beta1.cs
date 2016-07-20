@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160718 (564)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -486,7 +486,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// prefix.
                 ///
                 /// To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager
-                /// /runtime-configurator/seta-and-get-variables) documentation.</summary>
+                /// /runtime-configurator/set-and-get-variables) documentation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The path to the RutimeConfig resource that this variable should belong to. The configuration
                 /// must exist beforehand; the path must by in the format:
@@ -502,7 +502,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// prefix.
                 ///
                 /// To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager
-                /// /runtime-configurator/seta-and-get-variables) documentation.</summary>
+                /// /runtime-configurator/set-and-get-variables) documentation.</summary>
                 public class CreateRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1963,7 +1963,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     /// Once created, a Waiter resource is immutable.
     ///
     /// To learn more about using waiters, read the [Creating a Waiter](/deployment-manager/runtime-
-    /// config/creating-a-water) documentation.</summary>
+    /// configurator/creating-a-waiter) documentation.</summary>
     public class Waiter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The instant at which this Waiter resource was created. Adding the value of `timeout`
@@ -1979,7 +1979,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>[Output Only] If the waiter ended due to a failure or timeout, this value will be set. </summary>
+        /// <summary>[Output Only] If the waiter ended due to a failure or timeout, this value will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
