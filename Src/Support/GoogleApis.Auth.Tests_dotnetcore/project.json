@@ -1,0 +1,37 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Google.Apis.Core": "1.14",
+    "Google.Apis.Auth": "1.14",
+    "GoogleApis.Tests_dotnetcore": {
+      "target": "project"
+    },
+    "Nunit": "3.4.0",
+    "dotnet-test-nunit": "3.4.0-beta-1"
+  },
+
+  "compile": "../GoogleApis.Auth.Tests/**/*.cs",
+    
+  "exclude": [
+    "../GoogleApis.Auth.Tests/Program.cs",
+    "../GoogleApis.Auth.Tests/OAuth2/Flows/*.cs"
+  ],
+
+  "testRunner": "nunit",
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+	"netcoreapp1.0",
+	"portable-net45+win8"
+      ],
+      "dependencies": {
+	"Microsoft.NETCore.App": {
+	  "version": "1.0.0-*",
+	  "type": "platform"
+	}
+      }
+    }
+  }
+}
