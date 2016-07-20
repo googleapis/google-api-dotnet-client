@@ -20,7 +20,7 @@ msbuild /p:Configuration=ReleaseTravis GoogleApisClient.sln
 
 set output=bin\ReleaseSigned
 
-%nunit% --where "cat != IgnoreOnTravis" ^
+%nunit% ^
   "GoogleApis.Tests\%output%\Google.Apis.Tests.exe" ^
   "GoogleApis.Auth.Tests\%output%\Google.Apis.Auth.Tests.exe" ^
   "GoogleApis.Auth.DotNet4.Tests\%output%\Google.Apis.Auth.DotNet4.Tests.exe"
