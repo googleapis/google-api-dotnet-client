@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.ShoppingContent.v2sandbox</id>
-        <version>1.14.0.565</version>
-        <title>Google.Apis.ShoppingContent.v2sandbox Client Library</title>
+        <id>Google.Apis.CloudSpeechAPI.v1beta1</id>
+        <version>1.14.0.566</version>
+        <title>Google.Apis.CloudSpeechAPI.v1beta1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
         <projectUrl>https://www.github.com/google/google-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <summary>Google Content v2sandbox API client library</summary>
+        <summary>Google Speech v1beta1 API client library</summary>
         <description>
-          Google APIs Client Library for working with Content v2sandbox.
+          Google APIs Client Library for working with Speech v1beta1.
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
@@ -23,7 +23,7 @@
           - Portable Class Libraries
 
           More documentation on the API is available at:
-          https://developers.google.com/api-client-library/dotnet/apis/content/v2sandbox
+          https://developers.google.com/api-client-library/dotnet/apis/speech/v1beta1
 
           The package source code is available at:
           https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -48,12 +48,12 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.ShoppingContent.v2sandbox.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.ShoppingContent.v2sandbox.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.CloudSpeechAPI.v1beta1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.CloudSpeechAPI.v1beta1.xml" />
     </files>
 </package>
