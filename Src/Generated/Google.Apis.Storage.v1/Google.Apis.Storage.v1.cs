@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160701 (547)
+ *      <tr><th>API Rev<td>20160714 (560)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5740,7 +5740,8 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; } 
 
-        /// <summary>Cache-Control directive for the object data.</summary>
+        /// <summary>Cache-Control directive for the object data. If omitted, and the object is accessible to all
+        /// anonymous users, the default will be public, max-age=3600.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheControl")]
         public virtual string CacheControl { get; set; } 
 

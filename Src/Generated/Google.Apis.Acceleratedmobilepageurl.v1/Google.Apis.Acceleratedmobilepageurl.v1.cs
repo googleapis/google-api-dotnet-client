@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/amp/cache/'>Accelerated Mobile Pages (AMP) URL API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160621 (537)
+ *      <tr><th>API Rev<td>20160722 (568)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/amp/cache/'>
  *              https://developers.google.com/amp/cache/</a>
@@ -442,7 +442,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lookupStrategy")]
         public virtual string LookupStrategy { get; set; } 
 
-        /// <summary>List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 10 URLs per
+        /// <summary>List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per
         /// lookup (see [Usage Limits](/amp/cache/reference/limits)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
         public virtual System.Collections.Generic.IList<string> Urls { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160718 (564)
+ *      <tr><th>API Rev<td>20160720 (566)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1525,6 +1525,12 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
         public virtual System.Collections.Generic.IDictionary<string,string> Inputs { get; set; } 
+
+        /// <summary>How long to keep the VM up after a failure (for example docker command failed, copying input or
+        /// output files failed, etc). While the VM is up, one can ssh into the VM to debug. Default is 0; maximum
+        /// allowed value is 1 day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepVmAliveOnFailureDuration")]
+        public virtual string KeepVmAliveOnFailureDuration { get; set; } 
 
         /// <summary>Required. Logging options. Used by the service to communicate results to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]

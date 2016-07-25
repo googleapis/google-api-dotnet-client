@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160608 (524)
+ *      <tr><th>API Rev<td>20160719 (565)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1324,6 +1324,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("continueUri")]
         public virtual string ContinueUri { get; set; } 
 
+        /// <summary>The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted
+        /// accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostedDomain")]
+        public virtual string HostedDomain { get; set; } 
+
         /// <summary>The email or federated ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
         public virtual string Identifier { get; set; } 
@@ -2317,6 +2322,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
         public virtual string RefreshToken { get; set; } 
+
+        /// <summary>The screen_name of a Twitter user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
+        public virtual string ScreenName { get; set; } 
 
         /// <summary>The timezone of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
