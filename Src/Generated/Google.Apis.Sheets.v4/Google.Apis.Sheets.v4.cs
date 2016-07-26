@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160714 (560)
+ *      <tr><th>API Rev<td>20160721 (567)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -485,6 +485,182 @@ namespace Google.Apis.Sheets.v4
 
             }
 
+
+            /// <summary>Appends values to a spreadsheet. The input range is used to search for existing data and find a
+            /// "table" within that range. Values will be appended to the next row of the table, starting with the first
+            /// column of the table. For example, given a sheet `Sheet1` that looks like:
+            ///
+            /// A   B   C   D   E 1  x   y   z 2  x   y   z 3 4      x   y 5          y   z 6      x   y   z 7
+            ///
+            /// There are two "tables" in the spreadsheet: `A1:C2`, and `B4:D6`. Appending values would start writing at
+            /// 'B7' for all the following input `range` parameters:
+            ///
+            /// * `Sheet1`, because it will examine all the data in the sheet, determine that the "table" at `B4:D6` is
+            /// the last table, and start a new row at `B7`. * `B4` or `C5:D5`, because it's contained in the `B4:D6`
+            /// table. * `B2:D4`, because the last table contained in the range is the `B4:D6` table (despite it also
+            /// containing the `A1:C2` table). * `A3:G10`, because the last table contained in the range is the `B4:D6`
+            /// table (despite starting before and ending after it).
+            ///
+            /// The following input `range` parameters would not start writing at `B7`:
+            ///
+            /// * `A1` would start writing at `A3`, because that's within the `A1:C2` table. * `E4` would start writing
+            /// at `E4`, because it's not contained in any table. (`A4` would also start writing at `A4`.)
+            ///
+            /// The caller must specify the spreadsheet ID, range, and a valueInputOption.  The `valueInputOption` only
+            /// controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence
+            /// what cell the data starts being written to.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
+            /// <param name="range">The A1 notation
+            /// of a range to search for a logical table of data. Values will be appended after the last row of the
+            /// table.</param>
+            public virtual AppendRequest Append(Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
+            {
+                return new AppendRequest(service, body, spreadsheetId, range);
+            }
+
+            /// <summary>Appends values to a spreadsheet. The input range is used to search for existing data and find a
+            /// "table" within that range. Values will be appended to the next row of the table, starting with the first
+            /// column of the table. For example, given a sheet `Sheet1` that looks like:
+            ///
+            /// A   B   C   D   E 1  x   y   z 2  x   y   z 3 4      x   y 5          y   z 6      x   y   z 7
+            ///
+            /// There are two "tables" in the spreadsheet: `A1:C2`, and `B4:D6`. Appending values would start writing at
+            /// 'B7' for all the following input `range` parameters:
+            ///
+            /// * `Sheet1`, because it will examine all the data in the sheet, determine that the "table" at `B4:D6` is
+            /// the last table, and start a new row at `B7`. * `B4` or `C5:D5`, because it's contained in the `B4:D6`
+            /// table. * `B2:D4`, because the last table contained in the range is the `B4:D6` table (despite it also
+            /// containing the `A1:C2` table). * `A3:G10`, because the last table contained in the range is the `B4:D6`
+            /// table (despite starting before and ending after it).
+            ///
+            /// The following input `range` parameters would not start writing at `B7`:
+            ///
+            /// * `A1` would start writing at `A3`, because that's within the `A1:C2` table. * `E4` would start writing
+            /// at `E4`, because it's not contained in any table. (`A4` would also start writing at `A4`.)
+            ///
+            /// The caller must specify the spreadsheet ID, range, and a valueInputOption.  The `valueInputOption` only
+            /// controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence
+            /// what cell the data starts being written to.</summary>
+            public class AppendRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.AppendValuesResponse>
+            {
+                /// <summary>Constructs a new Append request.</summary>
+                public AppendRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ValueRange body, string spreadsheetId, string range)
+                    : base(service)
+                {
+                    SpreadsheetId = spreadsheetId;
+                    Range = range;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the spreadsheet to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SpreadsheetId { get; private set; }
+
+                /// <summary>The A1 notation of a range to search for a logical table of data. Values will be appended
+                /// after the last row of the table.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Range { get; private set; }
+
+                /// <summary>How the input data should be interpreted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
+
+                /// <summary>How the input data should be interpreted.</summary>
+                public enum ValueInputOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
+                    INPUTVALUEOPTIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("RAW")]
+                    RAW,
+                    [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
+                    USERENTERED,
+                }
+
+                /// <summary>How the input data should be inserted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("insertDataOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<InsertDataOptionEnum> InsertDataOption { get; set; }
+
+                /// <summary>How the input data should be inserted.</summary>
+                public enum InsertDataOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("OVERWRITE")]
+                    OVERWRITE,
+                    [Google.Apis.Util.StringValueAttribute("INSERT_ROWS")]
+                    INSERTROWS,
+                }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "append"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v4/spreadsheets/{spreadsheetId}/values/{range}:append"; }
+                }
+
+                /// <summary>Initializes Append parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "spreadsheetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "spreadsheetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "range", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "range",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "valueInputOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "insertDataOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "insertDataOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
 
             /// <summary>Returns one or more ranges of values from a spreadsheet. The caller must specify the
             /// spreadsheet ID and one or more ranges.</summary>
@@ -1249,7 +1425,8 @@ namespace Google.Apis.Sheets.v4.Data
     public class AddChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The chart that should be added to the spreadsheet, including the position where it should be
-        /// placed.</summary>
+        /// placed. The chartId field is optional; if one is not set, an id will be randomly generated. (It is an error
+        /// to specify the ID of a chart that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chart")]
         public virtual EmbeddedChart Chart { get; set; } 
 
@@ -1287,7 +1464,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Adds a filter view.</summary>
     public class AddFilterViewRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The filter to add.</summary>
+        /// <summary>The filter to add. The filterViewId field is optional; if one is not set, an id will be randomly
+        /// generated. (It is an error to specify the ID of a filter that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual FilterView Filter { get; set; } 
 
@@ -1309,8 +1487,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Adds a named range to the spreadsheet.</summary>
     public class AddNamedRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The named range to add. If a non-empty namedRangeId is specified, the named range will use that ID.
-        /// (It is an error to specify the ID of a named range that already exists.)</summary>
+        /// <summary>The named range to add. The namedRangeId field is optional; if one is not set, an id will be
+        /// randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRange")]
         public virtual NamedRange NamedRange { get; set; } 
 
@@ -1332,7 +1510,8 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Adds a new protected range.</summary>
     public class AddProtectedRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The protected range to be added.</summary>
+        /// <summary>The protected range to be added. The protectedRangeId field is optional; if one is not set, an id
+        /// will be randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRange")]
         public virtual ProtectedRange ProtectedRange { get; set; } 
 
@@ -1356,8 +1535,9 @@ namespace Google.Apis.Sheets.v4.Data
     /// EmbeddedObjectPosition.newSheet.</summary>
     public class AddSheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The properties the new sheet should have. All properties are optional. If a sheetId is specified,
-        /// the sheet will use that ID. (It is an error to specify the ID of a sheet that already exists.)</summary>
+        /// <summary>The properties the new sheet should have. All properties are optional. The sheetId field is
+        /// optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a sheet
+        /// that already exists.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual SheetProperties Properties { get; set; } 
 
@@ -1412,6 +1592,26 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The sheet to append rows or columns to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response when updating a range of values in a spreadsheet.</summary>
+    public class AppendValuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The spreadsheet the updates were applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
+        public virtual string SpreadsheetId { get; set; } 
+
+        /// <summary>The range (in A1 notation) of the table that values are being appended to (before the values were
+        /// appended). Empty if no table was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual string TableRange { get; set; } 
+
+        /// <summary>Information about the updates that were applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updates")]
+        public virtual UpdateValuesResponse Updates { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3916,9 +4116,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; } 
 
-        /// <summary>The protected range to update with the new properties. If a nonzero protectedRangeId is specified,
-        /// the protected range will use that ID. (It is an error to specify the ID of a protected range that already
-        /// exists.)</summary>
+        /// <summary>The protected range to update with the new properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRange")]
         public virtual ProtectedRange ProtectedRange { get; set; } 
 
@@ -4004,7 +4202,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MajorDimension { get; set; } 
 
         /// <summary>The range the values cover, in A1 notation. For output, this range indicates the entire requested
-        /// range, even though the values will exclude trailing rows and columns.</summary>
+        /// range, even though the values will exclude trailing rows and columns. When appending values, this field
+        /// represents the range to search for a table, after which values will be appended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual string Range { get; set; } 
 

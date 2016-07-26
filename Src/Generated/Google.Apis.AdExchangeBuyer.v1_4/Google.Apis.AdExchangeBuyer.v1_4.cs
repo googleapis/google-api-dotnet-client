@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160606 (522)
+ *      <tr><th>API Rev<td>20160721 (567)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -1623,8 +1623,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         }
 
         /// <summary>List all the deals for a given proposal</summary>
-        /// <param name="proposalId">The proposalId to get deals for. To search across proposals specify order_id = '-' as part
-        /// of the URL.</param>
+        /// <param name="proposalId">The proposalId to get deals for. To search across all proposals specify order_id = '-' as
+        /// part of the URL.</param>
         public virtual ListRequest List(string proposalId)
         {
             return new ListRequest(service, proposalId);
@@ -1642,8 +1642,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             }
 
 
-            /// <summary>The proposalId to get deals for. To search across proposals specify order_id = '-' as part of
-            /// the URL.</summary>
+            /// <summary>The proposalId to get deals for. To search across all proposals specify order_id = '-' as part
+            /// of the URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProposalId { get; private set; }
 
@@ -1851,7 +1851,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         }
 
         /// <summary>Get all the notes associated with a proposal</summary>
-        /// <param name="proposalId">The proposalId to get notes for.</param>
+        /// <param name="proposalId">The proposalId to get notes for. To search across all proposals specify order_id = '-' as
+        /// part of the URL.</param>
         public virtual ListRequest List(string proposalId)
         {
             return new ListRequest(service, proposalId);
@@ -1869,9 +1870,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             }
 
 
-            /// <summary>The proposalId to get notes for.</summary>
+            /// <summary>The proposalId to get notes for. To search across all proposals specify order_id = '-' as part
+            /// of the URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProposalId { get; private set; }
+
+            /// <summary>Query string to retrieve specific notes. To search the text contents of notes, please use
+            /// syntax like "WHERE note.note = "foo" or "WHERE note.note LIKE "%bar%"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pqlQuery", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PqlQuery { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1903,6 +1910,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         Name = "proposalId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pqlQuery", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pqlQuery",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3628,6 +3644,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dealsStatus")]
         public virtual string DealsStatus { get; set; } 
 
+        /// <summary>Detected domains for this creative. Read-only. This field should not be set in requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedDomains")]
+        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; } 
+
         /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
         /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteringReasons")]
@@ -3959,6 +3979,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     /// independently.</summary>
     public class DealServingMetadataDealPauseStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("buyerPauseReason")]
+        public virtual string BuyerPauseReason { get; set; } 
+
         /// <summary>If the deal is paused, records which party paused the deal first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPausedBy")]
         public virtual string FirstPausedBy { get; set; } 
@@ -3968,6 +3991,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("hasSellerPaused")]
         public virtual System.Nullable<bool> HasSellerPaused { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sellerPauseReason")]
+        public virtual string SellerPauseReason { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4004,6 +4030,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonGuaranteedFixedPriceTerms")]
         public virtual DealTermsNonGuaranteedFixedPriceTerms NonGuaranteedFixedPriceTerms { get; set; } 
 
+        /// <summary>The terms for rubicon non-guaranteed deals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rubiconNonGuaranteedTerms")]
+        public virtual DealTermsRubiconNonGuaranteedTerms RubiconNonGuaranteedTerms { get; set; } 
+
         /// <summary>For deals with Cost Per Day billing, defines the timezone used to mark the boundaries of a day
         /// (buyer-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerTimeZone")]
@@ -4029,9 +4059,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedImpressions")]
         public virtual System.Nullable<long> GuaranteedImpressions { get; set; } 
 
-        /// <summary>Count of guaranteed looks. Required for deal, optional for product.</summary>
+        /// <summary>Count of guaranteed looks. Required for deal, optional for product. For CPD deals, buyer changes to
+        /// guaranteed_looks will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
         public virtual System.Nullable<long> GuaranteedLooks { get; set; } 
+
+        /// <summary>Count of minimum daily looks for a CPD deal. For CPD deals, buyer should negotiate on this field
+        /// instead of guaranteed_looks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumDailyLooks")]
+        public virtual System.Nullable<long> MinimumDailyLooks { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4050,9 +4086,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dfpLineItemId")]
         public virtual System.Nullable<long> DfpLineItemId { get; set; } 
 
-        /// <summary>The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes
-        /// publisher will book the deal with a impression buffer, however clients are billed using the original
-        /// contracted quantity.</summary>
+        /// <summary>The original contracted quantity (# impressions) for this deal. To ensure delivery, sometimes the
+        /// publisher will book the deal with a impression buffer, such that guaranteed_looks is greater than the
+        /// contracted quantity. However clients are billed using the original contracted quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalContractedQuantity")]
         public virtual System.Nullable<long> OriginalContractedQuantity { get; set; } 
 
@@ -4085,6 +4121,20 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Fixed price for the specified buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedPrices")]
         public virtual System.Collections.Generic.IList<PricePerBuyer> FixedPrices { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DealTermsRubiconNonGuaranteedTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional price for Rubicon priority access in the auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priorityPrice")]
+        public virtual Price PriorityPrice { get; set; } 
+
+        /// <summary>Optional price for Rubicon standard access in the auction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardPrice")]
+        public virtual Price StandardPrice { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4254,7 +4304,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
     public class GetOrderNotesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of matching notes.</summary>
+        /// <summary>The list of matching notes. The notes for a proposal are ordered from oldest to newest. If the
+        /// notes span multiple proposals, they will be grouped by proposal, with the notes for the most recently
+        /// modified proposal appearing first.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual System.Collections.Generic.IList<MarketplaceNote> Notes { get; set; } 
 
@@ -4302,7 +4354,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSafeFrameCompatibility")]
         public virtual string CreativeSafeFrameCompatibility { get; set; } 
 
-        /// <summary>A unique deal=id for the deal (readonly).</summary>
+        /// <summary>A unique deal-id for the deal (readonly).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
         public virtual string DealId { get; set; } 
 
@@ -4779,6 +4831,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; } 
 
+        /// <summary>In case of CPD deals, the expected CPM in micros.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedCpmMicros")]
+        public virtual System.Nullable<double> ExpectedCpmMicros { get; set; } 
+
         /// <summary>The pricing type for the deal/product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingType")]
         public virtual string PricingType { get; set; } 
@@ -4953,7 +5009,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
         public virtual Buyer Buyer { get; set; } 
 
-        /// <summary>Optional contact information fort the buyer. (seller-readonly)</summary>
+        /// <summary>Optional contact information of the buyer. (seller-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerContacts")]
         public virtual System.Collections.Generic.IList<ContactInformation> BuyerContacts { get; set; } 
 
@@ -4961,7 +5017,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
         public virtual PrivateData BuyerPrivateData { get; set; } 
 
-        /// <summary>When an proposal is in an accepted state, indicates whether the buyer has signed off Once both
+        /// <summary>When an proposal is in an accepted state, indicates whether the buyer has signed off. Once both
         /// sides have signed off on a deal, the proposal can be finalized by the seller. (seller-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasBuyerSignedOff")]
         public virtual System.Nullable<bool> HasBuyerSignedOff { get; set; } 
@@ -5033,7 +5089,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seller")]
         public virtual Seller Seller { get; set; } 
 
-        /// <summary>Optional contact information for the seller (buyer-readonly).</summary>
+        /// <summary>Optional contact information of the seller (buyer-readonly).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sellerContacts")]
         public virtual System.Collections.Generic.IList<ContactInformation> SellerContacts { get; set; } 
 

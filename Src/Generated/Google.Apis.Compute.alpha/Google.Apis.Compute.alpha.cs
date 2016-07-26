@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160624 (540)
+ *      <tr><th>API Rev<td>20160721 (567)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -68,6 +68,7 @@ namespace Google.Apis.Compute.alpha
             autoscalers = new AutoscalersResource(this);
             backendBuckets = new BackendBucketsResource(this);
             backendServices = new BackendServicesResource(this);
+            clientSslPolicies = new ClientSslPoliciesResource(this);
             diskTypes = new DiskTypesResource(this);
             disks = new DisksResource(this);
             firewalls = new FirewallsResource(this);
@@ -89,6 +90,8 @@ namespace Google.Apis.Compute.alpha
             projects = new ProjectsResource(this);
             regionAutoscalers = new RegionAutoscalersResource(this);
             regionBackendServices = new RegionBackendServicesResource(this);
+            regionDiskTypes = new RegionDiskTypesResource(this);
+            regionDisks = new RegionDisksResource(this);
             regionInstanceGroupManagers = new RegionInstanceGroupManagersResource(this);
             regionInstanceGroups = new RegionInstanceGroupsResource(this);
             regionOperations = new RegionOperationsResource(this);
@@ -189,6 +192,14 @@ namespace Google.Apis.Compute.alpha
         public virtual BackendServicesResource BackendServices
         {
             get { return backendServices; }
+        }
+
+        private readonly ClientSslPoliciesResource clientSslPolicies;
+
+        /// <summary>Gets the ClientSslPolicies resource.</summary>
+        public virtual ClientSslPoliciesResource ClientSslPolicies
+        {
+            get { return clientSslPolicies; }
         }
 
         private readonly DiskTypesResource diskTypes;
@@ -357,6 +368,22 @@ namespace Google.Apis.Compute.alpha
         public virtual RegionBackendServicesResource RegionBackendServices
         {
             get { return regionBackendServices; }
+        }
+
+        private readonly RegionDiskTypesResource regionDiskTypes;
+
+        /// <summary>Gets the RegionDiskTypes resource.</summary>
+        public virtual RegionDiskTypesResource RegionDiskTypes
+        {
+            get { return regionDiskTypes; }
+        }
+
+        private readonly RegionDisksResource regionDisks;
+
+        /// <summary>Gets the RegionDisks resource.</summary>
+        public virtual RegionDisksResource RegionDisks
+        {
+            get { return regionDisks; }
         }
 
         private readonly RegionInstanceGroupManagersResource regionInstanceGroupManagers;
@@ -684,15 +711,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1105,15 +1130,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1376,15 +1399,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1797,15 +1818,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -2568,15 +2587,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -3379,15 +3396,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -3751,6 +3766,107 @@ namespace Google.Apis.Compute.alpha
         }
     }
 
+    /// <summary>The "clientSslPolicies" collection of methods.</summary>
+    public class ClientSslPoliciesResource
+    {
+        private const string Resource = "clientSslPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ClientSslPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/clientSslPolicies/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "diskTypes" collection of methods.</summary>
     public class DiskTypesResource
     {
@@ -3802,15 +3918,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4048,15 +4162,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4220,15 +4332,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4774,15 +4884,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5465,15 +5573,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5882,15 +5988,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -6307,15 +6411,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -6904,15 +7006,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -7375,15 +7475,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -7708,15 +7806,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -8008,15 +8104,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -8395,15 +8489,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -9038,15 +9130,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -9681,15 +9771,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -10491,15 +10579,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -10934,15 +11020,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -11479,15 +11563,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -12601,15 +12683,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -13029,15 +13109,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -13201,15 +13279,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -13921,15 +13997,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -14283,15 +14357,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -14810,7 +14882,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"\w[\w.-]{0,254}",
+                        Pattern = null,
                     });
             }
 
@@ -15251,15 +15323,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -16916,15 +16986,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -17162,15 +17230,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -17556,15 +17622,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -17844,6 +17908,264 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Disable this project as an XPN host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual DisableXpnHostRequest DisableXpnHost(string project)
+        {
+            return new DisableXpnHostRequest(service, project);
+        }
+
+        /// <summary>Disable this project as an XPN host project.</summary>
+        public class DisableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new DisableXpnHost request.</summary>
+            public DisableXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "disableXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/disableXpnHost"; }
+            }
+
+            /// <summary>Initializes DisableXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.alpha.Data.ProjectsDisableXpnResourceRequest body, string project)
+        {
+            return new DisableXpnResourceRequest(service, body, project);
+        }
+
+        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new DisableXpnResource request.</summary>
+            public DisableXpnResourceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.ProjectsDisableXpnResourceRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.ProjectsDisableXpnResourceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "disableXpnResource"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/disableXpnResource"; }
+            }
+
+            /// <summary>Initializes DisableXpnResource parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Enable this project as an XPN host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual EnableXpnHostRequest EnableXpnHost(string project)
+        {
+            return new EnableXpnHostRequest(service, project);
+        }
+
+        /// <summary>Enable this project as an XPN host project.</summary>
+        public class EnableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new EnableXpnHost request.</summary>
+            public EnableXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "enableXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/enableXpnHost"; }
+            }
+
+            /// <summary>Initializes EnableXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
+        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual EnableXpnResourceRequest EnableXpnResource(Google.Apis.Compute.alpha.Data.ProjectsEnableXpnResourceRequest body, string project)
+        {
+            return new EnableXpnResourceRequest(service, body, project);
+        }
+
+        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
+        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        public class EnableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new EnableXpnResource request.</summary>
+            public EnableXpnResourceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.ProjectsEnableXpnResourceRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.ProjectsEnableXpnResourceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "enableXpnResource"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/enableXpnResource"; }
+            }
+
+            /// <summary>Initializes EnableXpnResource parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
         /// <summary>Returns the specified Project resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetRequest Get(string project)
@@ -17887,6 +18209,194 @@ namespace Google.Apis.Compute.alpha
             }
 
             /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetXpnHostRequest GetXpnHost(string project)
+        {
+            return new GetXpnHostRequest(service, project);
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Project>
+        {
+            /// <summary>Constructs a new GetXpnHost request.</summary>
+            public GetXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/getXpnHost"; }
+            }
+
+            /// <summary>Initializes GetXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Get XPN resources associated with this host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetXpnResourcesRequest GetXpnResources(string project)
+        {
+            return new GetXpnResourcesRequest(service, project);
+        }
+
+        /// <summary>Get XPN resources associated with this host project.</summary>
+        public class GetXpnResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ProjectsGetXpnResources>
+        {
+            /// <summary>Constructs a new GetXpnResources request.</summary>
+            public GetXpnResourcesRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getXpnResources"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/getXpnResources"; }
+            }
+
+            /// <summary>Initializes GetXpnResources parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.alpha.Data.ProjectsListXpnHostsRequest body, string project)
+        {
+            return new ListXpnHostsRequest(service, body, project);
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.XpnHostList>
+        {
+            /// <summary>Constructs a new ListXpnHosts request.</summary>
+            public ListXpnHostsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.ProjectsListXpnHostsRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.ProjectsListXpnHostsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listXpnHosts"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/listXpnHosts"; }
+            }
+
+            /// <summary>Initializes ListXpnHosts parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -18505,15 +19015,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -19354,15 +19862,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -19772,6 +20278,1147 @@ namespace Google.Apis.Compute.alpha
                     "backendService", new Google.Apis.Discovery.Parameter
                     {
                         Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "regionDiskTypes" collection of methods.</summary>
+    public class RegionDiskTypesResource
+    {
+        private const string Resource = "regionDiskTypes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionDiskTypesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns the specified regional disk type. Get a list of available disk types by making a list()
+        /// request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="diskType">Name of the disk type to return.</param>
+        public virtual GetRequest Get(string project, string region, string diskType)
+        {
+            return new GetRequest(service, project, region, diskType);
+        }
+
+        /// <summary>Returns the specified regional disk type. Get a list of available disk types by making a list()
+        /// request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.DiskType>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string diskType)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                DiskType = diskType;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the disk type to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("diskType", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DiskType { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/diskTypes/{diskType}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "diskType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "diskType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.RegionDiskTypeList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/diskTypes"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "regionDisks" collection of methods.</summary>
+    public class RegionDisksResource
+    {
+        private const string Resource = "regionDisks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionDisksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a snapshot of this regional disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to snapshot.</param>
+        public virtual CreateSnapshotRequest CreateSnapshot(Google.Apis.Compute.alpha.Data.Snapshot body, string project, string region, string disk)
+        {
+            return new CreateSnapshotRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Creates a snapshot of this regional disk.</summary>
+        public class CreateSnapshotRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new CreateSnapshot request.</summary>
+            public CreateSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Snapshot body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to snapshot.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Snapshot Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createSnapshot"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/createSnapshot"; }
+            }
+
+            /// <summary>Initializes CreateSnapshot parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "guestFlush", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "guestFlush",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
+        /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
+        /// previously made from the disk. You must separately delete snapshots.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string disk)
+        {
+            return new DeleteRequest(service, project, region, disk);
+        }
+
+        /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
+        /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
+        /// previously made from the disk. You must separately delete snapshots.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns a specified regional persistent disk.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to return.</param>
+        public virtual GetRequest Get(string project, string region, string disk)
+        {
+            return new GetRequest(service, project, region, disk);
+        }
+
+        /// <summary>Returns a specified regional persistent disk.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Disk>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.alpha.Data.Disk body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Disk body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Optional. Source image to restore onto a disk.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceImage", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceImage { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Disk Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "sourceImage", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceImage",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.RegionDiskList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resizes the specified regional persistent disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">The project ID for this request.</param>
+        /// <param name="region">Name of the region for
+        /// this request.</param>
+        /// <param name="disk">Name of the regional persistent disk.</param>
+        public virtual ResizeRequest Resize(Google.Apis.Compute.alpha.Data.RegionDisksResizeRequest body, string project, string region, string disk)
+        {
+            return new ResizeRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Resizes the specified regional persistent disk.</summary>
+        public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Resize request.</summary>
+            public ResizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.RegionDisksResizeRequest body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.RegionDisksResizeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resize"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/resize"; }
+            }
+
+            /// <summary>Initializes Resize parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on the target regional disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on the target regional disk.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -20334,15 +21981,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -21323,15 +22968,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -21498,15 +23141,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -22073,15 +23714,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -22323,15 +23962,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -22486,15 +24123,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23000,15 +24635,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23792,15 +25425,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -24201,15 +25832,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -24758,15 +26387,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -25005,15 +26632,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -25616,15 +27241,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -26210,15 +27833,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -26765,15 +28386,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -27180,15 +28799,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -27603,15 +29220,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -28074,15 +29689,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -28599,15 +30212,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -29406,15 +31017,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -29905,15 +31514,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -30328,15 +31935,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -30909,15 +32514,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31410,15 +33013,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31833,15 +33434,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -32293,15 +33892,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -32543,15 +34140,13 @@ namespace Google.Apis.Compute.alpha
             /// For example, to filter for instances that do not have a name of example-instance, you would use
             /// filter=name ne example-instance.
             ///
-            /// Compute Engine Beta API Only: When filtering in the Beta API, you can also filter on nested fields. For
-            /// example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use
-            /// filtering on nested fields to take advantage of labels to organize and search for results based on label
-            /// values.
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
             ///
-            /// The Beta API also supports filtering on multiple expressions by providing each separate expression
-            /// within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple
-            /// expressions are treated as AND expressions, meaning that resources must match all expressions to pass
-            /// the filters.</summary>
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -33592,6 +35187,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("iaap")]
+        public virtual BackendServiceIAAP Iaap { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -33671,6 +35269,25 @@ namespace Google.Apis.Compute.alpha.Data
         /// services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identity Aware Application Proxy (Cloud Gatekeeper)</summary>
+    public class BackendServiceIAAP : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
+        public virtual string Oauth2ClientId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
+        public virtual string Oauth2ClientSecret { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
+        public virtual string Oauth2ClientSecretSha256 { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34354,8 +35971,8 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Represents a Firewall resource.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of rules specified by this firewall. Each rule specifies a protocol and port-range tuple
-        /// that describes a permitted connection.</summary>
+        /// <summary>The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range
+        /// tuple that describes a permitted connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
         public virtual System.Collections.Generic.IList<Firewall.AllowedData> Allowed { get; set; } 
 
@@ -34397,24 +36014,20 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>The IP address blocks that this rule applies to, expressed in CIDR format. One or both of
-        /// sourceRanges and sourceTags may be set.
-        ///
-        /// If both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the
-        /// tag of the source matches the sourceTags property. The connection does not need to match both
-        /// properties.</summary>
+        /// <summary>If source ranges are specified, the firewall will apply only to traffic that has source IP address
+        /// in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags
+        /// may be set. If both properties are set, the firewall will apply to traffic that has source IP address within
+        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
+        /// not need to match both properties for the firewall to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
-        /// <summary>A list of instance tags which this rule applies to. One or both of sourceRanges and sourceTags may
-        /// be set.
-        ///
-        /// If both properties are set, an inbound connection is allowed if the range matches the sourceRanges OR the
-        /// tag of the source matches the sourceTags property. The connection does not need to match both properties.
-        ///
-        /// Source tags cannot be used to allow access to an instance's external IP address. Because tags are associated
-        /// with an instance, not an IP address, source tags can only be used to control traffic traveling from an
-        /// instance inside the same network as the firewall.</summary>
+        /// <summary>If source tags are specified, the firewall will apply only to traffic with source IP that belongs
+        /// to a tag listed in source tags. Source tags cannot be used to control traffic to an instance's external IP
+        /// address. Because tags are associated with an instance, not an IP address. One or both of sourceRanges and
+        /// sourceTags may be set. If both properties are set, the firewall will apply to traffic that has source IP
+        /// address within sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The
+        /// connection does not need to match both properties for the firewall to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -34430,15 +36043,15 @@ namespace Google.Apis.Compute.alpha.Data
 
         public class AllowedData
         {
-            /// <summary>The IP protocol that is allowed for this rule. The protocol type is required when creating a
+            /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
             /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
-            /// <summary>An optional list of ports which are allowed. This field is only applicable for UDP or TCP
-            /// protocol. Each entry must be either an integer or a range. If not specified, connections through any
-            /// port are allowed
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
+            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// connections through any port.
             ///
             /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("ports")]
@@ -36198,8 +37811,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupsListInstances : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this list of instance groups. The server generates this
-        /// identifier.</summary>
+        /// <summary>[Output Only] A unique identifier for this list of instances in the specified instance group. The
+        /// server generates this identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -36208,8 +37821,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceWithNamedPorts> Items { get; set; } 
 
-        /// <summary>[Output Only] The resource type, which is always compute#instanceGroupsListInstances for lists of
-        /// instance groups.</summary>
+        /// <summary>[Output Only] The resource type, which is always compute#instanceGroupsListInstances for the list
+        /// of instances in the specified instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -36220,7 +37833,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this list of instance groups. The server generates this URL.</summary>
+        /// <summary>[Output Only] The URL for this list of instances in the specified instance groups. The server
+        /// generates this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -37627,6 +39241,57 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usageExportLocation")]
         public virtual UsageExportLocation UsageExportLocation { get; set; } 
 
+        /// <summary>[Output Only] The role this project has in a Cross Project Network (XPN) configuration. Currently
+        /// only HOST projects are differentiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
+        public virtual string XpnProjectStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsDisableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>XPN resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
+        public virtual XpnResourceId XpnResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsEnableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>XPN resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
+        public virtual XpnResourceId XpnResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsGetXpnResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of resource. Always compute#projectsGetXpnResources for lists of XPN
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>XPN resources attached to this project as their XPN host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<XpnResourceId> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsListXpnHostsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional organization ID managed by Cloud Resource Manager, for which to list XPN host projects. If
+        /// not specified, the organization will be inferred from the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -37721,6 +39386,76 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RegionDiskList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of persistent disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Disk> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#regionDiskList for lists of region disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RegionDiskTypeList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of Disk Type resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<DiskType> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#regionDiskTypeList for region disk types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RegionDisksResizeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new size of the regional persistent disk, which is specified in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37955,6 +39690,23 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RegionSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>The labels to set for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ResourceGroupReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A URI referencing one of the resource views listed in the backend service.</summary>
@@ -38129,9 +39881,12 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Router resource.</summary>
     public class Router : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BGP information specific to this router.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bgp")]
         public virtual RouterBgp Bgp { get; set; } 
 
+        /// <summary>BGP information that needs to be configured into the routing stack to establish the BGP peering. It
+        /// must specify peer ASN and either interface name, IP, or peer IP. Please refer to RFC4273.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bgpPeers")]
         public virtual System.Collections.Generic.IList<RouterBgpPeer> BgpPeers { get; set; } 
 
@@ -38149,6 +39904,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
+        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP
+        /// address and IP address range (e.g. ipRange).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
         public virtual System.Collections.Generic.IList<RouterInterface> Interfaces { get; set; } 
 
@@ -38223,9 +39980,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>BGP information that needs to be configured into the routing stack to establish the BGP peering. It
-    /// must specify peer ASN and either interface name, IP, or peer IP. Reference:
-    /// https://tools.ietf.org/html/rfc4273</summary>
     public class RouterBgpPeer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The priority of routes advertised to this BGP peer. In the case where there is more than one
@@ -38258,8 +40012,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linked_vpn_tunnel) or IP
-    /// address + range (specified in ip_range).</summary>
     public class RouterInterface : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>IP address and range of the interface. The IP range must be in the RFC3927 link-local IP space. The
@@ -39126,6 +40878,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A TargetHttpsProxy resource. This resource defines an HTTPS proxy.</summary>
     public class TargetHttpsProxy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>URL to ClientSslPolicy resource which controls the set of allowed SSL versions and
+        /// ciphers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSslPolicy")]
+        public virtual string ClientSslPolicy { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -39676,6 +41433,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A TargetSslProxy resource. This resource defines an SSL proxy.</summary>
     public class TargetSslProxy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>URL to ClientSslPolicy resource which controls the set of allowed SSL versions and
+        /// ciphers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSslPolicy")]
+        public virtual string ClientSslPolicy { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -40352,6 +42114,52 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
+    }    
+
+    public class XpnHostList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of XPN host project URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Project> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#xpnHostList for lists of XPN hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>XpnResourceId</summary>
+    public class XpnResourceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the XPN resource. In the case of projects, this field matches the project's name, not the
+        /// canonical ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The type of the XPN resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A Zone resource.</summary>
