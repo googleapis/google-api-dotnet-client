@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/vStR7r_82lzvuRaY4A09sp0u1Ec\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/zC9suJQ-7WORdmip7lFD2dTzwM0\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160720",
+ "revision": "20160725",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",

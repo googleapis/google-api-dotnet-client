@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160712 (558)
+ *      <tr><th>API Rev<td>20160720 (566)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -72,6 +72,8 @@ namespace Google.Apis.AndroidEnterprise.v1
             grouplicenses = new GrouplicensesResource(this);
             grouplicenseusers = new GrouplicenseusersResource(this);
             installs = new InstallsResource(this);
+            managedconfigurationsfordevice = new ManagedconfigurationsfordeviceResource(this);
+            managedconfigurationsforuser = new ManagedconfigurationsforuserResource(this);
             permissions = new PermissionsResource(this);
             products = new ProductsResource(this);
             serviceaccountkeys = new ServiceaccountkeysResource(this);
@@ -176,6 +178,22 @@ namespace Google.Apis.AndroidEnterprise.v1
         public virtual InstallsResource Installs
         {
             get { return installs; }
+        }
+
+        private readonly ManagedconfigurationsfordeviceResource managedconfigurationsfordevice;
+
+        /// <summary>Gets the Managedconfigurationsfordevice resource.</summary>
+        public virtual ManagedconfigurationsfordeviceResource Managedconfigurationsfordevice
+        {
+            get { return managedconfigurationsfordevice; }
+        }
+
+        private readonly ManagedconfigurationsforuserResource managedconfigurationsforuser;
+
+        /// <summary>Gets the Managedconfigurationsforuser resource.</summary>
+        public virtual ManagedconfigurationsforuserResource Managedconfigurationsforuser
+        {
+            get { return managedconfigurationsforuser; }
         }
 
         private readonly PermissionsResource permissions;
@@ -2193,16 +2211,16 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Returns the store layout resource for the enterprise. If store layout has not been set, or if store
-        /// layout has no homepage set, returns a NOT_FOUND error.</summary>
+        /// <summary>Returns the store layout for the enterprise. If the store layout has not been set, or if the store
+        /// layout has no homepageId set, returns a NOT_FOUND error.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetStoreLayoutRequest GetStoreLayout(string enterpriseId)
         {
             return new GetStoreLayoutRequest(service, enterpriseId);
         }
 
-        /// <summary>Returns the store layout resource for the enterprise. If store layout has not been set, or if store
-        /// layout has no homepage set, returns a NOT_FOUND error.</summary>
+        /// <summary>Returns the store layout for the enterprise. If the store layout has not been set, or if the store
+        /// layout has no homepageId set, returns a NOT_FOUND error.</summary>
         public class GetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new GetStoreLayout request.</summary>
@@ -2608,7 +2626,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sets the store layout resource.</summary>
+        /// <summary>Sets the store layout for the enterprise.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
@@ -2616,7 +2634,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetStoreLayoutRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Sets the store layout resource.</summary>
+        /// <summary>Sets the store layout for the enterprise.</summary>
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
@@ -4050,6 +4068,1045 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
     }
 
+    /// <summary>The "managedconfigurationsfordevice" collection of methods.</summary>
+    public class ManagedconfigurationsfordeviceResource
+    {
+        private const string Resource = "managedconfigurationsfordevice";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ManagedconfigurationsfordeviceResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Removes a per-device managed configuration for an app for the specified device.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The Android ID of the device.</param>
+        /// <param
+        /// name="managedConfigurationForDeviceId">The ID of the managed configuration (a product ID), e.g.
+        /// "app:com.google.android.gm".</param>
+        public virtual DeleteRequest Delete(string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+        {
+            return new DeleteRequest(service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+        }
+
+        /// <summary>Removes a per-device managed configuration for an app for the specified device.</summary>
+        public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                ManagedConfigurationForDeviceId = managedConfigurationForDeviceId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The Android ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForDeviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForDeviceId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForDeviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves details of a per-device managed configuration.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The Android ID of the device.</param>
+        /// <param
+        /// name="managedConfigurationForDeviceId">The ID of the managed configuration (a product ID), e.g.
+        /// "app:com.google.android.gm".</param>
+        public virtual GetRequest Get(string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+        {
+            return new GetRequest(service, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+        }
+
+        /// <summary>Retrieves details of a per-device managed configuration.</summary>
+        public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                ManagedConfigurationForDeviceId = managedConfigurationForDeviceId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The Android ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForDeviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForDeviceId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForDeviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all the per-device managed configurations for the specified device. Only the ID is
+        /// set.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The Android ID of the device.</param>
+        public virtual ListRequest List(string enterpriseId, string userId, string deviceId)
+        {
+            return new ListRequest(service, enterpriseId, userId, deviceId);
+        }
+
+        /// <summary>Lists all the per-device managed configurations for the specified device. Only the ID is
+        /// set.</summary>
+        public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsForDeviceListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The Android ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Adds or updates a per-device managed configuration for an app for the specified device. This method
+        /// supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The Android ID of the device.</param>
+        /// <param
+        /// name="managedConfigurationForDeviceId">The ID of the managed configuration (a product ID), e.g.
+        /// "app:com.google.android.gm".</param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+        {
+            return new PatchRequest(service, body, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+        }
+
+        /// <summary>Adds or updates a per-device managed configuration for an app for the specified device. This method
+        /// supports patch semantics.</summary>
+        public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                ManagedConfigurationForDeviceId = managedConfigurationForDeviceId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The Android ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForDeviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForDeviceId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForDeviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Adds or updates a per-device managed configuration for an app for the specified device.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The Android ID of the device.</param>
+        /// <param
+        /// name="managedConfigurationForDeviceId">The ID of the managed configuration (a product ID), e.g.
+        /// "app:com.google.android.gm".</param>
+        public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+        {
+            return new UpdateRequest(service, body, enterpriseId, userId, deviceId, managedConfigurationForDeviceId);
+        }
+
+        /// <summary>Adds or updates a per-device managed configuration for an app for the specified device.</summary>
+        public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string deviceId, string managedConfigurationForDeviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                ManagedConfigurationForDeviceId = managedConfigurationForDeviceId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The Android ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForDeviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForDeviceId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForDeviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForDeviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "managedconfigurationsforuser" collection of methods.</summary>
+    public class ManagedconfigurationsforuserResource
+    {
+        private const string Resource = "managedconfigurationsforuser";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ManagedconfigurationsforuserResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Removes a per-user managed configuration for an app for the specified user.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="managedConfigurationForUserId">The ID of the managed configuration (a product
+        /// ID), e.g. "app:com.google.android.gm".</param>
+        public virtual DeleteRequest Delete(string enterpriseId, string userId, string managedConfigurationForUserId)
+        {
+            return new DeleteRequest(service, enterpriseId, userId, managedConfigurationForUserId);
+        }
+
+        /// <summary>Removes a per-user managed configuration for an app for the specified user.</summary>
+        public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                ManagedConfigurationForUserId = managedConfigurationForUserId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForUserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForUserId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForUserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves details of a per-user managed configuration for an app for the specified user.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="managedConfigurationForUserId">The ID of the managed configuration (a product
+        /// ID), e.g. "app:com.google.android.gm".</param>
+        public virtual GetRequest Get(string enterpriseId, string userId, string managedConfigurationForUserId)
+        {
+            return new GetRequest(service, enterpriseId, userId, managedConfigurationForUserId);
+        }
+
+        /// <summary>Retrieves details of a per-user managed configuration for an app for the specified user.</summary>
+        public class GetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string managedConfigurationForUserId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                ManagedConfigurationForUserId = managedConfigurationForUserId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForUserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForUserId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForUserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all the per-user managed configurations for the specified user. Only the ID is set.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        public virtual ListRequest List(string enterpriseId, string userId)
+        {
+            return new ListRequest(service, enterpriseId, userId);
+        }
+
+        /// <summary>Lists all the per-user managed configurations for the specified user. Only the ID is set.</summary>
+        public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsForUserListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user. This method
+        /// supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="managedConfigurationForUserId">The ID of the managed configuration (a product
+        /// ID), e.g. "app:com.google.android.gm".</param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
+        {
+            return new PatchRequest(service, body, enterpriseId, userId, managedConfigurationForUserId);
+        }
+
+        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user. This method
+        /// supports patch semantics.</summary>
+        public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                ManagedConfigurationForUserId = managedConfigurationForUserId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForUserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForUserId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForUserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="managedConfigurationForUserId">The ID of the managed configuration (a product
+        /// ID), e.g. "app:com.google.android.gm".</param>
+        public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
+        {
+            return new UpdateRequest(service, body, enterpriseId, userId, managedConfigurationForUserId);
+        }
+
+        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user.</summary>
+        public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration body, string enterpriseId, string userId, string managedConfigurationForUserId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                ManagedConfigurationForUserId = managedConfigurationForUserId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedConfigurationForUserId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedConfigurationForUserId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "managedConfigurationForUserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "permissions" collection of methods.</summary>
     public class PermissionsResource
     {
@@ -4441,8 +5498,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Retrieves the schema defining app restrictions configurable for this product. All products have a
-        /// schema, but this may be empty if no app restrictions are defined.</summary>
+        /// <summary>Retrieves the schema that defines the configurable properties for this product. All products have a
+        /// schema, but this schema may be empty if no managed configurations have been defined. This schema can be used
+        /// to populate a UI that allows an administrator to configure the product. To apply a managed configuration
+        /// based on the schema obtained using this API, see Managed Configurations through Play.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -4451,8 +5510,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new GetAppRestrictionsSchemaRequest(service, enterpriseId, productId);
         }
 
-        /// <summary>Retrieves the schema defining app restrictions configurable for this product. All products have a
-        /// schema, but this may be empty if no app restrictions are defined.</summary>
+        /// <summary>Retrieves the schema that defines the configurable properties for this product. All products have a
+        /// schema, but this schema may be empty if no managed configurations have been defined. This schema can be used
+        /// to populate a UI that allows an administrator to configure the product. To apply a managed configuration
+        /// based on the schema obtained using this API, see Managed Configurations through Play.</summary>
         public class GetAppRestrictionsSchemaRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AppRestrictionsSchema>
         {
             /// <summary>Constructs a new GetAppRestrictionsSchema request.</summary>
@@ -6582,7 +7643,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <summary>Creates a new EMM-managed user.
+        ///
+        /// The Users resource passed in the body of the request should include an accountIdentifier and an
+        /// accountType.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
@@ -6590,7 +7654,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new InsertRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <summary>Creates a new EMM-managed user.
+        ///
+        /// The Users resource passed in the body of the request should include an accountIdentifier and an
+        /// accountType.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7148,6 +8215,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
+        /// <summary>For bundle or bundleArray restrictions, the list of nested restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestedRestriction")]
+        public virtual System.Collections.Generic.IList<AppRestrictionsSchemaRestriction> NestedRestriction { get; set; } 
+
         /// <summary>The type of the restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionType")]
         public virtual string RestrictionType { get; set; } 
@@ -7390,7 +8461,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An enterprise resource represents the binding between an EMM and a specific organization. That binding
+    /// <summary>An Enterprises resource represents the binding between an EMM and a specific organization. That binding
     /// can be instantiated in one of two different ways using this API as follows: - For Google managed domain
     /// customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with
     /// artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-
@@ -7720,6 +8791,113 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The text localized in the associated locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A managed configuration resource contains the set of managed properties that have been configured for
+    /// an Android app. The app's developer would have defined configurable properties in the managed configurations
+    /// schema.</summary>
+    public class ManagedConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#managedConfiguration".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The set of managed properties for this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
+        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
+
+        /// <summary>The ID of the product that the managed configuration is for, e.g.
+        /// "app:com.google.android.gm".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The managed configuration resources for the device.</summary>
+    public class ManagedConfigurationsForDeviceListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#managedConfigurationsForDeviceListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A managed configuration for an app on a specific device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForDevice")]
+        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForDevice { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The managed configuration resources for the user.</summary>
+    public class ManagedConfigurationsForUserListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#managedConfigurationsForUserListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A managed configuration for an app for a specific user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForUser")]
+        public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A managed property of a managed configuration. The property must match one of the properties in the app
+    /// restrictions schema of the product. Exactly one of the value fields must be populated, and it must match the
+    /// property's type in the app restrictions schema.</summary>
+    public class ManagedProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique key that identifies the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The boolean value - this will only be present if type of the property is bool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueBool")]
+        public virtual System.Nullable<bool> ValueBool { get; set; } 
+
+        /// <summary>The bundle of managed properties - this will only be present if type of the property is
+        /// bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueBundle")]
+        public virtual ManagedPropertyBundle ValueBundle { get; set; } 
+
+        /// <summary>The list of bundles of properties - this will only be present if type of the property is
+        /// bundle_array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueBundleArray")]
+        public virtual System.Collections.Generic.IList<ManagedPropertyBundle> ValueBundleArray { get; set; } 
+
+        /// <summary>The integer value - this will only be present if type of the property is integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInteger")]
+        public virtual System.Nullable<int> ValueInteger { get; set; } 
+
+        /// <summary>The string value - this will only be present if type of the property is string, choice or
+        /// hidden.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueString")]
+        public virtual string ValueString { get; set; } 
+
+        /// <summary>The list of string values - this will only be present if type of the property is
+        /// multiselect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueStringArray")]
+        public virtual System.Collections.Generic.IList<string> ValueStringArray { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A bundle of managed properties.</summary>
+    public class ManagedPropertyBundle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of managed properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
+        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8192,7 +9370,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The ID of the store page to be used as the homepage. The homepage will be used as the first page
         /// shown in the Google Play for Work store.
         ///
-        /// If a homepage has not been set, the play store shown on devices will be empty. Not specifying a homepage on
+        /// If a homepage has not been set, the Play store shown on devices will be empty. Not specifying a homepage on
         /// a store layout effectively empties the store.
         ///
         /// If there exists at least one page, this field must be set to the ID of a valid page.</summary>

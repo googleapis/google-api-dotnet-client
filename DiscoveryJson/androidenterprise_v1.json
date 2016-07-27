@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/7iruqrTgzg-fGTfRlWp528ZZ7B4\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-8qZpzbFyLtg3aeVQ_Ia5nj8UaI\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160712",
+ "revision": "20160720",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -148,6 +148,13 @@
     "key": {
      "type": "string",
      "description": "The unique key that the product uses to identify the restriction, e.g. \"com.google.android.gm.fieldname\"."
+    },
+    "nestedRestriction": {
+     "type": "array",
+     "description": "For bundle or bundleArray restrictions, the list of nested restrictions.",
+     "items": {
+      "$ref": "AppRestrictionsSchemaRestriction"
+     }
     },
     "restrictionType": {
      "type": "string",
@@ -388,7 +395,7 @@
   "Enterprise": {
    "id": "Enterprise",
    "type": "object",
-   "description": "An enterprise resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: \n- For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. \n- For Android for Work Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the Android for Work Sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details.",
+   "description": "An Enterprises resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: \n- For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. \n- For Android for Work Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the Android for Work Sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details.",
    "properties": {
     "administrator": {
      "type": "array",
@@ -664,6 +671,123 @@
     "text": {
      "type": "string",
      "description": "The text localized in the associated locale."
+    }
+   }
+  },
+  "ManagedConfiguration": {
+   "id": "ManagedConfiguration",
+   "type": "object",
+   "description": "A managed configuration resource contains the set of managed properties that have been configured for an Android app. The app's developer would have defined configurable properties in the managed configurations schema.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfiguration\".",
+     "default": "androidenterprise#managedConfiguration"
+    },
+    "managedProperty": {
+     "type": "array",
+     "description": "The set of managed properties for this configuration.",
+     "items": {
+      "$ref": "ManagedProperty"
+     }
+    },
+    "productId": {
+     "type": "string",
+     "description": "The ID of the product that the managed configuration is for, e.g. \"app:com.google.android.gm\"."
+    }
+   }
+  },
+  "ManagedConfigurationsForDeviceListResponse": {
+   "id": "ManagedConfigurationsForDeviceListResponse",
+   "type": "object",
+   "description": "The managed configuration resources for the device.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfigurationsForDeviceListResponse\".",
+     "default": "androidenterprise#managedConfigurationsForDeviceListResponse"
+    },
+    "managedConfigurationForDevice": {
+     "type": "array",
+     "description": "A managed configuration for an app on a specific device.",
+     "items": {
+      "$ref": "ManagedConfiguration"
+     }
+    }
+   }
+  },
+  "ManagedConfigurationsForUserListResponse": {
+   "id": "ManagedConfigurationsForUserListResponse",
+   "type": "object",
+   "description": "The managed configuration resources for the user.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfigurationsForUserListResponse\".",
+     "default": "androidenterprise#managedConfigurationsForUserListResponse"
+    },
+    "managedConfigurationForUser": {
+     "type": "array",
+     "description": "A managed configuration for an app for a specific user.",
+     "items": {
+      "$ref": "ManagedConfiguration"
+     }
+    }
+   }
+  },
+  "ManagedProperty": {
+   "id": "ManagedProperty",
+   "type": "object",
+   "description": "A managed property of a managed configuration. The property must match one of the properties in the app restrictions schema of the product. Exactly one of the value fields must be populated, and it must match the property's type in the app restrictions schema.",
+   "properties": {
+    "key": {
+     "type": "string",
+     "description": "The unique key that identifies the property."
+    },
+    "valueBool": {
+     "type": "boolean",
+     "description": "The boolean value - this will only be present if type of the property is bool."
+    },
+    "valueBundle": {
+     "$ref": "ManagedPropertyBundle",
+     "description": "The bundle of managed properties - this will only be present if type of the property is bundle."
+    },
+    "valueBundleArray": {
+     "type": "array",
+     "description": "The list of bundles of properties - this will only be present if type of the property is bundle_array.",
+     "items": {
+      "$ref": "ManagedPropertyBundle"
+     }
+    },
+    "valueInteger": {
+     "type": "integer",
+     "description": "The integer value - this will only be present if type of the property is integer.",
+     "format": "int32"
+    },
+    "valueString": {
+     "type": "string",
+     "description": "The string value - this will only be present if type of the property is string, choice or hidden."
+    },
+    "valueStringArray": {
+     "type": "array",
+     "description": "The list of string values - this will only be present if type of the property is multiselect.",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "ManagedPropertyBundle": {
+   "id": "ManagedPropertyBundle",
+   "type": "object",
+   "description": "A bundle of managed properties.",
+   "properties": {
+    "managedProperty": {
+     "type": "array",
+     "description": "The list of managed properties.",
+     "items": {
+      "$ref": "ManagedProperty"
+     }
     }
    }
   },
@@ -1118,7 +1242,7 @@
    "properties": {
     "homepageId": {
      "type": "string",
-     "description": "The ID of the store page to be used as the homepage. The homepage will be used as the first page shown in the Google Play for Work store.\n\nIf a homepage has not been set, the play store shown on devices will be empty. Not specifying a homepage on a store layout effectively empties the store.\n\nIf there exists at least one page, this field must be set to the ID of a valid page."
+     "description": "The ID of the store page to be used as the homepage. The homepage will be used as the first page shown in the Google Play for Work store.\n\nIf a homepage has not been set, the Play store shown on devices will be empty. Not specifying a homepage on a store layout effectively empties the store.\n\nIf there exists at least one page, this field must be set to the ID of a valid page."
     },
     "kind": {
      "type": "string",
@@ -1973,7 +2097,7 @@
      "id": "androidenterprise.enterprises.getStoreLayout",
      "path": "enterprises/{enterpriseId}/storeLayout",
      "httpMethod": "GET",
-     "description": "Returns the store layout resource for the enterprise. If store layout has not been set, or if store layout has no homepage set, returns a NOT_FOUND error.",
+     "description": "Returns the store layout for the enterprise. If the store layout has not been set, or if the store layout has no homepageId set, returns a NOT_FOUND error.",
      "parameters": {
       "enterpriseId": {
        "type": "string",
@@ -2121,7 +2245,7 @@
      "id": "androidenterprise.enterprises.setStoreLayout",
      "path": "enterprises/{enterpriseId}/storeLayout",
      "httpMethod": "PUT",
-     "description": "Sets the store layout resource.",
+     "description": "Sets the store layout for the enterprise.",
      "parameters": {
       "enterpriseId": {
        "type": "string",
@@ -2671,6 +2795,411 @@
     }
    }
   },
+  "managedconfigurationsfordevice": {
+   "methods": {
+    "delete": {
+     "id": "androidenterprise.managedconfigurationsfordevice.delete",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+     "httpMethod": "DELETE",
+     "description": "Removes a per-device managed configuration for an app for the specified device.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The Android ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForDeviceId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId",
+      "managedConfigurationForDeviceId"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "get": {
+     "id": "androidenterprise.managedconfigurationsfordevice.get",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+     "httpMethod": "GET",
+     "description": "Retrieves details of a per-device managed configuration.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The Android ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForDeviceId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId",
+      "managedConfigurationForDeviceId"
+     ],
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "list": {
+     "id": "androidenterprise.managedconfigurationsfordevice.list",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
+     "httpMethod": "GET",
+     "description": "Lists all the per-device managed configurations for the specified device. Only the ID is set.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The Android ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId"
+     ],
+     "response": {
+      "$ref": "ManagedConfigurationsForDeviceListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "patch": {
+     "id": "androidenterprise.managedconfigurationsfordevice.patch",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+     "httpMethod": "PATCH",
+     "description": "Adds or updates a per-device managed configuration for an app for the specified device. This method supports patch semantics.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The Android ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForDeviceId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId",
+      "managedConfigurationForDeviceId"
+     ],
+     "request": {
+      "$ref": "ManagedConfiguration"
+     },
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "update": {
+     "id": "androidenterprise.managedconfigurationsfordevice.update",
+     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+     "httpMethod": "PUT",
+     "description": "Adds or updates a per-device managed configuration for an app for the specified device.",
+     "parameters": {
+      "deviceId": {
+       "type": "string",
+       "description": "The Android ID of the device.",
+       "required": true,
+       "location": "path"
+      },
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForDeviceId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "deviceId",
+      "managedConfigurationForDeviceId"
+     ],
+     "request": {
+      "$ref": "ManagedConfiguration"
+     },
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    }
+   }
+  },
+  "managedconfigurationsforuser": {
+   "methods": {
+    "delete": {
+     "id": "androidenterprise.managedconfigurationsforuser.delete",
+     "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+     "httpMethod": "DELETE",
+     "description": "Removes a per-user managed configuration for an app for the specified user.",
+     "parameters": {
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForUserId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "managedConfigurationForUserId"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "get": {
+     "id": "androidenterprise.managedconfigurationsforuser.get",
+     "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+     "httpMethod": "GET",
+     "description": "Retrieves details of a per-user managed configuration for an app for the specified user.",
+     "parameters": {
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForUserId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "managedConfigurationForUserId"
+     ],
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "list": {
+     "id": "androidenterprise.managedconfigurationsforuser.list",
+     "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
+     "httpMethod": "GET",
+     "description": "Lists all the per-user managed configurations for the specified user. Only the ID is set.",
+     "parameters": {
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId"
+     ],
+     "response": {
+      "$ref": "ManagedConfigurationsForUserListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "patch": {
+     "id": "androidenterprise.managedconfigurationsforuser.patch",
+     "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+     "httpMethod": "PATCH",
+     "description": "Adds or updates a per-user managed configuration for an app for the specified user. This method supports patch semantics.",
+     "parameters": {
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForUserId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "managedConfigurationForUserId"
+     ],
+     "request": {
+      "$ref": "ManagedConfiguration"
+     },
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    },
+    "update": {
+     "id": "androidenterprise.managedconfigurationsforuser.update",
+     "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+     "httpMethod": "PUT",
+     "description": "Adds or updates a per-user managed configuration for an app for the specified user.",
+     "parameters": {
+      "enterpriseId": {
+       "type": "string",
+       "description": "The ID of the enterprise.",
+       "required": true,
+       "location": "path"
+      },
+      "managedConfigurationForUserId": {
+       "type": "string",
+       "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
+       "required": true,
+       "location": "path"
+      },
+      "userId": {
+       "type": "string",
+       "description": "The ID of the user.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "enterpriseId",
+      "userId",
+      "managedConfigurationForUserId"
+     ],
+     "request": {
+      "$ref": "ManagedConfiguration"
+     },
+     "response": {
+      "$ref": "ManagedConfiguration"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidenterprise"
+     ]
+    }
+   }
+  },
   "permissions": {
    "methods": {
     "get": {
@@ -2809,7 +3338,7 @@
      "id": "androidenterprise.products.getAppRestrictionsSchema",
      "path": "enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
      "httpMethod": "GET",
-     "description": "Retrieves the schema defining app restrictions configurable for this product. All products have a schema, but this may be empty if no app restrictions are defined.",
+     "description": "Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed configurations have been defined. This schema can be used to populate a UI that allows an administrator to configure the product. To apply a managed configuration based on the schema obtained using this API, see Managed Configurations through Play.",
      "parameters": {
       "enterpriseId": {
        "type": "string",
@@ -3608,7 +4137,7 @@
      "id": "androidenterprise.users.insert",
      "path": "enterprises/{enterpriseId}/users",
      "httpMethod": "POST",
-     "description": "Inserts a new resource into this collection.",
+     "description": "Creates a new EMM-managed user.\n\nThe Users resource passed in the body of the request should include an accountIdentifier and an accountType.",
      "parameters": {
       "enterpriseId": {
        "type": "string",
