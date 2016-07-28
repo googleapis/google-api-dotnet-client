@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160722 (568)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -450,7 +450,7 @@ namespace Google.Apis.AndroidPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; } 
 
-        /// <summary>Time at which the subscription was granted, in milliseconds since Epoch.</summary>
+        /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initiationTimestampMsec")]
         public virtual System.Nullable<long> InitiationTimestampMsec { get; set; } 
 
@@ -458,7 +458,7 @@ namespace Google.Apis.AndroidPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Time at which the subscription will expire, in milliseconds since Epoch.</summary>
+        /// <summary>Time at which the subscription will expire, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validUntilTimestampMsec")]
         public virtual System.Nullable<long> ValidUntilTimestampMsec { get; set; } 
 

@@ -136,7 +136,7 @@
           "type": "array",
           "items": {
             "additionalProperties": {
-              "description": "Properties of the object. Contains field @ype with type URL.",
+              "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
             },
             "type": "object"
@@ -640,7 +640,7 @@
       "id": "AnalyzeEntitiesResponse"
     }
   },
-  "revision": "20160719",
+  "revision": "20160726",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

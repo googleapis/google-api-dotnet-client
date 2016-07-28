@@ -567,9 +567,13 @@
       "type": "object",
       "properties": {
         "value": {
-          "description": "The value of the variable. The length of the value must be less than 4096\nbytes. Empty values are also accepted. The value must be Base64 encoded.",
+          "description": "The binary value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted. The value must be\nBase64 encoded.\nNB: Only one of value and string_value can be set at the same time.",
           "type": "string",
           "format": "byte"
+        },
+        "text": {
+          "description": "The textual value of the variable. The length of the value must be less\nthan 4096 bytes. Empty values are also accepted.\nNB: Only one of value and string_value can be set at the same time.",
+          "type": "string"
         },
         "updateTime": {
           "description": "[Output Only] The time of the last variable update.",
@@ -766,7 +770,7 @@
       "id": "ListVariablesResponse"
     }
   },
-  "revision": "20160718",
+  "revision": "20160726",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

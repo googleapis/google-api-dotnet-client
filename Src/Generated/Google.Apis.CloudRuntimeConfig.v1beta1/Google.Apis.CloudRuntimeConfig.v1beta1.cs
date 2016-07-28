@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160718 (564)
+ *      <tr><th>API Rev<td>20160726 (572)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -1939,12 +1939,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>The textual value of the variable. The length of the value must be less than 4096 bytes. Empty
+        /// values are also accepted. NB: Only one of value and string_value can be set at the same time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
         /// <summary>[Output Only] The time of the last variable update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>The value of the variable. The length of the value must be less than 4096 bytes. Empty values are
-        /// also accepted. The value must be Base64 encoded.</summary>
+        /// <summary>The binary value of the variable. The length of the value must be less than 4096 bytes. Empty
+        /// values are also accepted. The value must be Base64 encoded. NB: Only one of value and string_value can be
+        /// set at the same time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

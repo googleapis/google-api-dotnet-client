@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160718 (564)
+ *      <tr><th>API Rev<td>20160726 (572)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -317,6 +317,7 @@ namespace Google.Apis.Dataflow.v1b3
         {
             this.service = service;
             jobs = new JobsResource(service);
+            templates = new TemplatesResource(service);
 
         }
 
@@ -340,11 +341,202 @@ namespace Google.Apis.Dataflow.v1b3
             public JobsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                debug = new DebugResource(service);
                 messages = new MessagesResource(service);
                 workItems = new WorkItemsResource(service);
 
             }
 
+            private readonly DebugResource debug;
+
+            /// <summary>Gets the Debug resource.</summary>
+            public virtual DebugResource Debug
+            {
+                get { return debug; }
+            }
+
+            /// <summary>The "debug" collection of methods.</summary>
+            public class DebugResource
+            {
+                private const string Resource = "debug";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DebugResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The project id.</param>
+                /// <param name="jobId">The job id.</param>
+                public virtual GetConfigRequest GetConfig(Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string jobId)
+                {
+                    return new GetConfigRequest(service, body, projectId, jobId);
+                }
+
+                /// <summary>Get encoded debug configuration for component. Not cacheable.</summary>
+                public class GetConfigRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetDebugConfigResponse>
+                {
+                    /// <summary>Constructs a new GetConfig request.</summary>
+                    public GetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest body, string projectId, string jobId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        JobId = jobId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The job id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.GetDebugConfigRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getConfig"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig"; }
+                    }
+
+                    /// <summary>Initializes GetConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Send encoded debug capture data for component.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The project id.</param>
+                /// <param name="jobId">The job id.</param>
+                public virtual SendCaptureRequest SendCapture(Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string jobId)
+                {
+                    return new SendCaptureRequest(service, body, projectId, jobId);
+                }
+
+                /// <summary>Send encoded debug capture data for component.</summary>
+                public class SendCaptureRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureResponse>
+                {
+                    /// <summary>Constructs a new SendCapture request.</summary>
+                    public SendCaptureRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest body, string projectId, string jobId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        JobId = jobId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The job id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string JobId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.SendDebugCaptureRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "sendCapture"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture"; }
+                    }
+
+                    /// <summary>Initializes SendCapture parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "jobId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
             private readonly MessagesResource messages;
 
             /// <summary>Gets the Messages resource.</summary>
@@ -1241,6 +1433,98 @@ namespace Google.Apis.Dataflow.v1b3
 
             }
         }
+        private readonly TemplatesResource templates;
+
+        /// <summary>Gets the Templates resource.</summary>
+        public virtual TemplatesResource Templates
+        {
+            get { return templates; }
+        }
+
+        /// <summary>The "templates" collection of methods.</summary>
+        public class TemplatesResource
+        {
+            private const string Resource = "templates";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TemplatesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a dataflow job from a template.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">The project which owns the job.</param>
+            public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId)
+            {
+                return new CreateRequest(service, body, projectId);
+            }
+
+            /// <summary>Creates a dataflow job from a template.</summary>
+            public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest body, string projectId)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project which owns the job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dataflow.v1b3.Data.CreateJobFromTemplateRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1b3/projects/{projectId}/templates"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
 
         /// <summary>Send a worker_message to the service.</summary>
         /// <param name="body">The body of the request.</param>
@@ -1596,6 +1880,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to create a Dataflow job.</summary>
+    public class CreateJobFromTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A path to the serialized JSON representation of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
+        public virtual string GcsPath { get; set; } 
+
+        /// <summary>Dynamic parameterization of the job's runtime environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Identifies the location of a custom souce.</summary>
     public class CustomSourceLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1775,6 +2074,32 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The sum of all values being aggregated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sum")]
         public virtual System.Nullable<double> Sum { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to get updated debug configuration for component.</summary>
+    public class GetDebugConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The internal component id for which debug configuration is requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; } 
+
+        /// <summary>The worker id, i.e., VM hostname.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
+        public virtual string WorkerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to a get debug configuration request.</summary>
+    public class GetDebugConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoded debug configuration for the requested component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual string Config { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2551,6 +2876,32 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to send encoded debug information.</summary>
+    public class SendDebugCaptureRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The internal component id for which debug information is sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; } 
+
+        /// <summary>The encoded debug information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; } 
+
+        /// <summary>The worker id, i.e., VM hostname.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
+        public virtual string WorkerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to a send capture request. nothing</summary>
+    public class SendDebugCaptureResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3602,6 +3953,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>Configuration for VM IPs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
+        public virtual string IpConfiguration { get; set; } 
 
         /// <summary>The kind of the worker pool; currently only 'harness' and 'shuffle' are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

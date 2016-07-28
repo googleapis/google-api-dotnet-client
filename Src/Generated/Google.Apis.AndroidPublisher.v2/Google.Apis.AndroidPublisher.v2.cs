@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160627 (543)
+ *      <tr><th>API Rev<td>20160722 (568)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7082,8 +7082,8 @@ namespace Google.Apis.AndroidPublisher.v2.Data
     /// time.</summary>
     public class SubscriptionDeferralInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The desired next expiry time for the subscription in milliseconds since Epoch. The given time must
-        /// be after the current expiry time for the subscription.</summary>
+        /// <summary>The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The
+        /// given time must be later/greater than the current expiry time for the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredExpiryTimeMillis")]
         public virtual System.Nullable<long> DesiredExpiryTimeMillis { get; set; } 
 
@@ -7104,9 +7104,9 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; } 
 
-        /// <summary>The cancel reason of the subscription, if the subscription is not auto renewing. Possible values
-        /// are: - User cancelled the subscription - Subscription was cancelled by the system, for example because of a
-        /// billing problem</summary>
+        /// <summary>The reason why a subscription was cancelled or is not auto-renewing. Possible values are: - User
+        /// cancelled the subscription - Subscription was cancelled by the system, for example because of a billing
+        /// problem</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
         public virtual System.Nullable<int> CancelReason { get; set; } 
 
@@ -7119,7 +7119,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; } 
 
-        /// <summary>Time at which the subscription will expire, in milliseconds since Epoch.</summary>
+        /// <summary>Time at which the subscription will expire, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
         public virtual System.Nullable<long> ExpiryTimeMillis { get; set; } 
 
@@ -7133,7 +7133,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual System.Nullable<int> PaymentState { get; set; } 
 
         /// <summary>Price of the subscription, not including tax. Price is expressed in micro-units, where 1,000,000
-        /// micro-units equal one unit of the currency. For example, if the subscription price is €1.99,
+        /// micro-units represents one unit of the currency. For example, if the subscription price is €1.99,
         /// price_amount_micros is 1990000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceAmountMicros")]
         public virtual System.Nullable<long> PriceAmountMicros { get; set; } 
@@ -7143,7 +7143,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
         public virtual string PriceCurrencyCode { get; set; } 
 
-        /// <summary>Time at which the subscription was granted, in milliseconds since Epoch.</summary>
+        /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
         public virtual System.Nullable<long> StartTimeMillis { get; set; } 
 
