@@ -243,7 +243,7 @@ namespace Google.Apis.Download
             var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
 
             // Number of bytes sent to the caller's stream.
-            int bytesReturned = 0;
+            long bytesReturned = 0;
 
             try
             {
@@ -275,7 +275,7 @@ namespace Google.Apis.Download
                             // Send one chunk to the caller's stream.
                             int bytesToReturn = Math.Min(ChunkSize, buffer.Count);
                             await stream.WriteAsync(buffer.Data, 0, bytesToReturn, cancellationToken).ConfigureAwait(false);
-                            checked { bytesReturned += bytesToReturn; }
+                            bytesReturned += bytesToReturn;
 
                             buffer.RemoveFromFront(ChunkSize);
                             if (buffer.IsEmpty)
