@@ -55,7 +55,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
         public string Scope { get; set; }
 
         /// <summary>
-        /// Gets or sets the id_token
+        /// Gets or sets the id_token, which is a JSON Web Token (JWT) as specified in http://tools.ietf.org/html/draft-ietf-oauth-json-web-token
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id_token")]
         public string IdToken { get; set; }
