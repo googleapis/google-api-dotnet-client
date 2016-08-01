@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160716 (562)
+ *      <tr><th>API Rev<td>20160726 (572)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2949,6 +2949,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
+
         /// <summary>A token used for paging results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
@@ -3481,7 +3486,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
 
-        /// <summary>[Output-only, Experimental] Describes execution plan for the query as a list of stages.</summary>
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
+
+        /// <summary>[Output-only, Experimental] Describes execution plan for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; } 
 
@@ -3708,6 +3718,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
+        public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
 
         /// <summary>A token used for paging results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
