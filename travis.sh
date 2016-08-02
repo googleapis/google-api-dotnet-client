@@ -3,6 +3,10 @@
 
 set -e
 
+# Run the .NET Core tests.
+dotnet test "Src/Support/GoogleApis.Tests_dotnetcore"
+dotnet test "Src/Support/GoogleApis.Auth.Tests_dotnetcore"
+
 # grab nunit runners
 nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
 NUNIT="${PWD}/testrunner/NUnit.ConsoleRunner.3.2.1/tools/nunit3-console.exe"

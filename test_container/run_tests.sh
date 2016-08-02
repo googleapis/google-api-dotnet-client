@@ -10,11 +10,12 @@ cd /repo
 # Restore the packages for the tests.
 pushd ./Src/Support
 nuget restore
+dotnet restore \
+    "Src/Support/GoogleApis.Tests_dotnetcore" \
+    "Src/Support/GoogleApis.Auth.Tests_dotnetcore" \
+    -f /var/nuget \
+    --no-cache
 popd
 
-# Set the nuget fallback source to use.
-export NUGET_FALLBACK_SOURCE=/var/nuget
-
-# Run the tests.
+echo "Running tests for .NET 4.5 targets."
 ./travis.sh
-./run_tests_dotnetcore.sh

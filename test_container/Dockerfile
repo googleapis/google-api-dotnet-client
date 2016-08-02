@@ -6,14 +6,17 @@ FROM debian:jessie
 # Install .NET Core dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        gettext \
         libc6 \
         libcurl3 \
         libgcc1 \
+        libicu52 \
         liblttng-ust0 \
         libssl1.0.0 \
         libstdc++6 \
         libtinfo5 \
         libuuid1 \
+        libunwind8 \
         zlib1g \
         ca-certificates \
         curl \
@@ -36,11 +39,11 @@ RUN apt-get update \
 
 # Install the .NET package.
 ENV DOTNET_CORE_VERSION 1.0.0
-RUN curl -SL https://dotnetcli.blob.core.windows.net/dotnet/preview/Binaries/${DOTNET_CORE_VERSION}/dotnet-debian-x64.${DOTNET_CORE_VERSION}.tar.gz --output dotnet.tar.gz \
-    && mkdir -p /usr/share/dotnet \
-    && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
+RUN curl -SL https://go.microsoft.com/fwlink/?LinkID=809130 --output dotnet.tar.gz \
+    && mkdir -p /opt/dotnet \
+    && tar -zxf dotnet.tar.gz -C /opt/dotnet \
     && rm dotnet.tar.gz \
-    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+    && ln -s /opt/dotnet/dotnet /usr/local/bin
 
 # Add tools.
 RUN mkdir -p /tools/
