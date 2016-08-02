@@ -12,5 +12,9 @@ pushd ./Src/Support
 nuget restore
 popd
 
+# Set the nuget fallback source to use.
+export NUGET_FALLBACK_SOURCE=/var/nuget
+
 # Run the tests.
-exec ./travis.sh
+./travis.sh
+./run_tests_dotnetcore.sh

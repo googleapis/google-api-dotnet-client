@@ -6,14 +6,13 @@ set -eu
 
 # Get the environment.
 readonly workspace=$(dirname $0)
-readonly fallback="${HOME}/nuget"
 readonly packages="${workspace}/packages"
 
 # Restore the packages.
 dotnet restore \
     "Src/Support/GoogleApis.Tests_dotnetcore" \
     "Src/Support/GoogleApis.Auth.Tests_dotnetcore" \
-    -f "${fallback}" \
+    -f "${NUGET_FALLBACK_SOURCE}" \
     --no-cache
 
 # Run the tests.
