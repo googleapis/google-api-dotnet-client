@@ -72,8 +72,9 @@ namespace Google.Apis.Util
             return coll == null || coll.Count() == 0;
         }
 
-        /// A Google.Apis utility method for returning the first matching custom attribute (or <c>null</c>) of the specified member.		
-        /// </summary>		
+        /// <summary>
+        /// A Google.Apis utility method for returning the first matching custom attribute (or <c>null</c>) of the specified member.
+        /// </summary>
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
             object[] results = info.GetCustomAttributes(typeof(T), false).ToArray();
