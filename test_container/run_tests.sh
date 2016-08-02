@@ -5,12 +5,11 @@ set -eu
 
 # Clone the repo.
 git clone /var/repo /repo
-
-# Restore and run the tests.
 cd /repo
 
+# Restore the packages for the tests.
 pushd ./Src/Support
-mono /tools/nuget.exe restore
+nuget restore
 popd
 
 # Run the tests.
