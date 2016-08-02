@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160727 (573)
+ *      <tr><th>API Rev<td>20160801 (578)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1017,10 +1017,21 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; } 
 
+        /// <summary>Optional unique identifier for this build step, used in wait_for to reference this build step as a
+        /// dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
         /// <summary>Name of the container image to use for creating this stage in the pipeline, as presented to `docker
         /// pull`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ID(s) of the step(s) that this build step depends on. This build step will not start until all
+        /// the build steps in wait_for have completed successfully. If wait_for is empty, this build step will start
+        /// when all previous build steps in the Build.Steps list have completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
+        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160609 (525)
+ *      <tr><th>API Rev<td>20160801 (578)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -111,6 +111,12 @@ namespace Google.Apis.Fitness.v1
 
             /// <summary>View and store your location data in Google Fit</summary>
             public static string FitnessLocationWrite = "https://www.googleapis.com/auth/fitness.location.write";
+
+            /// <summary>View nutrition information in Google Fit</summary>
+            public static string FitnessNutritionRead = "https://www.googleapis.com/auth/fitness.nutrition.read";
+
+            /// <summary>View and store nutrition information in Google Fit</summary>
+            public static string FitnessNutritionWrite = "https://www.googleapis.com/auth/fitness.nutrition.write";
 
         }
 
@@ -492,7 +498,7 @@ namespace Google.Apis.Fitness.v1
                     public virtual string DatasetId { get; private set; }
 
                     /// <summary>If specified, no more than this many data points will be included in the dataset. If
-                    /// the there are more data points in the dataset, nextPageToken will be set in the dataset
+                    /// there are more data points in the dataset, nextPageToken will be set in the dataset
                     /// response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
@@ -1724,6 +1730,12 @@ namespace Google.Apis.Fitness.v1.Data
         /// time is in milliseconds since epoch, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeMillis")]
         public virtual System.Nullable<long> EndTimeMillis { get; set; } 
+
+        /// <summary>A list of acceptable data quality standards. Only data points which conform to at least one of the
+        /// specified data quality standards will be returned. If the list is empty, all data points are
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteredDataQualityStandard")]
+        public virtual System.Collections.Generic.IList<string> FilteredDataQualityStandard { get; set; } 
 
         /// <summary>The start of a window of time. Data that intersects with this time window will be aggregated. The
         /// time is in milliseconds since epoch, inclusive.</summary>

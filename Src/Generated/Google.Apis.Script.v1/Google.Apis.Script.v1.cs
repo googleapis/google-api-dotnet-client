@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160426 (481)
+ *      <tr><th>API Rev<td>20160801 (578)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -497,6 +497,9 @@ namespace Google.Apis.Script.v1.Data
         /// `boolean`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual object Result { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -433,7 +433,7 @@
             "Build failed to complete successfully.",
             "Build failed due to an internal cause.",
             "Build took longer than was allowed.",
-            "Build was canceled by a user.\nnext_id = 9"
+            "Build was canceled by a user."
           ],
           "type": "string"
         },
@@ -536,19 +536,8 @@
       "description": "BuildStep describes a step to perform in the build pipeline.",
       "type": "object",
       "properties": {
-        "args": {
-          "description": "Command-line arguments to use when running this step's container.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "dir": {
-          "description": "Working directory (relative to project source root) to use when running\nthis operation's container.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Name of the container image to use for creating this stage in the\npipeline, as presented to `docker pull`.",
+        "id": {
+          "description": "Optional unique identifier for this build step, used in wait_for to\nreference this build step as a dependency.",
           "type": "string"
         },
         "env": {
@@ -557,6 +546,28 @@
           "items": {
             "type": "string"
           }
+        },
+        "waitFor": {
+          "description": "The ID(s) of the step(s) that this build step depends on.\nThis build step will not start until all the build steps in wait_for\nhave completed successfully. If wait_for is empty, this build step will\nstart when all previous build steps in the Build.Steps list have completed\nsuccessfully.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "args": {
+          "description": "Command-line arguments to use when running this step's container.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Name of the container image to use for creating this stage in the\npipeline, as presented to `docker pull`.",
+          "type": "string"
+        },
+        "dir": {
+          "description": "Working directory (relative to project source root) to use when running\nthis operation's container.",
+          "type": "string"
         }
       },
       "id": "BuildStep"
@@ -614,7 +625,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160727",
+  "revision": "20160801",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
