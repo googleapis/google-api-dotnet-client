@@ -6,19 +6,19 @@
 
   <PropertyGroup>
     <!-- Absolute directory of the packages repository -->
-    <PackagesDir>$(MSBuildThisFileDirectory)Src\Support\packages</PackagesDir>
+    <PackagesDir>$(MSBuildThisFileDirectory)Src\Support\packages\</PackagesDir>
     <!-- Absolute directory of nupkgs output directory -->
-    <NuPkgsDir>$(MSBuildThisFileDirectory)NuPkgs\Support</NuPkgsDir>
+    <NuPkgsDir>$(MSBuildThisFileDirectory)NuPkgs\Support\</NuPkgsDir>
     <!-- Absolute directory of the NuGet.Config file -->
     <NuGetConfig>$(MSBuildThisFileDirectory)NuGet.Config</NuGetConfig>
   </PropertyGroup>
   
-  <Target Name="Restore">
+  <Target Name="NuGetRestore">
     <!-- restore nuget packages into packages directory, using our NuGet.Config -->
     <Exec Command="nuget restore &quot;%(SolutionFile.FullPath)&quot; -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
   </Target>
   
-  <Target Name="Build" DependsOnTargets="Restore">
+  <Target Name="Build" DependsOnTargets="NuGetRestore">
     <PropertyGroup>
       <!-- Missing XML comment for publicly visible type or member 'Type_or_Member' -->
       <NoWarn>1591</NoWarn>
@@ -28,7 +28,7 @@
         Projects="@(SolutionFile)"
         BuildInParallel="True"
         Targets="Build"
-        Properties="Configuration=ReleaseSigned;NugetPackagesDirectory=$(PackagesDir);NoWarn=$(NoWarn, ",")" />
+        Properties="Configuration=ReleaseSigned;NugetPackagesDirectory=$(PackagesDir);NoWarn=$(NoWarn)" />
   </Target>
 
   <!--
