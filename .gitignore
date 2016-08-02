@@ -7,6 +7,9 @@
 Backup*
 *.suo
 *.user
+.vs
+project.lock.json
+*~
 
 msbuild.log
 TestResult.xml

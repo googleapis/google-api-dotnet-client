@@ -22,7 +22,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-using Ionic.Zlib;
 using Newtonsoft.Json;
 
 using Google.Apis.Discovery;

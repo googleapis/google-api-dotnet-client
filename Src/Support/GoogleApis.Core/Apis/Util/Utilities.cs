@@ -22,6 +22,9 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 
 using Google.Apis.Testing;
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
 
 namespace Google.Apis.Util
 {
@@ -32,7 +35,7 @@ namespace Google.Apis.Util
         [VisibleForTestOnly]
         public static string GetLibraryVersion()
         {
-            return Regex.Match(typeof(Utilities).Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
+            return Regex.Match(typeof(Utilities).GetTypeInfo().Assembly.FullName, "Version=([\\d\\.]+)").Groups[1].ToString();
         }
 
         /// <summary>
@@ -74,7 +77,7 @@ namespace Google.Apis.Util
         /// </summary>
         public static T GetCustomAttribute<T>(this MemberInfo info) where T : Attribute
         {
-            object[] results = info.GetCustomAttributes(typeof(T), false);
+            object[] results = info.GetCustomAttributes(typeof(T), false).ToArray();
             return results.Length == 0 ? null : (T)results[0];
         }
 
@@ -116,7 +119,7 @@ namespace Google.Apis.Util
                 return null;
             }
 
-            if (o.GetType().IsEnum)
+            if (o.GetType().GetTypeInfo().IsEnum)
             {
                 // Try to convert the Enum value using the StringValue attribute.
                 var enumType = o.GetType();
