@@ -11,8 +11,8 @@ cd /repo
 pushd ./Src/Support
 nuget restore
 dotnet restore \
-    "Src/Support/GoogleApis.Tests_dotnetcore" \
-    "Src/Support/GoogleApis.Auth.Tests_dotnetcore" \
+    "GoogleApis.Tests_dotnetcore" \
+    "GoogleApis.Auth.Tests_dotnetcore" \
     -f /var/nuget \
     --no-cache
 popd
