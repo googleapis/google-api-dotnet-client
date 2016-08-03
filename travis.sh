@@ -19,7 +19,3 @@ mono "${NUNIT}" "--where" "cat != IgnoreOnTravis" \
     "GoogleApis.Tests/${OUTDIR}/Google.Apis.Tests.exe" \
     "GoogleApis.Auth.Tests/${OUTDIR}/Google.Apis.Auth.Tests.exe" \
     "GoogleApis.Auth.DotNet4.Tests/${OUTDIR}/Google.Apis.Auth.DotNet4.Tests.exe"
-
-# Run the .NET Core tests.
-dotnet test "GoogleApis.Tests_dotnetcore"
-dotnet test "GoogleApis.Auth.Tests_dotnetcore"

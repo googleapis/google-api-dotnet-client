@@ -10,11 +10,6 @@ cd /repo
 # Restore the packages for the tests.
 pushd ./Src/Support
 nuget restore
-dotnet restore \
-    "GoogleApis.Tests_dotnetcore" \
-    "GoogleApis.Auth.Tests_dotnetcore" \
-    -f /var/nuget \
-    --no-cache
 popd
 
 echo "Running tests for .NET 4.5 targets."
