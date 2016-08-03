@@ -12,7 +12,7 @@
     "compile": {
       "include": [ "../GoogleApis.Tests/**/*.cs" ],
       "exclude": [
-        "../GoogleApis.Tests/Program.cs",
+        "../GoogleApis.Tests/Program.cs", // Uses NUnitLite
         "../GoogleApis.Tests/Apis/Download/*.cs", // Uses HttpListener
         "../GoogleApis.Tests/Apis/Upload/*.cs", // Uses HttpListener
         "../GoogleApis.Tests/Apis/Requests/BatchRequestTest.cs" // Needs access to internal methods
