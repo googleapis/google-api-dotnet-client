@@ -3,35 +3,36 @@
 
   "dependencies": {
     "Google.Apis.Core": "1.14",
+    "Google.Apis": "1.14",
     "Nunit": "3.4.0",
     "dotnet-test-nunit": "3.4.0-beta-1"
   },
 
-  "compile": "../GoogleApis.Tests/**/*.cs",
-
-  "exclude": [
-    "../GoogleApis.Tests/Program.cs",
-    "../GoogleApis.Tests/Apis/*/*.cs",
-    "../GoogleApis.Tests/[Mock]/CountableMessageHandler.cs",
-    "../GoogleApis.Tests/[Mock]/MockBackOffHandler.cs",
-    "../GoogleApis.Tests/[Mock]/MockClientService.cs",
-    "../GoogleApis.Tests/[Mock]/MockHttpClientFactory.cs",
-    "../GoogleApis.Tests/[Mock]/MockMessageHandler.cs"
-  ],
+  "buildOptions": {
+    "compile": {
+      "include": [ "../GoogleApis.Tests/**/*.cs" ],
+      "exclude": [
+        "../GoogleApis.Tests/Program.cs",
+        "../GoogleApis.Tests/Apis/Download/*.cs", // Uses HttpListener
+        "../GoogleApis.Tests/Apis/Upload/*.cs", // Uses HttpListener
+        "../GoogleApis.Tests/Apis/Requests/BatchRequestTest.cs" // Needs access to internal methods
+      ]
+    }
+  },
 
   "testRunner": "nunit",
 
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
-	"netcoreapp1.0",
-	"portable-net45+win8"
+        "netcoreapp1.0",
+        "portable-net45+win8"
       ],
       "dependencies": {
-	"Microsoft.NETCore.App": {
-	  "version": "1.0.0-*",
-	  "type": "platform"
-	}
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
       }
     }
   }
