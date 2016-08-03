@@ -8,16 +8,14 @@ msbuild SupportLibraries.proj
 
 REM Clean slate after the build.
 set workspace=%~dp0
-set fallback=%workspace%\NuPkgs
-set packages=%workspace%\packages
+set nugetconfig=%workspace%\NuGet.Config
 
 REM Restore the test projects.
 dotnet restore ^
   "Src\Support\GoogleApis.Tests_dotnetcore" ^
   "Src\Support\GoogleApis.Auth.Tests_dotnetcore" ^
-  --packages "%packages%" ^
-  -f "%fallback%" ^
-  --no-cache
+  --no-cache ^
+  --configfile "%nugetconfig%"
 
 REM Run the tests.
 dotnet test "Src\Support\GoogleApis.Tests_dotnetcore"

@@ -97,7 +97,7 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(client.Serializer);
 
             // Check that the response is decoded correctly.
-            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
             CheckDeserializationResult(client.DeserializeResponse<MockJsonSchema>(response).Result);
         }
@@ -116,7 +116,7 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.IsInstanceOf<NewtonsoftJsonSerializer>(client.Serializer);
 
             // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
             CheckDeserializationResult(
                 client.DeserializeResponse<MockJsonSchema>(response).Result);
@@ -168,7 +168,7 @@ namespace Google.Apis.Tests.Apis.Services
             MockClientService client = new MockClientService();
 
             // Check that the response is decoded correctly
-            var stream = new MemoryStream(Encoding.Default.GetBytes(Response));
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(Response));
             var response = new HttpResponseMessage { Content = new StreamContent(stream) };
             string result = client.DeserializeResponse<string>(response).Result;
             Assert.AreEqual(Response, result);
@@ -198,7 +198,7 @@ namespace Google.Apis.Tests.Apis.Services
 
             var client = CreateClientService(features);
 
-            using (var stream = new MemoryStream(Encoding.Default.GetBytes(ErrorResponse)))
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(ErrorResponse)))
             {
                 var response = new HttpResponseMessage { Content = new StreamContent(stream) };
                 RequestError error = client.DeserializeError(response).Result;
