@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace System.Net
 {
+    // Make a stream availabel through various async methods.
     class AsyncStream
     {
         public AsyncStream(Stream stream)
@@ -22,6 +23,7 @@ namespace System.Net
         private int _bufferOffset = 0;
 
         // Read bytes until the predicate returns false.
+        // The returned IEnumerable will contain the final byte that caused the predicate to fail.
         // If the end of stream is reached, the bytes read so far are returned.
         public async Task<IEnumerable<byte>> ReadWhile(Func<List<byte>, bool> predicate, CancellationToken ct = default(CancellationToken))
         {
@@ -50,6 +52,8 @@ namespace System.Net
             return result;
         }
 
+        // Read the requested number of bytes from the stream;
+        // or fewer bytes if the stream ends before count bytes have been read.
         public async Task<IEnumerable<byte>> ReadCount(int count)
         {
             if (count == 0)
@@ -59,6 +63,9 @@ namespace System.Net
             return await ReadWhile(bytes => bytes.Count < count);
         }
 
+        // Read a line from the stream, up to and including the endOfLine string.
+        // If the line is longer than maxBytes then an InvalidOperationException will be thrown.
+        // The default Encoding is UTF8.
         public async Task<string> ReadLine(string endOfLine = "\r\n", Encoding encoding = null, int maxBytes = 2048)
         {
             encoding = encoding ?? Encoding.UTF8;
