@@ -2,8 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Google.Apis.Core": "1.14",
-    "Google.Apis": "1.14",
+    "Google.Apis.Core": "1.15",
+    "Google.Apis": "1.15",
     "Nunit": "3.4.0",
     "dotnet-test-nunit": "3.4.0-beta-1",
     // Following required for the HttpListener test implementation
