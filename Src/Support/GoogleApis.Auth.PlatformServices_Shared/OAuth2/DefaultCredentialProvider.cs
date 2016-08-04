@@ -182,11 +182,14 @@ namespace Google.Apis.Auth.OAuth2
             {
                 case JsonCredentialParameters.AuthorizedUserCredentialType:
                     return new GoogleCredential(CreateUserCredentialFromJson(credentialParameters));
-
+#if !NETSTANDARD
                 case JsonCredentialParameters.ServiceAccountCredentialType:
                     return GoogleCredential.FromCredential(
                         CreateServiceAccountCredentialFromJson(credentialParameters));
-                
+#else
+                case JsonCredentialParameters.ServiceAccountCredentialType:
+                    throw new InvalidOperationException("Service Account credentials are not supported in .NET Core.");
+#endif
                 default:
                     throw new InvalidOperationException(
                         String.Format("Error creating credential from JSON. Unrecognized credential type {0}.", 
@@ -221,6 +224,7 @@ namespace Google.Apis.Auth.OAuth2
             return new UserCredential(flow, "ApplicationDefaultCredentials", token);
         }
 
+#if !NETSTANDARD
         /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
         private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(
             JsonCredentialParameters credentialParameters)
@@ -234,6 +238,7 @@ namespace Google.Apis.Auth.OAuth2
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail);
             return new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
         }
+#endif
 
         /// <summary> 
         /// Returns platform-specific well known credential file path. This file is created by 

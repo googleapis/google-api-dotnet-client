@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#if !NETSTANDARD // RSACryptoServiceProvider is not supported on Linux. TODO: Use alternative
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -341,3 +343,4 @@ namespace Google.Apis.Auth.OAuth2
         }
     }
 }
+#endif

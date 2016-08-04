@@ -169,7 +169,8 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Provides access to the underlying credential object</summary>
         internal ICredential UnderlyingCredential { get { return credential; } }
 
-        #region Factory methods
+#if !NETSTANDARD
+#region Factory methods
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         internal static GoogleCredential FromCredential(ServiceAccountCredential credential)
@@ -177,7 +178,7 @@ namespace Google.Apis.Auth.OAuth2
             return new ServiceAccountGoogleCredential(credential);
         }
 
-        #endregion
+#endregion
 
         /// <summary>
         /// Wraps <c>ServiceAccountCredential</c> as <c>GoogleCredential</c>.
@@ -189,7 +190,7 @@ namespace Google.Apis.Auth.OAuth2
             public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
                 : base(credential) { }
 
-            #region GoogleCredential overrides
+#region GoogleCredential overrides
 
             public override bool IsCreateScopedRequired
             {
@@ -208,7 +209,8 @@ namespace Google.Apis.Auth.OAuth2
                 return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }
 
-            #endregion
+#endregion
         }
+#endif
     }
 }
