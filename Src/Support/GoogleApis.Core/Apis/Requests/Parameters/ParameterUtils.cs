@@ -22,6 +22,9 @@ using System.Reflection;
 
 using Google.Apis.Logging;
 using Google.Apis.Util;
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
 
 namespace Google.Apis.Requests.Parameters
 {
@@ -122,7 +125,7 @@ namespace Google.Apis.Requests.Parameters
                 var value = property.GetValue(request, null);
 
                 // Call action with the type name and value.
-                if (propertyType.IsValueType || value != null)
+                if (propertyType.GetTypeInfo().IsValueType || value != null)
                 {
                     if (attribute.Type == RequestParameterType.UserDefinedQueries)
                     {

@@ -1,0 +1,42 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Google.Apis.Core": "1.15",
+    "Google.Apis.Auth": "1.15",
+    "GoogleApis.Tests_dotnetcore": {
+      "target": "project"
+    },
+    "Nunit": "3.4.1",
+    "dotnet-test-nunit": "3.4.0-beta-1",
+    "Moq": "4.6.36-alpha"
+  },
+
+  "buildOptions": {
+    "compile": {
+      "include": [ "../GoogleApis.Auth.Tests/**/*.cs" ],
+    },
+    "define": [ "NETSTANDARD" ]
+  },
+
+  "compilationOptions": {
+    "keyFile": "../../../google.apis.snk"
+  },
+
+  "testRunner": "nunit",
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "netcoreapp1.0",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}

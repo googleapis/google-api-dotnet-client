@@ -22,6 +22,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Reflection;
 
 using Google.Apis.Http;
 using Google.Apis.Logging;
@@ -846,7 +847,7 @@ namespace Google.Apis.Upload
 
             foreach (var property in properties)
             {
-                var attribute = property.GetCustomAttribute<RequestParameterAttribute>();
+                var attribute = Utilities.GetCustomAttribute<RequestParameterAttribute>(property);
 
                 if (attribute != null)
                 {

@@ -142,7 +142,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 {
                     var context = await _httpListener.GetContextAsync();
                     var response = context.Response;
-                    if (context.Request.Url.AbsolutePath.EndsWith("/[Quit]"))
+                    if (context.Request.Url.AbsolutePath.EndsWith("/Quit"))
                     {
                         response.Close();
                         _httpListener.Stop();
@@ -242,7 +242,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 _httpTask.ContinueWith(task => timeout.Cancel());
                 Task.Run(async () =>
                 {
-                    await new HttpClient().GetAsync(HttpPrefix + "[Quit]", timeout.Token);
+                    await new HttpClient().GetAsync(HttpPrefix + "Quit", timeout.Token);
                     _httpListener.Stop();
                 });
                 _httpTask.Wait();
@@ -261,7 +261,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 switch (RemovePrefix(request.Url.PathAndQuery))
                 {
                     case "SingleChunk?uploadType=resumable":
-                        response.Headers.Add(HttpResponseHeader.Location, $"{HttpPrefix}{uploadPath}");
+                        response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{uploadPath}";
                         break;
                     case uploadPath:
                         break;
@@ -375,7 +375,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 switch (RemovePrefix(request.Url.PathAndQuery))
                 {
                     case "MultiChunk?uploadType=resumable":
-                        response.Headers.Add(HttpResponseHeader.Location, $"{HttpPrefix}{uploadPath}");
+                        response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{uploadPath}";
                         return null;
                     case uploadPath:
                         var bytesStream = new MemoryStream();
@@ -586,7 +586,9 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+#if !NETSTANDARD // "uploader.BufferSize" is internal
                 uploader.BufferSize = bufferSize;
+#endif
                 var progress = uploader.Upload();
                 int sanity = 0;
                 while (progress.Status == UploadStatus.Failed && sanity++ < 10)
@@ -773,7 +775,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 if (RemovePrefix(request.Url.PathAndQuery) == _initialPathAndQuery)
                 {
-                    response.Headers.Add(HttpResponseHeader.Location, $"{HttpPrefix}{uploadPath}");
+                    response.Headers[HttpResponseHeader.Location] = $"{HttpPrefix}{uploadPath}";
                     return Task.FromResult<IEnumerable<byte>>(null);
                 }
                 else

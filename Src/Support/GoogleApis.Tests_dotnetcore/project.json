@@ -1,0 +1,49 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Google.Apis.Core": "1.15",
+    "Google.Apis": "1.15",
+    "Nunit": "3.4.0",
+    "dotnet-test-nunit": "3.4.0-beta-1",
+    // Following required for the HttpListener test implementation
+    "System.Collections.Specialized": "4.0.1",
+    "System.Net.WebHeaderCollection": "4.0.1"
+  },
+
+  "buildOptions": {
+    "compile": {
+      "include": [
+        "**/*.cs",
+        "../GoogleApis.Tests/**/*.cs",
+      ],
+      "exclude": [
+        // Excluded until they don't cause a huge delay on CI
+        "../GoogleApis.Tests/Apis/Upload/**",
+        "../GoogleApis.Tests/Apis/Download/**"
+      ]
+    },
+    "define": [ "NETSTANDARD" ]
+  },
+
+  "compilationOptions": {
+    "keyFile": "../../../google.apis.snk"
+  },
+
+  "testRunner": "nunit",
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "netcoreapp1.0",
+        "portable-net45+win8"
+      ],
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0-*",
+          "type": "platform"
+        }
+      }
+    }
+  }
+}

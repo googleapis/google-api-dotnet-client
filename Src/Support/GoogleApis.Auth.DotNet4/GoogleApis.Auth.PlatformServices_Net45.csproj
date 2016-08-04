@@ -70,12 +70,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OAuth2\GoogleCredential.cs" />
-    <Compile Include="OAuth2\DefaultCredentialProvider.cs" />
     <Compile Include="OAuth2\GoogleWebAuthorizationBroker.cs" />
     <Compile Include="OAuth2\LocalServerCodeReceiver.cs" />
-    <Compile Include="OAuth2\PromptCodeReceiver.cs" />
-    <Compile Include="OAuth2\ServiceAccountCredential.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -99,6 +95,7 @@
       <Name>GoogleApis.PlatformServices_Net45</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

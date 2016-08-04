@@ -214,11 +214,16 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
         /// <summary> No credential files or environment variable specified - like a fresh developer's machine.</summary>
         [Test]
         public async Task GetDefaultCredential_NoCredentialFiles()
-        { 
+        {
             try
             {
                 var credential = await credentialProvider.GetDefaultCredentialAsync();
-                Assert.Fail();
+                // When running on GCE expect to get a ComputeCredential
+                if (!(credential.UnderlyingCredential is ComputeCredential))
+                {
+                    // If not running on GCE getting to this point is a fail
+                    Assert.Fail();
+                }
             }
             catch (InvalidOperationException e)
             {
