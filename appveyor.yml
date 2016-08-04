@@ -22,11 +22,7 @@ install:
 build_script:
   - dotnet --info
   - msbuild SupportLibraries.proj
-  - >
-    .\testrunner\NUnit.ConsoleRunner.3.2.1\tools\nunit3-console.exe
-      Src\Support\GoogleApis.Tests\bin\ReleaseSigned\Google.Apis.Tests.exe
-      Src\Support\GoogleApis.Auth.Tests\bin\ReleaseSigned\Google.Apis.Auth.Tests.exe
-      Src\Support\GoogleApis.Auth.DotNet4.Tests\bin\ReleaseSigned\Google.Apis.Auth.DotNet4.Tests.exe
+  - .\testrunner\NUnit.ConsoleRunner.3.2.1\tools\nunit3-console.exe Src\Support\GoogleApis.Tests\bin\ReleaseSigned\Google.Apis.Tests.exe Src\Support\GoogleApis.Auth.Tests\bin\ReleaseSigned\Google.Apis.Auth.Tests.exe Src\Support\GoogleApis.Auth.DotNet4.Tests\bin\ReleaseSigned\Google.Apis.Auth.DotNet4.Tests.exe
   - dotnet restore .\Src\Support --configfile .\NuGet.Config
   - dotnet test .\Src\Support\GoogleApis.Tests_dotnetcore
   - dotnet test .\Src\Support\GoogleApis.Auth.Tests_dotnetcore
