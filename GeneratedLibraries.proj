@@ -92,7 +92,7 @@
     <!-- Only perform restore if anything actually needs restoring -->
     <Exec
         Condition="'@(ProjectJson)'!=''"
-        Command="nuget restore @(ProjectJson) -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
+        Command="nuget restore %(ProjectJson.Identity) -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
   </Target>
 
   <!-- Build generated projects. Reply on C#'s incremental build for incrementality -->
