@@ -16,18 +16,40 @@
       msbuild GeneratedLibraries.proj /t:PackageFromScratch
   -->
 
-  <!-- Download discovery documents used as input to code generation. -->
-  <Target Name="DownloadDiscoveryDocuments"
-      Condition="!Exists('DiscoveryJson')">
-    <MakeDir Directories="DiscoveryJson" />
+  <PropertyGroup>
+    <!-- Absolute directory of the location to put generated code -->
+    <GeneratedCodeDir>$(MSBuildThisFileDirectory)Src\Generated\</GeneratedCodeDir>
+    <!-- Absolute directory of the packages repository -->
+    <PackagesDir>$(MSBuildThisFileDirectory)Src\Generated\packages\</PackagesDir>
+    <!-- Absolute directory of nupkgs output directory -->
+    <NuPkgsDir>$(MSBuildThisFileDirectory)NuPkgs\Generated\</NuPkgsDir>
+    <!-- Absolute directory of the NuGet.Config file -->
+    <NuGetConfig>$(MSBuildThisFileDirectory)NuGet.Config</NuGetConfig>
+  </PropertyGroup>
 
+  <!-- Generated libraries that don't compile -->
+  <ItemGroup>
+    <!-- Last released May 2015 (1.9.0.1030) -->
+    <BrokenProjects Include="$(GeneratedCodeDir)Google.Apis.Games.v1\**" />
+
+    <!-- Last released April 2014 (1.8.1.1750) -->
+    <BrokenProjects Include="$(GeneratedCodeDir)Google.Apis.IdentityToolkit.v3\**" />
+
+    <!-- Last released Jan 2015 (1.9.0.860) -->
+    <BrokenProjects Include="$(GeneratedCodeDir)Google.Apis.Oauth2.v1\**" />
+  </ItemGroup>
+
+  <!-- Download discovery documents used as input to code generation. -->
+  <Target Name="DownloadDiscoveryDocuments" Condition="!Exists('DiscoveryJson')">
+    <!-- Make DiscoveryJson directory -->
+    <MakeDir Directories="DiscoveryJson" />
+    <!-- Run python script to download all discovery docs, starting from https://www.googleapis.com/discovery/v1/apis -->
     <!-- 'python -u' turns off buffering so status is printed line-by-line. -->
     <Exec Command="python -u get_discovery_documents.py --destination_dir .\DiscoveryJson" />
   </Target>
 
   <!-- Generate library projects from discovery documents. -->
-  <Target Name="Generate" DependsOnTargets="DownloadDiscoveryDocuments"
-      Condition="!Exists('Src\Generated')">
+  <Target Name="Generate" DependsOnTargets="DownloadDiscoveryDocuments" Condition="!Exists('$(GeneratedCodeDir)')">
     <PropertyGroup>
       <_GenerateLibraryTool>ClientGenerator\generate_library.cmd</_GenerateLibraryTool>
     </PropertyGroup>
@@ -36,9 +58,10 @@
       <_DiscoveryDocument Include="DiscoveryJson\*.json" />
     </ItemGroup>
 
-    <MakeDir Directories="Src\Generated" />
+    <MakeDir Directories="$(GeneratedCodeDir)" />
 
-    <Exec Command="&quot;$(_GenerateLibraryTool)&quot; --input=&quot;%(_DiscoveryDocument.FullPath)&quot; --language=csharp --output_dir=Src\Generated" />
+    <!-- Execute the code-generated for every JSON discovery document -->
+    <Exec Command="&quot;$(_GenerateLibraryTool)&quot; --input=&quot;%(_DiscoveryDocument.FullPath)&quot; --language=csharp --output_dir=$(GeneratedCodeDir)" />
   </Target>
 
   <PropertyGroup>
@@ -48,84 +71,68 @@
   <!-- Warnings to disable -->
   <PropertyGroup>
     <!-- XML comment on 'construct' has badly formed XML — 'reason' -->
-    <NoWarn>$(NoWarn);1570</NoWarn>
+    <NoWarn>$(NoWarn),1570</NoWarn>
 
     <!-- XML comment is not placed on a valid language element -->
-    <NoWarn>$(NoWarn);1587</NoWarn>
+    <NoWarn>$(NoWarn),1587</NoWarn>
 
     <!-- Missing XML comment for publicly visible type or member 'Type_or_Member' -->
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <NoWarn>$(NoWarn),1591</NoWarn>
   </PropertyGroup>
-
-  <!--
-    Create a list of generated projects. This has to be done in a target,
-    rather than at toplevel, because these projects don't exist until
-    the Generate target has run.
-  -->
-  <Target Name="BuildProjectList">
-    <!-- Generated libraries that don't compile -->
+  
+  <Target Name="NuGetRestore" DependsOnTargets="Generate">
+    <!-- nuget restore all packages for non-netstandard builds. All generated libraries have the same dependencies -->
+    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile259\packages.config -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
+    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile328\packages.config -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
+    <!-- netstandard projects must be individually restored, creating the project.lock.json files if it doesn't already exist -->
     <ItemGroup>
-      <!-- Last released May 2015 (1.9.0.1030) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.Games.v1\**" />
-
-      <!-- Last released April 2014 (1.8.1.1750) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.IdentityToolkit.v3\**" />
-
-      <!-- Last released Jan 2015 (1.9.0.860) -->
-      <BrokenProject Include="Src\Generated\Google.Apis.Oauth2.v1\**" />
+      <ProjectJsonAll Include="$(GeneratedCodeDir)**\project.json" Exclude="@(BrokenProjects)" />
+      <ProjectJson Include="@(ProjectJsonAll)" Condition="!Exists('%(RootDir)%(Directory)project.lock.json')" />
     </ItemGroup>
-
-    <!-- All generated libraries except the broken ones listed above -->
-    <ItemGroup>
-      <Project Include="Src\Generated\**\*.csproj" Exclude="@(BrokenProject)">
-        <!--
-          TODO(mmdriley): Maybe we should add this metadata in the Build target?
-        -->
-        <AdditionalProperties>
-          Configuration=$(Configuration);
-          NoWarn=$(NoWarn)
-        </AdditionalProperties>
-      </Project>
-    </ItemGroup>
+    <!-- Only perform restore if anything actually needs restoring -->
+    <Exec
+        Condition="'@(ProjectJson)'!=''"
+        Command="nuget restore @(ProjectJson) -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
   </Target>
 
-  <!--
-    Build generated projects.
-
-    This target isn't gated by a !Exists condition; instead we rely on C#'s
-    incremental build.
-  -->
-  <Target Name="Build" DependsOnTargets="Generate;BuildProjectList">
-    <!--
-      We only need to restore packages for one API, since they have identical
-      packages.config. The choice of the discovery API is mostly arbitrary;
-      it's an API that's always likely to be there.
-    -->
-    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile259\packages.config -PackagesDirectory Src\Generated\packages" />
-    <Exec Command="nuget restore Src\Generated\Google.Apis.Discovery.v1\Profile328\packages.config -PackagesDirectory Src\Generated\packages" />
-
-    <MSBuild Projects="@(Project)" BuildInParallel="True" Targets="Build" />
+  <!-- Build generated projects. Reply on C#'s incremental build for incrementality -->
+  <Target Name="Build" DependsOnTargets="Generate;NuGetRestore">
+    <!-- Build all projects that are not broken -->
+    <ItemGroup>
+      <Projects Include="$(GeneratedCodeDir)**\*.csproj" Exclude="@(BrokenProjects)" />
+    </ItemGroup>
+    <MSBuild
+        Projects="@(Projects)"
+        BuildInParallel="True"
+        Targets="Build"
+        Properties="Configuration=$(Configuration);NugetPackagesDirectory=$(PackagesDir);NoWarn=$(NoWarn)" />
   </Target>
 
   <!-- Create NuGet packages with binaries built from generated projects. -->
-  <Target Name="Package" DependsOnTargets="Build;BuildProjectList"
-      Condition="!Exists('NuPkgs\Generated')">
-    <MakeDir Directories="NuPkgs\Generated" />
+  <Target Name="Package" DependsOnTargets="Build" Condition="!Exists('$(NuPkgsDir)')">
+    <!-- Make Nupkgs output directory -->
+    <MakeDir Directories="$(NuPkgsDir)" />
 
     <ItemGroup>
-      <NuSpec Include="Src\Generated\*\*.nuspec" Exclude="@(BrokenProject)" />
+      <NuSpec Include="$(GeneratedCodeDir)*\*.nuspec" Exclude="@(BrokenProjects)" />
     </ItemGroup>
 
-    <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -OutputDirectory NuPkgs\Generated" />
+    <Exec Command="nuget pack &quot;%(NuSpec.FullPath)&quot; -OutputDirectory $(NuPkgsDir)" />
   </Target>
 
   <!-- Remove all downloaded and generated artifacts. -->
   <Target Name="Reset">
-    <RemoveDir Directories="DiscoveryJson;Src\Generated;NuPkgs\Generated" />
+    <RemoveDir Directories="DiscoveryJson;$(GeneratedCodeDir);$(NuPkgsDir)" />
   </Target>
+  <!-- Alias Clean to Reset -->
+  <Target Name="Clean" DependsOnTargets="Reset" />
 
   <Target Name="CleanGenerated">
-    <RemoveDir Directories="Src\Generated;NuPkgs\Generated" />
+    <RemoveDir Directories="$(GeneratedCodeDir);$(NuPkgsDir)" />
+  </Target>
+  
+  <Target Name="CleanNuGetRestore">
+    <RemoveDir Directories="$(PackagesDir);$(NuPkgsDir)" />
   </Target>
 
   <Target Name="Regenerate" DependsOnTargets="CleanGenerated;Generate" />

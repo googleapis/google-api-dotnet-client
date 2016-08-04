@@ -7,6 +7,9 @@
 Backup*
 *.suo
 *.user
+.vs
+project.lock.json
+*~
 
 msbuild.log
 TestResult.xml
@@ -17,3 +20,6 @@ TestResult.xml
 # TODO: Move these to bin or obj.
 /Src/Support/**/*.xml
 /Src/Generated/**/*.xml
+
+# Ignore the testrunner directory.
+testrunner/*

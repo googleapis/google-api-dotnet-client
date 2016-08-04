@@ -17,6 +17,10 @@ limitations under the License.
 using System;
 using System.Reflection;
 
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
+
 namespace Google.Apis.Util
 {
     // UriPatcher lets us work around some unfortunate behaviors in the .NET Framework's
@@ -58,7 +62,7 @@ namespace Google.Apis.Util
     {
         public static void PatchUriQuirks()
         {
-            var uriParser = typeof(System.Uri).Assembly.GetType("System.UriParser");
+            var uriParser = typeof(System.Uri).GetTypeInfo().Assembly.GetType("System.UriParser");
             if (uriParser == null) { return; }
 
             // Is "%2f" unescaped for http: or https: URIs?

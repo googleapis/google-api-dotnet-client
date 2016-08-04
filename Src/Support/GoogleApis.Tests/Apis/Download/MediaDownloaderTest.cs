@@ -311,7 +311,7 @@ namespace Google.Apis.Tests.Apis.Download
                 Assert.IsNull(result.Exception);
                 Assert.AreEqual(result.BytesDownloaded, outputStream.Position);
 
-                return Encoding.UTF8.GetString(outputStream.GetBuffer(), 0, (int)outputStream.Position);
+                return Encoding.UTF8.GetString(outputStream.ToArray(), 0, (int)outputStream.Position);
             }
         }
 

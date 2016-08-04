@@ -15,9 +15,7 @@ limitations under the License.
 */
 
 using System;
-using System.IO;
 using Google.Apis.Logging;
-using Moq;
 using NUnit.Framework;
 
 namespace Google.Apis.Tests.Apis.Logging

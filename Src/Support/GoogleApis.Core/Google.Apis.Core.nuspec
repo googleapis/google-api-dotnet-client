@@ -15,6 +15,8 @@
           Supported Platforms:
 
           - .NET Framework 4.5
+		  
+		  - NetStandard1.3
 
           - Windows Store apps
 
@@ -27,6 +29,24 @@
         <group targetFramework="net45">
           <dependency id="Newtonsoft.Json" version="7.0.1" />
         </group>
+        <group targetFramework="netstandard1.3">
+          <dependency id="Newtonsoft.Json" version="9.0.1" />
+          <dependency id="System.Collections" version="4.0.11" />
+          <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+          <dependency id="System.Globalization" version="4.0.11" />
+          <dependency id="System.IO" version="4.1.0" />
+          <dependency id="System.Linq" version="4.1.0" />
+          <dependency id="System.Net.Http" version="4.1.0" />
+          <dependency id="System.Net.Primitives" version="4.0.11" />
+          <dependency id="System.Reflection" version="4.1.0" />
+          <dependency id="System.Reflection.Extensions" version="4.0.1" />
+          <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+          <dependency id="System.Runtime" version="4.1.0" />
+          <dependency id="System.Runtime.Extensions" version="4.1.0" />
+          <dependency id="System.Text.RegularExpressions" version="4.1.0" />
+          <dependency id="System.Threading" version="4.0.11" />
+          <dependency id="System.Threading.Tasks" version="4.0.11" />
+        </group>
         <group>
           <!-- Fallback group, used if nothing else matches. -->
           <dependency id="Microsoft.Bcl" version="1.1.10" />
@@ -38,17 +58,18 @@
       </dependencies>
     </metadata>
     <files>
-      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.dll"
-        target="lib\net45\Google.Apis.Core.dll" />
-      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.pdb"
-        target="lib\net45\Google.Apis.Core.pdb" />
-      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.xml"
-        target="lib\net45\Google.Apis.Core.xml" />
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.dll" target="lib\net45\Google.Apis.Core.dll" />
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.pdb" target="lib\net45\Google.Apis.Core.pdb" />
+      <file src="Src\Support\GoogleApis.Core\Net45\bin\ReleaseSigned\Google.Apis.Core.xml" target="lib\net45\Google.Apis.Core.xml" />
 
       <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.dll" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Core.dll" />
       <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.pdb" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Core.pdb" />
       <file src="Src\Support\GoogleApis.Core\Portable\bin\ReleaseSigned\Google.Apis.Core.xml" target="lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Core.xml" />
       
+      <file src="Src\Support\GoogleApis.Core\NetStandard\bin\ReleaseSigned\Google.Apis.Core.dll" target="lib\netstandard1.3\Google.Apis.Core.dll" />
+      <file src="Src\Support\GoogleApis.Core\NetStandard\bin\ReleaseSigned\Google.Apis.Core.pdb" target="lib\netstandard1.3\Google.Apis.Core.pdb" />
+      <file src="Src\Support\GoogleApis.Core\NetStandard\bin\ReleaseSigned\Google.Apis.Core.xml" target="lib\netstandard1.3\Google.Apis.Core.xml" />
+
       <file src="Resources\License.txt" target="License.txt" />
     </files>
 </package>
