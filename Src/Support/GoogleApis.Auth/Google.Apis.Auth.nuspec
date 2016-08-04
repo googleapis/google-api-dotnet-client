@@ -53,10 +53,6 @@
           <dependency id="System.Net.Requests" version="4.0.11" />
           <dependency id="System.Runtime" version="4.1.0" />
           <dependency id="System.Runtime.Extensions" version="4.1.0" />
-          <dependency id="System.Security.Cryptography.Algorithms" version="4.2.0" />
-          <dependency id="System.Security.Cryptography.Csp" version="4.0.0" />
-          <dependency id="System.Security.Cryptography.Primitives" version="4.0.0" />
-          <dependency id="System.Security.Cryptography.X509Certificates" version="4.1.0" />
           <dependency id="System.Text.Encoding" version="4.0.11" />
           <dependency id="System.Threading" version="4.0.11" />
           <dependency id="System.Threading.Tasks" version="4.0.11" />

@@ -17,6 +17,11 @@
         "**/*.cs",
         "../GoogleApis.Tests/**/*.cs",
       ],
+      "exclude": [
+        // Excluded until they don't cause a huge delay on CI
+        "../GoogleApis.Tests/Apis/Upload/**",
+        "../GoogleApis.Tests/Apis/Download/**"
+      ]
     },
     "define": [ "NETSTANDARD" ]
   },
