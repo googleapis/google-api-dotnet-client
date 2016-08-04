@@ -15,10 +15,12 @@
   "buildOptions": {
     "compile": {
       "include": [ "../GoogleApis.Auth.Tests/**/*.cs" ],
-      "exclude": [
-        "../GoogleApis.Auth.Tests/Program.cs", // Uses NUnitLite
-      ]
-    }
+    },
+    "define": [ "NETSTANDARD" ]
+  },
+
+  "compilationOptions": {
+    "keyFile": "../../../google.apis.snk"
   },
 
   "testRunner": "nunit",

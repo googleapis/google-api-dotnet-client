@@ -5,19 +5,24 @@
     "Google.Apis.Core": "1.14",
     "Google.Apis": "1.14",
     "Nunit": "3.4.0",
-    "dotnet-test-nunit": "3.4.0-beta-1"
+    "dotnet-test-nunit": "3.4.0-beta-1",
+    // Following required for the HttpListener test implementation
+    "System.Collections.Specialized": "4.0.1",
+    "System.Net.WebHeaderCollection": "4.0.1"
   },
 
   "buildOptions": {
     "compile": {
-      "include": [ "../GoogleApis.Tests/**/*.cs" ],
-      "exclude": [
-        "../GoogleApis.Tests/Program.cs", // Uses NUnitLite
-        "../GoogleApis.Tests/Apis/Download/*.cs", // Uses HttpListener
-        "../GoogleApis.Tests/Apis/Upload/*.cs", // Uses HttpListener
-        "../GoogleApis.Tests/Apis/Requests/BatchRequestTest.cs" // Needs access to internal methods
-      ]
-    }
+      "include": [
+        "**/*.cs",
+        "../GoogleApis.Tests/**/*.cs",
+      ],
+    },
+    "define": [ "NETSTANDARD" ]
+  },
+
+  "compilationOptions": {
+    "keyFile": "../../../google.apis.snk"
   },
 
   "testRunner": "nunit",
