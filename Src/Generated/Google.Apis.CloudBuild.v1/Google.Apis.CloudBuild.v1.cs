@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160801 (578)
+ *      <tr><th>API Rev<td>20160803 (580)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1153,9 +1153,41 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>RepoSource describes the location of the source in a Google Cloud Source Repository.</summary>
+    public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the branch to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
+        public virtual string BranchName { get; set; } 
+
+        /// <summary>Explicit commit SHA to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; } 
+
+        /// <summary>ID of the project that owns the repo. If omitted, the project ID requesting the build is
+        /// assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>Name of the repo. If omitted, the name "default" is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
+        public virtual string RepoName { get; set; } 
+
+        /// <summary>Name of the tag to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
+        public virtual string TagName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Results describes the artifacts created by the build pipeline.</summary>
     public class Results : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of build step digests, in order corresponding to build step indices. next id = 4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]
+        public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; } 
+
         /// <summary>Images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; } 
@@ -1167,6 +1199,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Source describes the location of the source in a supported storage service.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If provided, get source from this location in a Cloud Repo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
+        public virtual RepoSource RepoSource { get; set; } 
+
         /// <summary>If provided, get the source from this location in in Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
         public virtual StorageSource StorageSource { get; set; } 
@@ -1190,6 +1226,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// the single path to that file. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string,FileHashes> FileHashes { get; set; } 
+
+        /// <summary>A copy of the build's source.repo_source, if exists, with any revisions resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
+        public virtual RepoSource ResolvedRepoSource { get; set; } 
 
         /// <summary>A copy of the build's source.storage_source, if exists, with any generations resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]

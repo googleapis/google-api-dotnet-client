@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160727 (573)
+ *      <tr><th>API Rev<td>20160801 (578)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
@@ -6089,8 +6089,8 @@ namespace Google.Apis.Genomics.v1beta2.Data
     public class SearchVariantsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only return variant calls which belong to call sets with these ids. Leaving this blank returns all
-        /// variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at all.
-        /// Currently, variants with no calls from any call set will never be returned.</summary>
+        /// variant calls. If a variant has no calls belonging to any of these call sets, it won't be returned at
+        /// all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callSetIds")]
         public virtual System.Collections.Generic.IList<string> CallSetIds { get; set; } 
 

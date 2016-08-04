@@ -11779,6 +11779,112 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where you
+        /// want to create the managed instance group.</param>
+        /// <param name="instanceGroupManager">The name of the
+        /// instance group manager.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+        {
+            return new PatchRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where you want to create the managed instance group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
@@ -12524,6 +12630,112 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone where you
+        /// want to create the managed instance group.</param>
+        /// <param name="instanceGroupManager">The name of the
+        /// instance group manager.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.alpha.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+        {
+            return new UpdateRequest(service, body, project, zone, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstanceGroupManager body, string project, string zone, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone where you want to create the managed instance group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -16588,6 +16800,11 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is
+            /// false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -16639,6 +16856,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "discardLocalSsd", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "discardLocalSsd",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16684,6 +16910,11 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance resource to suspend.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is
+            /// false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -16735,6 +16966,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "discardLocalSsd", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "discardLocalSsd",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34528,7 +34768,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Mode { get; set; } 
 
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only
-        /// applicable for persistent disks.</summary>
+        /// applicable for persistent disks. Note that for InstanceTemplate, it is just disk name, not URL for the
+        /// disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -34569,7 +34810,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// Other values include pd-ssd and local-ssd. If you define this field, you can provide either the full or
         /// partial URL. For example, the following are valid values: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType -
-        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType</summary>
+        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType  Note that for
+        /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
@@ -35357,6 +35599,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If host is non-empty, this invalidation rule will only apply to requests with a Host header
+        /// matching host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
@@ -36529,9 +36776,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the
-        /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
-        /// type field.</summary>
+        /// <summary>Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not
+        /// specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified,
+        /// which must match type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -37515,7 +37762,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The number of seconds that the managed instance group waits before it applies autohealing policies
         /// to new instances or recently recreated instances. This initial delay allows instances to initialize and run
         /// their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the
-        /// managed instance group from recreating its instances prematurely.</summary>
+        /// managed instance group from recreating its instances prematurely. This value must be from range [0,
+        /// 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySec")]
         public virtual System.Nullable<int> InitialDelaySec { get; set; } 
 
@@ -37597,7 +37845,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual FixedOrPercent MaxUnavailable { get; set; } 
 
-        /// <summary>Minimum number of seconds to wait for after a newly created instance becomes available.</summary>
+        /// <summary>Minimum number of seconds to wait for after a newly created instance becomes available. This value
+        /// must be from range [0, 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minReadySec")]
         public virtual System.Nullable<int> MinReadySec { get; set; } 
 
@@ -40682,6 +40931,9 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class SubnetworksExpandIpCidrRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The IP (in CIDR format or netmask) of internal addresses that are legal on this Subnetwork. This
+        /// range should be disjoint from other subnetworks within this network. This range can only be larger than
+        /// (i.e. a superset of) the range previously defined before the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 

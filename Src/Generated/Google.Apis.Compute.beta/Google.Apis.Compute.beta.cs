@@ -30369,7 +30369,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Mode { get; set; } 
 
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only
-        /// applicable for persistent disks.</summary>
+        /// applicable for persistent disks. Note that for InstanceTemplate, it is just disk name, not URL for the
+        /// disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -30410,7 +30411,8 @@ namespace Google.Apis.Compute.beta.Data
         /// Other values include pd-ssd and local-ssd. If you define this field, you can provide either the full or
         /// partial URL. For example, the following are valid values: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType -
-        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType</summary>
+        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType  Note that for
+        /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
@@ -32022,9 +32024,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. If not specified, the
-        /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
-        /// type field.</summary>
+        /// <summary>Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not
+        /// specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified,
+        /// which must match type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -32969,7 +32971,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The number of seconds that the managed instance group waits before it applies autohealing policies
         /// to new instances or recently recreated instances. This initial delay allows instances to initialize and run
         /// their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the
-        /// managed instance group from recreating its instances prematurely.</summary>
+        /// managed instance group from recreating its instances prematurely. This value must be from range [0,
+        /// 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySec")]
         public virtual System.Nullable<int> InitialDelaySec { get; set; } 
 

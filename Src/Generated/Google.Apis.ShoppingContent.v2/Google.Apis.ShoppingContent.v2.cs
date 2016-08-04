@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160719 (565)
+ *      <tr><th>API Rev<td>20160728 (574)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6776,7 +6776,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The reason for the cancellation. Orders that are cancelled with a noIventory reason will lead to
+        /// <summary>The reason for the cancellation. Orders that are cancelled with a noInventory reason will lead to
         /// the removal of the product from POG until you make an update to that product. This will not affect your
         /// Shopping ads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]

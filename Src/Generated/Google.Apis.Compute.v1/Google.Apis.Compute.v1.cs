@@ -14834,6 +14834,107 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
+        /// NOT create or update the router.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="router">Name of the Router resource to query.</param>
+        public virtual PreviewRequest Preview(Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+        {
+            return new PreviewRequest(service, body, project, region, router);
+        }
+
+        /// <summary>Preview fields auto-generated during router create and update operations. Calling this method does
+        /// NOT create or update the router.</summary>
+        public class PreviewRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RoutersPreviewResponse>
+        {
+            /// <summary>Constructs a new Preview request.</summary>
+            public PreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Router = router;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Router resource to query.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Router { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Router Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "preview"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/routers/{router}/preview"; }
+            }
+
+            /// <summary>Initializes Preview parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "router", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "router",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Updates the entire content of the Router resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -21835,7 +21936,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Mode { get; set; } 
 
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only
-        /// applicable for persistent disks.</summary>
+        /// applicable for persistent disks. Note that for InstanceTemplate, it is just disk name, not URL for the
+        /// disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -21872,7 +21974,8 @@ namespace Google.Apis.Compute.v1.Data
         /// Other values include pd-ssd and local-ssd. If you define this field, you can provide either the full or
         /// partial URL. For example, the following are valid values: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/diskTypes/diskType -
-        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType</summary>
+        /// projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType  Note that for
+        /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
@@ -22251,6 +22354,14 @@ namespace Google.Apis.Compute.v1.Data
     /// capacity.</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
+        /// non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed
+        /// value for TTL is one day.
+        ///
+        /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
+        public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
+
         /// <summary>The list of backends that serve this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<Backend> Backends { get; set; } 
@@ -22329,6 +22440,17 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Type of session affinity to use. The default is NONE.
+        ///
+        /// When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.
+        ///
+        /// When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or
+        /// CLIENT_IP_PORT_PROTO.
+        ///
+        /// When the protocol is UDP, this field is not used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
+        public virtual string SessionAffinity { get; set; } 
 
         /// <summary>How many seconds to wait for the backend before considering it a failed request. Default is 30
         /// seconds.</summary>
@@ -26067,6 +26189,16 @@ namespace Google.Apis.Compute.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual RouterStatus Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class RoutersPreviewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preview of given router.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual Router Resource { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160726 (572)
+ *      <tr><th>API Rev<td>20160731 (577)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
