@@ -58,7 +58,7 @@ namespace System.Net
         {
             if (count == 0)
             {
-                return new byte[0];
+                return Enumerable.Empty<byte>();
             }
             return await ReadWhile(bytes => bytes.Count < count);
         }

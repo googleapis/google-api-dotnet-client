@@ -11,7 +11,7 @@ namespace System.Net
 {
     public class HttpListener : IDisposable
     {
-        static Regex s_prefixRegex = new Regex(@"^http://([\w.-]+):(\d+)(.*)$");
+        private static readonly Regex s_prefixRegex = new Regex(@"^http://([\w.-]+):(\d+)(.*)$");
 
         public IList<string> Prefixes { get; } = new List<string>();
 
