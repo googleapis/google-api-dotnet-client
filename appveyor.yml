@@ -1,0 +1,31 @@
+# Configuration for the build and test for the GoogleApis project.
+
+# Version for the build.
+version: 1.0.{build}-{branch}
+
+# We're using Visual Studio 2015
+image: Visual Studio 2015
+
+# Install the pre-requisites for the build.
+install:
+  # Download and install the nunit runner.
+  - nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
+  # Download the installer for dotnet.
+  - mkdir .\scripts
+  - curl -SL https://raw.githubusercontent.com/dotnet/cli/rel/1.0.0/scripts/obtain/dotnet-install.ps1 -o .\scripts\dotnet-install.ps1
+  - ps: $env:DOTNET_INSTALL_DIR = "$pwd\.dotnetcli"
+  - ps: '& .\scripts\dotnet-install.ps1 -InstallDir "$env:DOTNET_INSTALL_DIR" -Version 1.0.0-preview2-003121 -NoPath'
+  # add dotnet to PATH
+  - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
+
+# Perform the build.
+build_script:
+  - dotnet --info
+  - msbuild SupportLibraries.proj
+  - .\testrunner\NUnit.ConsoleRunner.3.2.1\tools\nunit3-console.exe Src\Support\GoogleApis.Tests\bin\ReleaseSigned\Google.Apis.Tests.exe Src\Support\GoogleApis.Auth.Tests\bin\ReleaseSigned\Google.Apis.Auth.Tests.exe Src\Support\GoogleApis.Auth.DotNet4.Tests\bin\ReleaseSigned\Google.Apis.Auth.DotNet4.Tests.exe
+  - dotnet restore .\Src\Support -f .\NuPkgs\Support
+  - dotnet test .\Src\Support\GoogleApis.Tests_dotnetcore
+  - dotnet test .\Src\Support\GoogleApis.Auth.Tests_dotnetcore
+
+# The tests are run as part of the build.
+test: off
