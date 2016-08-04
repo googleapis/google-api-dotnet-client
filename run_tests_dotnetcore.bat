@@ -9,6 +9,10 @@ msbuild SupportLibraries.proj
 REM Clean slate after the build.
 set workspace=%~dp0
 set nugetconfig=%workspace%\NuGet.Config
+set nugetcache=%userprofile%\.nuget\packages
+
+REM Delete all Google packages from nuget cache
+forfiles /P %nugetcache% /M Google.* /C "CMD /C rmdir /S /Q @path"
 
 REM Restore the test projects.
 dotnet restore ^

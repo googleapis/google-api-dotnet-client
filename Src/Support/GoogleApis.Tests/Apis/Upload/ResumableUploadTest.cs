@@ -60,11 +60,13 @@ namespace Google.Apis.Tests.Apis.Upload
         {
             if (useLogger)
             {
+#if !NETSTANDARD
                 ApplicationContext.RegisterLogger(new Google.Apis.Logging.Log4NetLogger());
+#endif
             }
         }
 
-        #region Handlers
+#region Handlers
 
         /// <summary>Base mock handler which contains the upload Uri.</summary>
         private abstract class BaseMockMessageHandler : CountableMessageHandler
@@ -491,9 +493,9 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        #endregion
+#endregion
 
-        #region ResumableUpload instances
+#region ResumableUpload instances
 
         private class MockResumableUpload : ResumableUpload<object>
         {
@@ -543,7 +545,7 @@ namespace Google.Apis.Tests.Apis.Upload
             public DateTime? MinTime { get; set; }
         }
 
-        #endregion
+#endregion
 
         /// <summary>Mimics a stream whose size is unknown.</summary>
         private class UnknownSizeMemoryStream : MemoryStream
@@ -555,7 +557,7 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        #region Request and Response objects
+#region Request and Response objects
 
         /// <summary>A mock request object.</summary>
         public class TestRequest : IEquatable<TestRequest>
@@ -591,7 +593,7 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
-        #endregion
+#endregion
 
         /// <summary>Tests uploading a single chunk.</summary>
         [Test]

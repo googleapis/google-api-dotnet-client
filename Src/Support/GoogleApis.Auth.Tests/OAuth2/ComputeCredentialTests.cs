@@ -22,12 +22,13 @@ namespace Google.Apis.Auth.OAuth2
     [TestFixture]
     public class ComputeCredentialTests
     {
-        [Test]
+        // Temporarily remove this test as we often are testing on GCE instances.
+        /*[Test]
         public void IsRunningOnComputeEngine()
         {
             // It should be safe to assume that this test is not running on GCE.
             Assert.IsFalse(ComputeCredential.IsRunningOnComputeEngine().Result);
-        }
+        }*/
 
         [Test]
         public void IsRunningOnComputeEngine_ResultIsCached()
