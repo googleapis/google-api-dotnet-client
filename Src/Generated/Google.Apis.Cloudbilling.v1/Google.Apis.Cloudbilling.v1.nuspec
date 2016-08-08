@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Cloudbilling.v1</id>
-        <version>1.14.1.355</version>
+        <version>1.15.0.355</version>
         <title>Google.Apis.Cloudbilling.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -15,6 +15,8 @@
           Supported Platforms:
 
           - .NET Framework 4 and 4.5
+
+          - NetStandard1.3
 
           - Windows Store apps
 
@@ -30,6 +32,10 @@
         </description>
         <tags>Google</tags>
         <dependencies>
+            <group targetFramework="netstandard1.3">
+                <dependency id="Google.Apis" version="1.15.0" />
+                <dependency id="Google.Apis.Auth" version="1.15.0" />
+            </group>
             <!--
               After v1.10.0 of Google.Apis, we
               trimmed the list of supported target frameworks. For projects
@@ -37,8 +43,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.14.1" />
-                <dependency id="Google.Apis.Auth" version="1.14.1" />
+                <dependency id="Google.Apis" version="1.15.0" />
+                <dependency id="Google.Apis.Auth" version="1.15.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
@@ -48,6 +54,10 @@
         </dependencies>
     </metadata>
     <files>
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.dll" target="lib\netstandard1.3\Google.Apis.Cloudbilling.v1.dll" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.pdb" target="lib\netstandard1.3\Google.Apis.Cloudbilling.v1.pdb" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.xml" target="lib\netstandard1.3\Google.Apis.Cloudbilling.v1.xml" />
+
         <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudbilling.v1.dll" />
         <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudbilling.v1.pdb" />
         <file src="Profile259\bin\ReleaseSigned\Google.Apis.Cloudbilling.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Cloudbilling.v1.xml" />
