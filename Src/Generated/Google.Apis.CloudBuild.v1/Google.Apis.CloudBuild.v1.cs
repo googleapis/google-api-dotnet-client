@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160804 (581)
+ *      <tr><th>API Rev<td>20160808 (585)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -922,6 +922,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<string> Images { get; set; } 
 
+        /// <summary>URL to logs for this build in Google Cloud Logging. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUrl")]
+        public virtual string LogUrl { get; set; } 
+
         /// <summary>Google Cloud Storage bucket where logs should be written (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of
         /// the format `${logs_bucket}/log-${build_id}.txt`.</summary>
@@ -1184,7 +1188,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Results describes the artifacts created by the build pipeline.</summary>
     public class Results : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of build step digests, in order corresponding to build step indices. next id = 4</summary>
+        /// <summary>List of build step digests, in order corresponding to build step indices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]
         public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; } 
 

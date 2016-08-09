@@ -401,7 +401,7 @@
           }
         },
         "buildStepImages": {
-          "description": "List of build step digests, in order corresponding to build step indices.\nnext id = 4",
+          "description": "List of build step digests, in order corresponding to build step indices.",
           "type": "array",
           "items": {
             "type": "string"
@@ -481,6 +481,10 @@
           "description": "Time at which the build was created.\n@OutputOnly",
           "type": "string",
           "format": "google-datetime"
+        },
+        "logUrl": {
+          "description": "URL to logs for this build in Google Cloud Logging.\n@OutputOnly",
+          "type": "string"
         },
         "statusDetail": {
           "description": "Customer-readable message about the current status.\n@OutputOnly",
@@ -667,7 +671,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160804",
+  "revision": "20160808",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160726 (572)
+ *      <tr><th>API Rev<td>20160805 (582)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -1004,6 +1004,7 @@ namespace Google.Apis.Analytics.v3
             profileFilterLinks = new ProfileFilterLinksResource(service);
             profileUserLinks = new ProfileUserLinksResource(service);
             profiles = new ProfilesResource(service);
+            remarketingAudience = new RemarketingAudienceResource(service);
             segments = new SegmentsResource(service);
             unsampledReports = new UnsampledReportsResource(service);
             uploads = new UploadsResource(service);
@@ -6288,6 +6289,524 @@ namespace Google.Apis.Analytics.v3
 
             }
         }
+        private readonly RemarketingAudienceResource remarketingAudience;
+
+        /// <summary>Gets the RemarketingAudience resource.</summary>
+        public virtual RemarketingAudienceResource RemarketingAudience
+        {
+            get { return remarketingAudience; }
+        }
+
+        /// <summary>The "remarketingAudience" collection of methods.</summary>
+        public class RemarketingAudienceResource
+        {
+            private const string Resource = "remarketingAudience";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RemarketingAudienceResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets remarketing audiences to which the user has access.</summary>
+            /// <param name="accountId">Account ID for the remarketing audience to retrieve.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID for the remarketing audience to retrieve.</param>
+            /// <param
+            /// name="remarketingAudienceId">The ID to retrieve the Remarketing Audience for.</param>
+            public virtual GetRequest Get(string accountId, string webPropertyId, string remarketingAudienceId)
+            {
+                return new GetRequest(service, accountId, webPropertyId, remarketingAudienceId);
+            }
+
+            /// <summary>Gets remarketing audiences to which the user has access.</summary>
+            public class GetRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    RemarketingAudienceId = remarketingAudienceId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID for the remarketing audience to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID for the remarketing audience to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+                /// <summary>The ID to retrieve the Remarketing Audience for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("remarketingAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string RemarketingAudienceId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "remarketingAudienceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Creates a new remarketing audiences.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID to create the remarketing audience for.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID to create the remarketing audience for.</param>
+            public virtual InsertRequest Insert(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId)
+            {
+                return new InsertRequest(service, body, accountId, webPropertyId);
+            }
+
+            /// <summary>Creates a new remarketing audiences.</summary>
+            public class InsertRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
+            {
+                /// <summary>Constructs a new Insert request.</summary>
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID to create the remarketing audience for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID to create the remarketing audience for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "insert"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences"; }
+                }
+
+                /// <summary>Initializes Insert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists remarketing audiences to which the user has access.</summary>
+            /// <param name="accountId">Account ID for the remarketing audience to retrieve.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID for the remarketing audience to retrieve.</param>
+            public virtual ListRequest List(string accountId, string webPropertyId)
+            {
+                return new ListRequest(service, accountId, webPropertyId);
+            }
+
+            /// <summary>Lists remarketing audiences to which the user has access.</summary>
+            public class ListRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudiences>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID for the remarketing audience to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID for the remarketing audience to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+                /// <summary>The maximum number of remarketing audiences to include in this response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("max-results", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> MaxResults { get; set; }
+
+                /// <summary>An index of the first entity to retrieve. Use this parameter as a pagination mechanism
+                /// along with the max-results parameter.</summary>
+                /// [minimum: 1]
+                [Google.Apis.Util.RequestParameterAttribute("start-index", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> StartIndex { get; set; }
+
+
+                /// [default: all]
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Type { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "max-results", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "max-results",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "start-index", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "start-index",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "all",
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates an existing remarketing audiences. This method supports patch semantics.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID for the remarketing audience to update.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID for the remarketing audience to update.</param>
+            /// <param
+            /// name="remarketingAudienceId">Remarketing audience ID of the remarketing audience to update.</param>
+            public virtual PatchRequest Patch(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
+            {
+                return new PatchRequest(service, body, accountId, webPropertyId, remarketingAudienceId);
+            }
+
+            /// <summary>Updates an existing remarketing audiences. This method supports patch semantics.</summary>
+            public class PatchRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    RemarketingAudienceId = remarketingAudienceId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID for the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID for the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+                /// <summary>Remarketing audience ID of the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("remarketingAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string RemarketingAudienceId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "remarketingAudienceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates an existing remarketing audiences.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID for the remarketing audience to update.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID for the remarketing audience to update.</param>
+            /// <param
+            /// name="remarketingAudienceId">Remarketing audience ID of the remarketing audience to update.</param>
+            public virtual UpdateRequest Update(Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
+            {
+                return new UpdateRequest(service, body, accountId, webPropertyId, remarketingAudienceId);
+            }
+
+            /// <summary>Updates an existing remarketing audiences.</summary>
+            public class UpdateRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.RemarketingAudience>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.RemarketingAudience body, string accountId, string webPropertyId, string remarketingAudienceId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    RemarketingAudienceId = remarketingAudienceId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID for the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID for the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+                /// <summary>Remarketing audience ID of the remarketing audience to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("remarketingAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string RemarketingAudienceId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Analytics.v3.Data.RemarketingAudience Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "remarketingAudienceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly SegmentsResource segments;
 
         /// <summary>Gets the Segments resource.</summary>
@@ -11111,6 +11630,86 @@ namespace Google.Apis.Analytics.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>JSON template for an Analytics Remarketing Include Conditions.</summary>
+    public class IncludeConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The look-back window lets you specify a time frame for evaluating the behavior that qualifies users
+        /// for your audience. For example, if your filters include users from Central Asia, and Transactions Greater
+        /// than 2, and you set the look-back window to 14 days, then any user from Central Asia whose cumulative
+        /// transactions exceed 2 during the last 14 days is added to the audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysToLookBack")]
+        public virtual System.Nullable<int> DaysToLookBack { get; set; } 
+
+        /// <summary>Boolean indicating whether this segment is a smart list.
+        /// https://support.google.com/analytics/answer/4628577</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSmartList")]
+        public virtual System.Nullable<bool> IsSmartList { get; set; } 
+
+        /// <summary>Resource type for include conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Number of days a user remains in the audience. Use any integer from 1-540. In remarketing audiences
+        /// for search ads, membership duration is truncated to 180 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
+        public virtual System.Nullable<int> MembershipDurationDays { get; set; } 
+
+        /// <summary>The segment condition that will cause a user to be added to an audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual string Segment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for an Analytics Remarketing Audience Foreign Link.</summary>
+    public class LinkedForeignAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Account ID to which this linked foreign account belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>Boolean indicating whether this is eligible for search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibleForSearch")]
+        public virtual System.Nullable<bool> EligibleForSearch { get; set; } 
+
+        /// <summary>Entity ad account link ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Internal ID for the web property to which this linked foreign account belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
+        public virtual string InternalWebPropertyId { get; set; } 
+
+        /// <summary>Resource type for linked foreign account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The foreign account ID. For example the an AdWords `linkedAccountId` has the following format XXX-
+        /// XXX-XXXX.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
+        public virtual string LinkedAccountId { get; set; } 
+
+        /// <summary>Remarketing audience ID to which this linked foreign account belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingAudienceId")]
+        public virtual string RemarketingAudienceId { get; set; } 
+
+        /// <summary>The status of this foreign account link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The type of the foreign account. For example `ADWORDS_LINKS`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Web property ID of the form UA-XXXXX-YY to which this linked foreign account belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
+        public virtual string WebPropertyId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Multi-Channel Funnels data for a given view (profile).</summary>
     public class McfData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11799,6 +12398,181 @@ namespace Google.Apis.Analytics.v3.Data
             public virtual System.Collections.Generic.IList<string> Sort { get; set; } 
 
         }
+    }    
+
+    /// <summary>JSON template for an Analytics remarketing audience.</summary>
+    public class RemarketingAudience : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Account ID to which this remarketing audience belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The simple audience definition that will cause a user to be added to an audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceDefinition")]
+        public virtual RemarketingAudience.AudienceDefinitionData AudienceDefinition { get; set; } 
+
+        /// <summary>The type of audience, either SIMPLE or STATE_BASED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
+        public virtual string AudienceType { get; set; } 
+
+        /// <summary>Time this remarketing audience was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("created")]
+        public virtual string CreatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> Created
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedRaw);
+            }
+            set
+            {
+                CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The description of this remarketing audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Remarketing Audience ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Internal ID for the web property to which this remarketing audience belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalWebPropertyId")]
+        public virtual string InternalWebPropertyId { get; set; } 
+
+        /// <summary>Collection type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The linked ad accounts associated with this remarketing audience. A remarketing audience can have
+        /// only one linkedAdAccount currently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedAdAccounts")]
+        public virtual System.Collections.Generic.IList<LinkedForeignAccount> LinkedAdAccounts { get; set; } 
+
+        /// <summary>The views (profiles) that this remarketing audience is linked to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedViews")]
+        public virtual System.Collections.Generic.IList<string> LinkedViews { get; set; } 
+
+        /// <summary>The name of this remarketing audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A state based audience definition that will cause a user to be added or removed from an
+        /// audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateBasedAudienceDefinition")]
+        public virtual RemarketingAudience.StateBasedAudienceDefinitionData StateBasedAudienceDefinition { get; set; } 
+
+        /// <summary>Time this remarketing audience was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
+        public virtual string UpdatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> Updated
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
+            }
+            set
+            {
+                UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
+        public virtual string WebPropertyId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>The simple audience definition that will cause a user to be added to an audience.</summary>
+        public class AudienceDefinitionData
+        {
+            /// <summary>Defines the conditions to include users to the audience.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("includeConditions")]
+            public virtual IncludeConditions IncludeConditions { get; set; } 
+
+        }    
+
+        /// <summary>A state based audience definition that will cause a user to be added or removed from an
+        /// audience.</summary>
+        public class StateBasedAudienceDefinitionData
+        {
+            /// <summary>Defines the conditions to exclude users from the audience.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("excludeConditions")]
+            public virtual StateBasedAudienceDefinitionData.ExcludeConditionsData ExcludeConditions { get; set; } 
+
+            /// <summary>Defines the conditions to include users to the audience.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("includeConditions")]
+            public virtual IncludeConditions IncludeConditions { get; set; } 
+
+            
+
+            /// <summary>Defines the conditions to exclude users from the audience.</summary>
+            public class ExcludeConditionsData
+            {
+                /// <summary>Whether to make the exclusion TEMPORARY or PERMANENT.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("exclusionDuration")]
+                public virtual string ExclusionDuration { get; set; } 
+
+                /// <summary>The segment condition that will cause a user to be removed from an audience.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+                public virtual string Segment { get; set; } 
+
+            }
+        }
+    }    
+
+    /// <summary>A remarketing audience collection lists Analytics remarketing audiences to which the user has access.
+    /// Each resource in the collection corresponds to a single Analytics remarketing audience.</summary>
+    public class RemarketingAudiences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of remarketing audiences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<RemarketingAudience> Items { get; set; } 
+
+        /// <summary>The maximum number of resources the response can contain, regardless of the actual number of
+        /// resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified
+        /// by the max-results query parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemsPerPage")]
+        public virtual System.Nullable<int> ItemsPerPage { get; set; } 
+
+        /// <summary>Collection type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Link to next page for this remarketing audience collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
+        public virtual string NextLink { get; set; } 
+
+        /// <summary>Link to previous page for this view (profile) collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousLink")]
+        public virtual string PreviousLink { get; set; } 
+
+        /// <summary>The starting index of the resources, which is 1 by default or otherwise specified by the start-
+        /// index query parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; } 
+
+        /// <summary>The total number of results for the query, regardless of the number of results in the
+        /// response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalResults")]
+        public virtual System.Nullable<int> TotalResults { get; set; } 
+
+        /// <summary>Email ID of the authenticated user</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>JSON template for an Analytics segment.</summary>

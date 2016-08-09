@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160706 (552)
+ *      <tr><th>API Rev<td>20160802 (579)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -908,6 +908,15 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual Entity Entity { get; set; } 
 
+        /// <summary>The version of the entity, a strictly positive number that monotonically increases with changes to
+        /// the entity.
+        ///
+        /// This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is the version
+        /// of the snapshot that was used to look up the entity, and it is always set except for eventually consistent
+        /// reads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<long> Version { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1086,6 +1095,11 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>A mutation to apply to an entity.</summary>
     public class Mutation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The version of the entity that this mutation is being applied to. If this does not match the
+        /// current version on the server, the mutation conflicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseVersion")]
+        public virtual System.Nullable<long> BaseVersion { get; set; } 
+
         /// <summary>The key of the entity to delete. The entity may or may not already exist. Must have a complete key
         /// path and must not be reserved/read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delete")]
@@ -1112,9 +1126,21 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The result of applying a mutation.</summary>
     public class MutationResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether a conflict was detected for this mutation. Always false when a conflict detection strategy
+        /// field is not set in the mutation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictDetected")]
+        public virtual System.Nullable<bool> ConflictDetected { get; set; } 
+
         /// <summary>The automatically allocated key. Set only when the mutation allocated a key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual Key Key { get; set; } 
+
+        /// <summary>The version of the entity on the server after processing the mutation. If the mutation doesn't
+        /// change anything on the server, then the version will be the version of the current entity or, if no entity
+        /// is present, a version that is strictly greater than the version of any previous entity and less than the
+        /// version of any possible future entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<long> Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1306,6 +1332,15 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The number of results skipped, typically because of an offset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedResults")]
         public virtual System.Nullable<int> SkippedResults { get; set; } 
+
+        /// <summary>The version number of the snapshot this batch was returned from. This applies to the range of
+        /// results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this
+        /// batch's `end_cursor` (not the query's `end_cursor`).
+        ///
+        /// In a single transaction, subsequent query result batches for the same query can have a greater snapshot
+        /// version number. Each batch's snapshot version is valid for all preceding batches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotVersion")]
+        public virtual System.Nullable<long> SnapshotVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
