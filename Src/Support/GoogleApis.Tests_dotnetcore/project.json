@@ -19,8 +19,7 @@
       ],
       "exclude": [
         // Excluded until they don't cause a huge delay on CI
-        "../GoogleApis.Tests/Apis/Upload/**",
-        "../GoogleApis.Tests/Apis/Download/**"
+        "../GoogleApis.Tests/Apis/Upload/ImprovedResumableUploadTest.cs",
       ]
     },
     "define": [ "NETSTANDARD" ]
