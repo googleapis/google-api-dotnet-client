@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160803 (580)
+ *      <tr><th>API Rev<td>20160809 (586)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -4736,6 +4736,14 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The annotations to be created. At most 4096 can be specified in a single request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; } 
+
+        /// <summary>A unique request ID which enables the server to detect duplicated requests. If provided, duplicated
+        /// requests will result in the same response; if not provided, duplicated requests may result in duplicated
+        /// data. For a given annotation set, callers should not reuse `request_id`s when writing different batches of
+        /// annotations - behavior in this case is undefined. A common approach is to use a UUID. For batch jobs where
+        /// worker crashes are a possibility, consider using some unique variant of a worker or run ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

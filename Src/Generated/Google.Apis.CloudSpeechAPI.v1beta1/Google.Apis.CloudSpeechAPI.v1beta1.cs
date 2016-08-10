@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160726 (572)
+ *      <tr><th>API Rev<td>20160809 (586)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -943,8 +943,10 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
     /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
     public class SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] A list of up to 50 phrases of up to 100 characters each to provide words and phrases
-        /// "hints" to the speech recognition so that it is more likely to recognize them.</summary>
+        /// <summary>[Optional] A list of strings containing words and phrases "hints" so that the speech recognition is
+        /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
+        /// example, if specific commands are typically spoken by the user. This can also be used to add additional
+        /// words to the vocabulary of the recognizer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
         public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
 

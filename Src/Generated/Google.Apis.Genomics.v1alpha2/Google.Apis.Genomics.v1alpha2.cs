@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160803 (580)
+ *      <tr><th>API Rev<td>20160809 (586)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -999,18 +999,18 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Sets status of a given operation. All timestamps are sent on each call, and the whole series of
-        /// events is replaced, in case intermediate calls are lost. Should only be called by VMs created by the
-        /// Pipelines Service and not by end users.</summary>
+        /// <summary>Sets status of a given operation. Any new timestamps (as determined by description) are appended to
+        /// TimestampEvents. Should only be called by VMs created by the Pipelines Service and not by end
+        /// users.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SetOperationStatusRequest SetOperationStatus(Google.Apis.Genomics.v1alpha2.Data.SetOperationStatusRequest body)
         {
             return new SetOperationStatusRequest(service, body);
         }
 
-        /// <summary>Sets status of a given operation. All timestamps are sent on each call, and the whole series of
-        /// events is replaced, in case intermediate calls are lost. Should only be called by VMs created by the
-        /// Pipelines Service and not by end users.</summary>
+        /// <summary>Sets status of a given operation. Any new timestamps (as determined by description) are appended to
+        /// TimestampEvents. Should only be called by VMs created by the Pipelines Service and not by end
+        /// users.</summary>
         public class SetOperationStatusRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
         {
             /// <summary>Constructs a new SetOperationStatus request.</summary>

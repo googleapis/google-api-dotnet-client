@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160714 (560)
+ *      <tr><th>API Rev<td>20160809 (586)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -788,8 +788,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilterClauses")]
         public virtual System.Collections.Generic.IList<DimensionFilterClause> DimensionFilterClauses { get; set; } 
 
-        /// <summary>A list of dimensions to show as pivot columns. A Pivot can have a maximum of 4
-        /// dimensions.</summary>
+        /// <summary>A list of dimensions to show as pivot columns. A Pivot can have a maximum of 4 dimensions. Pivot
+        /// dimensions are part of the restriction on the total number of dimensions allowed in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; } 
 
@@ -798,8 +798,8 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxGroupCount")]
         public virtual System.Nullable<int> MaxGroupCount { get; set; } 
 
-        /// <summary>The pivot metrics. Pivot metrics are part of the restriction on total number of metrics in the
-        /// request.</summary>
+        /// <summary>The pivot metrics. Pivot metrics are part of the restriction on total number of metrics allowed in
+        /// the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; } 
 
