@@ -13,6 +13,10 @@
     <NuGetConfig>$(MSBuildThisFileDirectory)NuGet.Config</NuGetConfig>
   </PropertyGroup>
   
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">ReleaseSigned</Configuration>
+  </PropertyGroup>
+
   <Target Name="NuGetRestore">
     <!-- restore nuget packages into packages directory, using our NuGet.Config -->
     <Exec Command="nuget restore &quot;%(SolutionFile.FullPath)&quot; -PackagesDirectory $(PackagesDir) -ConfigFile $(NuGetConfig)" />
@@ -28,7 +32,7 @@
         Projects="@(SolutionFile)"
         BuildInParallel="True"
         Targets="Build"
-        Properties="Configuration=ReleaseSigned;NugetPackagesDirectory=$(PackagesDir);NoWarn=$(NoWarn)" />
+        Properties="Configuration=$(Configuration);NugetPackagesDirectory=$(PackagesDir);NoWarn=$(NoWarn)" />
   </Target>
 
   <!--

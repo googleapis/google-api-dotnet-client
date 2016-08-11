@@ -586,9 +586,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
                 var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
-#if !NETSTANDARD // "uploader.BufferSize" is internal
                 uploader.BufferSize = bufferSize;
-#endif
                 var progress = uploader.Upload();
                 int sanity = 0;
                 while (progress.Status == UploadStatus.Failed && sanity++ < 10)

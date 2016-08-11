@@ -358,7 +358,6 @@ Content-Length: 202
             }
         }
 
-#if !NETSTANDARD // "BatchRequest.CreateOuterRequestContent" is internal
         [Test]
         public void CreateOuterRequestContent_Test()
         {
@@ -431,7 +430,6 @@ hello world
             var requestStr = BatchRequest.CreateRequestContentString(request).Result;
             Assert.AreEqual(expectedMessage, NormalizeLineEndings(requestStr));
         }
-#endif
 
         // Line endings in HttpContent are different between mono & .NET.
         private static string NormalizeLineEndings(string s) {

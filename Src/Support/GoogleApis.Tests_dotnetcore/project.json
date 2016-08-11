@@ -23,10 +23,7 @@
         "../GoogleApis.Tests/Apis/Download/**"
       ]
     },
-    "define": [ "NETSTANDARD" ]
-  },
-
-  "compilationOptions": {
+    "define": [ "NETSTANDARD;SIGNED" ],
     "keyFile": "../../../google.apis.snk"
   },
 
