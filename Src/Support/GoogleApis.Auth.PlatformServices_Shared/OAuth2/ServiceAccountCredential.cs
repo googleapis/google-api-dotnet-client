@@ -58,6 +58,7 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential
     {
+        private const string Sha256Oig = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
         new public class Initializer : ServiceCredential.Initializer
         {
@@ -244,7 +245,7 @@ namespace Google.Apis.Auth.OAuth2
 #if NETSTANDARD
             var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #else
-            var sigBytes = key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */);
+            var sigBytes = key.SignHash(assertionHash, Sha256Oig);
 #endif
             var signature = UrlSafeBase64Encode(sigBytes);
             assertion.Append(".").Append(signature);

@@ -57,8 +57,6 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 #else
             var signature = rsa.SignHash(hash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */);
 #endif
-            //var s = signature.Select(x => "0x" + x.ToString("x2")).Aggregate((a, b) => $"{a}, {b}");
-            //System.IO.File.WriteAllText(@"C:\Users\chrisbacon\zz.txt", s);
             var expected = new byte[]
             {
                 0x5d, 0xfc, 0x98, 0x59, 0x94, 0x64, 0x8c, 0x18, 0x54, 0x88, 0x8d, 0x65, 0xf3, 0xae, 0xdf, 0x76,

@@ -14,12 +14,12 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     internal class RsaStandard : RSA
     {
+        private readonly RsaPrivateCrtKeyParameters _parameters;
+
         public RsaStandard(RsaPrivateCrtKeyParameters parameters)
         {
             _parameters = parameters;
         }
-
-        private RsaPrivateCrtKeyParameters _parameters;
 
         public override byte[] Decrypt(byte[] data, RSAEncryptionPadding padding)
         {

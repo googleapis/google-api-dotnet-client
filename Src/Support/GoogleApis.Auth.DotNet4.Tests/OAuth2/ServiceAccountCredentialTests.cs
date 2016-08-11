@@ -42,7 +42,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 ""client_id"": ""CLIENT_ID"",
 ""type"": ""service_account""}";
 
-        var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
             var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
             {
                 Clock = new MockClock { UtcNow = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc) }
@@ -62,7 +62,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.That(accessToken, Is.EqualTo(expectedToken));
         }
 
-#if !NETSTANDARD // ServiceAccountCredential not currently supported on netstandard.
+#if !NETSTANDARD // ServiceAccountCredential initialization from X509 cert not currently supported on netstandard.
         [Test]
         public async Task ValidLocallySignedAccessToken_FromX509Certificate()
         {
