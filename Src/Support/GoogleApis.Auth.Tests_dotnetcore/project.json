@@ -14,12 +14,16 @@
 
   "buildOptions": {
     "compile": {
-      "include": [ "../GoogleApis.Auth.Tests/**/*.cs" ],
+      "include": [
+        // Combining tests from both NET45 projects into one NET Core test project.
+        "../GoogleApis.Auth.Tests/**/*.cs",
+        "../GoogleApis.Auth.DotNet4.Tests/**/*.cs"
+      ],
+      "exclude": [
+        "../**/AssemblyInfo.cs", // Not needed for test, two of them collide
+      ]
     },
-    "define": [ "NETSTANDARD" ]
-  },
-
-  "compilationOptions": {
+    "define": [ "NETSTANDARD;SIGNED" ],
     "keyFile": "../../../google.apis.snk"
   },
 

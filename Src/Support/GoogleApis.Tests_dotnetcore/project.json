@@ -22,10 +22,7 @@
         "../GoogleApis.Tests/Apis/Upload/ImprovedResumableUploadTest.cs",
       ]
     },
-    "define": [ "NETSTANDARD" ]
-  },
-
-  "compilationOptions": {
+    "define": [ "NETSTANDARD;SIGNED" ],
     "keyFile": "../../../google.apis.snk"
   },
 

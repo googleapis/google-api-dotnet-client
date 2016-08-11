@@ -14,8 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if !NETSTANDARD // RSACryptoServiceProvider is not supported on Linux. TODO: Use alternative
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +30,12 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
 using Org.BouncyCastle.Math;
+
+#if NETSTANDARD
+using RsaKey = System.Security.Cryptography.RSA;
+#else
+using RsaKey = System.Security.Cryptography.RSACryptoServiceProvider;
+#endif
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -54,6 +58,7 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential
     {
+        private const string Sha256Oig = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
         new public class Initializer : ServiceCredential.Initializer
         {
@@ -73,7 +78,7 @@ namespace Google.Apis.Auth.OAuth2
             /// Gets or sets the key which is used to sign the request, as specified in
             /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
             /// </summary>
-            public RSACryptoServiceProvider Key { get; set; }
+            public RsaKey Key { get; set; }
 
             /// <summary>Constructs a new initializer using the given id.</summary>
             public Initializer(string id)
@@ -89,39 +94,33 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
             public Initializer FromPrivateKey(string privateKey)
             {
+#if NETSTANDARD
+                RsaPrivateCrtKeyParameters parameters = ConvertPKCS8ToRsaPrivateCrtKeyParameters(privateKey);
+                Key = new RsaStandard(parameters);
+#else
                 RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportParameters(rsaParameters);
+#endif
                 return this;
             }
 
+#if !NETSTANDARD // ServiceACcountCredential initialization from X509 cert not currently supported.
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
-#if NETSTANDARD
-                RSA rsa = certificate.GetRSAPrivateKey();
-                RSAParameters rsaParameters = rsa.ExportParameters(true);
-                Key = new RSACryptoServiceProvider();
-                Key.ImportParameters(rsaParameters);
-#else
                 // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
                 RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
                 byte[] privateKeyBlob = rsa.ExportCspBlob(true);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportCspBlob(privateKeyBlob);
-#endif
                 return this;
             }
+#endif
         }
-
-#region Constants
 
         private const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
         private const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
-
-#endregion
-
-#region Readonly fields
 
         /// <summary>Unix epoch as a <c>DateTime</c></summary>
         protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -129,9 +128,7 @@ namespace Google.Apis.Auth.OAuth2
         private readonly string id;
         private readonly string user;
         private readonly IEnumerable<string> scopes;
-        private readonly RSACryptoServiceProvider key;
-
-#endregion
+        private readonly RsaKey key;
 
         /// <summary>Gets the service account ID (typically an e-mail address).</summary>
         public string Id { get { return id; } }
@@ -149,7 +146,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets the key which is used to sign the request, as specified in
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
         /// </summary>
-        public RSACryptoServiceProvider Key { get { return key; } }
+        public RsaKey Key { get { return key; } }
 
         /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
         internal bool HasScopes { get { return scopes != null && scopes.Any(); } }
@@ -162,8 +159,6 @@ namespace Google.Apis.Auth.OAuth2
             scopes = initializer.Scopes;
             key = initializer.Key.ThrowIfNull("initializer.Key");
         }
-
-#region ServiceCredential overrides
 
         /// <summary>
         /// Requests a new token as specified in 
@@ -192,7 +187,7 @@ namespace Google.Apis.Auth.OAuth2
         /// If <paramref name="authUri"/> is set and this credential has no scopes associated
         /// with it, a locally signed JWT access token for given <paramref name="authUri"/>
         /// is returned. Otherwise, an OAuth2 access token obtained from token server will be returned.
-        /// A cached token is used if possible and the token is only refreshed once its close to its expiry.
+        /// A cached token is used if possible and the token is only refreshed once it's close to its expiry.
         /// </summary>
         /// <param name="authUri">The URI the returned token will grant access to.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
@@ -208,8 +203,6 @@ namespace Google.Apis.Auth.OAuth2
             }
             return await base.GetAccessTokenForRequestAsync(authUri, cancellationToken).ConfigureAwait(false);
         }
-
-#endregion
     
         /// <summary>
         /// Creates a JWT access token than can be used in request headers instead of an OAuth2 token.
@@ -249,8 +242,12 @@ namespace Google.Apis.Auth.OAuth2
             // Sign the header and the payload.
             var hashAlg = SHA256.Create();
             byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
-
-            var signature = UrlSafeBase64Encode(key.SignHash(assertionHash, "2.16.840.1.101.3.4.2.1" /* SHA256 OIG */)); 
+#if NETSTANDARD
+            var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+#else
+            var sigBytes = key.SignHash(assertionHash, Sha256Oig);
+#endif
+            var signature = UrlSafeBase64Encode(sigBytes);
             assertion.Append(".").Append(signature);
             return assertion.ToString();
         }
@@ -273,14 +270,22 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
         /// </summary>
-        private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
+        private static RsaPrivateCrtKeyParameters ConvertPKCS8ToRsaPrivateCrtKeyParameters(string pkcs8PrivateKey)
         {
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
             var base64PrivateKey = pkcs8PrivateKey.Replace(PrivateKeyPrefix, "").Replace("\n", "")
                 .Replace(PrivateKeySuffix, "");
             var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
-            RsaPrivateCrtKeyParameters crtParameters =
-                (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+            return (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
+        }
+
+        /// <summary>
+        /// Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
+        /// </summary>
+        private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
+        {
+            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
+            RsaPrivateCrtKeyParameters crtParameters = ConvertPKCS8ToRsaPrivateCrtKeyParameters(pkcs8PrivateKey);
             var rp = new RSAParameters();
             rp.Modulus = crtParameters.Modulus.ToByteArrayUnsigned();
             rp.Exponent = crtParameters.PublicExponent.ToByteArrayUnsigned();
@@ -343,4 +348,3 @@ namespace Google.Apis.Auth.OAuth2
         }
     }
 }
-#endif
