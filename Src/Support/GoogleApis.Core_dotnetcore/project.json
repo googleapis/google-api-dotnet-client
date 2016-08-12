@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1",
+    "System.Collections": "4.0.11",
+    "System.Diagnostics.Debug": "4.0.11",
+    "System.Globalization": "4.0.11",
+    "System.IO": "4.1.0",
+    "System.Linq": "4.1.0",
+    "System.Net.Http": "4.1.0",
+    "System.Net.Primitives": "4.0.11",
+    "System.Reflection": "4.1.0",
+    "System.Reflection.Extensions": "4.0.1",
+    "System.Reflection.TypeExtensions": "4.1.0",
+    "System.Runtime": "4.1.0",
+    "System.Runtime.Extensions": "4.1.0",
+    "System.Text.RegularExpressions": "4.1.0",
+    "System.Threading": "4.0.11",
+    "System.Threading.Tasks": "4.0.11"
+  },
+
+  "buildOptions": {
+    "compile": {
+      "include": [
+        "../GoogleApis.Core/*.cs",
+        "../GoogleApis.Core/Apis/**/*.cs",
+        "../GoogleApis.Core/NetStandard/**/*.cs"
+      ],
+    },
+    "define": [ "NETSTANDARD;SIGNED" ],
+    "keyFile": "../../../google.apis.snk"
+  },
+
+  "frameworks": {
+    "netstandard1.3": {
+    }
+  }
+}
