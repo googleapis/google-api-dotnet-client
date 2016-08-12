@@ -62,10 +62,42 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.That(accessToken, Is.EqualTo(expectedToken));
         }
 
-#if !NETSTANDARD // ServiceAccountCredential initialization from X509 cert not currently supported on netstandard.
         [Test]
         public async Task ValidLocallySignedAccessToken_FromX509Certificate()
         {
+#if NETSTANDARD
+            const string sPfx = @"
+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";
+
+            var x509Cert = new X509Certificate2(Convert.FromBase64String(sPfx));
+#else
             const string sPrivateKey = @"
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALQoMIfUT93VMvb5
 4U5dsJLXD1D6z4o/VuVlNUaf5xH01qAv8Egpxe6f5frLB/p1eNyDjNIZ3QitD6aN
@@ -101,6 +133,8 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
             var privateKey = new System.Security.Cryptography.RSACryptoServiceProvider();
             privateKey.ImportParameters(rsaParameters);
             x509Cert.PrivateKey = privateKey;
+#endif
+            Assert.That(x509Cert.HasPrivateKey);
 
             var initializer = new ServiceAccountCredential.Initializer("some-id")
             {
@@ -120,6 +154,5 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
                 "jKy4x1K20ybLqcnNgzE0wag6fi5GHwdNIB0URdHDTiC88CRYdl1CIdk";
             Assert.That(accessToken, Is.EqualTo(expectedToken));
         }
-#endif
     }
 }

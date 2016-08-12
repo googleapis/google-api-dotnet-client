@@ -105,18 +105,20 @@ namespace Google.Apis.Auth.OAuth2
                 return this;
             }
 
-#if !NETSTANDARD // ServiceACcountCredential initialization from X509 cert not currently supported.
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
+#if NETSTANDARD
+                Key = certificate.GetRSAPrivateKey();
+#else
                 // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
                 RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
                 byte[] privateKeyBlob = rsa.ExportCspBlob(true);
                 Key = new RSACryptoServiceProvider();
                 Key.ImportCspBlob(privateKeyBlob);
+#endif
                 return this;
             }
-#endif
         }
 
         private const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
