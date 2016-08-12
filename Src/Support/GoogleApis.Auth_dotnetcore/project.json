@@ -1,6 +1,10 @@
-﻿{
-  "supports": {},
+{
+  "version": "1.0.0-*",
+
   "dependencies": {
+    "GoogleApis.Core_dotnetcore": {
+      "target": "project"
+    },
     "Portable.BouncyCastle": "1.8.1.1",
     "System.Collections": "4.0.11",
     "System.Console": "4.0.0",
@@ -17,7 +21,22 @@
     "System.Text.Encoding": "4.0.11",
     "System.Threading.Tasks": "4.0.11"
   },
+
+  "buildOptions": {
+    "compile": {
+      "include": [
+        "../GoogleApis.Auth/*.cs",
+        "../GoogleApis.Auth/OAuth2/**/*.cs",
+        "../GoogleApis.Auth.PlatformServices_Shared/**/*.cs",
+        "../GoogleApis.Auth.NetStandard/**/*.cs"
+      ]
+    },
+    "define": [ "NETSTANDARD;SIGNED" ],
+    "keyFile": "../../../google.apis.snk"
+  },
+
   "frameworks": {
-    "netstandard1.3": {}
+    "netstandard1.3": {
+    }
   }
 }

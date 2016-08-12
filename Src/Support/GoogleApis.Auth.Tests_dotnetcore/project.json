@@ -2,8 +2,12 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Google.Apis.Core": "1.15",
-    "Google.Apis.Auth": "1.15",
+    "GoogleApis.Core_dotnetcore": {
+      "target": "project"
+    },
+    "GoogleApis.Auth_dotnetcore": {
+      "target": "project"
+    },
     "GoogleApis.Tests_dotnetcore": {
       "target": "project"
     },

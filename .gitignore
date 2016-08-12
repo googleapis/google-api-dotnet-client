@@ -10,6 +10,7 @@ Backup*
 .vs
 project.lock.json
 *~
+.DS_Store
 
 msbuild.log
 TestResult.xml
