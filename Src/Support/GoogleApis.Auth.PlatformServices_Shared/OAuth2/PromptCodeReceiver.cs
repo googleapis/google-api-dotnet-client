@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,8 +39,15 @@ namespace Google.Apis.Auth.OAuth2
         {
             var authorizationUrl = url.Build().ToString();
 
+#if NETSTANDARD
+            Logger.Debug("Requested user open a browser with \"{0}\" URL", authorizationUrl);
+            Console.WriteLine("Please visit the following URL in a web browser, then enter the code shown after authorization:");
+            Console.WriteLine(authorizationUrl);
+            Console.WriteLine();
+#else
             Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
-            Process.Start(authorizationUrl);
+            System.Diagnostics.Process.Start(authorizationUrl);
+#endif
 
             string code = string.Empty;
             while (string.IsNullOrEmpty(code))
