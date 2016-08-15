@@ -43,7 +43,6 @@
           <dependency id="System.Collections" version="4.0.11" />
           <dependency id="System.Console" version="4.0.0" />
           <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-          <dependency id="System.Diagnostics.Process" version="4.1.0" />
           <dependency id="System.IO" version="4.1.0" />
           <dependency id="System.IO.FileSystem" version="4.0.1" />
           <dependency id="System.IO.FileSystem.Primitives" version="4.0.1" />
