@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160803 (580)
+ *      <tr><th>API Rev<td>20160808 (585)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -468,8 +468,8 @@ namespace Google.Apis.ServiceManagement.v1
             /// the service configuration. To roll out the service configuration to backend systems please call
             /// CreateServiceRollout.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Service body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -490,8 +490,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -539,8 +539,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             /// <param name="configId"></param>
             public virtual GetRequest Get(string serviceName, string configId)
             {
@@ -560,8 +560,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -617,8 +617,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration for a managed service, from the newest to the
             /// oldest.</summary>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -637,8 +637,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -712,8 +712,8 @@ namespace Google.Apis.ServiceManagement.v1
             ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             public virtual SubmitRequest Submit(Google.Apis.ServiceManagement.v1.Data.SubmitConfigSourceRequest body, string serviceName)
             {
                 return new SubmitRequest(service, body, serviceName);
@@ -737,8 +737,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -815,8 +815,8 @@ namespace Google.Apis.ServiceManagement.v1
             ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             public virtual CreateRequest Create(Google.Apis.ServiceManagement.v1.Data.Rollout body, string serviceName)
             {
                 return new CreateRequest(service, body, serviceName);
@@ -839,8 +839,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -888,8 +888,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
             /// <summary>Gets a service configuration rollout.</summary>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             /// <param name="rolloutId">The id of the rollout
             /// resource.</param>
             public virtual GetRequest Get(string serviceName, string rolloutId)
@@ -910,8 +910,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -967,8 +967,8 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Lists the history of the service configuration rollouts for a managed service, from the newest
             /// to the oldest.</summary>
-            /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</param>
+            /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</param>
             public virtual ListRequest List(string serviceName)
             {
                 return new ListRequest(service, serviceName);
@@ -987,8 +987,8 @@ namespace Google.Apis.ServiceManagement.v1
                 }
 
 
-                /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-                /// example: `example.googleapis.com`.</summary>
+                /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+                /// requirements.  For example: `example.googleapis.com`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
@@ -1118,8 +1118,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// the service will be permanently deleted.
         ///
         /// Operation</summary>
-        /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-        /// example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+        /// requirements.  For example: `example.googleapis.com`.</param>
         public virtual DeleteRequest Delete(string serviceName)
         {
             return new DeleteRequest(service, serviceName);
@@ -1141,8 +1141,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</summary>
+            /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1461,8 +1461,8 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>Gets a service configuration (version) for a managed service.</summary>
-        /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-        /// example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
+        /// requirements.  For example: `example.googleapis.com`.</param>
         public virtual GetConfigRequest GetConfig(string serviceName)
         {
             return new GetConfigRequest(service, serviceName);
@@ -1480,8 +1480,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service.  See the `ServiceManager` overview for naming requirements.  For
-            /// example: `example.googleapis.com`.</summary>
+            /// <summary>The name of the service.  See the [overview](/service-management/overview) for naming
+            /// requirements.  For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1836,8 +1836,8 @@ namespace Google.Apis.ServiceManagement.v1
         /// within the last 30 days.
         ///
         /// Operation</summary>
-        /// <param name="serviceName">The name of the service. See the `ServiceManager` overview for naming requirements. For
-        /// example: `example.googleapis.com`.</param>
+        /// <param name="serviceName">The name of the service. See the [overview](/service-management/overview) for naming
+        /// requirements. For example: `example.googleapis.com`.</param>
         public virtual UndeleteRequest Undelete(string serviceName)
         {
             return new UndeleteRequest(service, serviceName);
@@ -1859,8 +1859,8 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The name of the service. See the `ServiceManager` overview for naming requirements. For
-            /// example: `example.googleapis.com`.</summary>
+            /// <summary>The name of the service. See the [overview](/service-management/overview) for naming
+            /// requirements. For example: `example.googleapis.com`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -2283,13 +2283,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A set of options to cover use of source config within `ServiceManager` and related tools.</summary>
-    public class ConfigOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents a service configuration with its name and id.</summary>
     public class ConfigRef : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2315,10 +2308,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// purpose. If empty, the server may choose to generate one instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
-
-        /// <summary>Options to cover use of source configuration within ServiceManager and tools</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("options")]
-        public virtual ConfigOptions Options { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3118,8 +3107,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
-        /// <summary>The name of the service. See the [overview](/service-management/overview) for naming requirements.
-        /// This name must match `google.api.Service.name` in the `service_config` field.</summary>
+        /// <summary>The name of the service. See the [overview](/service-management/overview) for naming
+        /// requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; } 
 

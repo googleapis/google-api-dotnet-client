@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160809 (586)
+ *      <tr><th>API Rev<td>20160812 (589)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -878,7 +878,8 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
     }    
 
     /// <summary>Contains audio data in the encoding specified in the `RecognitionConfig`. Either `content` or `uri`
-    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT.</summary>
+    /// must be supplied. Supplying both or neither returns google.rpc.Code.INVALID_ARGUMENT. See [audio
+    /// limits](https://cloud.google.com/speech/limits#content).</summary>
     public class RecognitionAudio : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The audio data bytes encoded as specified in `RecognitionConfig`. Note: as with all bytes fields,
@@ -889,7 +890,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
         /// <summary>URI that points to a file that contains audio data bytes as specified in `RecognitionConfig`.
         /// Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format:
         /// `gs://bucket_name/object_name` (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more
-        /// information, see [Request URIs](/storage/docs/reference-uris).</summary>
+        /// information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -907,8 +908,8 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
 
         /// <summary>[Optional] The language of the supplied audio as a BCP-47 language tag. Example: "en-GB"
         /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt If omitted, defaults to "en-US". See [Language
-        /// Support](/speech/docs/best-practices#language_support) for a list of the currently supported language
-        /// codes.</summary>
+        /// Support](https://cloud.google.com/speech/docs/best-practices#language_support) for a list of the currently
+        /// supported language codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
@@ -946,7 +947,8 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
         /// <summary>[Optional] A list of strings containing words and phrases "hints" so that the speech recognition is
         /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
-        /// words to the vocabulary of the recognizer.</summary>
+        /// words to the vocabulary of the recognizer. See [usage
+        /// limits](https://cloud.google.com/speech/limits#content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phrases")]
         public virtual System.Collections.Generic.IList<string> Phrases { get; set; } 
 

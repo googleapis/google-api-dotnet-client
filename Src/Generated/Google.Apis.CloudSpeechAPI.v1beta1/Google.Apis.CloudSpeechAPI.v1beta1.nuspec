@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.CloudSpeechAPI.v1beta1</id>
-        <version>1.15.0.586</version>
+        <version>1.15.0.589</version>
         <title>Google.Apis.CloudSpeechAPI.v1beta1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

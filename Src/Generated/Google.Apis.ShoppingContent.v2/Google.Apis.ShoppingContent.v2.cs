@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160728 (574)
+ *      <tr><th>API Rev<td>20160808 (585)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -74,6 +74,7 @@ namespace Google.Apis.ShoppingContent.v2
             orders = new OrdersResource(this);
             products = new ProductsResource(this);
             productstatuses = new ProductstatusesResource(this);
+            shippingsettings = new ShippingsettingsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -188,6 +189,14 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual ProductstatusesResource Productstatuses
         {
             get { return productstatuses; }
+        }
+
+        private readonly ShippingsettingsResource shippingsettings;
+
+        /// <summary>Gets the Shippingsettings resource.</summary>
+        public virtual ShippingsettingsResource Shippingsettings
+        {
+            get { return shippingsettings; }
         }
     }
 
@@ -5123,6 +5132,505 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
     }
+
+    /// <summary>The "shippingsettings" collection of methods.</summary>
+    public class ShippingsettingsResource
+    {
+        private const string Resource = "shippingsettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ShippingsettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves and updates the shipping settings of multiple accounts in a single request.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.ShippingsettingsCustomBatchRequest body)
+        {
+            return new CustombatchRequest(service, body);
+        }
+
+        /// <summary>Retrieves and updates the shipping settings of multiple accounts in a single request.</summary>
+        public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsCustomBatchResponse>
+        {
+            /// <summary>Constructs a new Custombatch request.</summary>
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.ShippingsettingsCustomBatchRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.ShippingsettingsCustomBatchRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "custombatch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "shippingsettings/batch"; }
+            }
+
+            /// <summary>Initializes Custombatch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="accountId">The ID of the
+        /// account for which to get/update shipping settings.</param>
+        public virtual GetRequest Get(ulong merchantId, ulong accountId)
+        {
+            return new GetRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Retrieves the shipping settings of the account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update shipping settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/shippingsettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves supported carriers and carrier services for an account.</summary>
+        /// <param name="merchantId">The ID of the account for which to retrieve the supported carriers.</param>
+        public virtual GetsupportedcarriersRequest Getsupportedcarriers(ulong merchantId)
+        {
+            return new GetsupportedcarriersRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves supported carriers and carrier services for an account.</summary>
+        public class GetsupportedcarriersRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsGetSupportedCarriersResponse>
+        {
+            /// <summary>Constructs a new Getsupportedcarriers request.</summary>
+            public GetsupportedcarriersRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account for which to retrieve the supported carriers.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getsupportedcarriers"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/supportedCarriers"; }
+            }
+
+            /// <summary>Initializes Getsupportedcarriers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account.</param>
+        public virtual ListRequest List(ulong merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The maximum number of shipping settings to return in the response, used for paging.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The token returned by the previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/shippingsettings"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="accountId">The ID of the
+        /// account for which to get/update shipping settings.</param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
+        {
+            return new PatchRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update shipping settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.ShippingSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/shippingsettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="accountId">The ID of the
+        /// account for which to get/update shipping settings.</param>
+        public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
+        {
+            return new UpdateRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Updates the shipping settings of the account.</summary>
+        public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update shipping settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.ShippingSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/shippingsettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.ShoppingContent.v2.Data
@@ -6024,6 +6532,59 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Carrier service, such as "UPS" or "Fedex". The list of supported carriers can be retrieved via the
+        /// getSupportedCarriers method. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
+        public virtual string CarrierName { get; set; } 
+
+        /// <summary>Carrier service, such as "ground" or "2 days". The list of supported services for a carrier can be
+        /// retrieved via the getSupportedCarriers method. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
+        public virtual string CarrierService { get; set; } 
+
+        /// <summary>Additive shipping rate modifier. Can be negative. For example { "value": "1", "currency" : "USD" }
+        /// adds $1 to the rate, { "value": "-3", "currency" : "USD" } removes $3 from the rate. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatAdjustment")]
+        public virtual Price FlatAdjustment { get; set; } 
+
+        /// <summary>Name of the carrier rate. Must be unique per rate group. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Shipping origin for this carrier rate. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
+        public virtual string OriginPostalCode { get; set; } 
+
+        /// <summary>Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example
+        /// "5.4" increases the rate by 5.4%, "-3" decreases the rate by 3%. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageAdjustment")]
+        public virtual string PercentageAdjustment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CarriersCarrier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CLDR country code of the carrier (e.g., "US"). Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The name of the carrier (e.g., "UPS"). Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A list of supported services (e.g., "ground") for that carrier. Contains at least one
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Datafeed data.</summary>
     public class Datafeed : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6397,6 +6958,22 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next
+        /// day delivery. Must be greater than or equal to minTransitTimeInDays. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
+        public virtual System.Nullable<long> MaxTransitTimeInDays { get; set; } 
+
+        /// <summary>Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next
+        /// day delivery. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
+        public virtual System.Nullable<long> MinTransitTimeInDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An error returned by the API.</summary>
     public class Error : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6430,6 +7007,44 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The message of the first error in errors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A non-empty list of row or column headers for a table. Exactly one of prices, weights, numItems,
+    /// postalCodeGroupNames, or locations must be set.</summary>
+    public class Headers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of location ID sets. Must be non-empty. Can only be set if all other fields are not
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<LocationIdSet> Locations { get; set; } 
+
+        /// <summary>A list of inclusive number of items upper bounds. The last value can be "infinity". For example
+        /// ["10", "50", "infinity"] represents the headers "<= 10 items", " 50 items". Must be non-empty. Can only be
+        /// set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfItems")]
+        public virtual System.Collections.Generic.IList<string> NumberOfItems { get; set; } 
+
+        /// <summary>A list of postal group names. The last value can be "all other locations". Example: ["zone 1",
+        /// "zone 2", "all other locations"]. The referred postal code groups must match the delivery country of the
+        /// service. Must be non-empty. Can only be set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
+
+        /// <summary>be "infinity". For example [{"value": "10", "currency": "USD"}, {"value": "500", "currency":
+        /// "USD"}, {"value": "infinity", "currency": "USD"}] represents the headers "<= $10", " $500". All prices
+        /// within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prices")]
+        public virtual System.Collections.Generic.IList<Price> Prices { get; set; } 
+
+        /// <summary>be "infinity". For example [{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value":
+        /// "infinity", "unit": "kg"}] represents the headers "<= 10kg", " 50kg". All weights within a service must have
+        /// the same unit. Must be non-empty. Can only be set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weights")]
+        public virtual System.Collections.Generic.IList<Weight> Weights { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6614,6 +7229,17 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// "content#inventorySetResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LocationIdSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A non-empty list of location IDs. They must all be of the same location type (e.g.,
+        /// state).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationIds")]
+        public virtual System.Collections.Generic.IList<string> LocationIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7844,6 +8470,43 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class PostalCodeGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CLDR territory code of the country the postal code group applies to. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The name of the postal code group, referred to in headers. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A range of postal codes. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRanges")]
+        public virtual System.Collections.Generic.IList<PostalCodeRange> PostalCodeRanges { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range
+        /// defining the area. Examples values: "94108", "9410*", "9*". Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeBegin")]
+        public virtual string PostalCodeRangeBegin { get; set; } 
+
+        /// <summary>A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range
+        /// defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal
+        /// code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then
+        /// postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is
+        /// defined as being all the postal codes matching postalCodeRangeBegin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeRangeEnd")]
+        public virtual string PostalCodeRangeEnd { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Price : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The currency of the price.</summary>
@@ -8643,6 +9306,232 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RateGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of shipping labels defining the products to which this rate group applies to. This is a
+        /// disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last
+        /// rate group of a service. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableShippingLabels")]
+        public virtual System.Collections.Generic.IList<string> ApplicableShippingLabels { get; set; } 
+
+        /// <summary>A list of carrier rates that can be referred to by mainTable or singleValue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierRates")]
+        public virtual System.Collections.Generic.IList<CarrierRate> CarrierRates { get; set; } 
+
+        /// <summary>A table defining the rate group, when singleValue is not expressive enough. Can only be set if
+        /// singleValue is not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainTable")]
+        public virtual Table MainTable { get; set; } 
+
+        /// <summary>The value of the rate group (e.g. flat rate $10). Can only be set if mainTable and subtables are
+        /// not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleValue")]
+        public virtual Value SingleValue { get; set; } 
+
+        /// <summary>A list of subtables referred to by mainTable. Can only be set if mainTable is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtables")]
+        public virtual System.Collections.Generic.IList<Table> Subtables { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of cells that constitute the row. Must have the same length as columnHeaders for two-
+        /// dimensional tables, a length of 1 for one-dimensional tables. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<Value> Cells { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean exposing the active status of the shipping service. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; } 
+
+        /// <summary>The CLDR code of the currency to which this service applies. Must match that of the prices in rate
+        /// groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; } 
+
+        /// <summary>The CLDR territory code of the country to which the service applies. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryCountry")]
+        public virtual string DeliveryCountry { get; set; } 
+
+        /// <summary>Time spent in various aspects from order to the delivery of the product. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
+        public virtual DeliveryTime DeliveryTime { get; set; } 
+
+        /// <summary>Free-form name of the service. Must be unique within target account. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Shipping rate group definitions. Only the last one is allowed to have an empty
+        /// applicableShippingLabels, which means "everything else". The other applicableShippingLabels must not
+        /// overlap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
+        public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The merchant account's shipping settings.</summary>
+    public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account to which these account shipping settings belong. Ignored upon update, always
+        /// present in get request responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>A list of postal code groups that can be referred to in services. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroups")]
+        public virtual System.Collections.Generic.IList<PostalCodeGroup> PostalCodeGroups { get; set; } 
+
+        /// <summary>The target account's list of services. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsCustomBatchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request entries to be processed in the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchRequestEntry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A batch entry encoding a single non-batch accountshipping request.</summary>
+    public class ShippingsettingsCustomBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account for which to get/update account shipping settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>An entry ID, unique within the batch request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>The ID of the managing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>The account shipping settings to update. Only defined if the method is update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingSettings")]
+        public virtual ShippingSettings ShippingSettings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsCustomBatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of the execution of the batch requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<ShippingsettingsCustomBatchResponseEntry> Entries { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsCustomBatchResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A batch entry encoding a single non-batch shipping settings response.</summary>
+    public class ShippingsettingsCustomBatchResponseEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the request entry to which this entry responds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>A list of errors defined if, and only if, the request failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual Errors Errors { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsCustomBatchResponseEntry".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The retrieved or updated account shipping settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingSettings")]
+        public virtual ShippingSettings ShippingSettings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsGetSupportedCarriersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of supported carriers. May be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carriers")]
+        public virtual System.Collections.Generic.IList<CarriersCarrier> Carriers { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsGetSupportedCarriersResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The token for the retrieval of the next page of shipping settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<ShippingSettings> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Table : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Headers of the table's columns. Optional: if not set then the table has only one
+        /// dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
+        public virtual Headers ColumnHeaders { get; set; } 
+
+        /// <summary>Name of the table. Required for subtables, ignored for the main table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Headers of the table's rows. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowHeaders")]
+        public virtual Headers RowHeaders { get; set; } 
+
+        /// <summary>The list of rows that constitute the table. Must have the same length as rowHeaders.
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class TestOrder : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The details of the customer who placed the order.</summary>
@@ -8813,6 +9702,38 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// accepted by createTestOrder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The single value of a rate group or the value of a rate group table's cell. Exactly one of noShipping,
+    /// flatRate, pricePercentage, carrierRateName, subtableName must be set.</summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be
+        /// set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierRateName")]
+        public virtual string CarrierRateName { get; set; } 
+
+        /// <summary>A flat rate. Can only be set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatRate")]
+        public virtual Price FlatRate { get; set; } 
+
+        /// <summary>If true, then the product can't ship. Must be true when set, can only be set if all other fields
+        /// are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noShipping")]
+        public virtual System.Nullable<bool> NoShipping { get; set; } 
+
+        /// <summary>A percentage of the price represented as a number in decimal notation (e.g., "5.4"). Can only be
+        /// set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricePercentage")]
+        public virtual string PricePercentage { get; set; } 
+
+        /// <summary>The name of a subtable. Can only be set in table cells (i.e., not for single values), and only if
+        /// all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtableName")]
+        public virtual string SubtableName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -19,24 +19,24 @@
 
 /**
  * \brief
- *   Google Cloud Debugger API Version v2
+ *   Stackdriver Debugger API Version v2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>Google Cloud Debugger API</a>
+ *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160602 (518)
+ *      <tr><th>API Rev<td>20160810 (587)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/tools/cloud-debugger'>
- *              https://cloud.google.com/tools/cloud-debugger</a>
+ *          <td><a href='http://cloud.google.com/debugger'>
+ *              http://cloud.google.com/debugger</a>
  *      <tr><th>Discovery Name<td>clouddebugger
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Debugger API can be found at
- * <a href='https://cloud.google.com/tools/cloud-debugger'>https://cloud.google.com/tools/cloud-debugger</a>.
+ * The complete API documentation for using Stackdriver Debugger API can be found at
+ * <a href='http://cloud.google.com/debugger'>http://cloud.google.com/debugger</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -92,7 +92,7 @@ namespace Google.Apis.CloudDebugger.v2
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Debugger API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Stackdriver Debugger API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -100,9 +100,6 @@ namespace Google.Apis.CloudDebugger.v2
 
             /// <summary>Manage cloud debugger</summary>
             public static string CloudDebugger = "https://www.googleapis.com/auth/cloud_debugger";
-
-            /// <summary>Manage active breakpoints in cloud debugger</summary>
-            public static string CloudDebugletcontroller = "https://www.googleapis.com/auth/cloud_debugletcontroller";
 
         }
 
