@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160726 (572)
+ *      <tr><th>API Rev<td>20160812 (589)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -3187,7 +3187,7 @@ namespace Google.Apis.Compute.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = null,
                     });
             }
 
@@ -22022,8 +22022,8 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
         /// policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
         ///
-        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.8 or
-        /// 80%.</summary>
+        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or
+        /// 60%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingPolicy")]
         public virtual AutoscalingPolicy AutoscalingPolicy { get; set; } 
 
@@ -22061,7 +22061,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the instance group resides.</summary>
+        /// <summary>[Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal
+        /// scope).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -22231,7 +22232,7 @@ namespace Google.Apis.Compute.v1.Data
     public class AutoscalingPolicyCpuUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target CPU utilization that the autoscaler should maintain. Must be a float value in the range
-        /// (0, 1]. If not specified, the default is 0.8.
+        /// (0, 1]. If not specified, the default is 0.6.
         ///
         /// If the CPU level is below the target utilization, the autoscaler scales down the number of instances until
         /// it reaches the minimum number of instances you specified or until the average CPU of your instances reaches
@@ -23963,7 +23964,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the instance group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the instance group is located (for zonal
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -24106,7 +24108,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual System.Nullable<int> TargetSize { get; set; } 
 
-        /// <summary>The name of the zone where the managed instance group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the managed instance group is located (for zonal
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -24129,6 +24132,12 @@ namespace Google.Apis.Compute.v1.Data
         /// field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creating")]
         public virtual System.Nullable<int> Creating { get; set; } 
+
+        /// <summary>[Output Only] The number of instances that the managed instance group will attempt to create. The
+        /// group attempts to create each instance only once. If the group fails to create any of these instances, it
+        /// decreases the group's target_size value accordingly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatingWithoutRetries")]
+        public virtual System.Nullable<int> CreatingWithoutRetries { get; set; } 
 
         /// <summary>[Output Only] The number of instances in the managed instance group that are scheduled to be
         /// deleted or are currently being deleted.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160726 (572)
+ *      <tr><th>API Rev<td>20160812 (589)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -3682,7 +3682,7 @@ namespace Google.Apis.Compute.beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = null,
                     });
             }
 
@@ -16383,6 +16383,82 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network to be
+        /// updated.</param>
+        public virtual SwitchToCustomModeRequest SwitchToCustomMode(string project, string network)
+        {
+            return new SwitchToCustomModeRequest(service, project, network);
+        }
+
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        public class SwitchToCustomModeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SwitchToCustomMode request.</summary>
+            public SwitchToCustomModeRequest(Google.Apis.Services.IClientService service, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "switchToCustomMode"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/switchToCustomMode"; }
+            }
+
+            /// <summary>Initializes SwitchToCustomMode parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -22929,6 +23005,105 @@ namespace Google.Apis.Compute.beta
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to update.</param>
+        public virtual ExpandIpCidrRangeRequest ExpandIpCidrRange(Google.Apis.Compute.beta.Data.SubnetworksExpandIpCidrRangeRequest body, string project, string region, string subnetwork)
+        {
+            return new ExpandIpCidrRangeRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        public class ExpandIpCidrRangeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new ExpandIpCidrRange request.</summary>
+            public ExpandIpCidrRangeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SubnetworksExpandIpCidrRangeRequest body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SubnetworksExpandIpCidrRangeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "expandIpCidrRange"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange"; }
+            }
+
+            /// <summary>Initializes ExpandIpCidrRange parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -30459,8 +30634,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
         /// policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
         ///
-        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.8 or
-        /// 80%.</summary>
+        /// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or
+        /// 60%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingPolicy")]
         public virtual AutoscalingPolicy AutoscalingPolicy { get; set; } 
 
@@ -30499,11 +30674,22 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output Only] The status of the autoscaler configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>[Output Only] Human-readable details about the current state of the autoscaler. Examples: ?Error
+        /// when fetching replicas: Replica Pool xxx doesn?t exist.? ?Autoscaling capped at min_num_replicas:
+        /// 2.?</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetails")]
+        public virtual System.Collections.Generic.IList<AutoscalerStatusDetails> StatusDetails { get; set; } 
+
         /// <summary>URL of the managed instance group that this autoscaler will scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where the instance group resides.</summary>
+        /// <summary>[Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal
+        /// scope).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -30568,6 +30754,18 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AutoscalerStatusDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30673,7 +30871,7 @@ namespace Google.Apis.Compute.beta.Data
     public class AutoscalingPolicyCpuUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target CPU utilization that the autoscaler should maintain. Must be a float value in the range
-        /// (0, 1]. If not specified, the default is 0.8.
+        /// (0, 1]. If not specified, the default is 0.6.
         ///
         /// If the CPU level is below the target utilization, the autoscaler scales down the number of instances until
         /// it reaches the minimum number of instances you specified or until the average CPU of your instances reaches
@@ -32698,7 +32896,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>The URL of the region where the instance group is located.</summary>
+        /// <summary>The URL of the region where the instance group is located (for regional resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -32714,7 +32912,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
-        /// <summary>[Output Only] The URL of the zone where the instance group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the instance group is located (for zonal
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -32852,7 +33051,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
 
-        /// <summary>[Output Only] URL of the region where the managed instance group resides.</summary>
+        /// <summary>[Output Only] The URL of the region where the managed instance group resides (for regional
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -32870,7 +33070,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual System.Nullable<int> TargetSize { get; set; } 
 
-        /// <summary>The name of the zone where the managed instance group is located.</summary>
+        /// <summary>[Output Only] The URL of the zone where the managed instance group is located (for zonal
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -35745,6 +35946,18 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SubnetworksExpandIpCidrRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP (in CIDR format or netmask) of internal addresses that are legal on this Subnetwork. This
+        /// range should be disjoint from other subnetworks within this network. This range can only be larger than
+        /// (i.e. a superset of) the range previously defined before the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

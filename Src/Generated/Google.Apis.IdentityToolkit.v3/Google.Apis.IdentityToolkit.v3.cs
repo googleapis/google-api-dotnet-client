@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160728 (574)
+ *      <tr><th>API Rev<td>20160810 (587)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1311,6 +1311,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; } 
 
+        /// <summary>Explicitly specify the auth flow type. Currently only support "CODE_FLOW" type. The field is only
+        /// used for Google provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authFlowType")]
+        public virtual string AuthFlowType { get; set; } 
+
         /// <summary>The relying party OAuth client ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
@@ -1355,6 +1360,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// yahoo.com. For other OpenID IdPs it's the OP identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
         public virtual string ProviderId { get; set; } 
+
+        /// <summary>The session_id passed by client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2137,6 +2146,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salt")]
         public virtual string Salt { get; set; } 
 
+        /// <summary>User's screen name at Twitter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
+        public virtual string ScreenName { get; set; } 
+
         /// <summary>Timestamp in seconds for valid login token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validSince")]
         public virtual System.Nullable<long> ValidSince { get; set; } 
@@ -2175,6 +2188,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             /// <summary>User's raw identifier directly returned from IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rawId")]
             public virtual string RawId { get; set; } 
+
+            /// <summary>User's screen name at Twitter.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
+            public virtual string ScreenName { get; set; } 
 
         }
     }    
