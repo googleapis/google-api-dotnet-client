@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/oEN2Yz1UYeuuQF-hTipAUfX2Yb8\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Yn-vD22SJyy2Enea8C6suJXByIU\"",
  "discoveryVersion": "v1",
  "id": "appsactivity:v1",
  "name": "appsactivity",
  "version": "v1",
- "revision": "20160129",
+ "revision": "20160805",
  "title": "Google Apps Activity API",
  "description": "Provides a historical view of activity.",
  "ownerDomain": "google.com",

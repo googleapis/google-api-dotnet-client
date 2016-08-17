@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160517 (502)
+ *      <tr><th>API Rev<td>20160816 (593)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -808,9 +808,8 @@ namespace Google.Apis.Classroom.v1
                 /// malformed. * `NOT_FOUND` if the requested course does not exist.</summary>
                 /// <param name="courseId">Identifier of the course. This identifier can be either the Classroom-assigned identifier or
                 /// an alias.</param>
-                /// <param name="courseWorkId">Identifer of the student work to request. If `user_id` is
-                /// specified, this may be set to the string literal `"-"` to request student work for all course work in the specified
-                /// course.</param>
+                /// <param name="courseWorkId">Identifer of the student work to request. This may be set to
+                /// the string literal `"-"` to request student work for all course work in the specified course.</param>
                 public virtual ListRequest List(string courseId, string courseWorkId)
                 {
                     return new ListRequest(service, courseId, courseWorkId);
@@ -840,9 +839,8 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseId { get; private set; }
 
-                    /// <summary>Identifer of the student work to request. If `user_id` is specified, this may be set to
-                    /// the string literal `"-"` to request student work for all course work in the specified
-                    /// course.</summary>
+                    /// <summary>Identifer of the student work to request. This may be set to the string literal `"-"`
+                    /// to request student work for all course work in the specified course.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
@@ -3548,9 +3546,821 @@ namespace Google.Apis.Classroom.v1
         public UserProfilesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            guardianInvitations = new GuardianInvitationsResource(service);
+            guardians = new GuardiansResource(service);
 
         }
 
+        private readonly GuardianInvitationsResource guardianInvitations;
+
+        /// <summary>Gets the GuardianInvitations resource.</summary>
+        public virtual GuardianInvitationsResource GuardianInvitations
+        {
+            get { return guardianInvitations; }
+        }
+
+        /// <summary>The "guardianInvitations" collection of methods.</summary>
+        public class GuardianInvitationsResource
+        {
+            private const string Resource = "guardianInvitations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GuardianInvitationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a guardian invitation, and sends an email to the guardian asking them to confirm that
+            /// they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to
+            /// `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be
+            /// created to represent the active guardian. The request object must have the `student_id` and
+            /// `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the
+            /// request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the current user does not have permission to manage guardians, if the guardian in question has
+            /// already rejected too many requests for that student, if guardians are not enabled for the domain in
+            /// question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the
+            /// guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it
+            /// is too long), or if the format of the student ID provided cannot be recognized (it is not an email
+            /// address, nor a `user_id` from this API). This error will also be returned if read-only fields are set,
+            /// or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID
+            /// provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there
+            /// is already a pending guardian invitation for the student and `invited_email_address` provided, or if the
+            /// provided `invited_email_address` matches the Google account of an existing `Guardian` for this
+            /// user.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="studentId">ID of the student (in standard format)</param>
+            public virtual CreateRequest Create(Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId)
+            {
+                return new CreateRequest(service, body, studentId);
+            }
+
+            /// <summary>Creates a guardian invitation, and sends an email to the guardian asking them to confirm that
+            /// they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to
+            /// `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be
+            /// created to represent the active guardian. The request object must have the `student_id` and
+            /// `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the
+            /// request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED`
+            /// if the current user does not have permission to manage guardians, if the guardian in question has
+            /// already rejected too many requests for that student, if guardians are not enabled for the domain in
+            /// question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the
+            /// guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it
+            /// is too long), or if the format of the student ID provided cannot be recognized (it is not an email
+            /// address, nor a `user_id` from this API). This error will also be returned if read-only fields are set,
+            /// or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID
+            /// provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there
+            /// is already a pending guardian invitation for the student and `invited_email_address` provided, or if the
+            /// provided `invited_email_address` matches the Google account of an existing `Guardian` for this
+            /// user.</summary>
+            public class CreateRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>ID of the student (in standard format)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.GuardianInvitation Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardianInvitations"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a specific guardian invitation. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be
+            /// returned if the student exists, but the requesting user does not have access to see that
+            /// student.</summary>
+            /// <param name="studentId">The ID of the student whose guardian invitation is being requested.</param>
+            /// <param
+            /// name="invitationId">The `id` field of the `GuardianInvitation` being requested.</param>
+            public virtual GetRequest Get(string studentId, string invitationId)
+            {
+                return new GetRequest(service, studentId, invitationId);
+            }
+
+            /// <summary>Returns a specific guardian invitation. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be
+            /// returned if the student exists, but the requesting user does not have access to see that
+            /// student.</summary>
+            public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string invitationId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    InvitationId = invitationId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the student whose guardian invitation is being requested.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>The `id` field of the `GuardianInvitation` being requested.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("invitationId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string InvitationId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "invitationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "invitationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
+            /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
+            /// that student, if guardians are not enabled for the domain in question, or for other access errors. *
+            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
+            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
+            /// invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
+            /// format can be recognized, but Classroom has no record of that student.</summary>
+            /// <param name="studentId">The ID of the student whose guardian invitations are to be returned. The identifier can be
+            /// one of the following: * the numeric identifier for the user * the email address of the user * the string literal
+            /// `"me"`, indicating the requesting user</param>
+            public virtual ListRequest List(string studentId)
+            {
+                return new ListRequest(service, studentId);
+            }
+
+            /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
+            /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
+            /// that student, if guardians are not enabled for the domain in question, or for other access errors. *
+            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
+            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
+            /// invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
+            /// format can be recognized, but Classroom has no record of that student.</summary>
+            public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardianInvitationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string studentId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the student whose guardian invitations are to be returned. The identifier can be
+                /// one of the following: * the numeric identifier for the user * the email address of the user * the
+                /// string literal `"me"`, indicating the requesting user</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>If specified, only results with the specified `invited_email_address` will be
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string InvitedEmailAddress { get; set; }
+
+                /// <summary>If specified, only results with the specified `state` values will be returned. Otherwise,
+                /// results with a `state` of `PENDING` will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                /// <summary>If specified, only results with the specified `state` values will be returned. Otherwise,
+                /// results with a `state` of `PENDING` will be returned.</summary>
+                public enum StatesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("GUARDIAN_INVITATION_STATE_UNSPECIFIED")]
+                    GUARDIANINVITATIONSTATEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PENDING")]
+                    PENDING,
+                    [Google.Apis.Util.StringValueAttribute("COMPLETE")]
+                    COMPLETE,
+                }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardianInvitations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "invitedEmailAddress", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "invitedEmailAddress",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "states", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "states",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Modifies a guardian invitation. Currently, the only valid modification is to change the `state`
+            /// from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage
+            /// guardians, if guardians are not enabled for the domain in question or for other access errors. *
+            /// `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the
+            /// format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from
+            /// this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies
+            /// fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom
+            /// has no record of that student, or if the `id` field does not refer to a guardian invitation known to
+            /// Classroom.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="studentId">The ID of the student whose guardian invitation is to be modified.</param>
+            /// <param
+            /// name="invitationId">The `id` field of the `GuardianInvitation` to be modified.</param>
+            public virtual PatchRequest Patch(Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId, string invitationId)
+            {
+                return new PatchRequest(service, body, studentId, invitationId);
+            }
+
+            /// <summary>Modifies a guardian invitation. Currently, the only valid modification is to change the `state`
+            /// from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the
+            /// following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage
+            /// guardians, if guardians are not enabled for the domain in question or for other access errors. *
+            /// `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the
+            /// format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from
+            /// this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies
+            /// fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom
+            /// has no record of that student, or if the `id` field does not refer to a guardian invitation known to
+            /// Classroom.</summary>
+            public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.GuardianInvitation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Classroom.v1.Data.GuardianInvitation body, string studentId, string invitationId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    InvitationId = invitationId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the student whose guardian invitation is to be modified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>The `id` field of the `GuardianInvitation` to be modified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("invitationId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string InvitationId { get; private set; }
+
+                /// <summary>Mask that identifies which fields on the course to update. This field is required to do an
+                /// update. The update will fail if invalid fields are specified. The following fields are valid: *
+                /// `state` When set in a query parameter, this field should be specified as
+                /// `updateMask=,,...`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Classroom.v1.Data.GuardianInvitation Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardianInvitations/{invitationId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "invitationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "invitationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly GuardiansResource guardians;
+
+        /// <summary>Gets the Guardians resource.</summary>
+        public virtual GuardiansResource Guardians
+        {
+            get { return guardians; }
+        }
+
+        /// <summary>The "guardians" collection of methods.</summary>
+        public class GuardiansResource
+        {
+            private const string Resource = "guardians";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GuardiansResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian
+            /// will no longer be accessible via the API. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to manage guardians for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if Classroom cannot find
+            /// any record of the given `student_id` or `guardian_id`, or if the guardian has already been
+            /// disabled.</summary>
+            /// <param name="studentId">The student whose guardian is to be deleted. One of the following: * the numeric identifier
+            /// for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+            /// user</param>
+            /// <param name="guardianId">The `id` field from a `Guardian`.</param>
+            public virtual DeleteRequest Delete(string studentId, string guardianId)
+            {
+                return new DeleteRequest(service, studentId, guardianId);
+            }
+
+            /// <summary>Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian
+            /// will no longer be accessible via the API. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to manage guardians for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if Classroom cannot find
+            /// any record of the given `student_id` or `guardian_id`, or if the guardian has already been
+            /// disabled.</summary>
+            public class DeleteRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    GuardianId = guardianId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The student whose guardian is to be deleted. One of the following: * the numeric identifier
+                /// for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+                /// user</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>The `id` field from a `Guardian`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("guardianId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string GuardianId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardians/{guardianId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "guardianId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "guardianId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a specific guardian. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian information for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// `NOT_FOUND` if Classroom cannot find any record of the given student or `guardian_id`, or if the
+            /// guardian has been disabled.</summary>
+            /// <param name="studentId">The student whose guardian is being requested. One of the following: * the numeric
+            /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting
+            /// user</param>
+            /// <param name="guardianId">The `id` field from a `Guardian`.</param>
+            public virtual GetRequest Get(string studentId, string guardianId)
+            {
+                return new GetRequest(service, studentId, guardianId);
+            }
+
+            /// <summary>Returns a specific guardian. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if the requesting user is not permitted to view guardian information for the student
+            /// identified by the `student_id`, if guardians are not enabled for the domain in question, or for other
+            /// access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized
+            /// (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). *
+            /// `NOT_FOUND` if Classroom cannot find any record of the given student or `guardian_id`, or if the
+            /// guardian has been disabled.</summary>
+            public class GetRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Guardian>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string studentId, string guardianId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    GuardianId = guardianId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The student whose guardian is being requested. One of the following: * the numeric
+                /// identifier for the user * the email address of the user * the string literal `"me"`, indicating the
+                /// requesting user</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>The `id` field from a `Guardian`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("guardianId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string GuardianId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardians/{guardianId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "guardianId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "guardianId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
+            /// that match the request. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian information for
+            /// that student, if guardians are not enabled for the domain in question, if the `invited_email_address`
+            /// filter is set by a user who is not a domain administrator, or for other access errors. *
+            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
+            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
+            /// invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be
+            /// recognized, but Classroom has no record of that student.</summary>
+            /// <param name="studentId">Filter results by the student who the guardian is linked to. The identifier can be one of
+            /// the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</param>
+            public virtual ListRequest List(string studentId)
+            {
+                return new ListRequest(service, studentId);
+            }
+
+            /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
+            /// that match the request. This method returns the following error codes: * `PERMISSION_DENIED` if a
+            /// `student_id` is specified, and the requesting user is not permitted to view guardian information for
+            /// that student, if guardians are not enabled for the domain in question, if the `invited_email_address`
+            /// filter is set by a user who is not a domain administrator, or for other access errors. *
+            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
+            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
+            /// invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be
+            /// recognized, but Classroom has no record of that student.</summary>
+            public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardiansResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string studentId)
+                    : base(service)
+                {
+                    StudentId = studentId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Filter results by the student who the guardian is linked to. The identifier can be one of
+                /// the following: * the numeric identifier for the user * the email address of the user * the string
+                /// literal `"me"`, indicating the requesting user</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string StudentId { get; private set; }
+
+                /// <summary>Filter results by the email address that the original invitation was sent to, resulting in
+                /// this guardian link. This filter can only be used by domain administrators.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string InvitedEmailAddress { get; set; }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned. The list request must be otherwise identical to the one that resulted
+                /// in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
+                /// a maximum. The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/userProfiles/{studentId}/guardians"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "studentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "invitedEmailAddress", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "invitedEmailAddress",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
 
         /// <summary>Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the
         /// requesting user is not permitted to access this user profile or if no profile exists with the requested ID
@@ -3868,12 +4678,12 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Additional materials.</summary>
+        /// <summary>Additional materials. CourseWork must have no more than 20 material items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<Material> Materials { get; set; } 
 
         /// <summary>Maximum grade for this course work. If zero or unspecified, this assignment is considered ungraded.
-        /// This must be an integer value.</summary>
+        /// This must be a non-negative integer value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPoints")]
         public virtual System.Nullable<double> MaxPoints { get; set; } 
 
@@ -3882,7 +4692,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceQuestion")]
         public virtual MultipleChoiceQuestion MultipleChoiceQuestion { get; set; } 
 
-        /// <summary>Status of this course work.. If unspecified, the default state is `DRAFT`.</summary>
+        /// <summary>Status of this course work. If unspecified, the default state is `DRAFT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -4020,6 +4830,59 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Association between a student and a guardian of that student. The guardian may receive information
+    /// about the student's course work.</summary>
+    public class Guardian : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier for the guardian.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardianId")]
+        public virtual string GuardianId { get; set; } 
+
+        /// <summary>User profile for the guardian.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardianProfile")]
+        public virtual UserProfile GuardianProfile { get; set; } 
+
+        /// <summary>The email address to which the initial guardian invitation was sent. This field is only visible to
+        /// domain administrators.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitedEmailAddress")]
+        public virtual string InvitedEmailAddress { get; set; } 
+
+        /// <summary>Identifier for the student to whom the guardian relationship applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentId")]
+        public virtual string StudentId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An invitation to become the guardian of a specified user, sent to a specified email address.</summary>
+    public class GuardianInvitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time that this invitation was created. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; } 
+
+        /// <summary>Unique identifier for this invitation. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
+        public virtual string InvitationId { get; set; } 
+
+        /// <summary>Email address that the invitation was sent to. This field is only visible to domain
+        /// administrators.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitedEmailAddress")]
+        public virtual string InvitedEmailAddress { get; set; } 
+
+        /// <summary>The state that this invitation is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>ID of the student (in standard format)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studentId")]
+        public virtual string StudentId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An invitation to join a course.</summary>
     public class Invitation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4103,6 +4966,38 @@ namespace Google.Apis.Classroom.v1.Data
         /// <summary>Courses that match the list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("courses")]
         public virtual System.Collections.Generic.IList<Course> Courses { get; set; } 
+
+        /// <summary>Token identifying the next page of results to return. If empty, no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response when listing guardian invitations.</summary>
+    public class ListGuardianInvitationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Guardian invitations that matched the list request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardianInvitations")]
+        public virtual System.Collections.Generic.IList<GuardianInvitation> GuardianInvitations { get; set; } 
+
+        /// <summary>Token identifying the next page of results to return. If empty, no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response when listing guardians.</summary>
+    public class ListGuardiansResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Guardians on this page of results that met the criteria specified in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardians")]
+        public virtual System.Collections.Generic.IList<Guardian> Guardians { get; set; } 
 
         /// <summary>Token identifying the next page of results to return. If empty, no further results are
         /// available.</summary>
@@ -4204,7 +5099,8 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>Request to modify the attachments of a student submission.</summary>
     public class ModifyAttachmentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attachments to add. This may only contain link attachments.</summary>
+        /// <summary>Attachments to add. A student submission may not have more than 20 attachments. This may only
+        /// contain link attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addAttachments")]
         public virtual System.Collections.Generic.IList<Attachment> AddAttachments { get; set; } 
 
@@ -4328,8 +5224,8 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
-        /// <summary>Optional grade. If unset, no grade was set. This must be an integer value. This may be modified
-        /// only by course teachers.</summary>
+        /// <summary>Optional grade. If unset, no grade was set. This must be a non-negative integer value. This may be
+        /// modified only by course teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedGrade")]
         public virtual System.Nullable<double> AssignedGrade { get; set; } 
 
@@ -4354,13 +5250,13 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseWorkType")]
         public virtual string CourseWorkType { get; set; } 
 
-        /// <summary>Creation time of this submission.. This may be unset if the student has not accessed this item.
+        /// <summary>Creation time of this submission. This may be unset if the student has not accessed this item.
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; } 
 
-        /// <summary>Optional pending grade. If unset, no grade was set. This must be an integer value. This is only
-        /// visible to and modifiable by course teachers.</summary>
+        /// <summary>Optional pending grade. If unset, no grade was set. This must be a non-negative integer value. This
+        /// is only visible to and modifiable by course teachers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("draftGrade")]
         public virtual System.Nullable<double> DraftGrade { get; set; } 
 
@@ -4373,7 +5269,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("late")]
         public virtual System.Nullable<bool> Late { get; set; } 
 
-        /// <summary>Submission content when course_work_type is MUTIPLE_CHOICE_QUESTION.</summary>
+        /// <summary>Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceSubmission")]
         public virtual MultipleChoiceSubmission MultipleChoiceSubmission { get; set; } 
 
