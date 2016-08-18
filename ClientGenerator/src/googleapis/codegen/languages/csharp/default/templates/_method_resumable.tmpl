@@ -1,4 +1,5 @@
-{% doc_comment_if method.description %}{% noblank %}
+{% doc_comment_if method.description %}
+{% noblank %}
 {% filter block_comment %}
 {% if method.requestType %}/// <param name="body">The body of the request.</param>{% endif %}{% eol %}
 {% endfilter %}
