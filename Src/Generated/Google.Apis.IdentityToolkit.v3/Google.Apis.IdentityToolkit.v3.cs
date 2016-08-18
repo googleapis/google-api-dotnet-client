@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160810 (587)
+ *      <tr><th>API Rev<td>20160812 (589)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1788,6 +1788,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestUri")]
         public virtual string RequestUri { get; set; } 
 
+        /// <summary>Whether return 200 and IDP credential rather than throw exception when federated id is already
+        /// linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnIdpCredential")]
+        public virtual System.Nullable<bool> ReturnIdpCredential { get; set; } 
+
         /// <summary>Whether to return refresh tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnRefreshToken")]
         public virtual System.Nullable<bool> ReturnRefreshToken { get; set; } 
@@ -2189,6 +2194,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("rawId")]
             public virtual string RawId { get; set; } 
 
+            /// <summary>Raw IDP-returned user info.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("rawUserInfo")]
+            public virtual string RawUserInfo { get; set; } 
+
             /// <summary>User's screen name at Twitter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
             public virtual string ScreenName { get; set; } 
@@ -2236,6 +2245,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
         public virtual System.Nullable<bool> EmailVerified { get; set; } 
+
+        /// <summary>Client error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
 
         /// <summary>If idToken is STS id token, then this field will be expiration time of STS id token in
         /// seconds.</summary>
@@ -2335,6 +2348,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// part of the federated ID is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
         public virtual string ProviderId { get; set; } 
+
+        /// <summary>Raw IDP-returned user info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawUserInfo")]
+        public virtual string RawUserInfo { get; set; } 
 
         /// <summary>If idToken is STS id token, then this field will be refresh token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]

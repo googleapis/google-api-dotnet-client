@@ -640,7 +640,7 @@
       "id": "AnalyzeEntitiesResponse"
     }
   },
-  "revision": "20160810",
+  "revision": "20160816",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
