@@ -16,18 +16,18 @@ namespace Google.Apis.Discovery.v1.Tests
     {
         class FakeHttpMessageHandler : ConfigurableMessageHandler
         {
-            public FakeHttpMessageHandler(Dictionary<string, byte[]> data) : base(new HttpClientHandler())
+            public FakeHttpMessageHandler(Dictionary<string, HttpContent> data) : base(new HttpClientHandler())
             {
                 _data = data;
             }
 
-            private Dictionary<string, byte[]> _data;
+            private Dictionary<string, HttpContent> _data;
 
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 var result = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
                 {
-                    Content = new ByteArrayContent(_data[request.RequestUri.AbsolutePath])
+                    Content = _data[request.RequestUri.AbsolutePath]
                 };
                 return Task.FromResult(result);
             }
@@ -35,12 +35,12 @@ namespace Google.Apis.Discovery.v1.Tests
 
         class FakeHttpClientFactory : IHttpClientFactory
         {
-            public FakeHttpClientFactory(Dictionary<string, byte[]> data)
+            public FakeHttpClientFactory(Dictionary<string, HttpContent> data)
             {
                 _data = data;
             }
 
-            private Dictionary<string, byte[]> _data;
+            private Dictionary<string, HttpContent> _data;
 
             public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
             {
@@ -53,15 +53,10 @@ namespace Google.Apis.Discovery.v1.Tests
         {
             // Test that the "$ref" names as used by the discovery API are treated as normal names by the JSON deserializer.
             // This is the first test of a generated library.
-            var stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Discovery.Tests.resources.urlshortener.json");
-            string sUrlShortener;
-            using (var reader = new StreamReader(stream, Encoding.ASCII))
+            var urlShortenerStream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream("Discovery.Tests.resources.urlshortener.json");
+            var data = new Dictionary<string, HttpContent>
             {
-                sUrlShortener = reader.ReadToEnd();
-            }
-            var data = new Dictionary<string, byte[]>
-            {
-                { "/discovery/v1/apis/urlshortener/v1/rest", Encoding.ASCII.GetBytes(sUrlShortener) }
+                { "/discovery/v1/apis/urlshortener/v1/rest", new StreamContent(urlShortenerStream) }
             };
             var initializer = new BaseClientService.Initializer
             {

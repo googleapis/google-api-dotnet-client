@@ -59,7 +59,7 @@ namespace Google.Apis.Json
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
-        private static readonly JsonSerializerSettings s_settings;
+        private static readonly JsonSerializerSettings newtonsoftSettings;
         private static readonly JsonSerializer newtonsoftSerializer;
 
         private static NewtonsoftJsonSerializer instance;
@@ -76,13 +76,13 @@ namespace Google.Apis.Json
         static NewtonsoftJsonSerializer()
         {
             // Initialize the Newtonsoft serializer.
-            s_settings = new JsonSerializerSettings
+            newtonsoftSettings = new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
                 Converters = { new RFC3339DateTimeConverter() }
             };
-            newtonsoftSerializer = JsonSerializer.Create(s_settings);
+            newtonsoftSerializer = JsonSerializer.Create(newtonsoftSettings);
         }
 
         public string Format
@@ -121,7 +121,7 @@ namespace Google.Apis.Json
             {
                 return default(T);
             }
-            return JsonConvert.DeserializeObject<T>(input, s_settings);
+            return JsonConvert.DeserializeObject<T>(input, newtonsoftSettings);
         }
 
         public object Deserialize(string input, Type type)
@@ -130,7 +130,7 @@ namespace Google.Apis.Json
             {
                 return null;
             }
-            return JsonConvert.DeserializeObject(input, type, s_settings);
+            return JsonConvert.DeserializeObject(input, type, newtonsoftSettings);
         }
 
         public T Deserialize<T>(Stream input)
