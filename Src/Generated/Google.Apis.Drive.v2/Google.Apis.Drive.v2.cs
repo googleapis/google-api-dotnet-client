@@ -2742,7 +2742,8 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Insert a new file.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Insert a new file.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.Drive.v2.Data.File body, System.IO.Stream stream, string contentType)
@@ -3753,7 +3754,8 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates file metadata and/or content.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Updates file metadata and/or content.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -5696,6 +5698,7 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>Overwrites the Realtime API data model associated with this file with the provided JSON data
         /// model.</summary>
+
         /// <param name="fileId">The ID of the file that the Realtime API data model is associated with.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>

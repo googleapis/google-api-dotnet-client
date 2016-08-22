@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160804 (581)
+ *      <tr><th>API Rev<td>20160814 (591)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1203,7 +1203,8 @@ namespace Google.Apis.Bigquery.v2
 
         }
 
-        /// <summary>Starts a new asynchronous job. Requires the Can View project role.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Starts a new asynchronous job. Requires the Can View project role.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the project that will be billed for the job</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -3212,6 +3213,15 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInlineFormat")]
         public virtual string SchemaInlineFormat { get; set; } 
 
+        /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
+        /// load job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
+        /// writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by
+        /// partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
+        /// following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
+        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
+
         /// <summary>[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the
         /// data. The default value is 0. This property is useful if you have header rows in the file that should be
         /// skipped.</summary>
@@ -3294,6 +3304,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] BigQuery SQL query to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
+
+        /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
+        /// query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
+        /// writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by
+        /// partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
+        /// following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+        /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
+        public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
 
         /// <summary>[Optional] If querying an external data source outside of BigQuery, describes the data format,
         /// location and other properties of the data source. By defining these properties, the data source can then be

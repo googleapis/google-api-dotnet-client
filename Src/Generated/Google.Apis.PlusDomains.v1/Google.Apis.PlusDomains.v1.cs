@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/domains/'>Google+ Domains API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160816 (593)
+ *      <tr><th>API Rev<td>20160817 (594)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/domains/'>
  *              https://developers.google.com/+/domains/</a>
@@ -1679,7 +1679,8 @@ namespace Google.Apis.PlusDomains.v1
 
         /// <summary>Add a new media item to an album. The current upload size limitations are 36MB for a photo and 1GB
         /// for a video. Uploads do not count against quota if photos are less than 2048 pixels on their longest side or
-        /// videos are less than 15 minutes in length.</summary>/// <param name="body">The body of the request.</param>
+        /// videos are less than 15 minutes in length.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="userId">The ID of the user to create the activity on behalf of.</param>
         /// <param
         /// name="collection"></param>

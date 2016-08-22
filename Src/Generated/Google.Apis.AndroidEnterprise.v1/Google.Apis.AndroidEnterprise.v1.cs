@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160803 (580)
+ *      <tr><th>API Rev<td>20160818 (595)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8415,10 +8415,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The mechanism by which this device is managed by the EMM. "managedDevice" means that the EMM's app
-        /// is a device owner. "managedProfile" means that the EMM's app is the profile owner (and there is a separate
-        /// personal profile which is not managed). "containerApp" means that the EMM's app is managing the Android for
-        /// Work container app on the device.</summary>
+        /// <summary>Identifies the extent to which the device is controlled by an Android for Work EMM in various
+        /// deployment configurations. Possible values include: - "managedDevice"—A device that has the EMM's device
+        /// policy controller (DPC) as the device owner. - "managedProfile"—A device that has a work profile managed by
+        /// the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. -
+        /// "containerApp"—A device running the Android for Work App. The Android for Work App is managed by the DPC. -
+        /// "unmanagedProfile"—A device that has been allowed (by the domain's admin, using the Admin Console to enable
+        /// the privilege) to use Android for Work apps or Google Apps for Work, but the profile is itself not owned by
+        /// a DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 

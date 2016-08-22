@@ -1847,6 +1847,7 @@ namespace Google.Apis.Fusiontables.v2
         }
 
         /// <summary>Imports more rows into a table.</summary>
+
         /// <param name="tableId">The table into which new rows are being imported.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -2032,6 +2033,7 @@ namespace Google.Apis.Fusiontables.v2
         }
 
         /// <summary>Imports a new table.</summary>
+
         /// <param name="name">The name to be assigned to the new table.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -2457,6 +2459,7 @@ namespace Google.Apis.Fusiontables.v2
 
         /// <summary>Replaces rows of an existing table. Current rows remain visible until all replacement rows are
         /// ready.</summary>
+
         /// <param name="tableId">Table whose rows will be replaced.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>

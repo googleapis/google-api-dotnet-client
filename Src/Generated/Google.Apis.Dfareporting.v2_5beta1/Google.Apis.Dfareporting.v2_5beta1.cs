@@ -6461,7 +6461,8 @@ namespace Google.Apis.Dfareporting.v2_5beta1
 
         }
 
-        /// <summary>Inserts a new creative asset.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Inserts a new creative asset.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="advertiserId">Advertiser ID of this creative. This is a required field.</param>

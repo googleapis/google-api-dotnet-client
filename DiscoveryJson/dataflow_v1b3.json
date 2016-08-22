@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/S4FQi0xvOsGOwpFCpdk2oS-YpOo\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/HnVZ7tJKc5P8k7NryCve2XGdCRE\"",
  "discoveryVersion": "v1",
  "id": "dataflow:v1b3",
  "name": "dataflow",
  "version": "v1b3",
- "revision": "20160810",
+ "revision": "20160819",
  "title": "Google Dataflow API",
  "description": "Develops and executes data processing patterns like ETL, batch computation, and continuous computation.",
  "ownerDomain": "google.com",

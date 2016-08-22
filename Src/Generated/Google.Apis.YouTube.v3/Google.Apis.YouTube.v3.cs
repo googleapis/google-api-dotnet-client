@@ -1174,7 +1174,8 @@ namespace Google.Apis.YouTube.v3
 
         }
 
-        /// <summary>Uploads a caption track.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Uploads a caption track.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter specifies the caption resource parts that the API response will include. Set
         /// the parameter value to snippet.</param>
         /// <param name="stream">The stream to upload.</param>
@@ -1530,7 +1531,8 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Updates a caption track. When updating a caption track, you can change the track's draft status,
-        /// upload a new caption file for the track, or both.</summary>/// <param name="body">The body of the request.</param>
+        /// upload a new caption file for the track, or both.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter serves two purposes in this operation. It identifies the properties that the
         /// write operation will set as well as the properties that the API response will include. Set the property value to
         /// snippet if you are updating the track's draft status. Otherwise, set the property value to id.</param>
@@ -1740,7 +1742,8 @@ namespace Google.Apis.YouTube.v3
         /// 16:9 aspect ratio and be at least 2120x1192 pixels. - Extract the url property's value from the response
         /// that the API returns for step 1. - Call the channels.update method to update the channel's branding
         /// settings. Set the brandingSettings.image.bannerExternalUrl property's value to the URL obtained in step
-        /// 2.</summary>/// <param name="body">The body of the request.</param>
+        /// 2.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.YouTube.v3.Data.ChannelBannerResource body, System.IO.Stream stream, string contentType)
@@ -8795,6 +8798,7 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Uploads a custom video thumbnail to YouTube and sets it for a video.</summary>
+
         /// <param name="videoId">The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is
         /// being provided.</param>
         /// <param name="stream">The stream to upload.</param>
@@ -9448,7 +9452,8 @@ namespace Google.Apis.YouTube.v3
 
         }
 
-        /// <summary>Uploads a video to YouTube and optionally sets the video's metadata.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Uploads a video to YouTube and optionally sets the video's metadata.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="part">The part parameter serves two purposes in this operation. It identifies the properties that the
         /// write operation will set as well as the properties that the API response will include.
         ///
@@ -10219,7 +10224,8 @@ namespace Google.Apis.YouTube.v3
 
         }
 
-        /// <summary>Uploads a watermark image to YouTube and sets it for a channel.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Uploads a watermark image to YouTube and sets it for a channel.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="channelId">The channelId parameter specifies the YouTube channel ID for which the watermark is being
         /// provided.</param>
         /// <param name="stream">The stream to upload.</param>

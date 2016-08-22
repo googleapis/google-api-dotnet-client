@@ -1490,6 +1490,7 @@ namespace Google.Apis.Mirror.v1
             }
 
             /// <summary>Adds a new attachment to a timeline item.</summary>
+
             /// <param name="itemId">The ID of the timeline item the attachment belongs to.</param>
             /// <param name="stream">The stream to upload.</param>
             /// <param name="contentType">The content type of the stream to upload.</param>
@@ -1792,7 +1793,8 @@ namespace Google.Apis.Mirror.v1
 
         }
 
-        /// <summary>Inserts a new item into the timeline.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Inserts a new item into the timeline.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual InsertMediaUpload Insert(Google.Apis.Mirror.v1.Data.TimelineItem body, System.IO.Stream stream, string contentType)
@@ -2140,7 +2142,8 @@ namespace Google.Apis.Mirror.v1
 
         }
 
-        /// <summary>Updates a timeline item in place.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Updates a timeline item in place.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="id">The ID of the timeline item.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>

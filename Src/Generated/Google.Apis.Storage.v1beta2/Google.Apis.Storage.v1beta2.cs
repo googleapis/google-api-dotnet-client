@@ -3615,7 +3615,8 @@ namespace Google.Apis.Storage.v1beta2
 
         }
 
-        /// <summary>Stores new data blobs and associated metadata.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Stores new data blobs and associated metadata.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which to store the new object. Overrides the provided object metadata's
         /// bucket value, if any.</param>
         /// <param name="stream">The stream to upload.</param>

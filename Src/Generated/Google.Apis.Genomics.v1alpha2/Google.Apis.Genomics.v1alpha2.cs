@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160809 (586)
+ *      <tr><th>API Rev<td>20160817 (594)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1489,6 +1489,13 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The minimum amount of RAM to use. Defaults to 3.75 (GB)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumRamGb")]
         public virtual System.Nullable<double> MinimumRamGb { get; set; } 
+
+        /// <summary>Whether to assign an external IP to the instance. Defaults to false. Corresponds to `--no_address`
+        /// flag for [gcloud compute instances create]
+        /// (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). Cannot be true at run time if
+        /// false at create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
+        public virtual System.Nullable<bool> NoAddress { get; set; } 
 
         /// <summary>At create time means that preemptible machines may be used for the run. At run time, means they
         /// should be used. Cannot be true at run time if false at create time. Defaults to `false`.</summary>

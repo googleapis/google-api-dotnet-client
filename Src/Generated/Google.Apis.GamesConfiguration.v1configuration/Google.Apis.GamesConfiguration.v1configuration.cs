@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services'>Google Play Game Services Publishing API</a>
  *      <tr><th>API Version<td>v1configuration
- *      <tr><th>API Rev<td>20160810 (587)
+ *      <tr><th>API Rev<td>20160815 (592)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services'>
  *              https://developers.google.com/games/services</a>
@@ -786,6 +786,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         }
 
         /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
+
         /// <param name="resourceId">The ID of the resource used by this method.</param>
         /// <param name="imageType">Selects
         /// which image in a resource for this method.</param>

@@ -1460,7 +1460,8 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Creates a new file.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Creates a new file.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual CreateMediaUpload Create(Google.Apis.Drive.v3.Data.File body, System.IO.Stream stream, string contentType)
@@ -2207,7 +2208,8 @@ namespace Google.Apis.Drive.v3
 
         }
 
-        /// <summary>Updates a file's metadata and/or content with patch semantics.</summary>/// <param name="body">The body of the request.</param>
+        /// <summary>Updates a file's metadata and/or content with patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>

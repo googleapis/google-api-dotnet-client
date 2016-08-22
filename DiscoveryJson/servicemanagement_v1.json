@@ -18,7 +18,7 @@
       }
     }
   },
-  "description": "The service management API for Google Cloud Platform",
+  "description": "Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.",
   "protocol": "rest",
   "title": "Google Service Management API",
   "resources": {
@@ -68,7 +68,7 @@
               "parameterOrder": [
                 "serviceName"
               ],
-              "description": "Creates a new service configuration rollout. Based on rollout, the\nGoogle Service Management will roll out the service configurations to\ndifferent backend services. For example, the logging configuration will be\npushed to Google Cloud Logging.\n\nOperation\u003cresponse: Rollout\u003e",
+              "description": "Creates a new service configuration rollout. Based on rollout, the\nGoogle Service Management will roll out the service configurations to\ndifferent backend services. For example, the logging configuration will be\npushed to Google Cloud Logging.\n\nPlease note that any previous pending and running Rollouts and associated\nOperations will be automatically cancelled so that the latest Rollout will\nnot be blocked by previous Rollouts.\n\nOperation\u003cresponse: Rollout\u003e",
               "request": {
                 "$ref": "Rollout"
               },
@@ -482,7 +482,7 @@
           "parameterOrder": [
             "serviceName"
           ],
-          "description": "Enable a managed service for a project with default setting.\n\nOperation\u003cresponse: EnableServiceResponse\u003e",
+          "description": "Enable a managed service for a project with default setting.\n\nOperation\u003cresponse: EnableServiceResponse\u003e\n\ngoogle.rpc.Status errors may contain a\ngoogle.rpc.PreconditionFailure error detail.",
           "request": {
             "$ref": "EnableServiceRequest"
           },
@@ -735,7 +735,7 @@
       "type": "object",
       "properties": {
         "displayName": {
-          "description": "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. For example, `\"Google Cloud SQL Database\"`.",
+          "description": "Optional. A concise name for the monitored resource type that might be\ndisplayed in user interfaces. It should be a Title Cased Noun Phrase,\nwithout any article or other determiners. For example,\n`\"Google Cloud SQL Database\"`.",
           "type": "string"
         },
         "description": {
@@ -1991,7 +1991,7 @@
           "$ref": "OAuthRequirements"
         },
         "allowWithoutCredential": {
-          "description": "Whether to allow requests without a credential.  If quota is enabled, an\nAPI key is required for such request to pass the quota check.",
+          "description": "Whether to allow requests without a credential. The credential can be\nan OAuth token, Google cookies (first-party auth) or EndUserCreds.\n\nFor requests without credentials, if the service control environment is\nspecified, each incoming request **must** be associated with a service\nconsumer. This can be done by passing an API key that belongs to a consumer\nproject.",
           "type": "boolean"
         },
         "requirements": {
@@ -2694,7 +2694,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20160808",
+  "revision": "20160815",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

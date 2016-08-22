@@ -371,7 +371,8 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Creates a new draft with the DRAFT label.</summary>/// <param name="body">The body of the request.</param>
+            /// <summary>Creates a new draft with the DRAFT label.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="stream">The stream to upload.</param>
@@ -816,7 +817,8 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.</summary>/// <param name="body">The body of the request.</param>
+            /// <summary>Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="stream">The stream to upload.</param>
@@ -975,7 +977,8 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Replaces a draft's content.</summary>/// <param name="body">The body of the request.</param>
+            /// <summary>Replaces a draft's content.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="id">The ID of the draft to update.</param>
@@ -2248,7 +2251,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Imports a message into only this user's mailbox, with standard email delivery scanning and
-            /// classification similar to receiving via SMTP. Does not send a message.</summary>/// <param name="body">The body of the request.</param>
+            /// classification similar to receiving via SMTP. Does not send a message.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="stream">The stream to upload.</param>
@@ -2465,7 +2469,8 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Directly inserts a message into only this user's mailbox similar to IMAP APPEND, bypassing most
-            /// scanning and classification. Does not send a message.</summary>/// <param name="body">The body of the request.</param>
+            /// scanning and classification. Does not send a message.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="stream">The stream to upload.</param>
@@ -2846,7 +2851,8 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Sends the specified message to the recipients in the To, Cc, and Bcc headers.</summary>/// <param name="body">The body of the request.</param>
+            /// <summary>Sends the specified message to the recipients in the To, Cc, and Bcc headers.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
             /// <param name="stream">The stream to upload.</param>

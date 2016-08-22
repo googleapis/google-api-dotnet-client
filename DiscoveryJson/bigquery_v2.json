@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/8rEI9Itey4sELFuUMOxtsOL5F08\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-J7CigR4XBUh0ZGBxFVnefRE4G0\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20160804",
+ "revision": "20160814",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -801,6 +801,13 @@
      "type": "string",
      "description": "[Deprecated] The format of the schemaInline property."
     },
+    "schemaUpdateOptions": {
+     "type": "array",
+     "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the load job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+     "items": {
+      "type": "string"
+     }
+    },
     "skipLeadingRows": {
      "type": "integer",
      "description": "[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.",
@@ -870,6 +877,13 @@
     "query": {
      "type": "string",
      "description": "[Required] BigQuery SQL query to execute."
+    },
+    "schemaUpdateOptions": {
+     "type": "array",
+     "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+     "items": {
+      "type": "string"
+     }
     },
     "tableDefinitions": {
      "type": "object",

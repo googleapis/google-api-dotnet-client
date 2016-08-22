@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160816 (593)
+ *      <tr><th>API Rev<td>20160817 (594)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -1232,6 +1232,7 @@ namespace Google.Apis.AndroidPublisher.v2
             }
 
 
+
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
@@ -2103,6 +2104,7 @@ namespace Google.Apis.AndroidPublisher.v2
             }
 
             /// <summary>Uploads and attaches a new Expansion File to the APK specified.</summary>
+
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
@@ -2786,6 +2788,7 @@ namespace Google.Apis.AndroidPublisher.v2
 
             /// <summary>Uploads a new image and adds it to the list of images for the specified language and image
             /// type.</summary>
+
             /// <param name="packageName">Unique identifier for the Android app that is being updated; for example,
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160801 (578)
+ *      <tr><th>API Rev<td>20160815 (592)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -553,6 +553,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
+        /// <summary>The actual config id used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -796,7 +800,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The importance of the data contained in the operation.</summary>
+        /// <summary>DO NOT USE. This is an experimental field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importance")]
         public virtual string Importance { get; set; } 
 
@@ -895,6 +899,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportErrors")]
         public virtual System.Collections.Generic.IList<ReportError> ReportErrors { get; set; } 
+
+        /// <summary>The actual config id used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160808 (585)
+ *      <tr><th>API Rev<td>20160815 (592)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -813,6 +813,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// will roll out the service configurations to different backend services. For example, the logging
             /// configuration will be pushed to Google Cloud Logging.
             ///
+            /// Please note that any previous pending and running Rollouts and associated Operations will be
+            /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
+            ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
@@ -825,6 +828,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Creates a new service configuration rollout. Based on rollout, the Google Service Management
             /// will roll out the service configurations to different backend services. For example, the logging
             /// configuration will be pushed to Google Cloud Logging.
+            ///
+            /// Please note that any previous pending and running Rollouts and associated Operations will be
+            /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
             ///
             /// Operation</summary>
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
@@ -1259,7 +1265,9 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Enable a managed service for a project with default setting.
         ///
-        /// Operation</summary>
+        /// Operation
+        ///
+        /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service to enable. Specifying an unknown service name will cause the request
         /// to fail.</param>
@@ -1270,7 +1278,9 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Enable a managed service for a project with default setting.
         ///
-        /// Operation</summary>
+        /// Operation
+        ///
+        /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
         public class EnableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
@@ -2078,8 +2088,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// If a method doesn't have any auth requirements, request credentials will be ignored.</summary>
     public class AuthenticationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to allow requests without a credential.  If quota is enabled, an API key is required for
-        /// such request to pass the quota check.</summary>
+        /// <summary>Whether to allow requests without a credential. The credential can be an OAuth token, Google
+        /// cookies (first-party auth) or EndUserCreds.
+        ///
+        /// For requests without credentials, if the service control environment is specified, each incoming request
+        /// **must** be associated with a service consumer. This can be done by passing an API key that belongs to a
+        /// consumer project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; } 
 
@@ -3340,7 +3354,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
-        /// interfaces. For example, `"Google Cloud SQL Database"`.</summary>
+        /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
+        /// `"Google Cloud SQL Database"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 

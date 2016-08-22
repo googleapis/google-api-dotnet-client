@@ -308,6 +308,7 @@ namespace Google.Apis.GroupsMigration.v1
         }
 
         /// <summary>Inserts a new mail into the archive of the Google group.</summary>
+
         /// <param name="groupId">The group ID</param>
         /// <param name="stream">The stream to upload.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
