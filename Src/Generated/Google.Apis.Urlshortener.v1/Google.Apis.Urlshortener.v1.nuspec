@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Urlshortener.v1</id>
-        <version>1.15.0.138</version>
+        <version>1.16.0.138</version>
         <title>Google.Apis.Urlshortener.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -33,8 +33,8 @@
         <tags>Google</tags>
         <dependencies>
             <group targetFramework="netstandard1.3">
-                <dependency id="Google.Apis" version="1.15.0" />
-                <dependency id="Google.Apis.Auth" version="1.15.0" />
+                <dependency id="Google.Apis" version="1.16.0" />
+                <dependency id="Google.Apis.Auth" version="1.16.0" />
             </group>
             <!--
               After v1.10.0 of Google.Apis, we
@@ -43,8 +43,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.15.0" />
-                <dependency id="Google.Apis.Auth" version="1.15.0" />
+                <dependency id="Google.Apis" version="1.16.0" />
+                <dependency id="Google.Apis.Auth" version="1.16.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
