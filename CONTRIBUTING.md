@@ -1,11 +1,14 @@
 # Contributing
 
-We welcome contributions to our code, and will always endeavor to respond in a quick and helpful manner to Pull Requests.
+We welcome contributions to our code, and will always endeavor to respond in a quick and helpful manner to Pull Requests (PRs).
 
 1. **Please sign one of the contributor license agreements below** (simple and pain-free).
 1. Fork the repo, develop and test your code changes, add docs.
+1. A PR should be a set of changes that addresses one issue in the issue tracker. Please file one PR per issue, and address one issue per PR. If you want to make a change that doesn't have a corresponding issue in the issue tracker, please [create a new issue][createissue] first.
 1. Make sure that your commit messages clearly describe the changes.
 1. Send a pull request.
+
+[createissue]: https://github.com/google/google-api-dotnet-client/issues
 
 ## Contributor License Agreements
 
