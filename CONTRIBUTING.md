@@ -4,8 +4,11 @@ We welcome contributions to our code, and will always endeavor to respond in a q
 
 1. **Please sign one of the contributor license agreements below** (simple and pain-free).
 1. Fork the repo, develop and test your code changes, add docs.
+1. A Pull Request should be a set of changes that addresses one issue in the issue tracker. Please file one Pull Request per issue, and address one issue per Pull Request. If you want to make a change that doesn't have a corresponding issue in the issue tracker, please [submit a new issue][issues] first.
 1. Make sure that your commit messages clearly describe the changes.
 1. Send a pull request.
+
+[issues]: https://github.com/google/google-api-dotnet-client/issues
 
 ## Contributor License Agreements
 
