@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160731 (577)
+ *      <tr><th>API Rev<td>20160819 (596)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -2312,7 +2312,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies. If creating a persistent disk
+        /// snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -2446,7 +2447,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string Properties { get; set; } 
 
         /// <summary>[Output Only] The type of the resource, for example compute.v1.instance, or
-        /// replicaPools.v1beta2.instanceGroupManager.</summary>
+        /// cloudfunctions.v1beta1.function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

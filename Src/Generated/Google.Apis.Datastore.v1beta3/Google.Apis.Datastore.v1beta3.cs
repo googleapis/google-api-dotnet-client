@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160802 (579)
+ *      <tr><th>API Rev<td>20160816 (593)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -760,7 +760,7 @@ namespace Google.Apis.Datastore.v1beta3
 namespace Google.Apis.Datastore.v1beta3.Data
 {    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.AllocateIds.</summary>
+    /// <summary>The request for Datastore.AllocateIds.</summary>
     public class AllocateIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-
@@ -772,7 +772,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.AllocateIds.</summary>
+    /// <summary>The response for Datastore.AllocateIds.</summary>
     public class AllocateIdsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The keys specified in the request (in the same order), each with its key path completed with a
@@ -796,14 +796,14 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.BeginTransaction.</summary>
+    /// <summary>The request for Datastore.BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.BeginTransaction.</summary>
+    /// <summary>The response for Datastore.BeginTransaction.</summary>
     public class BeginTransactionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The transaction identifier (always present).</summary>
@@ -814,7 +814,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.Commit.</summary>
+    /// <summary>The request for Datastore.Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of commit to perform. Defaults to `TRANSACTIONAL`.</summary>
@@ -834,7 +834,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; } 
 
         /// <summary>The identifier of the transaction associated with the commit. A transaction identifier is returned
-        /// by a call to BeginTransaction.</summary>
+        /// by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
 
@@ -842,7 +842,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.Commit.</summary>
+    /// <summary>The response for Datastore.Commit.</summary>
     public class CommitResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of index entries updated during the commit, or zero if none were updated.</summary>
@@ -911,9 +911,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The version of the entity, a strictly positive number that monotonically increases with changes to
         /// the entity.
         ///
-        /// This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is the version
-        /// of the snapshot that was used to look up the entity, and it is always set except for eventually consistent
-        /// reads.</summary>
+        /// This field is set for `FULL` entity results.
+        ///
+        /// For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the
+        /// entity, and it is always set except for eventually consistent reads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; } 
 
@@ -946,14 +947,17 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual System.Nullable<bool> AllowLiterals { get; set; } 
 
         /// <summary>For each non-reserved named binding site in the query string, there must be a named parameter with
-        /// that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`,
-        /// and must not be `""`.</summary>
+        /// that name, but not necessarily the inverse.
+        ///
+        /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedBindings")]
         public virtual System.Collections.Generic.IDictionary<string,GqlQueryParameter> NamedBindings { get; set; } 
 
         /// <summary>Numbered binding site @1 references the first numbered parameter, effectively using 1-based
-        /// indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th
-        /// numbered parameter. The inverse must also be true.</summary>
+        /// indexing, rather than the usual 0.
+        ///
+        /// For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse
+        /// must also be true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("positionalBindings")]
         public virtual System.Collections.Generic.IList<GqlQueryParameter> PositionalBindings { get; set; } 
 
@@ -1055,7 +1059,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.Lookup.</summary>
+    /// <summary>The request for Datastore.Lookup.</summary>
     public class LookupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Keys of entities to look up.</summary>
@@ -1070,7 +1074,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.Lookup.</summary>
+    /// <summary>The response for Datastore.Lookup.</summary>
     public class LookupResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of keys that were not looked up due to resource constraints. The order of results in this
@@ -1355,7 +1359,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ReadConsistency { get; set; } 
 
         /// <summary>The identifier of the transaction in which to read. A transaction identifier is returned by a call
-        /// to BeginTransaction.</summary>
+        /// to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
 
@@ -1363,11 +1367,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.Rollback.</summary>
+    /// <summary>The request for Datastore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The transaction identifier, returned by a call to
-        /// google.datastore.v1beta3.Datastore.BeginTransaction.</summary>
+        /// <summary>The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
 
@@ -1375,14 +1378,14 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.Rollback (an empty message).</summary>
+    /// <summary>The response for Datastore.Rollback. (an empty message).</summary>
     public class RollbackResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request for google.datastore.v1beta3.Datastore.RunQuery.</summary>
+    /// <summary>The request for Datastore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The GQL query to run.</summary>
@@ -1406,7 +1409,7 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response for google.datastore.v1beta3.Datastore.RunQuery.</summary>
+    /// <summary>The response for Datastore.RunQuery.</summary>
     public class RunQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A batch of query results (always present).</summary>
