@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160601 (517)
+ *      <tr><th>API Rev<td>20160818 (595)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2216,7 +2216,7 @@ namespace Google.Apis.Dns.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-32
+        /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-63
         /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
         /// digits or dashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

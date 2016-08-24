@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160817 (594)
+ *      <tr><th>API Rev<td>20160822 (599)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
@@ -1416,7 +1416,7 @@ namespace Google.Apis.Genomics.v1beta2
 
         /// <summary>Updates a call set. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="callSetId">The ID of the call set to be updated.</param>
+        /// <param name="callSetId">Required. The ID of the call set to be updated.</param>
         public virtual PatchRequest Patch(Google.Apis.Genomics.v1beta2.Data.CallSet body, string callSetId)
         {
             return new PatchRequest(service, body, callSetId);
@@ -1435,7 +1435,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the call set to be updated.</summary>
+            /// <summary>Required. The ID of the call set to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CallSetId { get; private set; }
 
@@ -1541,7 +1541,7 @@ namespace Google.Apis.Genomics.v1beta2
 
         /// <summary>Updates a call set.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="callSetId">The ID of the call set to be updated.</param>
+        /// <param name="callSetId">Required. The ID of the call set to be updated.</param>
         public virtual UpdateRequest Update(Google.Apis.Genomics.v1beta2.Data.CallSet body, string callSetId)
         {
             return new UpdateRequest(service, body, callSetId);
@@ -1560,7 +1560,7 @@ namespace Google.Apis.Genomics.v1beta2
             }
 
 
-            /// <summary>The ID of the call set to be updated.</summary>
+            /// <summary>Required. The ID of the call set to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callSetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CallSetId { get; private set; }
 

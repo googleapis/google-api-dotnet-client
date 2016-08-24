@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160817 (594)
+ *      <tr><th>API Rev<td>20160823 (600)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1492,13 +1492,14 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
         /// <summary>Whether to assign an external IP to the instance. Defaults to false. Corresponds to `--no_address`
         /// flag for [gcloud compute instances create]
-        /// (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). Cannot be true at run time if
-        /// false at create time.</summary>
+        /// (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true
+        /// for both create time and run time. Cannot be true at run time if false at create time. ** Note: To use this
+        /// option, your project must be in Google Access for Private IPs Early Access Program.**</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
         public virtual System.Nullable<bool> NoAddress { get; set; } 
 
-        /// <summary>At create time means that preemptible machines may be used for the run. At run time, means they
-        /// should be used. Cannot be true at run time if false at create time. Defaults to `false`.</summary>
+        /// <summary>Whether to use preemptible VMs. Defaults to `false`. In order to use this, must be true for both
+        /// create time and run time. Cannot be true at run time if false at create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
 

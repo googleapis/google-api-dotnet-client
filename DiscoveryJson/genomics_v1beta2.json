@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/ewSOJwDV-ZqN5nNFHaB8pAlfbDY\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/hqY3rCRNRTwof8yfeM_YjzOmunI\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1beta2",
  "name": "genomics",
  "version": "v1beta2",
- "revision": "20160817",
+ "revision": "20160822",
  "title": "Genomics API",
  "description": "Provides access to Genomics data.",
  "ownerDomain": "google.com",
@@ -2642,7 +2642,7 @@
      "parameters": {
       "callSetId": {
        "type": "string",
-       "description": "The ID of the call set to be updated.",
+       "description": "Required. The ID of the call set to be updated.",
        "required": true,
        "location": "path"
       }
@@ -2686,7 +2686,7 @@
      "parameters": {
       "callSetId": {
        "type": "string",
-       "description": "The ID of the call set to be updated.",
+       "description": "Required. The ID of the call set to be updated.",
        "required": true,
        "location": "path"
       }
