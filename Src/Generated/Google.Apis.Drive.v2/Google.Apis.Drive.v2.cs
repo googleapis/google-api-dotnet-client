@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160811 (588)
+ *      <tr><th>API Rev<td>20160819 (596)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -8228,7 +8228,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>The ID of the user this permission refers to, and identical to the permissionId in the About and
         /// Files resources. When making a drive.permissions.insert request, exactly one of the id or value fields must
-        /// be specified.</summary>
+        /// be specified unless the permission type anyone, in which case both id and value are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -8258,7 +8258,7 @@ namespace Google.Apis.Drive.v2.Data
 
         /// <summary>The email address or domain name for the entity. This is used during inserts and is not populated
         /// in responses. When making a drive.permissions.insert request, exactly one of the id or value fields must be
-        /// specified.</summary>
+        /// specified unless the permission type anyone, in which case both id and value are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

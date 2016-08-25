@@ -485,6 +485,10 @@
       "description": "Configuration for an automated build in response to source repository\nchanges.",
       "type": "object",
       "properties": {
+        "filename": {
+          "description": "Path, from the source root, to a file whose contents is used for the\ntemplate.",
+          "type": "string"
+        },
         "triggerTemplate": {
           "description": "Template describing the types of source changes to trigger a build.\n\nBranch and tag names in trigger templates are interpreted as regular\nexpressions. Any branch or tag change that matches that regular expression\nwill trigger a build.",
           "$ref": "RepoSource"
@@ -866,7 +870,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160823",
+  "revision": "20160824",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

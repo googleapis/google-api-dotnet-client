@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160823 (600)
+ *      <tr><th>API Rev<td>20160824 (601)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1462,6 +1462,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>Path, from the source root, to a file whose contents is used for the template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; } 
 
         /// <summary>Unique identifier of the trigger.
         ///
