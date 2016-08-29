@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160815 (592)
+ *      <tr><th>API Rev<td>20160822 (599)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1062,7 +1062,7 @@ namespace Google.Apis.ServiceManagement.v1
             }
         }
 
-        /// <summary>Creates a new managed service.
+        /// <summary>Creates a new managed service. Please note one producer project can own no more than 20 services.
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
@@ -1071,7 +1071,7 @@ namespace Google.Apis.ServiceManagement.v1
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new managed service.
+        /// <summary>Creates a new managed service. Please note one producer project can own no more than 20 services.
         ///
         /// Operation</summary>
         public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
@@ -2602,6 +2602,56 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`Endpoint` describes a network endpoint that serves a set of APIs. A service may expose any number of
+    /// endpoints, and all endpoints share the same service configuration, such as quota configuration and monitoring
+    /// configuration.
+    ///
+    /// Example service configuration:
+    ///
+    /// name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
+    /// served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to
+    /// the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name:
+    /// library-example.googleapis.com apis: google.example.library.v1.Library allow_cors: true # Below entry makes
+    /// 'google.example.library.v1.Library' # API be served from endpoint address # google.example.library-
+    /// example.v1.LibraryManager. - name: library-manager.googleapis.com apis: google.example.library.v1.LibraryManager
+    /// # BNS address for a borg job. Can specify a task by appending # "/taskId" (e.g. "/0") to the job spec.
+    ///
+    /// Example OpenAPI extension for endpoint with allow_cors set to true:
+    ///
+    /// { "swagger": "2.0", "info": { "description": "A simple..." }, "host": "MY_PROJECT_ID.appspot.com", "x-google-
+    /// endpoints": [{ "name": "MY_PROJECT_ID.appspot.com", "allow_cors": "true" }] }</summary>
+    public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
+        /// google.api.Endpoint for each of the intented alias.
+        ///
+        /// Additional names that this endpoint will be hosted on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; } 
+
+        /// <summary>Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain
+        /// traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests.
+        /// The response will be used by the browser to determine whether the subsequent cross-origin request is allowed
+        /// to proceed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCors")]
+        public virtual System.Nullable<bool> AllowCors { get; set; } 
+
+        /// <summary>The list of APIs served by this endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apis")]
+        public virtual System.Collections.Generic.IList<string> Apis { get; set; } 
+
+        /// <summary>The list of features enabled on this endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<string> Features { get; set; } 
+
+        /// <summary>The canonical name of this endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Enum type definition.</summary>
     public class Enum : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3751,6 +3801,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Additional API documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
         public virtual Documentation Documentation { get; set; } 
+
+        /// <summary>Configuration for network endpoints.  If this is empty, then an endpoint with the same name as the
+        /// service is automatically generated to service all defined APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; } 
 
         /// <summary>A list of all enum types included in this API service.  Enums referenced directly or indirectly by
         /// the `apis` are automatically included.  Enums which are not referenced but shall be included should be

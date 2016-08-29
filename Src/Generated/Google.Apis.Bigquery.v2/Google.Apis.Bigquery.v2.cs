@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160814 (591)
+ *      <tr><th>API Rev<td>20160822 (599)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3292,6 +3292,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
         public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
 
+        /// <summary>[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query
+        /// parameters in this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
+        public virtual string ParameterMode { get; set; } 
+
         /// <summary>[Deprecated] This property is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
         public virtual System.Nullable<bool> PreserveNulls { get; set; } 
@@ -3304,6 +3309,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Required] BigQuery SQL query to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
+
+        /// <summary>[Experimental] Query parameters for Standard SQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
+        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
         /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
         /// query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
@@ -3538,6 +3547,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
 
+        /// <summary>[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during
+        /// a dry run validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
+        public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3658,6 +3672,78 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class QueryParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] If unset, this is a positional parameter. Otherwise, should be unique within a
+        /// query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>[Required] The type of this parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterType")]
+        public virtual QueryParameterType ParameterType { get; set; } 
+
+        /// <summary>[Required] The value of this parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
+        public virtual QueryParameterValue ParameterValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class QueryParameterType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] The type of the array's elements, if this is an array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayType")]
+        public virtual QueryParameterType ArrayType { get; set; } 
+
+        /// <summary>[Optional] The types of the fields of this struct, in order, if this is a struct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structTypes")]
+        public virtual System.Collections.Generic.IList<QueryParameterType.StructTypesData> StructTypes { get; set; } 
+
+        /// <summary>[Required] The top level type of this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        public class StructTypesData
+        {
+            /// <summary>[Optional] Human-oriented description of the field.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("description")]
+            public virtual string Description { get; set; } 
+
+            /// <summary>[Optional] The name of this field.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; } 
+
+            /// <summary>[Required] The type of this field.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual QueryParameterType Type { get; set; } 
+
+        }
+    }    
+
+    public class QueryParameterValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] The array values, if this is an array type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayValues")]
+        public virtual System.Collections.Generic.IList<QueryParameterValue> ArrayValues { get; set; } 
+
+        /// <summary>[Optional] The struct field values, in order of the struct type's declaration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structValues")]
+        public virtual System.Collections.Generic.IList<QueryParameterValue> StructValues { get; set; } 
+
+        /// <summary>[Optional] The value of this value, if a simple scalar type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names
@@ -3683,6 +3769,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; } 
 
+        /// <summary>[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query
+        /// parameters in this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
+        public virtual string ParameterMode { get; set; } 
+
         /// <summary>[Deprecated] This property is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
         public virtual System.Nullable<bool> PreserveNulls { get; set; } 
@@ -3691,6 +3782,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
+
+        /// <summary>[Experimental] Query parameters for Standard SQL queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
+        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
         /// <summary>[Optional] How long to wait for the query to complete, in milliseconds, before the request times
         /// out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer

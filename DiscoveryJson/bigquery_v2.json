@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-J7CigR4XBUh0ZGBxFVnefRE4G0\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Ib6OxmyUT7luxrAe5VQ1tJgZykA\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20160814",
+ "revision": "20160822",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -866,6 +866,10 @@
      "description": "[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.",
      "format": "int64"
     },
+    "parameterMode": {
+     "type": "string",
+     "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query."
+    },
     "preserveNulls": {
      "type": "boolean",
      "description": "[Deprecated] This property is deprecated."
@@ -877,6 +881,13 @@
     "query": {
      "type": "string",
      "description": "[Required] BigQuery SQL query to execute."
+    },
+    "queryParameters": {
+     "type": "array",
+     "description": "[Experimental] Query parameters for Standard SQL queries.",
+     "items": {
+      "$ref": "QueryParameter"
+     }
     },
     "schemaUpdateOptions": {
      "type": "array",
@@ -1115,6 +1126,13 @@
      "type": "string",
      "description": "[Output-only] Total bytes processed for the job.",
      "format": "int64"
+    },
+    "undeclaredQueryParameters": {
+     "type": "array",
+     "description": "[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during a dry run validation.",
+     "items": {
+      "$ref": "QueryParameter"
+     }
     }
    }
   },
@@ -1256,6 +1274,83 @@
     }
    }
   },
+  "QueryParameter": {
+   "id": "QueryParameter",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "[Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query."
+    },
+    "parameterType": {
+     "$ref": "QueryParameterType",
+     "description": "[Required] The type of this parameter."
+    },
+    "parameterValue": {
+     "$ref": "QueryParameterValue",
+     "description": "[Required] The value of this parameter."
+    }
+   }
+  },
+  "QueryParameterType": {
+   "id": "QueryParameterType",
+   "type": "object",
+   "properties": {
+    "arrayType": {
+     "$ref": "QueryParameterType",
+     "description": "[Optional] The type of the array's elements, if this is an array."
+    },
+    "structTypes": {
+     "type": "array",
+     "description": "[Optional] The types of the fields of this struct, in order, if this is a struct.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "description": {
+        "type": "string",
+        "description": "[Optional] Human-oriented description of the field."
+       },
+       "name": {
+        "type": "string",
+        "description": "[Optional] The name of this field."
+       },
+       "type": {
+        "$ref": "QueryParameterType",
+        "description": "[Required] The type of this field."
+       }
+      }
+     }
+    },
+    "type": {
+     "type": "string",
+     "description": "[Required] The top level type of this field."
+    }
+   }
+  },
+  "QueryParameterValue": {
+   "id": "QueryParameterValue",
+   "type": "object",
+   "properties": {
+    "arrayValues": {
+     "type": "array",
+     "description": "[Optional] The array values, if this is an array type.",
+     "items": {
+      "$ref": "QueryParameterValue"
+     }
+    },
+    "structValues": {
+     "type": "array",
+     "description": "[Optional] The struct field values, in order of the struct type's declaration.",
+     "items": {
+      "$ref": "QueryParameterValue"
+     }
+    },
+    "value": {
+     "type": "string",
+     "description": "[Optional] The value of this value, if a simple scalar type."
+    }
+   }
+  },
   "QueryRequest": {
    "id": "QueryRequest",
    "type": "object",
@@ -1278,6 +1373,10 @@
      "description": "[Optional] The maximum number of rows of data to return per page of results. Setting this flag to a small value such as 1000 and then paging through results might improve reliability when the query result set is large. In addition to this limit, responses are also limited to 10 MB. By default, there is no maximum row count, and only the byte limit applies.",
      "format": "uint32"
     },
+    "parameterMode": {
+     "type": "string",
+     "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query."
+    },
     "preserveNulls": {
      "type": "boolean",
      "description": "[Deprecated] This property is deprecated."
@@ -1291,6 +1390,13 @@
       ]
      }
     },
+    "queryParameters": {
+     "type": "array",
+     "description": "[Experimental] Query parameters for Standard SQL queries.",
+     "items": {
+      "$ref": "QueryParameter"
+     }
+    },
     "timeoutMs": {
      "type": "integer",
      "description": "[Optional] How long to wait for the query to complete, in milliseconds, before the request times out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer to run than the timeout value, the call returns without any results and with the 'jobComplete' flag set to false. You can call GetQueryResults() to wait for the query to complete and read the results. The default value is 10000 milliseconds (10 seconds).",
@@ -1298,7 +1404,8 @@
     },
     "useLegacySql": {
      "type": "boolean",
-     "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false."
+     "description": "[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and flattenResults is false.",
+     "default": "true"
     },
     "useQueryCache": {
      "type": "boolean",

@@ -461,7 +461,7 @@
             "$ref": "Operation"
           },
           "parameterOrder": [],
-          "description": "Creates a new managed service.\n\nOperation\u003cresponse: ManagedService\u003e",
+          "description": "Creates a new managed service.\nPlease note one producer project can own no more than 20 services.\n\nOperation\u003cresponse: ManagedService\u003e",
           "request": {
             "$ref": "ManagedService"
           },
@@ -878,6 +878,13 @@
         "systemParameters": {
           "description": "Configuration for system parameters.",
           "$ref": "SystemParameters"
+        },
+        "endpoints": {
+          "description": "Configuration for network endpoints.  If this is empty, then an endpoint\nwith the same name as the service is automatically generated to service all\ndefined APIs.",
+          "type": "array",
+          "items": {
+            "$ref": "Endpoint"
+          }
         },
         "name": {
           "description": "The DNS address at which this service is available,\ne.g. `calendar.googleapis.com`.",
@@ -1793,6 +1800,42 @@
       },
       "id": "Status"
     },
+    "Endpoint": {
+      "description": "`Endpoint` describes a network endpoint that serves a set of APIs.\nA service may expose any number of endpoints, and all endpoints share the\nsame service configuration, such as quota configuration and monitoring\nconfiguration.\n\nExample service configuration:\n\n    name: library-example.googleapis.com\n    endpoints:\n      # Below entry makes 'google.example.library.v1.Library'\n      # API be served from endpoint address library-example.googleapis.com.\n      # It also allows HTTP OPTIONS calls to be passed to the backend, for\n      # it to decide whether the subsequent cross-origin request is\n      # allowed to proceed.\n    - name: library-example.googleapis.com\n      apis: google.example.library.v1.Library\n      allow_cors: true\n      # Below entry makes 'google.example.library.v1.Library'\n      # API be served from endpoint address\n      # google.example.library-example.v1.LibraryManager.\n    - name: library-manager.googleapis.com\n      apis: google.example.library.v1.LibraryManager\n      # BNS address for a borg job. Can specify a task by appending\n      # \"/taskId\" (e.g. \"/0\") to the job spec.\n\nExample OpenAPI extension for endpoint with allow_cors set to true:\n\n    {\n      \"swagger\": \"2.0\",\n      \"info\": {\n        \"description\": \"A simple...\"\n      },\n      \"host\": \"MY_PROJECT_ID.appspot.com\",\n      \"x-google-endpoints\": [{\n        \"name\": \"MY_PROJECT_ID.appspot.com\",\n        \"allow_cors\": \"true\"\n      }]\n    }",
+      "type": "object",
+      "properties": {
+        "apis": {
+          "description": "The list of APIs served by this endpoint.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowCors": {
+          "description": "Allowing\n[CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka\ncross-domain traffic, would allow the backends served from this endpoint to\nreceive and respond to HTTP OPTIONS requests. The response will be used by\nthe browser to determine whether the subsequent cross-origin request is\nallowed to proceed.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "The canonical name of this endpoint.",
+          "type": "string"
+        },
+        "aliases": {
+          "description": "DEPRECATED: This field is no longer supported. Instead of using aliases,\nplease specify multiple google.api.Endpoint for each of the intented\nalias.\n\nAdditional names that this endpoint will be hosted on.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "features": {
+          "description": "The list of features enabled on this endpoint.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "Endpoint"
+    },
     "Page": {
       "description": "Represents a documentation page. A page can contain subpages to represent\nnested documentation set structure.",
       "type": "object",
@@ -2029,6 +2072,25 @@
       },
       "id": "Logging"
     },
+    "SystemParameter": {
+      "description": "Define a parameter's name and location. The parameter may be passed as either\nan HTTP header or a URL query parameter, and if both are passed the behavior\nis implementation-dependent.",
+      "type": "object",
+      "properties": {
+        "urlQueryParameter": {
+          "description": "Define the URL query parameter name to use for the parameter. It is case\nsensitive.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Define the name of the parameter, such as \"api_key\", \"alt\", \"callback\",\nand etc. It is case sensitive.",
+          "type": "string"
+        },
+        "httpHeader": {
+          "description": "Define the HTTP header name to use for the parameter. It is case\ninsensitive.",
+          "type": "string"
+        }
+      },
+      "id": "SystemParameter"
+    },
     "Enum": {
       "description": "Enum type definition.",
       "type": "object",
@@ -2069,25 +2131,6 @@
         }
       },
       "id": "Enum"
-    },
-    "SystemParameter": {
-      "description": "Define a parameter's name and location. The parameter may be passed as either\nan HTTP header or a URL query parameter, and if both are passed the behavior\nis implementation-dependent.",
-      "type": "object",
-      "properties": {
-        "urlQueryParameter": {
-          "description": "Define the URL query parameter name to use for the parameter. It is case\nsensitive.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Define the name of the parameter, such as \"api_key\", \"alt\", \"callback\",\nand etc. It is case sensitive.",
-          "type": "string"
-        },
-        "httpHeader": {
-          "description": "Define the HTTP header name to use for the parameter. It is case\ninsensitive.",
-          "type": "string"
-        }
-      },
-      "id": "SystemParameter"
     },
     "GenerateConfigReportResponse": {
       "description": "Response message for GenerateConfigReport method.",
@@ -2694,7 +2737,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20160815",
+  "revision": "20160822",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

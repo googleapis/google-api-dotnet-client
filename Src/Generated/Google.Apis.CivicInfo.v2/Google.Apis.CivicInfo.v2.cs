@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160707 (553)
+ *      <tr><th>API Rev<td>20160823 (600)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -416,6 +416,13 @@ namespace Google.Apis.CivicInfo.v2
             [Google.Apis.Util.RequestParameterAttribute("officialOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OfficialOnly { get; set; }
 
+            /// <summary>If set to true, the query will return the success codeand include any partial information when
+            /// it is unable to determine a matching address or unable to determine the election for electionId=0
+            /// queries.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("returnAllAvailableData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnAllAvailableData { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -462,6 +469,15 @@ namespace Google.Apis.CivicInfo.v2
                     "officialOnly", new Google.Apis.Discovery.Parameter
                     {
                         Name = "officialOnly",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "returnAllAvailableData", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnAllAvailableData",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -998,8 +1014,8 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string PrimaryParty { get; set; } 
 
         /// <summary>The set of ballot responses for the referendum. A ballot response represents a line on the ballot.
-        /// Common examples might include "yes" or "no" for referenda, or a judge's name for a retention contest. This
-        /// field is only populated for contests of type 'Referendum'.</summary>
+        /// Common examples might include "yes" or "no" for referenda. This field is only populated for contests of type
+        /// 'Referendum'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referendumBallotResponses")]
         public virtual System.Collections.Generic.IList<string> ReferendumBallotResponses { get; set; } 
 
@@ -1062,7 +1078,8 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string Special { get; set; } 
 
         /// <summary>The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with
-        /// candidates. For referenda this will be 'Referendum'.</summary>
+        /// candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be
+        /// 'Retention'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1183,6 +1200,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// would have id "34" and a scope of stateUpper.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kgForeignKey")]
+        public virtual string KgForeignKey { get; set; } 
 
         /// <summary>The name of the district.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
