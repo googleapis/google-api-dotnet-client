@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160712 (558)
+ *      <tr><th>API Rev<td>20160822 (599)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -497,7 +497,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
-        /// <summary>Creates a new backup run on demand.</summary>
+        /// <summary>Creates a new backup run on demand. This method is applicable only to Second Generation
+        /// instances.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param
@@ -507,7 +508,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new InsertRequest(service, body, project, instance);
         }
 
-        /// <summary>Creates a new backup run on demand.</summary>
+        /// <summary>Creates a new backup run on demand. This method is applicable only to Second Generation
+        /// instances.</summary>
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>

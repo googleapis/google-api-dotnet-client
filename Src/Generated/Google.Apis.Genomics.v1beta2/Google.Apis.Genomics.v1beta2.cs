@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>Genomics API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20160824 (601)
+ *      <tr><th>API Rev<td>20160829 (606)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/genomics/v1beta2/reference'>
  *              https://developers.google.com/genomics/v1beta2/reference</a>
