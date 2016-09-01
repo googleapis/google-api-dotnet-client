@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OxFhwmXVMAvezu3DksziaPGZ_dY\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/TVMTzMzY2Oz9Cw6N35WlTiR7OUE\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.4",
  "name": "adexchangebuyer",
  "canonicalName": "Ad Exchange Buyer",
  "version": "v1.4",
- "revision": "20160721",
+ "revision": "20160831",
  "title": "Ad Exchange Buyer API",
  "description": "Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.",
  "ownerDomain": "google.com",
@@ -850,6 +850,10 @@
     "brandingType": {
      "type": "string",
      "description": "Visibilty of the URL in bid requests."
+    },
+    "crossListedExternalDealIdType": {
+     "type": "string",
+     "description": "Indicates that this ExternalDealId exists under at least two different AdxInventoryDeals. Currently, the only case that the same ExternalDealId will exist is programmatic cross sell case."
     },
     "description": {
      "type": "string",
@@ -2396,6 +2400,11 @@
      "httpMethod": "PATCH",
      "description": "Updates an existing account. This method supports patch semantics.",
      "parameters": {
+      "confirmUnsafeAccountChange": {
+       "type": "boolean",
+       "description": "Confirmation for erasing bidder and cookie matching urls.",
+       "location": "query"
+      },
       "id": {
        "type": "integer",
        "description": "The account id",
@@ -2423,6 +2432,11 @@
      "httpMethod": "PUT",
      "description": "Updates an existing account.",
      "parameters": {
+      "confirmUnsafeAccountChange": {
+       "type": "boolean",
+       "description": "Confirmation for erasing bidder and cookie matching urls.",
+       "location": "query"
+      },
       "id": {
        "type": "integer",
        "description": "The account id",
@@ -3331,16 +3345,18 @@
       },
       "updateAction": {
        "type": "string",
-       "description": "The proposed action to take on the proposal.",
+       "description": "The proposed action to take on the proposal. This field is required and it must be set when updating a proposal.",
        "required": true,
        "enum": [
         "accept",
         "cancel",
         "propose",
+        "proposeAndAccept",
         "unknownAction",
         "updateFinalized"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",
@@ -3425,16 +3441,18 @@
       },
       "updateAction": {
        "type": "string",
-       "description": "The proposed action to take on the proposal.",
+       "description": "The proposed action to take on the proposal. This field is required and it must be set when updating a proposal.",
        "required": true,
        "enum": [
         "accept",
         "cancel",
         "propose",
+        "proposeAndAccept",
         "unknownAction",
         "updateFinalized"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",

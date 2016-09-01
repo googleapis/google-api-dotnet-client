@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160721 (567)
+ *      <tr><th>API Rev<td>20160831 (608)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -476,6 +476,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int Id { get; private set; }
 
+            /// <summary>Confirmation for erasing bidder and cookie matching urls.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("confirmUnsafeAccountChange", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ConfirmUnsafeAccountChange { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AdExchangeBuyer.v1_4.Data.Account Body { get; set; }
@@ -515,6 +519,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "confirmUnsafeAccountChange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "confirmUnsafeAccountChange",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -543,6 +556,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             /// <summary>The account id</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int Id { get; private set; }
+
+            /// <summary>Confirmation for erasing bidder and cookie matching urls.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("confirmUnsafeAccountChange", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ConfirmUnsafeAccountChange { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -580,6 +597,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         Name = "id",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "confirmUnsafeAccountChange", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "confirmUnsafeAccountChange",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2887,7 +2913,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         /// revision number to update. If the head revision in the marketplace database has since changed, an error will be
         /// thrown. The caller should then fetch the latest proposal at head revision and retry the update at that
         /// revision.</param>
-        /// <param name="updateAction">The proposed action to take on the proposal.</param>
+        /// <param name="updateAction">The proposed action to take on the proposal. This field is
+        /// required and it must be set when updating a proposal.</param>
         public virtual PatchRequest Patch(Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, PatchRequest.UpdateActionEnum updateAction)
         {
             return new PatchRequest(service, body, proposalId, revisionNumber, updateAction);
@@ -2918,11 +2945,13 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             [Google.Apis.Util.RequestParameterAttribute("revisionNumber", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long RevisionNumber { get; private set; }
 
-            /// <summary>The proposed action to take on the proposal.</summary>
+            /// <summary>The proposed action to take on the proposal. This field is required and it must be set when
+            /// updating a proposal.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateAction", Google.Apis.Util.RequestParameterType.Path)]
             public virtual UpdateActionEnum UpdateAction { get; private set; }
 
-            /// <summary>The proposed action to take on the proposal.</summary>
+            /// <summary>The proposed action to take on the proposal. This field is required and it must be set when
+            /// updating a proposal.</summary>
             public enum UpdateActionEnum
             {
                 [Google.Apis.Util.StringValueAttribute("accept")]
@@ -2931,6 +2960,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                 Cancel,
                 [Google.Apis.Util.StringValueAttribute("propose")]
                 Propose,
+                [Google.Apis.Util.StringValueAttribute("proposeAndAccept")]
+                ProposeAndAccept,
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
                 UnknownAction,
                 [Google.Apis.Util.StringValueAttribute("updateFinalized")]
@@ -3123,7 +3154,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         /// revision number to update. If the head revision in the marketplace database has since changed, an error will be
         /// thrown. The caller should then fetch the latest proposal at head revision and retry the update at that
         /// revision.</param>
-        /// <param name="updateAction">The proposed action to take on the proposal.</param>
+        /// <param name="updateAction">The proposed action to take on the proposal. This field is
+        /// required and it must be set when updating a proposal.</param>
         public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyer.v1_4.Data.Proposal body, string proposalId, long revisionNumber, UpdateRequest.UpdateActionEnum updateAction)
         {
             return new UpdateRequest(service, body, proposalId, revisionNumber, updateAction);
@@ -3154,11 +3186,13 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             [Google.Apis.Util.RequestParameterAttribute("revisionNumber", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long RevisionNumber { get; private set; }
 
-            /// <summary>The proposed action to take on the proposal.</summary>
+            /// <summary>The proposed action to take on the proposal. This field is required and it must be set when
+            /// updating a proposal.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateAction", Google.Apis.Util.RequestParameterType.Path)]
             public virtual UpdateActionEnum UpdateAction { get; private set; }
 
-            /// <summary>The proposed action to take on the proposal.</summary>
+            /// <summary>The proposed action to take on the proposal. This field is required and it must be set when
+            /// updating a proposal.</summary>
             public enum UpdateActionEnum
             {
                 [Google.Apis.Util.StringValueAttribute("accept")]
@@ -3167,6 +3201,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                 Cancel,
                 [Google.Apis.Util.StringValueAttribute("propose")]
                 Propose,
+                [Google.Apis.Util.StringValueAttribute("proposeAndAccept")]
+                ProposeAndAccept,
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
                 UnknownAction,
                 [Google.Apis.Util.StringValueAttribute("updateFinalized")]
@@ -4004,6 +4040,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Visibilty of the URL in bid requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandingType")]
         public virtual string BrandingType { get; set; } 
+
+        /// <summary>Indicates that this ExternalDealId exists under at least two different AdxInventoryDeals.
+        /// Currently, the only case that the same ExternalDealId will exist is programmatic cross sell case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossListedExternalDealIdType")]
+        public virtual string CrossListedExternalDealIdType { get; set; } 
 
         /// <summary>Description for the proposed terms of the deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
