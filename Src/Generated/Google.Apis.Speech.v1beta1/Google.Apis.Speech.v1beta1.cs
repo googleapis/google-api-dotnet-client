@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160830 (607)
+ *      <tr><th>API Rev<td>20160902 (610)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.CloudSpeechAPI.v1beta1
+namespace Google.Apis.Speech.v1beta1
 {
-    /// <summary>The CloudSpeechAPI Service.</summary>
-    public class CloudSpeechAPIService : Google.Apis.Services.BaseClientService
+    /// <summary>The Speech Service.</summary>
+    public class SpeechService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1beta1";
@@ -56,12 +56,12 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudSpeechAPIService() :
+        public SpeechService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudSpeechAPIService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public SpeechService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             operations = new OperationsResource(this);
@@ -119,11 +119,11 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         }
     }
 
-    ///<summary>A base abstract class for CloudSpeechAPI requests.</summary>
-    public abstract class CloudSpeechAPIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for Speech requests.</summary>
+    public abstract class SpeechBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudSpeechAPIBaseServiceRequest instance.</summary>
-        protected CloudSpeechAPIBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new SpeechBaseServiceRequest instance.</summary>
+        protected SpeechBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -210,7 +210,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes CloudSpeechAPI parameter list.</summary>
+        /// <summary>Initializes Speech parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -357,7 +357,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// the cancellation succeeded or whether the operation completed despite cancellation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(Google.Apis.CloudSpeechAPI.v1beta1.Data.CancelOperationRequest body, string name)
+        public virtual CancelRequest Cancel(Google.Apis.Speech.v1beta1.Data.CancelOperationRequest body, string name)
         {
             return new CancelRequest(service, body, name);
         }
@@ -366,10 +366,10 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
         /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
         /// the cancellation succeeded or whether the operation completed despite cancellation.</summary>
-        public class CancelRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.Empty>
+        public class CancelRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSpeechAPI.v1beta1.Data.CancelOperationRequest body, string name)
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1beta1.Data.CancelOperationRequest body, string name)
                 : base(service)
             {
                 Name = name;
@@ -384,7 +384,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSpeechAPI.v1beta1.Data.CancelOperationRequest Body { get; set; }
+            Google.Apis.Speech.v1beta1.Data.CancelOperationRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -437,7 +437,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
         /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
         /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-        public class DeleteRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.Empty>
+        public class DeleteRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -499,7 +499,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
 
         /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
-        public class GetRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.Operation>
+        public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -566,7 +566,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         ///
         /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
         /// schemes, such as `users/operations`.</summary>
-        public class ListRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.ListOperationsResponse>
+        public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -677,7 +677,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
         /// `AsyncRecognizeResponse` message.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual AsyncrecognizeRequest Asyncrecognize(Google.Apis.CloudSpeechAPI.v1beta1.Data.AsyncRecognizeRequest body)
+        public virtual AsyncrecognizeRequest Asyncrecognize(Google.Apis.Speech.v1beta1.Data.AsyncRecognizeRequest body)
         {
             return new AsyncrecognizeRequest(service, body);
         }
@@ -685,10 +685,10 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// <summary>Perform asynchronous speech-recognition: receive results via the google.longrunning.Operations
         /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
         /// `AsyncRecognizeResponse` message.</summary>
-        public class AsyncrecognizeRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.Operation>
+        public class AsyncrecognizeRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Asyncrecognize request.</summary>
-            public AsyncrecognizeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSpeechAPI.v1beta1.Data.AsyncRecognizeRequest body)
+            public AsyncrecognizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1beta1.Data.AsyncRecognizeRequest body)
                 : base(service)
             {
                 Body = body;
@@ -698,7 +698,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSpeechAPI.v1beta1.Data.AsyncRecognizeRequest Body { get; set; }
+            Google.Apis.Speech.v1beta1.Data.AsyncRecognizeRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -733,17 +733,17 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
         /// <summary>Perform synchronous speech-recognition: receive results after all audio has been sent and
         /// processed.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual SyncrecognizeRequest Syncrecognize(Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest body)
+        public virtual SyncrecognizeRequest Syncrecognize(Google.Apis.Speech.v1beta1.Data.SyncRecognizeRequest body)
         {
             return new SyncrecognizeRequest(service, body);
         }
 
         /// <summary>Perform synchronous speech-recognition: receive results after all audio has been sent and
         /// processed.</summary>
-        public class SyncrecognizeRequest : CloudSpeechAPIBaseServiceRequest<Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeResponse>
+        public class SyncrecognizeRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.SyncRecognizeResponse>
         {
             /// <summary>Constructs a new Syncrecognize request.</summary>
-            public SyncrecognizeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest body)
+            public SyncrecognizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1beta1.Data.SyncRecognizeRequest body)
                 : base(service)
             {
                 Body = body;
@@ -753,7 +753,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudSpeechAPI.v1beta1.Data.SyncRecognizeRequest Body { get; set; }
+            Google.Apis.Speech.v1beta1.Data.SyncRecognizeRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -787,7 +787,7 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1
     }
 }
 
-namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
+namespace Google.Apis.Speech.v1beta1.Data
 {    
 
     /// <summary>`AsyncRecognizeRequest` is the top-level message sent by the client for the `AsyncRecognize`
@@ -902,6 +902,12 @@ namespace Google.Apis.CloudSpeechAPI.v1beta1.Data
     /// the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Optional] The number of interleaved channels in the input audio data. Valid values for LINEAR16
+        /// and FLAC are `1`-`8`. Valid values for MULAW, AMR and AMR_WB are only `1`. If `0` or omitted, defaults to
+        /// one channel (mono).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioChannels")]
+        public virtual System.Nullable<int> AudioChannels { get; set; } 
+
         /// <summary>[Required] Encoding of audio data sent in all `RecognitionAudio` messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; } 

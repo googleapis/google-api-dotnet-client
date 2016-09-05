@@ -22,12 +22,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Google.Apis.CloudSpeechAPI.v1beta1")]
+[assembly: AssemblyTitle("Google.Apis.Speech.v1beta1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Google.Apis.CloudSpeechAPI.v1beta1")]
+[assembly: AssemblyProduct("Google.Apis.Speech.v1beta1")]
 [assembly: AssemblyCompany("Google Inc.")]
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.16.0.607")]
+[assembly: AssemblyVersion("1.16.0.610")]

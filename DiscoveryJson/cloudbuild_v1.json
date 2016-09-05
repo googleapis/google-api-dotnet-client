@@ -244,6 +244,11 @@
                   "type": "integer",
                   "format": "int32"
                 },
+                "filter": {
+                  "description": "The raw filter text to constrain the results.",
+                  "location": "query",
+                  "type": "string"
+                },
                 "projectId": {
                   "description": "ID of the project.",
                   "required": true,
@@ -870,7 +875,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160831",
+  "revision": "20160901",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

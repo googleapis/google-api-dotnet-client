@@ -303,8 +303,8 @@
           ],
           "enumDescriptions": [
             "Not specified. Will return result google.rpc.Code.INVALID_ARGUMENT.",
-            "Uncompressed 16-bit signed little-endian samples.\nThis is the only encoding that may be used by `AsyncRecognize`.",
-            "This is the recommended encoding for `SyncRecognize` and\n`StreamingRecognize` because it uses lossless compression; therefore\nrecognition accuracy is not compromised by a lossy codec.\n\nThe stream FLAC (Free Lossless Audio Codec) encoding is specified at:\nhttp://flac.sourceforge.net/documentation.html.\nOnly 16-bit samples are supported.\nNot all fields in STREAMINFO are supported.",
+            "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nIf `audio_channels` is greater than `1`, the samples are interleaved.\nFor example, if `audio_channels` is `2` (stereo), the data contains a\n2-byte sample for the left channel followed by a 2-byte sample for the\nright channel, followed by the next time samples for left and right.\n\nThis is the only encoding that may be used by `AsyncRecognize`.",
+            "This is the recommended encoding for `SyncRecognize` and\n`StreamingRecognize` because it uses lossless compression; therefore\nrecognition accuracy is not compromised by a lossy codec.\n\nThe stream FLAC (Free Lossless Audio Codec) encoding is specified at:\nhttp://flac.sourceforge.net/documentation.html.\n16-bit and 24-bit samples are supported.\nNot all fields in STREAMINFO are supported.",
             "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
             "Adaptive Multi-Rate Narrowband codec. `sample_rate` must be 8000 Hz.",
             "Adaptive Multi-Rate Wideband codec. `sample_rate` must be 16000 Hz."
@@ -317,6 +317,11 @@
         },
         "sampleRate": {
           "description": "[Required] Sample rate in Hertz of the audio data sent in all\n`RecognitionAudio` messages. Valid values are: 8000-48000.\n16000 is optimal. For best results, set the sampling rate of the audio\nsource to 16000 Hz. If that's not possible, use the native sample rate of\nthe audio source (instead of re-sampling).",
+          "type": "integer",
+          "format": "int32"
+        },
+        "audioChannels": {
+          "description": "[Optional] The number of interleaved channels in the input audio data.\nValid values for LINEAR16 and FLAC are `1`-`8`.\nValid values for MULAW, AMR and AMR_WB are only `1`.\nIf `0` or omitted, defaults to one channel (mono).",
           "type": "integer",
           "format": "int32"
         }
@@ -420,14 +425,13 @@
       "id": "AsyncRecognizeRequest"
     }
   },
-  "revision": "20160830",
+  "revision": "20160902",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version_module": "True",
-  "canonicalName": "Cloud Speech API",
   "discoveryVersion": "v1",
   "baseUrl": "https://speech.googleapis.com/",
   "name": "speech",
