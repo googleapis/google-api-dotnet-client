@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Google Cloud Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160322 (446)
+ *      <tr><th>API Rev<td>20160905 (613)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -64,8 +64,10 @@ namespace Google.Apis.Logging.v2beta1
         public LoggingService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            billingAccounts = new BillingAccountsResource(this);
             entries = new EntriesResource(this);
             monitoredResourceDescriptors = new MonitoredResourceDescriptorsResource(this);
+            organizations = new OrganizationsResource(this);
             projects = new ProjectsResource(this);
         }
 
@@ -115,6 +117,14 @@ namespace Google.Apis.Logging.v2beta1
 
 
 
+        private readonly BillingAccountsResource billingAccounts;
+
+        /// <summary>Gets the BillingAccounts resource.</summary>
+        public virtual BillingAccountsResource BillingAccounts
+        {
+            get { return billingAccounts; }
+        }
+
         private readonly EntriesResource entries;
 
         /// <summary>Gets the Entries resource.</summary>
@@ -129,6 +139,14 @@ namespace Google.Apis.Logging.v2beta1
         public virtual MonitoredResourceDescriptorsResource MonitoredResourceDescriptors
         {
             get { return monitoredResourceDescriptors; }
+        }
+
+        private readonly OrganizationsResource organizations;
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations
+        {
+            get { return organizations; }
         }
 
         private readonly ProjectsResource projects;
@@ -151,7 +169,18 @@ namespace Google.Apis.Logging.v2beta1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -160,7 +189,21 @@ namespace Google.Apis.Logging.v2beta1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -331,6 +374,112 @@ namespace Google.Apis.Logging.v2beta1
         }
     }
 
+    /// <summary>The "billingAccounts" collection of methods.</summary>
+    public class BillingAccountsResource
+    {
+        private const string Resource = "billingAccounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BillingAccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            logs = new LogsResource(service);
+
+        }
+
+        private readonly LogsResource logs;
+
+        /// <summary>Gets the Logs resource.</summary>
+        public virtual LogsResource Logs
+        {
+            get { return logs; }
+        }
+
+        /// <summary>The "logs" collection of methods.</summary>
+        public class LogsResource
+        {
+            private const string Resource = "logs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LogsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
+            /// entries.</summary>
+            /// <param name="logName">Required. The resource name of the log to delete.  Example: `"projects/my-
+            /// project/logs/syslog"`.</param>
+            public virtual DeleteRequest Delete(string logName)
+            {
+                return new DeleteRequest(service, logName);
+            }
+
+            /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
+            /// entries.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
+                    : base(service)
+                {
+                    LogName = logName;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the log to delete.  Example: `"projects/my-
+                /// project/logs/syslog"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string LogName { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+logName}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "logName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "logName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]*/logs/[^/]*$",
+                        });
+                }
+
+            }
+        }
+    }
+
     /// <summary>The "entries" collection of methods.</summary>
     public class EntriesResource
     {
@@ -347,7 +496,7 @@ namespace Google.Apis.Logging.v2beta1
         }
 
 
-        /// <summary>Lists log entries. Use this method to retrieve log entries from Cloud Logging. For ways to export
+        /// <summary>Lists log entries.  Use this method to retrieve log entries from Cloud Logging.  For ways to export
         /// log entries, see [Exporting Logs](/logging/docs/export).</summary>
         /// <param name="body">The body of the request.</param>
         public virtual ListRequest List(Google.Apis.Logging.v2beta1.Data.ListLogEntriesRequest body)
@@ -355,7 +504,7 @@ namespace Google.Apis.Logging.v2beta1
             return new ListRequest(service, body);
         }
 
-        /// <summary>Lists log entries. Use this method to retrieve log entries from Cloud Logging. For ways to export
+        /// <summary>Lists log entries.  Use this method to retrieve log entries from Cloud Logging.  For ways to export
         /// log entries, see [Exporting Logs](/logging/docs/export).</summary>
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogEntriesResponse>
         {
@@ -402,16 +551,14 @@ namespace Google.Apis.Logging.v2beta1
 
         }
 
-        /// <summary>Writes log entries to Cloud Logging. All log entries in Cloud Logging are written by this
-        /// method.</summary>
+        /// <summary>Writes log entries to Stackdriver Logging.  All log entries are written by this method.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual WriteRequest Write(Google.Apis.Logging.v2beta1.Data.WriteLogEntriesRequest body)
         {
             return new WriteRequest(service, body);
         }
 
-        /// <summary>Writes log entries to Cloud Logging. All log entries in Cloud Logging are written by this
-        /// method.</summary>
+        /// <summary>Writes log entries to Stackdriver Logging.  All log entries are written by this method.</summary>
         public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.WriteLogEntriesResponse>
         {
             /// <summary>Constructs a new Write request.</summary>
@@ -474,13 +621,13 @@ namespace Google.Apis.Logging.v2beta1
         }
 
 
-        /// <summary>Lists monitored resource descriptors that are used by Cloud Logging.</summary>
+        /// <summary>Lists the monitored resource descriptors used by Stackdriver Logging.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists monitored resource descriptors that are used by Cloud Logging.</summary>
+        /// <summary>Lists the monitored resource descriptors used by Stackdriver Logging.</summary>
         public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListMonitoredResourceDescriptorsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -491,15 +638,15 @@ namespace Google.Apis.Logging.v2beta1
             }
 
 
-            /// <summary>Optional. The maximum number of results to return from this request. You must check for
-            /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve by
-            /// passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
+            /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
+            /// ignored.  The presence of `nextPageToken` in the response indicates that more results might be
+            /// available.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is retrieved.
-            /// The `pageToken` parameter must be set to the value of the `nextPageToken` from the previous
-            /// response.</summary>
+            /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
+            /// method.  `pageToken` must be the value of `nextPageToken` from the previous response.  The values of
+            /// other method parameters should be identical to those in the previous call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -550,6 +697,112 @@ namespace Google.Apis.Logging.v2beta1
         }
     }
 
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            logs = new LogsResource(service);
+
+        }
+
+        private readonly LogsResource logs;
+
+        /// <summary>Gets the Logs resource.</summary>
+        public virtual LogsResource Logs
+        {
+            get { return logs; }
+        }
+
+        /// <summary>The "logs" collection of methods.</summary>
+        public class LogsResource
+        {
+            private const string Resource = "logs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LogsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
+            /// entries.</summary>
+            /// <param name="logName">Required. The resource name of the log to delete.  Example: `"projects/my-
+            /// project/logs/syslog"`.</param>
+            public virtual DeleteRequest Delete(string logName)
+            {
+                return new DeleteRequest(service, logName);
+            }
+
+            /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
+            /// entries.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
+                    : base(service)
+                {
+                    LogName = logName;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the log to delete.  Example: `"projects/my-
+                /// project/logs/syslog"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string LogName { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+logName}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "logName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "logName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]*/logs/[^/]*$",
+                        });
+                }
+
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -594,7 +847,7 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
             /// entries.</summary>
-            /// <param name="logName">Required. The resource name of the log to delete. Example: `"projects/my-
+            /// <param name="logName">Required. The resource name of the log to delete.  Example: `"projects/my-
             /// project/logs/syslog"`.</param>
             public virtual DeleteRequest Delete(string logName)
             {
@@ -614,7 +867,7 @@ namespace Google.Apis.Logging.v2beta1
                 }
 
 
-                /// <summary>Required. The resource name of the log to delete. Example: `"projects/my-
+                /// <summary>Required. The resource name of the log to delete.  Example: `"projects/my-
                 /// project/logs/syslog"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LogName { get; private set; }
@@ -682,30 +935,34 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Creates a logs-based metric.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectName">The resource name of the project in which to create the metric. Example: `"projects/my-
-            /// project-id"`. The new metric must be provided in the request.</param>
-            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogMetric body, string projectName)
+            /// <param name="parent">The resource name of the project in which to create the metric. Example: `"projects/my-project-
+            /// id"`.
+            ///
+            /// The new metric must be provided in the request.</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogMetric body, string parent)
             {
-                return new CreateRequest(service, body, projectName);
+                return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Creates a logs-based metric.</summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogMetric>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogMetric body, string projectName)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogMetric body, string parent)
                     : base(service)
                 {
-                    ProjectName = projectName;
+                    Parent = parent;
                     Body = body;
                     InitParameters();
                 }
 
 
                 /// <summary>The resource name of the project in which to create the metric. Example: `"projects/my-
-                /// project-id"`. The new metric must be provided in the request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectName { get; private set; }
+                /// project-id"`.
+                ///
+                /// The new metric must be provided in the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -729,7 +986,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+projectName}/metrics"; }
+                    get { return "v2beta1/{+parent}/metrics"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -738,9 +995,9 @@ namespace Google.Apis.Logging.v2beta1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
+                        "parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectName",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -875,41 +1132,41 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Lists logs-based metrics.</summary>
-            /// <param name="projectName">Required. The resource name of the project containing the metrics. Example: `"projects/my-
-            /// project-id"`.</param>
-            public virtual ListRequest List(string projectName)
+            /// <param name="parent">Required. The resource name containing the metrics. Example: `"projects/my-project-
+            /// id"`.</param>
+            public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, projectName);
+                return new ListRequest(service, parent);
             }
 
             /// <summary>Lists logs-based metrics.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogMetricsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectName)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
                     : base(service)
                 {
-                    ProjectName = projectName;
+                    Parent = parent;
                     InitParameters();
                 }
 
 
-                /// <summary>Required. The resource name of the project containing the metrics. Example: `"projects/my-
-                /// project-id"`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectName { get; private set; }
+                /// <summary>Required. The resource name containing the metrics. Example: `"projects/my-project-
+                /// id"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is
-                /// retrieved. The `pageToken` parameter must be set to the value of the `nextPageToken` from the
-                /// previous response. The value of `projectName` must be the same as in the previous request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. You must check for
-                /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve
-                /// by passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored.  The presence of `nextPageToken` in the response indicates that more results might be
+                /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method.  `pageToken` must be the value of `nextPageToken` from the previous response.  The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -927,7 +1184,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+projectName}/metrics"; }
+                    get { return "v2beta1/{+parent}/metrics"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -936,27 +1193,27 @@ namespace Google.Apis.Logging.v2beta1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
+                        "parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectName",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]*$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -969,8 +1226,10 @@ namespace Google.Apis.Logging.v2beta1
             /// <summary>Creates or updates a logs-based metric.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="metricName">The resource name of the metric to update. Example: `"projects/my-project-id/metrics/my-
-            /// metric-id"`. The updated metric must be provided in the request and have the same identifier that is specified in
-            /// `metricName`. If the metric does not exist, it is created.</param>
+            /// metric-id"`.
+            ///
+            /// The updated metric must be provided in the request and have the same identifier that is specified in `metricName`.
+            /// If the metric does not exist, it is created.</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2beta1.Data.LogMetric body, string metricName)
             {
                 return new UpdateRequest(service, body, metricName);
@@ -990,8 +1249,10 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>The resource name of the metric to update. Example: `"projects/my-project-id/metrics/my-
-                /// metric-id"`. The updated metric must be provided in the request and have the same identifier that is
-                /// specified in `metricName`. If the metric does not exist, it is created.</summary>
+                /// metric-id"`.
+                ///
+                /// The updated metric must be provided in the request and have the same identifier that is specified in
+                /// `metricName`. If the metric does not exist, it is created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metricName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MetricName { get; private set; }
 
@@ -1064,30 +1325,30 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Creates a sink.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="projectName">The resource name of the project in which to create the sink. Example: `"projects/my-
-            /// project-id"`. The new sink must be provided in the request.</param>
-            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogSink body, string projectName)
+            /// <param name="parent">Required. The resource in which to create the sink. Example: `"projects/my-project-id"`. The
+            /// new sink must be provided in the request.</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogSink body, string parent)
             {
-                return new CreateRequest(service, body, projectName);
+                return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Creates a sink.</summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogSink body, string projectName)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogSink body, string parent)
                     : base(service)
                 {
-                    ProjectName = projectName;
+                    Parent = parent;
                     Body = body;
                     InitParameters();
                 }
 
 
-                /// <summary>The resource name of the project in which to create the sink. Example: `"projects/my-
-                /// project-id"`. The new sink must be provided in the request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectName { get; private set; }
+                /// <summary>Required. The resource in which to create the sink. Example: `"projects/my-project-id"`.
+                /// The new sink must be provided in the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1111,7 +1372,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+projectName}/sinks"; }
+                    get { return "v2beta1/{+parent}/sinks"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1120,9 +1381,9 @@ namespace Google.Apis.Logging.v2beta1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
+                        "parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectName",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1133,8 +1394,9 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Deletes a sink.</summary>
-            /// <param name="sinkName">The resource name of the sink to delete. Example: `"projects/my-project-id/sinks/my-sink-
-            /// id"`.</param>
+            /// <param name="sinkName">Required. The resource name of the sink to delete, including the parent resource and the sink
+            /// identifier.  Example: `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if the sink does not
+            /// exist.</param>
             public virtual DeleteRequest Delete(string sinkName)
             {
                 return new DeleteRequest(service, sinkName);
@@ -1152,8 +1414,9 @@ namespace Google.Apis.Logging.v2beta1
                 }
 
 
-                /// <summary>The resource name of the sink to delete. Example: `"projects/my-project-id/sinks/my-sink-
-                /// id"`.</summary>
+                /// <summary>Required. The resource name of the sink to delete, including the parent resource and the
+                /// sink identifier.  Example: `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if the sink
+                /// does not exist.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1195,8 +1458,8 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Gets a sink.</summary>
-            /// <param name="sinkName">The resource name of the sink to return. Example: `"projects/my-project-id/sinks/my-sink-
-            /// id"`.</param>
+            /// <param name="sinkName">Required. The resource name of the sink to return. Example: `"projects/my-project-id/sinks
+            /// /my-sink-id"`.</param>
             public virtual GetRequest Get(string sinkName)
             {
                 return new GetRequest(service, sinkName);
@@ -1214,8 +1477,8 @@ namespace Google.Apis.Logging.v2beta1
                 }
 
 
-                /// <summary>The resource name of the sink to return. Example: `"projects/my-project-id/sinks/my-sink-
-                /// id"`.</summary>
+                /// <summary>Required. The resource name of the sink to return. Example: `"projects/my-project-id/sinks
+                /// /my-sink-id"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1257,41 +1520,41 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="projectName">Required. The resource name of the project containing the sinks. Example: `"projects/my-
-            /// logging-project"`.</param>
-            public virtual ListRequest List(string projectName)
+            /// <param name="parent">Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+            /// project"`.</param>
+            public virtual ListRequest List(string parent)
             {
-                return new ListRequest(service, projectName);
+                return new ListRequest(service, parent);
             }
 
             /// <summary>Lists sinks.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string projectName)
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
                     : base(service)
                 {
-                    ProjectName = projectName;
+                    Parent = parent;
                     InitParameters();
                 }
 
 
-                /// <summary>Required. The resource name of the project containing the sinks. Example: `"projects/my-
-                /// logging-project"`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ProjectName { get; private set; }
+                /// <summary>Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+                /// project"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is
-                /// retrieved. The `pageToken` parameter must be set to the value of the `nextPageToken` from the
-                /// previous response. The value of `projectName` must be the same as in the previous request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. You must check for
-                /// presence of `nextPageToken` to determine if additional results are available, which you can retrieve
-                /// by passing the `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored.  The presence of `nextPageToken` in the response indicates that more results might be
+                /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method.  `pageToken` must be the value of `nextPageToken` from the previous response.  The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1309,7 +1572,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+projectName}/sinks"; }
+                    get { return "v2beta1/{+parent}/sinks"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1318,22 +1581,13 @@ namespace Google.Apis.Logging.v2beta1
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "projectName", new Google.Apis.Discovery.Parameter
+                        "parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectName",
+                            Name = "parent",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]*$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1344,21 +1598,30 @@ namespace Google.Apis.Logging.v2beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Creates or updates a sink.</summary>
+            /// <summary>Updates or creates a sink.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="sinkName">The resource name of the sink to update. Example: `"projects/my-project-id/sinks/my-sink-
-            /// id"`. The updated sink must be provided in the request and have the same name that is specified in `sinkName`. If
-            /// the sink does not exist, it is created.</param>
+            /// <param name="sinkName">Required. The resource name of the sink to update, including the parent resource and the sink
+            /// identifier.  If the sink does not exist, this method creates the sink.  Example: `"projects/my-project-id/sinks/my-
+            /// sink-id"`.</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2beta1.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Creates or updates a sink.</summary>
+            /// <summary>Updates or creates a sink.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1371,9 +1634,9 @@ namespace Google.Apis.Logging.v2beta1
                 }
 
 
-                /// <summary>The resource name of the sink to update. Example: `"projects/my-project-id/sinks/my-sink-
-                /// id"`. The updated sink must be provided in the request and have the same name that is specified in
-                /// `sinkName`. If the sink does not exist, it is created.</summary>
+                /// <summary>Required. The resource name of the sink to update, including the parent resource and the
+                /// sink identifier.  If the sink does not exist, this method creates the sink.  Example: `"projects/my-
+                /// project-id/sinks/my-sink-id"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1427,16 +1690,19 @@ namespace Google.Apis.Logging.v2beta1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A common proto for logging HTTP requests.</summary>
+    /// <summary>A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification.
+    /// Product-specific logging information MUST be defined in a separate message.</summary>
     public class HttpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of HTTP response bytes inserted into cache. Set only when a cache fill was
@@ -1486,6 +1752,10 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseSize")]
         public virtual System.Nullable<long> ResponseSize { get; set; } 
 
+        /// <summary>The IP address (IPv4 or IPv6) of the origin server that the request was sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverIp")]
+        public virtual string ServerIp { get; set; } 
+
         /// <summary>The response code indicating the status of response. Examples: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<int> Status { get; set; } 
@@ -1521,40 +1791,42 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>The parameters to `ListLogEntries`.</summary>
     public class ListLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. An [advanced logs filter](/logging/docs/view/advanced_filters). The filter is compared
-        /// against all log entries in the projects specified by `projectIds`. Only entries that match the filter are
-        /// retrieved. An empty filter matches all log entries.</summary>
+        /// <summary>Optional. A filter that chooses which log entries to return.  See [Advanced Logs
+        /// Filters](/logging/docs/view/advanced_filters).  Only log entries that match the filter are returned.  An
+        /// empty filter matches all log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Optional. How the results should be sorted. Presently, the only permitted values are `"timestamp
+        /// <summary>Optional. How the results should be sorted.  Presently, the only permitted values are `"timestamp
         /// asc"` (default) and `"timestamp desc"`. The first option returns entries in order of increasing values of
         /// `LogEntry.timestamp` (oldest first), and the second option returns entries in order of decreasing timestamps
-        /// (newest first). Entries with equal timestamps are returned in order of `LogEntry.insertId`.</summary>
+        /// (newest first).  Entries with equal timestamps are returned in order of `LogEntry.insertId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
-        /// <summary>Optional. The maximum number of results to return from this request. You must check for presence of
-        /// `nextPageToken` to determine if additional results are available, which you can retrieve by passing the
-        /// `nextPageToken` value as the `pageToken` parameter in the next request.</summary>
+        /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
+        /// ignored.  The presence of `nextPageToken` in the response indicates that more results might be
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
-        /// <summary>Optional. If the `pageToken` parameter is supplied, then the next page of results is retrieved. The
-        /// `pageToken` parameter must be set to the value of the `nextPageToken` from the previous response. The values
-        /// of `projectIds`, `filter`, and `orderBy` must be the same as in the previous request.</summary>
+        /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
+        /// method.  `pageToken` must be the value of `nextPageToken` from the previous response.  The values of other
+        /// method parameters should be identical to those in the previous call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
-        /// <summary>Optional. If true, read access to all projects is not required and results will be returned for the
-        /// subset of projects for which read access is permitted (empty subset is permitted).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
-        public virtual System.Nullable<bool> PartialSuccess { get; set; } 
-
-        /// <summary>Required. One or more project IDs or project numbers from which to retrieve log entries. Examples
-        /// of a project ID: `"my-project-1A"`, `"1234567890"`.</summary>
+        /// <summary>Deprecated. One or more project identifiers or project numbers from which to retrieve log entries.
+        /// Examples: `"my-project-1A"`, `"1234567890"`. If present, these project identifiers are converted to resource
+        /// format and added to the list of resources in `resourceNames`. Callers should use `resourceNames` rather than
+        /// this parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; } 
+
+        /// <summary>Optional. One or more cloud resources from which to retrieve log entries. Example: `"projects/my-
+        /// project-1A"`, `"projects/1234567890"`.  Projects listed in `projectIds` are added to this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1567,16 +1839,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
 
-        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// <summary>If there might be more results than appear in this response, then `nextPageToken` is included.  To
         /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
-
-        /// <summary>If partial_success is true, contains the project ids that had errors and the associated
-        /// errors.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectIdErrors")]
-        public virtual System.Collections.Generic.IDictionary<string,Status> ProjectIdErrors { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,7 +1856,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<LogMetric> Metrics { get; set; } 
 
-        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// <summary>If there might be more results than appear in this response, then `nextPageToken` is included.  To
         /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -1602,7 +1869,7 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>Result returned from ListMonitoredResourceDescriptors.</summary>
     public class ListMonitoredResourceDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
+        /// <summary>If there might be more results than appear in this response, then `nextPageToken` is included.  To
         /// get the next set of results, call this method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -1619,8 +1886,8 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// <summary>Result returned from `ListSinks`.</summary>
     public class ListSinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If there are more results than were returned, then `nextPageToken` is included in the response. To
-        /// get the next set of results, call this method again using the value of `nextPageToken` as
+        /// <summary>If there might be more results than appear in this response, then `nextPageToken` is included.  To
+        /// get the next set of results, call the same method again using the value of `nextPageToken` as
         /// `pageToken`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -1642,8 +1909,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual HttpRequest HttpRequest { get; set; } 
 
         /// <summary>Optional. A unique ID for the log entry. If you provide this field, the logging service considers
-        /// other log entries in the same log with the same ID as duplicates which can be removed. If omitted, Cloud
-        /// Logging will generate a unique ID for this log entry.</summary>
+        /// other log entries in the same project with the same ID as duplicates which can be removed.  If omitted,
+        /// Stackdriver Logging will generate a unique ID for this log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
         public virtual string InsertId { get; set; } 
 
@@ -1657,11 +1924,13 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. The resource name of the log to which this log entry belongs. The format of the name is
-        /// `"projects/ /logs/"`. Examples: `"projects/my-projectid/logs/syslog"`,
-        /// `"projects/1234567890/logs/library.googleapis.com%2Fbook_log"`. The log ID part of resource name must be
-        /// less than 512 characters long and can only include the following characters: upper and lower case
-        /// alphanumeric characters: [A-Za-z0-9]; and punctuation characters: forward-slash, underscore, hyphen, and
-        /// period. Forward-slash (`/`) characters in the log ID must be URL-encoded.</summary>
+        /// `"projects//logs/"`.  Examples: `"projects/my-projectid/logs/syslog"`, `"projects/my-
+        /// projectid/logs/library.googleapis.com%2Fbook_log"`.
+        ///
+        /// The log ID part of resource name must be less than 512 characters long and can only include the following
+        /// characters: upper and lower case alphanumeric characters: [A-Za-z0-9]; and punctuation characters: forward-
+        /// slash, underscore, hyphen, and period. Forward-slash (`/`) characters in the log ID must be URL-
+        /// encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
@@ -1669,8 +1938,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual LogEntryOperation Operation { get; set; } 
 
-        /// <summary>The log entry payload, represented as a protocol buffer. You can only use `protoPayload` values
-        /// that belong to a set of approved types.</summary>
+        /// <summary>The log entry payload, represented as a protocol buffer.  Some Google Cloud Platform services use
+        /// this field for their log entry payloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
         public virtual System.Collections.Generic.IDictionary<string,object> ProtoPayload { get; set; } 
 
@@ -1688,10 +1957,10 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; } 
 
-        /// <summary>Optional. The time the event described by the log entry occurred. If omitted, Cloud Logging will
-        /// use the time the log entry is written.</summary>
+        /// <summary>Optional. The time the event described by the log entry occurred.  If omitted, Stackdriver Logging
+        /// will use the time the log entry is received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1715,8 +1984,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual System.Nullable<bool> Last { get; set; } 
 
         /// <summary>Required. An arbitrary producer identifier. The combination of `id` and `producer` must be globally
-        /// unique. Examples for `producer`: `"MyDivision.MyBigCompany.com"`,
-        /// "github.com/MyProject/MyApplication"`.</summary>
+        /// unique.  Examples for `producer`: `"MyDivision.MyBigCompany.com"`,
+        /// `"github.com/MyProject/MyApplication"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producer")]
         public virtual string Producer { get; set; } 
 
@@ -1741,13 +2010,13 @@ namespace Google.Apis.Logging.v2beta1.Data
 
         /// <summary>Approximate time when this log entry was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string Time { get; set; } 
+        public virtual object Time { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a logs-based metric. The value of the metric is the number of log entries that match a logs
+    /// <summary>Describes a logs-based metric.  The value of the metric is the number of log entries that match a logs
     /// filter.</summary>
     public class LogMetric : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1760,10 +2029,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Required. The client-assigned metric identifier. Example: `"severe_errors"`. Metric identifiers are
-        /// limited to 1000 characters and can include only the following characters: `A-Z`, `a-z`, `0-9`, and the
-        /// special characters `_-.,+!*',()%/\`. The forward-slash character (`/`) denotes a hierarchy of name pieces,
-        /// and it cannot be the first character of the name.</summary>
+        /// <summary>Required. The client-assigned metric identifier. Example: `"severe_errors"`.  Metric identifiers
+        /// are limited to 100 characters and can include only the following characters: `A-Z`, `a-z`, `0-9`, and the
+        /// special characters `_-.,+!*',()%/`.  The forward-slash character (`/`) denotes a hierarchy of name pieces,
+        /// and it cannot be the first character of the name.  The '%' character is used to URL encode unsafe and
+        /// reserved characters and must be followed by two hexadecimal digits according to RFC 1738.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1771,33 +2041,48 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a sink used to export log entries outside Cloud Logging.</summary>
+    /// <summary>Describes a sink used to export log entries outside Stackdriver Logging.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The export destination. See [Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).
-        /// Examples: `"storage.googleapis.com/a-bucket"`, `"bigquery.googleapis.com/projects/a-project-
-        /// id/datasets/a-dataset"`.</summary>
+        /// <summary>Required. The export destination. See [Exporting Logs With Sinks](/logging/docs/api/tasks
+        /// /exporting-logs). Examples:
+        ///
+        /// "storage.googleapis.com/my-gcs-bucket" "bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset"
+        /// "pubsub.googleapis.com/projects/my-project/topics/my-topic"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>An [advanced logs filter](/logging/docs/view/advanced_filters). Only log entries matching that
-        /// filter are exported. The filter must be consistent with the log entry format specified by the
+        /// <summary>Optional. An [advanced logs filter](/logging/docs/view/advanced_filters). Only log entries matching
+        /// the filter are exported. The filter must be consistent with the log entry format specified by the
         /// `outputVersionFormat` parameter, regardless of the format of the log entry that was originally written to
-        /// Cloud Logging. Example (V2 format): `"logName=projects/my-projectid/logs/syslog AND
-        /// severity>=ERROR"`.</summary>
+        /// Stackdriver Logging. Example filter (V2 format):
+        ///
+        /// logName=projects/my-projectid/logs/syslog AND severity>=ERROR</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>Required. The client-assigned sink identifier. Example: `"my-severe-errors-to-pubsub"`. Sink
-        /// identifiers are limited to 1000 characters and can include only the following characters: `A-Z`, `a-z`,
-        /// `0-9`, and the special characters `_-.`.</summary>
+        /// <summary>Required. The client-assigned sink identifier, unique within the project. Example: `"my-syslog-
+        /// errors-to-pubsub"`.  Sink identifiers are limited to 1000 characters and can include only the following
+        /// characters: `A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length of the name is 100
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The log entry version to use for this sink's exported log entries. This version does not have to
-        /// correspond to the version of the log entry when it was written to Cloud Logging.</summary>
+        /// <summary>Optional. The log entry version to use for this sink's exported log entries.  This version does not
+        /// have to correspond to the version of the log entry that was written to Stackdriver Logging. If omitted, the
+        /// v2 format is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
+
+        /// <summary>Output only. The iam identity to which the destination needs to grant write access.  This may be a
+        /// service account or a group. Examples (Do not assume these specific values): "serviceAccount:cloud-
+        /// logs@system.gserviceaccount.com" "group:cloud-logs@google.com"
+        ///
+        /// For GCS destinations, the role "roles/owner" is required on the bucket For Cloud Pubsub destinations, the
+        /// role "roles/pubsub.publisher" is required on the topic For BigQuery, the role "roles/editor" is required on
+        /// the dataset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
+        public virtual string WriterIdentity { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1808,8 +2093,9 @@ namespace Google.Apis.Logging.v2beta1.Data
     /// identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the
     /// `labels` field identifies the actual resource and its attributes according to the schema. For example, a
     /// particular Compute Engine VM instance could be represented by the following object, because the
-    /// MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"` and `"zone"`: { "type":
-    /// "gce_instance", "labels": { "instance_id": "my-instance", "zone": "us-central1-a" }}</summary>
+    /// MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"` and `"zone"`:
+    ///
+    /// { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }}</summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
@@ -1828,10 +2114,12 @@ namespace Google.Apis.Logging.v2beta1.Data
     }    
 
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
-    /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
+    /// labels.  For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
     /// `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM
-    /// instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method
-    /// that returns the monitored resource descriptors used by the API.</summary>
+    /// instances.
+    ///
+    /// Different APIs can support different monitored resource types. APIs generally provide a `list` method that
+    /// returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A detailed description of the monitored resource type that might be used in
@@ -1840,7 +2128,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
-        /// interfaces. For example, `"Google Cloud SQL Database"`.</summary>
+        /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
+        /// `"Google Cloud SQL Database"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -1859,7 +2148,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>Required. The monitored resource type. For example, the type `"cloudsql_database"` represents
-        /// databases in Google Cloud SQL.</summary>
+        /// databases in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1884,13 +2173,13 @@ namespace Google.Apis.Logging.v2beta1.Data
 
         /// <summary>Time when the request finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
         /// <summary>Whether this request is finished or active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finished")]
         public virtual System.Nullable<bool> Finished { get; set; } 
 
-        /// <summary>Whether this is the first RequestLog entry for this request. If an active request has several
+        /// <summary>Whether this is the first RequestLog entry for this request.  If an active request has several
         /// RequestLog entries written to Cloud Logging, this field will be set for one of them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("first")]
         public virtual System.Nullable<bool> First { get; set; } 
@@ -1918,7 +2207,7 @@ namespace Google.Apis.Logging.v2beta1.Data
 
         /// <summary>Latency of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
-        public virtual string Latency { get; set; } 
+        public virtual object Latency { get; set; } 
 
         /// <summary>A list of log lines emitted by the application while serving this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
@@ -1936,29 +2225,32 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moduleId")]
         public virtual string ModuleId { get; set; } 
 
-        /// <summary>The logged-in user who made the request. Most likely, this is the part of the user's email before
-        /// the `@` sign. The field value is the same for different requests from the same user, but different users can
-        /// have similar names. This information is also available to the application via the App Engine Users API. This
-        /// field will be populated starting with App Engine 1.9.21.</summary>
+        /// <summary>The logged-in user who made the request.
+        ///
+        /// Most likely, this is the part of the user's email before the `@` sign.  The field value is the same for
+        /// different requests from the same user, but different users can have similar names.  This information is also
+        /// available to the application via the App Engine Users API.
+        ///
+        /// This field will be populated starting with App Engine 1.9.21.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
         public virtual string Nickname { get; set; } 
 
         /// <summary>Time this request spent in the pending request queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pendingTime")]
-        public virtual string PendingTime { get; set; } 
+        public virtual object PendingTime { get; set; } 
 
         /// <summary>Referrer URL of request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
         public virtual string Referrer { get; set; } 
 
-        /// <summary>Globally unique identifier for a request, which is based on the request start time. Request IDs for
-        /// requests which started later will compare greater as strings than those for requests which started
+        /// <summary>Globally unique identifier for a request, which is based on the request start time.  Request IDs
+        /// for requests which started later will compare greater as strings than those for requests which started
         /// earlier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; } 
 
         /// <summary>Contains the path and query portion of the URL that was requested. For example, if the URL was
-        /// "http://example.com/app?name=val", the resource would be "/app?name=val". The fragment identifier, which is
+        /// "http://example.com/app?name=val", the resource would be "/app?name=val".  The fragment identifier, which is
         /// identified by the `#` character, is not included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; } 
@@ -1974,7 +2266,7 @@ namespace Google.Apis.Logging.v2beta1.Data
 
         /// <summary>Time when the request started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>HTTP response status code. Example: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -2053,54 +2345,14 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
-    /// Overview The `Status` message contains three pieces of data: error code, error message, and error details. The
-    /// error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The
-    /// error message should be a developer-facing English message that helps developers *understand* and *resolve* the
-    /// error. If a localized user-facing error message is needed, put the localized message in the error details or
-    /// localize it in the client. The optional error details may contain arbitrary information about the error. There
-    /// is a predefined set of error detail types in the package `google.rpc` which can be used for common error
-    /// conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is
-    /// not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and
-    /// different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions
-    /// in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message
-    /// can be used in a variety of environments, either with or without APIs, to provide a consistent developer
-    /// experience across different environments. Example uses of this error model include: - Partial errors. If a
-    /// service needs to return partial errors to the client, it may embed the `Status` in the normal response to
-    /// indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a
-    /// `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch
-    /// response, the `Status` message should be used directly inside batch response, one for each error sub-response. -
-    /// Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message. - Logging. If some API errors are
-    /// stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy
-    /// reasons.</summary>
-    public class Status : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual System.Nullable<int> Code { get; set; } 
-
-        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
-        /// APIs to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
-
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The parameters to WriteLogEntries.</summary>
     public class WriteLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The log entries to write. The log entries must have values for all required
-        /// fields.</summary>
+        /// <summary>Required. The log entries to write. The log entries must have values for all required fields.
+        ///
+        /// To improve throughput and to avoid exceeding the [quota limit](/logging/quota-policy) for calls to
+        /// `entries.write`, use this field to write multiple log entries at once rather than calling this method for
+        /// each log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
 
@@ -2111,7 +2363,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Optional. A default log resource name for those log entries in `entries` that do not specify their
-        /// own `logName`. Example: `"projects/my-project/logs/syslog"`. See LogEntry.</summary>
+        /// own `logName`.  Example: `"projects/my-project/logs/syslog"`.  See LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 

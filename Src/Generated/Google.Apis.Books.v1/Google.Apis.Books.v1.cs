@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160629 (545)
+ *      <tr><th>API Rev<td>20160823 (600)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -6199,6 +6199,23 @@ namespace Google.Apis.Books.v1
                 NoRestrict,
             }
 
+            /// <summary>The maximum allowed maturity rating of returned recommendations. Books with a higher maturity
+            /// rating are filtered out.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxAllowedMaturityRating", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MaxAllowedMaturityRatingEnum> MaxAllowedMaturityRating { get; set; }
+
+            /// <summary>The maximum allowed maturity rating of returned recommendations. Books with a higher maturity
+            /// rating are filtered out.</summary>
+            public enum MaxAllowedMaturityRatingEnum
+            {
+                /// <summary>Show books which are rated mature or lower.</summary>
+                [Google.Apis.Util.StringValueAttribute("mature")]
+                Mature,
+                /// <summary>Show books which are rated not mature.</summary>
+                [Google.Apis.Util.StringValueAttribute("not-mature")]
+                NotMature,
+            }
+
             /// <summary>Maximum number of results to return.</summary>
             /// [minimum: 0]
             /// [maximum: 40]
@@ -6334,6 +6351,15 @@ namespace Google.Apis.Books.v1
                     "libraryRestrict", new Google.Apis.Discovery.Parameter
                     {
                         Name = "libraryRestrict",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxAllowedMaturityRating", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxAllowedMaturityRating",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

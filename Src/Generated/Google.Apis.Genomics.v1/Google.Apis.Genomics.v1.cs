@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160901 (609)
+ *      <tr><th>API Rev<td>20160905 (613)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1800,7 +1800,7 @@ namespace Google.Apis.Genomics.v1
             }
 
 
-            /// <summary>Required. The project to list datasets for.</summary>
+            /// <summary>Required. The Google Cloud project ID to list datasets for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
@@ -4941,7 +4941,7 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The Google Developers Console project ID that this dataset belongs to.</summary>
+        /// <summary>The Google Cloud project ID that this dataset belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -5033,8 +5033,8 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportUri")]
         public virtual string ExportUri { get; set; } 
 
-        /// <summary>Required. The Google Developers Console project ID that owns this export. The caller must have
-        /// WRITE access to this project.</summary>
+        /// <summary>Required. The Google Cloud project ID that owns this export. The caller must have WRITE access to
+        /// this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -6343,8 +6343,8 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<long> End { get; set; } 
 
-        /// <summary>The Google Developers Console project ID or number which will be billed for this access. The caller
-        /// must have WRITE access to this project. Required.</summary>
+        /// <summary>The Google Cloud project ID which will be billed for this access. The caller must have WRITE access
+        /// to this project. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -6406,8 +6406,8 @@ namespace Google.Apis.Genomics.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<long> End { get; set; } 
 
-        /// <summary>The Google Developers Console project ID or number which will be billed for this access. The caller
-        /// must have WRITE access to this project. Required.</summary>
+        /// <summary>The Google Cloud project ID which will be billed for this access. The caller must have WRITE access
+        /// to this project. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
