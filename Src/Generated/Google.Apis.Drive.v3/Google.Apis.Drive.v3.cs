@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160830 (607)
+ *      <tr><th>API Rev<td>20160901 (609)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3754,7 +3754,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importFormats")]
         public virtual System.Collections.Generic.IDictionary<string,System.Collections.Generic.IList<string>> ImportFormats { get; set; } 
 
-        /// <summary>This is always drive#about.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#about".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -3812,7 +3812,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
         public virtual string FileId { get; set; } 
 
-        /// <summary>This is always drive#change.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#change".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -3850,7 +3850,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
         public virtual System.Collections.Generic.IList<Change> Changes { get; set; } 
 
-        /// <summary>This is always drive#changeList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#changeList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -3966,7 +3966,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>This is always drive#comment.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#comment".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4027,7 +4027,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
         public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
 
-        /// <summary>This is always drive#commentList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#commentList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4123,7 +4123,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isAppAuthorized")]
         public virtual System.Nullable<bool> IsAppAuthorized { get; set; } 
 
-        /// <summary>This is always drive#file.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#file".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4511,7 +4511,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; } 
 
-        /// <summary>This is always drive#fileList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#fileList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4531,7 +4531,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
 
-        /// <summary>This is always drive#generatedIds</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#generatedIds".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4587,7 +4587,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>This is always drive#permission.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#permission".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4611,7 +4611,7 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of permissions for a file.</summary>
     public class PermissionList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#permissionList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#permissionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4670,7 +4670,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>This is always drive#reply.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#reply".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4699,7 +4699,7 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of replies to a comment on a file.</summary>
     public class ReplyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#replyList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#replyList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4729,7 +4729,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keepForever")]
         public virtual System.Nullable<bool> KeepForever { get; set; } 
 
-        /// <summary>This is always drive#revision.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#revision".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4795,7 +4795,7 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of revisions of a file.</summary>
     public class RevisionList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#revisionList.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#revisionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4809,7 +4809,7 @@ namespace Google.Apis.Drive.v3.Data
 
     public class StartPageToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This is always drive#startPageToken.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#startPageToken".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -4833,7 +4833,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
 
-        /// <summary>This is always drive#user.</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#user".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

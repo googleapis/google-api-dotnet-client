@@ -490,26 +490,30 @@
       "description": "Configuration for an automated build in response to source repository\nchanges.",
       "type": "object",
       "properties": {
-        "filename": {
-          "description": "Path, from the source root, to a file whose contents is used for the\ntemplate.",
+        "id": {
+          "description": "Unique identifier of the trigger.\n\n@OutputOnly",
           "type": "string"
         },
         "triggerTemplate": {
           "description": "Template describing the types of source changes to trigger a build.\n\nBranch and tag names in trigger templates are interpreted as regular\nexpressions. Any branch or tag change that matches that regular expression\nwill trigger a build.",
           "$ref": "RepoSource"
         },
-        "build": {
-          "description": "Contents of the build template.",
-          "$ref": "Build"
+        "disabled": {
+          "description": "If true, the trigger will never result in a build.",
+          "type": "boolean"
         },
         "createTime": {
           "description": "Time when the trigger was created.\n\n@OutputOnly",
           "type": "string",
           "format": "google-datetime"
         },
-        "id": {
-          "description": "Unique identifier of the trigger.\n\n@OutputOnly",
+        "filename": {
+          "description": "Path, from the source root, to a file whose contents is used for the\ntemplate.",
           "type": "string"
+        },
+        "build": {
+          "description": "Contents of the build template.",
+          "$ref": "Build"
         }
       },
       "id": "BuildTrigger"
@@ -842,7 +846,7 @@
           }
         },
         "requestedVerifyOption": {
-          "description": "Options for a verifiable build with details uploaded to the Analysis API.",
+          "description": "Requested verifiability options.",
           "enum": [
             "NOT_VERIFIED",
             "VERIFIED"
@@ -875,7 +879,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160901",
+  "revision": "20160907",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

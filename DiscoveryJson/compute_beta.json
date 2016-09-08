@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/0QYjgBhXUrUIbBRIy5zLGvERsW8\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/64KmP-XIFolNg8bu7SiegYcX_sY\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20160817",
+ "revision": "20160907",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -819,7 +819,7 @@
    "properties": {
     "balancingMode": {
      "type": "string",
-     "description": "Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.\n\nThis cannot be used for internal load balancing.",
+     "description": "Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).\n\nThis cannot be used for internal load balancing.",
      "enum": [
       "CONNECTION",
       "RATE",
@@ -833,7 +833,7 @@
     },
     "capacityScaler": {
      "type": "number",
-     "description": "A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE). Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or RPS. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
+     "description": "A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
      "format": "float"
     },
     "description": {
@@ -925,6 +925,19 @@
      "description": "[Output Only] Type of resource. Always compute#backendService for backend services.",
      "default": "compute#backendService"
     },
+    "loadBalancingScheme": {
+     "type": "string",
+     "enum": [
+      "EXTERNAL",
+      "INTERNAL",
+      "INVALID_LOAD_BALANCING_SCHEME"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
     "name": {
      "type": "string",
      "description": "Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
@@ -946,9 +959,11 @@
       "HTTP",
       "HTTPS",
       "SSL",
-      "TCP"
+      "TCP",
+      "UDP"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -968,11 +983,13 @@
      "description": "Type of session affinity to use. The default is NONE.\n\nWhen the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or GENERATED_COOKIE.\n\nWhen the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.\n\nWhen the protocol is UDP, this field is not used.",
      "enum": [
       "CLIENT_IP",
+      "CLIENT_IP_PORT_PROTO",
       "CLIENT_IP_PROTO",
       "GENERATED_COOKIE",
       "NONE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -983,6 +1000,38 @@
      "type": "integer",
      "description": "How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds.",
      "format": "int32"
+    }
+   }
+  },
+  "BackendServiceAggregatedList": {
+   "id": "BackendServiceAggregatedList",
+   "type": "object",
+   "description": "Contains a list of BackendServicesScopedList.",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A map of scoped BackendService lists.",
+     "additionalProperties": {
+      "$ref": "BackendServicesScopedList",
+      "description": "Name of the scope containing this set of BackendServices."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Type of resource.",
+     "default": "compute#backendServiceAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] A token used to continue a truncated list request."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
     }
    }
   },
@@ -1031,6 +1080,86 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for this resource."
+    }
+   }
+  },
+  "BackendServicesScopedList": {
+   "id": "BackendServicesScopedList",
+   "type": "object",
+   "properties": {
+    "backendServices": {
+     "type": "array",
+     "description": "List of BackendServices contained in this scope.",
+     "items": {
+      "$ref": "BackendService"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "Informational warning which replaces the list of backend services when the list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_NOT_DELETED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
     }
    }
   },
@@ -1774,6 +1903,10 @@
       ""
      ]
     },
+    "backendService": {
+     "type": "string",
+     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the BackendService resource to receive the matched traffic."
+    },
     "creationTimestamp": {
      "type": "string",
      "description": "[Output Only] Creation timestamp in RFC3339 text format."
@@ -1792,10 +1925,28 @@
      "description": "[Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.",
      "default": "compute#forwardingRule"
     },
+    "loadBalancingScheme": {
+     "type": "string",
+     "description": "This signifies what the ForwardingRule will be used for and can only take the following values: INTERNAL EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)",
+     "enum": [
+      "EXTERNAL",
+      "INTERNAL",
+      "INVALID"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
+    },
     "name": {
      "type": "string",
      "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
      "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?"
+    },
+    "network": {
+     "type": "string",
+     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used."
     },
     "portRange": {
      "type": "string",
@@ -1808,6 +1959,10 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "subnetwork": {
+     "type": "string",
+     "description": "This field is not used for external load balancing.\n\nFor internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule.\n\nIf the network specified is in auto subnet mode, this field is optional. However, if the network is in custom subnet mode, a subnetwork must be specified."
     },
     "target": {
      "type": "string",
@@ -1972,6 +2127,25 @@
      "additionalProperties": {
       "type": "string"
      }
+    }
+   }
+  },
+  "GuestOsFeature": {
+   "id": "GuestOsFeature",
+   "type": "object",
+   "description": "Features supported by the guest os.",
+   "properties": {
+    "type": {
+     "type": "string",
+     "description": "The type of supported feature..",
+     "enum": [
+      "FEATURE_TYPE_UNSPECIFIED",
+      "VIRTIO_SCSI_MULTIQUEUE"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -2471,7 +2645,7 @@
     },
     "creationTimestamp": {
      "type": "string",
-     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+     "description": "Creation timestamp in RFC3339 text format."
     },
     "deprecated": {
      "$ref": "DeprecationStatus",
@@ -2489,6 +2663,13 @@
     "family": {
      "type": "string",
      "description": "The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035."
+    },
+    "guestOsFeatures": {
+     "type": "array",
+     "description": "Features of the guest os, valid for bootable images only.",
+     "items": {
+      "$ref": "GuestOsFeature"
+     }
     },
     "id": {
      "type": "string",
@@ -2728,7 +2909,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.",
+     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.",
      "enum": [
       "PROVISIONING",
       "RUNNING",
@@ -2814,7 +2995,7 @@
     },
     "id": {
      "type": "string",
-     "description": "[Output Only] A unique identifier for this resource type. The server generates this identifier.",
+     "description": "[Output Only] A unique identifier for this instance group. The server generates this identifier.",
      "format": "uint64"
     },
     "kind": {
@@ -6886,11 +7067,13 @@
      "description": "Sesssion affinity option, must be one of the following values:\nNONE: Connections from the same client IP may go to any instance in the pool.\nCLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy.\nCLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.",
      "enum": [
       "CLIENT_IP",
+      "CLIENT_IP_PORT_PROTO",
       "CLIENT_IP_PROTO",
       "GENERATED_COOKIE",
       "NONE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -8712,6 +8895,56 @@
   },
   "backendServices": {
    "methods": {
+    "aggregatedList": {
+     "id": "compute.backendServices.aggregatedList",
+     "path": "{project}/aggregated/backendServices",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of all BackendService resources, regional and global, available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "500",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Name of the project scoping this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "BackendServiceAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "delete": {
      "id": "compute.backendServices.delete",
      "path": "{project}/global/backendServices/{backendService}",
@@ -14924,6 +15157,364 @@
      ],
      "request": {
       "$ref": "Autoscaler"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    }
+   }
+  },
+  "regionBackendServices": {
+   "methods": {
+    "delete": {
+     "id": "compute.regionBackendServices.delete",
+     "path": "{project}/regions/{region}/backendServices/{backendService}",
+     "httpMethod": "DELETE",
+     "description": "Deletes the specified regional BackendService resource.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "id": "compute.regionBackendServices.get",
+     "path": "{project}/regions/{region}/backendServices/{backendService}",
+     "httpMethod": "GET",
+     "description": "Returns the specified regional BackendService resource.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "response": {
+      "$ref": "BackendService"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getHealth": {
+     "id": "compute.regionBackendServices.getHealth",
+     "path": "{project}/regions/{region}/backendServices/{backendService}/getHealth",
+     "httpMethod": "POST",
+     "description": "Gets the most recent health check results for this regional BackendService.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to which the queried instance belongs.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "request": {
+      "$ref": "ResourceGroupReference"
+     },
+     "response": {
+      "$ref": "BackendServiceGroupHealth"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "id": "compute.regionBackendServices.insert",
+     "path": "{project}/regions/{region}/backendServices",
+     "httpMethod": "POST",
+     "description": "Creates a regional BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a regional backend service. Read  Restrictions and Guidelines for more information.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "request": {
+      "$ref": "BackendService"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "id": "compute.regionBackendServices.list",
+     "path": "{project}/regions/{region}/backendServices",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of regional BackendService resources available to the specified project in the given region.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests.",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "500",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "response": {
+      "$ref": "BackendServiceList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "patch": {
+     "id": "compute.regionBackendServices.patch",
+     "path": "{project}/regions/{region}/backendServices/{backendService}",
+     "httpMethod": "PATCH",
+     "description": "Update the entire content of the regional BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information. This method supports patch semantics.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to update.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "request": {
+      "$ref": "BackendService"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "id": "compute.regionBackendServices.testIamPermissions",
+     "path": "{project}/regions/{region}/backendServices/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "resource": {
+       "type": "string",
+       "description": "Name of the resource for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "update": {
+     "id": "compute.regionBackendServices.update",
+     "path": "{project}/regions/{region}/backendServices/{backendService}",
+     "httpMethod": "PUT",
+     "description": "Update the entire content of the regional BackendService resource. There are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more information.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to update.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "Name of the region scoping this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "request": {
+      "$ref": "BackendService"
      },
      "response": {
       "$ref": "Operation"

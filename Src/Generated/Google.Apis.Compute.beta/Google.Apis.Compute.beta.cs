@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160817 (594)
+ *      <tr><th>API Rev<td>20160907 (615)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -87,6 +87,7 @@ namespace Google.Apis.Compute.beta
             networks = new NetworksResource(this);
             projects = new ProjectsResource(this);
             regionAutoscalers = new RegionAutoscalersResource(this);
+            regionBackendServices = new RegionBackendServicesResource(this);
             regionInstanceGroupManagers = new RegionInstanceGroupManagersResource(this);
             regionInstanceGroups = new RegionInstanceGroupsResource(this);
             regionOperations = new RegionOperationsResource(this);
@@ -339,6 +340,14 @@ namespace Google.Apis.Compute.beta
         public virtual RegionAutoscalersResource RegionAutoscalers
         {
             get { return regionAutoscalers; }
+        }
+
+        private readonly RegionBackendServicesResource regionBackendServices;
+
+        /// <summary>Gets the RegionBackendServices resource.</summary>
+        public virtual RegionBackendServicesResource RegionBackendServices
+        {
+            get { return regionBackendServices; }
         }
 
         private readonly RegionInstanceGroupManagersResource regionInstanceGroupManagers;
@@ -2204,6 +2213,152 @@ namespace Google.Apis.Compute.beta
 
         }
 
+
+        /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
+        /// project.</summary>
+        /// <param name="project">Name of the project scoping this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
+        /// project.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendServiceAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the project scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/backendServices"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
 
         /// <summary>Deletes the specified BackendService resource.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -17637,6 +17792,863 @@ namespace Google.Apis.Compute.beta
         }
     }
 
+    /// <summary>The "regionBackendServices" collection of methods.</summary>
+    public class RegionBackendServicesResource
+    {
+        private const string Resource = "regionBackendServices";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionBackendServicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the specified regional BackendService resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="backendService">Name of the BackendService resource to
+        /// delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string backendService)
+        {
+            return new DeleteRequest(service, project, region, backendService);
+        }
+
+        /// <summary>Deletes the specified regional BackendService resource.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string backendService)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                BackendService = backendService;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the BackendService resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{backendService}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified regional BackendService resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="backendService">Name of the BackendService resource to
+        /// return.</param>
+        public virtual GetRequest Get(string project, string region, string backendService)
+        {
+            return new GetRequest(service, project, region, backendService);
+        }
+
+        /// <summary>Returns the specified regional BackendService resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendService>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string backendService)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                BackendService = backendService;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the BackendService resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{backendService}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project"></param>
+        /// <param name="region">Name of the region scoping this request.</param>
+        ///
+        /// <param name="backendService">Name of the BackendService resource to which the queried instance belongs.</param>
+        public virtual GetHealthRequest GetHealth(Google.Apis.Compute.beta.Data.ResourceGroupReference body, string project, string region, string backendService)
+        {
+            return new GetHealthRequest(service, body, project, region, backendService);
+        }
+
+        /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
+        public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendServiceGroupHealth>
+        {
+            /// <summary>Constructs a new GetHealth request.</summary>
+            public GetHealthRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.ResourceGroupReference body, string project, string region, string backendService)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the queried instance belongs.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.ResourceGroupReference Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getHealth"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{backendService}/getHealth"; }
+            }
+
+            /// <summary>Initializes GetHealth parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a regional BackendService resource in the specified project using the data included in the
+        /// request. There are several restrictions and guidelines to keep in mind when creating a regional backend
+        /// service. Read  Restrictions and Guidelines for more information.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.beta.Data.BackendService body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a regional BackendService resource in the specified project using the data included in the
+        /// request. There are several restrictions and guidelines to keep in mind when creating a regional backend
+        /// service. Read  Restrictions and Guidelines for more information.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.BackendService body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of regional BackendService resources available to the specified project in the
+        /// given region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves the list of regional BackendService resources available to the specified project in the
+        /// given region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendServiceList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
+        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
+        /// information. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="backendService">Name of the BackendService resource to
+        /// update.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.BackendService body, string project, string region, string backendService)
+        {
+            return new PatchRequest(service, body, project, region, backendService);
+        }
+
+        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
+        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
+        /// information. This method supports patch semantics.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.BackendService body, string project, string region, string backendService)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the BackendService resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{backendService}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
+        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
+        /// information.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="backendService">Name of the BackendService resource to
+        /// update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.beta.Data.BackendService body, string project, string region, string backendService)
+        {
+            return new UpdateRequest(service, body, project, region, backendService);
+        }
+
+        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
+        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
+        /// information.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.BackendService body, string project, string region, string backendService)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the BackendService resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/backendServices/{backendService}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "regionInstanceGroupManagers" collection of methods.</summary>
     public class RegionInstanceGroupManagersResource
     {
@@ -30930,17 +31942,17 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Message containing information of one individual backend.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is
-        /// UTILIZATION. Valid values are UTILIZATION and RATE.
+        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
+        /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
         ///
         /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
-        /// <summary>A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE).
-        /// Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on
-        /// balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or
-        /// RPS. Valid range is [0.0,1.0].
+        /// <summary>A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or
+        /// CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity
+        /// (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its
+        /// available Capacity. Valid range is [0.0,1.0].
         ///
         /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityScaler")]
@@ -31062,6 +32074,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; } 
+
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -31120,6 +32135,33 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains a list of BackendServicesScopedList.</summary>
+    public class BackendServiceAggregatedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A map of scoped BackendService lists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string,BackendServicesScopedList> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class BackendServiceGroupHealth : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
@@ -31160,6 +32202,58 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class BackendServicesScopedList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of BackendServices contained in this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendServices")]
+        public virtual System.Collections.Generic.IList<BackendService> BackendServices { get; set; } 
+
+        /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual BackendServicesScopedList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Informational warning which replaces the list of backend services when the list is empty.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
@@ -31879,6 +32973,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
         public virtual string IPProtocol { get; set; } 
 
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// For internal load balancing, this field identifies the BackendService resource to receive the matched
+        /// traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -31898,6 +32999,13 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>This signifies what the ForwardingRule will be used for and can only take the following values:
+        /// INTERNAL EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing
+        /// (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
+        /// External TCP/UDP LB, SSL Proxy)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; } 
+
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -31905,6 +33013,13 @@ namespace Google.Apis.Compute.beta.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// For internal load balancing, this field identifies the network that the load balanced IP should belong to
+        /// for this Forwarding Rule. If this field is not specified, the default network will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the
         /// specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair
@@ -31922,6 +33037,16 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// For internal load balancing, this field identifies the subnetwork that the load balanced IP should belong to
+        /// for this Forwarding Rule.
+        ///
+        /// If the network specified is in auto subnet mode, this field is optional. However, if the network is in
+        /// custom subnet mode, a subnetwork must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
 
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
@@ -32067,6 +33192,17 @@ namespace Google.Apis.Compute.beta.Data
         /// "").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Features supported by the guest os.</summary>
+    public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of supported feature..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -32534,7 +33670,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("archiveSizeBytes")]
         public virtual System.Nullable<long> ArchiveSizeBytes { get; set; } 
 
-        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -32556,6 +33692,10 @@ namespace Google.Apis.Compute.beta.Data
         /// deprecated. The name of the image family must comply with RFC1035.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; } 
+
+        /// <summary>Features of the guest os, valid for bootable images only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -32799,7 +33939,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -32868,7 +34008,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>[Output Only] A unique identifier for this resource type. The server generates this
+        /// <summary>[Output Only] A unique identifier for this instance group. The server generates this
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 

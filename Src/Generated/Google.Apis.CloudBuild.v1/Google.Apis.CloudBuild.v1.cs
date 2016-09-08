@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160901 (609)
+ *      <tr><th>API Rev<td>20160907 (615)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1415,7 +1415,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Optional arguments to enable specific features of builds.</summary>
     public class BuildOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Options for a verifiable build with details uploaded to the Analysis API.</summary>
+        /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; } 
 
@@ -1475,6 +1475,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>If true, the trigger will never result in a build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>Path, from the source root, to a file whose contents is used for the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/a6IIlWUQKpPtbZWECsqgRhPzu_U\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/voTtN3G7SgdbIVbczVhqJal0nYo\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20160817",
+ "revision": "20160907",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -877,7 +877,7 @@
    "properties": {
     "balancingMode": {
      "type": "string",
-     "description": "Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is UTILIZATION. Valid values are UTILIZATION and RATE.\n\nThis cannot be used for internal load balancing.",
+     "description": "Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).\n\nThis cannot be used for internal load balancing.",
      "enum": [
       "CONNECTION",
       "RATE",
@@ -891,7 +891,7 @@
     },
     "capacityScaler": {
      "type": "number",
-     "description": "A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE). Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or RPS. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
+     "description": "A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available Capacity. Valid range is [0.0,1.0].\n\nThis cannot be used for internal load balancing.",
      "format": "float"
     },
     "description": {
@@ -2217,6 +2217,15 @@
      "type": "string",
      "description": "An optional description of this resource. Provide this property when you create the resource."
     },
+    "dnsLabel": {
+     "type": "string",
+     "description": "An optional prefix to the DNS name for this Forwarding Rule. If specified, will be the first label of the fully qualified domain name.\n\nThe label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.\n\nThis field is only used for internal load balancing.",
+     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?"
+    },
+    "dnsName": {
+     "type": "string",
+     "description": "[Output Only] The internal fully qualified domain name for this Forwarding Rule.\n\nThis field is only used for internal load balancing."
+    },
     "id": {
      "type": "string",
      "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
@@ -2954,7 +2963,7 @@
     },
     "creationTimestamp": {
      "type": "string",
-     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+     "description": "Creation timestamp in RFC3339 text format."
     },
     "deprecated": {
      "$ref": "DeprecationStatus",
@@ -3222,7 +3231,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.",
+     "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.",
      "enum": [
       "PROVISIONING",
       "RUNNING",
@@ -3308,7 +3317,7 @@
     },
     "id": {
      "type": "string",
-     "description": "[Output Only] A unique identifier for this resource type. The server generates this identifier.",
+     "description": "[Output Only] A unique identifier for this instance group. The server generates this identifier.",
      "format": "uint64"
     },
     "kind": {

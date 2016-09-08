@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/biHSNNwbRidgzMnRsczcEOH0k6U\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/5YRb4l5DodMV9xyOy-Xnx-Jl5b0\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20160824",
+ "revision": "20160905",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -126,6 +126,10 @@
     "acknowledged": {
      "type": "boolean",
      "description": "Whether the order was acknowledged."
+    },
+    "channelType": {
+     "type": "string",
+     "description": "The channel type of the order: \"purchaseOnGoogle\" or \"googleExpress\"."
     },
     "customer": {
      "$ref": "OrderCustomer",

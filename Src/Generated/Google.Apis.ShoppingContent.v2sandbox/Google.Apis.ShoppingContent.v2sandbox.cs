@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20160824 (601)
+ *      <tr><th>API Rev<td>20160905 (613)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1611,6 +1611,10 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>Whether the order was acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
         public virtual System.Nullable<bool> Acknowledged { get; set; } 
+
+        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
+        public virtual string ChannelType { get; set; } 
 
         /// <summary>The details of the customer who placed the order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]

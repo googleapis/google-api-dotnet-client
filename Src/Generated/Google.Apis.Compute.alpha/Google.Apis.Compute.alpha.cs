@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160817 (594)
+ *      <tr><th>API Rev<td>20160907 (615)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -35578,17 +35578,17 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Message containing information of one individual backend.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) load balancing, the default is
-        /// UTILIZATION. Valid values are UTILIZATION and RATE.
+        /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
+        /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
         ///
         /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
-        /// <summary>A multiplier applied to the group's maximum servicing capacity (either UTILIZATION or RATE).
-        /// Default value is 1, which means the group will serve up to 100% of its configured CPU or RPS (depending on
-        /// balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available CPU or
-        /// RPS. Valid range is [0.0,1.0].
+        /// <summary>A multiplier applied to the group's maximum servicing capacity (based on UTILIZATION, RATE or
+        /// CONNECTION). Default value is 1, which means the group will serve up to 100% of its configured capacity
+        /// (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its
+        /// available Capacity. Valid range is [0.0,1.0].
         ///
         /// This cannot be used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityScaler")]
@@ -36835,6 +36835,24 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>An optional prefix to the DNS name for this Forwarding Rule. If specified, will be the first label
+        /// of the fully qualified domain name.
+        ///
+        /// The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63
+        /// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        /// must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except
+        /// the last character, which cannot be a dash.
+        ///
+        /// This field is only used for internal load balancing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsLabel")]
+        public virtual string DnsLabel { get; set; } 
+
+        /// <summary>[Output Only] The internal fully qualified domain name for this Forwarding Rule.
+        ///
+        /// This field is only used for internal load balancing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -37526,7 +37544,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("archiveSizeBytes")]
         public virtual System.Nullable<long> ArchiveSizeBytes { get; set; } 
 
-        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -37812,7 +37830,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDED, SUSPENDING, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -37881,7 +37899,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>[Output Only] A unique identifier for this resource type. The server generates this
+        /// <summary>[Output Only] A unique identifier for this instance group. The server generates this
         /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
