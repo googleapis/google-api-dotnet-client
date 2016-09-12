@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160828 (605)
+ *      <tr><th>API Rev<td>20160903 (611)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -570,8 +570,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>An expression for filtering the results of the request by label. The syntax is "labels.[:]".
             /// Multiple filters can be ANDed together by connecting with a space. Example: "labels.department:receiving
-            /// labels.active". See https://cloud.google.com/bigquery/docs/labeling-
-            /// datasets#filtering_datasets_using_labels for details.</summary>
+            /// labels.active". See Filtering datasets using labels for details.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -897,7 +896,7 @@ namespace Google.Apis.Bigquery.v2
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "project/{projectId}/jobs/{jobId}/cancel"; }
+                get { return "projects/{projectId}/jobs/{jobId}/cancel"; }
             }
 
             /// <summary>Initializes Cancel parameter list.</summary>
@@ -2636,11 +2635,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>[Experimental] The labels associated with this dataset. You can use these to organize and group
-        /// your datasets. You can set this property when inserting or updating a dataset. Label keys and values can be
-        /// no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes.
-        /// International characters are allowed. Label values are optional. Label keys must start with a letter and
-        /// must be unique within a dataset. Both keys and values are additionally constrained to be <= 128 bytes in
-        /// size.</summary>
+        /// your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for
+        /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -3734,7 +3730,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] The struct field values, in order of the struct type's declaration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structValues")]
-        public virtual System.Collections.Generic.IList<QueryParameterValue> StructValues { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,QueryParameterValue> StructValues { get; set; } 
 
         /// <summary>[Optional] The value of this value, if a simple scalar type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]

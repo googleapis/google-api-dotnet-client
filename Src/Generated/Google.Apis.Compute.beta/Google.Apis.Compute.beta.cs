@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160907 (615)
+ *      <tr><th>API Rev<td>20160908 (616)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -33028,6 +33028,16 @@ namespace Google.Apis.Compute.beta.Data
         /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
+
+        /// <summary>This field is not used for external load balancing.
+        ///
+        /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
+        /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
+        /// forwarding rule. If the port list is not provided then all ports are allowed to pass through.
+        ///
+        /// You may specify a maximum of up to 5 ports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+        public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional forwarding rule resides. This field is not
         /// applicable to global forwarding rules.</summary>
