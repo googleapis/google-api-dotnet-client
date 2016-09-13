@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/hUSUQ1FCOLm-WaxWC_MbF3f27YE\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/AwzgHPRHg5y6Mp-uvSZQKU40BE8\"",
  "discoveryVersion": "v1",
  "id": "identitytoolkit:v3",
  "name": "identitytoolkit",
  "canonicalName": "Identity Toolkit",
  "version": "v3",
- "revision": "20160812",
+ "revision": "20160902",
  "title": "Google Identity Toolkit API",
  "description": "Help the third party sites to implement federated login.",
  "ownerDomain": "google.com",
@@ -260,6 +260,23 @@
     "continueUri": {
      "type": "string",
      "description": "The URI to which the IDP redirects the user after the federated login flow."
+    },
+    "customParameter": {
+     "type": "array",
+     "description": "The query parameter that client can customize by themselves in auth url.",
+     "items": {
+      "type": "object",
+      "properties": {
+       "key": {
+        "type": "string",
+        "description": "The key of the query parameter."
+       },
+       "value": {
+        "type": "string",
+        "description": "The value of the query parameter."
+       }
+      }
+     }
     },
     "hostedDomain": {
      "type": "string",
@@ -717,6 +734,10 @@
      "description": "The salt separator.",
      "format": "byte"
     },
+    "sanityCheck": {
+     "type": "boolean",
+     "description": "If true, backend will do sanity check(including duplicate email and federated id) when uploading account."
+    },
     "signerKey": {
      "type": "string",
      "description": "The key for to hash the password.",
@@ -929,12 +950,20 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "The user's email."
+     "description": "The user's email. If the out-of-band code is for email recovery, the user's original email."
     },
     "kind": {
      "type": "string",
      "description": "The fixed string \"identitytoolkit#ResetPasswordResponse\".",
      "default": "identitytoolkit#ResetPasswordResponse"
+    },
+    "newEmail": {
+     "type": "string",
+     "description": "If the out-of-band code is for email recovery, the user's new email."
+    },
+    "requestType": {
+     "type": "string",
+     "description": "The request type."
     }
    }
   },
@@ -1090,6 +1119,10 @@
      "description": "User creation timestamp.",
      "format": "int64"
     },
+    "customAuth": {
+     "type": "boolean",
+     "description": "Whether the user is authenticated by the developer."
+    },
     "disabled": {
      "type": "boolean",
      "description": "Whether the user is disabled."
@@ -1165,7 +1198,7 @@
        },
        "screenName": {
         "type": "string",
-        "description": "User's screen name at Twitter."
+        "description": "User's screen name at Twitter or login name at Github."
        }
       }
      }
@@ -1177,7 +1210,7 @@
     },
     "screenName": {
      "type": "string",
-     "description": "User's screen name at Twitter."
+     "description": "User's screen name at Twitter or login name at Github."
     },
     "validSince": {
      "type": "string",
@@ -1341,7 +1374,7 @@
     },
     "screenName": {
      "type": "string",
-     "description": "The screen_name of a Twitter user."
+     "description": "The screen_name of a Twitter user or the login name at Github."
     },
     "timeZone": {
      "type": "string",

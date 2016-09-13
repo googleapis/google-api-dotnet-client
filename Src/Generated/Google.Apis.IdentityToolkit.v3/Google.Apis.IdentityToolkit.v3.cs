@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160812 (589)
+ *      <tr><th>API Rev<td>20160902 (610)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1329,6 +1329,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("continueUri")]
         public virtual string ContinueUri { get; set; } 
 
+        /// <summary>The query parameter that client can customize by themselves in auth url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customParameter")]
+        public virtual System.Collections.Generic.IList<IdentitytoolkitRelyingpartyCreateAuthUriRequest.CustomParameterData> CustomParameter { get; set; } 
+
         /// <summary>The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted
         /// accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostedDomain")]
@@ -1367,6 +1371,19 @@ namespace Google.Apis.IdentityToolkit.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        public class CustomParameterData
+        {
+            /// <summary>The key of the query parameter.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("key")]
+            public virtual string Key { get; set; } 
+
+            /// <summary>The value of the query parameter.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value { get; set; } 
+
+        }
     }    
 
     /// <summary>Request to delete account.</summary>
@@ -1747,6 +1764,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saltSeparator")]
         public virtual string SaltSeparator { get; set; } 
 
+        /// <summary>If true, backend will do sanity check(including duplicate email and federated id) when uploading
+        /// account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sanityCheck")]
+        public virtual System.Nullable<bool> SanityCheck { get; set; } 
+
         /// <summary>The key for to hash the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signerKey")]
         public virtual string SignerKey { get; set; } 
@@ -1950,13 +1972,22 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Response of resetting the password.</summary>
     public class ResetPasswordResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user's email.</summary>
+        /// <summary>The user's email. If the out-of-band code is for email recovery, the user's original
+        /// email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
         /// <summary>The fixed string "identitytoolkit#ResetPasswordResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>If the out-of-band code is for email recovery, the user's new email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newEmail")]
+        public virtual string NewEmail { get; set; } 
+
+        /// <summary>The request type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestType")]
+        public virtual string RequestType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2107,6 +2138,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
         public virtual System.Nullable<long> CreatedAt { get; set; } 
 
+        /// <summary>Whether the user is authenticated by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAuth")]
+        public virtual System.Nullable<bool> CustomAuth { get; set; } 
+
         /// <summary>Whether the user is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
@@ -2151,7 +2186,7 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salt")]
         public virtual string Salt { get; set; } 
 
-        /// <summary>User's screen name at Twitter.</summary>
+        /// <summary>User's screen name at Twitter or login name at Github.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
         public virtual string ScreenName { get; set; } 
 
@@ -2198,7 +2233,7 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("rawUserInfo")]
             public virtual string RawUserInfo { get; set; } 
 
-            /// <summary>User's screen name at Twitter.</summary>
+            /// <summary>User's screen name at Twitter or login name at Github.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
             public virtual string ScreenName { get; set; } 
 
@@ -2357,7 +2392,7 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
         public virtual string RefreshToken { get; set; } 
 
-        /// <summary>The screen_name of a Twitter user.</summary>
+        /// <summary>The screen_name of a Twitter user or the login name at Github.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenName")]
         public virtual string ScreenName { get; set; } 
 
