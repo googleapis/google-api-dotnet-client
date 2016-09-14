@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/ebT1VU-volvkxDEmtUji3_N4Omw\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/lbW6IKVKJGZMRGpoq8ZibAX-Ag8\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160831",
+ "revision": "20160907",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -353,7 +353,7 @@
     },
     "managementType": {
      "type": "string",
-     "description": "Identifies the extent to which the device is controlled by an Android for Work EMM in various deployment configurations.\nPossible values include: \n- \"managedDevice\"—A device that has the EMM's device policy controller (DPC) as the device owner.\n- \"managedProfile\"—A device that has a work profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC.\n- \"containerApp\"—A device running the Android for Work App. The Android for Work App is managed by the DPC.\n- \"unmanagedProfile\"—A device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use Android for Work apps or Google Apps for Work, but the profile is itself not owned by a DPC."
+     "description": "Identifies the extent to which the device is controlled by an Android for Work EMM in various deployment configurations.\n\nPossible values include: \n- \"managedDevice\", a device that has the EMM's device policy controller (DPC) as the device owner, \n- \"managedProfile\", a device that has a work profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC, \n- \"containerApp\", a device running the Android for Work App. The Android for Work App is managed by the DPC, \n- \"unmanagedProfile\", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use Android for Work apps or Google Apps for Work, but the profile is itself not owned by a DPC."
     }
    }
   },

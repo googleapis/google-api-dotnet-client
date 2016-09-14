@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160906 (614)
+ *      <tr><th>API Rev<td>20160912 (620)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>
@@ -1381,7 +1381,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string EntityType { get; set; } 
 
         /// <summary>The role which is assigned to the client buyer. Each role implies a set of permissions granted to
-        /// the client. Must be one of `CLIENT_DEAL_VIEWER`, `CLIENT_DEAL_NEGOTIATOR`, or
+        /// the client. Must be one of `CLIENT_DEAL_VIEWER`, `CLIENT_DEAL_NEGOTIATOR` or
         /// `CLIENT_DEAL_APPROVER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
@@ -1429,9 +1429,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An invitation for a new client user to get access to the AdExchange Buyer UI.
-    ///
-    /// All fields are required unless otherwise specified.</summary>
+    /// <summary>An invitation for a new client user to get access to the Ad Exchange Buyer UI. All fields are required
+    /// unless otherwise specified.</summary>
     public class ClientUserInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Numerical account ID of the client buyer that the invited user is associated with. The value of

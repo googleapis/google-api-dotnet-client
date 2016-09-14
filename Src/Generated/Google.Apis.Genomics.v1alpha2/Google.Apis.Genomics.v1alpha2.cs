@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160905 (613)
+ *      <tr><th>API Rev<td>20160913 (621)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1177,8 +1177,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
         public virtual string Cmd { get; set; } 
 
-        /// <summary>Required. Image name from either Docker Hub or Google Container Repository. Users that run
-        /// pipelines must have READ access to the image.</summary>
+        /// <summary>Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines
+        /// must have READ access to the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
         public virtual string ImageName { get; set; } 
 

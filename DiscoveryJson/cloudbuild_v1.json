@@ -494,6 +494,10 @@
           "description": "Unique identifier of the trigger.\n\n@OutputOnly",
           "type": "string"
         },
+        "description": {
+          "description": "Human-readable description of this trigger.",
+          "type": "string"
+        },
         "triggerTemplate": {
           "description": "Template describing the types of source changes to trigger a build.\n\nBranch and tag names in trigger templates are interpreted as regular\nexpressions. Any branch or tag change that matches that regular expression\nwill trigger a build.",
           "$ref": "RepoSource"
@@ -879,7 +883,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160912",
+  "revision": "20160913",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

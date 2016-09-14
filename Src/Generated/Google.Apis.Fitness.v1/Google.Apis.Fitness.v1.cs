@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160801 (578)
+ *      <tr><th>API Rev<td>20160907 (615)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1694,6 +1694,7 @@ namespace Google.Apis.Fitness.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Next id: 10</summary>
     public class AggregateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The specification of data to be aggregated. At least one aggregateBy spec must be provided. All
@@ -2100,6 +2101,10 @@ namespace Google.Apis.Fitness.v1.Data
         /// original end times that are within the startTime and endTime frame.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedSession")]
         public virtual System.Collections.Generic.IList<Session> DeletedSession { get; set; } 
+
+        /// <summary>Flag to indicate server has more data to transfer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasMoreData")]
+        public virtual System.Nullable<bool> HasMoreData { get; set; } 
 
         /// <summary>The continuation token, which is used to page through large result sets. Provide this value in a
         /// subsequent request to return the next page of results.</summary>

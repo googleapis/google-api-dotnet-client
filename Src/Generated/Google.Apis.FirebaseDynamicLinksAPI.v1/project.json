@@ -1,0 +1,23 @@
+{
+  "version": "1.16.0",
+
+  "dependencies": {
+    "GoogleApis_dotnetcore": { "target": "project" },
+    "GoogleApis.Core_dotnetcore": { "target": "project" },
+  },
+
+  "buildOptions": {
+    "compile": {
+      "include": [
+        "*.cs"
+      ]
+    },
+    "define": [ "NETSTANDARD;SIGNED" ],
+    "keyFile": "../../../google.apis.snk"
+  },
+
+  "frameworks": {
+    "netstandard1.3": {
+    }
+  }
+}

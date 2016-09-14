@@ -1,0 +1,14 @@
+﻿{
+  "supports": {},
+  "dependencies": {
+    "Google.Apis": "1.16.0",
+    "Google.Apis.Core": "1.16.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.IO": "4.1.0",
+    "System.Runtime": "4.1.0",
+    "System.Threading.Tasks": "4.0.11"
+  },
+  "frameworks": {
+    "netstandard1.3": {}
+  }
+}

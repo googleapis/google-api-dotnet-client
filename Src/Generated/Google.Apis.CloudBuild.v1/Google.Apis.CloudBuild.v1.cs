@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160912 (620)
+ *      <tr><th>API Rev<td>20160913 (621)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1475,6 +1475,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>Human-readable description of this trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
 
         /// <summary>If true, the trigger will never result in a build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]

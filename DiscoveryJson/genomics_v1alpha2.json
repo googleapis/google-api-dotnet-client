@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/W87lVft6jezJJo2WLSMnHm7oS64\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/6C6y78TJZePCFfe7OsiQ78yUtog\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1alpha2",
  "name": "genomics",
  "version": "v1alpha2",
- "revision": "20160905",
+ "revision": "20160913",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data.",
  "ownerDomain": "google.com",
@@ -296,7 +296,7 @@
    "properties": {
     "imageName": {
      "type": "string",
-     "description": "Required. Image name from either Docker Hub or Google Container Repository. Users that run pipelines must have READ access to the image."
+     "description": "Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image."
     },
     "cmd": {
      "type": "string",
