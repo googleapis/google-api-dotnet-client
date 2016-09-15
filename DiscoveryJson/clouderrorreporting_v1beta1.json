@@ -594,7 +594,7 @@
       "id": "ListGroupStatsResponse"
     }
   },
-  "revision": "20160720",
+  "revision": "20160822",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
