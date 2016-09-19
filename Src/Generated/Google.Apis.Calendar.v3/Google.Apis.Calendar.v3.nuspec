@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Calendar.v3</id>
-        <version>1.16.0.614</version>
+        <version>1.16.0.621</version>
         <title>Google.Apis.Calendar.v3 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

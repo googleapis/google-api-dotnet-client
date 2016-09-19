@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Consumer Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160718 (564)
+ *      <tr><th>API Rev<td>20160913 (621)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -503,7 +503,7 @@ namespace Google.Apis.ConsumerSurveys.v2
 
 
         /// <summary>Retrieves any survey results that have been produced so far. Results are formatted as an Excel
-        /// file.</summary>
+        /// file. You must add "?alt=media" to the URL as an argument to get results.</summary>
         /// <param name="surveyUrlId">External URL ID for the survey.</param>
         public virtual GetRequest Get(string surveyUrlId)
         {
@@ -511,7 +511,7 @@ namespace Google.Apis.ConsumerSurveys.v2
         }
 
         /// <summary>Retrieves any survey results that have been produced so far. Results are formatted as an Excel
-        /// file.</summary>
+        /// file. You must add "?alt=media" to the URL as an argument to get results.</summary>
         public class GetRequest : ConsumerSurveysBaseServiceRequest<Google.Apis.ConsumerSurveys.v2.Data.SurveyResults>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1199,6 +1199,10 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questions")]
         public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; } 
 
+        /// <summary>Reason for the survey being rejected. Only present if the survey state is 'rejected'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
+        public virtual SurveyRejection RejectionReason { get; set; } 
+
         /// <summary>State that the survey is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
@@ -1402,6 +1406,22 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         /// <summary>The read-only URL for the hosted images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message representing why the survey was rejected from review, if it was.</summary>
+    public class SurveyRejection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human-readable explanation of what was wrong with the survey.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; } 
+
+        /// <summary>Which category of rejection this was. See the GCS Help Center for additional details on each
+        /// category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

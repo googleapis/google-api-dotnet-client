@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160908 (616)
+ *      <tr><th>API Rev<td>20160915 (623)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -2014,6 +2014,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// independent way.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkPipelineOptions")]
         public virtual System.Collections.Generic.IDictionary<string,object> SdkPipelineOptions { get; set; } 
+
+        /// <summary>Identity to run virtual machines as. Defaults to the default account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
 
         /// <summary>The prefix of the resources the system should use for temporary storage. The system will append the
         /// suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The
