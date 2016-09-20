@@ -795,7 +795,7 @@
       "id": "Mixin"
     },
     "Service": {
-      "description": "`Service` is the root object of the configuration schema. It\ndescribes basic information like the name of the service and the\nexposed API interfaces, and delegates other aspects to configuration\nsub-sections.\n\nExample:\n\n    type: google.api.Service\n    config_version: 1\n    name: calendar.googleapis.com\n    title: Google Calendar API\n    apis:\n    - name: google.calendar.Calendar\n    backend:\n      rules:\n      - selector: \"*\"\n        address: calendar.example.com",
+      "description": "`Service` is the root object of Google service configuration schema. It\ndescribes basic information about a service, such as the name and the\ntitle, and delegates other aspects to sub-sections. Each sub-section is\neither a proto message or a repeated proto message that configures a\nspecific aspect, such as auth. See each proto message definition for details.\n\nExample:\n\n    type: google.api.Service\n    config_version: 3\n    name: calendar.googleapis.com\n    title: Google Calendar API\n    apis:\n    - name: google.calendar.v3.Calendar\n    backend:\n      rules:\n      - selector: \"google.calendar.v3.*\"\n        address: calendar.example.com",
       "type": "object",
       "properties": {
         "id": {
@@ -842,7 +842,7 @@
           "$ref": "Backend"
         },
         "monitoring": {
-          "description": "Monitoring configuration of the service.",
+          "description": "Monitoring configuration.",
           "$ref": "Monitoring"
         },
         "visibility": {
@@ -850,7 +850,7 @@
           "$ref": "Visibility"
         },
         "logging": {
-          "description": "Logging configuration of the service.",
+          "description": "Logging configuration.",
           "$ref": "Logging"
         },
         "customError": {
@@ -876,7 +876,7 @@
           }
         },
         "systemParameters": {
-          "description": "Configuration for system parameters.",
+          "description": "System parameter configuration.",
           "$ref": "SystemParameters"
         },
         "endpoints": {
@@ -1591,7 +1591,7 @@
           }
         },
         "metricKind": {
-          "description": "Whether the metric records instantaneous values, changes to a value, etc.",
+          "description": "Whether the metric records instantaneous values, changes to a value, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported.",
           "enum": [
             "METRIC_KIND_UNSPECIFIED",
             "GAUGE",
@@ -1607,7 +1607,7 @@
           "type": "string"
         },
         "valueType": {
-          "description": "Whether the measurement is an integer, a floating-point number, etc.",
+          "description": "Whether the measurement is an integer, a floating-point number, etc.\nSome combinations of `metric_kind` and `value_type` might not be supported.",
           "enum": [
             "VALUE_TYPE_UNSPECIFIED",
             "BOOL",
@@ -2737,7 +2737,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20160906",
+  "revision": "20160914",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

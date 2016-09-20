@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Monitoring API Version v3
+ *   Stackdriver Monitoring API Version v3
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/monitoring/api/'>Google Monitoring API</a>
+ *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160425 (480)
+ *      <tr><th>API Rev<td>20160912 (620)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Monitoring API can be found at
+ * The complete API documentation for using Stackdriver Monitoring API can be found at
  * <a href='https://cloud.google.com/monitoring/api/'>https://cloud.google.com/monitoring/api/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.Monitoring.v3
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Monitoring API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Stackdriver Monitoring API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -131,7 +131,18 @@ namespace Google.Apis.Monitoring.v3
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -140,7 +151,21 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -355,20 +380,18 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Creates a new time series with the given data points. This method is only for use in
-            /// `collectd`-related code, including the Google Monitoring Agent. See
-            /// [google.monitoring.v3.MetricService.CreateTimeSeries] instead.</summary>
+            /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
+            /// Google Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project in which to create the time series. The format is
-            /// `"projects/PROJECT_ID_OR_NUMBER"`.</param>
+            /// projects/PROJECT_ID_OR_NUMBER.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a new time series with the given data points. This method is only for use in
-            /// `collectd`-related code, including the Google Monitoring Agent. See
-            /// [google.monitoring.v3.MetricService.CreateTimeSeries] instead.</summary>
+            /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
+            /// Google Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -382,7 +405,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project in which to create the time series. The format is
-                /// `"projects/PROJECT_ID_OR_NUMBER"`.</summary>
+                /// projects/PROJECT_ID_OR_NUMBER.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -479,7 +502,7 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>Lists the monitored resources that are members of a group.</summary>
                 /// <param name="name">The group whose members are listed. The format is
-                /// `"projects/{project_id_or_number}/groups/{group_id}"`.</param>
+                /// projects/{project_id_or_number}/groups/{group_id}.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -498,36 +521,35 @@ namespace Google.Apis.Monitoring.v3
 
 
                     /// <summary>The group whose members are listed. The format is
-                    /// `"projects/{project_id_or_number}/groups/{group_id}"`.</summary>
+                    /// projects/{project_id_or_number}/groups/{group_id}.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>An optional list filter (/monitoring/api/learn_more#filtering) describing the members
+                    /// to be returned. The filter may reference the type, labels, and metadata of monitored resources
+                    /// that comprise the group. For example, to return only resources representing Compute Engine VM
+                    /// instances, use this filter: resource.type = gce_instance </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Required. The end of the time interval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalEndTime { get; set; }
+
+                    /// <summary>Optional. The beginning of the time interval. The default value for the start time is
+                    /// the end time. The start time must not be later than the end time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalStartTime { get; set; }
 
                     /// <summary>A positive number that is the maximum number of results to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>If this field is not empty then it must contain the `nextPageToken` value returned by a
+                    /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                     /// previous call to this method. Using this field causes the method to return additional results
                     /// from the previous method call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>An optional [list filter](/monitoring/api/learn_more#filtering) describing the members
-                    /// to be returned. The filter may reference the type, labels, and metadata of monitored resources
-                    /// that comprise the group. For example, to return only resources representing Compute Engine VM
-                    /// instances, use this filter: resource.type = "gce_instance"</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Required. The end of the interval. The interval includes this time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string IntervalEndTime { get; set; }
-
-                    /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is
-                    /// present, it must be earlier than (less than) `endTime`. The interval begins after `startTime`—it
-                    /// does not include `startTime`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string IntervalStartTime { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -563,24 +585,6 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = @"^projects/[^/]*/groups/[^/]*$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -607,6 +611,24 @@ namespace Google.Apis.Monitoring.v3
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
@@ -615,7 +637,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new group.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project in which to create the group. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -635,7 +657,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project in which to create the group. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -697,7 +719,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Deletes an existing group.</summary>
             /// <param name="name">The group to delete. The format is
-            /// `"projects/{project_id_or_number}/groups/{group_id}"`.</param>
+            /// projects/{project_id_or_number}/groups/{group_id}.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -716,7 +738,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The group to delete. The format is
-                /// `"projects/{project_id_or_number}/groups/{group_id}"`.</summary>
+                /// projects/{project_id_or_number}/groups/{group_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -759,7 +781,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single group.</summary>
             /// <param name="name">The group to retrieve. The format is
-            /// `"projects/{project_id_or_number}/groups/{group_id}"`.</param>
+            /// projects/{project_id_or_number}/groups/{group_id}.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -778,7 +800,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The group to retrieve. The format is
-                /// `"projects/{project_id_or_number}/groups/{group_id}"`.</summary>
+                /// projects/{project_id_or_number}/groups/{group_id}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -821,7 +843,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the existing groups.</summary>
             /// <param name="name">The project whose groups are to be listed. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -840,26 +862,13 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project whose groups are to be listed. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: `"projects/{project_id_or_number}/groups/{group_id}"`. Returns groups whose
-                /// `parentName` field contains the group name. If no groups have this parent, the results are
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ChildrenOfGroup { get; set; }
-
-                /// <summary>A group name: `"projects/{project_id_or_number}/groups/{group_id}"`. Returns groups that
-                /// are ancestors of the specified group. The groups are returned in order, starting with the immediate
-                /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
-                /// the results are empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string AncestorsOfGroup { get; set; }
-
-                /// <summary>A group name: `"projects/{project_id_or_number}/groups/{group_id}"`. Returns the
-                /// descendants of the specified group. This is a superset of the results returned by the
-                /// `childrenOfGroup` filter, and includes children-of-children, and so forth.</summary>
+                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns the descendants of
+                /// the specified group. This is a superset of the results returned by the childrenOfGroup filter, and
+                /// includes children-of-children, and so forth.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DescendantsOfGroup { get; set; }
 
@@ -867,7 +876,20 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>If this field is not empty then it must contain the `nextPageToken` value returned by a
+                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns groups whose
+                /// parentName field contains the group name. If no groups have this parent, the results are
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ChildrenOfGroup { get; set; }
+
+                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns groups that are
+                /// ancestors of the specified group. The groups are returned in order, starting with the immediate
+                /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
+                /// the results are empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AncestorsOfGroup { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -907,24 +929,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]*$",
                         });
                     RequestParameters.Add(
-                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "childrenOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ancestorsOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "descendantsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "descendantsOfGroup",
@@ -943,6 +947,24 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "childrenOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ancestorsOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -955,17 +977,18 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Updates an existing group. You can change any group attributes except `name`.</summary>
+            /// <summary>Updates an existing group. You can change any group attributes except name.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of this group. The format is `"projects/{project_id_or_number}/groups/{group_id}"`. When
-            /// creating a group, this field is ignored and a new name is created consisting of the project specified in the call to
-            /// `CreateGroup` and a unique `{group_id}` that is generated automatically. @OutputOnly</param>
+            /// <param name="name">Output only. The name of this group. The format is
+            /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and a new name is
+            /// created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated
+            /// automatically.</param>
             public virtual UpdateRequest Update(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates an existing group. You can change any group attributes except `name`.</summary>
+            /// <summary>Updates an existing group. You can change any group attributes except name.</summary>
             public class UpdateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Group>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -978,10 +1001,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
 
-                /// <summary>The name of this group. The format is
-                /// `"projects/{project_id_or_number}/groups/{group_id}"`. When creating a group, this field is ignored
-                /// and a new name is created consisting of the project specified in the call to `CreateGroup` and a
-                /// unique `{group_id}` that is generated automatically. @OutputOnly</summary>
+                /// <summary>Output only. The name of this group. The format is
+                /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and
+                /// a new name is created consisting of the project specified in the call to CreateGroup and a unique
+                /// {group_id} that is generated automatically.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1065,18 +1088,18 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define [custom
-            /// metrics](/monitoring/custom-metrics).</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
+            /// (/monitoring/custom-metrics).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.MetricDescriptor body, string name)
             {
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define [custom
-            /// metrics](/monitoring/custom-metrics).</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
+            /// (/monitoring/custom-metrics).</summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1090,7 +1113,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1137,17 +1160,17 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created [custom metrics](/monitoring/custom-metrics) can
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics (/monitoring/custom-metrics) can
             /// be deleted.</summary>
             /// <param name="name">The metric descriptor on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example of `{metric_id}` is:
-            /// `"custom.googleapis.com/my_test_metric"`.</param>
+            /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example of {metric_id} is:
+            /// custom.googleapis.com/my_test_metric.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created [custom metrics](/monitoring/custom-metrics) can
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics (/monitoring/custom-metrics) can
             /// be deleted.</summary>
             public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
@@ -1161,8 +1184,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The metric descriptor on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example of `{metric_id}` is:
-                /// `"custom.googleapis.com/my_test_metric"`.</summary>
+                /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example of {metric_id} is:
+                /// custom.googleapis.com/my_test_metric.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1205,8 +1228,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single metric descriptor. This method does not require a Stackdriver account.</summary>
             /// <param name="name">The metric descriptor on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example value of `{metric_id}` is
-            /// `"compute.googleapis.com/instance/disk/read_bytes_count"`.</param>
+            /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example value of {metric_id} is
+            /// compute.googleapis.com/instance/disk/read_bytes_count.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1225,8 +1248,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The metric descriptor on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}/metricDescriptors/{metric_id}"`. An example value of `{metric_id}`
-                /// is `"compute.googleapis.com/instance/disk/read_bytes_count"`.</summary>
+                /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example value of {metric_id} is
+                /// compute.googleapis.com/instance/disk/read_bytes_count.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1270,7 +1293,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Lists metric descriptors that match a filter. This method does not require a Stackdriver
             /// account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1290,22 +1313,22 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
-                /// Otherwise, the [filter](/monitoring/api/v3/filters) specifies which metric descriptors are to be
-                /// returned. For example, the following filter matches all [custom metrics](/monitoring/custom-
-                /// metrics): metric.type = starts_with("custom.googleapis.com/")</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>If this field is not empty then it must contain the `nextPageToken` value returned by a
+                /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
+                /// Otherwise, the filter (/monitoring/api/v3/filters) specifies which metric descriptors are to be
+                /// returned. For example, the following filter matches all custom metrics (/monitoring/custom-metrics):
+                /// metric.type = starts_with(custom.googleapis.com/) </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1345,18 +1368,18 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]*$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filter",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1402,8 +1425,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Gets a single monitored resource descriptor. This method does not require a Stackdriver
             /// account.</summary>
             /// <param name="name">The monitored resource descriptor to get. The format is
-            /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`. The `{resource_type}` is a
-            /// predefined type, such as `cloudsql_database`.</param>
+            /// projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}. The {resource_type} is a predefined
+            /// type, such as cloudsql_database.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1423,8 +1446,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The monitored resource descriptor to get. The format is
-                /// `"projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}"`. The
-                /// `{resource_type}` is a predefined type, such as `cloudsql_database`.</summary>
+                /// projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}. The {resource_type} is
+                /// a predefined type, such as cloudsql_database.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1468,7 +1491,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Lists monitored resource descriptors that match a filter. This method does not require a
             /// Stackdriver account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1488,22 +1511,22 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>An optional [filter](/monitoring/api/v3/filters) describing the descriptors to be returned.
-                /// The filter can reference the descriptor's type and labels. For example, the following filter returns
-                /// only Google Compute Engine descriptors that have an `id` label: resource.type = starts_with("gce_")
-                /// AND resource.label:id</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>If this field is not empty then it must contain the `nextPageToken` value returned by a
+                /// <summary>An optional filter (/monitoring/api/v3/filters) describing the descriptors to be returned.
+                /// The filter can reference the descriptor's type and labels. For example, the following filter returns
+                /// only Google Compute Engine descriptors that have an id label: resource.type = starts_with(gce_) AND
+                /// resource.label:id </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1543,18 +1566,18 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]*$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filter",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1602,7 +1625,7 @@ namespace Google.Apis.Monitoring.v3
             /// included in the error response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project on which to execute the request. The format is
-            /// `"projects/{project_id_or_number}"`.</param>
+            /// projects/{project_id_or_number}.</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -1624,7 +1647,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// `"projects/{project_id_or_number}"`.</summary>
+                /// projects/{project_id_or_number}.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1698,92 +1721,38 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A [monitoring filter](/monitoring/api/v3/filters) that specifies which time series should
-                /// be returned. The filter must specify a single metric type, and can additionally specify metric
-                /// labels and other information. For example: metric.type =
-                /// "compute.googleapis.com/instance/cpu/usage_time" AND metric.label.instance_name = "my-instance-
-                /// name"</summary>
+                /// <summary>A monitoring filter (/monitoring/api/v3/filters) that specifies which time series should be
+                /// returned. The filter must specify a single metric type, and can additionally specify metric labels
+                /// and other information. For example: metric.type = compute.googleapis.com/instance/cpu/usage_time AND
+                /// metric.label.instance_name = my-instance-name </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Required. The end of the interval. The interval includes this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string IntervalEndTime { get; set; }
-
-                /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is
-                /// present, it must be earlier than (less than) `endTime`. The interval begins after `startTime`—it
-                /// does not include `startTime`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string IntervalStartTime { get; set; }
-
-                /// <summary>The alignment period for per-[time series](TimeSeries) alignment. If present,
-                /// `alignmentPeriod` must be at least 60 seconds. After per-time series alignment, each time series
-                /// will contain data points only on the period boundaries. If `perSeriesAligner` is not specified or
-                /// equals `ALIGN_NONE`, then this field is ignored. If `perSeriesAligner` is specified and does not
-                /// equal `ALIGN_NONE`, then this field must be defined; otherwise an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string AggregationAlignmentPeriod { get; set; }
-
-                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
-                /// applied to all time series, depending on the metric type and value type of the original time series.
-                /// Alignment may change the metric type or the value type of the time series. Time series data must be
-                /// aligned in order to perform cross-time series reduction. If `crossSeriesReducer` is specified, then
-                /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE` and `alignmentPeriod` must be
-                /// specified; otherwise, an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
-
-                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
-                /// applied to all time series, depending on the metric type and value type of the original time series.
-                /// Alignment may change the metric type or the value type of the time series. Time series data must be
-                /// aligned in order to perform cross-time series reduction. If `crossSeriesReducer` is specified, then
-                /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE` and `alignmentPeriod` must be
-                /// specified; otherwise, an error is returned.</summary>
-                public enum AggregationPerSeriesAlignerEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
-                }
+                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
+                /// determine how the time series are partitioned into subsets prior to applying the aggregation
+                /// function. Each subset contains time series that have the same value for each of the grouping fields.
+                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
+                /// each subset of time series. Fields not specified in groupByFields are aggregated away. If
+                /// groupByFields is not specified, the time series are aggregated into a single output time series. If
+                /// crossSeriesReducer is not defined, this field is ignored.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
 
                 /// <summary>The approach to be used to combine time series. Not all reducer functions may be applied to
                 /// all time series, depending on the metric type and the value type of the original time series.
-                /// Reduction may change the metric type of value type of the time series. Time series data must be
-                /// aligned in order to perform cross-time series reduction. If `crossSeriesReducer` is specified, then
-                /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE` and `alignmentPeriod` must be
-                /// specified; otherwise, an error is returned.</summary>
+                /// Reduction may change the metric type of value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("aggregation.crossSeriesReducer", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AggregationCrossSeriesReducerEnum> AggregationCrossSeriesReducer { get; set; }
 
                 /// <summary>The approach to be used to combine time series. Not all reducer functions may be applied to
                 /// all time series, depending on the metric type and the value type of the original time series.
-                /// Reduction may change the metric type of value type of the time series. Time series data must be
-                /// aligned in order to perform cross-time series reduction. If `crossSeriesReducer` is specified, then
-                /// `perSeriesAligner` must be specified and not equal `ALIGN_NONE` and `alignmentPeriod` must be
-                /// specified; otherwise, an error is returned.</summary>
+                /// Reduction may change the metric type of value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
                 public enum AggregationCrossSeriesReducerEnum
                 {
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
@@ -1814,20 +1783,20 @@ namespace Google.Apis.Monitoring.v3
                     REDUCEPERCENTILE05,
                 }
 
-                /// <summary>The set of fields to preserve when `crossSeriesReducer` is specified. The `groupByFields`
-                /// determine how the time series are partitioned into subsets prior to applying the aggregation
-                /// function. Each subset contains time series that have the same value for each of the grouping fields.
-                /// Each individual time series is a member of exactly one subset. The `crossSeriesReducer` is applied
-                /// to each subset of time series. Fields not specified in `groupByFields` are aggregated away. If
-                /// `groupByFields` is not specified, the time series are aggregated into a single output time series.
-                /// If `crossSeriesReducer` is not defined, this field is ignored.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
 
-                /// <summary>Specifies the order in which the points of the time series should be returned. By default,
-                /// results are not ordered. Currently, this field must be left blank.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
+                /// <summary>Optional. The beginning of the time interval. The default value for the start time is the
+                /// end time. The start time must not be later than the end time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalStartTime { get; set; }
+
+                /// <summary>A positive number that is the maximum number of results to return. When view field sets to
+                /// FULL, it limits the number of Points server will return; if view field is HEADERS, it limits the
+                /// number of TimeSeries server will return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Specifies which information is returned about the time series.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -1842,13 +1811,73 @@ namespace Google.Apis.Monitoring.v3
                     HEADERS,
                 }
 
-                /// <summary>A positive number that is the maximum number of results to return. When `view` field sets
-                /// to `FULL`, it limits the number of `Points` server will return; if `view` field is `HEADERS`, it
-                /// limits the number of `TimeSeries` server will return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
+                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
+                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
+                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
+                /// defined; otherwise an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
 
-                /// <summary>If this field is not empty then it must contain the `nextPageToken` value returned by a
+                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
+                /// applied to all time series, depending on the metric type and value type of the original time series.
+                /// Alignment may change the metric type or the value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
+
+                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
+                /// applied to all time series, depending on the metric type and value type of the original time series.
+                /// Alignment may change the metric type or the value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
+                public enum AggregationPerSeriesAlignerEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+                }
+
+                /// <summary>Specifies the order in which the points of the time series should be returned. By default,
+                /// results are not ordered. Currently, this field must be left blank.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1897,6 +1926,24 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.groupByFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.crossSeriesReducer",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "interval.endTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "interval.endTime",
@@ -1909,6 +1956,24 @@ namespace Google.Apis.Monitoring.v3
                         "interval.startTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1933,45 +1998,9 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "aggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.crossSeriesReducer",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.groupByFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1997,17 +2026,17 @@ namespace Google.Apis.Monitoring.v3.Data
 {    
 
     /// <summary>A Distribution may optionally contain a histogram of the values in the population. The histogram is
-    /// given in `bucket_counts` as counts of values that fall into one of a sequence of non-overlapping buckets. The
-    /// sequence of buckets is described by `bucket_options`. A bucket specifies an inclusive lower bound and exclusive
+    /// given in bucket_counts as counts of values that fall into one of a sequence of non-overlapping buckets. The
+    /// sequence of buckets is described by bucket_options.A bucket specifies an inclusive lower bound and exclusive
     /// upper bound for the values that are counted for that bucket. The upper bound of a bucket is strictly greater
-    /// than the lower bound. The sequence of N buckets for a Distribution consists of an underflow bucket (number 0),
+    /// than the lower bound.The sequence of N buckets for a Distribution consists of an underflow bucket (number 0),
     /// zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are
-    /// contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span
+    /// contiguous: the lower bound of bucket i (i  0) is the same as the upper bound of bucket i - 1. The buckets span
     /// the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the
-    /// overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite. `BucketOptions`
+    /// overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.BucketOptions
     /// describes bucket boundaries in one of three ways. Two describe the boundaries by giving parameters for a formula
-    /// to generate boundaries and one gives the bucket boundaries explicitly. If `bucket_boundaries` is not given, then
-    /// no `bucket_counts` may be given.</summary>
+    /// to generate boundaries and one gives the bucket boundaries explicitly.If bucket_options is not given, then no
+    /// bucket_counts may be given.</summary>
     public class BucketOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The explicit buckets.</summary>
@@ -2026,40 +2055,40 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A collection of data points sent from a `collectd`-based plugin. See the `collectd` documentation for
-    /// more information.</summary>
+    /// <summary>A collection of data points sent from a collectd-based plugin. See the collectd documentation for more
+    /// information.</summary>
     public class CollectdPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The end time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
-        /// <summary>The measurement metadata. Example: `"process_id" -> 12345`</summary>
+        /// <summary>The measurement metadata. Example: process_id - 12345</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,TypedValue> Metadata { get; set; } 
 
-        /// <summary>The name of the plugin. Example: `"disk"`.</summary>
+        /// <summary>The name of the plugin. Example: disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
         public virtual string Plugin { get; set; } 
 
-        /// <summary>The instance name of the plugin Example: `"hdcl"`.</summary>
+        /// <summary>The instance name of the plugin Example: hdcl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginInstance")]
         public virtual string PluginInstance { get; set; } 
 
         /// <summary>The start time of the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
-        /// <summary>The measurement type. Example: `"memory"`.</summary>
+        /// <summary>The measurement type. Example: memory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The measurement type instance. Example: `"used"`.</summary>
+        /// <summary>The measurement type instance. Example: used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeInstance")]
         public virtual string TypeInstance { get; set; } 
 
         /// <summary>The measured values during this time interval. Each value must have a different
-        /// `dataSourceName`.</summary>
+        /// dataSourceName.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<CollectdValue> Values { get; set; } 
 
@@ -2067,11 +2096,11 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A single data point from a `collectd`-based plugin.</summary>
+    /// <summary>A single data point from a collectd-based plugin.</summary>
     public class CollectdValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The data source for the `collectd` value. For example there are two data sources for network
-        /// measurements: `"rx"` and `"tx"`.</summary>
+        /// <summary>The data source for the collectd value. For example there are two data sources for network
+        /// measurements: rx and tx.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceName")]
         public virtual string DataSourceName { get; set; } 
 
@@ -2087,16 +2116,16 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `CreateCollectdTimeSeries` request.</summary>
+    /// <summary>The CreateCollectdTimeSeries request.</summary>
     public class CreateCollectdTimeSeriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The `collectd` payloads representing the time series data. You must not include more than a single
-        /// point for each time series, so no two payloads can have the same values for all of the fields `plugin`,
-        /// `plugin_instance`, `type`, and `type_instance`.</summary>
+        /// <summary>The collectd payloads representing the time series data. You must not include more than a single
+        /// point for each time series, so no two payloads can have the same values for all of the fields plugin,
+        /// plugin_instance, type, and type_instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectdPayloads")]
         public virtual System.Collections.Generic.IList<CollectdPayload> CollectdPayloads { get; set; } 
 
-        /// <summary>The version of `collectd` that collected the data. Example: `"5.3.0-192.el6"`.</summary>
+        /// <summary>The version of collectd that collected the data. Example: 5.3.0-192.el6.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectdVersion")]
         public virtual string CollectdVersion { get; set; } 
 
@@ -2108,13 +2137,13 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `CreateTimeSeries` request.</summary>
+    /// <summary>The CreateTimeSeries request.</summary>
     public class CreateTimeSeriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The new data to be added to a list of time series. Adds at most one data point to each of several
-        /// time series. The new data point must be more recent than any other point in its time series. Each
-        /// `TimeSeries` value must fully specify a unique time series by supplying all label values for the metric and
-        /// the monitored resource.</summary>
+        /// time series. The new data point must be more recent than any other point in its time series. Each TimeSeries
+        /// value must fully specify a unique time series by supplying all label values for the metric and the monitored
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeries")]
         public virtual System.Collections.Generic.IList<TimeSeries> TimeSeries { get; set; } 
 
@@ -2123,20 +2152,20 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Distribution contains summary statistics for a population of values and, optionally, a histogram
-    /// representing the distribution of those values across a specified set of histogram buckets. The summary
-    /// statistics are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the
-    /// set of population of values. The histogram is based on a sequence of buckets and gives a count of values that
-    /// fall into each bucket. The boundaries of the buckets are given either explicitly or by specifying parameters for
-    /// a method of computing them (buckets of fixed width or buckets of exponentially increasing width). Although it is
-    /// not forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of
-    /// values, as this will render the `mean` and `sum_of_squared_deviation` fields meaningless.</summary>
+    /// representing the distribution of those values across a specified set of histogram buckets.The summary statistics
+    /// are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of
+    /// population of values.The histogram is based on a sequence of buckets and gives a count of values that fall into
+    /// each bucket. The boundaries of the buckets are given either explicitly or by specifying parameters for a method
+    /// of computing them (buckets of fixed width or buckets of exponentially increasing width).Although it is not
+    /// forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of
+    /// values, as this will render the mean and sum_of_squared_deviation fields meaningless.</summary>
     public class Distribution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If `bucket_options` is given, then the sum of the values in `bucket_counts` must equal the value in
-        /// `count`. If `bucket_options` is not given, no `bucket_counts` fields may be given. Bucket counts are given
-        /// in order under the numbering scheme described above (the underflow bucket has number 0; the finite buckets,
-        /// if any, have numbers 1 through N-2; the overflow bucket has number N-1). The size of `bucket_counts` must be
-        /// no greater than N as defined in `bucket_options`. Any suffix of trailing zero bucket_count fields may be
+        /// <summary>If bucket_options is given, then the sum of the values in bucket_counts must equal the value in
+        /// count. If bucket_options is not given, no bucket_counts fields may be given.Bucket counts are given in order
+        /// under the numbering scheme described above (the underflow bucket has number 0; the finite buckets, if any,
+        /// have numbers 1 through N-2; the overflow bucket has number N-1).The size of bucket_counts must be no greater
+        /// than N as defined in bucket_options.Any suffix of trailing zero bucket_count fields may be
         /// omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; } 
@@ -2149,19 +2178,19 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; } 
 
-        /// <summary>The arithmetic mean of the values in the population. If `count` is zero then this field must be
+        /// <summary>The arithmetic mean of the values in the population. If count is zero then this field must be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mean")]
         public virtual System.Nullable<double> Mean { get; set; } 
 
         /// <summary>If specified, contains the range of the population values. The field must not be present if the
-        /// `count` is zero.</summary>
+        /// count is zero. This field is presently ignored by the Stackdriver Monitoring API v3.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; } 
 
         /// <summary>The sum of squared deviations from the mean of the values in the population. For values x_i this
         /// is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 323, 3rd edition
-        /// describes Welford's method for accumulating this sum in one pass. If `count` is zero then this field must be
+        /// describes Welford's method for accumulating this sum in one pass.If count is zero then this field must be
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
         public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; } 
@@ -2172,18 +2201,18 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
+    /// JSON object {}.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A set of buckets with arbitrary widths. Defines `size(bounds) + 1` (= N) buckets with these boundaries
-    /// for bucket i: Upper bound (0 <= i < N-1): bounds[i] Lower bound (1 <= i < N); bounds[i - 1] There must be at
-    /// least one element in `bounds`. If `bounds` has only one element, there are no finite buckets, and that single
-    /// element is the common boundary of the overflow and underflow buckets.</summary>
+    /// <summary>A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets with these boundaries for
+    /// bucket i:Upper bound (0 = i  N-1): boundsi  Lower bound (1 = i  N); boundsi - 1There must be at least one
+    /// element in bounds. If bounds has only one element, there are no finite buckets, and that single element is the
+    /// common boundary of the overflow and underflow buckets.</summary>
     public class Explicit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The values must be monotonically increasing.</summary>
@@ -2195,20 +2224,20 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Specify a sequence of buckets that have a width that is proportional to the value of the lower bound.
-    /// Each bucket represents a constant relative uncertainty on a specific value in the bucket. Defines
-    /// `num_finite_buckets + 2` (= N) buckets with these boundaries for bucket i: Upper bound (0 <= i < N-1): scale *
-    /// (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
+    /// Each bucket represents a constant relative uncertainty on a specific value in the bucket.Defines
+    /// num_finite_buckets + 2 (= N) buckets with these boundaries for bucket i:Upper bound (0 = i  N-1): scale *
+    /// (growth_factor ^ i).  Lower bound (1 = i  N): scale * (growth_factor ^ (i - 1)).</summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Must be greater than 1</summary>
+        /// <summary>Must be greater than 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
         public virtual System.Nullable<double> GrowthFactor { get; set; } 
 
-        /// <summary>must be greater than 0</summary>
+        /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
         public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
 
-        /// <summary>Must be greater than 0</summary>
+        /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<double> Scale { get; set; } 
 
@@ -2243,7 +2272,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("number")]
         public virtual System.Nullable<int> Number { get; set; } 
 
-        /// <summary>The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has
+        /// <summary>The index of the field type in Type.oneofs, for message or enumeration types. The first type has
         /// index 1; zero means the type is not in the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofIndex")]
         public virtual System.Nullable<int> OneofIndex { get; set; } 
@@ -2257,7 +2286,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Nullable<bool> Packed { get; set; } 
 
         /// <summary>The field type URL, without the scheme, for message or enumeration types. Example:
-        /// `"type.googleapis.com/google.protobuf.Timestamp"`.</summary>
+        /// type.googleapis.com/google.protobuf.Timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; } 
 
@@ -2268,17 +2297,17 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>The description of a dynamic collection of monitored resources. Each group has a filter that is matched
     /// against monitored resources and their associated metadata. If a group's filter matches an available monitored
     /// resource, then that resource is a member of that group. Groups can contain any number of monitored resources,
-    /// and each monitored resource can be a member of any number of groups. Groups can be nested in parent-child
-    /// hierarchies. The `parentName` field identifies an optional parent for each group. If a group has a parent, then
+    /// and each monitored resource can be a member of any number of groups.Groups can be nested in parent-child
+    /// hierarchies. The parentName field identifies an optional parent for each group. If a group has a parent, then
     /// the only monitored resources available to be matched by the group's filter are the resources contained in the
     /// parent group. In other words, a group contains the monitored resources that match its filter and the filters of
-    /// all the group's ancestors. A group without a parent can contain any monitored resource. For example, consider an
-    /// infrastructure running a set of instances with two user-defined tags: `"environment"` and `"role"`. A parent
-    /// group has a filter, `environment="production"`. A child of that parent group has a filter, `role="transcoder"`.
-    /// The parent group contains all instances in the production environment, regardless of their roles. The child
-    /// group contains instances that have the transcoder role *and* are in the production environment. The monitored
-    /// resources contained in a group can change at any moment, depending on what resources exist and what filters are
-    /// associated with the group and its ancestors.</summary>
+    /// all the group's ancestors. A group without a parent can contain any monitored resource.For example, consider an
+    /// infrastructure running a set of instances with two user-defined tags: environment and role. A parent group has a
+    /// filter, environment=production. A child of that parent group has a filter, role=transcoder. The parent group
+    /// contains all instances in the production environment, regardless of their roles. The child group contains
+    /// instances that have the transcoder role and are in the production environment.The monitored resources contained
+    /// in a group can change at any moment, depending on what resources exist and what filters are associated with the
+    /// group and its ancestors.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A user-assigned name for this group, used only for display purposes.</summary>
@@ -2294,15 +2323,16 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCluster")]
         public virtual System.Nullable<bool> IsCluster { get; set; } 
 
-        /// <summary>The name of this group. The format is `"projects/{project_id_or_number}/groups/{group_id}"`. When
-        /// creating a group, this field is ignored and a new name is created consisting of the project specified in the
-        /// call to `CreateGroup` and a unique `{group_id}` that is generated automatically. @OutputOnly</summary>
+        /// <summary>Output only. The name of this group. The format is
+        /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and a new
+        /// name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that
+        /// is generated automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The name of the group's parent, if it has one. The format is
-        /// `"projects/{project_id_or_number}/groups/{group_id}"`. For groups with no parent, `parentName` is the empty
-        /// string, `""`.</summary>
+        /// projects/{project_id_or_number}/groups/{group_id}. For groups with no parent, parentName is the empty
+        /// string, .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; } 
 
@@ -2330,9 +2360,9 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>Specify a sequence of buckets that all have the same width (except overflow and underflow). Each bucket
-    /// represents a constant absolute uncertainty on the specific value in the bucket. Defines `num_finite_buckets + 2`
-    /// (= N) buckets with these boundaries for bucket `i`: Upper bound (0 <= i < N-1): offset + (width * i). Lower
-    /// bound (1 <= i < N): offset + (width * (i - 1)).</summary>
+    /// represents a constant absolute uncertainty on the specific value in the bucket.Defines num_finite_buckets + 2 (=
+    /// N) buckets with these boundaries for bucket i:Upper bound (0 = i  N-1): offset + (width * i).  Lower bound (1 =
+    /// i  N): offset + (width * (i - 1)).</summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 0.</summary>
@@ -2351,7 +2381,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `ListGroupMembers` response.</summary>
+    /// <summary>The ListGroupMembers response.</summary>
     public class ListGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of monitored resources in the group.</summary>
@@ -2359,7 +2389,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<MonitoredResource> Members { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as `pageToken` in the next call to this method.</summary>
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2371,7 +2401,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `ListGroups` response.</summary>
+    /// <summary>The ListGroups response.</summary>
     public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The groups that match the specified filters.</summary>
@@ -2379,7 +2409,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<Group> Group { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as `pageToken` in the next call to this method.</summary>
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2387,16 +2417,16 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `ListMetricDescriptors` response.</summary>
+    /// <summary>The ListMetricDescriptors response.</summary>
     public class ListMetricDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The metric descriptors that are available to the project and that match the value of `filter`, if
+        /// <summary>The metric descriptors that are available to the project and that match the value of filter, if
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricDescriptors")]
         public virtual System.Collections.Generic.IList<MetricDescriptor> MetricDescriptors { get; set; } 
 
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as `pageToken` in the next call to this method.</summary>
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2404,15 +2434,15 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `ListMonitoredResourcDescriptors` response.</summary>
+    /// <summary>The ListMonitoredResourcDescriptors response.</summary>
     public class ListMonitoredResourceDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as `pageToken` in the next call to this method.</summary>
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The monitored resource descriptors that are available to this project and that match `filter`, if
+        /// <summary>The monitored resource descriptors that are available to this project and that match filter, if
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescriptors")]
         public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; } 
@@ -2421,11 +2451,11 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `ListTimeSeries` response.</summary>
+    /// <summary>The ListTimeSeries response.</summary>
     public class ListTimeSeriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If there are more results than have been returned, then this field is set to a non-empty value. To
-        /// see the additional results, use that value as `pageToken` in the next call to this method.</summary>
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2438,16 +2468,16 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>A specific metric identified by specifying values for all of the labels of a
-    /// `MetricDescriptor`.</summary>
+    /// MetricDescriptor.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The set of labels that uniquely identify a metric. To specify a metric, all labels enumerated in
-        /// the `MetricDescriptor` must be assigned values.</summary>
+        /// the MetricDescriptor must be assigned values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>An existing metric type, see google.api.MetricDescriptor. For example,
-        /// `compute.googleapis.com/instance/cpu/usage_time`.</summary>
+        /// compute.googleapis.com/instance/cpu/usage_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2468,23 +2498,23 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
-        /// example, the `compute.googleapis.com/instance/network/received_bytes_count` metric type has a label,
-        /// `loadbalanced`, that specifies whether the traffic was received through a load balanced IP
-        /// address.</summary>
+        /// example, the compute.googleapis.com/instance/network/received_bytes_count metric type has a label,
+        /// loadbalanced, that specifies whether the traffic was received through a load balanced IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
-        /// <summary>Whether the metric records instantaneous values, changes to a value, etc.</summary>
+        /// <summary>Whether the metric records instantaneous values, changes to a value, etc. Some combinations of
+        /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
         /// <summary>Resource name. The format of the name may vary between different implementations. For examples:
-        /// projects/{project_id}/metricDescriptors/{type=**} metricDescriptors/{type=**}</summary>
+        /// projects/{project_id}/metricDescriptors/{type=**} metricDescriptors/{type=**} </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The metric type including a DNS name prefix, for example
-        /// `"compute.googleapis.com/instance/cpu/utilization"`. Metric types should use a natural hierarchical grouping
+        /// compute.googleapis.com/instance/cpu/utilization. Metric types should use a natural hierarchical grouping
         /// such as the following: compute.googleapis.com/instance/cpu/utilization
         /// compute.googleapis.com/instance/disk/read_ops_count
         /// compute.googleapis.com/instance/network/received_bytes_count Note that if the metric type changes, the
@@ -2494,25 +2524,27 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The unit in which the metric value is reported. It is only applicable if the `value_type` is
-        /// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of [The Unified Code for Units of
-        /// Measure](http://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s`
-        /// second * `min` minute * `h` hour * `d` day **Prefixes (PREFIX)** * `k` kilo (10**3) * `M` mega (10**6) * `G`
-        /// giga (10**9) * `T` tera (10**12) * `P` peta (10**15) * `E` exa (10**18) * `Z` zetta (10**21) * `Y` yotta
-        /// (10**24) * `m` milli (10**-3) * `u` micro (10**-6) * `n` nano (10**-9) * `p` pico (10**-12) * `f` femto
-        /// (10**-15) * `a` atto (10**-18) * `z` zepto (10**-21) * `y` yocto (10**-24) * `Ki` kibi (2**10) * `Mi` mebi
-        /// (2**20) * `Gi` gibi (2**30) * `Ti` tebi (2**40) **Grammar** The grammar includes the dimensionless unit `1`,
-        /// such as `1/s`. The grammar also includes these connectors: * `/` division (as an infix operator, e.g.
-        /// `1/s`). * `.` multiplication (as an infix operator, e.g. `GBy.d`) The grammar for a unit is as follows:
-        /// Expression = Component { "." Component } { "/" Component } ; Component = [ PREFIX ] UNIT [ Annotation ] |
-        /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a
-        /// `UNIT` and is equivalent to `1` if it is used alone. For examples, `{requests}/s == 1/s`, `By{transmitted}/s
-        /// == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing '{' or
-        /// '}'.</summary>
+        /// <summary>The unit in which the metric value is reported. It is only applicable if the value_type is INT64,
+        /// DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure
+        /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour
+        /// d dayPrefixes (PREFIX) k kilo (10**3) M mega (10**6) G giga (10**9) T tera (10**12) P peta (10**15) E exa
+        /// (10**18) Z zetta (10**21) Y yotta (10**24) m milli (10**-3) u micro (10**-6) n nano (10**-9) p pico
+        /// (10**-12) f femto (10**-15) a atto (10**-18) z zepto (10**-21) y yocto (10**-24) Ki kibi (2**10) Mi mebi
+        /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The
+        /// grammar also includes these connectors: / division (as an infix operator, e.g. 1/s). . multiplication (as an
+        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { . Component } { /
+        /// Component } ;
+        ///
+        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | 1 ;
+        ///
+        /// Annotation = { NAME } ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
+        /// it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-
+        /// blank printable ASCII characters not  containing '{' or '}'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
-        /// <summary>Whether the measurement is an integer, a floating-point number, etc.</summary>
+        /// <summary>Whether the measurement is an integer, a floating-point number, etc. Some combinations of
+        /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
 
@@ -2521,22 +2553,22 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>An object representing a resource that can be used for monitoring, logging, billing, or other purposes.
-    /// Examples include virtual machine instances, databases, and storage devices such as disks. The `type` field
-    /// identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the
-    /// `labels` field identifies the actual resource and its attributes according to the schema. For example, a
-    /// particular Compute Engine VM instance could be represented by the following object, because the
-    /// MonitoredResourceDescriptor for `"gce_instance"` has labels `"instance_id"` and `"zone"`: { "type":
-    /// "gce_instance", "labels": { "instance_id": "my-instance", "zone": "us-central1-a" }}</summary>
+    /// Examples include virtual machine instances, databases, and storage devices such as disks. The type field
+    /// identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels
+    /// field identifies the actual resource and its attributes according to the schema. For example, a particular
+    /// Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor
+    /// for gce_instance has labels instance_id and zone: { type: gce_instance, labels: { instance_id: 12345678901234,
+    /// zone: us-central1-a }} </summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
-        /// example, Cloud SQL databases use the labels `"database_id"` and `"zone"`.</summary>
+        /// example, Cloud SQL databases use the labels database_id and zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Required. The monitored resource type. This field must match the `type` field of a
+        /// <summary>Required. The monitored resource type. This field must match the type field of a
         /// MonitoredResourceDescriptor object. For example, the type of a Cloud SQL database is
-        /// `"cloudsql_database"`.</summary>
+        /// cloudsql_database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2546,8 +2578,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
     /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
-    /// `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM
-    /// instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method
+    /// gce_instance and specifies the use of the labels instance_id and zone to identify particular VM
+    /// instances.Different APIs can support different monitored resource types. APIs generally provide a list method
     /// that returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2557,26 +2589,27 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string Description { get; set; } 
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
-        /// interfaces. For example, `"Google Cloud SQL Database"`.</summary>
+        /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
+        /// Google Cloud SQL Database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
-        /// an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and
-        /// `"zone"`.</summary>
+        /// an individual Google Cloud SQL database is identified by values for the labels database_id and
+        /// zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
-        /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field
-        /// in this object and {project_id} is a project ID that provides API-specific context for accessing the type.
-        /// APIs that do not use project information can use the resource name format
-        /// `"monitoredResourceDescriptors/{type}"`.</summary>
+        /// projects/{project_id}/monitoredResourceDescriptors/{type} where {type} is the value of the type field in
+        /// this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs
+        /// that do not use project information can use the resource name format
+        /// monitoredResourceDescriptors/{type}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The monitored resource type. For example, the type `"cloudsql_database"` represents
-        /// databases in Google Cloud SQL.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
+        /// in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2587,11 +2620,11 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The option's name. For example, `"java_package"`.</summary>
+        /// <summary>The option's name. For example, java_package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The option's value. For example, `"com.google.protobuf"`.</summary>
+        /// <summary>The option's value. For example, com.google.protobuf.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
 
@@ -2602,7 +2635,12 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A single data point in a time series.</summary>
     public class Point : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time interval to which the value applies.</summary>
+        /// <summary>The time interval to which the data point applies. For GAUGE metrics, only the end time of the
+        /// interval is used. For DELTA metrics, the start and end time should specify a non-zero interval, with
+        /// subsequent points specifying contiguous and non-overlapping intervals. For CUMULATIVE metrics, the start and
+        /// end time should specify a non-zero interval, with subsequent points specifying the same start time and
+        /// increasing end times, until an event resets the cumulative value to zero and sets a new start time for the
+        /// following points.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual TimeInterval Interval { get; set; } 
 
@@ -2629,12 +2667,12 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`SourceContext` represents information about the source of a protobuf element, like the file in which
-    /// it is defined.</summary>
+    /// <summary>SourceContext represents information about the source of a protobuf element, like the file in which it
+    /// is defined.</summary>
     public class SourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element. For
-        /// example: `"google/protobuf/source.proto"`.</summary>
+        /// example: google/protobuf/source_context.proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
 
@@ -2642,25 +2680,24 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A time interval extending from after `startTime` through `endTime`. If `startTime` is omitted, the
-    /// interval is the single point in time, `endTime`.</summary>
+    /// <summary>A time interval extending just after a start time through an end time. If the start time is the same as
+    /// the end time, then the interval represents a single point in time.</summary>
     public class TimeInterval : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The end of the interval. The interval includes this time.</summary>
+        /// <summary>Required. The end of the time interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
-        /// <summary>If this value is omitted, the interval is a point in time, `endTime`. If `startTime` is present, it
-        /// must be earlier than (less than) `endTime`. The interval begins after `startTime`—it does not include
-        /// `startTime`.</summary>
+        /// <summary>Optional. The beginning of the time interval. The default value for the start time is the end time.
+        /// The start time must not be later than the end time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A collection of data points that describes the time-varying nature of a metric. A time series is
+    /// <summary>A collection of data points that describes the time-varying values of a metric. A time series is
     /// identified by a combination of a fully-specified monitored resource and a fully-specified metric.</summary>
     public class TimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2668,14 +2705,15 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual Metric Metric { get; set; } 
 
-        /// <summary>The metric kind of the time series. This can be different than the metric kind specified in
-        /// [google.api.MetricDescriptor] because of alignment and reduction operations on the data. This field is
-        /// ignored when writing data; the value specified in the descriptor is used instead. @OutputOnly</summary>
+        /// <summary>The metric kind of the time series. This can be different than the metric kind of the metric object
+        /// if this time series is an alignment or reduction of other time series. When writing data to a time series,
+        /// this field is optional, and, when specified, must match the metric kind of the metric descriptor. If a
+        /// metric descriptor is auto-created, its metric kind will match this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
-        /// <summary>The data points of this time series. When used as output, points will be sorted by decreasing time
-        /// order. When used as input, points could be written in any orders.</summary>
+        /// <summary>The data points of this time series. The order of the points is specified when you retrieve the
+        /// time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("points")]
         public virtual System.Collections.Generic.IList<Point> Points { get; set; } 
 
@@ -2683,9 +2721,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual MonitoredResource Resource { get; set; } 
 
-        /// <summary>The value type of the time series. This can be different than the value type specified in
-        /// [google.api.MetricDescriptor] because of alignment and reduction operations on the data. This field is
-        /// ignored when writing data; the value specified in the descriptor is used instead. @OutputOnly</summary>
+        /// <summary>The value type of the time series. This can be different than the value type of the metric object
+        /// if this time series is an alignment or reduction of other time series. When writing data to a time series,
+        /// this field is optional, and, when specified, must match the value type of the metric descriptor. If a metric
+        /// descriptor is auto-created, its value type will match this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
 
@@ -2704,7 +2743,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The list of types appearing in `oneof` definitions in this type.</summary>
+        /// <summary>The list of types appearing in oneof definitions in this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneofs")]
         public virtual System.Collections.Generic.IList<string> Oneofs { get; set; } 
 
@@ -2727,7 +2766,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A single strongly-typed value.</summary>
     public class TypedValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Boolean value: `true` or `false`.</summary>
+        /// <summary>A Boolean value: true or false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; } 
 
@@ -2735,12 +2774,12 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("distributionValue")]
         public virtual Distribution DistributionValue { get; set; } 
 
-        /// <summary>A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has
-        /// 16 significant digits of precision.</summary>
+        /// <summary>A 64-bit double-precision floating-point number. Its magnitude is approximately 10300 and it has 16
+        /// significant digits of precision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; } 
 
-        /// <summary>A 64-bit integer. Its range is approximately ±9.2x1018.</summary>
+        /// <summary>A 64-bit integer. Its range is approximately 9.2x1018.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
         public virtual System.Nullable<long> Int64Value { get; set; } 
 

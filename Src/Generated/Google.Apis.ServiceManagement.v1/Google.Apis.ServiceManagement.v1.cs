@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160906 (614)
+ *      <tr><th>API Rev<td>20160914 (622)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -3258,7 +3258,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
-        /// <summary>Whether the metric records instantaneous values, changes to a value, etc.</summary>
+        /// <summary>Whether the metric records instantaneous values, changes to a value, etc. Some combinations of
+        /// `metric_kind` and `value_type` might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
@@ -3323,7 +3324,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
-        /// <summary>Whether the measurement is an integer, a floating-point number, etc.</summary>
+        /// <summary>Whether the measurement is an integer, a floating-point number, etc. Some combinations of
+        /// `metric_kind` and `value_type` might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
 
@@ -3756,13 +3758,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`Service` is the root object of the configuration schema. It describes basic information like the name
-    /// of the service and the exposed API interfaces, and delegates other aspects to configuration sub-sections.
+    /// <summary>`Service` is the root object of Google service configuration schema. It describes basic information
+    /// about a service, such as the name and the title, and delegates other aspects to sub-sections. Each sub-section
+    /// is either a proto message or a repeated proto message that configures a specific aspect, such as auth. See each
+    /// proto message definition for details.
     ///
     /// Example:
     ///
-    /// type: google.api.Service config_version: 1 name: calendar.googleapis.com title: Google Calendar API apis: -
-    /// name: google.calendar.Calendar backend: rules: - selector: "*" address: calendar.example.com</summary>
+    /// type: google.api.Service config_version: 3 name: calendar.googleapis.com title: Google Calendar API apis: -
+    /// name: google.calendar.v3.Calendar backend: rules: - selector: "google.calendar.v3.*" address:
+    /// calendar.example.com</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api
@@ -3824,7 +3829,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Logging configuration of the service.</summary>
+        /// <summary>Logging configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
         public virtual Logging Logging { get; set; } 
 
@@ -3841,7 +3846,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResources")]
         public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> MonitoredResources { get; set; } 
 
-        /// <summary>Monitoring configuration of the service.</summary>
+        /// <summary>Monitoring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoring")]
         public virtual Monitoring Monitoring { get; set; } 
 
@@ -3854,7 +3859,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
-        /// <summary>Configuration for system parameters.</summary>
+        /// <summary>System parameter configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemParameters")]
         public virtual SystemParameters SystemParameters { get; set; } 
 

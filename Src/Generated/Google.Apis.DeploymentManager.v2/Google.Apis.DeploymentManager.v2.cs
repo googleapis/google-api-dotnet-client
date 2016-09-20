@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160913 (621)
+ *      <tr><th>API Rev<td>20160915 (623)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -530,6 +530,84 @@ namespace Google.Apis.DeploymentManager.v2
 
         }
 
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/deployments/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Creates a deployment and all of the resources described by the deployment manifest.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
@@ -891,6 +969,90 @@ namespace Google.Apis.DeploymentManager.v2
 
         }
 
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.v2.Data.Policy body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2.Data.Policy body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DeploymentManager.v2.Data.Policy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/deployments/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Stops an ongoing operation. This does not roll back any work that has already been completed, but
         /// prevents any new work from being started.</summary>
         /// <param name="body">The body of the request.</param>
@@ -972,6 +1134,90 @@ namespace Google.Apis.DeploymentManager.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DeploymentManager.v2.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DeploymentManager.v2.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/deployments/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -1984,6 +2230,91 @@ namespace Google.Apis.DeploymentManager.v2
 namespace Google.Apis.DeploymentManager.v2.Data
 {    
 
+    /// <summary>Enables "data access" audit logging for a service and specifies a list of members that are log-
+    /// exempted.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
+        /// specified above. Follows the same format of Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for "data access" audit logging. For example,
+        /// `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all
+        /// services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` or `joe@example.com`.
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
+        /// `roles/owner`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A condition to be met.</summary>
+    public class Condition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Trusted attributes supplied by the IAM system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
+        public virtual string Iam { get; set; } 
+
+        /// <summary>An operator to apply the subject with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; } 
+
+        /// <summary>Trusted attributes discharged by the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
+        public virtual string Svc { get; set; } 
+
+        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
+        /// control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
+        public virtual string Sys { get; set; } 
+
+        /// <summary>DEPRECATED. Use 'values' instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ConfigFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the file.</summary>
@@ -2160,6 +2491,32 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>The name of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies what kind of log the caller must write</summary>
+    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Counter options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
+        public virtual LogConfigCounterOptions Counter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for counters</summary>
+    public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field value to attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>The metric to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2416,8 +2773,69 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam).</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies audit logging configs for "data access". "data access": generally refers to data
+        /// reads/writes and admin reads. "admin activity": generally refers to admin writes.
+        ///
+        /// Note: `AuditConfig` doesn't apply to "admin activity", which always enables audit logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
+        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
+        /// `role`. `bindings` with no members will result in an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
+        public virtual System.Nullable<bool> IamOwned { get; set; } 
+
+        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
+        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
+        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
+        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
+        /// Otherwise, if no rule applies, permission is denied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
+
+        /// <summary>Version of the `Policy`. The default version is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Access Control Policy set on this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
+        public virtual ResourceAccessControl AccessControl { get; set; } 
+
         /// <summary>[Output Only] The evaluated properties of the resource with references expanded. Returned as
         /// serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
@@ -2510,8 +2928,23 @@ namespace Google.Apis.DeploymentManager.v2.Data
         }
     }    
 
+    /// <summary>The access controls set on the resource.</summary>
+    public class ResourceAccessControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GCP IAM Policy to set on the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpIamPolicy")]
+        public virtual string GcpIamPolicy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ResourceUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Access Control Policy to set on this resource after updating the resource itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
+        public virtual ResourceAccessControl AccessControl { get; set; } 
+
         /// <summary>[Output Only] If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -2629,6 +3062,45 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A rule to be applied in a Policy.</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        /// <summary>Additional restrictions that must be met</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+
+        /// <summary>Human-readable description of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
+        /// in at least one of these entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ins")]
+        public virtual System.Collections.Generic.IList<string> Ins { get; set; } 
+
+        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
+        /// action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logConfigs")]
+        public virtual System.Collections.Generic.IList<LogConfig> LogConfigs { get; set; } 
+
+        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
+        /// is in none of the entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notIns")]
+        public virtual System.Collections.Generic.IList<string> NotIns { get; set; } 
+
+        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
+        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class TargetConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration to use for this deployment.</summary>
@@ -2639,6 +3111,27 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// files. For example, you might import a text file in order to use the file in a template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
         public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or
+        /// 'storage.*') are not allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

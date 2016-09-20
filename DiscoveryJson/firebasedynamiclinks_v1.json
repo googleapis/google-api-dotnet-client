@@ -9,7 +9,7 @@
       }
     }
   },
-  "description": "Firebase Dynamic Links API enables third party developers to create and manage the Dynamic Links(go/fdl).",
+  "description": "Firebase Dynamic Links API enables third party developers to programmatically create and manage Dynamic Links.",
   "protocol": "rest",
   "title": "Firebase Dynamic Links API",
   "resources": {
@@ -354,7 +354,7 @@
       "id": "GooglePlayAnalytics"
     }
   },
-  "revision": "20160911",
+  "revision": "20160919",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
