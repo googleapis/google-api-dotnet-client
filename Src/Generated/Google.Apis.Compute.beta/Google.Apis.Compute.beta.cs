@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160908 (616)
+ *      <tr><th>API Rev<td>20160913 (621)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17494,7 +17494,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request. This method
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
         /// supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -17506,7 +17506,7 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, region, autoscaler);
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request. This method
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
         /// supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -17694,7 +17694,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -17704,7 +17704,7 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, region);
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -18973,7 +18973,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns all of the details for the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -18984,7 +18984,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, instanceGroupManager);
         }
 
-        /// <summary>Returns all of the details for the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InstanceGroupManager>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -19413,6 +19413,112 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="instanceGroupManager">The name of the instance group
+        /// manager.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+        {
+            return new PatchRequest(service, body, project, region, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
@@ -19735,8 +19841,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the instance template to use when creating new instances in this group. Existing instances are
-        /// not affected.</summary>
+        /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
+        /// group. Existing instances are not affected.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -19748,8 +19854,8 @@ namespace Google.Apis.Compute.beta
             return new SetInstanceTemplateRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Sets the instance template to use when creating new instances in this group. Existing instances are
-        /// not affected.</summary>
+        /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
+        /// group. Existing instances are not affected.</summary>
         public class SetInstanceTemplateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetInstanceTemplate request.</summary>
@@ -20032,6 +20138,112 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="instanceGroupManager">The name of the instance group
+        /// manager.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.beta.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+        {
+            return new UpdateRequest(service, body, project, region, instanceGroupManager);
+        }
+
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstanceGroupManager body, string project, string region, string instanceGroupManager)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InstanceGroupManager = instanceGroupManager;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>The name of the instance group manager.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string InstanceGroupManager { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceGroupManager",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31690,9 +31902,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] Human-readable details about the current state of the autoscaler. Examples: ?Error
-        /// when fetching replicas: Replica Pool xxx doesn?t exist.? ?Autoscaling capped at min_num_replicas:
-        /// 2.?</summary>
+        /// <summary>[Output Only] Human-readable details about the current state of the autoscaler. Read the
+        /// documentation for Commonly returned status messages for examples of status messages you might
+        /// encounter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetails")]
         public virtual System.Collections.Generic.IList<AutoscalerStatusDetails> StatusDetails { get; set; } 
 
@@ -31773,9 +31985,11 @@ namespace Google.Apis.Compute.beta.Data
 
     public class AutoscalerStatusDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
+        /// <summary>The type of error returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -31901,14 +32115,13 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the Cloud Monitoring metric. The metric cannot have negative values and should be
-        /// a utilization metric, which means that the number of virtual machines handling requests should increase or
-        /// decrease proportionally to the metric. The metric must also have a label of
+        /// <summary>The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and
+        /// should be a utilization metric, which means that the number of virtual machines handling requests should
+        /// increase or decrease proportionally to the metric. The metric must also have a label of
         /// compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not
         /// guarantee that the metric is valid.
         ///
         /// For example, the following is a valid metric: compute.googleapis.com/instance/network/received_bytes_count
-        ///
         /// The following is not a valid metric because it does not increase or decrease based on usage:
         /// compute.googleapis.com/instance/cpu/reserved_cores</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
@@ -31918,8 +32131,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
-        /// <summary>Defines how target utilization value is expressed for a Cloud Monitoring metric. Either GAUGE,
-        /// DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
+        /// <summary>Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either
+        /// GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTargetType")]
         public virtual string UtilizationTargetType { get; set; } 
 
@@ -33207,10 +33420,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Features supported by the guest os.</summary>
+    /// <summary>A list of features to enable on the guest OS. Currently, only one feature is supported,
+    /// VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only
+    /// enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel
+    /// versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature..</summary>
+        /// <summary>The type of supported feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -34018,8 +34234,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>[Output Only] A unique identifier for this instance group. The server generates this
-        /// identifier.</summary>
+        /// <summary>[Output Only] A unique identifier for this instance group, generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
@@ -35541,7 +35756,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies. If creating a persistent disk
+        /// snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -35843,6 +36059,11 @@ namespace Google.Apis.Compute.beta.Data
         /// stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageExportLocation")]
         public virtual UsageExportLocation UsageExportLocation { get; set; } 
+
+        /// <summary>[Output Only] The role this project has in a Cross Project Network (XPN) configuration. Currently
+        /// only HOST projects are differentiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
+        public virtual string XpnProjectStatus { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36174,7 +36395,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class ResourceGroupReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URI referencing one of the resource views listed in the backend service.</summary>
+        /// <summary>A URI referencing one of the instance groups listed in the backend service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 

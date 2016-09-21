@@ -354,14 +354,14 @@
       "id": "GooglePlayAnalytics"
     }
   },
-  "revision": "20160919",
+  "revision": "20160920",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "version_module": "True",
-  "canonicalName": "Firebase Dynamic Links API",
+  "canonicalName": "Firebase Dynamic Links",
   "discoveryVersion": "v1",
   "baseUrl": "https://firebasedynamiclinks.googleapis.com/",
   "name": "firebasedynamiclinks",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160908 (616)
+ *      <tr><th>API Rev<td>20160913 (621)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -106,6 +106,7 @@ namespace Google.Apis.Compute.alpha
             targetInstances = new TargetInstancesResource(this);
             targetPools = new TargetPoolsResource(this);
             targetSslProxies = new TargetSslProxiesResource(this);
+            targetTcpProxies = new TargetTcpProxiesResource(this);
             targetVpnGateways = new TargetVpnGatewaysResource(this);
             urlMaps = new UrlMapsResource(this);
             vpnTunnels = new VpnTunnelsResource(this);
@@ -496,6 +497,14 @@ namespace Google.Apis.Compute.alpha
         public virtual TargetSslProxiesResource TargetSslProxies
         {
             get { return targetSslProxies; }
+        }
+
+        private readonly TargetTcpProxiesResource targetTcpProxies;
+
+        /// <summary>Gets the TargetTcpProxies resource.</summary>
+        public virtual TargetTcpProxiesResource TargetTcpProxies
+        {
+            get { return targetTcpProxies; }
         }
 
         private readonly TargetVpnGatewaysResource targetVpnGateways;
@@ -19006,6 +19015,76 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Sets the default service account of the project. The default service account is used when a VM
+        /// instance is created with the service account email address set to "default".</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual SetDefaultServiceAccountRequest SetDefaultServiceAccount(Google.Apis.Compute.alpha.Data.ProjectsSetDefaultServiceAccountRequest body, string project)
+        {
+            return new SetDefaultServiceAccountRequest(service, body, project);
+        }
+
+        /// <summary>Sets the default service account of the project. The default service account is used when a VM
+        /// instance is created with the service account email address set to "default".</summary>
+        public class SetDefaultServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetDefaultServiceAccount request.</summary>
+            public SetDefaultServiceAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.ProjectsSetDefaultServiceAccountRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.ProjectsSetDefaultServiceAccountRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setDefaultServiceAccount"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/setDefaultServiceAccount"; }
+            }
+
+            /// <summary>Initializes SetDefaultServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
         /// <summary>Enables the usage export feature and sets the usage export bucket where reports are stored. If you
         /// provide an empty request body using this method, the usage export feature will be disabled.</summary>
         /// <param name="body">The body of the request.</param>
@@ -19519,7 +19598,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request. This method
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
         /// supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -19531,7 +19610,7 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, region, autoscaler);
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request. This method
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
         /// supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -19719,7 +19798,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -19729,7 +19808,7 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, region);
         }
 
-        /// <summary>Updates a autoscaler in the specified project using the data included in the request.</summary>
+        /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -22139,7 +22218,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Returns all of the details for the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -22150,7 +22229,7 @@ namespace Google.Apis.Compute.alpha
             return new GetRequest(service, project, region, instanceGroupManager);
         }
 
-        /// <summary>Returns all of the details for the specified managed instance group.</summary>
+        /// <summary>Returns all of the details about the specified managed instance group.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.InstanceGroupManager>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -23007,8 +23086,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the instance template to use when creating new instances in this group. Existing instances are
-        /// not affected.</summary>
+        /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
+        /// group. Existing instances are not affected.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -23020,8 +23099,8 @@ namespace Google.Apis.Compute.alpha
             return new SetInstanceTemplateRequest(service, body, project, region, instanceGroupManager);
         }
 
-        /// <summary>Sets the instance template to use when creating new instances in this group. Existing instances are
-        /// not affected.</summary>
+        /// <summary>Sets the instance template to use when creating new instances or recreating instances in this
+        /// group. Existing instances are not affected.</summary>
         public class SetInstanceTemplateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetInstanceTemplate request.</summary>
@@ -32061,6 +32140,643 @@ namespace Google.Apis.Compute.alpha
         }
     }
 
+    /// <summary>The "targetTcpProxies" collection of methods.</summary>
+    public class TargetTcpProxiesResource
+    {
+        private const string Resource = "targetTcpProxies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TargetTcpProxiesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string targetTcpProxy)
+        {
+            return new DeleteRequest(service, project, targetTcpProxy);
+        }
+
+        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
+        /// a list() request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource to return.</param>
+        public virtual GetRequest Get(string project, string targetTcpProxy)
+        {
+            return new GetRequest(service, project, targetTcpProxy);
+        }
+
+        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
+        /// a list() request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TargetTcpProxy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.alpha.Data.TargetTcpProxy body, string project)
+        {
+            return new InsertRequest(service, body, project);
+        }
+
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TargetTcpProxy body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TargetTcpProxy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TargetTcpProxyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests.</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource whose BackendService resource is to be set.</param>
+        public virtual SetBackendServiceRequest SetBackendService(Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetBackendServiceRequest body, string project, string targetTcpProxy)
+        {
+            return new SetBackendServiceRequest(service, body, project, targetTcpProxy);
+        }
+
+        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        public class SetBackendServiceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetBackendService request.</summary>
+            public SetBackendServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetBackendServiceRequest body, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource whose BackendService resource is to be set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetBackendServiceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setBackendService"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService"; }
+            }
+
+            /// <summary>Initializes SetBackendService parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource whose ProxyHeader is to be set.</param>
+        public virtual SetProxyHeaderRequest SetProxyHeader(Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetProxyHeaderRequest body, string project, string targetTcpProxy)
+        {
+            return new SetProxyHeaderRequest(service, body, project, targetTcpProxy);
+        }
+
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        public class SetProxyHeaderRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetProxyHeader request.</summary>
+            public SetProxyHeaderRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetProxyHeaderRequest body, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource whose ProxyHeader is to be set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetProxyHeaderRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setProxyHeader"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader"; }
+            }
+
+            /// <summary>Initializes SetProxyHeader parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "targetVpnGateways" collection of methods.</summary>
     public class TargetVpnGatewaysResource
     {
@@ -34871,6 +35587,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("natIP")]
         public virtual string NatIP { get; set; } 
 
+        /// <summary>This signifies the networking tier used for configuring this access configuration and can only take
+        /// the following values: PREMIUM , STANDARD. If this field is not specified, it is assumed to be
+        /// PREMIUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
+
         /// <summary>The type of configuration. The default and only option is ONE_TO_ONE_NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -34911,6 +35633,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>This signifies the networking tier used for configuring this Address and can only take the
+        /// following values: PREMIUM , STANDARD. If this field is not specified, it is assumed to be PREMIUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
         /// global addresses.</summary>
@@ -35048,6 +35775,26 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
+    }    
+
+    /// <summary>An alias IP range attached to an instance's network interface.</summary>
+    public class AliasIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP CIDR range represented by this alias IP range. This IP CIDR range must belong to the
+        /// specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces.
+        /// This range may be a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format string (e.g.
+        /// 10.1.2.0/24).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>Optional subnetwork secondary range name specifying the secondary range from which to allocate the
+        /// IP CIDR range for this alias IP range. If left unspecified, the primary range of the subnetwork will be
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeName")]
+        public virtual string SubnetworkRangeName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>An instance-attached disk resource.</summary>
@@ -35279,9 +36026,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] Human-readable details about the current state of the autoscaler. Examples: ?Error
-        /// when fetching replicas: Replica Pool xxx doesn?t exist.? ?Autoscaling capped at min_num_replicas:
-        /// 2.?</summary>
+        /// <summary>[Output Only] Human-readable details about the current state of the autoscaler. Read the
+        /// documentation for Commonly returned status messages for examples of status messages you might
+        /// encounter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetails")]
         public virtual System.Collections.Generic.IList<AutoscalerStatusDetails> StatusDetails { get; set; } 
 
@@ -35362,9 +36109,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class AutoscalerStatusDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
+        /// <summary>The type of error returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -35494,14 +36243,13 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the Cloud Monitoring metric. The metric cannot have negative values and should be
-        /// a utilization metric, which means that the number of virtual machines handling requests should increase or
-        /// decrease proportionally to the metric. The metric must also have a label of
+        /// <summary>The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and
+        /// should be a utilization metric, which means that the number of virtual machines handling requests should
+        /// increase or decrease proportionally to the metric. The metric must also have a label of
         /// compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not
         /// guarantee that the metric is valid.
         ///
         /// For example, the following is a valid metric: compute.googleapis.com/instance/network/received_bytes_count
-        ///
         /// The following is not a valid metric because it does not increase or decrease based on usage:
         /// compute.googleapis.com/instance/cpu/reserved_cores</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
@@ -35511,8 +36259,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
-        /// <summary>Defines how target utilization value is expressed for a Cloud Monitoring metric. Either GAUGE,
-        /// DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
+        /// <summary>Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Either
+        /// GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If not specified, the default is GAUGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTargetType")]
         public virtual string UtilizationTargetType { get; set; } 
 
@@ -35757,6 +36505,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<Backend> Backends { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
+        public virtual BackendServiceCdnPolicy CdnPolicy { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("connectionDraining")]
         public virtual ConnectionDraining ConnectionDraining { get; set; } 
 
@@ -35883,6 +36634,17 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message containing Cloud CDN configuration for a backend service.</summary>
+    public class BackendServiceCdnPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CacheKeyPolicy for this CdnPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheKeyPolicy")]
+        public virtual CacheKeyPolicy CacheKeyPolicy { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36044,6 +36806,39 @@ namespace Google.Apis.Compute.alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message containing what to include in the cache key for a request for Cloud CDN.</summary>
+    public class CacheKeyPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, requests to different hosts will be cached separately.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeHost")]
+        public virtual System.Nullable<bool> IncludeHost { get; set; } 
+
+        /// <summary>If true, http and https requests will be cached separately.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeProtocol")]
+        public virtual System.Nullable<bool> IncludeProtocol { get; set; } 
+
+        /// <summary>If true, include query string parameters in the cache key according to query_string_whitelist and
+        /// query_string_blacklist. If neither is set, the entire query string will be included. If false, the query
+        /// string will be excluded from the cache key entirely.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeQueryString")]
+        public virtual System.Nullable<bool> IncludeQueryString { get; set; } 
+
+        /// <summary>Names of query string parameters to exclude in cache keys. All other parameters will be included.
+        /// Either specify query_string_whitelist or query_string_blacklist, not both. ?&? and ?=? will be percent
+        /// encoded and not treated as delimiters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStringBlacklist")]
+        public virtual System.Collections.Generic.IList<string> QueryStringBlacklist { get; set; } 
+
+        /// <summary>Names of query string parameters to include in cache keys. All other parameters will be excluded.
+        /// Either specify query_string_whitelist or query_string_blacklist, not both. ?&? and ?=? will be percent
+        /// encoded and not treated as delimiters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStringWhitelist")]
+        public virtual System.Collections.Generic.IList<string> QueryStringWhitelist { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36885,6 +37680,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
+        /// <summary>This signifies the networking tier used for configuring this load balancer and can only take the
+        /// following values: PREMIUM , STANDARD. If this field is not specified, it is assumed to be PREMIUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
+
         /// <summary>Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the
         /// specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair
         /// must have disjoint port ranges.
@@ -37071,10 +37871,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Features supported by the guest os.</summary>
+    /// <summary>A list of features to enable on the guest OS. Currently, only one feature is supported,
+    /// VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only
+    /// enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel
+    /// versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature..</summary>
+        /// <summary>The type of supported feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -37136,6 +37939,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -37164,6 +37972,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The request path of the HTTPS health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37237,6 +38050,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// which must match type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("udpHealthCheck")]
+        public virtual UDPHealthCheck UdpHealthCheck { get; set; } 
 
         /// <summary>A so-far healthy instance will be marked unhealthy after this many consecutive failures. The
         /// default value is 2.</summary>
@@ -37899,8 +38715,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>[Output Only] A unique identifier for this instance group. The server generates this
-        /// identifier.</summary>
+        /// <summary>[Output Only] A unique identifier for this instance group, generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
@@ -38225,6 +39040,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// 3600].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySec")]
         public virtual System.Nullable<int> InitialDelaySec { get; set; } 
+
+        /// <summary>Maximum number of instances that can be unavailable when auto-healing. The instance is considered
+        /// available if all of the following conditions are satisfied: 1. instance's status is RUNNING 2. instance's
+        /// liveness health check result was observed to be HEALTHY at least once By default, a percent value of 100% is
+        /// used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
+        public virtual FixedOrPercent MaxUnavailable { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39430,6 +40252,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; } 
 
+        /// <summary>An array of alias IP ranges for this network interface. Can only be specified for network
+        /// interfaces on subnet-mode networks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
+        public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
+
         /// <summary>[Output Only] The name of the network interface, generated by the server. For network devices,
         /// these are eth0, eth1, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -39589,7 +40416,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies. If creating a persistent disk
+        /// snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -39999,6 +40827,16 @@ namespace Google.Apis.Compute.alpha.Data
         /// not specified, the organization will be inferred from the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsSetDefaultServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40417,7 +41255,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ResourceGroupReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URI referencing one of the resource views listed in the backend service.</summary>
+        /// <summary>A URI referencing one of the instance groups listed in the backend service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -41318,6 +42156,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
+        /// <summary>An array of configurations for secondary IP ranges for VM instances contained in this subnetwork.
+        /// The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+        /// to either primary or secondary ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
+        public virtual System.Collections.Generic.IList<SubnetworkSecondaryRange> SecondaryIpRanges { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -41383,6 +42227,25 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a secondary IP range of a subnetwork.</summary>
+    public class SubnetworkSecondaryRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range of IP addresses belonging to this subnetwork secondary range. Provide this property when
+        /// you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP
+        /// ranges within a network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>The name associated with this subnetwork secondary range, used when adding an alias IP range to a
+        /// VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within
+        /// the subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42228,6 +43091,104 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class TargetTcpProxiesSetBackendServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the new BackendService resource for the targetTcpProxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetTcpProxiesSetProxyHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A TargetTcpProxy resource. This resource defines a TCP proxy.</summary>
+    public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specifies the type of proxy header to append before sending data to the backend, either NONE or
+        /// PROXY_V1. The default is NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>URL to the BackendService resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of TargetTcpProxy resources.</summary>
+    public class TargetTcpProxyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of TargetTcpProxy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<TargetTcpProxy> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Target VPN gateway resource.</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -42437,6 +43398,31 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class UDPHealthCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The UDP port number for the health check request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
+        /// takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
+        public virtual string PortName { get; set; } 
+
+        /// <summary>Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request
+        /// data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual string Request { get; set; } 
+
+        /// <summary>The bytes to match against the beginning of the response data. It is an error if this is empty. The
+        /// response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160919 (627)
+ *      <tr><th>API Rev<td>20160920 (628)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.FirebaseDynamicLinksAPI.v1
+namespace Google.Apis.FirebaseDynamicLinks.v1
 {
-    /// <summary>The FirebaseDynamicLinksAPI Service.</summary>
-    public class FirebaseDynamicLinksAPIService : Google.Apis.Services.BaseClientService
+    /// <summary>The FirebaseDynamicLinks Service.</summary>
+    public class FirebaseDynamicLinksService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,12 +56,12 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public FirebaseDynamicLinksAPIService() :
+        public FirebaseDynamicLinksService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public FirebaseDynamicLinksAPIService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public FirebaseDynamicLinksService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             shortDynamicLinks = new ShortDynamicLinksResource(this);
@@ -110,11 +110,11 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
         }
     }
 
-    ///<summary>A base abstract class for FirebaseDynamicLinksAPI requests.</summary>
-    public abstract class FirebaseDynamicLinksAPIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for FirebaseDynamicLinks requests.</summary>
+    public abstract class FirebaseDynamicLinksBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new FirebaseDynamicLinksAPIBaseServiceRequest instance.</summary>
-        protected FirebaseDynamicLinksAPIBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new FirebaseDynamicLinksBaseServiceRequest instance.</summary>
+        protected FirebaseDynamicLinksBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -201,7 +201,7 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes FirebaseDynamicLinksAPI parameter list.</summary>
+        /// <summary>Initializes FirebaseDynamicLinks parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -350,7 +350,7 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
         ///
         /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinksAPI.v1.Data.CreateShortDynamicLinkRequest body)
+        public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body)
         {
             return new CreateRequest(service, body);
         }
@@ -362,10 +362,10 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
         /// Dynamic Link.
         ///
         /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
-        public class CreateRequest : FirebaseDynamicLinksAPIBaseServiceRequest<Google.Apis.FirebaseDynamicLinksAPI.v1.Data.CreateShortDynamicLinkResponse>
+        public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkResponse>
         {
             /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinksAPI.v1.Data.CreateShortDynamicLinkRequest body)
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest body)
                 : base(service)
             {
                 Body = body;
@@ -375,7 +375,7 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.FirebaseDynamicLinksAPI.v1.Data.CreateShortDynamicLinkRequest Body { get; set; }
+            Google.Apis.FirebaseDynamicLinks.v1.Data.CreateShortDynamicLinkRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -409,7 +409,7 @@ namespace Google.Apis.FirebaseDynamicLinksAPI.v1
     }
 }
 
-namespace Google.Apis.FirebaseDynamicLinksAPI.v1.Data
+namespace Google.Apis.FirebaseDynamicLinks.v1.Data
 {    
 
     /// <summary>Tracking parameters supported by Dynamic Link.</summary>

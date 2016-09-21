@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.FirebaseDynamicLinksAPI.v1</id>
-        <version>1.16.0.627</version>
-        <title>Google.Apis.FirebaseDynamicLinksAPI.v1 Client Library</title>
+        <id>Google.Apis.FirebaseDynamicLinks.v1</id>
+        <version>1.16.0.628</version>
+        <title>Google.Apis.FirebaseDynamicLinks.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -54,16 +54,16 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" />
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" />
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.dll" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinks.v1.dll" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.pdb" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinks.v1.pdb" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.xml" target="lib\netstandard1.3\Google.Apis.FirebaseDynamicLinks.v1.xml" />
 
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinksAPI.v1.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.FirebaseDynamicLinks.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.FirebaseDynamicLinks.v1.xml" />
     </files>
 </package>
