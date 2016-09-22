@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160912 (620)
+ *      <tr><th>API Rev<td>20160921 (629)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -902,12 +902,6 @@ namespace Google.Apis.Speech.v1beta1.Data
     /// the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The number of interleaved channels in the input audio data. Valid values for LINEAR16
-        /// and FLAC are `1`-`8`. Valid values for MULAW, AMR and AMR_WB are only `1`. If `0` or omitted, defaults to
-        /// one channel (mono).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioChannels")]
-        public virtual System.Nullable<int> AudioChannels { get; set; } 
-
         /// <summary>[Required] Encoding of audio data sent in all `RecognitionAudio` messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160912 (620)
+ *      <tr><th>API Rev<td>20160919 (627)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -381,7 +381,7 @@ namespace Google.Apis.Monitoring.v3
 
 
             /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
-            /// Google Monitoring Agent. Use projects.timeSeries.create instead.</summary>
+            /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project in which to create the time series. The format is
             /// projects/PROJECT_ID_OR_NUMBER.</param>
@@ -391,7 +391,7 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
-            /// Google Monitoring Agent. Use projects.timeSeries.create instead.</summary>
+            /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2698,33 +2698,40 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>A collection of data points that describes the time-varying values of a metric. A time series is
-    /// identified by a combination of a fully-specified monitored resource and a fully-specified metric.</summary>
+    /// identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is
+    /// used for both listing and creating time series.</summary>
     public class TimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fully-specified metric used to identify the time series.</summary>
+        /// <summary>The associated metric. A fully-specified metric used to identify the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual Metric Metric { get; set; } 
 
-        /// <summary>The metric kind of the time series. This can be different than the metric kind of the metric object
-        /// if this time series is an alignment or reduction of other time series. When writing data to a time series,
-        /// this field is optional, and, when specified, must match the metric kind of the metric descriptor. If a
-        /// metric descriptor is auto-created, its metric kind will match this field.</summary>
+        /// <summary>The metric kind of the time series. When listing time series, this metric kind might be different
+        /// from the metric kind of the associated metric if this time series is an alignment or reduction of other time
+        /// series.When creating a time series, this field is optional. If present, it must be the same as the metric
+        /// kind of the associated metric. If the associated metric's descriptor must be auto-created, then this field
+        /// specifies the metric kind of the new descriptor and must be either GAUGE (the default) or
+        /// CUMULATIVE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
-        /// <summary>The data points of this time series. The order of the points is specified when you retrieve the
-        /// time series.</summary>
+        /// <summary>The data points of this time series. When listing time series, the order of the points is specified
+        /// by the list method.When creating a time series, this field must contain exactly one point and the point's
+        /// type must be the same as the value type of the associated metric. If the associated metric's descriptor must
+        /// be auto-created, then the value type of the descriptor is determined by the point's type, which must be
+        /// BOOL, INT64, DOUBLE, or DISTRIBUTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("points")]
         public virtual System.Collections.Generic.IList<Point> Points { get; set; } 
 
-        /// <summary>The fully-specified monitored resource used to identify the time series.</summary>
+        /// <summary>The associated resource. A fully-specified monitored resource used to identify the time
+        /// series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual MonitoredResource Resource { get; set; } 
 
-        /// <summary>The value type of the time series. This can be different than the value type of the metric object
-        /// if this time series is an alignment or reduction of other time series. When writing data to a time series,
-        /// this field is optional, and, when specified, must match the value type of the metric descriptor. If a metric
-        /// descriptor is auto-created, its value type will match this field.</summary>
+        /// <summary>The value type of the time series. When listing time series, this value type might be different
+        /// from the value type of the associated metric if this time series is an alignment or reduction of other time
+        /// series.When creating a time series, this field is optional. If present, it must be the same as the type of
+        /// the data in the points field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
 

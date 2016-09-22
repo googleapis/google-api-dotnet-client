@@ -305,15 +305,15 @@
             "EMERGENCY"
           ],
           "enumDescriptions": [
-            "The log entry has no assigned severity level.",
-            "Debug or trace information.",
-            "Routine information, such as ongoing status or performance.",
-            "Normal but significant events, such as start up, shut down, or\nconfiguration.",
-            "Warning events might cause problems.",
-            "Error events are likely to cause problems.",
-            "Critical events cause more severe problems or brief outages.",
-            "A person must take an action immediately.",
-            "One or more systems are unusable."
+            "(0) The log entry has no assigned severity level.",
+            "(100) Debug or trace information.",
+            "(200) Routine information, such as ongoing status or performance.",
+            "(300) Normal but significant events, such as start up, shut down, or\na configuration change.",
+            "(400) Warning events might cause problems.",
+            "(500) Error events are likely to cause problems.",
+            "(600) Critical events cause more severe problems or outages.",
+            "(700) A person must take an action immediately.",
+            "(800) One or more systems are unusable."
           ],
           "type": "string"
         },
@@ -549,7 +549,7 @@
       "id": "MetricValue"
     }
   },
-  "revision": "20160912",
+  "revision": "20160921",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
