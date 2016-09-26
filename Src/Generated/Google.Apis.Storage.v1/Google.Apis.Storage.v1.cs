@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160908 (616)
+ *      <tr><th>API Rev<td>20160914 (622)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5947,7 +5947,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The content generation of the object.</summary>
+        /// <summary>The content generation of the object, if applied to an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; } 
 
@@ -5960,7 +5960,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The name of the object.</summary>
+        /// <summary>The name of the object, if applied to an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; } 
 
@@ -5997,7 +5997,7 @@ namespace Google.Apis.Storage.v1.Data
     {
         /// <summary>The list of items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<object> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<ObjectAccessControl> Items { get; set; } 
 
         /// <summary>The kind of item this is. For lists of object access control entries, this is always
         /// storage#objectAccessControls.</summary>

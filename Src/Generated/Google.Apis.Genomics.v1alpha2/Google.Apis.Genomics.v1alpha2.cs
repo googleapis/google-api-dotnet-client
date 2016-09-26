@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160914 (622)
+ *      <tr><th>API Rev<td>20160922 (630)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1172,8 +1172,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>The Docker execuctor specification.</summary>
     public class DockerExecutor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The command string to run. Parameters that do not have `localCopy` specified should be
-        /// used as environment variables, while those that do can be accessed at the defined paths.</summary>
+        /// <summary>Required. The command or newline delimited script to run. The command string will be executed
+        /// within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will
+        /// be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is
+        /// 16384.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
         public virtual string Cmd { get; set; } 
 

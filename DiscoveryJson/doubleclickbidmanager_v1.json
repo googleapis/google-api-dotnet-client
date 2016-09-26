@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/APNHThgbF23N6qKTgbCZClI5UfQ\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/RcMS2srI0WFlPqIe6KUbm1PvwLw\"",
  "discoveryVersion": "v1",
  "id": "doubleclickbidmanager:v1",
  "name": "doubleclickbidmanager",
  "canonicalName": "DoubleClick Bid Manager",
  "version": "v1",
- "revision": "20160608",
+ "revision": "20160919",
  "title": "DoubleClick Bid Manager API",
  "description": "API for viewing and managing your reports in DoubleClick Bid Manager.",
  "ownerDomain": "google.com",
@@ -189,6 +189,7 @@
       "FILTER_NIELSEN_COUNTRY_CODE",
       "FILTER_NIELSEN_DEVICE_ID",
       "FILTER_NIELSEN_GENDER",
+      "FILTER_NOT_SUPPORTED",
       "FILTER_ORDER_ID",
       "FILTER_OS",
       "FILTER_PAGE_CATEGORY",
@@ -255,6 +256,7 @@
       "FILTER_ZIP_CODE"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -536,6 +538,7 @@
        "FILTER_NIELSEN_COUNTRY_CODE",
        "FILTER_NIELSEN_DEVICE_ID",
        "FILTER_NIELSEN_GENDER",
+       "FILTER_NOT_SUPPORTED",
        "FILTER_ORDER_ID",
        "FILTER_OS",
        "FILTER_PAGE_CATEGORY",
@@ -712,6 +715,7 @@
        "",
        "",
        "",
+       "",
        ""
       ]
      }
@@ -726,6 +730,17 @@
      "items": {
       "type": "string",
       "enum": [
+       "METRIC_ACTIVE_VIEW_AVERAGE_VIEWABLE_TIME",
+       "METRIC_ACTIVE_VIEW_DISTRIBUTION_UNMEASURABLE",
+       "METRIC_ACTIVE_VIEW_DISTRIBUTION_UNVIEWABLE",
+       "METRIC_ACTIVE_VIEW_DISTRIBUTION_VIEWABLE",
+       "METRIC_ACTIVE_VIEW_ELIGIBLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_MEASURABLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_PCT_MEASURABLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_PCT_VIEWABLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_UNMEASURABLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_UNVIEWABLE_IMPRESSIONS",
+       "METRIC_ACTIVE_VIEW_VIEWABLE_IMPRESSIONS",
        "METRIC_BID_REQUESTS",
        "METRIC_BILLABLE_COST_ADVERTISER",
        "METRIC_BILLABLE_COST_PARTNER",
@@ -1006,6 +1021,17 @@
        "METRIC_VIDEO_COMPLETION_RATE"
       ],
       "enumDescriptions": [
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
+       "",
        "",
        "",
        "",

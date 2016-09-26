@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/-FUc778XO_xR9CtCUfhQTzUqWb8\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/9x47G0aXdhuTByaPszhgMmtojWM\"",
  "discoveryVersion": "v1",
  "id": "genomics:v1alpha2",
  "name": "genomics",
  "version": "v1alpha2",
- "revision": "20160914",
+ "revision": "20160922",
  "title": "Genomics API",
  "description": "Stores, processes, explores and shares genomic data.",
  "ownerDomain": "google.com",
@@ -300,7 +300,7 @@
     },
     "cmd": {
      "type": "string",
-     "description": "Required. The command string to run. Parameters that do not have `localCopy` specified should be used as environment variables, while those that do can be accessed at the defined paths."
+     "description": "Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384."
     }
    }
   },
