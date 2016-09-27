@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160912 (620)
+ *      <tr><th>API Rev<td>20160922 (630)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -450,18 +450,16 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
 
         }
 
-        /// <summary>Advanced API that analyzes the document and provides a full set of text annotations, including
-        /// semantic, syntactic, and sentiment information. This API is intended for users who are familiar with machine
-        /// learning and need in-depth text features to build upon.</summary>
+        /// <summary>A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and
+        /// analyzeSyntax provide in one call.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateTextRequest AnnotateText(Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextRequest body)
         {
             return new AnnotateTextRequest(service, body);
         }
 
-        /// <summary>Advanced API that analyzes the document and provides a full set of text annotations, including
-        /// semantic, syntactic, and sentiment information. This API is intended for users who are familiar with machine
-        /// learning and need in-depth text features to build upon.</summary>
+        /// <summary>A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and
+        /// analyzeSyntax provide in one call.</summary>
         public class AnnotateTextRequest : CloudNaturalLanguageAPIBaseServiceRequest<Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextResponse>
         {
             /// <summary>Constructs a new AnnotateText request.</summary>
@@ -535,7 +533,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -571,8 +569,8 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request message for the advanced text annotation API, which performs all the above plus syntactic
-    /// analysis.</summary>
+    /// <summary>The request message for the text annotation API, which can perform multiple analysis types (sentiment,
+    /// entities, and syntax) in one call.</summary>
     public class AnnotateTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Input document.</summary>
@@ -605,7 +603,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
