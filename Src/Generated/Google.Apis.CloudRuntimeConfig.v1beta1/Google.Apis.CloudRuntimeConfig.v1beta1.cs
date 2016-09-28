@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160919 (627)
+ *      <tr><th>API Rev<td>20160926 (634)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -522,6 +522,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>An optional unique request_id. If server receives two Create requests with the same
+                    /// request_id then second request will be ignored and the resource stored in the backend will be
+                    /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
+                    /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable Body { get; set; }
@@ -560,6 +567,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                            });
+                        RequestParameters.Add(
+                            "requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
@@ -1050,6 +1066,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>An optional unique request_id. If server receives two Create requests with the same
+                    /// request_id then second request will be ignored and information stored in the backend will be
+                    /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
+                    /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter Body { get; set; }
@@ -1088,6 +1111,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                            });
+                        RequestParameters.Add(
+                            "requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                     }
 
@@ -1345,6 +1377,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>An optional unique request_id. If server receives two Create requests with the same
+                /// request_id then second request will be ignored and the resource stored in the backend will be
+                /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
+                /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestId { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRuntimeConfig.v1beta1.Data.RuntimeConfig Body { get; set; }
@@ -1383,6 +1422,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]*$",
+                        });
+                    RequestParameters.Add(
+                        "requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 

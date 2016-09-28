@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160617 (533)
+ *      <tr><th>API Rev<td>20160927 (635)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -330,8 +330,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
         /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
-        /// <param name="name">The resource name of the Organization to fetch. Its format is "organizations/[organization_id]".
-        /// For example, "organizations/1234".</param>
+        /// <param name="name">The resource name of the Organization to fetch, e.g. "organizations/1234".</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -349,8 +348,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The resource name of the Organization to fetch. Its format is
-            /// "organizations/[organization_id]". For example, "organizations/1234".</summary>
+            /// <summary>The resource name of the Organization to fetch, e.g. "organizations/1234".</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -406,22 +404,19 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        /// For backward compatibility, the resource provided may also be the organization_id. This will not be
-        /// supported in v1.</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g.
+        /// "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `getIamPolicy` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        /// For backward compatibility, the resource provided may also be the organization_id. This will not be
-        /// supported in v1.</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g.
+        /// "organizations/123".</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -435,8 +430,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `getIamPolicy` documentation.</summary>
+            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -579,22 +573,17 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123". For backward
-        /// compatibility, the resource provided may also be the organization_id. This will not be supported in
-        /// v1.</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `setIamPolicy` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123". For backward
-        /// compatibility, the resource provided may also be the organization_id. This will not be supported in
-        /// v1.</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -608,8 +597,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `setIamPolicy` documentation.</summary>
+            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -657,20 +645,17 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123". For backward compatibility, the resource
-        /// provided may also be the organization_id. This will not be supported in v1.</summary>
+        /// the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `testIamPermissions` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123". For backward compatibility, the resource
-        /// provided may also be the organization_id. This will not be supported in v1.</summary>
+        /// the organization's resource name, e.g. "organizations/123".</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -684,8 +669,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in
-            /// this value is resource specific and is specified in the `testIamPermissions` documentation.</summary>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -842,6 +826,10 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A safety hatch to opt out of the new reliable project creation process.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("useLegacyStack", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseLegacyStack { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudResourceManager.v1beta1.Data.Project Body { get; set; }
@@ -872,6 +860,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "useLegacyStack", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useLegacyStack",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1090,8 +1087,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// or the resource does not exist.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `getIamPolicy` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
@@ -1112,8 +1108,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `getIamPolicy` documentation.</summary>
+            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1264,18 +1259,16 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
         /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
         /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
-        /// the Terms of Service (ToS) will be rejected. + Members cannot be added to more than one role in the same
-        /// policy. + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the
-        /// policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
-        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
-        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. + Calling this method
-        /// requires enabling the App Engine Admin API. Note: Removing service accounts from policies or changing their
-        /// roles can render services completely inoperable. It is important to understand how the service account is
-        /// being used before removing or updating its roles.</summary>
+        /// the Terms of Service (ToS) will be rejected. + There must be at least one owner who has accepted the Terms
+        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
+        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
+        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// rectified. + Calling this method requires enabling the App Engine Admin API. Note: Removing service accounts
+        /// from policies or changing their roles can render services completely inoperable. It is important to
+        /// understand how the service account is being used before removing or updating its roles.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `setIamPolicy` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
@@ -1290,14 +1283,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
         /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
         /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
-        /// the Terms of Service (ToS) will be rejected. + Members cannot be added to more than one role in the same
-        /// policy. + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the
-        /// policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
-        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
-        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. + Calling this method
-        /// requires enabling the App Engine Admin API. Note: Removing service accounts from policies or changing their
-        /// roles can render services completely inoperable. It is important to understand how the service account is
-        /// being used before removing or updating its roles.</summary>
+        /// the Terms of Service (ToS) will be rejected. + There must be at least one owner who has accepted the Terms
+        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
+        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
+        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// rectified. + Calling this method requires enabling the App Engine Admin API. Note: Removing service accounts
+        /// from policies or changing their roles can render services completely inoperable. It is important to
+        /// understand how the service account is being used before removing or updating its roles.</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1311,8 +1303,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `setIamPolicy` documentation.</summary>
+            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1362,8 +1353,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Returns permissions that a caller has on the specified Project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-        /// is resource specific and is specified in the `testIamPermissions` documentation.</param>
+        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
@@ -1383,8 +1373,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
 
             /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in
-            /// this value is resource specific and is specified in the `testIamPermissions` documentation.</summary>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1623,6 +1612,42 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Metadata describing a long running folder operation</summary>
+    public class FolderOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization we are either creating the folder under or moving
+        /// the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; } 
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The type of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>The resource name of the folder's parent. Only applicable when the operation_type is
+        /// MOVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A classification of the Folder Operation error.</summary>
+    public class FolderOperationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of operation error experienced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessageId")]
+        public virtual string ErrorMessageId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request sent to the GetAncestry method.</summary>
     public class GetAncestryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1696,8 +1721,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; } 
 
-        /// <summary>A friendly string to be used to refer to the Organization in the UI. This field is
-        /// required.</summary>
+        /// <summary>A friendly string to be used to refer to the Organization in the UI. Assigned by the server, set to
+        /// the firm name of the Google For Work customer that owns this organization. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -1813,6 +1838,27 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A status object which is used as the `metadata` field for the Operation returned by CreateProject. It
+    /// provides insight for when significant phases of Project creation have completed.</summary>
+    public class ProjectCreationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation time of the project creation workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTime { get; set; } 
+
+        /// <summary>True if the project can be retrieved using GetProject. No other operations on the project are
+        /// guaranteed to work until the project creation is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
+        public virtual System.Nullable<bool> Gettable { get; set; } 
+
+        /// <summary>True if the project creation process is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ready")]
+        public virtual System.Nullable<bool> Ready { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a
     /// generic term for something you (a developer) may want to interact with through one of our API's. Some examples
     /// are an AppEngine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
@@ -1849,7 +1895,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed. For more information see IAM Overview.</summary>
+        /// 'storage.*') are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 

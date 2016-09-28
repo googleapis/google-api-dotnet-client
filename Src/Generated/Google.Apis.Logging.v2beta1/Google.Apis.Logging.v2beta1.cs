@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20160919 (627)
+ *      <tr><th>API Rev<td>20160926 (634)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -2041,6 +2041,12 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// reserved characters and must be followed by two hexadecimal digits according to RFC 1738.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The API version that created or updated this metric. The version also dictates the
+        /// syntax of the filter expression. When a value for this field is missing, the default value of V2 should be
+        /// assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

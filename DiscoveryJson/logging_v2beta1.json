@@ -629,6 +629,18 @@
         "name": {
           "description": "Required. The client-assigned metric identifier. Example:\n`\"severe_errors\"`.  Metric identifiers are limited to 100\ncharacters and can include only the following characters: `A-Z`,\n`a-z`, `0-9`, and the special characters `_-.,+!*',()%/`.  The\nforward-slash character (`/`) denotes a hierarchy of name pieces,\nand it cannot be the first character of the name.  The '%' character\nis used to URL encode unsafe and reserved characters and must be\nfollowed by two hexadecimal digits according to RFC 1738.",
           "type": "string"
+        },
+        "version": {
+          "description": "Output only. The API version that created or updated this metric.\nThe version also dictates the syntax of the filter expression. When a value\nfor this field is missing, the default value of V2 should be assumed.",
+          "enum": [
+            "V2",
+            "V1"
+          ],
+          "enumDescriptions": [
+            "Stackdriver Logging API v2.",
+            "Stackdriver Logging API v1."
+          ],
+          "type": "string"
         }
       },
       "id": "LogMetric"
@@ -1217,7 +1229,7 @@
       "id": "ListLogEntriesRequest"
     }
   },
-  "revision": "20160919",
+  "revision": "20160926",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
