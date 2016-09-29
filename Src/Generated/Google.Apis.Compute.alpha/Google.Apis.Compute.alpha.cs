@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160913 (621)
+ *      <tr><th>API Rev<td>20160926 (634)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -28135,6 +28135,107 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource.</param>
+        public virtual SetPrivateIpGoogleAccessRequest SetPrivateIpGoogleAccess(Google.Apis.Compute.alpha.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+        {
+            return new SetPrivateIpGoogleAccessRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
+            public SetPrivateIpGoogleAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.SubnetworksSetPrivateIpGoogleAccessRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setPrivateIpGoogleAccess"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess"; }
+            }
+
+            /// <summary>Initializes SetPrivateIpGoogleAccess parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -35572,6 +35673,10 @@ namespace Google.Apis.Compute.alpha.Data
     /// instance is supported.</summary>
     public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output Only] The public DNS domain name for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#accessConfig for access configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -35592,6 +35697,21 @@ namespace Google.Apis.Compute.alpha.Data
         /// PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
+
+        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_ptr field is
+        /// enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ptrDomainName")]
+        public virtual string PtrDomainName { get; set; } 
+
+        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
+        /// instance to a DNS domain name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setPtr")]
+        public virtual System.Nullable<bool> SetPtr { get; set; } 
+
+        /// <summary>Specifies whether a public DNS ?A? record should be created for the external IP address of this
+        /// access configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setPublicDns")]
+        public virtual System.Nullable<bool> SetPublicDns { get; set; } 
 
         /// <summary>The type of configuration. The default and only option is ONE_TO_ONE_NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -36505,6 +36625,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<Backend> Backends { get; set; } 
 
+        /// <summary>Cloud CDN Coniguration for this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
         public virtual BackendServiceCdnPolicy CdnPolicy { get; set; } 
 
@@ -37871,13 +37992,10 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A list of features to enable on the guest OS. Currently, only one feature is supported,
-    /// VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only
-    /// enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel
-    /// versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.</summary>
+    /// <summary>Guest OS features.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature.</summary>
+        /// <summary>The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -37909,6 +38027,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The request path of the HTTP/2 health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38383,7 +38506,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; } 
 
-        /// <summary>Features of the guest os, valid for bootable images only.</summary>
+        /// <summary>A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only
+        /// one feature is supported, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For
+        /// Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or
+        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -42313,6 +42439,15 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
+    }    
+
+    public class SubnetworksSetPrivateIpGoogleAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class TCPHealthCheck : Google.Apis.Requests.IDirectResponseSchema

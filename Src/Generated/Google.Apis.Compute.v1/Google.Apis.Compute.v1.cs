@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160913 (621)
+ *      <tr><th>API Rev<td>20160926 (634)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -23223,6 +23223,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>[Output Only] URL of the region where the instance group resides (for autoscalers living in
+        /// regional scope).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -25347,6 +25352,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
+        /// <summary>The URL of the region where the instance group is located (for regional resources).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
         /// <summary>[Output Only] The URL for this instance group. The server generates this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -25488,6 +25497,11 @@ namespace Google.Apis.Compute.v1.Data
         /// Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedPorts")]
         public virtual System.Collections.Generic.IList<NamedPort> NamedPorts { get; set; } 
+
+        /// <summary>[Output Only] The URL of the region where the managed instance group resides (for regional
+        /// resources).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
 
         /// <summary>[Output Only] The URL for this managed instance group. The server defines this URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/eTdxnRDRUksSGxcFKnrQKPicv3s\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/gaQIkESEwtfDw8_sbXc0w_HLWCM\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20160913",
+ "revision": "20160926",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -2142,11 +2142,11 @@
   "GuestOsFeature": {
    "id": "GuestOsFeature",
    "type": "object",
-   "description": "A list of features to enable on the guest OS. Currently, only one feature is supported, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.",
+   "description": "Guest OS features.",
    "properties": {
     "type": {
      "type": "string",
-     "description": "The type of supported feature.",
+     "description": "The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported.",
      "enum": [
       "FEATURE_TYPE_UNSPECIFIED",
       "VIRTIO_SCSI_MULTIQUEUE",
@@ -2677,7 +2677,7 @@
     },
     "guestOsFeatures": {
      "type": "array",
-     "description": "Features of the guest os, valid for bootable images only.",
+     "description": "A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only one feature is supported, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.",
      "items": {
       "$ref": "GuestOsFeature"
      }

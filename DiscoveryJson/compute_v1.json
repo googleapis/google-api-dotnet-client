@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/d6zbh-YBGfrlZHAIvneHZTl4uFk\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/AQpuTgXwWGrVNGGDzaS1Oh4RY0w\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20160913",
+ "revision": "20160926",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -483,6 +483,10 @@
        "compute.instanceGroups.insert"
       ]
      }
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope)."
     },
     "selfLink": {
      "type": "string",
@@ -2692,6 +2696,10 @@
      "type": "string",
      "description": "The URL of the network to which all instances in the instance group belong."
     },
+    "region": {
+     "type": "string",
+     "description": "The URL of the region where the instance group is located (for regional resources)."
+    },
     "selfLink": {
      "type": "string",
      "description": "[Output Only] The URL for this instance group. The server generates this URL."
@@ -2839,6 +2847,10 @@
      "items": {
       "$ref": "NamedPort"
      }
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] The URL of the region where the managed instance group resides (for regional resources)."
     },
     "selfLink": {
      "type": "string",
