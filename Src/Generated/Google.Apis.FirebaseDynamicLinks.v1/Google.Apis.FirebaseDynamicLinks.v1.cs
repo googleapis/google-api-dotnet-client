@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160925 (633)
+ *      <tr><th>API Rev<td>20160929 (637)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -64,7 +64,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public FirebaseDynamicLinksService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            shortDynamicLinks = new ShortDynamicLinksResource(this);
+            shortLinks = new ShortLinksResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -101,12 +101,12 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
 
 
 
-        private readonly ShortDynamicLinksResource shortDynamicLinks;
+        private readonly ShortLinksResource shortLinks;
 
-        /// <summary>Gets the ShortDynamicLinks resource.</summary>
-        public virtual ShortDynamicLinksResource ShortDynamicLinks
+        /// <summary>Gets the ShortLinks resource.</summary>
+        public virtual ShortLinksResource ShortLinks
         {
-            get { return shortDynamicLinks; }
+            get { return shortLinks; }
         }
     }
 
@@ -326,16 +326,16 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         }
     }
 
-    /// <summary>The "shortDynamicLinks" collection of methods.</summary>
-    public class ShortDynamicLinksResource
+    /// <summary>The "shortLinks" collection of methods.</summary>
+    public class ShortLinksResource
     {
-        private const string Resource = "shortDynamicLinks";
+        private const string Resource = "shortLinks";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public ShortDynamicLinksResource(Google.Apis.Services.IClientService service)
+        public ShortLinksResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
 
@@ -395,7 +395,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/shortDynamicLinks"; }
+                get { return "v1/shortLinks"; }
             }
 
             /// <summary>Initializes Create parameter list.</summary>

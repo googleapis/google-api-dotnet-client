@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160902 (610)
+ *      <tr><th>API Rev<td>20160927 (635)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1329,9 +1329,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("continueUri")]
         public virtual string ContinueUri { get; set; } 
 
-        /// <summary>The query parameter that client can customize by themselves in auth url.</summary>
+        /// <summary>The query parameter that client can customize by themselves in auth url. The following parameters
+        /// are reserved for server so that they cannot be customized by clients: client_id, response_type, scope,
+        /// redirect_uri, state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameter")]
-        public virtual System.Collections.Generic.IList<IdentitytoolkitRelyingpartyCreateAuthUriRequest.CustomParameterData> CustomParameter { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,string> CustomParameter { get; set; } 
 
         /// <summary>The hosted domain to restrict sign-in to accounts at that domain for Google Apps hosted
         /// accounts.</summary>
@@ -1371,19 +1373,6 @@ namespace Google.Apis.IdentityToolkit.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
-
-        public class CustomParameterData
-        {
-            /// <summary>The key of the query parameter.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("key")]
-            public virtual string Key { get; set; } 
-
-            /// <summary>The value of the query parameter.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("value")]
-            public virtual string Value { get; set; } 
-
-        }
     }    
 
     /// <summary>Request to delete account.</summary>

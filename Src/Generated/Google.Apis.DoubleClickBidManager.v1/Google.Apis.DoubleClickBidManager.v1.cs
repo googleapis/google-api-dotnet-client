@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160919 (627)
+ *      <tr><th>API Rev<td>20160927 (635)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -67,7 +67,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             lineitems = new LineitemsResource(this);
             queries = new QueriesResource(this);
             reports = new ReportsResource(this);
-            rubicon = new RubiconResource(this);
+            sdf = new SdfResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -122,12 +122,12 @@ namespace Google.Apis.DoubleClickBidManager.v1
             get { return reports; }
         }
 
-        private readonly RubiconResource rubicon;
+        private readonly SdfResource sdf;
 
-        /// <summary>Gets the Rubicon resource.</summary>
-        public virtual RubiconResource Rubicon
+        /// <summary>Gets the Sdf resource.</summary>
+        public virtual SdfResource Sdf
         {
-            get { return rubicon; }
+            get { return sdf; }
         }
     }
 
@@ -755,34 +755,34 @@ namespace Google.Apis.DoubleClickBidManager.v1
         }
     }
 
-    /// <summary>The "rubicon" collection of methods.</summary>
-    public class RubiconResource
+    /// <summary>The "sdf" collection of methods.</summary>
+    public class SdfResource
     {
-        private const string Resource = "rubicon";
+        private const string Resource = "sdf";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public RubiconResource(Google.Apis.Services.IClientService service)
+        public SdfResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
 
         }
 
 
-        /// <summary>Update proposal upon actions of Rubicon publisher.</summary>
+        /// <summary>Retrieves entities in SDF format.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual NotifyproposalchangeRequest Notifyproposalchange(Google.Apis.DoubleClickBidManager.v1.Data.NotifyProposalChangeRequest body)
+        public virtual DownloadRequest Download(Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest body)
         {
-            return new NotifyproposalchangeRequest(service, body);
+            return new DownloadRequest(service, body);
         }
 
-        /// <summary>Update proposal upon actions of Rubicon publisher.</summary>
-        public class NotifyproposalchangeRequest : DoubleClickBidManagerBaseServiceRequest<string>
+        /// <summary>Retrieves entities in SDF format.</summary>
+        public class DownloadRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.DownloadResponse>
         {
-            /// <summary>Constructs a new Notifyproposalchange request.</summary>
-            public NotifyproposalchangeRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.NotifyProposalChangeRequest body)
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest body)
                 : base(service)
             {
                 Body = body;
@@ -792,7 +792,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DoubleClickBidManager.v1.Data.NotifyProposalChangeRequest Body { get; set; }
+            Google.Apis.DoubleClickBidManager.v1.Data.DownloadRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -800,7 +800,7 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
-                get { return "notifyproposalchange"; }
+                get { return "download"; }
             }
 
             ///<summary>Gets the HTTP method.</summary>
@@ -812,10 +812,10 @@ namespace Google.Apis.DoubleClickBidManager.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "rubicon/notifyproposalchange"; }
+                get { return "sdf/download"; }
             }
 
-            /// <summary>Initializes Notifyproposalchange parameter list.</summary>
+            /// <summary>Initializes Download parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -866,6 +866,54 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to fetch stored insertion orders, line items, TrueView ad groups and ads.</summary>
+    public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File types that will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
+        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
+
+        /// <summary>IDs of the specified filter type used to filter entities to fetch. If omitted, all the entities
+        /// will be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
+
+        /// <summary>Filter type used to filter line items to fetch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
+        public virtual string FilterType { get; set; } 
+
+        /// <summary>SDF Version (column names, types, order) in which the entities will be returned. Default to
+        /// 3.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Download response.</summary>
+    public class DownloadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Retrieved ad groups in SDF format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroups")]
+        public virtual string AdGroups { get; set; } 
+
+        /// <summary>Retrieved ads in SDF format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ads")]
+        public virtual string Ads { get; set; } 
+
+        /// <summary>Retrieved insertion orders in SDF format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
+        public virtual string InsertionOrders { get; set; } 
+
+        /// <summary>Retrieved line items in SDF format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
+        public virtual string LineItems { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Filter used to match traffic data in your report.</summary>
     public class FilterPair : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -908,60 +956,6 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         /// <summary>Retrieved reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
         public virtual System.Collections.Generic.IList<Report> Reports { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Publisher comment from Rubicon.</summary>
-    public class Note : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Note id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
-
-        /// <summary>Message from publisher.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; } 
-
-        /// <summary>Equals "publisher" for notification from Rubicon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; } 
-
-        /// <summary>Time when the note was added, e.g. "2015-12-16T17:25:35.000-08:00".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
-
-        /// <summary>Publisher user name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>NotifyProposalChange request.</summary>
-    public class NotifyProposalChangeRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Action taken by publisher. One of: Accept, Decline, Append</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
-
-        /// <summary>URL to access proposal detail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("href")]
-        public virtual string Href { get; set; } 
-
-        /// <summary>Below are contents of notification from Rubicon. Proposal id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; } 
-
-        /// <summary>Notes from publisher</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
-        public virtual System.Collections.Generic.IList<Note> Notes { get; set; } 
-
-        /// <summary>Deal token, available when proposal is accepted by publisher.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

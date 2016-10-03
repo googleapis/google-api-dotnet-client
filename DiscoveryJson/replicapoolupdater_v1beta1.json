@@ -1,13 +1,13 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Qa39yJM3yH1r8biVjTDz07Q6Imo\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/rM6v6PRI_3Gno_AC3RnzWXZHT5k\"",
  "discoveryVersion": "v1",
  "id": "replicapoolupdater:v1beta1",
  "name": "replicapoolupdater",
  "version": "v1beta1",
- "revision": "20160229",
+ "revision": "20160929",
  "title": "Google Compute Engine Instance Group Updater API",
- "description": "Updates groups of Compute Engine instances.",
+ "description": "[Deprecated. Please use compute.instanceGroupManagers.update method. replicapoolupdater API will be disabled after December 30th, 2016] Updates groups of Compute Engine instances.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
@@ -88,6 +88,23 @@
   }
  },
  "schemas": {
+  "FixedOrPercent": {
+   "id": "FixedOrPercent",
+   "type": "object",
+   "description": "Used to specify an amount of instances within an instance group. Only one of fixed and percentage can be specified.",
+   "properties": {
+    "fixed": {
+     "type": "integer",
+     "description": "Specify a fixed amount of instances",
+     "format": "int32"
+    },
+    "percent": {
+     "type": "integer",
+     "description": "Specify a percentage of the total amount of instances within an instance group manager",
+     "format": "int32"
+    }
+   }
+  },
   "InstanceUpdate": {
    "id": "InstanceUpdate",
    "type": "object",
@@ -154,6 +171,18 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] The fully qualified URL for the resource."
+    }
+   }
+  },
+  "ListRolloutResponse": {
+   "id": "ListRolloutResponse",
+   "type": "object",
+   "properties": {
+    "resources": {
+     "type": "array",
+     "items": {
+      "$ref": "Rollout"
+     }
     }
    }
   },
@@ -333,6 +362,16 @@
     }
    }
   },
+  "RampUpRolloutRequest": {
+   "id": "RampUpRolloutRequest",
+   "type": "object",
+   "properties": {
+    "canarySize": {
+     "$ref": "FixedOrPercent",
+     "description": "The new amount of instances in the IGM to update instances to."
+    }
+   }
+  },
   "RollingUpdate": {
    "id": "RollingUpdate",
    "type": "object",
@@ -480,6 +519,99 @@
     "selfLink": {
      "type": "string",
      "description": "[Output Only] The fully qualified URL for the resource."
+    }
+   }
+  },
+  "Rollout": {
+   "id": "Rollout",
+   "type": "object",
+   "properties": {
+    "canarySize": {
+     "$ref": "FixedOrPercent",
+     "description": "The amount of instances within the instance group manager to be updated to the new instance template."
+    },
+    "canarySizeStages": {
+     "type": "array",
+     "description": "A list of the amount of instances within the instance group manager to be updated to the new instance template. Each target size is updated sequentially, in the order supplied.",
+     "items": {
+      "$ref": "FixedOrPercent"
+     }
+    },
+    "creationTimestamp": {
+     "type": "string",
+     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+    },
+    "healthCheckDeadlineSec": {
+     "type": "string",
+     "description": "How long to wait for the health checks to return positive before assuming the update has failed or succeeded.",
+     "format": "int64"
+    },
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "instanceGroupManager": {
+     "type": "string",
+     "description": "Fully-qualified URL of an instance group manager being updated."
+    },
+    "instanceTemplate": {
+     "type": "string",
+     "description": "Fully-qualified URL of an instance template to apply."
+    },
+    "instanceTemplateToRollback": {
+     "type": "string",
+     "description": "Fully-qualified URL of the instance template to rollback to if the rollout is cancelled."
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of the resource.",
+     "default": "replicapoolupdater#rollout"
+    },
+    "parentRollout": {
+     "type": "string",
+     "description": "The parent rollout to inherit unspecified fields from."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] The fully qualified URL for the resource."
+    },
+    "state": {
+     "type": "string",
+     "description": "[Output Only] The current state of the rollout."
+    },
+    "updatePolicy": {
+     "$ref": "UpdatePolicy",
+     "description": "Parameters of the update process."
+    }
+   }
+  },
+  "UpdatePolicy": {
+   "id": "UpdatePolicy",
+   "type": "object",
+   "properties": {
+    "maxSurge": {
+     "$ref": "FixedOrPercent",
+     "description": "Maximum number of instances that can be created above the InstanceGroupManager.targetSize during the update process. By default, a fixed value of 1 is used. Using maxSurge \u003e 0 will cause instance names to change during the update process. At least one of { maxSurge, maxUnavailable } must be greater than 0."
+    },
+    "maxUnavailable": {
+     "$ref": "FixedOrPercent",
+     "description": "Maximum number of instances that can be unavailable during the update process. The instance is considered available if all of the following conditions are satisfied: 1. instance's status is RUNNING 2. instance's liveness health check result was observed to be HEALTHY at least once By default, a fixed value of 1 is used. At least one of { maxSurge, maxUnavailable } must be greater than 0."
+    },
+    "minReadySec": {
+     "type": "integer",
+     "description": "Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].",
+     "format": "int32"
+    },
+    "minimalAction": {
+     "type": "string",
+     "description": "Minimal action to be taken on an instance. The order of action types is: RESTART \u003c REPLACE."
+    },
+    "type": {
+     "type": "string"
+    },
+    "updateType": {
+     "type": "string",
+     "description": "The type of update"
     }
    }
   }
@@ -826,6 +958,389 @@
      ],
      "response": {
       "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    }
+   }
+  },
+  "rollout": {
+   "methods": {
+    "abandon": {
+     "id": "replicapoolupdater.rollout.abandon",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/abandon",
+     "httpMethod": "POST",
+     "description": "Abandon a rollout, leaving the IGM in the state it is already configured. This allows you to apply a new rollout to the IGM.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "commit": {
+     "id": "replicapoolupdater.rollout.commit",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/commit",
+     "httpMethod": "POST",
+     "description": "Commits a rollout, so that it is final and can not be rolled back",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "get": {
+     "id": "replicapoolupdater.rollout.get",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}",
+     "httpMethod": "GET",
+     "description": "Get the details of a rollout",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only",
+      "https://www.googleapis.com/auth/replicapool",
+      "https://www.googleapis.com/auth/replicapool.readonly"
+     ]
+    },
+    "insert": {
+     "id": "replicapoolupdater.rollout.insert",
+     "path": "{project}/zones/{zone}/rollouts",
+     "httpMethod": "POST",
+     "description": "Inserts and starts a new rollout",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "updatePolicyInitialisationMethod": {
+       "type": "string",
+       "description": "How the update policy should be initialised.",
+       "enum": [
+        "FROM_IGM",
+        "FROM_PARENT"
+       ],
+       "enumDescriptions": [
+        "",
+        ""
+       ],
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "request": {
+      "$ref": "Rollout"
+     },
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "list": {
+     "id": "replicapoolupdater.rollout.list",
+     "path": "{project}/zones/{zone}/rollouts",
+     "httpMethod": "GET",
+     "description": "Resume a rollout. This lets the rollout continue updating instances after a pause.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "Optional. Filter expression for filtering listed resources.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "Optional. Maximum count of results to be returned. Maximum value is 500 and default value is 500.",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "500",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "response": {
+      "$ref": "ListRolloutResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only",
+      "https://www.googleapis.com/auth/replicapool",
+      "https://www.googleapis.com/auth/replicapool.readonly"
+     ]
+    },
+    "pause": {
+     "id": "replicapoolupdater.rollout.pause",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/pause",
+     "httpMethod": "POST",
+     "description": "Pause the application of a rollout. This stops the update, and the instances managed by the instance group manager do not change their instance templates.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "rampup": {
+     "id": "replicapoolupdater.rollout.rampup",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/rampup",
+     "httpMethod": "POST",
+     "description": "Change the amount of instances within an IGM that should be updated to the new instance template",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "request": {
+      "$ref": "RampUpRolloutRequest"
+     },
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "resume": {
+     "id": "replicapoolupdater.rollout.resume",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/resume",
+     "httpMethod": "POST",
+     "description": "Resume a rollout. This lets the rollout continue updating instances after a pause.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/replicapool"
+     ]
+    },
+    "rollback": {
+     "id": "replicapoolupdater.rollout.rollback",
+     "path": "{project}/zones/{zone}/rollouts/{rollout}/rollback",
+     "httpMethod": "POST",
+     "description": "Rollback a rollout, cancelling the update and changing all instances with the updated version to have the instanceTemplateToRollback template.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The Google Developers Console project name.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "rollout": {
+       "type": "string",
+       "description": "The ID of the update.",
+       "required": true,
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone in which the update's target resides.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "rollout"
+     ],
+     "response": {
+      "$ref": "Rollout"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",

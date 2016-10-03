@@ -13,10 +13,10 @@
   "protocol": "rest",
   "title": "Firebase Dynamic Links API",
   "resources": {
-    "shortDynamicLinks": {
+    "shortLinks": {
       "methods": {
         "create": {
-          "id": "firebasedynamiclinks.shortDynamicLinks.create",
+          "id": "firebasedynamiclinks.shortLinks.create",
           "response": {
             "$ref": "CreateShortDynamicLinkResponse"
           },
@@ -25,10 +25,10 @@
           "request": {
             "$ref": "CreateShortDynamicLinkRequest"
           },
-          "flatPath": "v1/shortDynamicLinks",
+          "flatPath": "v1/shortLinks",
           "httpMethod": "POST",
           "parameters": {},
-          "path": "v1/shortDynamicLinks",
+          "path": "v1/shortLinks",
           "scopes": [
             "https://www.googleapis.com/auth/firebase"
           ]
@@ -354,7 +354,7 @@
       "id": "GooglePlayAnalytics"
     }
   },
-  "revision": "20160925",
+  "revision": "20160929",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

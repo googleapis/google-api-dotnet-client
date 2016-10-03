@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/AwzgHPRHg5y6Mp-uvSZQKU40BE8\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/9oxgXLJw4APXKxX6q49cnmlxV0E\"",
  "discoveryVersion": "v1",
  "id": "identitytoolkit:v3",
  "name": "identitytoolkit",
  "canonicalName": "Identity Toolkit",
  "version": "v3",
- "revision": "20160902",
+ "revision": "20160927",
  "title": "Google Identity Toolkit API",
  "description": "Help the third party sites to implement federated login.",
  "ownerDomain": "google.com",
@@ -262,20 +262,11 @@
      "description": "The URI to which the IDP redirects the user after the federated login flow."
     },
     "customParameter": {
-     "type": "array",
-     "description": "The query parameter that client can customize by themselves in auth url.",
-     "items": {
-      "type": "object",
-      "properties": {
-       "key": {
-        "type": "string",
-        "description": "The key of the query parameter."
-       },
-       "value": {
-        "type": "string",
-        "description": "The value of the query parameter."
-       }
-      }
+     "type": "object",
+     "description": "The query parameter that client can customize by themselves in auth url. The following parameters are reserved for server so that they cannot be customized by clients: client_id, response_type, scope, redirect_uri, state.",
+     "additionalProperties": {
+      "type": "string",
+      "description": "The customized query parameter."
      }
     },
     "hostedDomain": {
