@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/nZUtgR3YDHo19xgMi6qRCeG-D0g\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/EnXkRwpL7R7ulJp7YAlLVekbp9I\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20160923",
+ "revision": "20160928",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -671,23 +671,6 @@
     "text": {
      "type": "string",
      "description": "The text localized in the associated locale."
-    }
-   }
-  },
-  "MaintenanceWindow": {
-   "id": "MaintenanceWindow",
-   "type": "object",
-   "description": "Maintenance window for Android for Work device accounts. This allows Play Store to update the apps on the foreground in the designated window.",
-   "properties": {
-    "durationMs": {
-     "type": "string",
-     "description": "Duration of the maintenance window, in milliseconds. This should be at least 30 minutes.",
-     "format": "int64"
-    },
-    "startTimeAfterMidnightMs": {
-     "type": "string",
-     "description": "Start time of the maintenance window, in milliseconds after local midnight. Can be at most 24 hours. Windows can span the midnight.",
-     "format": "int64"
     }
    }
   },
@@ -1835,43 +1818,6 @@
       "https://www.googleapis.com/auth/androidenterprise"
      ]
     },
-    "getMaintenanceWindow": {
-     "id": "androidenterprise.devices.getMaintenanceWindow",
-     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/maintenanceWindow",
-     "httpMethod": "GET",
-     "description": "Gets the maintenance window for device accounts. Default value is {0, 0} which means the maintenance window is disabled.",
-     "parameters": {
-      "deviceId": {
-       "type": "string",
-       "description": "The ID of the device.",
-       "required": true,
-       "location": "path"
-      },
-      "enterpriseId": {
-       "type": "string",
-       "description": "The ID of the enterprise.",
-       "required": true,
-       "location": "path"
-      },
-      "userId": {
-       "type": "string",
-       "description": "The ID of the user.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "enterpriseId",
-      "userId",
-      "deviceId"
-     ],
-     "response": {
-      "$ref": "MaintenanceWindow"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
     "getState": {
      "id": "androidenterprise.devices.getState",
      "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
@@ -1974,46 +1920,6 @@
      },
      "response": {
       "$ref": "DeviceState"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
-    "updateMaintenanceWindow": {
-     "id": "androidenterprise.devices.updateMaintenanceWindow",
-     "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/maintenanceWindow",
-     "httpMethod": "PUT",
-     "description": "Updates the maintenance window for device accounts. To disable the window update the value with {0, 0}.",
-     "parameters": {
-      "deviceId": {
-       "type": "string",
-       "description": "The ID of the device.",
-       "required": true,
-       "location": "path"
-      },
-      "enterpriseId": {
-       "type": "string",
-       "description": "The ID of the enterprise.",
-       "required": true,
-       "location": "path"
-      },
-      "userId": {
-       "type": "string",
-       "description": "The ID of the user.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "enterpriseId",
-      "userId",
-      "deviceId"
-     ],
-     "request": {
-      "$ref": "MaintenanceWindow"
-     },
-     "response": {
-      "$ref": "MaintenanceWindow"
      },
      "scopes": [
       "https://www.googleapis.com/auth/androidenterprise"
@@ -2263,11 +2169,11 @@
      "id": "androidenterprise.enterprises.pullNotificationSet",
      "path": "enterprises/pullNotificationSet",
      "httpMethod": "POST",
-     "description": "Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending.\nA notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty.\nNotifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy.\nMultiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending.",
+     "description": "Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending.\nA notification set returned needs to be acknowledged within 20 seconds by calling Enterprises\u200b.AcknowledgeNotificationSet, unless the notification set is empty.\nNotifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy.\nMultiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending.\nIf no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available.",
      "parameters": {
       "requestMode": {
        "type": "string",
-       "description": "The request mode for pulling notifications. If omitted, defaults to WAIT_FOR_NOTIFCATIONS.\nIf this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually timeout, in which case it should be retried.",
+       "description": "The request mode for pulling notifications.\nSpecifying waitForNotifications will cause the request to block and wait until one or more notifications are present, or return an empty notification list if no notifications are present after some time.\nSpeciying returnImmediately will cause the request to immediately return the pending notifications, or an empty list if no notifications are present.\nIf omitted, defaults to waitForNotifications.",
        "enum": [
         "returnImmediately",
         "waitForNotifications"
@@ -4231,7 +4137,7 @@
      "id": "androidenterprise.users.insert",
      "path": "enterprises/{enterpriseId}/users",
      "httpMethod": "POST",
-     "description": "Creates a new EMM-managed user.\n\nThe Users resource passed in the body of the request should include an accountIdentifier and an accountType.",
+     "description": "Creates a new EMM-managed user.\n\nThe Users resource passed in the body of the request should include an accountIdentifier and an accountType.\nIf a corresponding user already exists with the same account identifier, the user will be updated with the resource. In this case only the displayName field can be changed.",
      "parameters": {
       "enterpriseId": {
        "type": "string",

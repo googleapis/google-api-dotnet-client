@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.FirebaseRulesAPI.v1</id>
-        <version>1.16.0.617</version>
+        <version>1.16.0.638</version>
         <title>Google.Apis.FirebaseRulesAPI.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160914 (622)
+ *      <tr><th>API Rev<td>20160929 (637)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -4266,8 +4266,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>A visibility rule provides visibility configuration for an individual API element.</summary>
     public class VisibilityRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Lists the visibility labels for this rule. Any of the listed labels grants visibility to the
-        /// element.
+        /// <summary>A comma-separated list of visibility labels that apply to the `selector`. Any of the listed labels
+        /// can be used to grant the visibility.
         ///
         /// If a rule has multiple labels, removing one of the labels but not all of them can break clients.
         ///

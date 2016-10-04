@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20160831 (608)
+ *      <tr><th>API Rev<td>20161003 (641)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -1396,6 +1396,82 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                         Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the external deal ids associated with the creative.</summary>
+        /// <param name="accountId">The id for the account that will serve this creative.</param>
+        /// <param
+        /// name="buyerCreativeId">The buyer-specific id for this creative.</param>
+        public virtual ListDealsRequest ListDeals(int accountId, string buyerCreativeId)
+        {
+            return new ListDealsRequest(service, accountId, buyerCreativeId);
+        }
+
+        /// <summary>Lists the external deal ids associated with the creative.</summary>
+        public class ListDealsRequest : AdExchangeBuyerBaseServiceRequest<Google.Apis.AdExchangeBuyer.v1_4.Data.CreativeDealIds>
+        {
+            /// <summary>Constructs a new ListDeals request.</summary>
+            public ListDealsRequest(Google.Apis.Services.IClientService service, int accountId, string buyerCreativeId)
+                : base(service)
+            {
+                AccountId = accountId;
+                BuyerCreativeId = buyerCreativeId;
+                InitParameters();
+            }
+
+
+            /// <summary>The id for the account that will serve this creative.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual int AccountId { get; private set; }
+
+            /// <summary>The buyer-specific id for this creative.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("buyerCreativeId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BuyerCreativeId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listDeals"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "creatives/{accountId}/{buyerCreativeId}/listDeals"; }
+            }
+
+            /// <summary>Initializes ListDeals parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "buyerCreativeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "buyerCreativeId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3706,7 +3782,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
-        /// <summary>If nativeAd is set, HTMLSnippet and videoURL should not be set.</summary>
+        /// <summary>If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should not be set. (The
+        /// videoURL inside nativeAd can be set.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeAd")]
         public virtual Creative.NativeAdData NativeAd { get; set; } 
 
@@ -3744,7 +3821,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
-        /// <summary>The url to fetch a video ad. If set, HTMLSnippet should not be set.</summary>
+        /// <summary>The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set. Note, this is
+        /// diffrent from resource.native_ad.video_url above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoURL")]
         public virtual string VideoURL { get; set; } 
 
@@ -3826,7 +3904,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             }
         }    
 
-        /// <summary>If nativeAd is set, HTMLSnippet and videoURL should not be set.</summary>
+        /// <summary>If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should not be set. (The
+        /// videoURL inside nativeAd can be set.)</summary>
         public class NativeAdData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("advertiser")]
@@ -3875,6 +3954,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             /// <summary>The URL to the app store to purchase/download the promoted app.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("store")]
             public virtual string Store { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("videoURL")]
+            public virtual string VideoURL { get; set; } 
 
             
 
@@ -3975,6 +4057,38 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
                 public virtual string Reason { get; set; } 
 
             }
+        }
+    }    
+
+    /// <summary>The external deal ids associated with a creative.</summary>
+    public class CreativeDealIds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of external deal ids and ARC approval status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealStatuses")]
+        public virtual System.Collections.Generic.IList<CreativeDealIds.DealStatusesData> DealStatuses { get; set; } 
+
+        /// <summary>Resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        public class DealStatusesData
+        {
+            /// <summary>ARC approval status.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("arcStatus")]
+            public virtual string ArcStatus { get; set; } 
+
+            /// <summary>External deal ID.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
+            public virtual System.Nullable<long> DealId { get; set; } 
+
+            /// <summary>Publisher ID.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("webPropertyId")]
+            public virtual System.Nullable<int> WebPropertyId { get; set; } 
+
         }
     }    
 
@@ -4427,6 +4541,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Description for the deal terms. (updatable)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryDescription")]
         public virtual string InventoryDescription { get; set; } 
+
+        /// <summary>Indicates whether the current deal is a RFP template. RFP template is created by buyer and not
+        /// based on seller created products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRfpTemplate")]
+        public virtual System.Nullable<bool> IsRfpTemplate { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "adexchangebuyer#marketplaceDeal".</summary>
@@ -5057,6 +5176,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Private data for buyer. (hidden from seller).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerPrivateData")]
         public virtual PrivateData BuyerPrivateData { get; set; } 
+
+        /// <summary>IDs of DBM advertisers permission to this proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbmAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<string> DbmAdvertiserIds { get; set; } 
 
         /// <summary>When an proposal is in an accepted state, indicates whether the buyer has signed off. Once both
         /// sides have signed off on a deal, the proposal can be finalized by the seller. (seller-readonly)</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160317 (441)
+ *      <tr><th>API Rev<td>20161003 (641)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -316,11 +316,243 @@ namespace Google.Apis.Pubsub.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            snapshots = new SnapshotsResource(service);
             subscriptions = new SubscriptionsResource(service);
             topics = new TopicsResource(service);
 
         }
 
+        private readonly SnapshotsResource snapshots;
+
+        /// <summary>Gets the Snapshots resource.</summary>
+        public virtual SnapshotsResource Snapshots
+        {
+            get { return snapshots; }
+        }
+
+        /// <summary>The "snapshots" collection of methods.</summary>
+        public class SnapshotsResource
+        {
+            private const string Resource = "snapshots";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SnapshotsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+            {
+                return new GetIamPolicyRequest(service, resource);
+            }
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            public class GetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
+            {
+                /// <summary>Constructs a new GetIamPolicy request.</summary>
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:getIamPolicy"; }
+                }
+
+                /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]*/snapshots/[^/]*$",
+                        });
+                }
+
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
+            {
+                return new SetIamPolicyRequest(service, body, resource);
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            public class SetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
+            {
+                /// <summary>Constructs a new SetIamPolicy request.</summary>
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "setIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:setIamPolicy"; }
+                }
+
+                /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]*/snapshots/[^/]*$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
+            {
+                return new TestIamPermissionsRequest(service, body, resource);
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
+            {
+                /// <summary>Constructs a new TestIamPermissions request.</summary>
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
+                /// usually specified as a path. For example, a Project resource is specified as
+                /// `projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "testIamPermissions"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:testIamPermissions"; }
+                }
+
+                /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]*/snapshots/[^/]*$",
+                        });
+                }
+
+            }
+        }
         private readonly SubscriptionsResource subscriptions;
 
         /// <summary>Gets the Subscriptions resource.</summary>
@@ -422,7 +654,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
             /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
             /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic.</summary>
+            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the subscription. It must have the format
             /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
@@ -437,7 +669,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
             /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
             /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic.</summary>
+            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -501,9 +733,9 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Deletes an existing subscription. All pending messages in the subscription are immediately
+            /// <summary>Deletes an existing subscription. All messages retained in the subscription are immediately
             /// dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new
-            /// one may be created with the same name, but the new one has no association with the old subscription, or
+            /// one may be created with the same name, but the new one has no association with the old subscription or
             /// its topic unless the same topic is specified.</summary>
             /// <param name="subscription">The subscription to delete.</param>
             public virtual DeleteRequest Delete(string subscription)
@@ -511,9 +743,9 @@ namespace Google.Apis.Pubsub.v1
                 return new DeleteRequest(service, subscription);
             }
 
-            /// <summary>Deletes an existing subscription. All pending messages in the subscription are immediately
+            /// <summary>Deletes an existing subscription. All messages retained in the subscription are immediately
             /// dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new
-            /// one may be created with the same name, but the new one has no association with the old subscription, or
+            /// one may be created with the same name, but the new one has no association with the old subscription or
             /// its topic unless the same topic is specified.</summary>
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
@@ -627,17 +859,16 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Gets the access control policy for a `resource`. Returns an empty policy if the resource exists
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
             /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `getIamPolicy` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
             }
 
-            /// <summary>Gets the access control policy for a `resource`. Returns an empty policy if the resource exists
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
             public class GetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
             {
@@ -651,8 +882,7 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified
-                /// in this value is resource specific and is specified in the `getIamPolicy` documentation.</summary>
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -783,7 +1013,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Modifies the ack deadline for a specific message. This method is useful to indicate that more
             /// time is needed to process a message by the subscriber, or to make the message available for redelivery
-            /// if the processing was interrupted.</summary>
+            /// if the processing was interrupted. Note that this does not modify the subscription-level
+            /// `ackDeadlineSeconds` used for subsequent messages.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The name of the subscription.</param>
             public virtual ModifyAckDeadlineRequest ModifyAckDeadline(Google.Apis.Pubsub.v1.Data.ModifyAckDeadlineRequest body, string subscription)
@@ -793,7 +1024,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Modifies the ack deadline for a specific message. This method is useful to indicate that more
             /// time is needed to process a message by the subscriber, or to make the message available for redelivery
-            /// if the processing was interrupted.</summary>
+            /// if the processing was interrupted. Note that this does not modify the subscription-level
+            /// `ackDeadlineSeconds` used for subsequent messages.</summary>
             public class ModifyAckDeadlineRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
                 /// <summary>Constructs a new ModifyAckDeadline request.</summary>
@@ -1003,8 +1235,7 @@ namespace Google.Apis.Pubsub.v1
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `setIamPolicy` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -1025,8 +1256,7 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified
-                /// in this value is resource specific and is specified in the `setIamPolicy` documentation.</summary>
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1076,8 +1306,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Returns permissions that a caller has on the specified resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `testIamPermissions` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
@@ -1097,9 +1326,8 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path
-                /// specified in this value is resource specific and is specified in the `testIamPermissions`
-                /// documentation.</summary>
+                /// usually specified as a path. For example, a Project resource is specified as
+                /// `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1483,17 +1711,16 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Gets the access control policy for a `resource`. Returns an empty policy if the resource exists
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
             /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `getIamPolicy` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
             }
 
-            /// <summary>Gets the access control policy for a `resource`. Returns an empty policy if the resource exists
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
             public class GetIamPolicyRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Policy>
             {
@@ -1507,8 +1734,7 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified
-                /// in this value is resource specific and is specified in the `getIamPolicy` documentation.</summary>
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1712,8 +1938,7 @@ namespace Google.Apis.Pubsub.v1
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `setIamPolicy` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -1734,8 +1959,7 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified
-                /// in this value is resource specific and is specified in the `setIamPolicy` documentation.</summary>
+                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1785,8 +2009,7 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Returns permissions that a caller has on the specified resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path specified in this value
-            /// is resource specific and is specified in the `testIamPermissions` documentation.</param>
+            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
@@ -1806,9 +2029,8 @@ namespace Google.Apis.Pubsub.v1
 
 
                 /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path, such as `projectsprojectzoneszonedisksdisk*`. The format for the path
-                /// specified in this value is resource specific and is specified in the `testIamPermissions`
-                /// documentation.</summary>
+                /// usually specified as a path. For example, a Project resource is specified as
+                /// `projects/{project}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2046,7 +2268,8 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 
-        /// <summary>The message payload. For JSON requests, the value of this field must be base64-encoded.</summary>
+        /// <summary>The message payload. For JSON requests, the value of this field must be
+        /// [base64-encoded](https://tools.ietf.org/html/rfc4648).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
@@ -2158,9 +2381,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-
         /// effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
         /// override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using
-        /// pull. For push delivery, this value is also used to set the request timeout for the call to the push
-        /// endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the
-        /// message. If this parameter is not set, the default value of 10 seconds is used.</summary>
+        /// pull. The maximum custom deadline you can specify is 600 seconds (10 minutes). For push delivery, this value
+        /// is also used to set the request timeout for the call to the push endpoint. If the subscriber never
+        /// acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0,
+        /// a default value of 10 seconds is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 
@@ -2190,7 +2414,8 @@ namespace Google.Apis.Pubsub.v1.Data
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed. For more information see IAM Overview.</summary>
+        /// 'storage.*') are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 

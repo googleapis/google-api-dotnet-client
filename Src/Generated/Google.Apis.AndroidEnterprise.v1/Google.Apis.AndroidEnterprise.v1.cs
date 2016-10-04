@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160923 (631)
+ *      <tr><th>API Rev<td>20160928 (636)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1423,99 +1423,6 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Gets the maintenance window for device accounts. Default value is {0, 0} which means the
-        /// maintenance window is disabled.</summary>
-        /// <param name="enterpriseId">The ID of the enterprise.</param>
-        /// <param name="userId">The ID of the
-        /// user.</param>
-        /// <param name="deviceId">The ID of the device.</param>
-        public virtual GetMaintenanceWindowRequest GetMaintenanceWindow(string enterpriseId, string userId, string deviceId)
-        {
-            return new GetMaintenanceWindowRequest(service, enterpriseId, userId, deviceId);
-        }
-
-        /// <summary>Gets the maintenance window for device accounts. Default value is {0, 0} which means the
-        /// maintenance window is disabled.</summary>
-        public class GetMaintenanceWindowRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.MaintenanceWindow>
-        {
-            /// <summary>Constructs a new GetMaintenanceWindow request.</summary>
-            public GetMaintenanceWindowRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId, string deviceId)
-                : base(service)
-            {
-                EnterpriseId = enterpriseId;
-                UserId = userId;
-                DeviceId = deviceId;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string EnterpriseId { get; private set; }
-
-            /// <summary>The ID of the user.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string UserId { get; private set; }
-
-            /// <summary>The ID of the device.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string DeviceId { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getMaintenanceWindow"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/maintenanceWindow"; }
-            }
-
-            /// <summary>Initializes GetMaintenanceWindow parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
         /// <summary>Retrieves whether a device's access to Google services is enabled or disabled. The device state
         /// takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console.
         /// Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only
@@ -1759,107 +1666,6 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
             /// <summary>Initializes SetState parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "deviceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "deviceId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Updates the maintenance window for device accounts. To disable the window update the value with {0,
-        /// 0}.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="enterpriseId">The ID of the enterprise.</param>
-        /// <param name="userId">The ID of the
-        /// user.</param>
-        /// <param name="deviceId">The ID of the device.</param>
-        public virtual UpdateMaintenanceWindowRequest UpdateMaintenanceWindow(Google.Apis.AndroidEnterprise.v1.Data.MaintenanceWindow body, string enterpriseId, string userId, string deviceId)
-        {
-            return new UpdateMaintenanceWindowRequest(service, body, enterpriseId, userId, deviceId);
-        }
-
-        /// <summary>Updates the maintenance window for device accounts. To disable the window update the value with {0,
-        /// 0}.</summary>
-        public class UpdateMaintenanceWindowRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.MaintenanceWindow>
-        {
-            /// <summary>Constructs a new UpdateMaintenanceWindow request.</summary>
-            public UpdateMaintenanceWindowRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.MaintenanceWindow body, string enterpriseId, string userId, string deviceId)
-                : base(service)
-            {
-                EnterpriseId = enterpriseId;
-                UserId = userId;
-                DeviceId = deviceId;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string EnterpriseId { get; private set; }
-
-            /// <summary>The ID of the user.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string UserId { get; private set; }
-
-            /// <summary>The ID of the device.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string DeviceId { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AndroidEnterprise.v1.Data.MaintenanceWindow Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "updateMaintenanceWindow"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "PUT"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/maintenanceWindow"; }
-            }
-
-            /// <summary>Initializes UpdateMaintenanceWindow parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -2606,12 +2412,13 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
         /// authenticated for the request. The notification set may be empty if no notification are pending. A
         /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// Enterprises​.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
         /// acknowledged within the 20 seconds will eventually be included again in the response to another
         /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
         /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
         /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
-        /// any are pending.</summary>
+        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
+        /// requests may return more notifications once they become available.</summary>
         public virtual PullNotificationSetRequest PullNotificationSet()
         {
             return new PullNotificationSetRequest(service);
@@ -2620,12 +2427,13 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
         /// authenticated for the request. The notification set may be empty if no notification are pending. A
         /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// Enterprises​.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
         /// acknowledged within the 20 seconds will eventually be included again in the response to another
         /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
         /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
         /// retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if
-        /// any are pending.</summary>
+        /// any are pending. If no notifications are present, an empty notification list is returned. Subsequent
+        /// requests may return more notifications once they become available.</summary>
         public class PullNotificationSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.NotificationSet>
         {
             /// <summary>Constructs a new PullNotificationSet request.</summary>
@@ -2636,15 +2444,19 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
 
-            /// <summary>The request mode for pulling notifications. If omitted, defaults to WAIT_FOR_NOTIFCATIONS. If
-            /// this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually timeout, in which case it should be
-            /// retried.</summary>
+            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
+            /// request to block and wait until one or more notifications are present, or return an empty notification
+            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
+            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
+            /// omitted, defaults to waitForNotifications.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RequestModeEnum> RequestMode { get; set; }
 
-            /// <summary>The request mode for pulling notifications. If omitted, defaults to WAIT_FOR_NOTIFCATIONS. If
-            /// this is set to WAIT_FOR_NOTIFCATIONS, the request will eventually timeout, in which case it should be
-            /// retried.</summary>
+            /// <summary>The request mode for pulling notifications. Specifying waitForNotifications will cause the
+            /// request to block and wait until one or more notifications are present, or return an empty notification
+            /// list if no notifications are present after some time. Speciying returnImmediately will cause the request
+            /// to immediately return the pending notifications, or an empty list if no notifications are present. If
+            /// omitted, defaults to waitForNotifications.</summary>
             public enum RequestModeEnum
             {
                 [Google.Apis.Util.StringValueAttribute("returnImmediately")]
@@ -7839,8 +7651,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Creates a new EMM-managed user.
         ///
-        /// The Users resource passed in the body of the request should include an accountIdentifier and an
-        /// accountType.</summary>
+        /// The Users resource passed in the body of the request should include an accountIdentifier and an accountType.
+        /// If a corresponding user already exists with the same account identifier, the user will be updated with the
+        /// resource. In this case only the displayName field can be changed.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidEnterprise.v1.Data.User body, string enterpriseId)
@@ -7850,8 +7663,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Creates a new EMM-managed user.
         ///
-        /// The Users resource passed in the body of the request should include an accountIdentifier and an
-        /// accountType.</summary>
+        /// The Users resource passed in the body of the request should include an accountIdentifier and an accountType.
+        /// If a corresponding user already exists with the same account identifier, the user will be updated with the
+        /// resource. In this case only the displayName field can be changed.</summary>
         public class InsertRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -8995,23 +8809,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The text localized in the associated locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Maintenance window for Android for Work device accounts. This allows Play Store to update the apps on
-    /// the foreground in the designated window.</summary>
-    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Duration of the maintenance window, in milliseconds. This should be at least 30 minutes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
-        public virtual System.Nullable<long> DurationMs { get; set; } 
-
-        /// <summary>Start time of the maintenance window, in milliseconds after local midnight. Can be at most 24
-        /// hours. Windows can span the midnight.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTimeAfterMidnightMs")]
-        public virtual System.Nullable<long> StartTimeAfterMidnightMs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

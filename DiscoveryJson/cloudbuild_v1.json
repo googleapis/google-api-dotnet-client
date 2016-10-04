@@ -683,7 +683,7 @@
           "type": "string"
         },
         "images": {
-          "description": "List of images expected to be built and pushed to Google Container\nRegistry. If an image is listed here and the image is not produced by\none of the build steps, the build will fail. Any images present when\nthe build steps are complete will be pushed to Container Registry.",
+          "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder\nservice account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
           "type": "array",
           "items": {
             "type": "string"
@@ -793,7 +793,7 @@
           "type": "string"
         },
         "env": {
-          "description": "Additional environment variables to set for this step's container.",
+          "description": "A list of environment variable definitions to be used when running a step.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\".",
           "type": "array",
           "items": {
             "type": "string"
@@ -807,14 +807,14 @@
           }
         },
         "args": {
-          "description": "Command-line arguments to use when running this step's container.",
+          "description": "A list of arguments that will be presented to the step when it is started.\n\nIf the image used to run the step's container has an entrypoint, these args\nwill be used as arguments to that entrypoint. If the image does not define\nan entrypoint, the first element in args will be used as the entrypoint,\nand the remainder will be used as arguments.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "name": {
-          "description": "Name of the container image to use for creating this stage in the\npipeline, as presented to `docker pull`.",
+          "description": "The name of the container image that will run this particular build step.\n\nIf the image is already available in the host's\nDocker daemon's cache, it will be run directly. If not, the host will\nattempt to pull the image first, using the builder service account's\ncredentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n(https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon\nwill also have cached many of the layers for some popular images, like\n\"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to\nuse them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
           "type": "string"
         },
         "dir": {
@@ -883,7 +883,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20160929",
+  "revision": "20161003",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

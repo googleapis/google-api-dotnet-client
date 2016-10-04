@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160929 (637)
+ *      <tr><th>API Rev<td>20161003 (641)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1343,9 +1343,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>List of images expected to be built and pushed to Google Container Registry. If an image is listed
-        /// here and the image is not produced by one of the build steps, the build will fail. Any images present when
-        /// the build steps are complete will be pushed to Container Registry.</summary>
+        /// <summary>A list of images to be pushed upon the successful completion of all build steps.
+        ///
+        /// The images will be pushed using the builder service account's credentials.
+        ///
+        /// The digests of the pushed images will be stored in the Build resource's results field.
+        ///
+        /// If any of the images fail to be pushed, the build is marked FAILURE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<string> Images { get; set; } 
 
@@ -1435,7 +1439,11 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>BuildStep describes a step to perform in the build pipeline.</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Command-line arguments to use when running this step's container.</summary>
+        /// <summary>A list of arguments that will be presented to the step when it is started.
+        ///
+        /// If the image used to run the step's container has an entrypoint, these args will be used as arguments to
+        /// that entrypoint. If the image does not define an entrypoint, the first element in args will be used as the
+        /// entrypoint, and the remainder will be used as arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
@@ -1444,7 +1452,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
 
-        /// <summary>Additional environment variables to set for this step's container.</summary>
+        /// <summary>A list of environment variable definitions to be used when running a step.
+        ///
+        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value
+        /// "VALUE".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; } 
 
@@ -1453,8 +1464,18 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Name of the container image to use for creating this stage in the pipeline, as presented to `docker
-        /// pull`.</summary>
+        /// <summary>The name of the container image that will run this particular build step.
+        ///
+        /// If the image is already available in the host's Docker daemon's cache, it will be run directly. If not, the
+        /// host will attempt to pull the image first, using the builder service account's credentials if necessary.
+        ///
+        /// The Docker daemon's cache will already have the latest versions of all of the officially supported build
+        /// steps (https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon will also have cached many
+        /// of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you
+        /// attempt to use them.
+        ///
+        /// If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is
+        /// available to use as the name for a later build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

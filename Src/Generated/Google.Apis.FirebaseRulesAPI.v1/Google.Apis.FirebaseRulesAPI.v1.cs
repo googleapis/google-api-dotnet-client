@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://firebase.google.com/docs/storage/security/start'>Firebase Rules API</a>
+ *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160909 (617)
+ *      <tr><th>API Rev<td>20160930 (638)
  *      <tr><th>API Docs
- *          <td><a href='https://firebase.google.com/docs/storage/security/start'>
- *              https://firebase.google.com/docs/storage/security/start</a>
+ *          <td><a href='https://firebase.google.com/docs/storage/security'>
+ *              https://firebase.google.com/docs/storage/security</a>
  *      <tr><th>Discovery Name<td>firebaserules
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Firebase Rules API can be found at
- * <a href='https://firebase.google.com/docs/storage/security/start'>https://firebase.google.com/docs/storage/security/start</a>.
+ * <a href='https://firebase.google.com/docs/storage/security'>https://firebase.google.com/docs/storage/security</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
