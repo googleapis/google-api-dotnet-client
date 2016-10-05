@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160924 (632)
+ *      <tr><th>API Rev<td>20161004 (642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -354,7 +354,9 @@ namespace Google.Apis.Speech.v1beta1
         /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
         /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
         /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation.</summary>
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
         public virtual CancelRequest Cancel(Google.Apis.Speech.v1beta1.Data.CancelOperationRequest body, string name)
@@ -365,7 +367,9 @@ namespace Google.Apis.Speech.v1beta1
         /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
         /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
         /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation.</summary>
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
         public class CancelRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -849,7 +853,7 @@ namespace Google.Apis.Speech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
@@ -908,8 +912,8 @@ namespace Google.Apis.Speech.v1beta1.Data
 
         /// <summary>[Optional] The language of the supplied audio as a BCP-47 language tag. Example: "en-GB"
         /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt If omitted, defaults to "en-US". See [Language
-        /// Support](https://cloud.google.com/speech/docs/best-practices#language_support) for a list of the currently
-        /// supported language codes.</summary>
+        /// Support](https://cloud.google.com/speech/docs/languages) for a list of the currently supported language
+        /// codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 

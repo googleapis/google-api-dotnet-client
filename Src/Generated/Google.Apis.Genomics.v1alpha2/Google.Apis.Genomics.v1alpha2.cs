@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160929 (637)
+ *      <tr><th>API Rev<td>20161004 (642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -1492,11 +1492,14 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minimumRamGb")]
         public virtual System.Nullable<double> MinimumRamGb { get; set; } 
 
-        /// <summary>Whether to assign an external IP to the instance. Defaults to false. Corresponds to `--no_address`
-        /// flag for [gcloud compute instances create]
+        /// <summary>Whether to assign an external IP to the instance. This is an experimental feature that may go away.
+        /// Defaults to false. Corresponds to `--no_address` flag for [gcloud compute instances create]
         /// (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true
-        /// for both create time and run time. Cannot be true at run time if false at create time. ** Note: To use this
-        /// option, your project must be in Google Access for Private IPs Early Access Program.**</summary>
+        /// for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh
+        /// into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal
+        /// IP. If noAddress is set, this pipeline run may only load docker images from Google Container Registry and
+        /// not Docker Hub. ** Note: To use this option, your project must be in Google Access for Private IPs Early
+        /// Access Program.**</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
         public virtual System.Nullable<bool> NoAddress { get; set; } 
 
@@ -1612,9 +1615,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>List of scopes to be enabled for this service account on the pipeline virtual machine. The
-        /// following scopes are automatically included: * https://www.googleapis.com/auth/genomics *
-        /// https://www.googleapis.com/auth/compute * https://www.googleapis.com/auth/devstorage.full_control</summary>
+        /// <summary>List of scopes to be enabled for this service account on the VM. The following scopes are
+        /// automatically included: * https://www.googleapis.com/auth/compute *
+        /// https://www.googleapis.com/auth/devstorage.full_control * https://www.googleapis.com/auth/genomics *
+        /// https://www.googleapis.com/auth/logging.write * https://www.googleapis.com/auth/monitoring.write</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
 

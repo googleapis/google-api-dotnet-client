@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160929 (637)
+ *      <tr><th>API Rev<td>20161004 (642)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -2956,7 +2956,8 @@ namespace Google.Apis.Sheets.v4.Data
     public class NumberFormat : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Pattern string used for formatting.  If not set, a default pattern based on the user's locale will
-        /// be used if necessary for the given type.</summary>
+        /// be used if necessary for the given type. See the [Date and Number Formats guide](/sheets/guides/formats) for
+        /// more information about the supported patterns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; } 
 

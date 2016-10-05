@@ -456,7 +456,7 @@
       "type": "object",
       "properties": {
         "error": {
-          "description": "The error result of the operation in case of failure.",
+          "description": "The error result of the operation in case of failure or cancellation.",
           "$ref": "Status"
         },
         "done": {
@@ -883,7 +883,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20161003",
+  "revision": "20161004",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
