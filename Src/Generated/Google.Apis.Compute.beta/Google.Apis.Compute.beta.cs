@@ -2814,9 +2814,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -2826,9 +2826,9 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, backendService);
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2986,9 +2986,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -2998,9 +2998,9 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, backendService);
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -18341,9 +18341,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -18355,9 +18355,9 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, region, backendService);
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -18544,9 +18544,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -18558,9 +18558,9 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, region, backendService);
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -22185,7 +22185,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -22196,7 +22197,8 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -22484,7 +22486,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the Router resource.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -22495,7 +22497,7 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the entire content of the Router resource.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -29863,7 +29865,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -29873,7 +29876,8 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -30031,7 +30035,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -30041,7 +30045,7 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -33893,7 +33897,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("archiveSizeBytes")]
         public virtual System.Nullable<long> ArchiveSizeBytes { get; set; } 
 
-        /// <summary>Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -34377,8 +34381,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The action to perform in case of zone failure (set only for Regional instance group
-        /// managers).</summary>
+        /// <summary>The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The
+        /// default is NO_FAILOVER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverAction")]
         public virtual string FailoverAction { get; set; } 
 
@@ -34462,7 +34466,7 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>[Output Only] The number of instances that the managed instance group will attempt to create. The
         /// group attempts to create each instance only once. If the group fails to create any of these instances, it
-        /// decreases the group's target_size value accordingly.</summary>
+        /// decreases the group's targetSize value accordingly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatingWithoutRetries")]
         public virtual System.Nullable<int> CreatingWithoutRetries { get; set; } 
 
@@ -34570,7 +34574,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -35656,7 +35660,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for this resource .</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -36743,7 +36747,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -36961,7 +36965,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("next")]
         public virtual System.Nullable<long> Next { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -38234,7 +38238,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -38265,7 +38269,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -38691,7 +38695,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 

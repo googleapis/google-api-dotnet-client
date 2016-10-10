@@ -77,6 +77,7 @@ namespace Google.Apis.Compute.alpha
             globalForwardingRules = new GlobalForwardingRulesResource(this);
             globalOperations = new GlobalOperationsResource(this);
             healthChecks = new HealthChecksResource(this);
+            hosts = new HostsResource(this);
             httpHealthChecks = new HttpHealthChecksResource(this);
             httpsHealthChecks = new HttpsHealthChecksResource(this);
             images = new ImagesResource(this);
@@ -265,6 +266,14 @@ namespace Google.Apis.Compute.alpha
         public virtual HealthChecksResource HealthChecks
         {
             get { return healthChecks; }
+        }
+
+        private readonly HostsResource hosts;
+
+        /// <summary>Gets the Hosts resource.</summary>
+        public virtual HostsResource Hosts
+        {
+            get { return hosts; }
         }
 
         private readonly HttpHealthChecksResource httpHealthChecks;
@@ -2705,8 +2714,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Update the entire content of the BackendBucket resource. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
+        /// supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -2716,8 +2725,8 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, backendBucket);
         }
 
-        /// <summary>Update the entire content of the BackendBucket resource. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
+        /// supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2959,7 +2968,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Update the entire content of the BackendBucket resource.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -2969,7 +2978,7 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, backendBucket);
         }
 
-        /// <summary>Update the entire content of the BackendBucket resource.</summary>
+        /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3660,9 +3669,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -3672,9 +3681,9 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, backendService);
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3832,9 +3841,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -3844,9 +3853,9 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, backendService);
         }
 
-        /// <summary>Updates the entire content of the BackendService resource. There are several restrictions and
-        /// guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
+        /// Guidelines for more information.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -9000,6 +9009,314 @@ namespace Google.Apis.Compute.alpha
                     "healthCheck", new Google.Apis.Discovery.Parameter
                     {
                         Name = "healthCheck",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "hosts" collection of methods.</summary>
+    public class HostsResource
+    {
+        private const string Resource = "hosts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public HostsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, zone, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/hosts/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.alpha.Data.Policy body, string project, string zone, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Policy body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Policy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/hosts/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string zone, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/hosts/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -14871,6 +15188,11 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Whether to force attach the disk even if it's currently attached to another instance. This is
+            /// only available for regional disks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ForceAttach { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.AttachedDisk Body { get; set; }
@@ -14927,6 +15249,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "forceAttach", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "forceAttach",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -20445,9 +20776,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -20459,9 +20790,9 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, region, backendService);
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -20648,9 +20979,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -20662,9 +20993,9 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, region, backendService);
         }
 
-        /// <summary>Update the entire content of the regional BackendService resource. There are several restrictions
-        /// and guidelines to keep in mind when updating a backend service. Read  Restrictions and Guidelines for more
-        /// information.</summary>
+        /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
+        /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
+        /// and Guidelines for more information.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -25430,7 +25761,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -25441,7 +25773,8 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the entire content of the Router resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -25729,7 +26062,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the Router resource.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -25740,7 +26073,7 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the entire content of the Router resource.</summary>
+        /// <summary>Updates the specified Router resource with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -34038,7 +34371,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -34048,7 +34382,8 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource. This method supports patch semantics.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -34206,7 +34541,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -34216,7 +34551,7 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the entire content of the UrlMap resource.</summary>
+        /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -35746,6 +36081,20 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this Address, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an Address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this Address resource. These can be later modified by the setLabels method. Each
+        /// label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
         /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
@@ -36950,13 +37299,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Nullable<bool> IncludeQueryString { get; set; } 
 
         /// <summary>Names of query string parameters to exclude in cache keys. All other parameters will be included.
-        /// Either specify query_string_whitelist or query_string_blacklist, not both. ?&? and ?=? will be percent
+        /// Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent
         /// encoded and not treated as delimiters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryStringBlacklist")]
         public virtual System.Collections.Generic.IList<string> QueryStringBlacklist { get; set; } 
 
         /// <summary>Names of query string parameters to include in cache keys. All other parameters will be excluded.
-        /// Either specify query_string_whitelist or query_string_blacklist, not both. ?&? and ?=? will be percent
+        /// Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent
         /// encoded and not treated as delimiters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryStringWhitelist")]
         public virtual System.Collections.Generic.IList<string> QueryStringWhitelist { get; set; } 
@@ -37779,6 +38128,20 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this resource, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this resource. These can be later modified by the setLabels method. Each label
+        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>This signifies what the ForwardingRule will be used for and can only take the following values:
         /// INTERNAL EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing
         /// (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
@@ -38483,7 +38846,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("archiveSizeBytes")]
         public virtual System.Nullable<long> ArchiveSizeBytes { get; set; } 
 
-        /// <summary>Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -38679,6 +39042,16 @@ namespace Google.Apis.Compute.alpha.Data
         /// assign them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
+
+        /// <summary>Full or partial URL of the host resource that the instance should be placed on, in the format:
+        /// zones/zone/host/host.
+        ///
+        /// Optional, Private Host (physical machine) that the instance will be placed on when it's created. The
+        /// instance is guaranteed to be placed on the same machine as other instances with the same private host.
+        ///
+        /// The request will be rejected if the private host has run out of resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -38984,8 +39357,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The action to perform in case of zone failure (set only for Regional instance group
-        /// managers).</summary>
+        /// <summary>The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The
+        /// default is NO_FAILOVER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverAction")]
         public virtual string FailoverAction { get; set; } 
 
@@ -39087,7 +39460,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>[Output Only] The number of instances that the managed instance group will attempt to create. The
         /// group attempts to create each instance only once. If the group fails to create any of these instances, it
-        /// decreases the group's target_size value accordingly.</summary>
+        /// decreases the group's targetSize value accordingly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatingWithoutRetries")]
         public virtual System.Nullable<int> CreatingWithoutRetries { get; set; } 
 
@@ -39202,7 +39575,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -40442,7 +40815,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for this resource .</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -41729,7 +42102,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -41986,7 +42359,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("next")]
         public virtual System.Nullable<long> Next { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -43406,7 +43779,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -43437,7 +43810,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -43779,6 +44152,20 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this VpnTunnel, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a VpnTunnel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this VpnTunnel. These can be later modified by the setLabels method. Each label
+        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
         /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
@@ -43888,7 +44275,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -43970,7 +44357,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for this resource .</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 

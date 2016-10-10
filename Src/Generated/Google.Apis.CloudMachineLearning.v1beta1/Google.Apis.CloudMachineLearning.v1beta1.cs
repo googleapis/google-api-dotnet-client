@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160929 (637)
+ *      <tr><th>API Rev<td>20161005 (643)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2528,13 +2528,13 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         ///
         /// complex_model_m
         ///
-        /// A machine with roughly twice the number of cores and roughly double the memory of `complex_model_s`.
+        /// A machine with roughly twice the number of cores and roughly double the memory of complex_model_s.
         ///
         /// complex_model_l
         ///
-        /// A machine with roughly twice the number of cores and roughly double the memory of `complex_model_m`.
+        /// A machine with roughly twice the number of cores and roughly double the memory of complex_model_m.
         ///
-        /// This value can only be used when `ScaleTier` is set to `CUSTOM`.</summary>
+        /// You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
         public virtual string MasterType { get; set; } 
 
@@ -2555,7 +2555,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         ///
         /// The supported values are the same as those described in the entry for `master_type`.
         ///
-        /// This value must be present when `scale_tier` is set to `CUSTOM` and `parameter_server_count` is greater than
+        /// This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterServerType")]
         public virtual string ParameterServerType { get; set; } 
@@ -2583,9 +2583,9 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's worker nodes.
         ///
-        /// The supported values are the same as those described in the entry for `master_type`.
+        /// The supported values are the same as those described in the entry for `masterType`.
         ///
-        /// This value must be present when `scale_tier` is set to `CUSTOM` and `worker_count` is greater than
+        /// This value must be present when `scaleTier` is set to `CUSTOM` and `workerCount` is greater than
         /// zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerType")]
         public virtual string WorkerType { get; set; } 

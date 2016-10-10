@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20160907 (615)
+ *      <tr><th>API Rev<td>20161005 (643)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -2631,6 +2631,10 @@ namespace Google.Apis.SQLAdmin.v1beta3.Data
     /// <summary>A Cloud SQL instance resource.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Connection name of the Cloud SQL instance used in connection strings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
+        public virtual string ConnectionName { get; set; } 
+
         /// <summary>The current disk usage of the instance in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 

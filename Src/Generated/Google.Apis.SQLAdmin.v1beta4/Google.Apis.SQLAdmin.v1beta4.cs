@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160907 (615)
+ *      <tr><th>API Rev<td>20161005 (643)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4067,6 +4067,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; } 
+
+        /// <summary>Connection name of the Cloud SQL instance used in connection strings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
+        public virtual string ConnectionName { get; set; } 
 
         /// <summary>The current disk usage of the instance in bytes. This property has been deprecated. Users should
         /// use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please

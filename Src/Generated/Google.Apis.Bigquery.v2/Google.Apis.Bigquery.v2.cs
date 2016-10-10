@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160922 (630)
+ *      <tr><th>API Rev<td>20161001 (639)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4111,7 +4111,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Name { get; set; } 
 
         /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN,
-        /// TIMESTAMP or RECORD (where RECORD indicates that the field contains a nested schema).</summary>
+        /// TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD indicates that the field contains a nested
+        /// schema).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

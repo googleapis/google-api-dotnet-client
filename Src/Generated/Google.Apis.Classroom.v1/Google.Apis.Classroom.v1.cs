@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160816 (593)
+ *      <tr><th>API Rev<td>20161006 (644)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -84,7 +84,7 @@ namespace Google.Apis.Classroom.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://classroom.googleapis.com/"; }
+            get { return "https://prod-day0-classroom.sandbox.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -2902,6 +2902,25 @@ namespace Google.Apis.Classroom.v1
             [Google.Apis.Util.RequestParameterAttribute("teacherId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeacherId { get; set; }
 
+            /// <summary>Restricts returned courses to those in one of the specified states</summary>
+            [Google.Apis.Util.RequestParameterAttribute("courseStates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<CourseStatesEnum> CourseStates { get; set; }
+
+            /// <summary>Restricts returned courses to those in one of the specified states</summary>
+            public enum CourseStatesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COURSE_STATE_UNSPECIFIED")]
+                COURSESTATEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                ACTIVE,
+                [Google.Apis.Util.StringValueAttribute("ARCHIVED")]
+                ARCHIVED,
+                [Google.Apis.Util.StringValueAttribute("PROVISIONED")]
+                PROVISIONED,
+                [Google.Apis.Util.StringValueAttribute("DECLINED")]
+                DECLINED,
+            }
+
             /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
             /// maximum. The server may return fewer than the specified number of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2950,6 +2969,15 @@ namespace Google.Apis.Classroom.v1
                     "teacherId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "teacherId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "courseStates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseStates",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3768,14 +3796,16 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
             /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
             /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
-            /// that student, if guardians are not enabled for the domain in question, or for other access errors. *
-            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
-            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
-            /// invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
-            /// format can be recognized, but Classroom has no record of that student.</summary>
+            /// that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if
+            /// guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT`
+            /// if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a
+            /// `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token`
+            /// or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized,
+            /// but Classroom has no record of that student.</summary>
             /// <param name="studentId">The ID of the student whose guardian invitations are to be returned. The identifier can be
             /// one of the following: * the numeric identifier for the user * the email address of the user * the string literal
-            /// `"me"`, indicating the requesting user</param>
+            /// `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for
+            /// all students that the requesting user is permitted to view guardian invitations.</param>
             public virtual ListRequest List(string studentId)
             {
                 return new ListRequest(service, studentId);
@@ -3784,11 +3814,12 @@ namespace Google.Apis.Classroom.v1
             /// <summary>Returns a list of guardian invitations that the requesting user is permitted to view, filtered
             /// by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a
             /// `student_id` is specified, and the requesting user is not permitted to view guardian invitations for
-            /// that student, if guardians are not enabled for the domain in question, or for other access errors. *
-            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
-            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
-            /// invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
-            /// format can be recognized, but Classroom has no record of that student.</summary>
+            /// that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if
+            /// guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT`
+            /// if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a
+            /// `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token`
+            /// or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized,
+            /// but Classroom has no record of that student.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardianInvitationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3802,7 +3833,9 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>The ID of the student whose guardian invitations are to be returned. The identifier can be
                 /// one of the following: * the numeric identifier for the user * the email address of the user * the
-                /// string literal `"me"`, indicating the requesting user</summary>
+                /// string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that
+                /// results should be returned for all students that the requesting user is permitted to view guardian
+                /// invitations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
@@ -4239,31 +4272,36 @@ namespace Google.Apis.Classroom.v1
             }
 
             /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
-            /// that match the request. This method returns the following error codes: * `PERMISSION_DENIED` if a
-            /// `student_id` is specified, and the requesting user is not permitted to view guardian information for
-            /// that student, if guardians are not enabled for the domain in question, if the `invited_email_address`
-            /// filter is set by a user who is not a domain administrator, or for other access errors. *
-            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
-            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
-            /// invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be
-            /// recognized, but Classroom has no record of that student.</summary>
+            /// that match the request. To list guardians for any student that the requesting user may view guardians
+            /// for, use the literal character `-` for the student ID. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
+            /// guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a
+            /// domain administrator, if guardians are not enabled for the domain in question, if the
+            /// `invited_email_address` filter is set by a user who is not a domain administrator, or for other access
+            /// errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is
+            /// not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be
+            /// returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
+            /// format can be recognized, but Classroom has no record of that student.</summary>
             /// <param name="studentId">Filter results by the student who the guardian is linked to. The identifier can be one of
             /// the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</param>
+            /// indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all
+            /// students that the requesting user has access to view.</param>
             public virtual ListRequest List(string studentId)
             {
                 return new ListRequest(service, studentId);
             }
 
             /// <summary>Returns a list of guardians that the requesting user is permitted to view, restricted to those
-            /// that match the request. This method returns the following error codes: * `PERMISSION_DENIED` if a
-            /// `student_id` is specified, and the requesting user is not permitted to view guardian information for
-            /// that student, if guardians are not enabled for the domain in question, if the `invited_email_address`
-            /// filter is set by a user who is not a domain administrator, or for other access errors. *
-            /// `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an
-            /// email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an
-            /// invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be
-            /// recognized, but Classroom has no record of that student.</summary>
+            /// that match the request. To list guardians for any student that the requesting user may view guardians
+            /// for, use the literal character `-` for the student ID. This method returns the following error codes: *
+            /// `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view
+            /// guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a
+            /// domain administrator, if guardians are not enabled for the domain in question, if the
+            /// `invited_email_address` filter is set by a user who is not a domain administrator, or for other access
+            /// errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is
+            /// not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be
+            /// returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its
+            /// format can be recognized, but Classroom has no record of that student.</summary>
             public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListGuardiansResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4277,7 +4315,8 @@ namespace Google.Apis.Classroom.v1
 
                 /// <summary>Filter results by the student who the guardian is linked to. The identifier can be one of
                 /// the following: * the numeric identifier for the user * the email address of the user * the string
-                /// literal `"me"`, indicating the requesting user</summary>
+                /// literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results
+                /// should be returned for all students that the requesting user has access to view.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
@@ -4525,6 +4564,10 @@ namespace Google.Apis.Classroom.v1.Data
         /// results in an error. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentCode")]
         public virtual string EnrollmentCode { get; set; } 
+
+        /// <summary>Whether or not guardian notifications are enabled for this course. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guardiansEnabled")]
+        public virtual System.Nullable<bool> GuardiansEnabled { get; set; } 
 
         /// <summary>Identifier for this course assigned by Classroom. When creating a course, you may optionally set
         /// this identifier to an alias string in the request to create a corresponding alias. The `id` is still
