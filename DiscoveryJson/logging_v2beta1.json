@@ -578,20 +578,30 @@
       "id": "SourceLocation"
     },
     "LogSink": {
-      "description": "Describes a sink used to export log entries outside Stackdriver Logging.",
+      "description": "Describes a sink used to export log entries outside of Stackdriver Logging.",
       "type": "object",
       "properties": {
-        "writerIdentity": {
-          "description": "Output only. The iam identity to which the destination needs to grant write\naccess.  This may be a service account or a group.\nExamples (Do not assume these specific values):\n   \"serviceAccount:cloud-logs@system.gserviceaccount.com\"\n   \"group:cloud-logs@google.com\"\n\n  For GCS destinations, the role \"roles/owner\" is required on the bucket\n  For Cloud Pubsub destinations, the role \"roles/pubsub.publisher\" is\n    required on the topic\n  For BigQuery, the role \"roles/editor\" is required on the dataset",
+        "destination": {
+          "description": "Required. The export destination. See\n[Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).\nExamples:\n\n    \"storage.googleapis.com/my-gcs-bucket\"\n    \"bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset\"\n    \"pubsub.googleapis.com/projects/my-project/topics/my-topic\"",
           "type": "string"
         },
         "filter": {
           "description": "Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).\nOnly log entries matching the filter are exported. The filter\nmust be consistent with the log entry format specified by the\n`outputVersionFormat` parameter, regardless of the format of the\nlog entry that was originally written to Stackdriver Logging.\nExample filter (V2 format):\n\n    logName=projects/my-projectid/logs/syslog AND severity\u003e=ERROR",
           "type": "string"
         },
-        "destination": {
-          "description": "Required. The export destination. See\n[Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).\nExamples:\n\n    \"storage.googleapis.com/my-gcs-bucket\"\n    \"bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset\"\n    \"pubsub.googleapis.com/projects/my-project/topics/my-topic\"",
+        "endTime": {
+          "description": "Optional. Time at which this sink expires.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "name": {
+          "description": "Required. The client-assigned sink identifier, unique within the\nproject. Example: `\"my-syslog-errors-to-pubsub\"`.  Sink identifiers are\nlimited to 1000 characters and can include only the following characters:\n`A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length\nof the name is 100 characters.",
           "type": "string"
+        },
+        "startTime": {
+          "description": "Optional. Time range for which this sink is active.\nLogs are exported only if start_time \u003c= entry.timestamp \u003c end_time\nBoth start_time and end_time may be omitted to specify\n(half) infinite ranges. The start_time must be less than the end_time.",
+          "type": "string",
+          "format": "google-datetime"
         },
         "outputVersionFormat": {
           "description": "Optional. The log entry version to use for this sink's exported log\nentries.  This version does not have to correspond to the version of the\nlog entry that was written to Stackdriver Logging. If omitted, the\nv2 format is used.",
@@ -607,8 +617,8 @@
           ],
           "type": "string"
         },
-        "name": {
-          "description": "Required. The client-assigned sink identifier, unique within the\nproject. Example: `\"my-syslog-errors-to-pubsub\"`.  Sink identifiers are\nlimited to 1000 characters and can include only the following characters:\n`A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length\nof the name is 100 characters.",
+        "writerIdentity": {
+          "description": "Output only. The IAM identity to which the destination needs to grant write\naccess.  This may be a service account or a group.\nExamples (Do not assume these specific values):\n   \"serviceAccount:cloud-logs@system.gserviceaccount.com\"\n   \"group:cloud-logs@google.com\"\n\n  For GCS destinations, the role \"roles/owner\" is required on the bucket\n  For Cloud Pubsub destinations, the role \"roles/pubsub.publisher\" is\n    required on the topic\n  For BigQuery, the role \"roles/editor\" is required on the dataset",
           "type": "string"
         }
       },
@@ -1229,7 +1239,7 @@
       "id": "ListLogEntriesRequest"
     }
   },
-  "revision": "20161003",
+  "revision": "20161010",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160928 (636)
+ *      <tr><th>API Rev<td>20161005 (643)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1845,6 +1845,78 @@ namespace Google.Apis.AndroidEnterprise.v1
                         Name = "enterpriseToken",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token
+        /// into the Play for Work javascript API. Each token may only be used to start one UI session. See the
+        /// javascript API documentation for further information.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        public virtual CreateWebTokenRequest CreateWebToken(Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec body, string enterpriseId)
+        {
+            return new CreateWebTokenRequest(service, body, enterpriseId);
+        }
+
+        /// <summary>Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token
+        /// into the Play for Work javascript API. Each token may only be used to start one UI session. See the
+        /// javascript API documentation for further information.</summary>
+        public class CreateWebTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebToken>
+        {
+            /// <summary>Constructs a new CreateWebToken request.</summary>
+            public CreateWebTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec body, string enterpriseId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebTokenSpec Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createWebToken"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/createWebToken"; }
+            }
+
+            /// <summary>Initializes CreateWebToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -8166,6 +8238,45 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A token authorizing an administrator to access an iframe.</summary>
+    public class AdministratorWebToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#administratorWebToken".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>An opaque token to be passed to the Play front-end to generate an iframe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specification for a token used to generate iframes. The token specifies what data the admin is allowed
+    /// to modify and the URI the iframe is allowed to communiate with.</summary>
+    public class AdministratorWebTokenSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#administratorWebTokenSpec".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at
+        /// other URIs. This URI must be https.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>The list of permissions the admin is granted within the iframe. The admin will only be allowed to
+        /// view an iframe if they have all of the permissions associated with it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
+        public virtual System.Collections.Generic.IList<string> Permission { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents the list of app restrictions available to be pre-configured for the product.</summary>
     public class AppRestrictionsSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9399,6 +9510,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// "androidenterprise#storeLayout".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Sets a store layout type. If set to "custom", "homepageId" must be specified. If set to "basic",
+        /// the layout will consist of all approved apps accessible by the user, split in pages of 100 each; in this
+        /// case, "homepageId" must not be specified. The "basic" setting takes precedence over any existing collections
+        /// setup for this enterprise (if any). Should the enterprise use collectionViewers for controlling access
+        /// rights, these will still be respected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeLayoutType")]
+        public virtual string StoreLayoutType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

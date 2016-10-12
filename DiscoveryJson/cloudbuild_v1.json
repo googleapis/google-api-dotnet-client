@@ -321,7 +321,7 @@
             "name": {
               "description": "The name of the operation resource.",
               "required": true,
-              "pattern": "^operations/.*$",
+              "pattern": "^operations/.+$",
               "location": "path",
               "type": "string"
             }
@@ -883,7 +883,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20161010",
+  "revision": "20161011",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
