@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Compute.alpha</id>
-        <version>1.16.0.634</version>
+        <version>1.17.0.634</version>
         <title>Google.Apis.Compute.alpha Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -14,7 +14,7 @@
           Google APIs Client Library for working with Compute alpha.
           Supported Platforms:
 
-          - .NET Framework 4 and 4.5
+          - .NET Framework 4 and 4.5+
 
           - NetStandard1.3
 
@@ -33,8 +33,12 @@
         <tags>Google</tags>
         <dependencies>
             <group targetFramework="netstandard1.3">
-                <dependency id="Google.Apis" version="1.16.0" />
-                <dependency id="Google.Apis.Auth" version="1.16.0" />
+                <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
+            </group>
+            <group targetFramework="net45">
+                <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
             </group>
             <!--
               After v1.10.0 of Google.Apis, we
@@ -43,8 +47,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.16.0" />
-                <dependency id="Google.Apis.Auth" version="1.16.0" />
+                <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
@@ -57,6 +61,10 @@
         <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Compute.alpha.dll" target="lib\netstandard1.3\Google.Apis.Compute.alpha.dll" />
         <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Compute.alpha.pdb" target="lib\netstandard1.3\Google.Apis.Compute.alpha.pdb" />
         <file src="NetStandard\bin\ReleaseSigned\Google.Apis.Compute.alpha.xml" target="lib\netstandard1.3\Google.Apis.Compute.alpha.xml" />
+
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.Compute.alpha.dll" target="lib\net45\Google.Apis.Compute.alpha.dll" />
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.Compute.alpha.pdb" target="lib\net45\Google.Apis.Compute.alpha.pdb" />
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.Compute.alpha.xml" target="lib\net45\Google.Apis.Compute.alpha.xml" />
 
         <file src="Profile259\bin\ReleaseSigned\Google.Apis.Compute.alpha.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Compute.alpha.dll" />
         <file src="Profile259\bin\ReleaseSigned\Google.Apis.Compute.alpha.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.Compute.alpha.pdb" />
