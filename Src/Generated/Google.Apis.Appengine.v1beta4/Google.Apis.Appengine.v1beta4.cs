@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20160802 (579)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -2321,6 +2321,87 @@ namespace Google.Apis.Appengine.v1beta4
             }
 
         }
+
+        /// <summary>Updates application parameters.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="appsId">Part of `name`. Name of the application to update. For example: "apps/myapp".</param>
+        public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta4.Data.Application body, string appsId)
+        {
+            return new PatchRequest(service, body, appsId);
+        }
+
+        /// <summary>Updates application parameters.</summary>
+        public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1beta4.Data.Application body, string appsId)
+                : base(service)
+            {
+                AppsId = appsId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Part of `name`. Name of the application to update. For example: "apps/myapp".</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AppsId { get; private set; }
+
+            /// <summary>Standard field mask for the set of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("mask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Mask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Appengine.v1beta4.Data.Application Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta4/apps/{appsId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "mask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "mask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 }
 
@@ -2826,7 +2907,7 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The cononical id for this location. For example: `"us-east1"`.</summary>
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160927 (635)
+ *      <tr><th>API Rev<td>20161010 (648)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -91,7 +91,13 @@ namespace Google.Apis.IdentityToolkit.v3
             get { return "identitytoolkit/v3/relyingparty/"; }
         }
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Identity Toolkit API.</summary>
+        public class Scope
+        {
+            /// <summary>View and administer all your Firebase data and settings</summary>
+            public static string Firebase = "https://www.googleapis.com/auth/firebase";
 
+        }
 
 
 
@@ -1331,7 +1337,7 @@ namespace Google.Apis.IdentityToolkit.v3.Data
 
         /// <summary>The query parameter that client can customize by themselves in auth url. The following parameters
         /// are reserved for server so that they cannot be customized by clients: client_id, response_type, scope,
-        /// redirect_uri, state.</summary>
+        /// redirect_uri, state, oauth_token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameter")]
         public virtual System.Collections.Generic.IDictionary<string,string> CustomParameter { get; set; } 
 
@@ -1761,6 +1767,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The key for to hash the password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signerKey")]
         public virtual string SignerKey { get; set; } 
+
+        /// <summary>Specify which project (field value is actually project id) to operate. Only used when provided
+        /// credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProjectId")]
+        public virtual string TargetProjectId { get; set; } 
 
         /// <summary>The account info to be stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("users")]

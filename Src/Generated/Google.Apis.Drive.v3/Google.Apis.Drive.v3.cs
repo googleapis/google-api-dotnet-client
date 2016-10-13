@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160929 (637)
+ *      <tr><th>API Rev<td>20161006 (644)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3609,6 +3609,16 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>The maximum number of revisions to return per page.</summary>
+            /// [minimum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of 'nextPageToken' from the previous response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3639,6 +3649,24 @@ namespace Google.Apis.Drive.v3
                         Name = "fileId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4798,6 +4826,11 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#revisionList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The page token for the next page of revisions. This will be absent if the end of the revisions list
+        /// has been reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The full list of revisions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]

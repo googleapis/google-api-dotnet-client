@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161005 (643)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -434,7 +434,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/jobs/[^/]*$",
+                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
                         });
                 }
 
@@ -506,7 +506,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -570,7 +570,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/jobs/[^/]*$",
+                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
                         });
                 }
 
@@ -652,7 +652,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -811,7 +811,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/models/[^/]*$",
+                                Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                     }
 
@@ -890,7 +890,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/models/[^/]*/versions/[^/]*$",
+                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -962,7 +962,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/models/[^/]*/versions/[^/]*$",
+                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -1047,7 +1047,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/models/[^/]*$",
+                                Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
@@ -1153,7 +1153,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/models/[^/]*/versions/[^/]*$",
+                                Pattern = @"^projects/[^/]+/models/[^/]+/versions/[^/]+$",
                             });
                     }
 
@@ -1234,7 +1234,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -1304,7 +1304,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/models/[^/]*$",
+                            Pattern = @"^projects/[^/]+/models/[^/]+$",
                         });
                 }
 
@@ -1370,7 +1370,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/models/[^/]*$",
+                            Pattern = @"^projects/[^/]+/models/[^/]+$",
                         });
                 }
 
@@ -1452,7 +1452,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1503,8 +1503,9 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
             /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
             /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
-            /// check whether the cancellation succeeded or whether the operation completed despite
-            /// cancellation.</summary>
+            /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(string name)
             {
@@ -1514,8 +1515,9 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort
             /// to cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it
             /// returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to
-            /// check whether the cancellation succeeded or whether the operation completed despite
-            /// cancellation.</summary>
+            /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
             public class CancelRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -1562,7 +1564,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/operations/[^/]*$",
+                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
                         });
                 }
 
@@ -1626,7 +1628,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/operations/[^/]*$",
+                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
                         });
                 }
 
@@ -1688,7 +1690,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/operations/[^/]*$",
+                            Pattern = @"^projects/[^/]+/operations/[^/]+$",
                         });
                 }
 
@@ -1768,7 +1770,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1864,7 +1866,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]*$",
+                        Pattern = @"^projects/[^/]+$",
                     });
             }
 
@@ -2000,7 +2002,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/.*$",
+                        Pattern = @"^projects/.+$",
                     });
             }
 
@@ -2440,15 +2442,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputPaths")]
         public virtual System.Collections.Generic.IList<string> InputPaths { get; set; } 
 
-        /// <summary>Optional. The maximum amount of workers to be used for parallel processing. Defaults to
-        /// 10.</summary>
+        /// <summary>Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not
+        /// specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkerCount")]
         public virtual System.Nullable<long> MaxWorkerCount { get; set; } 
 
         /// <summary>Use this field if you want to use the default version for the specified model. The string must use
         /// the following format:
         ///
-        /// `"project/[YOUR_PROJECT]/models/[YOUR_MODEL]"`</summary>
+        /// `"projects/[YOUR_PROJECT]/models/[YOUR_MODEL]"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
         public virtual string ModelName { get; set; } 
 
@@ -2463,7 +2465,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// <summary>Use this field if you want to specify a version of the model to use. The string is formatted the
         /// same way as `model_version`, with the addition of the version information:
         ///
-        /// `"project/[YOUR_PROJECT]/models/YOUR_MODEL/versions/[YOUR_VERSION]"`</summary>
+        /// `"projects/[YOUR_PROJECT]/models/YOUR_MODEL/versions/[YOUR_VERSION]"`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
         public virtual string VersionName { get; set; } 
 
@@ -2679,7 +2681,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 

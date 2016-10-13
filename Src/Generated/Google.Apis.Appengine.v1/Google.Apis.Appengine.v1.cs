@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160802 (579)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.Appengine.v1
             : base(initializer)
         {
             apps = new AppsResource(this);
+            experimental = new ExperimentalResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -107,6 +108,14 @@ namespace Google.Apis.Appengine.v1
         public virtual AppsResource Apps
         {
             get { return apps; }
+        }
+
+        private readonly ExperimentalResource experimental;
+
+        /// <summary>Gets the Experimental resource.</summary>
+        public virtual ExperimentalResource Experimental
+        {
+            get { return experimental; }
         }
     }
 
@@ -2250,6 +2259,87 @@ namespace Google.Apis.Appengine.v1
 
         }
 
+        /// <summary>Updates application parameters.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="appsId">Part of `name`. Name of the application to update. Example: `apps/myapp`.</param>
+        public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.Application body, string appsId)
+        {
+            return new PatchRequest(service, body, appsId);
+        }
+
+        /// <summary>Updates application parameters.</summary>
+        public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Application body, string appsId)
+                : base(service)
+            {
+                AppsId = appsId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Part of `name`. Name of the application to update. Example: `apps/myapp`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AppsId { get; private set; }
+
+            /// <summary>Standard field mask for the set of fields to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Appengine.v1.Data.Application Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/apps/{appsId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Recreates the required App Engine features for the application in your project, for example a Cloud
         /// Storage bucket or App Engine service account. Use this method if you receive an error message about a
         /// missing feature, for example "*Error retrieving the App Engine service account*".</summary>
@@ -2320,6 +2410,256 @@ namespace Google.Apis.Appengine.v1
                     });
             }
 
+        }
+    }
+
+    /// <summary>The "experimental" collection of methods.</summary>
+    public class ExperimentalResource
+    {
+        private const string Resource = "experimental";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ExperimentalResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            apps = new AppsResource(service);
+
+        }
+
+        private readonly AppsResource apps;
+
+        /// <summary>Gets the Apps resource.</summary>
+        public virtual AppsResource Apps
+        {
+            get { return apps; }
+        }
+
+        /// <summary>The "apps" collection of methods.</summary>
+        public class AppsResource
+        {
+            private const string Resource = "apps";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AppsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                operations = new OperationsResource(service);
+
+            }
+
+            private readonly OperationsResource operations;
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations
+            {
+                get { return operations; }
+            }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="appsId">Part of `name`. The name of the operation resource.</param>
+                /// <param
+                /// name="operationsId">Part of `name`. See documentation of `appsId`.</param>
+                public virtual GetRequest Get(string appsId, string operationsId)
+                {
+                    return new GetRequest(service, appsId, operationsId);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string appsId, string operationsId)
+                        : base(service)
+                    {
+                        AppsId = appsId;
+                        OperationsId = operationsId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Part of `name`. The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AppsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `appsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string OperationsId { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "experimental/apps/{appsId}/operations/{operationsId}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services
+                /// to override the binding to use different resource name schemes, such as
+                /// `users/operations`.</summary>
+                /// <param name="appsId">Part of `name`. The name of the operation collection.</param>
+                public virtual ListRequest List(string appsId)
+                {
+                    return new ListRequest(service, appsId);
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services
+                /// to override the binding to use different resource name schemes, such as
+                /// `users/operations`.</summary>
+                public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string appsId)
+                        : base(service)
+                    {
+                        AppsId = appsId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Part of `name`. The name of the operation collection.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AppsId { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "experimental/apps/{appsId}/operations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "appsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "appsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
         }
     }
 }
@@ -2825,7 +3165,7 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The cononical id for this location. For example: `"us-east1"`.</summary>
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -3441,6 +3781,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The zip file information for a zip deployment.</summary>
     public class ZipInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.IdentityToolkit.v3</id>
-        <version>1.17.0.635</version>
+        <version>1.17.0.648</version>
         <title>Google.Apis.IdentityToolkit.v3 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -34,9 +34,11 @@
         <dependencies>
             <group targetFramework="netstandard1.3">
                 <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
             </group>
             <group targetFramework="net45">
                 <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
             </group>
             <!--
               After v1.10.0 of Google.Apis, we
@@ -46,10 +48,12 @@
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
                 <dependency id="Google.Apis" version="1.17.0" />
+                <dependency id="Google.Apis.Auth" version="1.17.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
                 <dependency id="Google.Apis" version="[1.10.0]" />
+                <dependency id="Google.Apis.Auth" version="[1.10.0]" />
             </group>
         </dependencies>
     </metadata>

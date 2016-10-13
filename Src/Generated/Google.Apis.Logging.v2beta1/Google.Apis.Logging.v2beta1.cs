@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20161003 (641)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -2052,7 +2052,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a sink used to export log entries outside of Stackdriver Logging.</summary>
+    /// <summary>Describes a sink used to export log entries outside Stackdriver Logging.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The export destination. See [Exporting Logs With Sinks](/logging/docs/api/tasks
@@ -2062,10 +2062,6 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// "pubsub.googleapis.com/projects/my-project/topics/my-topic"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
-
-        /// <summary>Optional. Time at which this sink expires.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
 
         /// <summary>Optional. An [advanced logs filter](/logging/docs/view/advanced_filters). Only log entries matching
         /// the filter are exported. The filter must be consistent with the log entry format specified by the
@@ -2089,13 +2085,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
 
-        /// <summary>Optional. Time range for which this sink is active. Logs are exported only if start_time <=
-        /// entry.timestamp < end_time Both start_time and end_time may be omitted to specify (half) infinite ranges.
-        /// The start_time must be less than the end_time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
-
-        /// <summary>Output only. The IAM identity to which the destination needs to grant write access.  This may be a
+        /// <summary>Output only. The iam identity to which the destination needs to grant write access.  This may be a
         /// service account or a group. Examples (Do not assume these specific values): "serviceAccount:cloud-
         /// logs@system.gserviceaccount.com" "group:cloud-logs@google.com"
         ///
