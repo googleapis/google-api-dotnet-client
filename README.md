@@ -8,8 +8,9 @@ The Google API client library for .NET enables access to Google APIs such as Dri
 Supported Platforms
 =================================
 
-* .NET Framework 4.5
-* Windows Store apps
+* .NET Framework 4.5 and 4.6
+* .NET Core (via netstandard1.3 support)
+* Windows 8 Apps
 * Windows Phone 8 and 8.1
 * Portable Class Libraries
 
