@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160923 (631)
+ *      <tr><th>API Rev<td>20161005 (643)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1265,7 +1265,8 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Updates a bucket. This method supports patch semantics.</summary>
+        /// <summary>Updates a bucket. Changes to the bucket will be readable immediately after writing, but
+        /// configuration changes may take time to propagate. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         public virtual PatchRequest Patch(Google.Apis.Storage.v1.Data.Bucket body, string bucket)
@@ -1273,7 +1274,8 @@ namespace Google.Apis.Storage.v1
             return new PatchRequest(service, body, bucket);
         }
 
-        /// <summary>Updates a bucket. This method supports patch semantics.</summary>
+        /// <summary>Updates a bucket. Changes to the bucket will be readable immediately after writing, but
+        /// configuration changes may take time to propagate. This method supports patch semantics.</summary>
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1456,7 +1458,8 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Updates a bucket.</summary>
+        /// <summary>Updates a bucket. Changes to the bucket will be readable immediately after writing, but
+        /// configuration changes may take time to propagate.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.Bucket body, string bucket)
@@ -1464,7 +1467,8 @@ namespace Google.Apis.Storage.v1
             return new UpdateRequest(service, body, bucket);
         }
 
-        /// <summary>Updates a bucket.</summary>
+        /// <summary>Updates a bucket. Changes to the bucket will be readable immediately after writing, but
+        /// configuration changes may take time to propagate.</summary>
         public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
         {
             /// <summary>Constructs a new Update request.</summary>

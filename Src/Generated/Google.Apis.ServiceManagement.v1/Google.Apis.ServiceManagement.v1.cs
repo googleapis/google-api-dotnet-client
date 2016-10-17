@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161003 (641)
+ *      <tr><th>API Rev<td>20161010 (648)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1929,6 +1929,48 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Analytics configuration of the service.
+    ///
+    /// The example below shows how to configure monitored resources and metrics for analytics. In the example, a
+    /// monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` and
+    /// `library.googleapis.com/book/overdue_count` metric are sent to the analytics.
+    ///
+    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
+    /// library branch is located in. - key: /name description: The name of the branch. metrics: - name:
+    /// library.googleapis.com/book/returned_count metric_kind: DELTA value_type: INT64 labels: - key: /customer_id -
+    /// name: library.googleapis.com/book/overdue_count metric_kind: GAUGE value_type: INT64 labels: - key: /customer_id
+    /// analytics: producer_destinations: - monitored_resource: library.googleapis.com/branch metrics: -
+    /// library.googleapis.com/book/returned_count - library.googleapis.com/book/overdue_count</summary>
+    public class Analytics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Analytics configurations for sending metrics to the analytics backend. There can be multiple
+        /// producer destinations, each one must have a different monitored resource type. A metric can be used in at
+        /// most one producer destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]
+        public virtual System.Collections.Generic.IList<AnalyticsDestination> ProducerDestinations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration of a specific analytics destination.</summary>
+    public class AnalyticsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Names of the metrics to report to this analytics destination. Each name must be defined in
+        /// Service.metrics section. Metrics with value type BOOL and STRING must be of GUAGE kind, metrics with value
+        /// type INT64, DOUBLE and MONEY must be of DELTA kind.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+
+        /// <summary>The monitored resource type. The type must be defined in Service.monitored_resources
+        /// section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
+        public virtual string MonitoredResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Api is a light-weight descriptor for a protocol buffer service.</summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3118,16 +3160,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Logging configuration of the service.
     ///
     /// The following example shows how to configure logs to be sent to the producer and consumer projects. In the
-    /// example, the `library.googleapis.com/activity_history` log is sent to both the producer and consumer projects,
-    /// whereas the `library.googleapis.com/purchase_history` log is only sent to the producer project:
+    /// example, the `activity_history` log is sent to both the producer and consumer projects, whereas the
+    /// `purchase_history` log is only sent to the producer project.
     ///
     /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
-    /// library branch is located in. - key: /name description: The name of the branch. logs: - name:
-    /// library.googleapis.com/activity_history labels: - key: /customer_id - name:
-    /// library.googleapis.com/purchase_history logging: producer_destinations: - monitored_resource:
-    /// library.googleapis.com/branch logs: - library.googleapis.com/activity_history -
-    /// library.googleapis.com/purchase_history consumer_destinations: - monitored_resource:
-    /// library.googleapis.com/branch logs: - library.googleapis.com/activity_history</summary>
+    /// library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history
+    /// labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource:
+    /// library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: -
+    /// monitored_resource: library.googleapis.com/branch logs: - activity_history</summary>
     public class Logging : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Logging configurations for sending logs to the consumer project. There can be multiple consumer
@@ -3151,11 +3191,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class LoggingDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Names of the logs to be sent to this destination. Each name must be defined in the Service.logs
-        /// section.</summary>
+        /// section. If the log name is not a domain scoped name, it will be automatically prefixed with the service
+        /// name followed by "/".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logs")]
         public virtual System.Collections.Generic.IList<string> Logs { get; set; } 
 
-        /// <summary>The monitored resource type. The type must be defined in Service.monitored_resources
+        /// <summary>The monitored resource type. The type must be defined in the Service.monitored_resources
         /// section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual string MonitoredResource { get; set; } 
@@ -3524,7 +3565,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
@@ -3770,6 +3811,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// calendar.example.com</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>WARNING: DO NOT USE UNTIL THIS MESSAGE IS REMOVED.
+        ///
+        /// Analytics configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analytics")]
+        public virtual Analytics Analytics { get; set; } 
+
         /// <summary>A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api
         /// needs to be provided by the configuration author, as the remaining fields will be derived from the IDL
         /// during the normalization process. It is an error to specify an API interface here which cannot be resolved
