@@ -65,6 +65,7 @@ namespace DiscoveryDocPatcher
 
         public void Remove(string jPath, string oldContent, string replacedContent)
         {
+            // Single quotes replaced with double quotes, to ease caller string literals.
             JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"'));
             JToken replacedToken = JToken.Parse(replacedContent.Replace('\'', '"'));
             Remove(jPath, oldToken, replacedToken);
@@ -88,6 +89,7 @@ namespace DiscoveryDocPatcher
 
         public void Replace(string jPath, string oldContent, string newContent)
         {
+            // Single quotes replaced with double quotes, to ease caller string literals.
             JToken oldToken = JToken.Parse(oldContent.Replace('\'', '"'));
             JToken newToken = JToken.Parse(newContent.Replace('\'', '"'));
             Replace(jPath, oldToken, newToken);

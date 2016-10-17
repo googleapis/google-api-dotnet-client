@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <!-- Download discovery documents used as input to code generation. -->
-  <Target Name="DownloadDiscoveryDocuments" Condition="!Exists('DiscoveryJson')">
+  <Target Name="DownloadDiscoveryDocuments" Condition="!Exists('$(DiscoveryDocumentsDir)')">
     <!-- Make DiscoveryJson directory -->
     <MakeDir Directories="$(DiscoveryDocumentsDir)" />
     <!-- Run python script to download all discovery docs, starting from https://www.googleapis.com/discovery/v1/apis -->
@@ -43,7 +43,9 @@
   <!-- Patch discovery docs that require changes before generation. This process is idempotent. -->
   <Target Name="PatchDiscoveryDocuments" DependsOnTargets="DownloadDiscoveryDocuments">
     <!-- Build the patcher executable -->
-    <MSBuild Projects="$(ToolsDir)DiscoveryDocPatcher\DiscoveryDocPatcher.csproj" />
+    <MSBuild
+        Projects="$(ToolsDir)DiscoveryDocPatcher\DiscoveryDocPatcher.csproj"
+        Properties="Configuration=Debug" />
     <!-- Execute patcher against the downloaded discovery docs -->
     <Exec Command="$(ToolsDir)DiscoveryDocPatcher\bin\Debug\DiscoveryDocPatcher.exe $(DiscoveryDocumentsDir)" />
   </Target>
@@ -55,7 +57,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <_DiscoveryDocument Include="DiscoveryJson\*.json" />
+      <_DiscoveryDocument Include="$(DiscoveryDocumentsDir)\*.json" />
     </ItemGroup>
 
     <MakeDir Directories="$(GeneratedCodeDir)" />
@@ -134,7 +136,7 @@
 
   <!-- Remove all downloaded and generated artifacts. -->
   <Target Name="Reset">
-    <RemoveDir Directories="DiscoveryJson;$(GeneratedCodeDir);$(NuPkgsDir)" />
+    <RemoveDir Directories="$(DiscoveryDocumentsDir);$(GeneratedCodeDir);$(NuPkgsDir)" />
   </Target>
   <!-- Alias Clean to Reset -->
   <Target Name="Clean" DependsOnTargets="Reset" />
