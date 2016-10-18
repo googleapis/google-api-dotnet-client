@@ -17,6 +17,10 @@ limitations under the License.
 using System;
 
 using Google.Apis.Util;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Google.Apis.Json;
+using Google.Apis.Logging;
 
 namespace Google.Apis.Auth.OAuth2.Responses
 {
@@ -77,6 +81,47 @@ namespace Google.Apis.Auth.OAuth2.Responses
             }
 
             return Issued.AddSeconds(ExpiresInSeconds.Value - 60) <= clock.Now;
+        }
+
+        /// <summary>
+        /// Asynchronously parses a <see cref="TokenResponse"/> instance from the specified <see cref="HttpResponseMessage"/>.
+        /// </summary>
+        /// <param name="response">The http response from which to parse the token.</param>
+        /// <param name="clock">The clock used to set the <see cref="Issued"/> value of the token.</param>
+        /// <param name="logger">The logger used to output messages incase of error.</param>
+        /// <exception cref="TokenResponseException">
+        /// The response was not successful or there is an error parsing the response into valid <see cref="TokenResponse"/> instance.
+        /// </exception>
+        /// <returns>
+        /// A task containing the <see cref="TokenResponse"/> parsed form the response message.
+        /// </returns>
+        public static async Task<TokenResponse> FromHttpResponseAsync(HttpResponseMessage response, Util.IClock clock, ILogger logger)
+        {
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var typeName = "";
+            try
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    typeName = nameof(TokenErrorResponse);
+                    var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
+                    throw new TokenResponseException(error);
+                }
+
+                // Gets the token and sets its issued time.
+                typeName = nameof(TokenResponse);
+                var newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
+                newToken.Issued = clock.Now;
+                return newToken;
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                logger.Error(ex, $"Exception was caught when deserializing {typeName}. Content is: {content}");
+                throw new TokenResponseException(new TokenErrorResponse
+                {
+                    Error = "Server response does not contain a JSON object. Status code is: " + response.StatusCode
+                });
+            }
         }
     }
 }
