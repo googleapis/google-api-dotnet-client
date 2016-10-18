@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -423,7 +423,7 @@ namespace Google.Apis.Speech.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^[^/]*$",
+                        Pattern = @"^[^/]+$",
                     });
             }
 
@@ -487,7 +487,7 @@ namespace Google.Apis.Speech.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^[^/]*$",
+                        Pattern = @"^[^/]+$",
                     });
             }
 
@@ -549,7 +549,7 @@ namespace Google.Apis.Speech.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^[^/]*$",
+                        Pattern = @"^[^/]+$",
                     });
             }
 

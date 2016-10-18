@@ -47,7 +47,7 @@
                 "metricName": {
                   "description": "The resource name of the metric to update.\nExample: `\"projects/my-project-id/metrics/my-metric-id\"`.\n\nThe updated metric must be provided in the request and have the\nsame identifier that is specified in `metricName`.\nIf the metric does not exist, it is created.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/metrics/[^/]*$",
+                  "pattern": "^projects/[^/]+/metrics/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -74,7 +74,7 @@
                 "metricName": {
                   "description": "The resource name of the desired metric.\nExample: `\"projects/my-project-id/metrics/my-metric-id\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/metrics/[^/]*$",
+                  "pattern": "^projects/[^/]+/metrics/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -105,7 +105,7 @@
                 "parent": {
                   "description": "The resource name of the project in which to create the metric.\nExample: `\"projects/my-project-id\"`.\n\nThe new metric must be provided in the request.",
                   "required": true,
-                  "pattern": "^projects/[^/]*$",
+                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -138,7 +138,7 @@
                 "parent": {
                   "description": "Required. The resource name containing the metrics.\nExample: `\"projects/my-project-id\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*$",
+                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "type": "string"
                 },
@@ -171,7 +171,7 @@
                 "metricName": {
                   "description": "The resource name of the metric to delete.\nExample: `\"projects/my-project-id/metrics/my-metric-id\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/metrics/[^/]*$",
+                  "pattern": "^projects/[^/]+/metrics/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -202,7 +202,7 @@
                 "logName": {
                   "description": "Required. The resource name of the log to delete.  Example:\n`\"projects/my-project/logs/syslog\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/logs/[^/]*$",
+                  "pattern": "^projects/[^/]+/logs/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -235,7 +235,7 @@
                 "sinkName": {
                   "description": "Required. The resource name of the sink to update, including the parent\nresource and the sink identifier.  If the sink does not exist, this method\ncreates the sink.  Example: `\"projects/my-project-id/sinks/my-sink-id\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/sinks/[^/]*$",
+                  "pattern": "^projects/[^/]+/sinks/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -261,7 +261,7 @@
                 "sinkName": {
                   "description": "Required. The resource name of the sink to return.\nExample: `\"projects/my-project-id/sinks/my-sink-id\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/sinks/[^/]*$",
+                  "pattern": "^projects/[^/]+/sinks/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -292,7 +292,7 @@
                 "parent": {
                   "description": "Required. The resource in which to create the sink.\nExample: `\"projects/my-project-id\"`.\nThe new sink must be provided in the request.",
                   "required": true,
-                  "pattern": "^projects/[^/]*$",
+                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -324,7 +324,7 @@
                 "parent": {
                   "description": "Required. The cloud resource containing the sinks.\nExample: `\"projects/my-logging-project\"`.",
                   "required": true,
-                  "pattern": "^projects/[^/]*$",
+                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "type": "string"
                 },
@@ -357,7 +357,7 @@
                 "sinkName": {
                   "description": "Required. The resource name of the sink to delete, including the parent\nresource and the sink identifier.  Example:\n`\"projects/my-project-id/sinks/my-sink-id\"`.  It is an error if the sink\ndoes not exist.",
                   "required": true,
-                  "pattern": "^projects/[^/]*/sinks/[^/]*$",
+                  "pattern": "^projects/[^/]+/sinks/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -391,7 +391,7 @@
                 "logName": {
                   "description": "Required. The resource name of the log to delete.  Example:\n`\"projects/my-project/logs/syslog\"`.",
                   "required": true,
-                  "pattern": "^organizations/[^/]*/logs/[^/]*$",
+                  "pattern": "^organizations/[^/]+/logs/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -504,7 +504,7 @@
                 "logName": {
                   "description": "Required. The resource name of the log to delete.  Example:\n`\"projects/my-project/logs/syslog\"`.",
                   "required": true,
-                  "pattern": "^billingAccounts/[^/]*/logs/[^/]*$",
+                  "pattern": "^billingAccounts/[^/]+/logs/[^/]+$",
                   "location": "path",
                   "type": "string"
                 }
@@ -578,20 +578,30 @@
       "id": "SourceLocation"
     },
     "LogSink": {
-      "description": "Describes a sink used to export log entries outside Stackdriver Logging.",
+      "description": "Describes a sink used to export log entries outside of Stackdriver Logging.",
       "type": "object",
       "properties": {
-        "writerIdentity": {
-          "description": "Output only. The iam identity to which the destination needs to grant write\naccess.  This may be a service account or a group.\nExamples (Do not assume these specific values):\n   \"serviceAccount:cloud-logs@system.gserviceaccount.com\"\n   \"group:cloud-logs@google.com\"\n\n  For GCS destinations, the role \"roles/owner\" is required on the bucket\n  For Cloud Pubsub destinations, the role \"roles/pubsub.publisher\" is\n    required on the topic\n  For BigQuery, the role \"roles/editor\" is required on the dataset",
+        "destination": {
+          "description": "Required. The export destination. See\n[Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).\nExamples:\n\n    \"storage.googleapis.com/my-gcs-bucket\"\n    \"bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset\"\n    \"pubsub.googleapis.com/projects/my-project/topics/my-topic\"",
           "type": "string"
         },
         "filter": {
           "description": "Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).\nOnly log entries matching the filter are exported. The filter\nmust be consistent with the log entry format specified by the\n`outputVersionFormat` parameter, regardless of the format of the\nlog entry that was originally written to Stackdriver Logging.\nExample filter (V2 format):\n\n    logName=projects/my-projectid/logs/syslog AND severity\u003e=ERROR",
           "type": "string"
         },
-        "destination": {
-          "description": "Required. The export destination. See\n[Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).\nExamples:\n\n    \"storage.googleapis.com/my-gcs-bucket\"\n    \"bigquery.googleapis.com/projects/my-project-id/datasets/my-dataset\"\n    \"pubsub.googleapis.com/projects/my-project/topics/my-topic\"",
+        "endTime": {
+          "description": "Optional. Time at which this sink expires.",
+          "type": "string",
+          "format": "google-datetime"
+        },
+        "name": {
+          "description": "Required. The client-assigned sink identifier, unique within the\nproject. Example: `\"my-syslog-errors-to-pubsub\"`.  Sink identifiers are\nlimited to 1000 characters and can include only the following characters:\n`A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length\nof the name is 100 characters.",
           "type": "string"
+        },
+        "startTime": {
+          "description": "Optional. Time range for which this sink is active.\nLogs are exported only if start_time \u003c= entry.timestamp \u003c end_time\nBoth start_time and end_time may be omitted to specify\n(half) infinite ranges. The start_time must be less than the end_time.",
+          "type": "string",
+          "format": "google-datetime"
         },
         "outputVersionFormat": {
           "description": "Optional. The log entry version to use for this sink's exported log\nentries.  This version does not have to correspond to the version of the\nlog entry that was written to Stackdriver Logging. If omitted, the\nv2 format is used.",
@@ -607,8 +617,8 @@
           ],
           "type": "string"
         },
-        "name": {
-          "description": "Required. The client-assigned sink identifier, unique within the\nproject. Example: `\"my-syslog-errors-to-pubsub\"`.  Sink identifiers are\nlimited to 1000 characters and can include only the following characters:\n`A-Z`, `a-z`, `0-9`, and the special characters `_-.`.  The maximum length\nof the name is 100 characters.",
+        "writerIdentity": {
+          "description": "Output only. The IAM identity to which the destination needs to grant write\naccess.  This may be a service account or a group.\nExamples (Do not assume these specific values):\n   \"serviceAccount:cloud-logs@system.gserviceaccount.com\"\n   \"group:cloud-logs@google.com\"\n\n  For GCS destinations, the role \"roles/owner\" is required on the bucket\n  For Cloud Pubsub destinations, the role \"roles/pubsub.publisher\" is\n    required on the topic\n  For BigQuery, the role \"roles/editor\" is required on the dataset",
           "type": "string"
         }
       },
@@ -1206,7 +1216,7 @@
           }
         },
         "resourceNames": {
-          "description": "Optional. One or more cloud resources from which to retrieve log entries.\nExample: `\"projects/my-project-1A\"`, `\"projects/1234567890\"`.  Projects\nlisted in `projectIds` are added to this list.",
+          "description": "Required. One or more cloud resources from which to retrieve log entries.\nExample: `\"projects/my-project-1A\"`, `\"projects/1234567890\"`.  Projects\nlisted in `projectIds` are added to this list.",
           "type": "array",
           "items": {
             "type": "string"
@@ -1229,7 +1239,7 @@
       "id": "ListLogEntriesRequest"
     }
   },
-  "revision": "20161003",
+  "revision": "20161017",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

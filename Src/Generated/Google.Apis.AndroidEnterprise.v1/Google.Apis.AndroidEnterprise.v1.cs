@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161005 (643)
+ *      <tr><th>API Rev<td>20161011 (649)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -9317,6 +9317,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The list of product IDs making up the set of products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
+
+        /// <summary>The interpretation of this product set. "unknown" should never be sent and ignored if received.
+        /// "whitelist" means that this product set constitutes a whitelist. "includeAll" means that all products are
+        /// accessible (the value of the productId field is therefore ignored). If a value is not supplied, it is
+        /// interpreted to be "whitelist" for backwards compatibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
+        public virtual string ProductSetBehavior { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

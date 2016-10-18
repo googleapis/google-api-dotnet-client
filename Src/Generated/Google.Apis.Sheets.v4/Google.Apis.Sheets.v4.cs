@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161006 (644)
+ *      <tr><th>API Rev<td>20161014 (652)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -634,6 +634,78 @@ namespace Google.Apis.Sheets.v4
 
             }
 
+            /// <summary>Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet
+            /// ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as
+            /// formatting, data validation, etc..) are kept.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
+            public virtual BatchClearRequest BatchClear(Google.Apis.Sheets.v4.Data.BatchClearValuesRequest body, string spreadsheetId)
+            {
+                return new BatchClearRequest(service, body, spreadsheetId);
+            }
+
+            /// <summary>Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet
+            /// ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as
+            /// formatting, data validation, etc..) are kept.</summary>
+            public class BatchClearRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchClearValuesResponse>
+            {
+                /// <summary>Constructs a new BatchClear request.</summary>
+                public BatchClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.BatchClearValuesRequest body, string spreadsheetId)
+                    : base(service)
+                {
+                    SpreadsheetId = spreadsheetId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the spreadsheet to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SpreadsheetId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Sheets.v4.Data.BatchClearValuesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "batchClear"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v4/spreadsheets/{spreadsheetId}/values:batchClear"; }
+                }
+
+                /// <summary>Initializes BatchClear parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "spreadsheetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "spreadsheetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
             /// <summary>Returns one or more ranges of values from a spreadsheet. The caller must specify the
             /// spreadsheet ID and one or more ranges.</summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
@@ -850,6 +922,94 @@ namespace Google.Apis.Sheets.v4
                         "spreadsheetId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "spreadsheetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only
+            /// values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are
+            /// kept.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
+            /// <param name="range">The A1 notation
+            /// of the values to clear.</param>
+            public virtual ClearRequest Clear(Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
+            {
+                return new ClearRequest(service, body, spreadsheetId, range);
+            }
+
+            /// <summary>Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only
+            /// values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are
+            /// kept.</summary>
+            public class ClearRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.ClearValuesResponse>
+            {
+                /// <summary>Constructs a new Clear request.</summary>
+                public ClearRequest(Google.Apis.Services.IClientService service, Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
+                    : base(service)
+                {
+                    SpreadsheetId = spreadsheetId;
+                    Range = range;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the spreadsheet to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SpreadsheetId { get; private set; }
+
+                /// <summary>The A1 notation of the values to clear.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Range { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Sheets.v4.Data.ClearValuesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "clear"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v4/spreadsheets/{spreadsheetId}/values/{range}:clear"; }
+                }
+
+                /// <summary>Initializes Clear parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "spreadsheetId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "spreadsheetId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "range", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "range",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1736,6 +1896,34 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request for clearing more than one range of values in a spreadsheet.</summary>
+    public class BatchClearValuesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ranges to clear, in A1 notation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
+        public virtual System.Collections.Generic.IList<string> Ranges { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response when updating a range of values in a spreadsheet.</summary>
+    public class BatchClearValuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ranges that were cleared, in A1 notation. (If the requests were for an unbounded range or a
+        /// ranger larger than the bounds of the sheet, this will be the actual ranges that were cleared, bounded to the
+        /// sheet's limits.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearedRanges")]
+        public virtual System.Collections.Generic.IList<string> ClearedRanges { get; set; } 
+
+        /// <summary>The spreadsheet the updates were applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
+        public virtual string SpreadsheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response when retrieving more than one range of values in a spreadsheet.</summary>
     public class BatchGetValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1871,8 +2059,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual string Style { get; set; } 
 
-        /// <summary>The width of the border, in pixels. Border widths must be between 0 and 3 pixels,
-        /// inclusive.</summary>
+        /// <summary>The width of the border, in pixels. Deprecated; the width is determined by the "style"
+        /// field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
 
@@ -2077,6 +2265,30 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The sheet ID on which the basic filter should be cleared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for clearing a range of values in a spreadsheet.</summary>
+    public class ClearValuesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response when clearing a range of values in a spreadsheet.</summary>
+    public class ClearValuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range (in A1 notation) that was cleared. (If the request was for an unbounded range or a ranger
+        /// larger than the bounds of the sheet, this will be the actual range that was cleared, bounded to the sheet's
+        /// limits.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearedRange")]
+        public virtual string ClearedRange { get; set; } 
+
+        /// <summary>The spreadsheet the updates were applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
+        public virtual string SpreadsheetId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
