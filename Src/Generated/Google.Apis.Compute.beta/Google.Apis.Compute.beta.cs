@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20160926 (634)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -3688,6 +3688,10 @@ namespace Google.Apis.Compute.beta
             public virtual string Disk { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Snapshot Body { get; set; }
 
@@ -3743,6 +3747,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "guestFlush", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "guestFlush",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32708,8 +32721,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
         public virtual string SourceSnapshotId { get; set; } 
 
-        /// <summary>[Output Only] The status of disk creation. Applicable statuses includes: CREATING, FAILED, READY,
-        /// RESTORING.</summary>
+        /// <summary>[Output Only] The status of disk creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -33985,8 +33997,8 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>URL of the The source disk used to create this image. This can be a full or valid partial URL. You
         /// must provide either this property or the rawDisk.source property but not both to create an image. For
         /// example, the following are valid values: -
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk -
-        /// projects/project/zones/zone/disk/disk - zones/zone/disks/disk</summary>
+        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk -
+        /// projects/project/zones/zone/disks/disk - zones/zone/disks/disk</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; } 
 
@@ -36594,8 +36606,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP
-        /// address and IP address range (e.g. ipRange).</summary>
+        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP
+        /// address and IP address range (e.g. ipRange), or both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
         public virtual System.Collections.Generic.IList<RouterInterface> Interfaces { get; set; } 
 

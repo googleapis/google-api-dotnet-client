@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161003 (641)
+ *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -451,7 +451,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/operations/.*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/operations/.+$",
                             });
                     }
 
@@ -566,7 +566,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
@@ -651,7 +651,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/variables/.+$",
                             });
                         RequestParameters.Add(
                             "recursive", new Google.Apis.Discovery.Parameter
@@ -724,7 +724,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/variables/.+$",
                             });
                     }
 
@@ -808,7 +808,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
@@ -907,7 +907,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/variables/.+$",
                             });
                     }
 
@@ -999,7 +999,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/variables/.*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/variables/.+$",
                             });
                     }
 
@@ -1110,7 +1110,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
@@ -1183,7 +1183,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/waiters/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/waiters/[^/]+$",
                             });
                     }
 
@@ -1247,7 +1247,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*/waiters/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+/waiters/[^/]+$",
                             });
                     }
 
@@ -1323,7 +1323,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                                Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
@@ -1421,7 +1421,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "requestId", new Google.Apis.Discovery.Parameter
@@ -1494,7 +1494,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                            Pattern = @"^projects/[^/]+/configs/[^/]+$",
                         });
                 }
 
@@ -1558,7 +1558,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                            Pattern = @"^projects/[^/]+/configs/[^/]+$",
                         });
                 }
 
@@ -1630,7 +1630,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1720,7 +1720,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/configs/[^/]*$",
+                            Pattern = @"^projects/[^/]+/configs/[^/]+$",
                         });
                 }
 
@@ -1845,7 +1845,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 

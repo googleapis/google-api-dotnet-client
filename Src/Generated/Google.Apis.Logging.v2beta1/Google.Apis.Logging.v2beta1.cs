@@ -1828,7 +1828,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; } 
 
-        /// <summary>Required. One or more cloud resources from which to retrieve log entries. Example: `"projects/my-
+        /// <summary>Optional. One or more cloud resources from which to retrieve log entries. Example: `"projects/my-
         /// project-1A"`, `"projects/1234567890"`.  Projects listed in `projectIds` are added to this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 

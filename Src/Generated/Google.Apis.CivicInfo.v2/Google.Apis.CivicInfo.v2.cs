@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160823 (600)
+ *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -926,7 +926,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>The candidate's name.</summary>
+        /// <summary>The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the
+        /// top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. "Mitt Romney /
+        /// Paul Ryan"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1087,6 +1089,35 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ContextParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("clientProfile")]
+        public virtual string ClientProfile { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to look up representative information for a single division.</summary>
+    public class DivisionRepresentativeInfoRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
+        public virtual ContextParams ContextParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A search request for political geographies.</summary>
+    public class DivisionSearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
+        public virtual ContextParams ContextParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The result of a division search query.</summary>
     public class DivisionSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1172,6 +1203,15 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>The title of the election official.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ElectionsQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
+        public virtual ContextParams ContextParams { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1392,6 +1432,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A request for political geography and representative information for an address.</summary>
+    public class RepresentativeInfoRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
+        public virtual ContextParams ContextParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The result of a representative info lookup query.</summary>
     public class RepresentativeInfoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1467,6 +1517,16 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// <summary>Whether this data comes from an official government source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("official")]
         public virtual System.Nullable<bool> Official { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request for information about a voter.</summary>
+    public class VoterInfoRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
+        public virtual ContextParams ContextParams { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

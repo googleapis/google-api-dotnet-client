@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20160926 (634)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17560,6 +17560,123 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the specified access config from an instance's network interface with the data included in
+        /// the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="networkInterface">The name of the network interface where the access config is attached.</param>
+        public virtual UpdateAccessConfigRequest UpdateAccessConfig(Google.Apis.Compute.alpha.Data.AccessConfig body, string project, string zone, string instance, string networkInterface)
+        {
+            return new UpdateAccessConfigRequest(service, body, project, zone, instance, networkInterface);
+        }
+
+        /// <summary>Updates the specified access config from an instance's network interface with the data included in
+        /// the request.</summary>
+        public class UpdateAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateAccessConfig request.</summary>
+            public UpdateAccessConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.AccessConfig body, string project, string zone, string instance, string networkInterface)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                NetworkInterface = networkInterface;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The instance name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the network interface where the access config is attached.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInterface { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.AccessConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateAccessConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateAccessConfig"; }
+            }
+
+            /// <summary>Initializes UpdateAccessConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "networkInterface", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "networkInterface",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37009,8 +37126,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("iaap")]
-        public virtual BackendServiceIAAP Iaap { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("iap")]
+        public virtual BackendServiceIAP Iap { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -37134,8 +37251,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Identity Aware Application Proxy (Cloud Gatekeeper)</summary>
-    public class BackendServiceIAAP : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Identity-Aware Proxy (Cloud Gatekeeper)</summary>
+    public class BackendServiceIAP : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
@@ -37269,8 +37386,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If host is non-empty, this invalidation rule will only apply to requests with a Host header
-        /// matching host.</summary>
+        /// <summary>If set, this invalidation rule will only apply to requests with a Host header matching
+        /// host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
@@ -37582,8 +37699,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
         public virtual string SourceSnapshotId { get; set; } 
 
-        /// <summary>[Output Only] The status of disk creation. Applicable statuses includes: CREATING, FAILED, READY,
-        /// RESTORING.</summary>
+        /// <summary>[Output Only] The status of disk creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -38934,8 +39050,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>URL of the The source disk used to create this image. This can be a full or valid partial URL. You
         /// must provide either this property or the rawDisk.source property but not both to create an image. For
         /// example, the following are valid values: -
-        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk -
-        /// projects/project/zones/zone/disk/disk - zones/zone/disks/disk</summary>
+        /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk -
+        /// projects/project/zones/zone/disks/disk - zones/zone/disks/disk</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
         public virtual string SourceDisk { get; set; } 
 
@@ -39044,7 +39160,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
         /// <summary>Full or partial URL of the host resource that the instance should be placed on, in the format:
-        /// zones/zone/host/host.
+        /// zones/zone/hosts/host.
         ///
         /// Optional, Private Host (physical machine) that the instance will be placed on when it's created. The
         /// instance is guaranteed to be placed on the same machine as other instances with the same private host.
@@ -40703,6 +40819,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>[Output Only] Type of VM-to-VM traffic encryption for this network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossVmEncryption")]
+        public virtual string CrossVmEncryption { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -40721,6 +40841,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Type of the resource. Always compute#network for networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] Type of LB-to-VM traffic encryption for this network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerVmEncryption")]
+        public virtual string LoadBalancerVmEncryption { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -41949,8 +42073,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP
-        /// address and IP address range (e.g. ipRange).</summary>
+        /// <summary>Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP
+        /// address and IP address range (e.g. ipRange), or both.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interfaces")]
         public virtual System.Collections.Generic.IList<RouterInterface> Interfaces { get; set; } 
 

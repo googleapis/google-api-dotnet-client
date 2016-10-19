@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/409k1ivMBW89DswliUjNMom10uE\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/PwKyA7hIk3aPsg0-djw8MAXpYQg\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20160926",
+ "revision": "20161012",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1137,8 +1137,8 @@
       "type": "string"
      }
     },
-    "iaap": {
-     "$ref": "BackendServiceIAAP"
+    "iap": {
+     "$ref": "BackendServiceIAP"
     },
     "id": {
      "type": "string",
@@ -1288,10 +1288,10 @@
     }
    }
   },
-  "BackendServiceIAAP": {
-   "id": "BackendServiceIAAP",
+  "BackendServiceIAP": {
+   "id": "BackendServiceIAP",
    "type": "object",
-   "description": "Identity Aware Application Proxy (Cloud Gatekeeper)",
+   "description": "Identity-Aware Proxy (Cloud Gatekeeper)",
    "properties": {
     "enabled": {
      "type": "boolean"
@@ -1442,7 +1442,7 @@
    "properties": {
     "host": {
      "type": "string",
-     "description": "If host is non-empty, this invalidation rule will only apply to requests with a Host header matching host."
+     "description": "If set, this invalidation rule will only apply to requests with a Host header matching host."
     },
     "path": {
      "type": "string"
@@ -1752,7 +1752,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of disk creation. Applicable statuses includes: CREATING, FAILED, READY, RESTORING.",
+     "description": "[Output Only] The status of disk creation.",
      "enum": [
       "CREATING",
       "FAILED",
@@ -3228,7 +3228,7 @@
     },
     "sourceDisk": {
      "type": "string",
-     "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk \n- projects/project/zones/zone/disk/disk \n- zones/zone/disks/disk"
+     "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk \n- projects/project/zones/zone/disks/disk \n- zones/zone/disks/disk"
     },
     "sourceDiskEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
@@ -3326,7 +3326,7 @@
     },
     "host": {
      "type": "string",
-     "description": "Full or partial URL of the host resource that the instance should be placed on, in the format: zones/zone/host/host.\n\nOptional, Private Host (physical machine) that the instance will be placed on when it's created. The instance is guaranteed to be placed on the same machine as other instances with the same private host.\n\nThe request will be rejected if the private host has run out of resources."
+     "description": "Full or partial URL of the host resource that the instance should be placed on, in the format: zones/zone/hosts/host.\n\nOptional, Private Host (physical machine) that the instance will be placed on when it's created. The instance is guaranteed to be placed on the same machine as other instances with the same private host.\n\nThe request will be rejected if the private host has run out of resources."
     },
     "id": {
      "type": "string",
@@ -5141,6 +5141,18 @@
      "type": "string",
      "description": "[Output Only] Creation timestamp in RFC3339 text format."
     },
+    "crossVmEncryption": {
+     "type": "string",
+     "description": "[Output Only] Type of VM-to-VM traffic encryption for this network.",
+     "enum": [
+      "ENCRYPTED",
+      "UNENCRYPTED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "description": {
      "type": "string",
      "description": "An optional description of this resource. Provide this property when you create the resource."
@@ -5159,6 +5171,18 @@
      "type": "string",
      "description": "[Output Only] Type of the resource. Always compute#network for networks.",
      "default": "compute#network"
+    },
+    "loadBalancerVmEncryption": {
+     "type": "string",
+     "description": "[Output Only] Type of LB-to-VM traffic encryption for this network.",
+     "enum": [
+      "ENCRYPTED",
+      "UNENCRYPTED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "name": {
      "type": "string",
@@ -6593,7 +6617,7 @@
     },
     "interfaces": {
      "type": "array",
-     "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).",
+     "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or both.",
      "items": {
       "$ref": "RouterInterface"
      }
@@ -16256,6 +16280,57 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "updateAccessConfig": {
+     "id": "compute.instances.updateAccessConfig",
+     "path": "{project}/zones/{zone}/instances/{instance}/updateAccessConfig",
+     "httpMethod": "POST",
+     "description": "Updates the specified access config from an instance's network interface with the data included in the request.",
+     "parameters": {
+      "instance": {
+       "type": "string",
+       "description": "The instance name for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "networkInterface": {
+       "type": "string",
+       "description": "The name of the network interface where the access config is attached.",
+       "required": true,
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instance",
+      "networkInterface"
+     ],
+     "request": {
+      "$ref": "AccessConfig"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     }
    }

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qh6QRGbfhMh_EuXdHZt_Dv0eIl4\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/UoA5Y2itYH4P-phwFaWm42teSZA\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20160926",
+ "revision": "20161012",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1135,7 +1135,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] The status of disk creation. Applicable statuses includes: CREATING, FAILED, READY, RESTORING.",
+     "description": "[Output Only] The status of disk creation.",
      "enum": [
       "CREATING",
       "FAILED",
@@ -2434,7 +2434,7 @@
     },
     "sourceDisk": {
      "type": "string",
-     "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disk/disk \n- projects/project/zones/zone/disk/disk \n- zones/zone/disks/disk"
+     "description": "URL of the The source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  \n- https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk \n- projects/project/zones/zone/disks/disk \n- zones/zone/disks/disk"
     },
     "sourceDiskEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
@@ -5069,7 +5069,7 @@
     },
     "interfaces": {
      "type": "array",
-     "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel) or IP address and IP address range (e.g. ipRange).",
+     "description": "Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel), or IP address and IP address range (e.g. ipRange), or both.",
      "items": {
       "$ref": "RouterInterface"
      }

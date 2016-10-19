@@ -1216,7 +1216,7 @@
           }
         },
         "resourceNames": {
-          "description": "Required. One or more cloud resources from which to retrieve log entries.\nExample: `\"projects/my-project-1A\"`, `\"projects/1234567890\"`.  Projects\nlisted in `projectIds` are added to this list.",
+          "description": "Optional. One or more cloud resources from which to retrieve log entries.\nExample: `\"projects/my-project-1A\"`, `\"projects/1234567890\"`.  Projects\nlisted in `projectIds` are added to this list.",
           "type": "array",
           "items": {
             "type": "string"
