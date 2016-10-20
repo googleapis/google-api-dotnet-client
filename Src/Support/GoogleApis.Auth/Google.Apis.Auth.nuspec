@@ -15,11 +15,11 @@
 
         Supported Platforms:
 
-        - .NET Framework 4.5
+        - .NET Framework 4.5 and 4.6
 
         - NetStandard1.3
 
-        - Windows Store apps
+        - Windows 8 Apps
 
         - Windows Phone 8 and 8.1
 
