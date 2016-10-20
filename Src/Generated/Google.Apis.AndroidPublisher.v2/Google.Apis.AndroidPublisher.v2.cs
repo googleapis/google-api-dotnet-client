@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161004 (642)
+ *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -281,6 +281,7 @@ namespace Google.Apis.AndroidPublisher.v2
             this.service = service;
             apklistings = new ApklistingsResource(service);
             apks = new ApksResource(service);
+            deobfuscationfiles = new DeobfuscationfilesResource(service);
             details = new DetailsResource(service);
             expansionfiles = new ExpansionfilesResource(service);
             images = new ImagesResource(service);
@@ -1307,6 +1308,251 @@ namespace Google.Apis.AndroidPublisher.v2
                 {
                     PackageName = packageName;
                     EditId = editId;
+                }
+            }
+        }
+        private readonly DeobfuscationfilesResource deobfuscationfiles;
+
+        /// <summary>Gets the Deobfuscationfiles resource.</summary>
+        public virtual DeobfuscationfilesResource Deobfuscationfiles
+        {
+            get { return deobfuscationfiles; }
+        }
+
+        /// <summary>The "deobfuscationfiles" collection of methods.</summary>
+        public class DeobfuscationfilesResource
+        {
+            private const string Resource = "deobfuscationfiles";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeobfuscationfilesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
+            /// will be replaced.</summary>
+            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscatiuon files are being
+            /// uploaded; for example, "com.spiffygame".</param>
+            /// <param name="editId">Unique identifier for this
+            /// edit.</param>
+            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being
+            /// uploaded.</param>
+            /// <param name="deobfuscationFileType"></param>
+            public virtual UploadRequest Upload(string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
+            {
+                return new UploadRequest(service, packageName, editId, apkVersionCode, deobfuscationFileType);
+            }
+
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
+            /// will be replaced.</summary>
+            public class UploadRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.DeobfuscationFilesUploadResponse>
+            {
+                /// <summary>Constructs a new Upload request.</summary>
+                public UploadRequest(Google.Apis.Services.IClientService service, string packageName, string editId, int apkVersionCode, UploadRequest.DeobfuscationFileTypeEnum deobfuscationFileType)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    EditId = editId;
+                    ApkVersionCode = apkVersionCode;
+                    DeobfuscationFileType = deobfuscationFileType;
+                    InitParameters();
+                }
+
+
+                /// <summary>Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded;
+                /// for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Unique identifier for this edit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string EditId { get; private set; }
+
+                /// <summary>The version code of the APK whose deobfuscation file is being uploaded.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int ApkVersionCode { get; private set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("deobfuscationFileType", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual DeobfuscationFileTypeEnum DeobfuscationFileType { get; private set; }
+
+
+                public enum DeobfuscationFileTypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("proguard")]
+                    Proguard,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "upload"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}"; }
+                }
+
+                /// <summary>Initializes Upload parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "editId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "editId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "apkVersionCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "apkVersionCode",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "deobfuscationFileType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deobfuscationFileType",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it
+            /// will be replaced.</summary>
+
+            /// <param name="packageName">Unique identifier of the Android app for which the deobfuscatiuon files are being
+            /// uploaded; for example, "com.spiffygame".</param>
+            /// <param name="editId">Unique identifier for this
+            /// edit.</param>
+            /// <param name="apkVersionCode">The version code of the APK whose deobfuscation file is being
+            /// uploaded.</param>
+            /// <param name="deobfuscationFileType"></param>
+            /// <param name="stream">The stream to upload.</param>
+            /// <param name="contentType">The content type of the stream to upload.</param>
+            public virtual UploadMediaUpload Upload(string packageName, string editId, int apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum deobfuscationFileType, System.IO.Stream stream, string contentType)
+            {
+                return new UploadMediaUpload(service, packageName, editId, apkVersionCode, deobfuscationFileType, stream, contentType);
+            }
+
+            /// <summary>Upload media upload which supports resumable upload.</summary>
+            public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.AndroidPublisher.v2.Data.DeobfuscationFilesUploadResponse>
+            {
+
+                /// <summary>Data format for the response.</summary>
+                /// [default: json]
+                [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+                /// <summary>Data format for the response.</summary>
+                public enum AltEnum
+                {
+                    /// <summary>Responses with Content-Type of application/json</summary>
+                    [Google.Apis.Util.StringValueAttribute("json")]
+                    Json,
+                }
+
+                /// <summary>Selector specifying which fields to include in a partial response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Fields { get; set; }
+
+                /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
+                /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Key { get; set; }
+
+                /// <summary>OAuth 2.0 token for the current user.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OauthToken { get; set; }
+
+                /// <summary>Returns response with indentations and line breaks.</summary>
+                /// [default: true]
+                [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+                /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary
+                /// string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are
+                /// provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string QuotaUser { get; set; }
+
+                /// <summary>IP address of the site where the request originates. Use this if you want to enforce per-
+                /// user limits.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UserIp { get; set; }
+
+
+                /// <summary>Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded;
+                /// for example, "com.spiffygame".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>Unique identifier for this edit.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string EditId { get; private set; }
+
+                /// <summary>The version code of the APK whose deobfuscation file is being uploaded.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("apkVersionCode", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int ApkVersionCode { get; private set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("deobfuscationFileType", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual DeobfuscationFileTypeEnum DeobfuscationFileType { get; private set; }
+
+
+                public enum DeobfuscationFileTypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("proguard")]
+                    Proguard,
+                }
+
+                /// <summary>Constructs a new Upload media upload instance.</summary>
+                public UploadMediaUpload(Google.Apis.Services.IClientService service, string
+                 packageName, string
+                 editId, int
+                 apkVersionCode, UploadMediaUpload.DeobfuscationFileTypeEnum
+                 deobfuscationFileType, System.IO.Stream stream, string contentType)
+                    : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}"), "POST", stream, contentType)
+                {
+                    PackageName = packageName;
+                    EditId = editId;
+                    ApkVersionCode = apkVersionCode;
+                    DeobfuscationFileType = deobfuscationFileType;
                 }
             }
         }
@@ -6473,6 +6719,26 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>A comment from a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
         public virtual UserComment UserComment { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a deobfuscation file.</summary>
+    public class DeobfuscationFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the deobfuscation file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symbolType")]
+        public virtual string SymbolType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeobfuscationFilesUploadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deobfuscationFile")]
+        public virtual DeobfuscationFile DeobfuscationFile { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

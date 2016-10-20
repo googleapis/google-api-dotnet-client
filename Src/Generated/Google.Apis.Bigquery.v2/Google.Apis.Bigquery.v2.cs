@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161016 (654)
+ *      <tr><th>API Rev<td>20161006 (644)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3071,14 +3071,6 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extract")]
         public virtual JobConfigurationExtract Extract { get; set; } 
 
-        /// <summary>[Experimental] The labels associated with this job. You can use these to organize and group your
-        /// jobs. Label keys and values can be no longer than 63 characters, can only contain letters, numeric
-        /// characters, underscores and dashes. International characters are allowed. Label values are optional. Label
-        /// keys must start with a letter and must be unique within a dataset. Both keys and values are additionally
-        /// constrained to be <= 128 bytes in size.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
         /// <summary>[Pick one] Configures a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
         public virtual JobConfigurationLoad Load { get; set; } 
@@ -3314,11 +3306,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
-        /// <summary>Query parameters for standard SQL queries.</summary>
+        /// <summary>[Experimental] Query parameters for Standard SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
-        /// <summary>[Experimental] Allows the schema of the destination table to be updated as a side effect of the
+        /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
         /// query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
         /// writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by
         /// partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the

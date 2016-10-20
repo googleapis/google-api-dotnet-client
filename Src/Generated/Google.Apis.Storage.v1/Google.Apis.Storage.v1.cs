@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161005 (643)
+ *      <tr><th>API Rev<td>20161019 (657)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5338,9 +5338,11 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>The bucket's storage class. This defines how objects in the bucket are stored and determines the
-        /// SLA and the cost of storage. Values include STANDARD, NEARLINE and DURABLE_REDUCED_AVAILABILITY. Defaults to
-        /// STANDARD. For more information, see storage classes.</summary>
+        /// <summary>The bucket's default storage class, used whenever no storageClass is specified for a newly-created
+        /// object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage.
+        /// Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If
+        /// this value is not specified when the bucket is created, it will default to STANDARD. For more information,
+        /// see storage classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; } 
 
@@ -5440,7 +5442,11 @@ namespace Google.Apis.Storage.v1.Data
                 /// <summary>The action to take.</summary>
                 public class ActionData
                 {
-                    /// <summary>Type of the action. Currently, only Delete is supported.</summary>
+                    /// <summary>Target storage class. Required iff the type of the action is SetStorageClass.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
+                    public virtual string StorageClass { get; set; } 
+
+                    /// <summary>Type of the action. Currently, only Delete and SetStorageClass are supported.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("type")]
                     public virtual string Type { get; set; } 
 
@@ -5464,6 +5470,12 @@ namespace Google.Apis.Storage.v1.Data
                     /// objects; if the value is false, it matches archived objects.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("isLive")]
                     public virtual System.Nullable<bool> IsLive { get; set; } 
+
+                    /// <summary>Objects having any of the storage classes specified by this condition will be matched.
+                    /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and
+                    /// DURABLE_REDUCED_AVAILABILITY.</summary>
+                    [Newtonsoft.Json.JsonPropertyAttribute("matchesStorageClass")]
+                    public virtual System.Collections.Generic.IList<string> MatchesStorageClass { get; set; } 
 
                     /// <summary>Relevant only for versioned objects. If the value is N, this condition is satisfied
                     /// when there are at least N versions (including the live version) newer than this version of the

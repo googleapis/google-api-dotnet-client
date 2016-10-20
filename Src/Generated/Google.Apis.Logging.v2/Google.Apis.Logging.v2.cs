@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Stackdriver Logging API Version v2beta1
+ *   Stackdriver Logging API Version v2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
- *      <tr><th>API Version<td>v2beta1
+ *      <tr><th>API Version<td>v2
  *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Logging.v2beta1
+namespace Google.Apis.Logging.v2
 {
     /// <summary>The Logging Service.</summary>
     public class LoggingService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v2beta1";
+        public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -425,7 +425,7 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
             /// entries.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
@@ -457,7 +457,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+logName}"; }
+                    get { return "v2/{+logName}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -499,17 +499,17 @@ namespace Google.Apis.Logging.v2beta1
         /// <summary>Lists log entries.  Use this method to retrieve log entries from Cloud Logging.  For ways to export
         /// log entries, see [Exporting Logs](/logging/docs/export).</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual ListRequest List(Google.Apis.Logging.v2beta1.Data.ListLogEntriesRequest body)
+        public virtual ListRequest List(Google.Apis.Logging.v2.Data.ListLogEntriesRequest body)
         {
             return new ListRequest(service, body);
         }
 
         /// <summary>Lists log entries.  Use this method to retrieve log entries from Cloud Logging.  For ways to export
         /// log entries, see [Exporting Logs](/logging/docs/export).</summary>
-        public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogEntriesResponse>
+        public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogEntriesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.ListLogEntriesRequest body)
+            public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.ListLogEntriesRequest body)
                 : base(service)
             {
                 Body = body;
@@ -519,7 +519,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Logging.v2beta1.Data.ListLogEntriesRequest Body { get; set; }
+            Google.Apis.Logging.v2.Data.ListLogEntriesRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -539,7 +539,7 @@ namespace Google.Apis.Logging.v2beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v2beta1/entries:list"; }
+                get { return "v2/entries:list"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -553,16 +553,16 @@ namespace Google.Apis.Logging.v2beta1
 
         /// <summary>Writes log entries to Stackdriver Logging.  All log entries are written by this method.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual WriteRequest Write(Google.Apis.Logging.v2beta1.Data.WriteLogEntriesRequest body)
+        public virtual WriteRequest Write(Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
         {
             return new WriteRequest(service, body);
         }
 
         /// <summary>Writes log entries to Stackdriver Logging.  All log entries are written by this method.</summary>
-        public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.WriteLogEntriesResponse>
+        public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.WriteLogEntriesResponse>
         {
             /// <summary>Constructs a new Write request.</summary>
-            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.WriteLogEntriesRequest body)
+            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
                 : base(service)
             {
                 Body = body;
@@ -572,7 +572,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Logging.v2beta1.Data.WriteLogEntriesRequest Body { get; set; }
+            Google.Apis.Logging.v2.Data.WriteLogEntriesRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -592,7 +592,7 @@ namespace Google.Apis.Logging.v2beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v2beta1/entries:write"; }
+                get { return "v2/entries:write"; }
             }
 
             /// <summary>Initializes Write parameter list.</summary>
@@ -628,7 +628,7 @@ namespace Google.Apis.Logging.v2beta1
         }
 
         /// <summary>Lists the monitored resource descriptors used by Stackdriver Logging.</summary>
-        public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListMonitoredResourceDescriptorsResponse>
+        public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListMonitoredResourceDescriptorsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -666,7 +666,7 @@ namespace Google.Apis.Logging.v2beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v2beta1/monitoredResourceDescriptors"; }
+                get { return "v2/monitoredResourceDescriptors"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -710,6 +710,7 @@ namespace Google.Apis.Logging.v2beta1
         {
             this.service = service;
             logs = new LogsResource(service);
+            sinks = new SinksResource(service);
 
         }
 
@@ -748,7 +749,7 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
             /// entries.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
@@ -780,7 +781,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+logName}"; }
+                    get { return "v2/{+logName}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -796,6 +797,390 @@ namespace Google.Apis.Logging.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/logs/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly SinksResource sinks;
+
+        /// <summary>Gets the Sinks resource.</summary>
+        public virtual SinksResource Sinks
+        {
+            get { return sinks; }
+        }
+
+        /// <summary>The "sinks" collection of methods.</summary>
+        public class SinksResource
+        {
+            private const string Resource = "sinks";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SinksResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a sink.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The resource in which to create the sink. Example: `"projects/my-project-id"`. The
+            /// new sink must be provided in the request.</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a sink.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource in which to create the sink. Example: `"projects/my-project-id"`.
+                /// The new sink must be provided in the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/sinks"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a sink.</summary>
+            /// <param name="sinkName">Required. The resource name of the sink to delete, including the parent resource and the sink
+            /// identifier.  Example: `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if the sink does not
+            /// exist.</param>
+            public virtual DeleteRequest Delete(string sinkName)
+            {
+                return new DeleteRequest(service, sinkName);
+            }
+
+            /// <summary>Deletes a sink.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the sink to delete, including the parent resource and the
+                /// sink identifier.  Example: `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if the sink
+                /// does not exist.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a sink.</summary>
+            /// <param name="sinkName">Required. The resource name of the sink to return. Example: `"projects/my-project-id/sinks
+            /// /my-sink-id"`.</param>
+            public virtual GetRequest Get(string sinkName)
+            {
+                return new GetRequest(service, sinkName);
+            }
+
+            /// <summary>Gets a sink.</summary>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the sink to return. Example: `"projects/my-project-id/sinks
+                /// /my-sink-id"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists sinks.</summary>
+            /// <param name="parent">Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+            /// project"`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists sinks.</summary>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+                /// project"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored.  The presence of `nextPageToken` in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method.  `pageToken` must be the value of `nextPageToken` from the previous response.  The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/sinks"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates or creates a sink.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="sinkName">Required. The resource name of the sink to update, including the parent resource and the sink
+            /// identifier.  If the sink does not exist, this method creates the sink.  Example: `"projects/my-project-id/sinks/my-
+            /// sink-id"`.</param>
+            public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+            {
+                return new UpdateRequest(service, body, sinkName);
+            }
+
+            /// <summary>Updates or creates a sink.</summary>
+            public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the sink to update, including the parent resource and the
+                /// sink identifier.  If the sink does not exist, this method creates the sink.  Example: `"projects/my-
+                /// project-id/sinks/my-sink-id"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
                         });
                 }
 
@@ -856,7 +1241,7 @@ namespace Google.Apis.Logging.v2beta1
 
             /// <summary>Deletes a log and all its log entries. The log will reappear if it receives new
             /// entries.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string logName)
@@ -888,7 +1273,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+logName}"; }
+                    get { return "v2/{+logName}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -939,16 +1324,16 @@ namespace Google.Apis.Logging.v2beta1
             /// id"`.
             ///
             /// The new metric must be provided in the request.</param>
-            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogMetric body, string parent)
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogMetric body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Creates a logs-based metric.</summary>
-            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogMetric>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogMetric body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -966,7 +1351,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Logging.v2beta1.Data.LogMetric Body { get; set; }
+                Google.Apis.Logging.v2.Data.LogMetric Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -986,7 +1371,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/metrics"; }
+                    get { return "v2/{+parent}/metrics"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1016,7 +1401,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Deletes a logs-based metric.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string metricName)
@@ -1048,7 +1433,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+metricName}"; }
+                    get { return "v2/{+metricName}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1078,7 +1463,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Gets a logs-based metric.</summary>
-            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogMetric>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string metricName)
@@ -1110,7 +1495,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+metricName}"; }
+                    get { return "v2/{+metricName}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1140,7 +1525,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Lists logs-based metrics.</summary>
-            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListLogMetricsResponse>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogMetricsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1184,7 +1569,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/metrics"; }
+                    get { return "v2/{+parent}/metrics"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1230,16 +1615,16 @@ namespace Google.Apis.Logging.v2beta1
             ///
             /// The updated metric must be provided in the request and have the same identifier that is specified in `metricName`.
             /// If the metric does not exist, it is created.</param>
-            public virtual UpdateRequest Update(Google.Apis.Logging.v2beta1.Data.LogMetric body, string metricName)
+            public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogMetric body, string metricName)
             {
                 return new UpdateRequest(service, body, metricName);
             }
 
             /// <summary>Creates or updates a logs-based metric.</summary>
-            public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogMetric>
+            public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogMetric>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogMetric body, string metricName)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogMetric body, string metricName)
                     : base(service)
                 {
                     MetricName = metricName;
@@ -1258,7 +1643,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Logging.v2beta1.Data.LogMetric Body { get; set; }
+                Google.Apis.Logging.v2.Data.LogMetric Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1278,7 +1663,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+metricName}"; }
+                    get { return "v2/{+metricName}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1327,16 +1712,16 @@ namespace Google.Apis.Logging.v2beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource in which to create the sink. Example: `"projects/my-project-id"`. The
             /// new sink must be provided in the request.</param>
-            public virtual CreateRequest Create(Google.Apis.Logging.v2beta1.Data.LogSink body, string parent)
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Creates a sink.</summary>
-            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogSink body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -1352,7 +1737,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Logging.v2beta1.Data.LogSink Body { get; set; }
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1372,7 +1757,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/sinks"; }
+                    get { return "v2/{+parent}/sinks"; }
                 }
 
                 /// <summary>Initializes Create parameter list.</summary>
@@ -1403,7 +1788,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Deletes a sink.</summary>
-            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.Empty>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string sinkName)
@@ -1436,7 +1821,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+sinkName}"; }
+                    get { return "v2/{+sinkName}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -1466,7 +1851,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Gets a sink.</summary>
-            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string sinkName)
@@ -1498,7 +1883,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+sinkName}"; }
+                    get { return "v2/{+sinkName}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -1528,7 +1913,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Lists sinks.</summary>
-            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.ListSinksResponse>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListSinksResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1572,7 +1957,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/sinks"; }
+                    get { return "v2/{+parent}/sinks"; }
                 }
 
                 /// <summary>Initializes List parameter list.</summary>
@@ -1616,16 +2001,16 @@ namespace Google.Apis.Logging.v2beta1
             /// <param name="sinkName">Required. The resource name of the sink to update, including the parent resource and the sink
             /// identifier.  If the sink does not exist, this method creates the sink.  Example: `"projects/my-project-id/sinks/my-
             /// sink-id"`.</param>
-            public virtual UpdateRequest Update(Google.Apis.Logging.v2beta1.Data.LogSink body, string sinkName)
+            public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
             }
 
             /// <summary>Updates or creates a sink.</summary>
-            public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
+            public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2beta1.Data.LogSink body, string sinkName)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
                     : base(service)
                 {
                     SinkName = sinkName;
@@ -1642,7 +2027,7 @@ namespace Google.Apis.Logging.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Logging.v2beta1.Data.LogSink Body { get; set; }
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1662,7 +2047,7 @@ namespace Google.Apis.Logging.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+sinkName}"; }
+                    get { return "v2/{+sinkName}"; }
                 }
 
                 /// <summary>Initializes Update parameter list.</summary>
@@ -1686,7 +2071,7 @@ namespace Google.Apis.Logging.v2beta1
     }
 }
 
-namespace Google.Apis.Logging.v2beta1.Data
+namespace Google.Apis.Logging.v2.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
