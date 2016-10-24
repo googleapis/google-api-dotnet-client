@@ -17,6 +17,10 @@
   -->
 
   <PropertyGroup>
+    <!-- Absolute directory of tools src -->
+    <ToolsDir>$(MSBuildThisFileDirectory)Src\Tools\</ToolsDir>
+    <!-- Absolute directory of the JSON discovery documents -->
+    <DiscoveryDocumentsDir>$(MSBuildThisFileDirectory)DiscoveryJson\</DiscoveryDocumentsDir>
     <!-- Absolute directory of the location to put generated code -->
     <GeneratedCodeDir>$(MSBuildThisFileDirectory)Src\Generated\</GeneratedCodeDir>
     <!-- Absolute directory of the packages repository -->
@@ -28,22 +32,32 @@
   </PropertyGroup>
 
   <!-- Download discovery documents used as input to code generation. -->
-  <Target Name="DownloadDiscoveryDocuments" Condition="!Exists('DiscoveryJson')">
+  <Target Name="DownloadDiscoveryDocuments" Condition="!Exists('$(DiscoveryDocumentsDir)')">
     <!-- Make DiscoveryJson directory -->
-    <MakeDir Directories="DiscoveryJson" />
+    <MakeDir Directories="$(DiscoveryDocumentsDir)" />
     <!-- Run python script to download all discovery docs, starting from https://www.googleapis.com/discovery/v1/apis -->
     <!-- 'python -u' turns off buffering so status is printed line-by-line. -->
-    <Exec Command="python -u get_discovery_documents.py --destination_dir .\DiscoveryJson" />
+    <Exec Command="python -u get_discovery_documents.py --destination_dir $(DiscoveryDocumentsDir)" />
+  </Target>
+
+  <!-- Patch discovery docs that require changes before generation. This process is idempotent. -->
+  <Target Name="PatchDiscoveryDocuments" DependsOnTargets="DownloadDiscoveryDocuments">
+    <!-- Build the patcher executable -->
+    <MSBuild
+        Projects="$(ToolsDir)DiscoveryDocPatcher\DiscoveryDocPatcher.csproj"
+        Properties="Configuration=Debug" />
+    <!-- Execute patcher against the downloaded discovery docs -->
+    <Exec Command="$(ToolsDir)DiscoveryDocPatcher\bin\Debug\DiscoveryDocPatcher.exe $(DiscoveryDocumentsDir)" />
   </Target>
 
   <!-- Generate library projects from discovery documents. -->
-  <Target Name="Generate" DependsOnTargets="DownloadDiscoveryDocuments" Condition="!Exists('$(GeneratedCodeDir)')">
+  <Target Name="Generate" DependsOnTargets="PatchDiscoveryDocuments" Condition="!Exists('$(GeneratedCodeDir)')">
     <PropertyGroup>
       <_GenerateLibraryTool>ClientGenerator\generate_library.cmd</_GenerateLibraryTool>
     </PropertyGroup>
 
     <ItemGroup>
-      <_DiscoveryDocument Include="DiscoveryJson\*.json" />
+      <_DiscoveryDocument Include="$(DiscoveryDocumentsDir)\*.json" />
     </ItemGroup>
 
     <MakeDir Directories="$(GeneratedCodeDir)" />
@@ -72,9 +86,6 @@
     <!-- Generated libraries that don't compile -->
     <!-- In target as these files may not exist until after Generate target has executed -->
     <ItemGroup>
-      <!-- Last released May 2015 (1.9.0.1030) -->
-      <BrokenProjects Include="$(GeneratedCodeDir)Google.Apis.Games.v1\**" />
-
       <!-- Last released April 2014 (1.8.1.1750) -->
       <BrokenProjects Include="$(GeneratedCodeDir)Google.Apis.IdentityToolkit.v3\**" />
 
@@ -125,7 +136,7 @@
 
   <!-- Remove all downloaded and generated artifacts. -->
   <Target Name="Reset">
-    <RemoveDir Directories="DiscoveryJson;$(GeneratedCodeDir);$(NuPkgsDir)" />
+    <RemoveDir Directories="$(DiscoveryDocumentsDir);$(GeneratedCodeDir);$(NuPkgsDir)" />
   </Target>
   <!-- Alias Clean to Reset -->
   <Target Name="Clean" DependsOnTargets="Reset" />
