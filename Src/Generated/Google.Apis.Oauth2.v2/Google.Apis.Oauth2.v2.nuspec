@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Oauth2.v2</id>
-        <version>1.17.0.623</version>
+        <version>1.18.0.623</version>
         <title>Google.Apis.Oauth2.v2 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
@@ -12,13 +12,14 @@
         <summary>Google Oauth2 v2 API client library</summary>
         <description>
           Google APIs Client Library for working with Oauth2 v2.
+
           Supported Platforms:
 
-          - .NET Framework 4 and 4.5+
+          - .NET Framework 4.5 and 4.6
 
           - NetStandard1.3
 
-          - Windows Store apps
+          - Windows 8 Apps
 
           - Windows Phone 8 and 8.1
 
@@ -33,12 +34,12 @@
         <tags>Google</tags>
         <dependencies>
             <group targetFramework="netstandard1.3">
-                <dependency id="Google.Apis" version="1.17.0" />
-                <dependency id="Google.Apis.Auth" version="1.17.0" />
+                <dependency id="Google.Apis" version="1.18.0" />
+                <dependency id="Google.Apis.Auth" version="1.18.0" />
             </group>
             <group targetFramework="net45">
-                <dependency id="Google.Apis" version="1.17.0" />
-                <dependency id="Google.Apis.Auth" version="1.17.0" />
+                <dependency id="Google.Apis" version="1.18.0" />
+                <dependency id="Google.Apis.Auth" version="1.18.0" />
             </group>
             <!--
               After v1.10.0 of Google.Apis, we
@@ -47,8 +48,8 @@
               version of Google.Apis.
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
-                <dependency id="Google.Apis" version="1.17.0" />
-                <dependency id="Google.Apis.Auth" version="1.17.0" />
+                <dependency id="Google.Apis" version="1.18.0" />
+                <dependency id="Google.Apis.Auth" version="1.18.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->

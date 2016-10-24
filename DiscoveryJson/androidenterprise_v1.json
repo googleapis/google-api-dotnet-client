@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/F0hyrz-8KleQbDmoIwAoxTX0SoE\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/ImoOGRgUBMOQZK7GDcx9027AnRg\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20161011",
+ "revision": "20161019",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -120,7 +120,7 @@
     },
     "permission": {
      "type": "array",
-     "description": "The list of permissions the admin is granted within the iframe. The admin will only be allowed to view an iframe if they have all of the permissions associated with it.",
+     "description": "The list of permissions the admin is granted within the iframe. The admin will only be allowed to view an iframe if they have all of the permissions associated with it. The only valid value is \"approveApps\" that will allow the admin to access the iframe in \"approve\" mode.",
      "items": {
       "type": "string"
      }
