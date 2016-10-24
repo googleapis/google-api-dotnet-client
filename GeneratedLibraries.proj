@@ -43,6 +43,7 @@
   <!-- Patch discovery docs that require changes before generation. This process is idempotent. -->
   <Target Name="PatchDiscoveryDocuments" DependsOnTargets="DownloadDiscoveryDocuments">
     <!-- Build the patcher executable -->
+	<Exec Command="nuget restore $(ToolsDir)DiscoveryDocPatcher\DiscoveryDocPatcher.sln -ConfigFile $(NuGetConfig)" />
     <MSBuild
         Projects="$(ToolsDir)DiscoveryDocPatcher\DiscoveryDocPatcher.csproj"
         Properties="Configuration=Debug" />
