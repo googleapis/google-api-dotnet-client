@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160915 (623)
+ *      <tr><th>API Rev<td>20161013 (651)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -748,6 +748,18 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
             /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -802,6 +814,15 @@ namespace Google.Apis.DeploymentManager.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1543,6 +1564,18 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
             /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1606,6 +1639,15 @@ namespace Google.Apis.DeploymentManager.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1768,6 +1810,18 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
             /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1822,6 +1876,15 @@ namespace Google.Apis.DeploymentManager.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2007,6 +2070,18 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
             /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2070,6 +2145,15 @@ namespace Google.Apis.DeploymentManager.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2156,6 +2240,18 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
             /// request to get the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2210,6 +2306,15 @@ namespace Google.Apis.DeploymentManager.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2669,8 +2774,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies. If creating a persistent disk
-        /// snapshot, this points to the persistent disk that the snapshot was created from.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies. For operations related to
+        /// creating a snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 

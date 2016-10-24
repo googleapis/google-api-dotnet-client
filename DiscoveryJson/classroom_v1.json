@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/4QW3tAkbY9EFhV35HbXdTqQTSYY\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/mk_oLjlaBwJ1BcBJ5yykCFb6u3w\"",
  "discoveryVersion": "v1",
  "id": "classroom:v1",
  "name": "classroom",
@@ -16,9 +16,9 @@
  },
  "documentationLink": "https://developers.google.com/classroom/",
  "protocol": "rest",
- "baseUrl": "https://prod-day0-classroom.sandbox.googleapis.com/",
+ "baseUrl": "https://classroom.googleapis.com/",
  "basePath": "",
- "rootUrl": "https://prod-day0-classroom.sandbox.googleapis.com/",
+ "rootUrl": "https://classroom.googleapis.com/",
  "servicePath": "",
  "batchPath": "batch",
  "parameters": {

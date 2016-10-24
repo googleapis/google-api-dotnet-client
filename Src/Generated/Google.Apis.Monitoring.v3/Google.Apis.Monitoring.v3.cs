@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161013 (651)
+ *      <tr><th>API Rev<td>20161020 (658)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -446,7 +446,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -582,7 +582,7 @@ namespace Google.Apis.Monitoring.v3
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                                Pattern = @"^projects/[^/]+/groups/[^/]+$",
                             });
                         RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
@@ -702,7 +702,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "validateOnly", new Google.Apis.Discovery.Parameter
@@ -773,7 +773,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
                         });
                 }
 
@@ -835,7 +835,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
                         });
                 }
 
@@ -926,7 +926,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "descendantsOfGroup", new Google.Apis.Discovery.Parameter
@@ -1049,7 +1049,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
                         });
                     RequestParameters.Add(
                         "validateOnly", new Google.Apis.Discovery.Parameter
@@ -1154,7 +1154,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -1220,7 +1220,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/metricDescriptors/.*$",
+                            Pattern = @"^projects/[^/]+/metricDescriptors/.+$",
                         });
                 }
 
@@ -1284,7 +1284,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/metricDescriptors/.*$",
+                            Pattern = @"^projects/[^/]+/metricDescriptors/.+$",
                         });
                 }
 
@@ -1365,7 +1365,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1482,7 +1482,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/monitoredResourceDescriptors/[^/]*$",
+                            Pattern = @"^projects/[^/]+/monitoredResourceDescriptors/[^/]+$",
                         });
                 }
 
@@ -1563,7 +1563,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1688,7 +1688,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -1914,7 +1914,7 @@ namespace Google.Apis.Monitoring.v3
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter

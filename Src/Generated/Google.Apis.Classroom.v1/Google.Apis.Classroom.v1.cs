@@ -84,7 +84,7 @@ namespace Google.Apis.Classroom.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://prod-day0-classroom.sandbox.googleapis.com/"; }
+            get { return "https://classroom.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>

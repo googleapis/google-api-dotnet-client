@@ -586,7 +586,7 @@
       "type": "object",
       "properties": {
         "polarity": {
-          "description": "Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers\nrepresent more positive sentiments.",
+          "description": "Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers\nrepresent more positive sentiments.  This field is being deprecated in\nfavor of score. Please refer to our documentation at\nhttps://cloud.google.com/natural-language/docs for more information.",
           "type": "number",
           "format": "float"
         },
@@ -640,7 +640,7 @@
       "id": "AnalyzeEntitiesResponse"
     }
   },
-  "revision": "20161006",
+  "revision": "20161020",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
