@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160930 (638)
+ *      <tr><th>API Rev<td>20161012 (650)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -469,7 +469,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "timeRange.period", new Google.Apis.Discovery.Parameter
@@ -605,7 +605,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -787,7 +787,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "alignment", new Google.Apis.Discovery.Parameter
@@ -969,7 +969,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
                         });
                 }
 
@@ -1037,7 +1037,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/groups/[^/]*$",
+                            Pattern = @"^projects/[^/]+/groups/[^/]+$",
                         });
                 }
 
@@ -1102,7 +1102,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]*$",
+                        Pattern = @"^projects/[^/]+$",
                     });
             }
 
@@ -1295,6 +1295,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
+        /// <summary>The timestamp specifies the start time to which the request was restricted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
+        public virtual object TimeRangeBegin { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1310,6 +1314,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// the first request, to view the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The timestamp specifies the start time to which the request was restricted. The start time is set
+        /// based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage
+        /// quota and older data has been deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
+        public virtual object TimeRangeBegin { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160928 (636)
+ *      <tr><th>API Rev<td>20161020 (658)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -7082,6 +7082,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; } 
 
+        /// <summary>Store pickup information. Only supported for local inventory. Not setting pickup means "don't
+        /// update" while setting it to the empty value ({} in JSON) means "delete". Otherwise, pickupMethod and
+        /// pickupSla must be set together, unless pickupMethod is "not supported".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickup")]
+        public virtual InventoryPickup Pickup { get; set; } 
+
         /// <summary>The price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
@@ -7182,6 +7188,23 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class InventoryPickup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether store pickup is available for this offer and whether the pickup option should be shown as
+        /// buy, reserve, or not supported. Only supported for local inventory. Unless the value is "not supported",
+        /// must be submitted together with pickupSla.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
+        public virtual string PickupMethod { get; set; } 
+
+        /// <summary>The expected date that an order will be ready for pickup, relative to when the order is placed.
+        /// Only supported for local inventory. Must be submitted together with pickupMethod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
+        public virtual string PickupSla { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class InventorySetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The availability of the product.</summary>
@@ -7195,6 +7218,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; } 
+
+        /// <summary>Store pickup information. Only supported for local inventory. Not setting pickup means "don't
+        /// update" while setting it to the empty value ({} in JSON) means "delete". Otherwise, pickupMethod and
+        /// pickupSla must be set together, unless pickupMethod is "not supported".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickup")]
+        public virtual InventoryPickup Pickup { get; set; } 
 
         /// <summary>The price of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]

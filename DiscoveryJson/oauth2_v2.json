@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/4l2SkCqmzrRGM5DfxTRm94fi0rM\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/a2tnbfTKR_kl45mVv5e8J36a4ME\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v2",
  "name": "oauth2",
  "version": "v2",
- "revision": "20160915",
+ "revision": "20161020",
  "title": "Google OAuth2 API",
  "description": "Obtains end-user authorization grants for use with other Google APIs.",
  "ownerDomain": "google.com",

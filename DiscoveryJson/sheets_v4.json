@@ -1122,6 +1122,10 @@
           "description": "A reply from deleting a conditional format rule.",
           "$ref": "DeleteConditionalFormatRuleResponse"
         },
+        "addBanding": {
+          "description": "A reply from adding a banded range.",
+          "$ref": "AddBandingResponse"
+        },
         "duplicateSheet": {
           "description": "A reply from duplicating a sheet.",
           "$ref": "DuplicateSheetResponse"
@@ -1208,6 +1212,17 @@
         }
       },
       "id": "SortRangeRequest"
+    },
+    "AddBandingResponse": {
+      "description": "The result of adding a banded range.",
+      "type": "object",
+      "properties": {
+        "bandedRange": {
+          "description": "The banded range that was added.",
+          "$ref": "BandedRange"
+        }
+      },
+      "id": "AddBandingResponse"
     },
     "TextFormatRun": {
       "description": "A run of a text format. The format of this run continues until the start\nindex of the next run.\nWhen updating, all fields must be set.",
@@ -2581,6 +2596,18 @@
       },
       "id": "PivotValue"
     },
+    "DeleteBandingRequest": {
+      "description": "Removes the banded range with the given ID from the spreadsheet.",
+      "type": "object",
+      "properties": {
+        "bandedRangeId": {
+          "description": "The ID of the banded range to delete.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "id": "DeleteBandingRequest"
+    },
     "BasicFilter": {
       "description": "The default filter associated with a sheet.",
       "type": "object",
@@ -2715,6 +2742,17 @@
         }
       },
       "id": "AddChartResponse"
+    },
+    "AddBandingRequest": {
+      "description": "Adds a new banded range to the spreadsheet.",
+      "type": "object",
+      "properties": {
+        "bandedRange": {
+          "description": "The banded range to add. The bandedRangeId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of a range that already exists.)",
+          "$ref": "BandedRange"
+        }
+      },
+      "id": "AddBandingRequest"
     },
     "AppendCellsRequest": {
       "description": "Adds new cells after the last row with data in a sheet,\ninserting new rows into the sheet if necessary.",
@@ -2917,17 +2955,6 @@
       },
       "id": "NamedRange"
     },
-    "SetBasicFilterRequest": {
-      "description": "Sets the basic filter associated with a sheet.",
-      "type": "object",
-      "properties": {
-        "filter": {
-          "description": "The filter to set.",
-          "$ref": "BasicFilter"
-        }
-      },
-      "id": "SetBasicFilterRequest"
-    },
     "UpdateEmbeddedObjectPositionRequest": {
       "description": "Update an embedded object's position (such as a moving or resizing a\nchart or image).",
       "type": "object",
@@ -2948,6 +2975,17 @@
         }
       },
       "id": "UpdateEmbeddedObjectPositionRequest"
+    },
+    "SetBasicFilterRequest": {
+      "description": "Sets the basic filter associated with a sheet.",
+      "type": "object",
+      "properties": {
+        "filter": {
+          "description": "The filter to set.",
+          "$ref": "BasicFilter"
+        }
+      },
+      "id": "SetBasicFilterRequest"
     },
     "AutoResizeDimensionsRequest": {
       "description": "Automatically resizes one or more dimensions based on the contents\nof the cells in that dimension.",
@@ -2970,6 +3008,29 @@
         }
       },
       "id": "DuplicateFilterViewResponse"
+    },
+    "BandingProperties": {
+      "description": "Properties referring a single dimension (either row or column). If both\nBandedRange.row_properties and BandedRange.column_properties are\nset, the fill colors are applied to cells according to the following rules:\n\n* header_color and footer_color take priority over band colors.\n* first_band_color takes priority over second_band_color.\n* row_properties takes priority over column_properties.\n\nFor example, the first row color takes priority over the first column\ncolor, but the first column color takes priority over the second row color.\nSimilarly, the row header takes priority over the column header in the\ntop left cell, but the column header takes priority over the first row\ncolor if the row header is not set.",
+      "type": "object",
+      "properties": {
+        "footerColor": {
+          "description": "The color of the last row or column. If this field is not set, the last\nrow or column will be filled with either first_row_color or\nsecond_row_color, depending on the color of the previous row or\ncolumn.",
+          "$ref": "Color"
+        },
+        "headerColor": {
+          "description": "The color of the first row or column. If this field is set, the first\nrow or column will be filled with this color and the colors will\nalternate between first_band_color and [second_band_color[] starting\nfrom the second row or column. Otherwise, the first row or column will be\nfilled with first_band_color and the colors will proceed to alternate\nas they normally would.",
+          "$ref": "Color"
+        },
+        "secondBandColor": {
+          "description": "The second color that is alternating. (Required)",
+          "$ref": "Color"
+        },
+        "firstBandColor": {
+          "description": "The first color that is alternating. (Required)",
+          "$ref": "Color"
+        }
+      },
+      "id": "BandingProperties"
     },
     "PivotGroup": {
       "description": "A single grouping (either row or column) in a pivot table.",
@@ -3056,6 +3117,22 @@
       },
       "id": "DeleteSheetRequest"
     },
+    "UpdateBandingRequest": {
+      "description": "Updates properties of the supplied banded range.",
+      "type": "object",
+      "properties": {
+        "bandedRange": {
+          "description": "The banded range to update with the new properties.",
+          "$ref": "BandedRange"
+        },
+        "fields": {
+          "description": "The fields that should be updated.  At least one field must be specified.\nThe root `bandedRange` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field.",
+          "type": "string",
+          "format": "google-fieldmask"
+        }
+      },
+      "id": "UpdateBandingRequest"
+    },
     "ChartData": {
       "description": "The data included in a domain or series.",
       "type": "object",
@@ -3119,6 +3196,13 @@
           "type": "array",
           "items": {
             "$ref": "GridData"
+          }
+        },
+        "bandedRanges": {
+          "description": "The banded (i.e. alternating colors) ranges on this sheet.",
+          "type": "array",
+          "items": {
+            "$ref": "BandedRange"
           }
         }
       },
@@ -3643,6 +3727,10 @@
           "description": "Merges cells together.",
           "$ref": "MergeCellsRequest"
         },
+        "updateBanding": {
+          "description": "Updates a banded range",
+          "$ref": "UpdateBandingRequest"
+        },
         "addChart": {
           "description": "Adds a chart.",
           "$ref": "AddChartRequest"
@@ -3650,6 +3738,14 @@
         "deleteConditionalFormatRule": {
           "description": "Deletes an existing conditional format rule.",
           "$ref": "DeleteConditionalFormatRuleRequest"
+        },
+        "addBanding": {
+          "description": "Adds a new banded range",
+          "$ref": "AddBandingRequest"
+        },
+        "deleteBanding": {
+          "description": "Removes a banded range",
+          "$ref": "DeleteBandingRequest"
         },
         "updateChartSpec": {
           "description": "Updates a chart's specifications.",
@@ -3767,6 +3863,30 @@
       },
       "id": "DeleteEmbeddedObjectRequest"
     },
+    "BandedRange": {
+      "description": "A banded (alternating colors) range in a sheet.",
+      "type": "object",
+      "properties": {
+        "bandedRangeId": {
+          "description": "The id of the banded range.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "rowProperties": {
+          "description": "Properties for row bands. These properties will be applied on a row-by-row\nbasis throughout all the rows in the range. At least one of\nrow_properties or column_properties must be specified.",
+          "$ref": "BandingProperties"
+        },
+        "columnProperties": {
+          "description": "Properties for column bands. These properties will be applied on a column-\nby-column basis throughout all the columns in the range. At least one of\nrow_properties or column_properties must be specified.",
+          "$ref": "BandingProperties"
+        },
+        "range": {
+          "description": "The range over which these properties are applied.",
+          "$ref": "GridRange"
+        }
+      },
+      "id": "BandedRange"
+    },
     "DeleteConditionalFormatRuleResponse": {
       "description": "The result of deleting a conditional format rule.",
       "type": "object",
@@ -3779,7 +3899,7 @@
       "id": "DeleteConditionalFormatRuleResponse"
     }
   },
-  "revision": "20161014",
+  "revision": "20161021",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

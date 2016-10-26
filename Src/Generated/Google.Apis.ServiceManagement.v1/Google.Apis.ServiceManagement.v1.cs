@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20161019 (657)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -416,7 +416,7 @@ namespace Google.Apis.ServiceManagement.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.*$",
+                        Pattern = @"^operations/.+$",
                     });
             }
 
@@ -1611,7 +1611,7 @@ namespace Google.Apis.ServiceManagement.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^services/[^/]*$",
+                        Pattern = @"^services/[^/]+$",
                     });
             }
 
@@ -1641,6 +1641,10 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Include services produced by the specified project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProducerProjectId { get; set; }
+
+            /// <summary>Include services consumed by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consumerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConsumerProjectId { get; set; }
 
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1683,6 +1687,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "producerProjectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "producerProjectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consumerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consumerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1765,7 +1778,7 @@ namespace Google.Apis.ServiceManagement.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^services/[^/]*$",
+                        Pattern = @"^services/[^/]+$",
                     });
             }
 
@@ -1835,7 +1848,7 @@ namespace Google.Apis.ServiceManagement.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^services/[^/]*$",
+                        Pattern = @"^services/[^/]+$",
                     });
             }
 
@@ -1929,48 +1942,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Analytics configuration of the service.
-    ///
-    /// The example below shows how to configure monitored resources and metrics for analytics. In the example, a
-    /// monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` and
-    /// `library.googleapis.com/book/overdue_count` metric are sent to the analytics.
-    ///
-    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
-    /// library branch is located in. - key: /name description: The name of the branch. metrics: - name:
-    /// library.googleapis.com/book/returned_count metric_kind: DELTA value_type: INT64 labels: - key: /customer_id -
-    /// name: library.googleapis.com/book/overdue_count metric_kind: GAUGE value_type: INT64 labels: - key: /customer_id
-    /// analytics: producer_destinations: - monitored_resource: library.googleapis.com/branch metrics: -
-    /// library.googleapis.com/book/returned_count - library.googleapis.com/book/overdue_count</summary>
-    public class Analytics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Analytics configurations for sending metrics to the analytics backend. There can be multiple
-        /// producer destinations, each one must have a different monitored resource type. A metric can be used in at
-        /// most one producer destination.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("producerDestinations")]
-        public virtual System.Collections.Generic.IList<AnalyticsDestination> ProducerDestinations { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration of a specific analytics destination.</summary>
-    public class AnalyticsDestination : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Names of the metrics to report to this analytics destination. Each name must be defined in
-        /// Service.metrics section. Metrics with value type BOOL and STRING must be of GUAGE kind, metrics with value
-        /// type INT64, DOUBLE and MONEY must be of DELTA kind.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
-
-        /// <summary>The monitored resource type. The type must be defined in Service.monitored_resources
-        /// section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
-        public virtual string MonitoredResource { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Api is a light-weight descriptor for a protocol buffer service.</summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2041,6 +2012,18 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).</summary>
     public class AuthProvider : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
+        /// token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be
+        /// accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be
+        /// accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the
+        /// following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+        ///
+        /// Example:
+        ///
+        /// audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
+        public virtual string Audiences { get; set; } 
+
         /// <summary>The unique identifier of the auth provider. It will be referred to by
         /// `AuthRequirement.provider_id`.
         ///
@@ -2073,11 +2056,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).</summary>
     public class AuthRequirement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-
-        /// token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be
-        /// accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be
-        /// accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the
-        /// following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+        /// <summary>NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all
+        /// the runtime components.
+        ///
+        /// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
+        /// that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is
+        /// absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no
+        /// audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https
+        /// ://library-example.googleapis.com/google.example.library.v1.LibraryService".
         ///
         /// Example:
         ///
@@ -3811,12 +3797,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// calendar.example.com</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>WARNING: DO NOT USE UNTIL THIS MESSAGE IS REMOVED.
-        ///
-        /// Analytics configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("analytics")]
-        public virtual Analytics Analytics { get; set; } 
-
         /// <summary>A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api
         /// needs to be provided by the configuration author, as the remaining fields will be derived from the IDL
         /// during the normalization process. It is an error to specify an API interface here which cannot be resolved

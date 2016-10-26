@@ -77,6 +77,31 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
+        "delete": {
+          "id": "speech.operations.delete",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+          "flatPath": "v1beta1/operations/{operationsId}",
+          "httpMethod": "DELETE",
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource to be deleted.",
+              "required": true,
+              "pattern": "^[^/]+$",
+              "location": "path",
+              "type": "string"
+            }
+          },
+          "path": "v1beta1/operations/{+name}",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
         "cancel": {
           "id": "speech.operations.cancel",
           "response": {
@@ -101,31 +126,6 @@
             }
           },
           "path": "v1beta1/operations/{+name}:cancel",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ]
-        },
-        "delete": {
-          "id": "speech.operations.delete",
-          "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
-          "flatPath": "v1beta1/operations/{operationsId}",
-          "httpMethod": "DELETE",
-          "parameters": {
-            "name": {
-              "description": "The name of the operation resource to be deleted.",
-              "required": true,
-              "pattern": "^[^/]+$",
-              "location": "path",
-              "type": "string"
-            }
-          },
-          "path": "v1beta1/operations/{+name}",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ]
@@ -420,7 +420,7 @@
       "id": "AsyncRecognizeRequest"
     }
   },
-  "revision": "20161017",
+  "revision": "20161024",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

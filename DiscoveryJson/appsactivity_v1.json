@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/BgDme1GlXVwBloYEaIJqZYLtvzE\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/L3aT7KeZo0yciycKdqBnijtQ6DQ\"",
  "discoveryVersion": "v1",
  "id": "appsactivity:v1",
  "name": "appsactivity",
  "version": "v1",
- "revision": "20161013",
+ "revision": "20161018",
  "title": "Google Apps Activity API",
  "description": "Provides a historical view of activity.",
  "ownerDomain": "google.com",
@@ -395,6 +395,10 @@
     "isDeleted": {
      "type": "boolean",
      "description": "A boolean which indicates whether the specified User was deleted. If true, name, photo and permission_id will be omitted."
+    },
+    "isMe": {
+     "type": "boolean",
+     "description": "Whether the user is the authenticated user."
     },
     "name": {
      "type": "string",

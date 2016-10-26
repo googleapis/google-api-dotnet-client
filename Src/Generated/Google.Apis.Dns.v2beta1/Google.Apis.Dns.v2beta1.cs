@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20161005 (643)
+ *      <tr><th>API Rev<td>20161020 (658)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -65,7 +65,7 @@ namespace Google.Apis.Dns.v2beta1
             : base(initializer)
         {
             changes = new ChangesResource(this);
-            dnskeys = new DnskeysResource(this);
+            dnsKeys = new DnsKeysResource(this);
             managedZoneOperations = new ManagedZoneOperationsResource(this);
             managedZones = new ManagedZonesResource(this);
             projects = new ProjectsResource(this);
@@ -123,12 +123,12 @@ namespace Google.Apis.Dns.v2beta1
             get { return changes; }
         }
 
-        private readonly DnskeysResource dnskeys;
+        private readonly DnsKeysResource dnsKeys;
 
-        /// <summary>Gets the Dnskeys resource.</summary>
-        public virtual DnskeysResource Dnskeys
+        /// <summary>Gets the DnsKeys resource.</summary>
+        public virtual DnsKeysResource DnsKeys
         {
-            get { return dnskeys; }
+            get { return dnsKeys; }
         }
 
         private readonly ManagedZoneOperationsResource managedZoneOperations;
@@ -651,16 +651,16 @@ namespace Google.Apis.Dns.v2beta1
         }
     }
 
-    /// <summary>The "dnskeys" collection of methods.</summary>
-    public class DnskeysResource
+    /// <summary>The "dnsKeys" collection of methods.</summary>
+    public class DnsKeysResource
     {
-        private const string Resource = "dnskeys";
+        private const string Resource = "dnsKeys";
 
         /// <summary>The service which this resource belongs to.</summary>
         private readonly Google.Apis.Services.IClientService service;
 
         /// <summary>Constructs a new resource.</summary>
-        public DnskeysResource(Google.Apis.Services.IClientService service)
+        public DnsKeysResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
 

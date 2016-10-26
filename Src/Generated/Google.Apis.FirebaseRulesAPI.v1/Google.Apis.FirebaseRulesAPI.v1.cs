@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160930 (638)
+ *      <tr><th>API Rev<td>20161021 (659)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -473,7 +473,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -537,7 +537,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/releases/.*$",
+                            Pattern = @"^projects/[^/]+/releases/.+$",
                         });
                 }
 
@@ -601,7 +601,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/releases/.*$",
+                            Pattern = @"^projects/[^/]+/releases/.+$",
                         });
                 }
 
@@ -700,7 +700,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -837,7 +837,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/releases/.*$",
+                            Pattern = @"^projects/[^/]+/releases/.+$",
                         });
                 }
 
@@ -941,7 +941,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -1009,7 +1009,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/rulesets/[^/]*$",
+                            Pattern = @"^projects/[^/]+/rulesets/[^/]+$",
                         });
                 }
 
@@ -1073,7 +1073,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/rulesets/[^/]*$",
+                            Pattern = @"^projects/[^/]+/rulesets/[^/]+$",
                         });
                 }
 
@@ -1151,7 +1151,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1270,7 +1270,7 @@ namespace Google.Apis.FirebaseRulesAPI.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/.*$",
+                        Pattern = @"^projects/.+$",
                     });
             }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20160805 (582)
+ *      <tr><th>API Rev<td>20161017 (655)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -6479,6 +6479,17 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Id { get; private set; }
 
+            /// <summary>Note: This parameter is intended exclusively for YouTube content partners.
+            ///
+            /// The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -6508,6 +6519,15 @@ namespace Google.Apis.YouTube.v3
                     {
                         Name = "id",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "onBehalfOfContentOwner",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -6823,6 +6843,17 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Part { get; private set; }
 
+            /// <summary>Note: This parameter is intended exclusively for YouTube content partners.
+            ///
+            /// The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.YouTube.v3.Data.PlaylistItem Body { get; set; }
@@ -6858,6 +6889,15 @@ namespace Google.Apis.YouTube.v3
                     {
                         Name = "part",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "onBehalfOfContentOwner",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -9651,6 +9691,13 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("locale", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Locale { get; set; }
 
+            /// <summary>The maxHeight parameter specifies a maximum height of the embedded player. If maxWidth is
+            /// provided, maxHeight may not be reached in order to not violate the width request.</summary>
+            /// [minimum: 72]
+            /// [maximum: 8192]
+            [Google.Apis.Util.RequestParameterAttribute("maxHeight", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxHeight { get; set; }
+
             /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
             /// result set.
             ///
@@ -9661,6 +9708,13 @@ namespace Google.Apis.YouTube.v3
             /// [maximum: 50]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The maxWidth parameter specifies a maximum width of the embedded player. If maxHeight is
+            /// provided, maxWidth may not be reached in order to not violate the height request.</summary>
+            /// [minimum: 72]
+            /// [maximum: 8192]
+            [Google.Apis.Util.RequestParameterAttribute("maxWidth", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxWidth { get; set; }
 
             /// <summary>Set this parameter's value to like or dislike to instruct the API to only return videos liked
             /// or disliked by the authenticated user.</summary>
@@ -9782,12 +9836,30 @@ namespace Google.Apis.YouTube.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "maxHeight", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxHeight",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "5",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxWidth", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxWidth",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11107,11 +11179,6 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Details about the content of a channel.</summary>
     public class ChannelContentDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The googlePlusUserId object identifies the Google+ profile ID associated with this
-        /// channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googlePlusUserId")]
-        public virtual string GooglePlusUserId { get; set; } 
-
         [Newtonsoft.Json.JsonPropertyAttribute("relatedPlaylists")]
         public virtual ChannelContentDetails.RelatedPlaylistsData RelatedPlaylists { get; set; } 
 
@@ -11683,10 +11750,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The name of the user who posted the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorDisplayName")]
         public virtual string AuthorDisplayName { get; set; } 
-
-        /// <summary>Link to the author's Google+ profile, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorGoogleplusProfileUrl")]
-        public virtual string AuthorGoogleplusProfileUrl { get; set; } 
 
         /// <summary>The URL for the avatar of the user who posted the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorProfileImageUrl")]
@@ -15142,6 +15205,11 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual string Duration { get; set; } 
 
+        /// <summary>Indicates whether the video uploader has provided a custom thumbnail image for the video. This
+        /// property is only visible to the video uploader.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasCustomThumbnail")]
+        public virtual System.Nullable<bool> HasCustomThumbnail { get; set; } 
+
         /// <summary>The value of is_license_content indicates whether the video is licensed content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licensedContent")]
         public virtual System.Nullable<bool> LicensedContent { get; set; } 
@@ -15221,11 +15289,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; } 
-
-        /// <summary>Geographic coordinates that identify the place where the uploaded video was recorded. Coordinates
-        /// are defined using WGS 84.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingLocation")]
-        public virtual GeoPoint RecordingLocation { get; set; } 
 
         /// <summary>A list of video streams contained in the uploaded video file. Each item in the list contains
         /// detailed metadata about a video stream.</summary>
@@ -15497,9 +15560,16 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Player to be used for a video playback.</summary>
     public class VideoPlayer : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("embedHeight")]
+        public virtual System.Nullable<long> EmbedHeight { get; set; } 
+
         /// <summary>An  tag that embeds a player that will play the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embedHtml")]
         public virtual string EmbedHtml { get; set; } 
+
+        /// <summary>The embed width</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embedWidth")]
+        public virtual System.Nullable<long> EmbedWidth { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

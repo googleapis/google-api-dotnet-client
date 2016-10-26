@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161014 (652)
+ *      <tr><th>API Rev<td>20161021 (659)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -1553,6 +1553,29 @@ namespace Google.Apis.Sheets.v4
 namespace Google.Apis.Sheets.v4.Data
 {    
 
+    /// <summary>Adds a new banded range to the spreadsheet.</summary>
+    public class AddBandingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The banded range to add. The bandedRangeId field is optional; if one is not set, an id will be
+        /// randomly generated. (It is an error to specify the ID of a range that already exists.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
+        public virtual BandedRange BandedRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of adding a banded range.</summary>
+    public class AddBandingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The banded range that was added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
+        public virtual BandedRange BandedRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Adds a chart to a sheet in the spreadsheet.</summary>
     public class AddChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1778,6 +1801,68 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The dimensions to automatically resize. Only COLUMNS are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual DimensionRange Dimensions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A banded (alternating colors) range in a sheet.</summary>
+    public class BandedRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the banded range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
+        public virtual System.Nullable<int> BandedRangeId { get; set; } 
+
+        /// <summary>Properties for column bands. These properties will be applied on a column- by-column basis
+        /// throughout all the columns in the range. At least one of row_properties or column_properties must be
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnProperties")]
+        public virtual BandingProperties ColumnProperties { get; set; } 
+
+        /// <summary>The range over which these properties are applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; } 
+
+        /// <summary>Properties for row bands. These properties will be applied on a row-by-row basis throughout all the
+        /// rows in the range. At least one of row_properties or column_properties must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowProperties")]
+        public virtual BandingProperties RowProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Properties referring a single dimension (either row or column). If both BandedRange.row_properties and
+    /// BandedRange.column_properties are set, the fill colors are applied to cells according to the following rules:
+    ///
+    /// * header_color and footer_color take priority over band colors. * first_band_color takes priority over
+    /// second_band_color. * row_properties takes priority over column_properties.
+    ///
+    /// For example, the first row color takes priority over the first column color, but the first column color takes
+    /// priority over the second row color. Similarly, the row header takes priority over the column header in the top
+    /// left cell, but the column header takes priority over the first row color if the row header is not set.</summary>
+    public class BandingProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The first color that is alternating. (Required)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstBandColor")]
+        public virtual Color FirstBandColor { get; set; } 
+
+        /// <summary>The color of the last row or column. If this field is not set, the last row or column will be
+        /// filled with either first_row_color or second_row_color, depending on the color of the previous row or
+        /// column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerColor")]
+        public virtual Color FooterColor { get; set; } 
+
+        /// <summary>The color of the first row or column. If this field is set, the first row or column will be filled
+        /// with this color and the colors will alternate between first_band_color and [second_band_color[] starting
+        /// from the second row or column. Otherwise, the first row or column will be filled with first_band_color and
+        /// the colors will proceed to alternate as they normally would.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
+        public virtual Color HeaderColor { get; set; } 
+
+        /// <summary>The second color that is alternating. (Required)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondBandColor")]
+        public virtual Color SecondBandColor { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2493,6 +2578,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>True if invalid data should be rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strict")]
         public virtual System.Nullable<bool> Strict { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Removes the banded range with the given ID from the spreadsheet.</summary>
+    public class DeleteBandingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the banded range to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
+        public virtual System.Nullable<int> BandedRangeId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3517,6 +3613,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A single kind of update to apply to a spreadsheet.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Adds a new banded range</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addBanding")]
+        public virtual AddBandingRequest AddBanding { get; set; } 
+
         /// <summary>Adds a chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartRequest AddChart { get; set; } 
@@ -3569,6 +3669,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Cuts data from one area and pastes it to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cutPaste")]
         public virtual CutPasteRequest CutPaste { get; set; } 
+
+        /// <summary>Removes a banded range</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteBanding")]
+        public virtual DeleteBandingRequest DeleteBanding { get; set; } 
 
         /// <summary>Deletes an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteConditionalFormatRule")]
@@ -3650,6 +3754,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unmergeCells")]
         public virtual UnmergeCellsRequest UnmergeCells { get; set; } 
 
+        /// <summary>Updates a banded range</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateBanding")]
+        public virtual UpdateBandingRequest UpdateBanding { get; set; } 
+
         /// <summary>Updates the borders in a range of cells.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateBorders")]
         public virtual UpdateBordersRequest UpdateBorders { get; set; } 
@@ -3701,6 +3809,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A single response from an update.</summary>
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A reply from adding a banded range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addBanding")]
+        public virtual AddBandingResponse AddBanding { get; set; } 
+
         /// <summary>A reply from adding a chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartResponse AddChart { get; set; } 
@@ -3791,6 +3903,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>A sheet in a spreadsheet.</summary>
     public class Sheet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The banded (i.e. alternating colors) ranges on this sheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRanges")]
+        public virtual System.Collections.Generic.IList<BandedRange> BandedRanges { get; set; } 
+
         /// <summary>The filter on this sheet, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicFilter")]
         public virtual BasicFilter BasicFilter { get; set; } 
@@ -4062,6 +4178,23 @@ namespace Google.Apis.Sheets.v4.Data
         /// be unmerged. The range must not partially span any merge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual GridRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates properties of the supplied banded range.</summary>
+    public class UpdateBandingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The banded range to update with the new properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandedRange")]
+        public virtual BandedRange BandedRange { get; set; } 
+
+        /// <summary>The fields that should be updated.  At least one field must be specified. The root `bandedRange` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
