@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161016 (654)
+ *      <tr><th>API Rev<td>20161021 (659)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3333,11 +3333,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
 
-        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
-        /// value is true. If set to false, the query will use BigQuery's standard SQL:
-        /// https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of
-        /// allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and
-        /// flattenResults is false.</summary>
+        /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+        /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
+        /// reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are
+        /// ignored; query will be run as if allowLargeResults is true and flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
@@ -3799,11 +3798,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutMs")]
         public virtual System.Nullable<long> TimeoutMs { get; set; } 
 
-        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL dialect for this query. The default
-        /// value is true. If set to false, the query will use BigQuery's standard SQL:
-        /// https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the values of
-        /// allowLargeResults and flattenResults are ignored; query will be run as if allowLargeResults is true and
-        /// flattenResults is false.</summary>
+        /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+        /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
+        /// reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are
+        /// ignored; query will be run as if allowLargeResults is true and flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
@@ -4252,9 +4250,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
-        /// <summary>[Experimental] Specifies whether to use BigQuery's legacy SQL for this view. The default value is
-        /// true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
-        /// reference/ Queries and views that reference this view must use the same flag value.</summary>
+        /// <summary>Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to
+        /// false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries
+        /// and views that reference this view must use the same flag value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 

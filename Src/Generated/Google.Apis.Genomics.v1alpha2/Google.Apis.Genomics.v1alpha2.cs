@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20161024 (662)
+ *      <tr><th>API Rev<td>20160928 (636)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -494,8 +494,9 @@ namespace Google.Apis.Genomics.v1alpha2
             /// <summary>A string for filtering Operations. The following filter fields are supported: * projectId:
             /// Required. Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in
             /// seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` *
-            /// `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status =
-            /// RUNNING`</summary>
+            /// `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`
+            /// * `projectId = my-project AND labels.color = *` * `projectId = my-project AND labels.color =
+            /// red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1338,7 +1339,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>Metadata describing an Operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
+        /// <summary>This field is deprecated. Use `labels` instead. Optionally provided by the caller when submitting
+        /// the request that creates the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
 
@@ -1354,6 +1356,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// warnings that were generated during import or export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<OperationEvent> Events { get; set; } 
+
+        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The Google Cloud Project in which the job is scoped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
@@ -1529,7 +1535,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>The pipeline run arguments.</summary>
     public class RunPipelineArgs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client-specified pipeline operation identifier.</summary>
+        /// <summary>This field is deprecated. Use `labels` instead. Client-specified pipeline operation
+        /// identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
 
@@ -1544,6 +1551,16 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// allowed value is 1 day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keepVmAliveOnFailureDuration")]
         public virtual string KeepVmAliveOnFailureDuration { get; set; } 
+
+        /// <summary>Labels to apply to this pipeline run. Labels will also be applied to compute resources (VM, disks)
+        /// created by this pipeline run. When listing operations, operations can filtered by labels. Label keys may not
+        /// be empty; label values may be empty. Non-empty labels must be 1-63 characters long, and comply with
+        /// [RFC1035] (https://www.ietf.org/rfc/rfc1035.txt). Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
+        /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. Logging options. Used by the service to communicate results to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161024 (662)
+ *      <tr><th>API Rev<td>20160928 (636)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics/'>
  *              https://cloud.google.com/genomics/</a>
@@ -2356,8 +2356,9 @@ namespace Google.Apis.Genomics.v1
             /// <summary>A string for filtering Operations. The following filter fields are supported: * projectId:
             /// Required. Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in
             /// seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` *
-            /// `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status =
-            /// RUNNING`</summary>
+            /// `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`
+            /// * `projectId = my-project AND labels.color = *` * `projectId = my-project AND labels.color =
+            /// red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5353,7 +5354,8 @@ namespace Google.Apis.Genomics.v1.Data
     /// <summary>Metadata describing an Operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
+        /// <summary>This field is deprecated. Use `labels` instead. Optionally provided by the caller when submitting
+        /// the request that creates the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; } 
 
@@ -5369,6 +5371,10 @@ namespace Google.Apis.Genomics.v1.Data
         /// warnings that were generated during import or export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<OperationEvent> Events { get; set; } 
+
+        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The Google Cloud Project in which the job is scoped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]

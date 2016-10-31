@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20161017 (655)
+ *      <tr><th>API Rev<td>20161028 (666)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1350,6 +1350,13 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Whether the sink will have a dedicated service account returned in the sink's
+                /// writer_identity. Set this field to be true to export logs from one project to a different project.
+                /// This field is ignored for non-project sinks (e.g. organization sinks) because those sinks are
+                /// required to have dedicated service accounts.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2beta1.Data.LogSink Body { get; set; }
@@ -1388,6 +1395,15 @@ namespace Google.Apis.Logging.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1520,7 +1536,7 @@ namespace Google.Apis.Logging.v2beta1
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="parent">Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+            /// <param name="parent">Required. The resource name where this sink was created. Example: `"projects/my-logging-
             /// project"`.</param>
             public virtual ListRequest List(string parent)
             {
@@ -1539,7 +1555,7 @@ namespace Google.Apis.Logging.v2beta1
                 }
 
 
-                /// <summary>Required. The cloud resource containing the sinks. Example: `"projects/my-logging-
+                /// <summary>Required. The resource name where this sink was created. Example: `"projects/my-logging-
                 /// project"`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1640,6 +1656,13 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
+                /// <summary>Optional. Whether the sink will have a dedicated service account returned in the sink's
+                /// writer_identity. Set this field to be true to export logs from one project to a different project.
+                /// This field is ignored for non-project sinks (e.g. organization sinks) because those sinks are
+                /// required to have dedicated service accounts.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Logging.v2beta1.Data.LogSink Body { get; set; }
@@ -1678,6 +1701,15 @@ namespace Google.Apis.Logging.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -2052,7 +2084,10 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes a sink used to export log entries outside of Stackdriver Logging.</summary>
+    /// <summary>Describes a sink used to export log entries outside of Stackdriver Logging. A logs filter controls
+    /// which log entries are exported.  Sinks can have a start time and an end time; these can be used to place log
+    /// entries from an exact time range into a particular destination.  If both `start_time` and `end_time` are
+    /// present, then `start_time` must be less than `end_time`.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The export destination. See [Exporting Logs With Sinks](/logging/docs/api/tasks
@@ -2063,7 +2098,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>Optional. Time at which this sink expires.</summary>
+        /// <summary>Optional. Time at which this sink will stop exporting log entries.  If this value is present, then
+        /// log entries are exported only if `entry.timestamp` < `end_time`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
@@ -2089,19 +2125,14 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; } 
 
-        /// <summary>Optional. Time range for which this sink is active. Logs are exported only if start_time <=
-        /// entry.timestamp < end_time Both start_time and end_time may be omitted to specify (half) infinite ranges.
-        /// The start_time must be less than the end_time.</summary>
+        /// <summary>Optional. The time at which this sink will begin exporting log entries.  If this value is present,
+        /// then log entries are exported only if `start_time` <=`entry.timestamp`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Output only. The IAM identity to which the destination needs to grant write access.  This may be a
-        /// service account or a group. Examples (Do not assume these specific values): "serviceAccount:cloud-
-        /// logs@system.gserviceaccount.com" "group:cloud-logs@google.com"
-        ///
-        /// For GCS destinations, the role "roles/owner" is required on the bucket For Cloud Pubsub destinations, the
-        /// role "roles/pubsub.publisher" is required on the topic For BigQuery, the role "roles/editor" is required on
-        /// the dataset</summary>
+        /// <summary>Output only. An IAM identitya service account or groupthat will write exported log entries to the
+        /// destination on behalf of Stackdriver Logging. You must grant this identity write-access to the destination.
+        /// Consult the destination service's documentation to determine the exact role that must be granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
         public virtual string WriterIdentity { get; set; } 
 
