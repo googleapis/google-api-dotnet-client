@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161019 (657)
+ *      <tr><th>API Rev<td>20161026 (664)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -541,7 +541,8 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Gets a service configuration (version) for a managed service.</summary>
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
             /// requirements.  For example: `example.googleapis.com`.</param>
-            /// <param name="configId"></param>
+            /// <param name="configId">The id of the service
+            /// configuration resource.</param>
             public virtual GetRequest Get(string serviceName, string configId)
             {
                 return new GetRequest(service, serviceName, configId);
@@ -565,7 +566,7 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-
+                /// <summary>The id of the service configuration resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ConfigId { get; private set; }
 
@@ -1408,7 +1409,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Gets a managed service.</summary>
+        /// <summary>Gets a managed service. Authentication is required unless the service is public.</summary>
         /// <param name="serviceName">The name of the service.  See the `ServiceManager` overview for naming requirements.  For
         /// example: `example.googleapis.com`.</param>
         public virtual GetRequest Get(string serviceName)
@@ -1416,7 +1417,7 @@ namespace Google.Apis.ServiceManagement.v1
             return new GetRequest(service, serviceName);
         }
 
-        /// <summary>Gets a managed service.</summary>
+        /// <summary>Gets a managed service. Authentication is required unless the service is public.</summary>
         public class GetRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ManagedService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1495,7 +1496,7 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-
+            /// <summary>The id of the service configuration resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConfigId { get; set; }
 
@@ -1617,13 +1618,17 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Lists all managed services.</summary>
+        /// <summary>Lists all managed services. The result is limited to services that the caller has
+        /// "servicemanagement.services.get" permission for. If the request is made without authentication, it returns
+        /// only public services that are available to everyone.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all managed services.</summary>
+        /// <summary>Lists all managed services. The result is limited to services that the caller has
+        /// "servicemanagement.services.get" permission for. If the request is made without authentication, it returns
+        /// only public services that are available to everyone.</summary>
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1641,10 +1646,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Include services produced by the specified project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProducerProjectId { get; set; }
-
-            /// <summary>Include services consumed by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("consumerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConsumerProjectId { get; set; }
 
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1687,15 +1688,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "producerProjectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "consumerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "consumerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3266,7 +3258,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines a metric type and its schema.</summary>
+    /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
+    /// stops data collection and makes the metric type's existing data unusable.</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -3290,22 +3283,21 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
-        /// <summary>Resource name. The format of the name may vary between different implementations. For examples:
+        /// <summary>The resource name of the metric descriptor. Depending on the implementation, the name typically
+        /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
+        /// metric's URL-encoded type, which also appears in the `type` field of this descriptor. For example, following
+        /// is the resource name of a Compute Engine metric within a GCP project:
         ///
-        /// projects/{project_id}/metricDescriptors/{type=**} metricDescriptors/{type=**}</summary>
+        /// "projects/123456789/metricDescriptors/compute.googleapis.com%2Finstance%2Fcpu%2Futilization"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The metric type including a DNS name prefix, for example
-        /// `"compute.googleapis.com/instance/cpu/utilization"`. Metric types should use a natural hierarchical grouping
-        /// such as the following:
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.  All user-defined
+        /// metric types have the DNS name `custom.googleapis.com`.  Metric types should use a natural hierarchical
+        /// grouping. Following are some sample metric types:
         ///
-        /// compute.googleapis.com/instance/cpu/utilization compute.googleapis.com/instance/disk/read_ops_count
-        /// compute.googleapis.com/instance/network/received_bytes_count
-        ///
-        /// Note that if the metric type changes, the monitoring data will be discontinued, and anything depends on it
-        /// will break, such as monitoring dashboards, alerting rules and quota limits. Therefore, once a metric has
-        /// been published, its type should be immutable.</summary>
+        /// "compute.googleapis.com/instance/cpu/utilization" "compute.googleapis.com/instance/disk/read_ops_count"
+        /// "custom.googleapis.com/invoice/paid/amount"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

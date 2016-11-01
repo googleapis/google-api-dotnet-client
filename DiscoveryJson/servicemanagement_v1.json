@@ -172,6 +172,7 @@
               "httpMethod": "GET",
               "parameters": {
                 "configId": {
+                  "description": "The id of the service configuration resource.",
                   "required": true,
                   "location": "path",
                   "type": "string"
@@ -350,6 +351,7 @@
           "httpMethod": "GET",
           "parameters": {
             "configId": {
+              "description": "The id of the service configuration resource.",
               "location": "query",
               "type": "string"
             },
@@ -401,7 +403,7 @@
           "parameterOrder": [
             "serviceName"
           ],
-          "description": "Gets a managed service.",
+          "description": "Gets a managed service. Authentication is required unless the service is\npublic.",
           "flatPath": "v1/services/{serviceName}",
           "httpMethod": "GET",
           "parameters": {
@@ -426,7 +428,7 @@
             "$ref": "ListServicesResponse"
           },
           "parameterOrder": [],
-          "description": "Lists all managed services.",
+          "description": "Lists all managed services. The result is limited to services that the\ncaller has \"servicemanagement.services.get\" permission for. If the request\nis made without authentication, it returns only public services that are\navailable to everyone.",
           "flatPath": "v1/services",
           "httpMethod": "GET",
           "parameters": {
@@ -438,11 +440,6 @@
             },
             "producerProjectId": {
               "description": "Include services produced by the specified project.",
-              "location": "query",
-              "type": "string"
-            },
-            "consumerProjectId": {
-              "description": "Include services consumed by the specified project.",
               "location": "query",
               "type": "string"
             },
@@ -1577,7 +1574,7 @@
       "id": "Rule"
     },
     "MetricDescriptor": {
-      "description": "Defines a metric type and its schema.",
+      "description": "Defines a metric type and its schema. Once a metric descriptor is created,\ndeleting or altering it stops data collection and makes the metric type's\nexisting data unusable.",
       "type": "object",
       "properties": {
         "description": {
@@ -1638,11 +1635,11 @@
           "type": "string"
         },
         "name": {
-          "description": "Resource name. The format of the name may vary between different\nimplementations. For examples:\n\n    projects/{project_id}/metricDescriptors/{type=**}\n    metricDescriptors/{type=**}",
+          "description": "The resource name of the metric descriptor. Depending on the\nimplementation, the name typically includes: (1) the parent resource name\nthat defines the scope of the metric type or of its data; and (2) the\nmetric's URL-encoded type, which also appears in the `type` field of this\ndescriptor. For example, following is the resource name of a Compute Engine\nmetric within a GCP project:\n\n    \"projects/123456789/metricDescriptors/compute.googleapis.com%2Finstance%2Fcpu%2Futilization\"",
           "type": "string"
         },
         "type": {
-          "description": "The metric type including a DNS name prefix, for example\n`\"compute.googleapis.com/instance/cpu/utilization\"`. Metric types\nshould use a natural hierarchical grouping such as the following:\n\n    compute.googleapis.com/instance/cpu/utilization\n    compute.googleapis.com/instance/disk/read_ops_count\n    compute.googleapis.com/instance/network/received_bytes_count\n\nNote that if the metric type changes, the monitoring data will be\ndiscontinued, and anything depends on it will break, such as monitoring\ndashboards, alerting rules and quota limits. Therefore, once a metric has\nbeen published, its type should be immutable.",
+          "description": "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined metric types have the DNS name\n`custom.googleapis.com`.  Metric types should use a natural hierarchical\ngrouping. Following are some sample metric types:\n\n    \"compute.googleapis.com/instance/cpu/utilization\"\n    \"compute.googleapis.com/instance/disk/read_ops_count\"\n    \"custom.googleapis.com/invoice/paid/amount\"",
           "type": "string"
         }
       },
@@ -2746,7 +2743,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20161019",
+  "revision": "20161026",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

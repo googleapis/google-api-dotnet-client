@@ -140,7 +140,7 @@
             "$ref": "SyncRecognizeResponse"
           },
           "parameterOrder": [],
-          "description": "Perform synchronous speech-recognition: receive results after all audio\nhas been sent and processed.",
+          "description": "Performs synchronous speech recognition: receive results after all audio\nhas been sent and processed.",
           "request": {
             "$ref": "SyncRecognizeRequest"
           },
@@ -158,7 +158,7 @@
             "$ref": "Operation"
           },
           "parameterOrder": [],
-          "description": "Perform asynchronous speech-recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
+          "description": "Performs asynchronous speech recognition: receive results via the\ngoogle.longrunning.Operations interface. Returns either an\n`Operation.error` or an `Operation.response` which contains\nan `AsyncRecognizeResponse` message.",
           "request": {
             "$ref": "AsyncRecognizeRequest"
           },
@@ -420,7 +420,7 @@
       "id": "AsyncRecognizeRequest"
     }
   },
-  "revision": "20161024",
+  "revision": "20161031",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

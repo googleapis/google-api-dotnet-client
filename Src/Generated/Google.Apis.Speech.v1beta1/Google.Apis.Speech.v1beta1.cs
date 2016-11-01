@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161024 (662)
+ *      <tr><th>API Rev<td>20161031 (669)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -677,7 +677,7 @@ namespace Google.Apis.Speech.v1beta1
         }
 
 
-        /// <summary>Perform asynchronous speech-recognition: receive results via the google.longrunning.Operations
+        /// <summary>Performs asynchronous speech recognition: receive results via the google.longrunning.Operations
         /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
         /// `AsyncRecognizeResponse` message.</summary>
         /// <param name="body">The body of the request.</param>
@@ -686,7 +686,7 @@ namespace Google.Apis.Speech.v1beta1
             return new AsyncrecognizeRequest(service, body);
         }
 
-        /// <summary>Perform asynchronous speech-recognition: receive results via the google.longrunning.Operations
+        /// <summary>Performs asynchronous speech recognition: receive results via the google.longrunning.Operations
         /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
         /// `AsyncRecognizeResponse` message.</summary>
         public class AsyncrecognizeRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Operation>
@@ -734,7 +734,7 @@ namespace Google.Apis.Speech.v1beta1
 
         }
 
-        /// <summary>Perform synchronous speech-recognition: receive results after all audio has been sent and
+        /// <summary>Performs synchronous speech recognition: receive results after all audio has been sent and
         /// processed.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SyncrecognizeRequest Syncrecognize(Google.Apis.Speech.v1beta1.Data.SyncRecognizeRequest body)
@@ -742,7 +742,7 @@ namespace Google.Apis.Speech.v1beta1
             return new SyncrecognizeRequest(service, body);
         }
 
-        /// <summary>Perform synchronous speech-recognition: receive results after all audio has been sent and
+        /// <summary>Performs synchronous speech recognition: receive results after all audio has been sent and
         /// processed.</summary>
         public class SyncrecognizeRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.SyncRecognizeResponse>
         {

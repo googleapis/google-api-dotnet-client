@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161031 (669)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1332,6 +1332,11 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// RepoSource or resolved from the specified branch or tag.</summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ID of the BuildTrigger that triggered this build, if it was triggered automatically.
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildTriggerId")]
+        public virtual string BuildTriggerId { get; set; } 
+
         /// <summary>Time at which the build was created. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
