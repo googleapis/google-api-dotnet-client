@@ -14,13 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Globalization;
-using System.IO;
-
-using Newtonsoft.Json;
-
 using Google.Apis.Util;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Linq;
+#if !(NET45 || NETSTANDARD)
+using Google.Compatibility;
+#endif
+
 
 namespace Google.Apis.Json
 {
@@ -56,6 +59,27 @@ namespace Google.Apis.Json
         }
     }
 
+    /// <summary>
+    /// A JSON converter to write <c>null</c> literals into JSON when explicitly requested.
+    /// </summary>
+    public class ExplicitNullConverter : JsonConverter
+    {
+        /// <inheritdoc />
+        public override bool CanRead => false;
+
+        /// <inheritdoc />
+        public override bool CanConvert(Type objectType) => objectType.GetTypeInfo().GetCustomAttributes(typeof(JsonExplicitNullAttribute), false).Any();
+
+        /// <inheritdoc />
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException("Unnecessary because CanRead is false.");
+        }
+
+        /// <inheritdoc />
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteNull();
+    }
+
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
@@ -80,7 +104,7 @@ namespace Google.Apis.Json
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                Converters = { new RFC3339DateTimeConverter() }
+                Converters = { new RFC3339DateTimeConverter(), new ExplicitNullConverter() }
             };
             newtonsoftSerializer = JsonSerializer.Create(newtonsoftSettings);
         }

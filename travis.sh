@@ -5,8 +5,8 @@ set -ev
 
 # Install dotnet cli
 sudo apt-get install libunwind8-dev
-curl -O https://dotnetcli.blob.core.windows.net/dotnet/Sdk/rel-1.0.0/dotnet-dev-ubuntu-x64.latest.tar.gz
-tar -xf dotnet-dev-ubuntu-x64.latest.tar.gz
+curl -O https://download.microsoft.com/download/1/5/2/1523EBE1-3764-4328-8961-D1BD8ECA9295/dotnet-dev-ubuntu-x64.1.0.0-preview2-003131.tar.gz
+tar -xf dotnet-dev-ubuntu-x64.1.0.0-preview2-003131.tar.gz
 
 # Add dotnet to path
 PATH=$PATH:`pwd`

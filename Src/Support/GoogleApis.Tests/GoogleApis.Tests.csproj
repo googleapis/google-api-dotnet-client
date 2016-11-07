@@ -116,6 +116,7 @@
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
     <Compile Include="ApplicationContextTests.cs" />
+    <Compile Include="Json\JsonExplicitNullTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\CommonAssemblyInfo.cs">
