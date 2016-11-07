@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160503 (488)
+ *      <tr><th>API Rev<td>20161102 (671)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -396,7 +396,7 @@ namespace Google.Apis.Dataproc.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.*$",
+                        Pattern = @"^operations/.+$",
                     });
             }
 
@@ -460,7 +460,7 @@ namespace Google.Apis.Dataproc.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.*$",
+                        Pattern = @"^operations/.+$",
                     });
             }
 
@@ -522,7 +522,7 @@ namespace Google.Apis.Dataproc.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.*$",
+                        Pattern = @"^operations/.+$",
                     });
             }
 
@@ -1009,6 +1009,11 @@ namespace Google.Apis.Dataproc.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>[Optional] A filter constraining which clusters to list. Valid filters contain label terms
+                /// such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard List page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1047,6 +1052,15 @@ namespace Google.Apis.Dataproc.v1beta1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1495,6 +1509,11 @@ namespace Google.Apis.Dataproc.v1beta1
                     NONACTIVE,
                 }
 
+                /// <summary>[Optional] A filter constraining which jobs to list. Valid filters contain job state and
+                /// label terms such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1559,6 +1578,15 @@ namespace Google.Apis.Dataproc.v1beta1
                         "jobStateMatcher", new Google.Apis.Discovery.Parameter
                         {
                             Name = "jobStateMatcher",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1675,6 +1703,17 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
         public virtual ClusterConfiguration Configuration { get; set; } 
 
+        /// <summary>[Optional] The labels to associate with this cluster. Label keys must be between 1 and 63
+        /// characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values
+        /// must be between 1 and 63 characters long, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Contains cluster daemon metrics such as HDFS and YARN stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual ClusterMetrics Metrics { get; set; } 
+
         /// <summary>[Required] The Google Cloud Platform project ID that the cluster belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
@@ -1738,20 +1777,39 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains cluster daemon metrics, such as HDFS and YARN stats.</summary>
+    public class ClusterMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HDFS metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hdfsMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> HdfsMetrics { get; set; } 
+
+        /// <summary>The YARN metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yarnMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> YarnMetrics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata describing the operation.</summary>
     public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the cluster for the operation.</summary>
+        /// <summary>[Output-only] Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Cluster UUId for the operation.</summary>
+        /// <summary>[Output-only] Cluster UUID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
         /// <summary>[Output-only] Short description of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>[Output-only] labels associated with the operation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>[Output-only] The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
@@ -1772,19 +1830,19 @@ namespace Google.Apis.Dataproc.v1beta1.Data
     /// <summary>The status of the operation.</summary>
     public class ClusterOperationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A message containing any operation metadata details.</summary>
+        /// <summary>[Output-only]A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>A message containing the detailed operation state.</summary>
+        /// <summary>[Output-only] A message containing the detailed operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
         public virtual string InnerState { get; set; } 
 
-        /// <summary>A message containing the operation state.</summary>
+        /// <summary>[Output-only] A message containing the operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The time this state was entered.</summary>
+        /// <summary>[Output-only] The time this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual string StateStartTime { get; set; } 
 
@@ -1833,8 +1891,8 @@ namespace Google.Apis.Dataproc.v1beta1.Data
     /// <summary>The location of diagnostic output.</summary>
     public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] The Google Cloud Storage URI of the diagnostic output. This is a plain text file with
-        /// a summary of collected diagnostics.</summary>
+        /// <summary>[Output-only] The Google Cloud Storage URI of the diagnostic output. The output report is a plain
+        /// text file with a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
 
@@ -1873,6 +1931,13 @@ namespace Google.Apis.Dataproc.v1beta1.Data
     /// all instances in the cluster.</summary>
     public class GceClusterConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, all instances in the cluser will only have internal IP addresses. By default, clusters are
+        /// not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each
+        /// instance. This restriction can only be enabled for subnetwork enabled networks, and all off-cluster
+        /// dependencies must be configured to be accessible without external IP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
+        public virtual System.Nullable<bool> InternalIpOnly { get; set; } 
+
         /// <summary>The Google Compute Engine metadata entries to add to all instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
@@ -2069,6 +2134,13 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         /// set to provide a path at which additional input can be sent to the driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactive")]
         public virtual System.Nullable<bool> Interactive { get; set; } 
+
+        /// <summary>[Optional] The labels to associate with this job. Label keys must be between 1 and 63 characters
+        /// long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between
+        /// 1 and 63 characters long, and must conform to the following regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+        /// No more than 64 labels can be associated with a given job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Job is a Pig job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
@@ -2269,7 +2341,7 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 

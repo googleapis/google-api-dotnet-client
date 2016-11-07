@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161021 (659)
+ *      <tr><th>API Rev<td>20161027 (665)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -8061,6 +8061,10 @@ namespace Google.Apis.Drive.v2.Data
             /// <summary>Deprecated.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
             public virtual System.Nullable<bool> Hidden { get; set; } 
+
+            /// <summary>Whether the file has been modified by this user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("modified")]
+            public virtual System.Nullable<bool> Modified { get; set; } 
 
             /// <summary>Whether viewers and commenters are prevented from downloading, printing, and copying this
             /// file.</summary>

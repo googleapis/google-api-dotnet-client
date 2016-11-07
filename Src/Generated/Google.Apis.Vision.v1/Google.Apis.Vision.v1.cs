@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161011 (649)
+ *      <tr><th>API Rev<td>20161031 (669)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -772,7 +772,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Image context.</summary>
+    /// <summary>Image context and/or feature-specific parameters.</summary>
     public class ImageContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of languages to use for TEXT_DETECTION. In most cases, an empty value yields the best results

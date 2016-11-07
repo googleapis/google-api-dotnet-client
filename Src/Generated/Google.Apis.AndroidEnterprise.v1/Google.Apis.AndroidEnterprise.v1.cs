@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161019 (657)
+ *      <tr><th>API Rev<td>20161025 (663)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -2704,7 +2704,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sets the store layout for the enterprise.</summary>
+        /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
+        /// basic store layout is enabled. The basic layout only contains apps approved by the administrator, and that
+        /// have been added to the available product set for a user (using the  setAvailableProductSet call). Apps on
+        /// the page are sorted in order of their product ID value. If you create a custom store layout (by setting
+        /// storeLayoutType = "custom"), the basic store layout is disabled.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
@@ -2712,7 +2716,11 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetStoreLayoutRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Sets the store layout for the enterprise.</summary>
+        /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
+        /// basic store layout is enabled. The basic layout only contains apps approved by the administrator, and that
+        /// have been added to the available product set for a user (using the  setAvailableProductSet call). Apps on
+        /// the page are sorted in order of their product ID value. If you create a custom store layout (by setting
+        /// storeLayoutType = "custom"), the basic store layout is disabled.</summary>
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
@@ -9519,11 +9527,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Sets a store layout type. If set to "custom", "homepageId" must be specified. If set to "basic",
-        /// the layout will consist of all approved apps accessible by the user, split in pages of 100 each; in this
-        /// case, "homepageId" must not be specified. The "basic" setting takes precedence over any existing collections
-        /// setup for this enterprise (if any). Should the enterprise use collectionViewers for controlling access
-        /// rights, these will still be respected.</summary>
+        /// <summary>Sets a store layout type. By default, this value is set to "basic". If set to "custom",
+        /// "homepageId" must be specified. If set to "basic", the layout will consist of all approved apps accessible
+        /// by the user, split in pages of 100 each; in this case, "homepageId" must not be specified. The "basic"
+        /// setting takes precedence over any existing collections setup for this enterprise (if any). Should the
+        /// enterprise use collectionViewers for controlling access rights, these will still be respected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeLayoutType")]
         public virtual string StoreLayoutType { get; set; } 
 

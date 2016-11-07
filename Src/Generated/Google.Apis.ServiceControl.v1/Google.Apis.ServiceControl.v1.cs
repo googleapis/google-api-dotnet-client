@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161017 (655)
+ *      <tr><th>API Rev<td>20161031 (669)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -348,6 +348,9 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
         /// proceed. It should be called before the operation is executed.
         ///
+        /// If feasible, the client should cache the check results and reuse them for up to 60s. In case of server
+        /// errors, the client may rely on the cached results for longer time.
+        ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
         /// <param name="body">The body of the request.</param>
@@ -362,6 +365,9 @@ namespace Google.Apis.ServiceControl.v1
 
         /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
         /// proceed. It should be called before the operation is executed.
+        ///
+        /// If feasible, the client should cache the check results and reuse them for up to 60s. In case of server
+        /// errors, the client may rely on the cached results for longer time.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -429,6 +435,10 @@ namespace Google.Apis.ServiceControl.v1
 
         /// <summary>Reports operations to Google Service Control. It should be called after the operation is completed.
         ///
+        /// If feasible, the client should aggregate reporting data for up to 5s to reduce API traffic. Limiting
+        /// aggregation to 5s is to reduce data loss during client crashes. Clients should carefully choose the
+        /// aggregation window to avoid data loss risk more than 0.01% for business and compliance reasons.
+        ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
         /// <param name="body">The body of the request.</param>
@@ -442,6 +452,10 @@ namespace Google.Apis.ServiceControl.v1
         }
 
         /// <summary>Reports operations to Google Service Control. It should be called after the operation is completed.
+        ///
+        /// If feasible, the client should aggregate reporting data for up to 5s to reduce API traffic. Limiting
+        /// aggregation to 5s is to reduce data loss during client crashes. Clients should carefully choose the
+        /// aggregation window to avoid data loss risk more than 0.01% for business and compliance reasons.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -533,6 +547,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The operation to be checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
+
+        /// <summary>Specifies which version of service configuration should be used to process the request.
+        ///
+        /// If unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -881,6 +901,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
+        /// <summary>Specifies which version of service config should be used to process the request.
+        ///
+        /// If unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -895,8 +921,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// where all `Operations` in the request are processed successfully. 2. The combination of a successful RPC
         /// status and a non-empty `report_errors` list indicates a partial success where some `Operations` in the
         /// request succeeded. Each `Operation` that failed processing has a corresponding item in this list. 3. A
-        /// failed RPC status indicates a complete failure where none of the `Operations` in the request
-        /// succeeded.</summary>
+        /// failed RPC status indicates a general non-deterministic failure. When this happens, it's impossible to know
+        /// which of the 'Operations' in the request succeeded or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportErrors")]
         public virtual System.Collections.Generic.IList<ReportError> ReportErrors { get; set; } 
 

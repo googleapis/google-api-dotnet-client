@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161026 (664)
+ *      <tr><th>API Rev<td>20161103 (672)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
+namespace Google.Apis.CloudNaturalLanguage.v1beta1
 {
-    /// <summary>The CloudNaturalLanguageAPI Service.</summary>
-    public class CloudNaturalLanguageAPIService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudNaturalLanguage Service.</summary>
+    public class CloudNaturalLanguageService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1beta1";
@@ -56,12 +56,12 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudNaturalLanguageAPIService() :
+        public CloudNaturalLanguageService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudNaturalLanguageAPIService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudNaturalLanguageService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             documents = new DocumentsResource(this);
@@ -110,11 +110,11 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
         }
     }
 
-    ///<summary>A base abstract class for CloudNaturalLanguageAPI requests.</summary>
-    public abstract class CloudNaturalLanguageAPIBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudNaturalLanguage requests.</summary>
+    public abstract class CloudNaturalLanguageBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudNaturalLanguageAPIBaseServiceRequest instance.</summary>
-        protected CloudNaturalLanguageAPIBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudNaturalLanguageBaseServiceRequest instance.</summary>
+        protected CloudNaturalLanguageBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -201,7 +201,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes CloudNaturalLanguageAPI parameter list.</summary>
+        /// <summary>Initializes CloudNaturalLanguage parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -345,17 +345,17 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
         /// <summary>Finds named entities (currently finds proper names) in the text, entity types, salience, mentions
         /// for each entity, and other properties.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeEntitiesRequest body)
+        public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesRequest body)
         {
             return new AnalyzeEntitiesRequest(service, body);
         }
 
         /// <summary>Finds named entities (currently finds proper names) in the text, entity types, salience, mentions
         /// for each entity, and other properties.</summary>
-        public class AnalyzeEntitiesRequest : CloudNaturalLanguageAPIBaseServiceRequest<Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeEntitiesResponse>
+        public class AnalyzeEntitiesRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesResponse>
         {
             /// <summary>Constructs a new AnalyzeEntities request.</summary>
-            public AnalyzeEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeEntitiesRequest body)
+            public AnalyzeEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesRequest body)
                 : base(service)
             {
                 Body = body;
@@ -365,7 +365,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeEntitiesRequest Body { get; set; }
+            Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -399,16 +399,16 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
 
         /// <summary>Analyzes the sentiment of the provided text.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual AnalyzeSentimentRequest AnalyzeSentiment(Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeSentimentRequest body)
+        public virtual AnalyzeSentimentRequest AnalyzeSentiment(Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeSentimentRequest body)
         {
             return new AnalyzeSentimentRequest(service, body);
         }
 
         /// <summary>Analyzes the sentiment of the provided text.</summary>
-        public class AnalyzeSentimentRequest : CloudNaturalLanguageAPIBaseServiceRequest<Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeSentimentResponse>
+        public class AnalyzeSentimentRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeSentimentResponse>
         {
             /// <summary>Constructs a new AnalyzeSentiment request.</summary>
-            public AnalyzeSentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeSentimentRequest body)
+            public AnalyzeSentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeSentimentRequest body)
                 : base(service)
             {
                 Body = body;
@@ -418,7 +418,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnalyzeSentimentRequest Body { get; set; }
+            Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeSentimentRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -453,17 +453,17 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
         /// <summary>A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and
         /// analyzeSyntax provide in one call.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual AnnotateTextRequest AnnotateText(Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextRequest body)
+        public virtual AnnotateTextRequest AnnotateText(Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnnotateTextRequest body)
         {
             return new AnnotateTextRequest(service, body);
         }
 
         /// <summary>A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and
         /// analyzeSyntax provide in one call.</summary>
-        public class AnnotateTextRequest : CloudNaturalLanguageAPIBaseServiceRequest<Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextResponse>
+        public class AnnotateTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnnotateTextResponse>
         {
             /// <summary>Constructs a new AnnotateText request.</summary>
-            public AnnotateTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextRequest body)
+            public AnnotateTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnnotateTextRequest body)
                 : base(service)
             {
                 Body = body;
@@ -473,7 +473,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data.AnnotateTextRequest Body { get; set; }
+            Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnnotateTextRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -507,7 +507,7 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1
     }
 }
 
-namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data
+namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
 {    
 
     /// <summary>The entity analysis request message.</summary>
@@ -767,9 +767,8 @@ namespace Google.Apis.CloudNaturalLanguageAPI.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
         public virtual System.Nullable<float> Magnitude { get; set; } 
 
-        /// <summary>Polarity of the sentiment in the [-1.0, 1.0] range. Larger numbers represent more positive
-        /// sentiments.  This field is being deprecated in favor of score. Please refer to our documentation at
-        /// https://cloud.google.com/natural-language/docs for more information.</summary>
+        /// <summary>DEPRECATED FIELD - This field is being deprecated in favor of score. Please refer to our
+        /// documentation at https://cloud.google.com/natural-language/docs for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("polarity")]
         public virtual System.Nullable<float> Polarity { get; set; } 
 

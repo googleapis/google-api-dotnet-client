@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161012 (650)
+ *      <tr><th>API Rev<td>20161019 (657)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -9483,6 +9483,21 @@ namespace Google.Apis.Compute.v1
             public virtual string InstanceGroupManager { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -9530,6 +9545,33 @@ namespace Google.Apis.Compute.v1
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -14390,6 +14432,82 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network to be
+        /// updated.</param>
+        public virtual SwitchToCustomModeRequest SwitchToCustomMode(string project, string network)
+        {
+            return new SwitchToCustomModeRequest(service, project, network);
+        }
+
+        /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
+        public class SwitchToCustomModeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SwitchToCustomMode request.</summary>
+            public SwitchToCustomModeRequest(Google.Apis.Services.IClientService service, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "switchToCustomMode"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/switchToCustomMode"; }
+            }
+
+            /// <summary>Initializes SwitchToCustomMode parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "projects" collection of methods.</summary>
@@ -17633,6 +17751,105 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to update.</param>
+        public virtual ExpandIpCidrRangeRequest ExpandIpCidrRange(Google.Apis.Compute.v1.Data.SubnetworksExpandIpCidrRangeRequest body, string project, string region, string subnetwork)
+        {
+            return new ExpandIpCidrRangeRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
+        public class ExpandIpCidrRangeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new ExpandIpCidrRange request.</summary>
+            public ExpandIpCidrRangeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SubnetworksExpandIpCidrRangeRequest body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SubnetworksExpandIpCidrRangeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "expandIpCidrRange"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}/expandIpCidrRange"; }
+            }
+
+            /// <summary>Initializes ExpandIpCidrRange parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -24243,9 +24460,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; } 
 
-        /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only
-        /// applicable for persistent disks. Note that for InstanceTemplate, it is just disk name, not URL for the
-        /// disk.</summary>
+        /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new
+        /// instance, one of initializeParams.sourceImage or disks.source is required.
+        ///
+        /// If desired, you can also attach existing non-root persistent disks using this property. This field is only
+        /// applicable for persistent disks.
+        ///
+        /// Note that for InstanceTemplate, specify the disk name, not the URL for the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -24287,8 +24508,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
 
-        /// <summary>The source image used to create this disk. If the source image is deleted, this field will not be
-        /// set.
+        /// <summary>The source image to create this disk. When creating a new instance, one of
+        /// initializeParams.sourceImage or disks.source is required.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
         /// example, specify family/debian-8 to use the latest Debian 8 image:
@@ -24306,7 +24527,9 @@ namespace Google.Apis.Compute.v1.Data
         /// You can also specify a private image by its image family, which returns the latest version of the image in
         /// that family. Replace the image name with family/family-name:
         ///
-        /// global/images/family/my-private-family</summary>
+        /// global/images/family/my-private-family
+        ///
+        /// If the source image is deleted later, this field will not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
@@ -24891,18 +25114,21 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Deprecation status for a public resource.</summary>
     public class DeprecationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional RFC3339 timestamp on or after which the deprecation state of this resource will be
-        /// changed to DELETED.</summary>
+        /// <summary>An optional RFC3339 timestamp on or after which the state of this resource is intended to change to
+        /// DELETED. This is only informational and the status will not change unless the client explicitly changes
+        /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual string Deleted { get; set; } 
 
-        /// <summary>An optional RFC3339 timestamp on or after which the deprecation state of this resource will be
-        /// changed to DEPRECATED.</summary>
+        /// <summary>An optional RFC3339 timestamp on or after which the state of this resource is intended to change to
+        /// DEPRECATED. This is only informational and the status will not change unless the client explicitly changes
+        /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
         public virtual string Deprecated { get; set; } 
 
-        /// <summary>An optional RFC3339 timestamp on or after which the deprecation state of this resource will be
-        /// changed to OBSOLETE.</summary>
+        /// <summary>An optional RFC3339 timestamp on or after which the state of this resource is intended to change to
+        /// OBSOLETE. This is only informational and the status will not change unless the client explicitly changes
+        /// it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obsolete")]
         public virtual string Obsolete { get; set; } 
 
@@ -27909,8 +28135,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<ulong> TargetId { get; set; } 
 
-        /// <summary>[Output Only] The URL of the resource that the operation modifies. If creating a persistent disk
-        /// snapshot, this points to the persistent disk that the snapshot was created from.</summary>
+        /// <summary>[Output Only] The URL of the resource that the operation modifies. For operations related to
+        /// creating a snapshot, this points to the persistent disk that the snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; } 
 
@@ -29214,6 +29440,18 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SubnetworksExpandIpCidrRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP (in CIDR format or netmask) of internal addresses that are legal on this Subnetwork. This
+        /// range should be disjoint from other subnetworks within this network. This range can only be larger than
+        /// (i.e. a superset of) the range previously defined before the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

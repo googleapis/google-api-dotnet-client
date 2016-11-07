@@ -7,11 +7,11 @@
     <ProjectGuid>{3033D28A-0541-4BCA-AF66-C2C9459CA98A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Apis.CloudNaturalLanguageAPI.v1beta1</RootNamespace>
-    <AssemblyName>Google.Apis.CloudNaturalLanguageAPI.v1beta1</AssemblyName>
+    <RootNamespace>Google.Apis.CloudNaturalLanguage.v1beta1</RootNamespace>
+    <AssemblyName>Google.Apis.CloudNaturalLanguage.v1beta1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <DocumentationFile>Google.Apis.CloudNaturalLanguageAPI.v1beta1.xml</DocumentationFile>
+    <DocumentationFile>Google.Apis.CloudNaturalLanguage.v1beta1.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,7 +41,7 @@
     <AssemblyOriginatorKeyFile>..\..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Google.Apis.CloudNaturalLanguageAPI.v1beta1.cs"/>
+    <Compile Include="..\Google.Apis.CloudNaturalLanguage.v1beta1.cs"/>
     <Compile Include="..\Properties\AssemblyInfo.cs"/>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Consumer Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160913 (621)
+ *      <tr><th>API Rev<td>20161101 (670)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -1074,38 +1074,23 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Representation of an individual pre-defined panel object defining a targeted audience of opinion
-    /// rewards mobile app users.</summary>
     public class MobileAppPanel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country code for the country of the users that the panel contains. Uses standard ISO 3166-1
-        /// 2-character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom. Any
-        /// survey created targeting this panel must also target the corresponding country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>Whether or not the panel is accessible to all API users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPublicPanel")]
         public virtual System.Nullable<bool> IsPublicPanel { get; set; } 
 
-        /// <summary>Language code that the panel can target. For instance, 'en-US'. Uses standard BCP47 language codes.
-        /// See specification. Any survey created targeting this panel must also target the corresponding
-        /// language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
-        /// <summary>Unique panel ID string. This corresponds to the mobile_app_panel_id used in Survey Insert
-        /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppPanelId")]
         public virtual string MobileAppPanelId { get; set; } 
 
-        /// <summary>Human readable name of the audience panel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>List of email addresses for users who can target members of this panel. Must contain at least the
-        /// address of the user making the API call for panels that are not public. This field will be empty for public
-        /// panels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<string> Owners { get; set; } 
 
@@ -1170,52 +1155,38 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Representation of an individual survey object.</summary>
     public class Survey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Targeting-criteria message containing demographic information</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual SurveyAudience Audience { get; set; } 
 
-        /// <summary>Cost to run the survey and collect the necessary number of responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
         public virtual SurveyCost Cost { get; set; } 
 
-        /// <summary>Additional information to store on behalf of the API consumer and associate with this question.
-        /// This binary blob is treated as opaque. This field is limited to 64K bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerData")]
         public virtual string CustomerData { get; set; } 
 
-        /// <summary>Text description of the survey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>List of email addresses for survey owners. Must contain at least the address of the user making the
-        /// API call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<string> Owners { get; set; } 
 
-        /// <summary>List of questions defining the survey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questions")]
         public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; } 
 
-        /// <summary>Reason for the survey being rejected. Only present if the survey state is 'rejected'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual SurveyRejection RejectionReason { get; set; } 
 
-        /// <summary>State that the survey is in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Unique survey ID, that is viewable in the URL of the Survey Creator UI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surveyUrlId")]
         public virtual string SurveyUrlId { get; set; } 
 
-        /// <summary>Optional name that will be given to the survey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>Number of responses desired for the survey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wantedResponseCount")]
         public virtual System.Nullable<int> WantedResponseCount { get; set; } 
 
@@ -1223,42 +1194,26 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifications for the target audience of a survey run through the API.</summary>
     public class SurveyAudience : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional list of age buckets to target. Supported age buckets are: ['18-24', '25-34', '35-44',
-        /// '45-54', '55-64', '65+']</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ages")]
         public virtual System.Collections.Generic.IList<string> Ages { get; set; } 
 
-        /// <summary>Required country code that surveys should be targeted to. Accepts standard ISO 3166-1 2 character
-        /// language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
-        /// <summary>Country subdivision (states/provinces/etc) that surveys should be targeted to. For all countries
-        /// except GB, ISO-3166-2 subdivision code is required (eg. 'US-OH' for Ohio, United States). For GB, NUTS 1
-        /// statistical region codes for the United Kingdom is required (eg. 'UK-UKC' for North East England).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countrySubdivision")]
         public virtual string CountrySubdivision { get; set; } 
 
-        /// <summary>Optional gender to target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; } 
 
-        /// <summary>Language code that surveys should be targeted to. For instance, 'en-US'. Surveys may target
-        /// bilingual users by specifying a list of language codes (for example, 'de' and 'en-US'). In that case, all
-        /// languages will be used for targeting users but the survey content (which is displayed) must match the first
-        /// language listed. Accepts standard BCP47 language codes. See specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
-        /// <summary>Key for predefined panel that causes survey to be sent to a predefined set of Opinion Rewards App
-        /// users. You must set PopulationSource to ANDROID_APP_PANEL to use this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppPanelId")]
         public virtual string MobileAppPanelId { get; set; } 
 
-        /// <summary>Online population source where the respondents are sampled from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("populationSource")]
         public virtual string PopulationSource { get; set; } 
 
@@ -1266,34 +1221,17 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message defining the cost to run a given survey through API.</summary>
     public class SurveyCost : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cost per survey response in nano units of the given currency. To get the total cost for a survey,
-        /// multiply this value by wanted_response_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costPerResponseNanos")]
         public virtual System.Nullable<long> CostPerResponseNanos { get; set; } 
 
-        /// <summary>Currency code that the cost is given in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; } 
 
-        /// <summary>Threshold to start a survey automatically if the quoted price is at most this value. When a survey
-        /// has a Screener (threshold) question, it must go through an incidence pricing test to determine the final
-        /// cost per response. Typically you will have to make a followup call to start the survey giving the final
-        /// computed cost per response. If the survey has no threshold_answers, setting this property will return an
-        /// error. By specifying this property, you indicate the max price per response you are willing to pay in
-        /// advance of the incidence test. If the price turns out to be lower than the specified value, the survey will
-        /// begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price
-        /// turns out to be greater than the specified value the survey will not be started and you will instead be
-        /// notified what price was determined by the incidence test. At that point, you must raise the value of this
-        /// property to be greater than or equal to that cost before attempting to start the survey again. This will
-        /// immediately start the survey as long the incidence test was run within the last 21 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCostPerResponseNanos")]
         public virtual System.Nullable<long> MaxCostPerResponseNanos { get; set; } 
 
-        /// <summary>Cost of survey in nano units of the given currency. DEPRECATED in favor of
-        /// cost_per_response_nanos</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<long> Nanos { get; set; } 
 
@@ -1301,90 +1239,59 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message defining the question specifications.</summary>
     public class SurveyQuestion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The randomization option for multiple choice and multi-select questions. If not specified, this
-        /// option defaults to randomize.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerOrder")]
         public virtual string AnswerOrder { get; set; } 
 
-        /// <summary>Required list of answer options for a question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answers")]
         public virtual System.Collections.Generic.IList<string> Answers { get; set; } 
 
-        /// <summary>Option to allow open-ended text box for Single Answer and Multiple Answer question types. This can
-        /// be used with SINGLE_ANSWER, SINGLE_ANSWER_WITH_IMAGE, MULTIPLE_ANSWERS, and MULTIPLE_ANSWERS_WITH_IMAGE
-        /// question types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasOther")]
         public virtual System.Nullable<bool> HasOther { get; set; } 
 
-        /// <summary>For rating questions, the text for the higher end of the scale, such as 'Best'. For numeric
-        /// questions, a string representing a floating-point that is the maximum allowed number for a
-        /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("highValueLabel")]
         public virtual string HighValueLabel { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<SurveyQuestionImage> Images { get; set; } 
 
-        /// <summary>Currently only support pinning an answer option to the last position.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAnswerPositionPinned")]
         public virtual System.Nullable<bool> LastAnswerPositionPinned { get; set; } 
 
-        /// <summary>For rating questions, the text for the lower end of the scale, such as 'Worst'. For numeric
-        /// questions, a string representing a floating-point that is the minimum allowed number for a
-        /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowValueLabel")]
         public virtual string LowValueLabel { get; set; } 
 
-        /// <summary>Option to force the user to pick one of the open text suggestions. This requires that suggestions
-        /// are provided for this question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mustPickSuggestion")]
         public virtual System.Nullable<bool> MustPickSuggestion { get; set; } 
 
-        /// <summary>Number of stars to use for ratings questions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numStars")]
         public virtual string NumStars { get; set; } 
 
-        /// <summary>Placeholder text for an open text question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openTextPlaceholder")]
         public virtual string OpenTextPlaceholder { get; set; } 
 
-        /// <summary>A list of suggested answers for open text question auto-complete. This is only valid if
-        /// single_line_response is true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openTextSuggestions")]
         public virtual System.Collections.Generic.IList<string> OpenTextSuggestions { get; set; } 
 
-        /// <summary>Required question text shown to the respondent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("question")]
         public virtual string Question { get; set; } 
 
-        /// <summary>Used by the Rating Scale with Text question type. This text goes along with the question field that
-        /// is presented to the respondent, and is the actual text that the respondent is asked to rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentText")]
         public virtual string SentimentText { get; set; } 
 
-        /// <summary>Option to allow multiple line open text responses instead of a single line response. Note that we
-        /// don't show auto-complete suggestions with multiple line responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleLineResponse")]
         public virtual System.Nullable<bool> SingleLineResponse { get; set; } 
 
-        /// <summary>The threshold/screener answer options, which will screen a user into the rest of the survey. These
-        /// will be a subset of the answer option strings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thresholdAnswers")]
         public virtual System.Collections.Generic.IList<string> ThresholdAnswers { get; set; } 
 
-        /// <summary>Required field defining the question type. For details about configuring different type of
-        /// questions, consult the question configuration guide.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>Optional unit of measurement for display (for example: hours, people, miles).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitOfMeasurementLabel")]
         public virtual string UnitOfMeasurementLabel { get; set; } 
 
-        /// <summary>The YouTube video ID to be show in video questions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
         public virtual string VideoId { get; set; } 
 
@@ -1392,18 +1299,14 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Container object for image data and alt_text.</summary>
     public class SurveyQuestionImage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The alt text property used in image tags is required for all images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altText")]
         public virtual string AltText { get; set; } 
 
-        /// <summary>Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
-        /// <summary>The read-only URL for the hosted images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1411,15 +1314,11 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Message representing why the survey was rejected from review, if it was.</summary>
     public class SurveyRejection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A human-readable explanation of what was wrong with the survey.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual string Explanation { get; set; } 
 
-        /// <summary>Which category of rejection this was. See the GCS Help Center for additional details on each
-        /// category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1427,14 +1326,11 @@ namespace Google.Apis.ConsumerSurveys.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Reference to the current results for a given survey.</summary>
     public class SurveyResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human readable string describing the status of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>External survey ID as viewable by survey owners in the editor view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surveyUrlId")]
         public virtual string SurveyUrlId { get; set; } 
 

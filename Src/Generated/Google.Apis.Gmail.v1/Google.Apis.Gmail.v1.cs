@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160711 (557)
+ *      <tr><th>API Rev<td>20161019 (657)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -105,6 +105,9 @@ namespace Google.Apis.Gmail.v1
 
             /// <summary>Manage mailbox labels</summary>
             public static string GmailLabels = "https://www.googleapis.com/auth/gmail.labels";
+
+            /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
+            public static string GmailMetadata = "https://www.googleapis.com/auth/gmail.metadata";
 
             /// <summary>View and modify but not delete your email</summary>
             public static string GmailModify = "https://www.googleapis.com/auth/gmail.modify";
@@ -6175,9 +6178,9 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentId")]
         public virtual string AttachmentId { get; set; } 
 
-        /// <summary>The body data of a MIME message part. May be empty for MIME container types that have no message
-        /// body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is
-        /// contained in a separate attachment.</summary>
+        /// <summary>The body data of a MIME message part as a base64url encoded string. May be empty for MIME container
+        /// types that have no message body or when the body data is sent as a separate attachment. An attachment ID is
+        /// present if the body data is contained in a separate attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
@@ -6271,7 +6274,7 @@ namespace Google.Apis.Gmail.v1.Data
 
     /// <summary>Settings associated with a send-as alias, which can be either the primary login address associated with
     /// the account or a custom "from" address. Send-as aliases correspond to the "Send Mail As" feature in the web
-    /// interface. See  for more details.</summary>
+    /// interface.</summary>
     public class SendAs : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A name that appears in the "From:" header for mail sent using this alias. For custom "from"
@@ -6314,8 +6317,8 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("smtpMsa")]
         public virtual SmtpMsa SmtpMsa { get; set; } 
 
-        /// <summary>Whether Gmail should treat this address as an alias for the user's primary email address. See  for
-        /// more details. This setting only applies to custom "from" aliases.</summary>
+        /// <summary>Whether Gmail should  treat this address as an alias for the user's primary email address. This
+        /// setting only applies to custom "from" aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("treatAsAlias")]
         public virtual System.Nullable<bool> TreatAsAlias { get; set; } 
 
@@ -6383,7 +6386,7 @@ namespace Google.Apis.Gmail.v1.Data
     }    
 
     /// <summary>Vacation auto-reply settings for an account. These settings correspond to the "Vacation responder"
-    /// feature in the web interface. See  for more details.</summary>
+    /// feature in the web interface.</summary>
     public class VacationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Flag that controls whether Gmail automatically replies to messages.</summary>

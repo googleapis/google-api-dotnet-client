@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161012 (650)
+ *      <tr><th>API Rev<td>20161101 (670)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -95,8 +95,14 @@ namespace Google.Apis.Appengine.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google App Engine Admin API.</summary>
         public class Scope
         {
+            /// <summary>View and manage your applications deployed on Google App Engine</summary>
+            public static string AppengineAdmin = "https://www.googleapis.com/auth/appengine.admin";
+
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View your data across Google Cloud Platform services</summary>
+            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
         }
 
@@ -2199,6 +2205,65 @@ namespace Google.Apis.Appengine.v1
             }
         }
 
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
+        /// excludes an App Engine application. For details about creating a project without an application, see the
+        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
+        /// /creating-project).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Appengine.v1.Data.Application body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
+        /// excludes an App Engine application. For details about creating a project without an application, see the
+        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
+        /// /creating-project).</summary>
+        public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Application body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Appengine.v1.Data.Application Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/apps"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Gets information about an application.</summary>
         /// <param name="appsId">Part of `name`. Name of the Application resource to get. Example: `apps/myapp`.</param>
         public virtual GetRequest Get(string appsId)
@@ -2259,7 +2324,7 @@ namespace Google.Apis.Appengine.v1
 
         }
 
-        /// <summary>Updates application parameters.</summary>
+        /// <summary>Updates application fields.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="appsId">Part of `name`. Name of the application to update. Example: `apps/myapp`.</param>
         public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.Application body, string appsId)
@@ -2267,7 +2332,7 @@ namespace Google.Apis.Appengine.v1
             return new PatchRequest(service, body, appsId);
         }
 
-        /// <summary>Updates application parameters.</summary>
+        /// <summary>Updates application fields.</summary>
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2869,6 +2934,13 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>Request message for `Instances.DebugInstance`.</summary>
     public class DebugInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa KEY_VALUE` or `[USERNAME]:ssh-
+        /// rsa [KEY_VALUE] google-ssh {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}` For more information, see
+        /// [Adding and Removing SSH Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-
+        /// keys)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKey")]
+        public virtual string SshKey { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3047,6 +3119,11 @@ namespace Google.Apis.Appengine.v1.Data
         /// environment. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
         public virtual string VmId { get; set; } 
+
+        /// <summary>The IP address of this instance. Only applicable for instances in App Engine flexible environment.
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmIp")]
+        public virtual string VmIp { get; set; } 
 
         /// <summary>Name of the virtual machine where this instance lives. Only applicable for instances in App Engine
         /// flexible environment. @OutputOnly</summary>
@@ -3263,7 +3340,7 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
@@ -3314,6 +3391,35 @@ namespace Google.Apis.Appengine.v1.Data
 
         /// <summary>Name of the resource that this operation is acting on. Example: `apps/myapp/modules/default`.
         /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>User who requested this operation. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
+    public class OperationMetadataExperimental : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time that this operation completed. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>Time that this operation was created. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
+        public virtual string InsertTime { get; set; } 
+
+        /// <summary>API method that initiated this operation. Example:
+        /// `google.appengine.experimental.CustomDomains.CreateCustomDomain`. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// `apps/myapp/customDomains/example.com`. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 

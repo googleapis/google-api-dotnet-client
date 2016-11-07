@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/management/'>AdSense Management API</a>
  *      <tr><th>API Version<td>v1.3
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161102 (671)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/management/'>
  *              https://developers.google.com/adsense/management/</a>
@@ -4257,7 +4257,7 @@ namespace Google.Apis.AdSense.v1_3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
         public virtual AdStyle.ColorsData Colors { get; set; } 
 
-        /// <summary>The style of the corners in the ad.</summary>
+        /// <summary>The style of the corners in the ad (deprecated: never populated, ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corners")]
         public virtual string Corners { get; set; } 
 

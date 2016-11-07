@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/civic-information'>Google Civic Information API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161017 (655)
+ *      <tr><th>API Rev<td>20161102 (671)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/civic-information'>
  *              https://developers.google.com/civic-information</a>
@@ -1412,6 +1412,105 @@ namespace Google.Apis.CivicInfo.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class PostalAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLines")]
+        public virtual System.Collections.Generic.IList<string> AddressLines { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeAreaName")]
+        public virtual string AdministrativeAreaName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("countryName")]
+        public virtual string CountryName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("countryNameCode")]
+        public virtual string CountryNameCode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentLocalityName")]
+        public virtual string DependentLocalityName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfareLeadingType")]
+        public virtual string DependentThoroughfareLeadingType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfareName")]
+        public virtual string DependentThoroughfareName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfarePostDirection")]
+        public virtual string DependentThoroughfarePostDirection { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfarePreDirection")]
+        public virtual string DependentThoroughfarePreDirection { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfareTrailingType")]
+        public virtual string DependentThoroughfareTrailingType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfaresConnector")]
+        public virtual string DependentThoroughfaresConnector { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfaresIndicator")]
+        public virtual string DependentThoroughfaresIndicator { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dependentThoroughfaresType")]
+        public virtual string DependentThoroughfaresType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("firmName")]
+        public virtual string FirmName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("isDisputed")]
+        public virtual System.Nullable<bool> IsDisputed { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localityName")]
+        public virtual string LocalityName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("postBoxNumber")]
+        public virtual string PostBoxNumber { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeNumber")]
+        public virtual string PostalCodeNumber { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeNumberExtension")]
+        public virtual string PostalCodeNumberExtension { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("premiseName")]
+        public virtual string PremiseName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recipientName")]
+        public virtual string RecipientName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sortingCode")]
+        public virtual string SortingCode { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("subAdministrativeAreaName")]
+        public virtual string SubAdministrativeAreaName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("subPremiseName")]
+        public virtual string SubPremiseName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfareLeadingType")]
+        public virtual string ThoroughfareLeadingType { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfareName")]
+        public virtual string ThoroughfareName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfareNumber")]
+        public virtual string ThoroughfareNumber { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfarePostDirection")]
+        public virtual string ThoroughfarePostDirection { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfarePreDirection")]
+        public virtual string ThoroughfarePreDirection { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thoroughfareTrailingType")]
+        public virtual string ThoroughfareTrailingType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RepresentativeInfoData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Political geographic divisions that contain the requested address.</summary>
@@ -1528,6 +1627,9 @@ namespace Google.Apis.CivicInfo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contextParams")]
         public virtual ContextParams ContextParams { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("voterInfoSegmentResult")]
+        public virtual VoterInfoSegmentResult VoterInfoSegmentResult { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1584,6 +1686,24 @@ namespace Google.Apis.CivicInfo.v2.Data
         /// one element in this array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual System.Collections.Generic.IList<AdministrationRegion> State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VoterInfoSegmentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedMillis")]
+        public virtual System.Nullable<long> GeneratedMillis { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("postalAddress")]
+        public virtual PostalAddress PostalAddress { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual VoterInfoRequest Request { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual VoterInfoResponse Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

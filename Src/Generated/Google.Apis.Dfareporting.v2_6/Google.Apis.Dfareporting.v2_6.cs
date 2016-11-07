@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v2.6
- *      <tr><th>API Rev<td>20160803 (580)
+ *      <tr><th>API Rev<td>20161027 (665)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -1318,14 +1318,16 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of account user profiles, possibly filtered.</summary>
+        /// <summary>Retrieves a list of account user profiles, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of account user profiles, possibly filtered.</summary>
+        /// <summary>Retrieves a list of account user profiles, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.AccountUserProfilesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1762,14 +1764,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves the list of accounts, possibly filtered.</summary>
+        /// <summary>Retrieves the list of accounts, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves the list of accounts, possibly filtered.</summary>
+        /// <summary>Retrieves the list of accounts, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2249,14 +2251,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of ads, possibly filtered.</summary>
+        /// <summary>Retrieves a list of ads, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of ads, possibly filtered.</summary>
+        /// <summary>Retrieves a list of ads, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.AdsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3122,14 +3124,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of advertiser groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of advertiser groups, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of advertiser groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of advertiser groups, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.AdvertiserGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3595,14 +3597,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of advertisers, possibly filtered.</summary>
+        /// <summary>Retrieves a list of advertisers, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of advertisers, possibly filtered.</summary>
+        /// <summary>Retrieves a list of advertisers, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.AdvertisersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4174,7 +4176,8 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves the list of creative IDs associated with the specified campaign.</summary>
+        /// <summary>Retrieves the list of creative IDs associated with the specified campaign. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="campaignId">Campaign ID in this association.</param>
@@ -4183,7 +4186,8 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, campaignId);
         }
 
-        /// <summary>Retrieves the list of creative IDs associated with the specified campaign.</summary>
+        /// <summary>Retrieves the list of creative IDs associated with the specified campaign. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CampaignCreativeAssociationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4493,14 +4497,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of campaigns, possibly filtered.</summary>
+        /// <summary>Retrieves a list of campaigns, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of campaigns, possibly filtered.</summary>
+        /// <summary>Retrieves a list of campaigns, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CampaignsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4990,14 +4994,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of change logs.</summary>
+        /// <summary>Retrieves a list of change logs. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of change logs.</summary>
+        /// <summary>Retrieves a list of change logs. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.ChangeLogsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5155,6 +5159,8 @@ namespace Google.Apis.Dfareporting.v2_6
                 OBJECTRICHMEDIACREATIVE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SD_SITE")]
                 OBJECTSDSITE,
+                [Google.Apis.Util.StringValueAttribute("OBJECT_SEARCH_LIFT_STUDY")]
+                OBJECTSEARCHLIFTSTUDY,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SIZE")]
                 OBJECTSIZE,
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SUBACCOUNT")]
@@ -5828,14 +5834,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of content categories, possibly filtered.</summary>
+        /// <summary>Retrieves a list of content categories, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of content categories, possibly filtered.</summary>
+        /// <summary>Retrieves a list of content categories, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.ContentCategoriesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -6843,7 +6849,8 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of creative field values, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative field values, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="creativeFieldId">Creative field ID for this creative field value.</param>
@@ -6852,7 +6859,8 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, creativeFieldId);
         }
 
-        /// <summary>Retrieves a list of creative field values, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative field values, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CreativeFieldValuesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7437,14 +7445,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of creative fields, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative fields, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of creative fields, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative fields, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CreativeFieldsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7924,14 +7932,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of creative groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative groups, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of creative groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creative groups, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CreativeGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -8424,14 +8432,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of creatives, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creatives, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of creatives, possibly filtered.</summary>
+        /// <summary>Retrieves a list of creatives, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.CreativesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9126,14 +9134,16 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of directory site contacts, possibly filtered.</summary>
+        /// <summary>Retrieves a list of directory site contacts, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of directory site contacts, possibly filtered.</summary>
+        /// <summary>Retrieves a list of directory site contacts, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.DirectorySiteContactsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -9462,14 +9472,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of directory sites, possibly filtered.</summary>
+        /// <summary>Retrieves a list of directory sites, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of directory sites, possibly filtered.</summary>
+        /// <summary>Retrieves a list of directory sites, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.DirectorySitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -11270,14 +11280,16 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of floodlight activities, possibly filtered.</summary>
+        /// <summary>Retrieves a list of floodlight activities, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of floodlight activities, possibly filtered.</summary>
+        /// <summary>Retrieves a list of floodlight activities, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.FloodlightActivitiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -11848,14 +11860,16 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of floodlight activity groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of floodlight activity groups, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of floodlight activity groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of floodlight activity groups, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.FloodlightActivityGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -12641,7 +12655,7 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of inventory items, possibly filtered.</summary>
+        /// <summary>Retrieves a list of inventory items, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="projectId">Project ID for order documents.</param>
@@ -12650,7 +12664,7 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, projectId);
         }
 
-        /// <summary>Retrieves a list of inventory items, possibly filtered.</summary>
+        /// <summary>Retrieves a list of inventory items, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.InventoryItemsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -14124,7 +14138,7 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of order documents, possibly filtered.</summary>
+        /// <summary>Retrieves a list of order documents, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="projectId">Project ID for order documents.</param>
@@ -14133,7 +14147,7 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, projectId);
         }
 
-        /// <summary>Retrieves a list of order documents, possibly filtered.</summary>
+        /// <summary>Retrieves a list of order documents, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.OrderDocumentsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -14448,7 +14462,7 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of orders, possibly filtered.</summary>
+        /// <summary>Retrieves a list of orders, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="projectId">Project ID for orders.</param>
@@ -14457,7 +14471,7 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, projectId);
         }
 
-        /// <summary>Retrieves a list of orders, possibly filtered.</summary>
+        /// <summary>Retrieves a list of orders, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -14798,14 +14812,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of placement groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placement groups, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of placement groups, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placement groups, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.PlacementGroupsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -15556,14 +15570,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of placement strategies, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placement strategies, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of placement strategies, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placement strategies, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.PlacementStrategiesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -16170,14 +16184,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of placements, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placements, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of placements, possibly filtered.</summary>
+        /// <summary>Retrieves a list of placements, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.PlacementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -17141,14 +17155,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of projects, possibly filtered.</summary>
+        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of projects, possibly filtered.</summary>
+        /// <summary>Retrieves a list of projects, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.ProjectsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -17797,7 +17811,7 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of remarketing lists, possibly filtered.</summary>
+        /// <summary>Retrieves a list of remarketing lists, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="advertiserId">Select only remarketing lists owned by this advertiser.</param>
@@ -17806,7 +17820,7 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, advertiserId);
         }
 
-        /// <summary>Retrieves a list of remarketing lists, possibly filtered.</summary>
+        /// <summary>Retrieves a list of remarketing lists, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.RemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -19348,14 +19362,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of sites, possibly filtered.</summary>
+        /// <summary>Retrieves a list of sites, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of sites, possibly filtered.</summary>
+        /// <summary>Retrieves a list of sites, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.SitesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -20213,14 +20227,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Gets a list of subaccounts, possibly filtered.</summary>
+        /// <summary>Gets a list of subaccounts, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Gets a list of subaccounts, possibly filtered.</summary>
+        /// <summary>Gets a list of subaccounts, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.SubaccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -20618,7 +20632,8 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of targetable remarketing lists, possibly filtered.</summary>
+        /// <summary>Retrieves a list of targetable remarketing lists, possibly filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param
         /// name="advertiserId">Select only targetable remarketing lists targetable by these advertisers.</param>
@@ -20627,7 +20642,8 @@ namespace Google.Apis.Dfareporting.v2_6
             return new ListRequest(service, profileId, advertiserId);
         }
 
-        /// <summary>Retrieves a list of targetable remarketing lists, possibly filtered.</summary>
+        /// <summary>Retrieves a list of targetable remarketing lists, possibly filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.TargetableRemarketingListsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -20956,14 +20972,16 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of targeting templates, optionally filtered.</summary>
+        /// <summary>Retrieves a list of targeting templates, optionally filtered. This method supports
+        /// paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of targeting templates, optionally filtered.</summary>
+        /// <summary>Retrieves a list of targeting templates, optionally filtered. This method supports
+        /// paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.TargetingTemplatesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -21959,14 +21977,14 @@ namespace Google.Apis.Dfareporting.v2_6
 
         }
 
-        /// <summary>Retrieves a list of user roles, possibly filtered.</summary>
+        /// <summary>Retrieves a list of user roles, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of user roles, possibly filtered.</summary>
+        /// <summary>Retrieves a list of user roles, possibly filtered. This method supports paging.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v2_6.Data.UserRolesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22660,7 +22678,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<long> AccountId { get; set; } 
 
-        /// <summary>Whether this ad is active.</summary>
+        /// <summary>Whether this ad is active. When true, archived must be false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
         public virtual System.Nullable<bool> Active { get; set; } 
 
@@ -22672,7 +22690,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
 
-        /// <summary>Whether this ad is archived.</summary>
+        /// <summary>Whether this ad is archived. When true, active must be false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
         public virtual System.Nullable<bool> Archived { get; set; } 
 
@@ -23758,7 +23776,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether the user has Limit Ad Tracking set.</summary>
+        /// <summary>Whether Limit Ad Tracking is enabled. When set to true, the conversion will be used for reporting
+        /// but not targeting. This will prevent remarketing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limitAdTracking")]
         public virtual System.Nullable<bool> LimitAdTracking { get; set; } 
 

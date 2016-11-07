@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20161103 (672)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -96,11 +96,11 @@ namespace Google.Apis.Surveys.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Surveys API.</summary>
         public class Scope
         {
-            /// <summary>View and edit your surveys and results</summary>
-            public static string Consumersurveys = "https://www.googleapis.com/auth/consumersurveys";
+            /// <summary>View and manage your surveys and results</summary>
+            public static string Surveys = "https://www.googleapis.com/auth/surveys";
 
-            /// <summary>View the results for your surveys</summary>
-            public static string ConsumersurveysReadonly = "https://www.googleapis.com/auth/consumersurveys.readonly";
+            /// <summary>View your surveys and survey results</summary>
+            public static string SurveysReadonly = "https://www.googleapis.com/auth/surveys.readonly";
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
@@ -1199,7 +1199,7 @@ namespace Google.Apis.Surveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questions")]
         public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; } 
 
-        /// <summary>Reason for the survey being rejected. Only present if the survey state is 'rejected'.</summary>
+        /// <summary>Reason for the survey being rejected. Only present if the survey state is rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual SurveyRejection RejectionReason { get; set; } 
 
@@ -1418,8 +1418,8 @@ namespace Google.Apis.Surveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual string Explanation { get; set; } 
 
-        /// <summary>Which category of rejection this was. See the GCS Help Center for additional details on each
-        /// category.</summary>
+        /// <summary>Which category of rejection this was. See the  Google Surveys Help Center for additional details on
+        /// each category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

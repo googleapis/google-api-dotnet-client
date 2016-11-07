@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/M-QRZV5QItNsm1xhhx46fHy5zDY\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/iCyYx8Jd64zSENdvc1H3S0RosYY\"",
  "discoveryVersion": "v1",
  "id": "adsensehost:v4.1",
  "name": "adsensehost",
  "canonicalName": "AdSense Host",
  "version": "v4.1",
- "revision": "20161027",
+ "revision": "20161102",
  "title": "AdSense Host API",
  "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
  "ownerDomain": "google.com",
@@ -227,7 +227,7 @@
     },
     "corners": {
      "type": "string",
-     "description": "The style of the corners in the ad. Possible values are SQUARE, SLIGHTLY_ROUNDED and VERY_ROUNDED."
+     "description": "The style of the corners in the ad (deprecated: never populated, ignored)."
     },
     "font": {
      "type": "object",

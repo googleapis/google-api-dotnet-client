@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161024 (662)
+ *      <tr><th>API Rev<td>20161031 (669)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -2467,17 +2467,17 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A specific metric identified by specifying values for all of the labels of a
+    /// <summary>A specific metric, identified by specifying values for all of the labels of a
     /// MetricDescriptor.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of labels that uniquely identify a metric. To specify a metric, all labels enumerated in
-        /// the MetricDescriptor must be assigned values.</summary>
+        /// <summary>The set of label values that uniquely identify this metric. All labels listed in the
+        /// MetricDescriptor must be assigned values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>An existing metric type, see google.api.MetricDescriptor. For example,
-        /// compute.googleapis.com/instance/cpu/usage_time.</summary>
+        /// custom.googleapis.com/invoice/paid/amount.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2485,7 +2485,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines a metric type and its schema.</summary>
+    /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
+    /// stops data collection and makes the metric type's existing data unusable.</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
@@ -2498,8 +2499,9 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
-        /// example, the compute.googleapis.com/instance/network/received_bytes_count metric type has a label,
-        /// loadbalanced, that specifies whether the traffic was received through a load balanced IP address.</summary>
+        /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
+        /// response code, response_code, so you can look at latencies for successful responses or just for responses
+        /// that failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
@@ -2508,19 +2510,18 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
-        /// <summary>Resource name. The format of the name may vary between different implementations. For examples:
-        /// projects/{project_id}/metricDescriptors/{type=**} metricDescriptors/{type=**} </summary>
+        /// <summary>The resource name of the metric descriptor. Depending on the implementation, the name typically
+        /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
+        /// metric's URL-encoded type, which also appears in the type field of this descriptor. For example, following
+        /// is the resource name of a custom metric within the GCP project 123456789:
+        /// projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The metric type including a DNS name prefix, for example
-        /// compute.googleapis.com/instance/cpu/utilization. Metric types should use a natural hierarchical grouping
-        /// such as the following: compute.googleapis.com/instance/cpu/utilization
-        /// compute.googleapis.com/instance/disk/read_ops_count
-        /// compute.googleapis.com/instance/network/received_bytes_count Note that if the metric type changes, the
-        /// monitoring data will be discontinued, and anything depends on it will break, such as monitoring dashboards,
-        /// alerting rules and quota limits. Therefore, once a metric has been published, its type should be
-        /// immutable.</summary>
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
+        /// metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical
+        /// grouping. For example: custom.googleapis.com/invoice/paid/amount
+        /// appengine.googleapis.com/http/server/response_latencies </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161021 (659)
+ *      <tr><th>API Rev<td>20161027 (665)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4170,6 +4170,10 @@ namespace Google.Apis.Drive.v3.Data
         /// supported import formats are published in the About resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
+
+        /// <summary>Whether the file has been modified by this user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMe")]
+        public virtual System.Nullable<bool> ModifiedByMe { get; set; } 
 
         /// <summary>The last time the file was modified by the user (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMeTime")]

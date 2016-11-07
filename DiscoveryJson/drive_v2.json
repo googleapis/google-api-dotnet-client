@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/biXVsOh25Cnx1wXFlplJDytmKqQ\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/qrYsvJ0sVCZdzpl7hbEwTmDDCNM\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20161021",
+ "revision": "20161027",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1118,6 +1118,10 @@
       "hidden": {
        "type": "boolean",
        "description": "Deprecated."
+      },
+      "modified": {
+       "type": "boolean",
+       "description": "Whether the file has been modified by this user."
       },
       "restricted": {
        "type": "boolean",

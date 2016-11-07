@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20161024 (662)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1464,6 +1464,9 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changeEmailTemplate")]
         public virtual EmailTemplate ChangeEmailTemplate { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinksDomain")]
+        public virtual string DynamicLinksDomain { get; set; } 
+
         /// <summary>Whether anonymous user is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAnonymousUser")]
         public virtual System.Nullable<bool> EnableAnonymousUser { get; set; } 
@@ -1711,6 +1714,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("captchaResponse")]
         public virtual string CaptchaResponse { get; set; } 
 
+        /// <summary>Whether to disable the user. Only can be used by service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
         /// <summary>The name of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
@@ -1718,6 +1725,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The email of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>Mark the email as verified or not. Only can be used by service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailVerified")]
+        public virtual System.Nullable<bool> EmailVerified { get; set; } 
 
         /// <summary>The GITKit token of the authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
@@ -1731,6 +1742,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
+        /// <summary>The photo url of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1738,6 +1753,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to upload user account in batch.</summary>
     public class IdentitytoolkitRelyingpartyUploadAccountRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether allow overwrite existing account when user local_id exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOverwrite")]
+        public virtual System.Nullable<bool> AllowOverwrite { get; set; } 
+
         /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
         /// migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
@@ -2182,6 +2201,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providerUserInfo")]
         public virtual System.Collections.Generic.IList<UserInfo.ProviderUserInfoData> ProviderUserInfo { get; set; } 
 
+        /// <summary>The user's plain text password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawPassword")]
+        public virtual string RawPassword { get; set; } 
+
         /// <summary>The user's password salt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salt")]
         public virtual string Salt { get; set; } 
@@ -2228,10 +2251,6 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             /// <summary>User's raw identifier directly returned from IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("rawId")]
             public virtual string RawId { get; set; } 
-
-            /// <summary>Raw IDP-returned user info.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("rawUserInfo")]
-            public virtual string RawUserInfo { get; set; } 
 
             /// <summary>User's screen name at Twitter or login name at Github.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("screenName")]

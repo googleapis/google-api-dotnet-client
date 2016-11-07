@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/OzWU6hwIToy2BkV9lGhm9g4EkLo\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/YVK-s0sJKSeGabFUAolhJKlNrdo\"",
  "discoveryVersion": "v1",
  "id": "adsense:v1.3",
  "name": "adsense",
  "canonicalName": "AdSense",
  "version": "v1.3",
- "revision": "20161027",
+ "revision": "20161102",
  "title": "AdSense Management API",
  "description": "Accesses AdSense publishers' inventory and generates performance reports.",
  "ownerDomain": "google.com",
@@ -238,7 +238,7 @@
     },
     "corners": {
      "type": "string",
-     "description": "The style of the corners in the ad."
+     "description": "The style of the corners in the ad (deprecated: never populated, ignored)."
     },
     "font": {
      "type": "object",

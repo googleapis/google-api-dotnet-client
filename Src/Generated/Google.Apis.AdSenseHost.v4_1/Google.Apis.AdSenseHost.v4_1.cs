@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/host/'>AdSense Host API</a>
  *      <tr><th>API Version<td>v4.1
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161102 (671)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/host/'>
  *              https://developers.google.com/adsense/host/</a>
@@ -2906,8 +2906,7 @@ namespace Google.Apis.AdSenseHost.v4_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
         public virtual AdStyle.ColorsData Colors { get; set; } 
 
-        /// <summary>The style of the corners in the ad. Possible values are SQUARE, SLIGHTLY_ROUNDED and
-        /// VERY_ROUNDED.</summary>
+        /// <summary>The style of the corners in the ad (deprecated: never populated, ignored).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corners")]
         public virtual string Corners { get; set; } 
 
