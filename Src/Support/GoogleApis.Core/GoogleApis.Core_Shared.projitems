@@ -27,7 +27,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\IHttpUnsuccessfulResponseHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Http\MaxUrlLengthInterceptor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\ISerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\JsonExplicitNull.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\IJsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\JsonExplicitNullAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\NewtonsoftJsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\ILogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\NullLogger.cs" />
