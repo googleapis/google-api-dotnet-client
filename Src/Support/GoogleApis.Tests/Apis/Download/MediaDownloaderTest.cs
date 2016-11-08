@@ -309,10 +309,8 @@ namespace Google.Apis.Tests.Apis.Download
 
                 byte[] bytes = outputStream.ToArray();
                 Assert.AreEqual(endInclusive - startInclusive + 1, bytes.Length);
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    Assert.AreEqual(MediaContent[i + startInclusive], bytes[i]);
-                }
+                byte[] expectedBytes = MediaContent.Skip(startInclusive).Take(bytes.Length).ToArray();
+                Assert.AreEqual(expectedBytes, bytes);
             }
         }
 
