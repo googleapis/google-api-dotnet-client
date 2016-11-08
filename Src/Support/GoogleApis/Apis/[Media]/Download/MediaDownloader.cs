@@ -24,6 +24,7 @@ using Google.Apis.Logging;
 using Google.Apis.Media;
 using Google.Apis.Services;
 using Google.Apis.Util;
+using System.Net.Http.Headers;
 
 namespace Google.Apis.Download
 {
@@ -66,6 +67,12 @@ namespace Google.Apis.Download
                 chunkSize = value;
             }
         }
+
+        /// <summary>
+        /// The range header for the request, if any. This can be used to download specific parts
+        /// of the requested media.
+        /// </summary>
+        public RangeHeaderValue Range { get; set; }
 
         #region Progress
 
@@ -241,6 +248,7 @@ namespace Google.Apis.Download
             }
 
             var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
+            request.Headers.Range = Range;
 
             // Number of bytes sent to the caller's stream.
             long bytesReturned = 0;

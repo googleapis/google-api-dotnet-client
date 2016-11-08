@@ -173,8 +173,6 @@ namespace Google.Apis.Tests.Apis.Download
                     outStream.Position = 0;
 
                     // Provide rudimentary, non-robust support for Range.
-                    // MediaDownloader doesn't exercise this code anymore, but it was useful for
-                    // testing previous implementations that did. It remains for posterity.
                     string rangeHeader = context.Request.Headers["Range"];
                     if (rangeHeader != null && response.StatusCode == (int)HttpStatusCode.OK)
                     {
@@ -291,6 +289,29 @@ namespace Google.Apis.Tests.Apis.Download
         {
             Subtest_Download_Chunks(2, false, 3);
             Subtest_Download_Chunks(MediaContent.Length - 1, false, 1);
+        }
+
+        [Test]
+        public void DownloadRange()
+        {
+            using (var service = new MockClientService())
+            {
+                int startInclusive = 5;
+                int endInclusive = 13;
+                var downloader = new MediaDownloader(service);
+                downloader.Range = new RangeHeaderValue(startInclusive, endInclusive);
+                var outputStream = new MemoryStream();
+                var result = downloader.Download(_httpPrefix + "content", outputStream);
+
+                Assert.AreEqual(result.Status, DownloadStatus.Completed);
+                Assert.IsNull(result.Exception);
+                Assert.AreEqual(result.BytesDownloaded, outputStream.Position);
+
+                byte[] bytes = outputStream.ToArray();
+                Assert.AreEqual(endInclusive - startInclusive + 1, bytes.Length);
+                byte[] expectedBytes = MediaContent.Skip(startInclusive).Take(bytes.Length).ToArray();
+                Assert.AreEqual(expectedBytes, bytes);
+            }
         }
 
         /// <summary>
