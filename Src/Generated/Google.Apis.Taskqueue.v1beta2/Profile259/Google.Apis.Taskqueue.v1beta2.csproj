@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Google.Apis.Core">
-      <HintPath>..\..\packages\Google.Apis.Core.1.18.0\lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Core.dll</HintPath>
+      <HintPath>..\..\packages\Google.Apis.Core.1.19.0\lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Google.Apis">
-      <HintPath>..\..\packages\Google.Apis.1.18.0\lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.dll</HintPath>
+      <HintPath>..\..\packages\Google.Apis.1.19.0\lib\portable-net45+sl50+netcore45+wpa81+wp8\Google.Apis.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">

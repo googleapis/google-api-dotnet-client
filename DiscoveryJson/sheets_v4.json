@@ -86,7 +86,7 @@
                   "type": "string"
                 },
                 "valueRenderOption": {
-                  "description": "How values should be represented in the output.",
+                  "description": "How values should be represented in the output.\nThe default render option is ValueRenderOption.FORMATTED_VALUE.",
                   "enum": [
                     "FORMATTED_VALUE",
                     "UNFORMATTED_VALUE",
@@ -96,7 +96,7 @@
                   "type": "string"
                 },
                 "dateTimeRenderOption": {
-                  "description": "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.",
+                  "description": "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].",
                   "enum": [
                     "SERIAL_NUMBER",
                     "FORMATTED_STRING"
@@ -171,7 +171,7 @@
                   "type": "string"
                 },
                 "valueRenderOption": {
-                  "description": "How values should be represented in the output.",
+                  "description": "How values should be represented in the output.\nThe default render option is ValueRenderOption.FORMATTED_VALUE.",
                   "enum": [
                     "FORMATTED_VALUE",
                     "UNFORMATTED_VALUE",
@@ -181,7 +181,7 @@
                   "type": "string"
                 },
                 "dateTimeRenderOption": {
-                  "description": "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.",
+                  "description": "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].",
                   "enum": [
                     "SERIAL_NUMBER",
                     "FORMATTED_STRING"
@@ -230,6 +230,16 @@
               "flatPath": "v4/spreadsheets/{spreadsheetId}/values/{range}:append",
               "httpMethod": "POST",
               "parameters": {
+                "responseValueRenderOption": {
+                  "description": "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE.",
+                  "enum": [
+                    "FORMATTED_VALUE",
+                    "UNFORMATTED_VALUE",
+                    "FORMULA"
+                  ],
+                  "location": "query",
+                  "type": "string"
+                },
                 "valueInputOption": {
                   "description": "How the input data should be interpreted.",
                   "enum": [
@@ -240,8 +250,28 @@
                   "location": "query",
                   "type": "string"
                 },
+                "responseDateTimeRenderOption": {
+                  "description": "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].",
+                  "enum": [
+                    "SERIAL_NUMBER",
+                    "FORMATTED_STRING"
+                  ],
+                  "location": "query",
+                  "type": "string"
+                },
+                "includeValuesInResponse": {
+                  "description": "Determines if the update response should include the values\nof the cells that were appended. By default, responses\ndo not include the updated values.",
+                  "location": "query",
+                  "type": "boolean"
+                },
                 "spreadsheetId": {
                   "description": "The ID of the spreadsheet to update.",
+                  "required": true,
+                  "location": "path",
+                  "type": "string"
+                },
+                "range": {
+                  "description": "The A1 notation of a range to search for a logical table of data.\nValues will be appended after the last row of the table.",
                   "required": true,
                   "location": "path",
                   "type": "string"
@@ -253,12 +283,6 @@
                     "INSERT_ROWS"
                   ],
                   "location": "query",
-                  "type": "string"
-                },
-                "range": {
-                  "description": "The A1 notation of a range to search for a logical table of data.\nValues will be appended after the last row of the table.",
-                  "required": true,
-                  "location": "path",
                   "type": "string"
                 }
               },
@@ -284,6 +308,16 @@
               "flatPath": "v4/spreadsheets/{spreadsheetId}/values/{range}",
               "httpMethod": "PUT",
               "parameters": {
+                "responseValueRenderOption": {
+                  "description": "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE.",
+                  "enum": [
+                    "FORMATTED_VALUE",
+                    "UNFORMATTED_VALUE",
+                    "FORMULA"
+                  ],
+                  "location": "query",
+                  "type": "string"
+                },
                 "valueInputOption": {
                   "description": "How the input data should be interpreted.",
                   "enum": [
@@ -293,6 +327,20 @@
                   ],
                   "location": "query",
                   "type": "string"
+                },
+                "responseDateTimeRenderOption": {
+                  "description": "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].",
+                  "enum": [
+                    "SERIAL_NUMBER",
+                    "FORMATTED_STRING"
+                  ],
+                  "location": "query",
+                  "type": "string"
+                },
+                "includeValuesInResponse": {
+                  "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than than the range actually written,\nthe response will include all values in the requested range (excluding\ntrailing empty rows and columns).",
+                  "location": "query",
+                  "type": "boolean"
                 },
                 "spreadsheetId": {
                   "description": "The ID of the spreadsheet to update.",
@@ -775,14 +823,23 @@
       "description": "The response when updating a range of values in a spreadsheet.",
       "type": "object",
       "properties": {
-        "updatedRange": {
-          "description": "The range (in A1 notation) that updates were applied to.",
-          "type": "string"
-        },
         "updatedColumns": {
           "description": "The number of columns where at least one cell in the column was updated.",
           "type": "integer",
           "format": "int32"
+        },
+        "updatedCells": {
+          "description": "The number of cells updated.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "updatedData": {
+          "description": "The values of the cells after updates were applied.\nThis is only included if the request's `includeValuesInResponse` field\nwas `true`.",
+          "$ref": "ValueRange"
+        },
+        "updatedRange": {
+          "description": "The range (in A1 notation) that updates were applied to.",
+          "type": "string"
         },
         "spreadsheetId": {
           "description": "The spreadsheet the updates were applied to.",
@@ -790,11 +847,6 @@
         },
         "updatedRows": {
           "description": "The number of rows where at least one cell in the row was updated.",
-          "type": "integer",
-          "format": "int32"
-        },
-        "updatedCells": {
-          "description": "The number of cells updated.",
           "type": "integer",
           "format": "int32"
         }
@@ -1438,6 +1490,36 @@
           "items": {
             "$ref": "ValueRange"
           }
+        },
+        "responseValueRenderOption": {
+          "description": "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE.",
+          "enum": [
+            "FORMATTED_VALUE",
+            "UNFORMATTED_VALUE",
+            "FORMULA"
+          ],
+          "enumDescriptions": [
+            "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`.",
+            "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`.",
+            "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."
+          ],
+          "type": "string"
+        },
+        "responseDateTimeRenderOption": {
+          "description": "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].",
+          "enum": [
+            "SERIAL_NUMBER",
+            "FORMATTED_STRING"
+          ],
+          "enumDescriptions": [
+            "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nDays are counted from December 31st 1899 and are incremented by 1,\nand times are fractions of a day.  For example, January 1st 1900 at noon\nwould be 1.5, 1 because it's 1 day offset from December 31st 1899,\nand .5 because noon is half a day.  February 1st 1900 at 3pm would\nbe 32.625. This correctly treats the year 1900 as not a leap year.",
+            "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."
+          ],
+          "type": "string"
+        },
+        "includeValuesInResponse": {
+          "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses will contain\nthe updated values. If the range to write was larger than than the range\nactually written, the response will include all values in the requested\nrange (excluding trailing empty rows and columns).",
+          "type": "boolean"
         }
       },
       "id": "BatchUpdateValuesRequest"
@@ -2022,12 +2104,27 @@
       "description": "The request for updating any aspect of a spreadsheet.",
       "type": "object",
       "properties": {
+        "includeSpreadsheetInResponse": {
+          "description": "Determines if the update response should include the spreadsheet\nresource.",
+          "type": "boolean"
+        },
         "requests": {
           "description": "A list of updates to apply to the spreadsheet.",
           "type": "array",
           "items": {
             "$ref": "Request"
           }
+        },
+        "responseRanges": {
+          "description": "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_response is 'true'.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "responseIncludeGridData": {
+          "description": "True if grid data should be returned. Meaningful only if\nif include_spreadsheet_response is 'true'.\nThis parameter is ignored if a field mask was set in the request.",
+          "type": "boolean"
         }
       },
       "id": "BatchUpdateSpreadsheetRequest"
@@ -3320,6 +3417,10 @@
           "description": "The spreadsheet the updates were applied to.",
           "type": "string"
         },
+        "updatedSpreadsheet": {
+          "description": "The spreadsheet after updates were applied. This is only set if\n[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.",
+          "$ref": "Spreadsheet"
+        },
         "replies": {
           "description": "The reply of the updates.  This maps 1:1 with the updates, although\nreplies to some requests may be empty.",
           "type": "array",
@@ -3899,7 +4000,7 @@
       "id": "DeleteConditionalFormatRuleResponse"
     }
   },
-  "revision": "20161021",
+  "revision": "20161105",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
