@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161102 (671)
+ *      <tr><th>API Rev<td>20161107 (676)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -522,10 +522,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>An optional unique request_id. If server receives two Create requests with the same
-                    /// request_id then second request will be ignored and the resource stored in the backend will be
-                    /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
-                    /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                    /// <summary>An optional but recommended unique request_id. If the server receives two create()
+                    /// requests  with the same request_id, then the second request will be ignored and the first
+                    /// resource created and stored in the backend is returned. Empty request_id fields are ignored.
+                    ///
+                    /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                    ///
+                    /// request_id strings are limited to 64 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -1066,10 +1069,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>An optional unique request_id. If server receives two Create requests with the same
-                    /// request_id then second request will be ignored and information stored in the backend will be
-                    /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
-                    /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                    /// <summary>An optional but recommended unique request_id. If the server receives two create()
+                    /// requests  with the same request_id, then the second request will be ignored and the first
+                    /// resource created and stored in the backend is returned. Empty request_id fields are ignored.
+                    ///
+                    /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                    ///
+                    /// request_id strings are limited to 64 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -1377,10 +1383,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>An optional unique request_id. If server receives two Create requests with the same
-                /// request_id then second request will be ignored and the resource stored in the backend will be
-                /// returned. Empty request_id fields are ignored. It is responsibility of the client to ensure
-                /// uniqueness of the request_id strings. The strings are limited to 64 characters.</summary>
+                /// <summary>An optional but recommended unique request_id. If the server receives two create() requests
+                /// with the same request_id, then the second request will be ignored and the first resource created and
+                /// stored in the backend is returned. Empty request_id fields are ignored.
+                ///
+                /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                ///
+                /// request_id strings are limited to 64 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
 
@@ -1877,8 +1886,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     /// resource consists of metadata and a hierarchy of variables.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An optional description of the RuntimeConfig object. The length of the description must be less
-        /// than 256 bytes.</summary>
+        /// <summary>An optional description of the RuntimeConfig object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -1987,8 +1995,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The textual value of the variable. The length of the value must be less than 4096 bytes. Empty
-        /// values are also accepted. NB: Only one of value and string_value can be set at the same time.</summary>
+        /// <summary>The string value of the variable. The length of the value must be less than 4096 bytes. Empty
+        /// values are also accepted. For example, text: "my text value".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
@@ -1997,8 +2005,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         public virtual object UpdateTime { get; set; } 
 
         /// <summary>The binary value of the variable. The length of the value must be less than 4096 bytes. Empty
-        /// values are also accepted. The value must be Base64 encoded. NB: Only one of value and string_value can be
-        /// set at the same time.</summary>
+        /// values are also accepted. The value must be base64 encoded. Only one of `value` or `text` can be
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161025 (663)
+ *      <tr><th>API Rev<td>20161102 (671)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -9527,11 +9527,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Sets a store layout type. By default, this value is set to "basic". If set to "custom",
-        /// "homepageId" must be specified. If set to "basic", the layout will consist of all approved apps accessible
-        /// by the user, split in pages of 100 each; in this case, "homepageId" must not be specified. The "basic"
-        /// setting takes precedence over any existing collections setup for this enterprise (if any). Should the
-        /// enterprise use collectionViewers for controlling access rights, these will still be respected.</summary>
+        /// <summary>The store layout type. By default, this value is set to "basic". If set to "custom", "homepageId"
+        /// must be specified. If set to "basic", the layout will consist of all approved apps accessible by the user,
+        /// split in pages of 100 each; in this case, "homepageId" must not be specified. The "basic" setting takes
+        /// precedence over any existing collections setup for this enterprise (if any). Should the enterprise use
+        /// collectionViewers for controlling access rights, these will still be respected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeLayoutType")]
         public virtual string StoreLayoutType { get; set; } 
 

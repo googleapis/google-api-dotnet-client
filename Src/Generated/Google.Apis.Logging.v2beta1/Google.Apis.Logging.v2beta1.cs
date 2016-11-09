@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20161028 (666)
+ *      <tr><th>API Rev<td>20161107 (676)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1830,7 +1830,7 @@ namespace Google.Apis.Logging.v2beta1.Data
     {
         /// <summary>Optional. A filter that chooses which log entries to return.  See [Advanced Logs
         /// Filters](/logging/docs/view/advanced_filters).  Only log entries that match the filter are returned.  An
-        /// empty filter matches all log entries.</summary>
+        /// empty filter matches all log entries. The maximum length of the filter is 20000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2062,7 +2062,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>Required. An [advanced logs filter](/logging/docs/view/advanced_filters). Example:
-        /// `"resource.type=gae_app AND severity>=ERROR"`.</summary>
+        /// `"resource.type=gae_app AND severity>=ERROR"`. The maximum length of the filter is 20000
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2108,7 +2109,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// `outputVersionFormat` parameter, regardless of the format of the log entry that was originally written to
         /// Stackdriver Logging. Example filter (V2 format):
         ///
-        /// logName=projects/my-projectid/logs/syslog AND severity>=ERROR</summary>
+        /// logName=projects/my-projectid/logs/syslog AND severity>=ERROR The maximum length of the filter is 20000
+        /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -2231,8 +2233,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finished")]
         public virtual System.Nullable<bool> Finished { get; set; } 
 
-        /// <summary>Whether this is the first RequestLog entry for this request.  If an active request has several
-        /// RequestLog entries written to Cloud Logging, this field will be set for one of them.</summary>
+        /// <summary>Whether this is the first `RequestLog` entry for this request.  If an active request has several
+        /// `RequestLog` entries written to Stackdriver Logging, then this field will be set for one of them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("first")]
         public virtual System.Nullable<bool> First { get; set; } 
 
@@ -2332,7 +2334,7 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskQueueName")]
         public virtual string TaskQueueName { get; set; } 
 
-        /// <summary>Cloud Trace identifier for this request.</summary>
+        /// <summary>Stackdriver Trace identifier for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; } 
 

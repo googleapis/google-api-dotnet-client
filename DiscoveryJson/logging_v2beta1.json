@@ -596,7 +596,7 @@
           "type": "string"
         },
         "filter": {
-          "description": "Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).\nOnly log entries matching the filter are exported. The filter\nmust be consistent with the log entry format specified by the\n`outputVersionFormat` parameter, regardless of the format of the\nlog entry that was originally written to Stackdriver Logging.\nExample filter (V2 format):\n\n    logName=projects/my-projectid/logs/syslog AND severity\u003e=ERROR",
+          "description": "Optional. An [advanced logs filter](/logging/docs/view/advanced_filters).\nOnly log entries matching the filter are exported. The filter\nmust be consistent with the log entry format specified by the\n`outputVersionFormat` parameter, regardless of the format of the\nlog entry that was originally written to Stackdriver Logging.\nExample filter (V2 format):\n\n    logName=projects/my-projectid/logs/syslog AND severity\u003e=ERROR\nThe maximum length of the filter is 20000 characters.",
           "type": "string"
         },
         "endTime": {
@@ -643,7 +643,7 @@
           "type": "string"
         },
         "filter": {
-          "description": "Required. An [advanced logs filter](/logging/docs/view/advanced_filters).\nExample: `\"resource.type=gae_app AND severity\u003e=ERROR\"`.",
+          "description": "Required. An [advanced logs filter](/logging/docs/view/advanced_filters).\nExample: `\"resource.type=gae_app AND severity\u003e=ERROR\"`.\nThe maximum length of the filter is 20000 characters.",
           "type": "string"
         },
         "name": {
@@ -1068,7 +1068,7 @@
           "type": "string"
         },
         "first": {
-          "description": "Whether this is the first RequestLog entry for this request.  If an active\nrequest has several RequestLog entries written to Cloud Logging, this field\nwill be set for one of them.",
+          "description": "Whether this is the first `RequestLog` entry for this request.  If an\nactive request has several `RequestLog` entries written to Stackdriver\nLogging, then this field will be set for one of them.",
           "type": "boolean"
         },
         "method": {
@@ -1156,7 +1156,7 @@
           "type": "string"
         },
         "traceId": {
-          "description": "Cloud Trace identifier for this request.",
+          "description": "Stackdriver Trace identifier for this request.",
           "type": "string"
         },
         "taskName": {
@@ -1215,7 +1215,7 @@
       "type": "object",
       "properties": {
         "filter": {
-          "description": "Optional. A filter that chooses which log entries to return.  See [Advanced\nLogs Filters](/logging/docs/view/advanced_filters).  Only log entries that\nmatch the filter are returned.  An empty filter matches all log entries.",
+          "description": "Optional. A filter that chooses which log entries to return.  See [Advanced\nLogs Filters](/logging/docs/view/advanced_filters).  Only log entries that\nmatch the filter are returned.  An empty filter matches all log entries.\nThe maximum length of the filter is 20000 characters.",
           "type": "string"
         },
         "projectIds": {
@@ -1249,7 +1249,7 @@
       "id": "ListLogEntriesRequest"
     }
   },
-  "revision": "20161028",
+  "revision": "20161107",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
