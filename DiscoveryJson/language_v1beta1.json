@@ -82,7 +82,7 @@
           "type": "string"
         },
         "gcsContentUri": {
-          "description": "The Google Cloud Storage URI where the file content is located.",
+          "description": "The Google Cloud Storage URI where the file content is located.\nThis URI must be of the form: gs://bucket_name/object_name. For more\ndetails, see https://cloud.google.com/storage/docs/reference-uris.\nNOTE: Cloud Storage object versioning is not supported.",
           "type": "string"
         },
         "type": {
@@ -615,7 +615,7 @@
           "$ref": "DependencyEdge"
         },
         "lemma": {
-          "description": "[Lemma](https://en.wikipedia.org/wiki/Lemma_(morphology))\nof the token.",
+          "description": "\u003ca href=\"https://en.wikipedia.org/wiki/Lemma_(morphology)\"\u003e\nLemma\u003c/a\u003e of the token.",
           "type": "string"
         }
       },
@@ -640,7 +640,7 @@
       "id": "AnalyzeEntitiesResponse"
     }
   },
-  "revision": "20161103",
+  "revision": "20161109",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

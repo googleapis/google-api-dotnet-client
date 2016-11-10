@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161103 (672)
+ *      <tr><th>API Rev<td>20161109 (678)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -647,7 +647,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
-        /// <summary>The Google Cloud Storage URI where the file content is located.</summary>
+        /// <summary>The Google Cloud Storage URI where the file content is located. This URI must be of the form:
+        /// gs://bucket_name/object_name. For more details, see https://cloud.google.com/storage/docs/reference-uris.
+        /// NOTE: Cloud Storage object versioning is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsContentUri")]
         public virtual string GcsContentUri { get; set; } 
 
@@ -862,7 +864,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dependencyEdge")]
         public virtual DependencyEdge DependencyEdge { get; set; } 
 
-        /// <summary>[Lemma](https://en.wikipedia.org/wiki/Lemma_(morphology)) of the token.</summary>
+        /// <summary> Lemma of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lemma")]
         public virtual string Lemma { get; set; } 
 
