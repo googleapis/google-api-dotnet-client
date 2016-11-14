@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161103 (672)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3610,7 +3610,9 @@ namespace Google.Apis.Drive.v3
             public virtual string FileId { get; private set; }
 
             /// <summary>The maximum number of revisions to return per page.</summary>
+            /// [default: 200]
             /// [minimum: 1]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3658,7 +3660,7 @@ namespace Google.Apis.Drive.v3
                         Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "200",
                         Pattern = null,
                     });
                 RequestParameters.Add(

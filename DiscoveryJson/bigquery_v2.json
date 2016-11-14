@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/5al1roj5YgyeyNOl9-vxuDzP7oI\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/38ec4LBichi45rs7Z88p5kE7xpM\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20161105",
+ "revision": "20161029",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -783,10 +783,6 @@
      "description": "[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.",
      "format": "int32"
     },
-    "nullMarker": {
-     "type": "string",
-     "description": "[Optional] This string will be interpreted as a null value when it appears in a CSV file. The default value is the empty string. Please refer to the documentation for further information."
-    },
     "projectionFields": {
      "type": "array",
      "description": "[Experimental] If sourceFormat is set to \"DATASTORE_BACKUP\", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.",
@@ -1127,10 +1123,6 @@
     "schema": {
      "$ref": "TableSchema",
      "description": "[Output-only, Experimental] The schema of the results. Present only for successful dry run of non-legacy SQL queries."
-    },
-    "statementType": {
-     "type": "string",
-     "description": "[Output-only, Experimental] The type of query statement, if valid."
     },
     "totalBytesBilled": {
      "type": "string",
@@ -1549,13 +1541,6 @@
      "description": "[Output-only] The type of the resource.",
      "default": "bigquery#table"
     },
-    "labels": {
-     "type": "object",
-     "description": "[Experimental] The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and must be unique within a dataset. Both keys and values are additionally constrained to be \u003c= 128 bytes in size.",
-     "additionalProperties": {
-      "type": "string"
-     }
-    },
     "lastModifiedTime": {
      "type": "string",
      "description": "[Output-only] The time when this table was last modified, in milliseconds since the epoch.",
@@ -1786,13 +1771,6 @@
         "type": "string",
         "description": "The resource type.",
         "default": "bigquery#table"
-       },
-       "labels": {
-        "type": "object",
-        "description": "[Experimental] The labels associated with this table. You can use these to organize and group your tables.",
-        "additionalProperties": {
-         "type": "string"
-        }
        },
        "tableReference": {
         "$ref": "TableReference",

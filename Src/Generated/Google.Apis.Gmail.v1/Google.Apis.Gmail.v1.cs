@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161019 (657)
+ *      <tr><th>API Rev<td>20161107 (676)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -2611,7 +2611,8 @@ namespace Google.Apis.Gmail.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>Only return messages matching the specified query. Supports the same query format as the
-                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</summary>
+                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot
+                /// be used when accessing the api using the gmail.metadata scope.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
 
@@ -5134,7 +5135,8 @@ namespace Google.Apis.Gmail.v1
                 public virtual string PageToken { get; set; }
 
                 /// <summary>Only return threads matching the specified query. Supports the same query format as the
-                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread".</summary>
+                /// Gmail search box. For example, "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot
+                /// be used when accessing the api using the gmail.metadata scope.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
 
@@ -6184,7 +6186,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
-        /// <summary>Total number of bytes in the body of the message part.</summary>
+        /// <summary>Number of bytes for the message part data (encoding notwithstanding).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
 
