@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/1r4xcyhwFVF43YrdQMTmKRf9d8Y\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/1r4xcyhwFVF43YrdQMTmKRf9d8Y\"",
  "discoveryVersion": "v1",
  "id": "cloudmonitoring:v2beta2",
  "name": "cloudmonitoring",

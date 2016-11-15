@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161028 (666)
+ *      <tr><th>API Rev<td>20161110 (679)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -5115,7 +5115,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The applicable regions for this tier. Can be us-east1, europe-west1 or asia-east1.</summary>
+        /// <summary>The applicable regions for this tier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual System.Collections.Generic.IList<string> Region { get; set; } 
 

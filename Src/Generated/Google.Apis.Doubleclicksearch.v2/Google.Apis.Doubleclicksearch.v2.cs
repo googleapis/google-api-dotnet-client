@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-search/'>DoubleClick Search API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161031 (669)
+ *      <tr><th>API Rev<td>20161108 (677)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>

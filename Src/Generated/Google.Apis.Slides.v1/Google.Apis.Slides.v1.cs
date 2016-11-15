@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161102 (671)
+ *      <tr><th>API Rev<td>20161110 (679)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -725,6 +725,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A TextElement kind that represents auto text.</summary>
     public class AutoText : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The rendered content of this auto text, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
         /// <summary>The styling applied to this auto text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual TextStyle Style { get; set; } 
@@ -856,6 +860,32 @@ namespace Google.Apis.Slides.v1.Data
     public class CreateImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The object ID of the created image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Creates a line.</summary>
+    public class CreateLineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The element properties for the line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
+        public virtual PageElementProperties ElementProperties { get; set; } 
+
+        /// <summary>The category of line to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineCategory")]
+        public virtual string LineCategory { get; set; } 
+
+        /// <summary>A user-supplied object ID.
+        ///
+        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
+        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
+        /// not be less than 5 or greater than 50.
+        ///
+        /// If you don't specify an ID, a unique one is generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
@@ -2108,6 +2138,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Creates an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createImage")]
         public virtual CreateImageRequest CreateImage { get; set; } 
+
+        /// <summary>Creates a line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createLine")]
+        public virtual CreateLineRequest CreateLine { get; set; } 
 
         /// <summary>Creates bullets for paragraphs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createParagraphBullets")]
