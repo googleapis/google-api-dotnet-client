@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/8zFUuQjeU3OxAa8F7VzgjiZNJ4k\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/OOn7sGs_QDETnTqbpzk5QtS42kA\"",
  "discoveryVersion": "v1",
  "id": "appengine:v1beta4",
  "name": "appengine",
  "version": "v1beta4",
- "revision": "20161101",
+ "revision": "20161114",
  "title": "Google App Engine Admin API",
  "description": "Provisions and manages App Engine applications.",
  "ownerDomain": "google.com",
@@ -632,6 +632,33 @@
     "memoryGb": {
      "type": "number",
      "description": "Memory (GB) needed.",
+     "format": "double"
+    },
+    "volumes": {
+     "type": "array",
+     "description": "User specified volumes.",
+     "items": {
+      "$ref": "Volume"
+     }
+    }
+   }
+  },
+  "Volume": {
+   "id": "Volume",
+   "type": "object",
+   "description": "Volumes mounted within the app container. Only applicable for VM runtimes.",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Unique name for the volume."
+    },
+    "volumeType": {
+     "type": "string",
+     "description": "Underlying volume type, e.g. 'tmpfs'."
+    },
+    "sizeGb": {
+     "type": "number",
+     "description": "Volume size in GB.",
      "format": "double"
     }
    }
@@ -1407,11 +1434,11 @@
      "id": "appengine.apps.patch",
      "path": "v1beta4/apps/{appsId}",
      "httpMethod": "PATCH",
-     "description": "Updates application fields.",
+     "description": "Updates the specified Application resource. You can update the following fields: * [`auth_domain`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps#Application.FIELDS.auth_domain) * [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta4/apps#Application.FIELDS.default_cookie_expiration)",
      "parameters": {
       "appsId": {
        "type": "string",
-       "description": "Part of `name`. Name of the application to update. For example: \"apps/myapp\".",
+       "description": "Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.",
        "required": true,
        "location": "path"
       },

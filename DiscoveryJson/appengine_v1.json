@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/_JlSbgZ5hP4Cc7VHxlMuD8xCWYQ\"",
+ "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/v-kJzbgZGpkfiAIOSmRwqjI75nc\"",
  "discoveryVersion": "v1",
  "id": "appengine:v1",
  "name": "appengine",
  "version": "v1",
- "revision": "20161101",
+ "revision": "20161114",
  "title": "Google App Engine Admin API",
  "description": "Provisions and manages App Engine applications.",
  "ownerDomain": "google.com",
@@ -726,6 +726,33 @@
     "memoryGb": {
      "type": "number",
      "description": "Memory (GB) needed.",
+     "format": "double"
+    },
+    "volumes": {
+     "type": "array",
+     "description": "User specified volumes.",
+     "items": {
+      "$ref": "Volume"
+     }
+    }
+   }
+  },
+  "Volume": {
+   "id": "Volume",
+   "type": "object",
+   "description": "Volumes mounted within the app container. Only applicable for VM runtimes.",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Unique name for the volume."
+    },
+    "volumeType": {
+     "type": "string",
+     "description": "Underlying volume type, e.g. 'tmpfs'."
+    },
+    "sizeGb": {
+     "type": "number",
+     "description": "Volume size in GB.",
      "format": "double"
     }
    }
@@ -1464,11 +1491,11 @@
      "id": "appengine.apps.patch",
      "path": "v1/apps/{appsId}",
      "httpMethod": "PATCH",
-     "description": "Updates application fields.",
+     "description": "Updates the specified Application resource. You can update the following fields: * [`auth_domain`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#Application.FIELDS.auth_domain) * [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#Application.FIELDS.default_cookie_expiration)",
      "parameters": {
       "appsId": {
        "type": "string",
-       "description": "Part of `name`. Name of the application to update. Example: `apps/myapp`.",
+       "description": "Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.",
        "required": true,
        "location": "path"
       },
@@ -1495,7 +1522,7 @@
      "id": "appengine.apps.repair",
      "path": "v1/apps/{appsId}:repair",
      "httpMethod": "POST",
-     "description": "Recreates the required App Engine features for the application in your project, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example \"*Error retrieving the App Engine service account*\".",
+     "description": "Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, *Error retrieving the App Engine service account*.",
      "parameters": {
       "appsId": {
        "type": "string",

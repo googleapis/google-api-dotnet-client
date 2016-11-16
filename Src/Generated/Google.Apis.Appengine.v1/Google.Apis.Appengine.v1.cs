@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161101 (670)
+ *      <tr><th>API Rev<td>20161114 (683)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -2324,15 +2324,23 @@ namespace Google.Apis.Appengine.v1
 
         }
 
-        /// <summary>Updates application fields.</summary>
+        /// <summary>Updates the specified Application resource. You can update the following fields: *
+        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1/apps#Application.FIELDS.auth_domain) *
+        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1/apps#Application.FIELDS.default_cookie_expiration)</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="appsId">Part of `name`. Name of the application to update. Example: `apps/myapp`.</param>
+        /// <param name="appsId">Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</param>
         public virtual PatchRequest Patch(Google.Apis.Appengine.v1.Data.Application body, string appsId)
         {
             return new PatchRequest(service, body, appsId);
         }
 
-        /// <summary>Updates application fields.</summary>
+        /// <summary>Updates the specified Application resource. You can update the following fields: *
+        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1/apps#Application.FIELDS.auth_domain) *
+        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1/apps#Application.FIELDS.default_cookie_expiration)</summary>
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2345,7 +2353,7 @@ namespace Google.Apis.Appengine.v1
             }
 
 
-            /// <summary>Part of `name`. Name of the application to update. Example: `apps/myapp`.</summary>
+            /// <summary>Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
@@ -2405,9 +2413,9 @@ namespace Google.Apis.Appengine.v1
 
         }
 
-        /// <summary>Recreates the required App Engine features for the application in your project, for example a Cloud
-        /// Storage bucket or App Engine service account. Use this method if you receive an error message about a
-        /// missing feature, for example "*Error retrieving the App Engine service account*".</summary>
+        /// <summary>Recreates the required App Engine features for the specified App Engine application, for example a
+        /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a
+        /// missing feature, for example, *Error retrieving the App Engine service account*.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="appsId">Part of `name`. Name of the application to repair. Example: `apps/myapp`</param>
         public virtual RepairRequest Repair(Google.Apis.Appengine.v1.Data.RepairApplicationRequest body, string appsId)
@@ -2415,9 +2423,9 @@ namespace Google.Apis.Appengine.v1
             return new RepairRequest(service, body, appsId);
         }
 
-        /// <summary>Recreates the required App Engine features for the application in your project, for example a Cloud
-        /// Storage bucket or App Engine service account. Use this method if you receive an error message about a
-        /// missing feature, for example "*Error retrieving the App Engine service account*".</summary>
+        /// <summary>Recreates the required App Engine features for the specified App Engine application, for example a
+        /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a
+        /// missing feature, for example, *Error retrieving the App Engine service account*.</summary>
         public class RepairRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
         {
             /// <summary>Constructs a new Repair request.</summary>
@@ -3526,6 +3534,10 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
         public virtual System.Nullable<double> MemoryGb { get; set; } 
 
+        /// <summary>User specified volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3882,6 +3894,25 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Whether to deploy this version in a container on a virtual machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vm")]
         public virtual System.Nullable<bool> Vm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Volumes mounted within the app container. Only applicable for VM runtimes.</summary>
+    public class Volume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique name for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Volume size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<double> SizeGb { get; set; } 
+
+        /// <summary>Underlying volume type, e.g. 'tmpfs'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeType")]
+        public virtual string VolumeType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

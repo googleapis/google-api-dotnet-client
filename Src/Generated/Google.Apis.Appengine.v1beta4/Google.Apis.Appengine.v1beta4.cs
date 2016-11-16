@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161101 (670)
+ *      <tr><th>API Rev<td>20161114 (683)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -2328,15 +2328,23 @@ namespace Google.Apis.Appengine.v1beta4
 
         }
 
-        /// <summary>Updates application fields.</summary>
+        /// <summary>Updates the specified Application resource. You can update the following fields: *
+        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta4/apps#Application.FIELDS.auth_domain) *
+        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta4/apps#Application.FIELDS.default_cookie_expiration)</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="appsId">Part of `name`. Name of the application to update. For example: "apps/myapp".</param>
+        /// <param name="appsId">Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</param>
         public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta4.Data.Application body, string appsId)
         {
             return new PatchRequest(service, body, appsId);
         }
 
-        /// <summary>Updates application fields.</summary>
+        /// <summary>Updates the specified Application resource. You can update the following fields: *
+        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta4/apps#Application.FIELDS.auth_domain) *
+        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta4/apps#Application.FIELDS.default_cookie_expiration)</summary>
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2349,7 +2357,7 @@ namespace Google.Apis.Appengine.v1beta4
             }
 
 
-            /// <summary>Part of `name`. Name of the application to update. For example: "apps/myapp".</summary>
+            /// <summary>Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
@@ -3227,6 +3235,10 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
         public virtual System.Nullable<double> MemoryGb { get; set; } 
 
+        /// <summary>User specified volumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3610,6 +3622,25 @@ namespace Google.Apis.Appengine.v1beta4.Data
         /// <summary>Whether to deploy this version in a container on a virtual machine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vm")]
         public virtual System.Nullable<bool> Vm { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Volumes mounted within the app container. Only applicable for VM runtimes.</summary>
+    public class Volume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique name for the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Volume size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<double> SizeGb { get; set; } 
+
+        /// <summary>Underlying volume type, e.g. 'tmpfs'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeType")]
+        public virtual string VolumeType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
