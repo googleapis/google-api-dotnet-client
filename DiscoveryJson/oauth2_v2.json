@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/J4rckUhPVbG5pUjuc4heKL4nzhM\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/DLGEtypjIuIXh77Iqrmfcan50ew\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v2",
  "name": "oauth2",
@@ -11,8 +11,8 @@
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
-  "x16": "http://www.google.com/images/icons/product/search-16.gif",
-  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
  },
  "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
  "protocol": "rest",

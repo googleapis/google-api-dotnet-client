@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/Yoew02BLq1-_QyzwsVjtSdddocY\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Yoew02BLq1-_QyzwsVjtSdddocY\"",
  "discoveryVersion": "v1",
  "id": "safebrowsing:v4",
  "name": "safebrowsing",

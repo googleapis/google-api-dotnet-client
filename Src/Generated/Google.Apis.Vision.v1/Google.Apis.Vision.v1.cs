@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161109 (678)
+ *      <tr><th>API Rev<td>20161114 (683)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -423,7 +423,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Response to an image annotation request.</summary>
     public class AnnotateImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, represents the error message for the operation. Note that filled-in mage annotations are
+        /// <summary>If set, represents the error message for the operation. Note that filled-in image annotations are
         /// guaranteed to be correct, even when error is non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
@@ -780,7 +780,7 @@ namespace Google.Apis.Vision.v1.Data
         /// `language_hints` is not needed. In rare cases, when the language of the text in the image is known, setting
         /// a hint will help get better results (although it will be a significant hindrance if the hint is wrong). Text
         /// detection returns an error if one or more of the specified languages is not one of the [supported
-        /// languages](/translate/v2/translate-reference#supported_languages).</summary>
+        /// languages](/vision/docs/languages).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 

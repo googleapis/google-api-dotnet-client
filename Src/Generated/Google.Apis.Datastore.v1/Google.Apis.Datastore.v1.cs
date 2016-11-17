@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161025 (663)
+ *      <tr><th>API Rev<td>20161108 (677)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -1342,7 +1342,8 @@ namespace Google.Apis.Datastore.v1.Data
         /// batch's `end_cursor` (not the query's `end_cursor`).
         ///
         /// In a single transaction, subsequent query result batches for the same query can have a greater snapshot
-        /// version number. Each batch's snapshot version is valid for all preceding batches.</summary>
+        /// version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for
+        /// eventually consistent queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotVersion")]
         public virtual System.Nullable<long> SnapshotVersion { get; set; } 
 

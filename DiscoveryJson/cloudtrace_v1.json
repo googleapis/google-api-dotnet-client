@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/avS4leRd3oaImhwLi14P2pt74p0\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/avS4leRd3oaImhwLi14P2pt74p0\"",
  "discoveryVersion": "v1",
  "id": "cloudtrace:v1",
  "name": "cloudtrace",

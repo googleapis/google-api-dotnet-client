@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20160928 (636)
+ *      <tr><th>API Rev<td>20161004 (642)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -3037,6 +3037,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; } 
 
+        /// <summary>The job name to use for the created job..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
+        public virtual string JobName { get; set; } 
+
         /// <summary>Dynamic parameterization of the job's runtime environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string,string> Parameters { get; set; } 
@@ -3988,6 +3992,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// watermark estimation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingSubscription")]
         public virtual string TrackingSubscription { get; set; } 
+
+        /// <summary>If true, then the client has requested to get pubsub attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("withAttributes")]
+        public virtual System.Nullable<bool> WithAttributes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

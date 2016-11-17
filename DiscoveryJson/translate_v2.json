@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/6s__cFeA5l1i01rONlu3TmUQEHs\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/6s__cFeA5l1i01rONlu3TmUQEHs\"",
  "discoveryVersion": "v1",
  "id": "translate:v2",
  "name": "translate",

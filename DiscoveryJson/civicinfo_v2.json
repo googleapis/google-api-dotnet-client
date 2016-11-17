@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/o3I9HhfXj9W3CUHRNSzja8F9LG4\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/sNrwy4GBJh0JDl02KcW1-1MdJOM\"",
  "discoveryVersion": "v1",
  "id": "civicinfo:v2",
  "name": "civicinfo",
@@ -12,8 +12,8 @@
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "icons": {
-  "x16": "http://www.google.com/images/icons/product/search-16.gif",
-  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
  },
  "documentationLink": "https://developers.google.com/civic-information",
  "protocol": "rest",

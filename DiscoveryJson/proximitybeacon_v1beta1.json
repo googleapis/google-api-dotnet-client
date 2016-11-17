@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/InJfaYgEs4kvxVpfe1cZDPrjhv0\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/InJfaYgEs4kvxVpfe1cZDPrjhv0\"",
  "discoveryVersion": "v1",
  "id": "proximitybeacon:v1beta1",
  "name": "proximitybeacon",

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"C5oy1hgQsABtYOYIOXWcR3BgYqU/M2VzqGfwqR0FviWkPggfCzE5zZU\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/M2VzqGfwqR0FviWkPggfCzE5zZU\"",
  "discoveryVersion": "v1",
  "id": "cloudbilling:v1",
  "name": "cloudbilling",
