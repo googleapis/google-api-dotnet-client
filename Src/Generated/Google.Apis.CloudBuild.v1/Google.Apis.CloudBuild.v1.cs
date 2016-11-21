@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161116 (685)
+ *      <tr><th>API Rev<td>20161117 (686)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1337,11 +1337,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildTriggerId")]
         public virtual string BuildTriggerId { get; set; } 
 
-        /// <summary>Time at which the build was created. @OutputOnly</summary>
+        /// <summary>Time at which the request to create the build was received. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Time at which execution of the build was finished. @OutputOnly</summary>
+        /// <summary>Time at which execution of the build was finished.
+        ///
+        /// The difference between finish_time and start_time is the duration of the build's execution.
+        /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
         public virtual object FinishTime { get; set; } 
 
@@ -1389,7 +1392,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenance")]
         public virtual SourceProvenance SourceProvenance { get; set; } 
 
-        /// <summary>Time at which execution of the build was started. @OutputOnly</summary>
+        /// <summary>Time at which execution of the build was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 

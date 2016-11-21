@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20161019 (657)
+ *      <tr><th>API Rev<td>20161115 (684)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -11497,25 +11497,6 @@ namespace Google.Apis.Compute.beta
             public virtual string InstanceGroupManager { get; private set; }
 
 
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-
-            /// [default: 500]
-            /// [minimum: 0]
-            /// [maximum: 500]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -11563,42 +11544,6 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "order_by", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "order_by",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -15789,6 +15734,105 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the service account on the instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to start.</param>
+        public virtual SetServiceAccountRequest SetServiceAccount(Google.Apis.Compute.beta.Data.InstancesSetServiceAccountRequest body, string project, string zone, string instance)
+        {
+            return new SetServiceAccountRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Sets the service account on the instance.</summary>
+        public class SetServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetServiceAccount request.</summary>
+            public SetServiceAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InstancesSetServiceAccountRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to start.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InstancesSetServiceAccountRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setServiceAccount"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setServiceAccount"; }
+            }
+
+            /// <summary>Initializes SetServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Sets tags for the specified instance to the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -17390,6 +17434,134 @@ namespace Google.Apis.Compute.beta
             }
 
             /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetXpnHostRequest GetXpnHost(string project)
+        {
+            return new GetXpnHostRequest(service, project);
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Project>
+        {
+            /// <summary>Constructs a new GetXpnHost request.</summary>
+            public GetXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/getXpnHost"; }
+            }
+
+            /// <summary>Initializes GetXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.beta.Data.ProjectsListXpnHostsRequest body, string project)
+        {
+            return new ListXpnHostsRequest(service, body, project);
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.XpnHostList>
+        {
+            /// <summary>Constructs a new ListXpnHosts request.</summary>
+            public ListXpnHostsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.ProjectsListXpnHostsRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.ProjectsListXpnHostsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listXpnHosts"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/listXpnHosts"; }
+            }
+
+            /// <summary>Initializes ListXpnHosts parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -19991,25 +20163,6 @@ namespace Google.Apis.Compute.beta
             public virtual string InstanceGroupManager { get; private set; }
 
 
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-
-            /// [default: 500]
-            /// [minimum: 0]
-            /// [maximum: 500]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -20057,42 +20210,6 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "order_by", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "order_by",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -33257,6 +33374,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("iap")]
+        public virtual BackendServiceIAP Iap { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -33363,6 +33483,25 @@ namespace Google.Apis.Compute.beta.Data
         /// services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identity-Aware Proxy (Cloud Gatekeeper)</summary>
+    public class BackendServiceIAP : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
+        public virtual string Oauth2ClientId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
+        public virtual string Oauth2ClientSecret { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
+        public virtual string Oauth2ClientSecretSha256 { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34475,38 +34614,11 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Guest OS features.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported.</summary>
+        /// <summary>The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows
+        /// images, the server might also populate this property with the value WINDOWS to indicate that this is a
+        /// Windows image. This value is purely informational and does not enable or disable any features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class HTTP2HealthCheck : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The value of the host header in the HTTP/2 health check request. If left empty (default value), the
-        /// IP on behalf of which this health check is performed will be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual string Host { get; set; } 
-
-        /// <summary>The TCP port number for the health check request. The default value is 443.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; } 
-
-        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
-        /// takes precedence.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
-        public virtual string PortName { get; set; } 
-
-        /// <summary>Specifies the type of proxy header to append before sending data to the backend, either NONE or
-        /// PROXY_V1. The default is NONE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
-        public virtual string ProxyHeader { get; set; } 
-
-        /// <summary>The request path of the HTTP/2 health check request. The default value is /.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
-        public virtual string RequestPath { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34592,9 +34704,6 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthyThreshold")]
         public virtual System.Nullable<int> HealthyThreshold { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("http2HealthCheck")]
-        public virtual HTTP2HealthCheck Http2HealthCheck { get; set; } 
-
         [Newtonsoft.Json.JsonPropertyAttribute("httpHealthCheck")]
         public virtual HTTPHealthCheck HttpHealthCheck { get; set; } 
 
@@ -34638,6 +34747,9 @@ namespace Google.Apis.Compute.beta.Data
         /// which must match type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("udpHealthCheck")]
+        public virtual UDPHealthCheck UdpHealthCheck { get; set; } 
 
         /// <summary>A so-far healthy instance will be marked unhealthy after this many consecutive failures. The
         /// default value is 2.</summary>
@@ -34969,9 +35081,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Family { get; set; } 
 
         /// <summary>A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only
-        /// one feature is supported, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For
-        /// Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or
-        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.</summary>
+        /// one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue.
+        /// For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or
+        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.
+        ///
+        /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
+        /// this is a Windows image. This value is purely informational and does not enable or disable any
+        /// features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -35030,9 +35146,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>URL of the The source disk used to create this image. This can be a full or valid partial URL. You
-        /// must provide either this property or the rawDisk.source property but not both to create an image. For
-        /// example, the following are valid values: -
+        /// <summary>URL of the source disk used to create this image. This can be a full or valid partial URL. You must
+        /// provide either this property or the rawDisk.source property but not both to create an image. For example,
+        /// the following are valid values: -
         /// https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk -
         /// projects/project/zones/zone/disks/disk - zones/zone/disks/disk</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
@@ -35477,6 +35593,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>Service account will be used as credentials for all operations performed by managed instance group
+        /// on instances. The service accounts needs all permissions required to create and delete instances. When not
+        /// specified, the service account {projectNumber}@cloudservices.gserviceaccount.com will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
+
         /// <summary>The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The
         /// target pools automatically apply to all of the instances in the managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPools")]
@@ -35582,7 +35704,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerAutoHealingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for the HealthCheck that signals autohealing.</summary>
+        /// <summary>The URL for the HttpHealthCheck or HttpsHealthCheck that signals autohealing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
         public virtual string HealthCheck { get; set; } 
 
@@ -36225,6 +36347,20 @@ namespace Google.Apis.Compute.beta.Data
         /// types. For example: zones/us-central1-f/machineTypes/n1-standard-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstancesSetServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The list of scopes to be made available for this service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37199,6 +37335,17 @@ namespace Google.Apis.Compute.beta.Data
         /// only HOST projects are differentiated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
         public virtual string XpnProjectStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsListXpnHostsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional organization ID managed by Cloud Resource Manager, for which to list XPN host projects. If
+        /// not specified, the organization will be inferred from the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39540,6 +39687,31 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class UDPHealthCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The UDP port number for the health check request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
+        /// takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
+        public virtual string PortName { get; set; } 
+
+        /// <summary>Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request
+        /// data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual string Request { get; set; } 
+
+        /// <summary>The bytes to match against the beginning of the response data. It is an error if this is empty. The
+        /// response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A UrlMap resource. This resource defines the mapping from URL to the BackendService resource, based on
     /// the "longest-match" of the URL's host and path.</summary>
     public class UrlMap : Google.Apis.Requests.IDirectResponseSchema
@@ -39923,6 +40095,36 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    public class XpnHostList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of XPN host project URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Project> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#xpnHostList for lists of XPN hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A Zone resource.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161110 (679)
+ *      <tr><th>API Rev<td>20161115 (684)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4515,6 +4515,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
                 TimeToRetireRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        /// <summary>The type of this IP address. A PRIMARY address is an address that can accept incoming connections.
+        /// An OUTGOING address is the source address of connections originating from the instance, if
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

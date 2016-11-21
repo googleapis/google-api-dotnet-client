@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161108 (677)
+ *      <tr><th>API Rev<td>20161114 (683)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1120,7 +1120,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Deletes a managed service. This method will change the serivce in the `Soft-Delete` state for 30
+        /// <summary>Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30
         /// days. Within this period, service producers may call UndeleteService to restore the service. After 30 days,
         /// the service will be permanently deleted.
         ///
@@ -1132,7 +1132,7 @@ namespace Google.Apis.ServiceManagement.v1
             return new DeleteRequest(service, serviceName);
         }
 
-        /// <summary>Deletes a managed service. This method will change the serivce in the `Soft-Delete` state for 30
+        /// <summary>Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30
         /// days. Within this period, service producers may call UndeleteService to restore the service. After 30 days,
         /// the service will be permanently deleted.
         ///
@@ -1651,6 +1651,12 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>Include services consumed by the specified consumer.
+            ///
+            /// The Google Service Management implementation accepts the following forms: - project:</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConsumerId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1697,6 +1703,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "consumerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consumerId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

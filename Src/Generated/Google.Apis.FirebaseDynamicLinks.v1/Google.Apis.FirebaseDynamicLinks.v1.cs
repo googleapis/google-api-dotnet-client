@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161118 (687)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -521,12 +521,6 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// programmatically).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosInfo")]
         public virtual IosInfo IosInfo { get; set; } 
-
-        /// <summary>Declares that the Dynamic Link is used in an advertisement. See the 'ad' parameter in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-
-        /// programmatically).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isAd")]
-        public virtual System.Nullable<bool> IsAd { get; set; } 
 
         /// <summary>The link your app will open, You can specify any URL your app can handle. This link must be a well-
         /// formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the

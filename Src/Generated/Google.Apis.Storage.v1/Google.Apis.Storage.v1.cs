@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20161109 (678)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5882,6 +5882,25 @@ namespace Google.Apis.Storage.v1.Data
             set
             {
                 TimeDeletedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The time at which the object's storage class was last changed. When the object is initially
+        /// created, it will be set to timeCreated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeStorageClassUpdated")]
+        public virtual string TimeStorageClassUpdatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeStorageClassUpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> TimeStorageClassUpdated
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(TimeStorageClassUpdatedRaw);
+            }
+            set
+            {
+                TimeStorageClassUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
 
