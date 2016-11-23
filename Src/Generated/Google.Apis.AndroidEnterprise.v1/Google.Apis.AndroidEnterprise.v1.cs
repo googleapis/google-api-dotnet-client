@@ -9329,9 +9329,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
         /// <summary>The interpretation of this product set. "unknown" should never be sent and ignored if received.
         /// "whitelist" means that this product set constitutes a whitelist. "includeAll" means that all products are
-        /// accessible, including products that are approved, not approved, and even products where approval has been
-        /// revoked. If the value is "includeAll", the value of the productId field is therefore ignored. If a value is
-        /// not supplied, it is interpreted to be "whitelist" for backwards compatibility.</summary>
+        /// accessible (the value of the productId field is therefore ignored). If a value is not supplied, it is
+        /// interpreted to be "whitelist" for backwards compatibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
         public virtual string ProductSetBehavior { get; set; } 
 

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Z19C2Cq8D9b3cpvHfOnFtGRiOos\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Oo1a_BUZccHvX9JYN9BmdWPyXO0\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
@@ -1111,7 +1111,7 @@
     },
     "productSetBehavior": {
      "type": "string",
-     "description": "The interpretation of this product set. \"unknown\" should never be sent and ignored if received. \"whitelist\" means that this product set constitutes a whitelist. \"includeAll\" means that all products are accessible, including products that are approved, not approved, and even products where approval has been revoked. If the value is \"includeAll\", the value of the productId field is therefore ignored. If a value is not supplied, it is interpreted to be \"whitelist\" for backwards compatibility."
+     "description": "The interpretation of this product set. \"unknown\" should never be sent and ignored if received. \"whitelist\" means that this product set constitutes a whitelist. \"includeAll\" means that all products are accessible (the value of the productId field is therefore ignored). If a value is not supplied, it is interpreted to be \"whitelist\" for backwards compatibility."
     }
    }
   },

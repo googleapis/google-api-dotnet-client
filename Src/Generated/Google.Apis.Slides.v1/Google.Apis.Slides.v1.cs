@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161118 (687)
+ *      <tr><th>API Rev<td>20161122 (691)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -460,7 +460,7 @@ namespace Google.Apis.Slides.v1
 
         /// <summary>Applies one or more updates to the presentation.
         ///
-        /// Each request is validated before being applied. If any request is not valid then the entire request will
+        /// Each request is validated before being applied. If any request is not valid, then the entire request will
         /// fail and nothing will be applied.
         ///
         /// Some requests have replies to give you some information about how they are applied. Other requests do not
@@ -468,13 +468,13 @@ namespace Google.Apis.Slides.v1
         /// requests.
         ///
         /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
-        /// response would have two empty replies, the reply to the third request, and another empty reply, in that
+        /// response would have two empty replies: the reply to the third request, and another empty reply, in that
         /// order.
         ///
-        /// Because other users may be editing the presentation, it is not guaranteed that the presentation will exactly
-        /// reflect your changes: your changes may be altered with respect to collaborator changes. If there are no
-        /// collaborators, the presentation should reflect your changes. In any case, it is guaranteed that the updates
-        /// in your request will be applied together atomically.</summary>
+        /// Because other users may be editing the presentation, the presentation might not exactly reflect your
+        /// changes: your changes may be altered with respect to collaborator changes. If there are no collaborators,
+        /// the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be
+        /// applied together atomically.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="presentationId">The presentation to apply the updates to.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Slides.v1.Data.BatchUpdatePresentationRequest body, string presentationId)
@@ -484,7 +484,7 @@ namespace Google.Apis.Slides.v1
 
         /// <summary>Applies one or more updates to the presentation.
         ///
-        /// Each request is validated before being applied. If any request is not valid then the entire request will
+        /// Each request is validated before being applied. If any request is not valid, then the entire request will
         /// fail and nothing will be applied.
         ///
         /// Some requests have replies to give you some information about how they are applied. Other requests do not
@@ -492,13 +492,13 @@ namespace Google.Apis.Slides.v1
         /// requests.
         ///
         /// For example, suppose you call batchUpdate with four updates, and only the third one returns information. The
-        /// response would have two empty replies, the reply to the third request, and another empty reply, in that
+        /// response would have two empty replies: the reply to the third request, and another empty reply, in that
         /// order.
         ///
-        /// Because other users may be editing the presentation, it is not guaranteed that the presentation will exactly
-        /// reflect your changes: your changes may be altered with respect to collaborator changes. If there are no
-        /// collaborators, the presentation should reflect your changes. In any case, it is guaranteed that the updates
-        /// in your request will be applied together atomically.</summary>
+        /// Because other users may be editing the presentation, the presentation might not exactly reflect your
+        /// changes: your changes may be altered with respect to collaborator changes. If there are no collaborators,
+        /// the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be
+        /// applied together atomically.</summary>
         public class BatchUpdateRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.BatchUpdatePresentationResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -919,7 +919,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bulletPreset")]
         public virtual string BulletPreset { get; set; } 
 
-        /// <summary>The optional table cell location if the text to be modified is in a table cell. If present the
+        /// <summary>The optional table cell location if the text to be modified is in a table cell. If present, the
         /// object_id must refer to a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
@@ -1259,7 +1259,7 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Deletes text from a shape or a table cell.</summary>
     public class DeleteTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The optional table cell location if the text is to be deleted from a table cell. If present the
+        /// <summary>The optional table cell location if the text is to be deleted from a table cell. If present, the
         /// object_id must refer to a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
@@ -1475,7 +1475,7 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Inserts text into a shape or a table cell.</summary>
     public class InsertTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The optional table cell location if the text is to be inserted into a table cell. If present the
+        /// <summary>The optional table cell location if the text is to be inserted into a table cell. If present, the
         /// object_id must refer to a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
@@ -1531,7 +1531,7 @@ namespace Google.Apis.Slides.v1.Data
 
     /// <summary>Slide layout reference. This may reference either:
     ///
-    /// - A predefined layout, or - One of the layouts in the presentation.</summary>
+    /// - A predefined layout - One of the layouts in the presentation.</summary>
     public class LayoutReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Layout ID: the object ID of one of the layouts in the presentation.</summary>
@@ -2214,6 +2214,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Updates the properties of an Image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateImageProperties")]
         public virtual UpdateImagePropertiesRequest UpdateImageProperties { get; set; } 
+
+        /// <summary>Updates the properties of a Line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateLineProperties")]
+        public virtual UpdateLinePropertiesRequest UpdateLineProperties { get; set; } 
 
         /// <summary>Updates the transform of a page element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatePageElementTransform")]
@@ -2919,6 +2923,33 @@ namespace Google.Apis.Slides.v1.Data
         public virtual ImageProperties ImageProperties { get; set; } 
 
         /// <summary>The object ID of the image the updates are applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the properties of a Line.</summary>
+    public class UpdateLinePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `lineProperties` is implied and should not be specified. A
+        /// single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the line solid fill color, set `fields` to `"lineFill.solidFill.color"`.
+        ///
+        /// To reset a property to its default value, include its field name in the field mask but leave the field
+        /// itself unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The line properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineProperties")]
+        public virtual LineProperties LineProperties { get; set; } 
+
+        /// <summary>The object ID of the line the update is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
