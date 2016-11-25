@@ -158,8 +158,10 @@ namespace Google.Apis.Auth.OAuth2
             return credential.GetAccessTokenForRequestAsync(authUri, cancellationToken);
         }
 
-        /// <summary>Provides access to the underlying credential object</summary>
-        internal ICredential UnderlyingCredential { get { return credential; } }
+        /// <summary>
+        /// Gets the underlying credential instance being wrapped.
+        /// </summary>
+        public ICredential UnderlyingCredential => credential;
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         internal static GoogleCredential FromCredential(ServiceAccountCredential credential)

@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -58,7 +59,7 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential
     {
-        private const string Sha256Oig = "2.16.840.1.101.3.4.2.1";
+        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
         new public class Initializer : ServiceCredential.Initializer
         {
@@ -163,6 +164,25 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Creates a new <see cref="ServiceAccountCredential"/> instance from JSON credential data.
+        /// </summary>
+        /// <param name="credentialData">The stream from which to read the JSON key data for a service account. Must not be null.</param>
+        /// <exception cref="InvalidOperationException">
+        /// The <paramref name="credentialData"/> does not contain valid JSON service account key data.
+        /// </exception>
+        /// <returns>The credentials parsed from the service account key data.</returns>
+        public static ServiceAccountCredential FromServiceAccountData(Stream credentialData)
+        {
+            var credential = GoogleCredential.FromStream(credentialData);
+            var result = credential.UnderlyingCredential as ServiceAccountCredential;
+            if (result == null)
+            {
+                throw new InvalidOperationException("JSON data does not represent a valid service account credential.");
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Requests a new token as specified in 
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#makingrequest.
         /// </summary>
@@ -236,22 +256,34 @@ namespace Google.Apis.Auth.OAuth2
             string serializedHeader = CreateSerializedHeader();
             string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);
 
-            StringBuilder assertion = new StringBuilder();
+            var assertion = new StringBuilder();
             assertion.Append(UrlSafeBase64Encode(serializedHeader))
-                .Append(".")
+                .Append('.')
                 .Append(UrlSafeBase64Encode(serializedPayload));
-
-            // Sign the header and the payload.
-            var hashAlg = SHA256.Create();
-            byte[] assertionHash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes(assertion.ToString()));
-#if NETSTANDARD
-            var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#else
-            var sigBytes = key.SignHash(assertionHash, Sha256Oig);
-#endif
-            var signature = UrlSafeBase64Encode(sigBytes);
-            assertion.Append(".").Append(signature);
+            var signature = CreateSignature(Encoding.ASCII.GetBytes(assertion.ToString()));
+            assertion.Append('.') .Append(UrlSafeEncode(signature));
             return assertion.ToString();
+        }
+
+        /// <summary>
+        /// Creates a base64 encoded signature for the SHA-256 hash of the specified data.
+        /// </summary>
+        /// <param name="data">The data to hash and sign. Must not be null.</param>
+        /// <returns>The base-64 encoded signature.</returns>
+        public string CreateSignature(byte[] data)
+        {
+            data.ThrowIfNull(nameof(data));
+
+            using (var hashAlg = SHA256.Create())
+            {
+                byte[] assertionHash = hashAlg.ComputeHash(data);
+#if NETSTANDARD
+                var sigBytes = key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+#else
+                var sigBytes = key.SignHash(assertionHash, Sha256Oid);
+#endif
+                return Convert.ToBase64String(sigBytes);
+            }
         }
 
         /// <summary>
@@ -346,7 +378,15 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>The URL safe base64 string.</returns>
         private string UrlSafeBase64Encode(byte[] bytes)
         {
-            return Convert.ToBase64String(bytes).Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
+            return UrlSafeEncode(Convert.ToBase64String(bytes));
+        }
+
+        /// <summary>Encodes the base64 string into an URL safe string.</summary>
+        /// <param name="base64Value">The base64 string to make URL safe.</param>
+        /// <returns>The URL safe base64 string.</returns>
+        private string UrlSafeEncode(string base64Value)
+        {
+            return base64Value.Replace("=", String.Empty).Replace('+', '-').Replace('/', '_');
         }
     }
 }
