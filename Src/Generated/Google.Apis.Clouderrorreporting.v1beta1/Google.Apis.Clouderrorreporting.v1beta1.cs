@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161012 (650)
+ *      <tr><th>API Rev<td>20161114 (683)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -416,6 +416,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.resource_type`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterResourceType { get; set; }
+
                 /// <summary>[Optional] The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
@@ -475,6 +480,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "timeRange.period", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timeRange.period",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.resourceType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -702,6 +716,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.resource_type`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterResourceType { get; set; }
+
                 /// <summary>[Optional] The sort order in which the results are returned. Default is
                 /// `COUNT_DESC`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
@@ -802,6 +821,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "timeRange.period", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timeRange.period",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.resourceType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1363,6 +1391,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     /// run in parallel.</summary>
     public class ServiceContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Type of the MonitoredResource. List of possible values:
+        /// https://cloud.google.com/monitoring/api/resources
+        ///
+        /// Value is set automatically for incoming errors and must not be set when reporting errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; } 
+
         /// <summary>An identifier of the service, such as the name of the executable, job, or Google App Engine service
         /// name. This field is expected to have a low number of values that are relatively stable over time, as opposed
         /// to `version`, which can be changed whenever new code is deployed.
