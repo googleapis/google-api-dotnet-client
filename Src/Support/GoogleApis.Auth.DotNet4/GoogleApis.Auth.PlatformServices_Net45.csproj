@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -97,6 +97,31 @@
   </ItemGroup>
   <Import Project="..\GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets'))" />
+  </Target>
+  <!-- ILRepack -->
+  <Target Name="AfterBuild">
+    <Message Importance="High" Text="ILMerge start....." />
+    <PropertyGroup>
+      <ILRepackDebug>$(DebugSymbols)</ILRepackDebug>
+      <ILRepackPrimaryAssemblyFile>$(OutputPath)$(TargetName)$(TargetExt)</ILRepackPrimaryAssemblyFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <InputAssemblies Include="$(ILRepackPrimaryAssemblyFile)" />
+      <InputAssemblies Include="$(OutputPath)\BouncyCastle.Crypto.dll" />
+    </ItemGroup>
+    <Message Importance="High" Text="Merging @(InputAssemblies) ==&gt; $(ILRepackPrimaryAssemblyFile)" />
+    <Message Importance="High" Text="Debug: $(ILRepackDebug)" />
+    <Message Importance="High" Text="Key File: $(AssemblyOriginatorKeyFile)" />
+    <ILRepack Parallel="true" Internalize="true" PrimaryAssemblyFile="$(ILRepackPrimaryAssemblyFile)" InputAssemblies="@(InputAssemblies)" TargetKind="Dll" DebugInfo="$(ILRepackDebug)" OutputFile="$(ILRepackPrimaryAssemblyFile)" KeyFile="$(AssemblyOriginatorKeyFile)" />
+    <Message Importance="High" Text="ILMerge done." />
+  </Target>
+  <!-- /ILRepack -->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
