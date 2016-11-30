@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160927 (635)
+ *      <tr><th>API Rev<td>20161116 (685)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -133,7 +133,18 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -142,7 +153,21 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -388,7 +413,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^organizations/[^/]*$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
                 RequestParameters.Add(
                     "organizationId", new Google.Apis.Discovery.Parameter
@@ -471,7 +496,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^organizations/[^/]*$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
             }
 
@@ -503,19 +528,24 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
+            /// rules are case-insensitive.
+            ///
+            /// Organizations may be filtered by `owner.directoryCustomerId` or by `domain`, where the domain is a
+            /// Google for Work domain, for example:
+            ///
+            /// |Filter|Description| |------|-----------| |owner.directorycustomerid:123456789|Organizations with
+            /// `owner.directory_customer_id` equal to `123456789`.| |domain:google.com|Organizations corresponding to
+            /// the domain `google.com`.|
+            ///
+            /// This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
             /// where listing should continue. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
-            /// rules are case-insensitive. Organizations may be filtered by `owner.directoryCustomerId` or by `domain`,
-            /// where the domain is a Google for Work domain, for example: |Filter|Description| |------|-----------|
-            /// |owner.directorycustomerid:123456789|Organizations with `owner.directory_customer_id` equal to
-            /// `123456789`.| |domain:google.com|Organizations corresponding to the domain `google.com`.| This field is
-            /// optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -551,18 +581,18 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "filter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "filter",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -638,7 +668,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^organizations/[^/]*$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
             }
 
@@ -710,7 +740,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^organizations/[^/]*$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
             }
 
@@ -780,7 +810,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^organizations/[^/]*$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
             }
 
@@ -803,18 +833,24 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
 
-        /// <summary>Creates a Project resource. Initially, the Project resource is owned by its creator exclusively.
-        /// The creator can later grant permission to others to read or update the Project. Several APIs are activated
-        /// automatically for the Project, including Google Cloud Storage.</summary>
+        /// <summary>Creates a Project resource.
+        ///
+        /// Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission
+        /// to others to read or update the Project.
+        ///
+        /// Several APIs are activated automatically for the Project, including Google Cloud Storage.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1beta1.Data.Project body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a Project resource. Initially, the Project resource is owned by its creator exclusively.
-        /// The creator can later grant permission to others to read or update the Project. Several APIs are activated
-        /// automatically for the Project, including Google Cloud Storage.</summary>
+        /// <summary>Creates a Project resource.
+        ///
+        /// Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission
+        /// to others to read or update the Project.
+        ///
+        /// Several APIs are activated automatically for the Project, including Google Cloud Storage.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Project>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -874,29 +910,43 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if the following criteria are met: + The Project does not
-        /// have a billing account associated with it. + The Project has a lifecycle state of ACTIVE. This method
-        /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
-        /// time, at which point the project is no longer accessible. Until the deletion completes, you can check the
-        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
-        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
-        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
-        /// Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `foo-bar-123`). Required.</param>
+        /// deletion. This method will only affect the Project if the following criteria are met:
+        ///
+        /// + The Project does not have a billing account associated with it. + The Project has a lifecycle state of
+        /// ACTIVE.
+        ///
+        /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
+        /// unspecified time, at which point the project is no longer accessible.
+        ///
+        /// Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with
+        /// GetProject, and the Project remains visible to ListProjects. However, you cannot update the project.
+        ///
+        /// After the deletion completes, the Project is not retrievable by the  GetProject and ListProjects methods.
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
+        /// <param name="projectId">The Project ID (for example, `foo-bar-123`).
+        ///
+        /// Required.</param>
         public virtual DeleteRequest Delete(string projectId)
         {
             return new DeleteRequest(service, projectId);
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if the following criteria are met: + The Project does not
-        /// have a billing account associated with it. + The Project has a lifecycle state of ACTIVE. This method
-        /// changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified
-        /// time, at which point the project is no longer accessible. Until the deletion completes, you can check the
-        /// lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to
-        /// ListProjects. However, you cannot update the project. After the deletion completes, the Project is not
-        /// retrievable by the GetProject and ListProjects methods. The caller must have modify permissions for this
-        /// Project.</summary>
+        /// deletion. This method will only affect the Project if the following criteria are met:
+        ///
+        /// + The Project does not have a billing account associated with it. + The Project has a lifecycle state of
+        /// ACTIVE.
+        ///
+        /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
+        /// unspecified time, at which point the project is no longer accessible.
+        ///
+        /// Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with
+        /// GetProject, and the Project remains visible to ListProjects. However, you cannot update the project.
+        ///
+        /// After the deletion completes, the Project is not retrievable by the  GetProject and ListProjects methods.
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -908,7 +958,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `foo-bar-123`). Required.</summary>
+            /// <summary>The Project ID (for example, `foo-bar-123`).
+            ///
+            /// Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -949,16 +1001,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         }
 
-        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
-        /// caller must have read permissions for this Project.</summary>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`).
+        ///
+        /// The caller must have read permissions for this Project.</summary>
+        /// <param name="projectId">The Project ID (for example, `my-project-123`).
+        ///
+        /// Required.</param>
         public virtual GetRequest Get(string projectId)
         {
             return new GetRequest(service, projectId);
         }
 
-        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The
-        /// caller must have read permissions for this Project.</summary>
+        /// <summary>Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`).
+        ///
+        /// The caller must have read permissions for this Project.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -970,7 +1026,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>The Project ID (for example, `my-project-123`).
+            ///
+            /// Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1012,18 +1070,22 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
-        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
-        /// Project.</summary>
+        /// `project_id` (for example, `my-project-123`).
+        ///
+        /// The caller must have read permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The Project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">The Project ID (for example, `my-project-123`).
+        ///
+        /// Required.</param>
         public virtual GetAncestryRequest GetAncestry(Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryRequest body, string projectId)
         {
             return new GetAncestryRequest(service, body, projectId);
         }
 
         /// <summary>Gets a list of ancestors in the resource hierarchy for the Project identified by the specified
-        /// `project_id` (for example, `my-project-123`). The caller must have read permissions for this
-        /// Project.</summary>
+        /// `project_id` (for example, `my-project-123`).
+        ///
+        /// The caller must have read permissions for this Project.</summary>
         public class GetAncestryRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.GetAncestryResponse>
         {
             /// <summary>Constructs a new GetAncestry request.</summary>
@@ -1036,7 +1098,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The Project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>The Project ID (for example, `my-project-123`).
+            ///
+            /// Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1174,26 +1238,36 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue. Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default. Optional.</summary>
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive. The
-            /// fields eligible for filtering are: + `name` + `id` + labels.key where *key* is the name of a label Some
-            /// examples of using labels as filters: |Filter|Description| |------|-----------| |name:*|The project has a
-            /// name.| |name:Howl|The project's name is `Howl` or `howl`.| |name:HOWL|Equivalent to above.|
-            /// |NAME:howl|Equivalent to above.| |labels.color:*|The project has the label `color`.|
-            /// |labels.color:red|The project's label `color` has the value `red`.| |labels.color:red label.size:big|The
-            /// project's label `color` has the value `red` and its label `size` has the value `big`.
+            /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
+            /// fields eligible for filtering are:
+            ///
+            /// + `name` + `id` + labels.key where *key* is the name of a label
+            ///
+            /// Some examples of using labels as filters:
+            ///
+            /// |Filter|Description| |------|-----------| |name:*|The project has a name.| |name:Howl|The project's name
+            /// is `Howl` or `howl`.| |name:HOWL|Equivalent to above.| |NAME:howl|Equivalent to above.|
+            /// |labels.color:*|The project has the label `color`.| |labels.color:red|The project's label `color` has
+            /// the value `red`.| |labels.color:redlabel.size:big|The project's label `color` has the value `red` and
+            /// its label `size` has the value `big`.
+            ///
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1220,15 +1294,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1246,26 +1311,49 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy. The
-        /// following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and
-        /// `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted only to
-        /// `user` and `serviceAccount`. + Service accounts can be made owners of a project directly without any
-        /// restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must
-        /// accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be
-        /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
-        /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
-        /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
-        /// the Terms of Service (ToS) will be rejected. + There must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
-        /// rectified. + Calling this method requires enabling the App Engine Admin API. Note: Removing service accounts
-        /// from policies or changing their roles can render services completely inoperable. It is important to
-        /// understand how the service account is being used before removing or updating its roles.</summary>
+        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy.
+        ///
+        /// The following constraints apply when using `setIamPolicy()`:
+        ///
+        /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
+        ///
+        /// + The owner role can be granted only to `user` and `serviceAccount`.
+        ///
+        /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
+        /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
+        ///
+        /// + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role
+        /// using the Cloud Platform Console and must explicitly accept the invitation.
+        ///
+        /// + Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using
+        /// the Cloud Platform Console.
+        ///
+        /// + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS)
+        /// will be rejected.
+        ///
+        /// + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
+        /// Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
+        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
+        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified.
+        ///
+        /// + Calling this method requires enabling the App Engine Admin API.
+        ///
+        /// Note: Removing service accounts from policies or changing their roles can render services completely
+        /// inoperable. It is important to understand how the service account is being used before removing or updating
+        /// its roles.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
         /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -1274,22 +1362,36 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy. The
-        /// following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and
-        /// `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted only to
-        /// `user` and `serviceAccount`. + Service accounts can be made owners of a project directly without any
-        /// restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must
-        /// accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be
-        /// granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. +
-        /// Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the
-        /// Cloud Platform Console. + Membership changes that leave the project without any owners that have accepted
-        /// the Terms of Service (ToS) will be rejected. + There must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
-        /// rectified. + Calling this method requires enabling the App Engine Admin API. Note: Removing service accounts
-        /// from policies or changing their roles can render services completely inoperable. It is important to
-        /// understand how the service account is being used before removing or updating its roles.</summary>
+        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy.
+        ///
+        /// The following constraints apply when using `setIamPolicy()`:
+        ///
+        /// + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`.
+        ///
+        /// + The owner role can be granted only to `user` and `serviceAccount`.
+        ///
+        /// + Service accounts can be made owners of a project directly without any restrictions. However, to be added
+        /// as an owner, a user must be invited via Cloud Platform console and must accept the invitation.
+        ///
+        /// + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role
+        /// using the Cloud Platform Console and must explicitly accept the invitation.
+        ///
+        /// + Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using
+        /// the Cloud Platform Console.
+        ///
+        /// + Membership changes that leave the project without any owners that have accepted the Terms of Service (ToS)
+        /// will be rejected.
+        ///
+        /// + There must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy.
+        /// Calling `setIamPolicy()` to to remove the last ToS-accepted owner from the policy will fail. This
+        /// restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to
+        /// IAM policies will be rejected until the lack of a ToS-accepting owner is rectified.
+        ///
+        /// + Calling this method requires enabling the App Engine Admin API.
+        ///
+        /// Note: Removing service accounts from policies or changing their roles can render services completely
+        /// inoperable. It is important to understand how the service account is being used before removing or updating
+        /// its roles.</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1422,9 +1524,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored.
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `foo-bar-123`). Required.</param>
+        /// <param name="projectId">The project ID (for example, `foo-bar-123`).
+        ///
+        /// Required.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v1beta1.Data.UndeleteProjectRequest body, string projectId)
         {
             return new UndeleteRequest(service, body, projectId);
@@ -1432,7 +1538,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You
         /// can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion
-        /// starts, the Project cannot be restored. The caller must have modify permissions for this Project.</summary>
+        /// starts, the Project cannot be restored.
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -1445,7 +1553,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The project ID (for example, `foo-bar-123`). Required.</summary>
+            /// <summary>The project ID (for example, `foo-bar-123`).
+            ///
+            /// Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1493,16 +1603,22 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
 
         /// <summary>Updates the attributes of the Project identified by the specified `project_id` (for example, `my-
-        /// project-123`). The caller must have modify permissions for this Project.</summary>
+        /// project-123`).
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="projectId">The project ID (for example, `my-project-123`). Required.</param>
+        /// <param name="projectId">The project ID (for example, `my-project-123`).
+        ///
+        /// Required.</param>
         public virtual UpdateRequest Update(Google.Apis.CloudResourceManager.v1beta1.Data.Project body, string projectId)
         {
             return new UpdateRequest(service, body, projectId);
         }
 
         /// <summary>Updates the attributes of the Project identified by the specified `project_id` (for example, `my-
-        /// project-123`). The caller must have modify permissions for this Project.</summary>
+        /// project-123`).
+        ///
+        /// The caller must have modify permissions for this Project.</summary>
         public class UpdateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1beta1.Data.Project>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1515,7 +1631,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>The project ID (for example, `my-project-123`). Required.</summary>
+            /// <summary>The project ID (for example, `my-project-123`).
+            ///
+            /// Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -1582,14 +1700,26 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`. *
-        /// `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For
-        /// example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain name that represents all the users
-        /// of that domain. For example, `google.com` or `example.com`.</summary>
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` or `joe@example.com`.
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1603,9 +1733,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1692,16 +1824,22 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A page of the response received from the ListProjects method. A paginated response where more pages are
-    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request
-    /// page.</summary>
+    /// <summary>A page of the response received from the ListProjects method.
+    ///
+    /// A paginated response where more pages are available has `next_page_token` set. This token can be used in a
+    /// subsequent request to retrieve the next request page.</summary>
     public class ListProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Pagination token. If the result set is too large to fit in a single response, this token is
-        /// returned. It encodes the position of the current result cursor. Feeding this value into a new list request
-        /// with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in,
-        /// there is no next page and the list returned is the last page in the result set. Pagination tokens have a
-        /// limited lifetime.</summary>
+        /// <summary>Pagination token.
+        ///
+        /// If the result set is too large to fit in a single response, this token is returned. It encodes the position
+        /// of the current result cursor. Feeding this value into a new list request with the `page_token` parameter
+        /// gives the next page of the results.
+        ///
+        /// When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the
+        /// result set.
+        ///
+        /// Pagination tokens have a limited lifetime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1719,7 +1857,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Timestamp when the Organization was created. Assigned by the server. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTime { get; set; } 
+        public virtual object CreationTime { get; set; } 
 
         /// <summary>A friendly string to be used to refer to the Organization in the UI. Assigned by the server, set to
         /// the firm name of the Google For Work customer that owns this organization. @OutputOnly</summary>
@@ -1764,12 +1902,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     }    
 
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members`
-    /// to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A
-    /// `role` is a named list of permissions defined by IAM. **Example** { "bindings": [ { "role": "roles/owner",
-    /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
-    /// a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
@@ -1781,8 +1927,10 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. If no `etag`
-        /// is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1792,45 +1940,73 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
 
     }    
 
-    /// <summary>A Project is a high-level Google Cloud Platform entity. It is a container for ACLs, APIs, AppEngine
+    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, AppEngine
     /// Apps, VMs, and other Google Cloud Platform resources.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Creation time. Read-only.</summary>
+        /// <summary>Creation time.
+        ///
+        /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
-        /// <summary>The labels associated with this Project. Label keys must be between 1 and 63 characters long and
-        /// must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be
-        /// between 0 and 63 characters long and must conform to the regular expression
-        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource.
+        /// <summary>The labels associated with this Project.
+        ///
+        /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        ///
+        /// Label values must be between 0 and 63 characters long and must conform to the regular expression
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        ///
+        /// No more than 256 labels can be associated with a given resource.
+        ///
         /// Clients should store labels in a representation such as JSON that does not depend on specific characters
-        /// being disallowed. Example: "environment" : "dev" Read-write.</summary>
+        /// being disallowed.
+        ///
+        /// Example: "environment" : "dev"
+        ///
+        /// Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The Project lifecycle state. Read-only.</summary>
+        /// <summary>The Project lifecycle state.
+        ///
+        /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
         /// <summary>The user-assigned display name of the Project. It must be 4 to 30 characters. Allowed characters
         /// are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
-        /// point. Example: My Project Read-write.</summary>
+        /// point.
+        ///
+        /// Example: My Project
+        ///
+        /// Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>An optional reference to a parent Resource. The only supported parent type is "organization". Once
-        /// set, the parent cannot be modified. Read-write.</summary>
+        /// <summary>An optional reference to a parent Resource.
+        ///
+        /// The only supported parent type is "organization". Once set, the parent cannot be modified.
+        ///
+        /// Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual ResourceId Parent { get; set; } 
 
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
-        /// hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: tokyo-rain-123 Read-only
-        /// after creation.</summary>
+        /// hyphens. It must start with a letter. Trailing hyphens are prohibited.
+        ///
+        /// Example: tokyo-rain-123
+        ///
+        /// Read-only after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>The number uniquely identifying the project. Example: 415104041262 Read-only.</summary>
+        /// <summary>The number uniquely identifying the project.
+        ///
+        /// Example: 415104041262
+        ///
+        /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
@@ -1844,7 +2020,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     {
         /// <summary>Creation time of the project creation workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>True if the project can be retrieved using GetProject. No other operations on the project are
         /// guaranteed to work until the project creation is complete.</summary>

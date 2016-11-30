@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161116 (685)
+ *      <tr><th>API Rev<td>20161125 (694)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -1897,6 +1897,77 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Initializes BatchDelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "userId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = "me",
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Modifies labels on the given labels.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+            /// user.</param>
+            public virtual BatchModifyRequest BatchModify(Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest body, string userId)
+            {
+                return new BatchModifyRequest(service, body, userId);
+            }
+
+            /// <summary>Modifies labels on the given labels.</summary>
+            public class BatchModifyRequest : GmailBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new BatchModify request.</summary>
+                public BatchModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest body, string userId)
+                    : base(service)
+                {
+                    UserId = userId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The user's email address. The special value me can be used to indicate the authenticated
+                /// user.</summary>
+                /// [default: me]
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string UserId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Gmail.v1.Data.BatchModifyMessagesRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "batchModify"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{userId}/messages/batchModify"; }
+                }
+
+                /// <summary>Initializes BatchModify parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -5694,6 +5765,24 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>The IDs of the messages to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class BatchModifyMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of label IDs to add to messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addLabelIds")]
+        public virtual System.Collections.Generic.IList<string> AddLabelIds { get; set; } 
+
+        /// <summary>The IDs of the messages to modify. There is a limit of 1000 ids per request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
+        public virtual System.Collections.Generic.IList<string> Ids { get; set; } 
+
+        /// <summary>A list of label IDs to remove from messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeLabelIds")]
+        public virtual System.Collections.Generic.IList<string> RemoveLabelIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

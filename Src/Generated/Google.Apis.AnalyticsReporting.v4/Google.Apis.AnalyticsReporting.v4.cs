@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161011 (649)
+ *      <tr><th>API Rev<td>20161129 (698)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -887,6 +887,11 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// <summary>The data part of the report.</summary>
     public class ReportData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The last time the data in the report was refreshed. All the hits received before this timestamp are
+        /// included in the calculation of the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLastRefreshed")]
+        public virtual object DataLastRefreshed { get; set; } 
+
         /// <summary>Indicates if response to this request is golden or not. Data is golden when the exact same request
         /// will not produce any new results if asked at a later point in time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDataGolden")]

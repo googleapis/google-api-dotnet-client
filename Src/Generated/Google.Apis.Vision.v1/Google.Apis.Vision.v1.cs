@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161128 (697)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -424,11 +424,11 @@ namespace Google.Apis.Vision.v1.Data
     public class AnnotateImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, represents the error message for the operation. Note that filled-in image annotations are
-        /// guaranteed to be correct, even when error is non-empty.</summary>
+        /// guaranteed to be correct, even when `error` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>If present, face detection completed successfully.</summary>
+        /// <summary>If present, face detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faceAnnotations")]
         public virtual System.Collections.Generic.IList<FaceAnnotation> FaceAnnotations { get; set; } 
 
@@ -436,23 +436,23 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imagePropertiesAnnotation")]
         public virtual ImageProperties ImagePropertiesAnnotation { get; set; } 
 
-        /// <summary>If present, label detection completed successfully.</summary>
+        /// <summary>If present, label detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LabelAnnotations { get; set; } 
 
-        /// <summary>If present, landmark detection completed successfully.</summary>
+        /// <summary>If present, landmark detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landmarkAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LandmarkAnnotations { get; set; } 
 
-        /// <summary>If present, logo detection completed successfully.</summary>
+        /// <summary>If present, logo detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> LogoAnnotations { get; set; } 
 
-        /// <summary>If present, safe-search annotation completed successfully.</summary>
+        /// <summary>If present, safe-search annotation has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
         public virtual SafeSearchAnnotation SafeSearchAnnotation { get; set; } 
 
-        /// <summary>If present, text (OCR) detection completed successfully.</summary>
+        /// <summary>If present, text (OCR) detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> TextAnnotations { get; set; } 
 
@@ -576,15 +576,15 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Color information consists of RGB channels, score and fraction of image the color occupies in the
-    /// image.</summary>
+    /// <summary>Color information consists of RGB channels, score, and the fraction of the image that the color
+    /// occupies in the image.</summary>
     public class ColorInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>RGB components of the color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; } 
 
-        /// <summary>Stores the fraction of pixels the color occupies in the image. Value in range [0, 1].</summary>
+        /// <summary>The fraction of pixels the color occupies in the image. Value in range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pixelFraction")]
         public virtual System.Nullable<float> PixelFraction { get; set; } 
 
@@ -599,7 +599,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Set of dominant colors and their corresponding scores.</summary>
     public class DominantColorsAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>RGB color values, with their score and pixel fraction.</summary>
+        /// <summary>RGB color values with their score and pixel fraction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colors")]
         public virtual System.Collections.Generic.IList<ColorInfo> Colors { get; set; } 
 
@@ -610,40 +610,40 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Set of detected entity features.</summary>
     public class EntityAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image region to which this entity belongs. Not filled currently for `LABEL_DETECTION` features. For
-        /// `TEXT_DETECTION` (OCR), `boundingPoly`s are produced for the entire text detected in an image region,
+        /// <summary>Image region to which this entity belongs. Currently not produced for `LABEL_DETECTION` features.
+        /// For `TEXT_DETECTION` (OCR), `boundingPoly`s are produced for the entire text detected in an image region,
         /// followed by `boundingPoly`s for each word within the detected text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>The accuracy of the entity detection in an image. For example, for an image containing 'Eiffel
-        /// Tower,' this field represents the confidence that there is a tower in the query image. Range [0,
-        /// 1].</summary>
+        /// <summary>The accuracy of the entity detection in an image. For example, for an image in which the "Eiffel
+        /// Tower" entity is detected, this field represents the confidence that there is a tower in the query image.
+        /// Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>Entity textual description, expressed in its locale language.</summary>
+        /// <summary>Entity textual description, expressed in its `locale` language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The language code for the locale in which the entity textual description (next field) is
-        /// expressed.</summary>
+        /// <summary>The language code for the locale in which the entity textual `description` is expressed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
-        /// <summary>The location information for the detected entity. Multiple LocationInfo elements can be present
-        /// since one location may indicate the location of the scene in the query image, and another the location of
-        /// the place where the query image was taken. Location information is usually present for landmarks.</summary>
+        /// <summary>The location information for the detected entity. Multiple `LocationInfo` elements can be present
+        /// because one location may indicate the location of the scene in the image, and another location may indicate
+        /// the location of the place where the image was taken. Location information is usually present for
+        /// landmarks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<LocationInfo> Locations { get; set; } 
 
-        /// <summary>Opaque entity ID. Some IDs might be available in Knowledge Graph(KG). For more details on KG please
-        /// see: https://developers.google.com/knowledge-graph/</summary>
+        /// <summary>Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search
+        /// API](https://developers.google.com/knowledge-graph/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mid")]
         public virtual string Mid { get; set; } 
 
-        /// <summary>Some entities can have additional optional Property fields. For example a different kind of score
-        /// or string that qualifies the entity.</summary>
+        /// <summary>Some entities may have optional user-supplied `Property` (name/value) fields, such a score or
+        /// string that qualifies the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<Property> Properties { get; set; } 
 
@@ -652,8 +652,9 @@ namespace Google.Apis.Vision.v1.Data
         public virtual System.Nullable<float> Score { get; set; } 
 
         /// <summary>The relevancy of the ICA (Image Content Annotation) label to the image. For example, the relevancy
-        /// of 'tower' to an image containing 'Eiffel Tower' is likely higher than an image containing a distant
-        /// towering building, though the confidence that there is a tower may be the same. Range [0, 1].</summary>
+        /// of "tower" is likely higher to an image containing the detected "Eiffel Tower" than to an image containing a
+        /// detected distant towering building, even though the confidence that there is a tower in each image may be
+        /// the same. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicality")]
         public virtual System.Nullable<float> Topicality { get; set; } 
 
@@ -673,9 +674,9 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string BlurredLikelihood { get; set; } 
 
         /// <summary>The bounding polygon around the face. The coordinates of the bounding box are in the original
-        /// image's scale, as returned in ImageParams. The bounding box is computed to "frame" the face in accordance
+        /// image's scale, as returned in `ImageParams`. The bounding box is computed to "frame" the face in accordance
         /// with human expectations. It is based on the landmarker results. Note that one or more x and/or y coordinates
-        /// may not be generated in the BoundingPoly (the polygon will be unbounded) if only a partial face appears in
+        /// may not be generated in the `BoundingPoly` (the polygon will be unbounded) if only a partial face appears in
         /// the image to be annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
@@ -684,10 +685,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detectionConfidence")]
         public virtual System.Nullable<float> DetectionConfidence { get; set; } 
 
-        /// <summary>This bounding polygon is tighter than the previous boundingPoly, and encloses only the skin part of
-        /// the face. Typically, it is used to eliminate the face from any image analysis that detects the "amount of
-        /// skin" visible in an image. It is not based on the landmarker results, only on the initial face detection,
-        /// hence the fd (face detection) prefix.</summary>
+        /// <summary>The `fd_bounding_poly` bounding polygon is tighter than the `boundingPoly`, and encloses only the
+        /// skin part of the face. Typically, it is used to eliminate the face from any image analysis that detects the
+        /// "amount of skin" visible in an image. It is not based on the landmarker results, only on the initial face
+        /// detection, hence the fd (face detection) prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fdBoundingPoly")]
         public virtual BoundingPoly FdBoundingPoly { get; set; } 
 
@@ -707,13 +708,13 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("landmarks")]
         public virtual System.Collections.Generic.IList<Landmark> Landmarks { get; set; } 
 
-        /// <summary>Yaw angle. Indicates the leftward/rightward angle that the face is pointing, relative to the
+        /// <summary>Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the
         /// vertical plane perpendicular to the image. Range [-180,180].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("panAngle")]
         public virtual System.Nullable<float> PanAngle { get; set; } 
 
-        /// <summary>Roll angle. Indicates the amount of clockwise/anti-clockwise rotation of the face relative to the
-        /// image vertical, about the axis perpendicular to the face. Range [-180,180].</summary>
+        /// <summary>Roll angle, which indicates the amount of clockwise/anti-clockwise rotation of the face relative to
+        /// the image vertical about the axis perpendicular to the face. Range [-180,180].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; } 
 
@@ -725,7 +726,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; } 
 
-        /// <summary>Pitch angle. Indicates the upwards/downwards angle that the face is pointing relative to the
+        /// <summary>Pitch angle, which indicates the upwards/downwards angle that the face is pointing relative to the
         /// image's horizontal plane. Range [-180,180].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tiltAngle")]
         public virtual System.Nullable<float> TiltAngle { get; set; } 
@@ -738,8 +739,8 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The Feature indicates what type of image detection task to perform. Users describe the type of Google
-    /// Cloud Vision API tasks to perform over images by using Features. Features encode the Cloud Vision API vertical
+    /// <summary>Users describe the type of Google Cloud Vision API tasks to perform over images by using *Feature*s.
+    /// Each Feature indicates a type of image detection task to perform. Features encode the Cloud Vision API vertical
     /// to operate on and the number of top-scoring results to return.</summary>
     public class Feature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -763,8 +764,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
-        /// <summary>Google Cloud Storage image location. If both 'content' and 'source' are filled for an image,
-        /// 'content' takes precedence and it will be used for performing the image annotation request.</summary>
+        /// <summary>Google Cloud Storage image location. If both `content` and `source` are provided for an image,
+        /// `content` takes precedence and is used to perform the image annotation request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual ImageSource Source { get; set; } 
 
@@ -784,7 +785,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual System.Collections.Generic.IList<string> LanguageHints { get; set; } 
 
-        /// <summary>Lat/long rectangle that specifies the location of the image.</summary>
+        /// <summary>lat/long rectangle that specifies the location of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLongRect")]
         public virtual LatLongRect LatLongRect { get; set; } 
 
@@ -792,7 +793,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Stores image properties (e.g. dominant colors).</summary>
+    /// <summary>Stores image properties, such as dominant colors.</summary>
     public class ImageProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If present, dominant colors completed successfully.</summary>
@@ -806,9 +807,9 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>External image source (Google Cloud Storage image location).</summary>
     public class ImageSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud Storage image URI. It must be in the following form: `gs://bucket_name/object_name`.
-        /// For more details, please see: https://cloud.google.com/storage/docs/reference-uris. NOTE: Cloud Storage
-        /// object versioning is not supported!</summary>
+        /// <summary>Google Cloud Storage image URI, which must be in the following form: `gs://bucket_name/object_name`
+        /// (for details, see [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-
+        /// uris)). NOTE: Cloud Storage object versioning is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsImageUri")]
         public virtual string GcsImageUri { get; set; } 
 
@@ -817,8 +818,8 @@ namespace Google.Apis.Vision.v1.Data
     }    
 
     /// <summary>A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds
-    /// of the image when the face is near one or more edges of the image. Therefore it is NOT guaranteed that 0 <= x <
-    /// width or 0 <= y < height.</summary>
+    /// of the image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 <= x <
+    /// width` or `0 <= y < height`.</summary>
     public class Landmark : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Face landmark position.</summary>
@@ -868,7 +869,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Rectangle determined by min and max LatLng pairs.</summary>
+    /// <summary>Rectangle determined by min and max `LatLng` pairs.</summary>
     public class LatLongRect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Max lat/long pair.</summary>
@@ -886,7 +887,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Detected entity location information.</summary>
     public class LocationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Lat - long location coordinates.</summary>
+        /// <summary>lat/long location coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
         public virtual LatLng LatLng { get; set; } 
 
@@ -914,7 +915,7 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Arbitrary name/value pair.</summary>
+    /// <summary>A `Property` consists of a user-supplied name/value pair.</summary>
     public class Property : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the property.</summary>
@@ -929,20 +930,18 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Set of features pertaining to the image, computed by various computer vision methods over safe-search
-    /// verticals (for example, adult, spoof, medical, violence).</summary>
     public class SafeSearchAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Represents the adult contents likelihood for the image.</summary>
+        /// <summary>Represents the adult content likelihood for the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
-        /// <summary>Likelihood this is a medical image.</summary>
+        /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
 
-        /// <summary>Spoof likelihood. The likelihood that an obvious modification was made to the image's canonical
-        /// version to make it appear funny or offensive.</summary>
+        /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
+        /// make it appear funny or offensive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 

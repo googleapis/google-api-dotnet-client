@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160907 (615)
+ *      <tr><th>API Rev<td>20161128 (697)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -100,11 +100,29 @@ namespace Google.Apis.Fitness.v1
             /// <summary>View and store your activity information in Google Fit</summary>
             public static string FitnessActivityWrite = "https://www.googleapis.com/auth/fitness.activity.write";
 
+            /// <summary>View blood glucose data in Google Fit</summary>
+            public static string FitnessBloodGlucoseRead = "https://www.googleapis.com/auth/fitness.blood_glucose.read";
+
+            /// <summary>View and store blood glucose data in Google Fit</summary>
+            public static string FitnessBloodGlucoseWrite = "https://www.googleapis.com/auth/fitness.blood_glucose.write";
+
+            /// <summary>View blood pressure data in Google Fit</summary>
+            public static string FitnessBloodPressureRead = "https://www.googleapis.com/auth/fitness.blood_pressure.read";
+
+            /// <summary>View and store blood pressure data in Google Fit</summary>
+            public static string FitnessBloodPressureWrite = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
+
             /// <summary>View body sensor information in Google Fit</summary>
             public static string FitnessBodyRead = "https://www.googleapis.com/auth/fitness.body.read";
 
             /// <summary>View and store body sensor data in Google Fit</summary>
             public static string FitnessBodyWrite = "https://www.googleapis.com/auth/fitness.body.write";
+
+            /// <summary>View body temperature data in Google Fit</summary>
+            public static string FitnessBodyTemperatureRead = "https://www.googleapis.com/auth/fitness.body_temperature.read";
+
+            /// <summary>View and store body temperature data in Google Fit</summary>
+            public static string FitnessBodyTemperatureWrite = "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
             /// <summary>View your stored location data in Google Fit</summary>
             public static string FitnessLocationRead = "https://www.googleapis.com/auth/fitness.location.read";
@@ -117,6 +135,18 @@ namespace Google.Apis.Fitness.v1
 
             /// <summary>View and store nutrition information in Google Fit</summary>
             public static string FitnessNutritionWrite = "https://www.googleapis.com/auth/fitness.nutrition.write";
+
+            /// <summary>View oxygen saturation data in Google Fit</summary>
+            public static string FitnessOxygenSaturationRead = "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
+
+            /// <summary>View and store oxygen saturation data in Google Fit</summary>
+            public static string FitnessOxygenSaturationWrite = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
+
+            /// <summary>View reproductive health data in Google Fit</summary>
+            public static string FitnessReproductiveHealthRead = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
+
+            /// <summary>View and store reproductive health data in Google Fit</summary>
+            public static string FitnessReproductiveHealthWrite = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
         }
 
@@ -2181,8 +2211,8 @@ namespace Google.Apis.Fitness.v1.Data
 
     /// <summary>Holder object for the value of a single field in a data point.
     ///
-    /// A field value has a particular format and is only ever set to one of an integer or a floating point
-    /// value.</summary>
+    /// A field value has a particular format and is only ever set to one of an integer or a floating point value.
+    /// LINT.IfChange</summary>
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Floating point value. When this is set, other values must not be set.</summary>
