@@ -729,20 +729,6 @@
       "properties": {},
       "id": "CancelBuildRequest"
     },
-    "FileHashes": {
-      "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
-      "type": "object",
-      "properties": {
-        "fileHash": {
-          "description": "Collection of file hashes.",
-          "type": "array",
-          "items": {
-            "$ref": "Hash"
-          }
-        }
-      },
-      "id": "FileHashes"
-    },
     "ListOperationsResponse": {
       "description": "The response message for Operations.ListOperations.",
       "type": "object",
@@ -760,6 +746,20 @@
         }
       },
       "id": "ListOperationsResponse"
+    },
+    "FileHashes": {
+      "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
+      "type": "object",
+      "properties": {
+        "fileHash": {
+          "description": "Collection of file hashes.",
+          "type": "array",
+          "items": {
+            "$ref": "Hash"
+          }
+        }
+      },
+      "id": "FileHashes"
     },
     "RepoSource": {
       "description": "RepoSource describes the location of the source in a Google Cloud Source\nRepository.",
@@ -887,7 +887,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20161129",
+  "revision": "20161130",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

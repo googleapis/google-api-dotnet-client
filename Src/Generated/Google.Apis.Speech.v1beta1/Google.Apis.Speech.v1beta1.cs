@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161117 (686)
+ *      <tr><th>API Rev<td>20161130 (699)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -677,18 +677,18 @@ namespace Google.Apis.Speech.v1beta1
         }
 
 
-        /// <summary>Performs asynchronous speech recognition: receive results via the google.longrunning.Operations
-        /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
-        /// `AsyncRecognizeResponse` message.</summary>
+        /// <summary>Performs asynchronous speech recognition: receive results via the [google.longrunning.Operations]
+        /// (/speech/reference/rest/v1beta1/operations#Operation) interface. Returns either an `Operation.error` or an
+        /// `Operation.response` which contains an `AsyncRecognizeResponse` message.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual AsyncrecognizeRequest Asyncrecognize(Google.Apis.Speech.v1beta1.Data.AsyncRecognizeRequest body)
         {
             return new AsyncrecognizeRequest(service, body);
         }
 
-        /// <summary>Performs asynchronous speech recognition: receive results via the google.longrunning.Operations
-        /// interface. Returns either an `Operation.error` or an `Operation.response` which contains an
-        /// `AsyncRecognizeResponse` message.</summary>
+        /// <summary>Performs asynchronous speech recognition: receive results via the [google.longrunning.Operations]
+        /// (/speech/reference/rest/v1beta1/operations#Operation) interface. Returns either an `Operation.error` or an
+        /// `Operation.response` which contains an `AsyncRecognizeResponse` message.</summary>
         public class AsyncrecognizeRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Asyncrecognize request.</summary>
