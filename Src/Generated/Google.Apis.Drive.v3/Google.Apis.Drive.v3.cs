@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161113 (682)
+ *      <tr><th>API Rev<td>20161124 (693)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4132,6 +4132,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; } 
 
+        /// <summary>Whether this file has a thumbnail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasThumbnail")]
+        public virtual System.Nullable<bool> HasThumbnail { get; set; } 
+
         /// <summary>The ID of the file's head revision. This is currently only available for files with binary content
         /// in Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRevisionId")]
@@ -4293,10 +4297,15 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
         public virtual System.Nullable<bool> Starred { get; set; } 
 
-        /// <summary>A short-lived link to the file's thumbnail, if available. Typically lasts on the order of
-        /// hours.</summary>
+        /// <summary>A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours.
+        /// Only populated when the requesting app can access the file's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; } 
+
+        /// <summary>The thumbnail version for use in client-contructable thumbnail URLs or thumbnail cache
+        /// invalidation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailVersion")]
+        public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
 
         /// <summary>Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the
         /// owner may trash a file, and other users cannot see files in the owner's trash.</summary>

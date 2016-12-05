@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161130 (699)
+ *      <tr><th>API Rev<td>20161201 (700)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -350,6 +350,84 @@ namespace Google.Apis.CloudBuild.v1
 
         }
 
+
+        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the operation resource to be cancelled.</param>
+        public virtual CancelRequest Cancel(Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
+        {
+            return new CancelRequest(service, body, name);
+        }
+
+        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
+        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
+        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
+        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
+        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
+        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
+        public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.CancelOperationRequest body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the operation resource to be cancelled.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudBuild.v1.Data.CancelOperationRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "cancel"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}:cancel"; }
+            }
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^operations/.+$",
+                    });
+            }
+
+        }
 
         /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
@@ -1558,6 +1636,13 @@ namespace Google.Apis.CloudBuild.v1.Data
 
     /// <summary>Request to cancel an ongoing build.</summary>
     public class CancelBuildRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

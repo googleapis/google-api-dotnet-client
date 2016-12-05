@@ -371,6 +371,34 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ]
+        },
+        "cancel": {
+          "id": "cloudbuild.operations.cancel",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+          "request": {
+            "$ref": "CancelOperationRequest"
+          },
+          "flatPath": "v1/operations/{operationsId}:cancel",
+          "httpMethod": "POST",
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource to be cancelled.",
+              "required": true,
+              "pattern": "^operations/.+$",
+              "location": "path",
+              "type": "string"
+            }
+          },
+          "path": "v1/{+name}:cancel",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
         }
       }
     }
@@ -560,6 +588,12 @@
         }
       },
       "id": "Hash"
+    },
+    "CancelOperationRequest": {
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object",
+      "properties": {},
+      "id": "CancelOperationRequest"
     },
     "StorageSource": {
       "description": "StorageSource describes the location of the source in an archive file in\nGoogle Cloud Storage.",
@@ -887,7 +921,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20161130",
+  "revision": "20161201",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

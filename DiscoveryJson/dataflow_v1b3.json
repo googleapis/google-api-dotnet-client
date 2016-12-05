@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/iCsTdVEwNC3CeUG3a3YMNMpYZs4\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2ldmPeHEvQ6NGgRE1Cb3tnvrYr8\"",
  "discoveryVersion": "v1",
  "id": "dataflow:v1b3",
  "name": "dataflow",
@@ -885,6 +885,30 @@
      "additionalProperties": {
       "type": "string"
      }
+    },
+    "environment": {
+     "$ref": "RuntimeEnvironment",
+     "description": "Runtime environment for the job."
+    }
+   }
+  },
+  "RuntimeEnvironment": {
+   "id": "RuntimeEnvironment",
+   "type": "object",
+   "description": "Environment values to set at runtime.",
+   "properties": {
+    "maxWorkers": {
+     "type": "integer",
+     "description": "The maximum number of workers to start for the job.",
+     "format": "int32"
+    },
+    "zone": {
+     "type": "string",
+     "description": "The zone to start the workers in."
+    },
+    "serviceAccountEmail": {
+     "type": "string",
+     "description": "The service account to run the job as."
     }
    }
   },

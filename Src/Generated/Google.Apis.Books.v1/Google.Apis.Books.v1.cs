@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161005 (643)
+ *      <tr><th>API Rev<td>20161129 (698)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7625,6 +7625,9 @@ namespace Google.Apis.Books.v1.Data
         /// <summary>Resource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationGroup")]
+        public virtual string NotificationGroup { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("notification_type")]
         public virtual string NotificationType { get; set; } 

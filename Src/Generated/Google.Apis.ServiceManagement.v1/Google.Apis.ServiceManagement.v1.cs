@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161128 (697)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1791,7 +1791,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
+        /// this will return an empty set of permissions, not a NOT_FOUND error.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
         /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -1800,7 +1801,8 @@ namespace Google.Apis.ServiceManagement.v1
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
+        /// this will return an empty set of permissions, not a NOT_FOUND error.</summary>
         public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1996,20 +1998,39 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Enables "data access" audit logging for a service and specifies a list of members that are log-
-    /// exempted.</summary>
+    /// <summary>Provides the configuration for non-admin_activity logging for a service. Controls exemptions and
+    /// specific log sub-types.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The configuration for each type of logging Next ID: 4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
         /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
         /// specified above. Follows the same format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for "data access" audit logging. For example,
-        /// `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all
-        /// services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
+        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for a sub-type of logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that are exempted from this type of logging Follows the same format of
+        /// Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2094,11 +2115,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// Example for an API targeted for external use:
     ///
-    /// name: calendar.googleapis.com authentication: rules: - selector: "*" oauth: canonical_scopes:
-    /// https://www.googleapis.com/auth/calendar
-    ///
-    /// - selector: google.calendar.Delegate oauth: canonical_scopes:
-    /// https://www.googleapis.com/auth/calendar.read</summary>
+    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
+    /// requirements: provider_id: google_calendar_auth</summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Defines a set of authentication providers that a service supports.</summary>
@@ -2646,15 +2665,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be
     /// served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to
     /// the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name:
-    /// library-example.googleapis.com apis: google.example.library.v1.Library allow_cors: true # Below entry makes
-    /// 'google.example.library.v1.Library' # API be served from endpoint address # google.example.library-
-    /// example.v1.LibraryManager. - name: library-manager.googleapis.com apis: google.example.library.v1.LibraryManager
-    /// # BNS address for a borg job. Can specify a task by appending # "/taskId" (e.g. "/0") to the job spec.
-    ///
-    /// Example OpenAPI extension for endpoint with allow_cors set to true:
-    ///
-    /// { "swagger": "2.0", "info": { "description": "A simple..." }, "host": "MY_PROJECT_ID.appspot.com", "x-google-
-    /// endpoints": [{ "name": "MY_PROJECT_ID.appspot.com", "allow_cors": "true" }] }</summary>
+    /// library-example.googleapis.com allow_cors: true</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
@@ -2855,10 +2866,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// fields in the request message, as in the example below which describes a REST GET operation on a resource
     /// collection of messages:
     ///
-    /// ```proto service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http).get
-    /// = "/v1/messages/{message_id}/{sub.subfield}"; } } message GetMessageRequest { message SubMessage { string
-    /// subfield = 1; } string message_id = 1; // mapped to the URL SubMessage sub = 2;    // `sub.subfield` is url-
-    /// mapped } message Message { string text = 1; // content of the resource } ```
+    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http).get =
+    /// "/v1/messages/{message_id}/{sub.subfield}"; } } message GetMessageRequest { message SubMessage { string subfield
+    /// = 1; } string message_id = 1; // mapped to the URL SubMessage sub = 2;    // `sub.subfield` is url-mapped }
+    /// message Message { string text = 1; // content of the resource }
+    ///
+    /// The same http annotation can alternatively be expressed inside the `GRPC API Configuration` YAML file.
+    ///
+    /// http: rules: - selector: .Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield}
     ///
     /// This definition enables an automatic, bidrectional mapping of HTTP JSON to RPC. Example:
     ///
@@ -2871,9 +2886,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// Any fields in the request message which are not bound by the path pattern automatically become (optional) HTTP
     /// query parameters. Assume the following definition of the request message:
     ///
-    /// ```proto message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; //
-    /// mapped to the URL int64 revision = 2;    // becomes a parameter SubMessage sub = 3;    // `sub.subfield` becomes
-    /// a parameter } ```
+    /// message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // mapped to the
+    /// URL int64 revision = 2;    // becomes a parameter SubMessage sub = 3;    // `sub.subfield` becomes a parameter }
     ///
     /// This enables a HTTP JSON to RPC mapping as below:
     ///
@@ -2887,9 +2901,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// For HTTP method kinds which allow a request body, the `body` field specifies the mapping. Consider a REST update
     /// method on the message resource collection:
     ///
-    /// ```proto service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option
-    /// (google.api.http) = { put: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest {
-    /// string message_id = 1; // mapped to the URL Message message = 2;   // mapped to the body } ```
+    /// service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = {
+    /// put: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; //
+    /// mapped to the URL Message message = 2;   // mapped to the body }
     ///
     /// The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is
     /// determined by protos JSON encoding:
@@ -2900,8 +2914,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// The special name `*` can be used in the body mapping to define that every field not bound by the path template
     /// should be mapped to the request body.  This enables the following alternative definition of the update method:
     ///
-    /// ```proto service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { put:
-    /// "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } ```
+    /// service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { put:
+    /// "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; }
     ///
     /// The following HTTP JSON to RPC mapping is enabled:
     ///
@@ -2914,9 +2928,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example:
     ///
-    /// ```proto service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = {
-    /// get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } }
-    /// message GetMessageRequest { string message_id = 1; string user_id = 2; } ```
+    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:
+    /// "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } }
+    /// message GetMessageRequest { string message_id = 1; string user_id = 2; }
     ///
     /// This enables the following two alternative HTTP JSON to RPC mappings:
     ///
@@ -2966,7 +2980,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         /// <summary>The name of the request field whose value is mapped to the HTTP body, or `*` for mapping all fields
         /// not captured by the path pattern to the HTTP body. NOTE: the referred field must not be a repeated field and
-        /// must be present at the top-level of response message type.</summary>
+        /// must be present at the top-level of request message type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
@@ -3801,8 +3815,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// Example:
     ///
     /// type: google.api.Service config_version: 3 name: calendar.googleapis.com title: Google Calendar API apis: -
-    /// name: google.calendar.v3.Calendar backend: rules: - selector: "google.calendar.v3.*" address:
-    /// calendar.example.com</summary>
+    /// name: google.calendar.v3.Calendar authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
+    /// requirements: provider_id: google_calendar_auth</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api
@@ -4068,8 +4083,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeader")]
         public virtual string HttpHeader { get; set; } 
 
-        /// <summary>Define the name of the parameter, such as "api_key", "alt", "callback", and etc. It is case
-        /// sensitive.</summary>
+        /// <summary>Define the name of the parameter, such as "api_key" . It is case sensitive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4113,10 +4127,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// missing from the service config, default system parameters will be used. Default system parameters and names
         /// is implementation-dependent.
         ///
-        /// Example: define api key and alt name for all methods
+        /// Example: define api key for all methods
         ///
-        /// system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key - name:
-        /// alt http_header: Response-Content-Type
+        /// system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key
         ///
         /// Example: define 2 api key names for a specific method.
         ///
@@ -4224,6 +4237,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Configuration controlling usage of a service.</summary>
     public class Usage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The full resource name of a channel used for sending notifications to the service producer.
+        ///
+        /// Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as
+        /// a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub
+        /// topic that uses the Cloud Pub/Sub topic name format documented in
+        /// https://cloud.google.com/pubsub/docs/overview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerNotificationChannel")]
+        public virtual string ProducerNotificationChannel { get; set; } 
+
         /// <summary>Requirements that must be satisfied before a consumer project can use the service. Each requirement
         /// is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirements")]

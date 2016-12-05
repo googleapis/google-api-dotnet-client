@@ -3033,6 +3033,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Request to create a Dataflow job.</summary>
     public class CreateJobFromTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Runtime environment for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual RuntimeEnvironment Environment { get; set; } 
+
         /// <summary>A path to the serialized JSON representation of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; } 
@@ -4064,6 +4068,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Specifies the level of parallelism in case it is finite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Environment values to set at runtime.</summary>
+    public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of workers to start for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
+        public virtual System.Nullable<int> MaxWorkers { get; set; } 
+
+        /// <summary>The service account to run the job as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>The zone to start the workers in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

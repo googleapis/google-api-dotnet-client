@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161116 (685)
+ *      <tr><th>API Rev<td>20161128 (697)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -384,7 +384,7 @@ namespace Google.Apis.Monitoring.v3
             /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project in which to create the time series. The format is
-            /// projects/PROJECT_ID_OR_NUMBER.</param>
+            /// "projects/PROJECT_ID_OR_NUMBER".</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -405,7 +405,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project in which to create the time series. The format is
-                /// projects/PROJECT_ID_OR_NUMBER.</summary>
+                /// "projects/PROJECT_ID_OR_NUMBER".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -502,7 +502,7 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>Lists the monitored resources that are members of a group.</summary>
                 /// <param name="name">The group whose members are listed. The format is
-                /// projects/{project_id_or_number}/groups/{group_id}.</param>
+                /// "projects/{project_id_or_number}/groups/{group_id}".</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -521,14 +521,14 @@ namespace Google.Apis.Monitoring.v3
 
 
                     /// <summary>The group whose members are listed. The format is
-                    /// projects/{project_id_or_number}/groups/{group_id}.</summary>
+                    /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>An optional list filter (/monitoring/api/learn_more#filtering) describing the members
-                    /// to be returned. The filter may reference the type, labels, and metadata of monitored resources
-                    /// that comprise the group. For example, to return only resources representing Compute Engine VM
-                    /// instances, use this filter: resource.type = gce_instance </summary>
+                    /// <summary>An optional list filter describing the members to be returned. The filter may reference
+                    /// the type, labels, and metadata of monitored resources that comprise the group. For example, to
+                    /// return only resources representing Compute Engine VM instances, use this filter: resource.type =
+                    /// "gce_instance" </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -637,7 +637,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new group.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project in which to create the group. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -657,7 +657,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project in which to create the group. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -719,7 +719,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Deletes an existing group.</summary>
             /// <param name="name">The group to delete. The format is
-            /// projects/{project_id_or_number}/groups/{group_id}.</param>
+            /// "projects/{project_id_or_number}/groups/{group_id}".</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -738,7 +738,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The group to delete. The format is
-                /// projects/{project_id_or_number}/groups/{group_id}.</summary>
+                /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -781,7 +781,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single group.</summary>
             /// <param name="name">The group to retrieve. The format is
-            /// projects/{project_id_or_number}/groups/{group_id}.</param>
+            /// "projects/{project_id_or_number}/groups/{group_id}".</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -800,7 +800,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The group to retrieve. The format is
-                /// projects/{project_id_or_number}/groups/{group_id}.</summary>
+                /// "projects/{project_id_or_number}/groups/{group_id}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -843,7 +843,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the existing groups.</summary>
             /// <param name="name">The project whose groups are to be listed. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -862,13 +862,13 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project whose groups are to be listed. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns the descendants of
-                /// the specified group. This is a superset of the results returned by the childrenOfGroup filter, and
-                /// includes children-of-children, and so forth.</summary>
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
+                /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
+                /// and includes children-of-children, and so forth.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("descendantsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DescendantsOfGroup { get; set; }
 
@@ -876,13 +876,13 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns groups whose
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
                 /// parentName field contains the group name. If no groups have this parent, the results are
                 /// empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ChildrenOfGroup { get; set; }
 
-                /// <summary>A group name: projects/{project_id_or_number}/groups/{group_id}. Returns groups that are
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups that are
                 /// ancestors of the specified group. The groups are returned in order, starting with the immediate
                 /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
                 /// the results are empty.</summary>
@@ -980,7 +980,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Updates an existing group. You can change any group attributes except name.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Output only. The name of this group. The format is
-            /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and a new name is
+            /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored and a new name is
             /// created consisting of the project specified in the call to CreateGroup and a unique {group_id} that is generated
             /// automatically.</param>
             public virtual UpdateRequest Update(Google.Apis.Monitoring.v3.Data.Group body, string name)
@@ -1002,9 +1002,9 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>Output only. The name of this group. The format is
-                /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and
-                /// a new name is created consisting of the project specified in the call to CreateGroup and a unique
-                /// {group_id} that is generated automatically.</summary>
+                /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored
+                /// and a new name is created consisting of the project specified in the call to CreateGroup and a
+                /// unique {group_id} that is generated automatically.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1088,18 +1088,18 @@ namespace Google.Apis.Monitoring.v3
             }
 
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
-            /// (/monitoring/custom-metrics).</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom
+            /// metrics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project on which to execute the request. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.MetricDescriptor body, string name)
             {
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom metrics
-            /// (/monitoring/custom-metrics).</summary>
+            /// <summary>Creates a new metric descriptor. User-created metric descriptors define custom
+            /// metrics.</summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.MetricDescriptor>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1113,7 +1113,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1160,18 +1160,16 @@ namespace Google.Apis.Monitoring.v3
 
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created custom metrics (/monitoring/custom-metrics) can
-            /// be deleted.</summary>
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics can be deleted.</summary>
             /// <param name="name">The metric descriptor on which to execute the request. The format is
-            /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example of {metric_id} is:
-            /// custom.googleapis.com/my_test_metric.</param>
+            /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example of {metric_id} is:
+            /// "custom.googleapis.com/my_test_metric".</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a metric descriptor. Only user-created custom metrics (/monitoring/custom-metrics) can
-            /// be deleted.</summary>
+            /// <summary>Deletes a metric descriptor. Only user-created custom metrics can be deleted.</summary>
             public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1184,8 +1182,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The metric descriptor on which to execute the request. The format is
-                /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example of {metric_id} is:
-                /// custom.googleapis.com/my_test_metric.</summary>
+                /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example of {metric_id} is:
+                /// "custom.googleapis.com/my_test_metric".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1228,8 +1226,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Gets a single metric descriptor. This method does not require a Stackdriver account.</summary>
             /// <param name="name">The metric descriptor on which to execute the request. The format is
-            /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example value of {metric_id} is
-            /// compute.googleapis.com/instance/disk/read_bytes_count.</param>
+            /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example value of {metric_id} is
+            /// "compute.googleapis.com/instance/disk/read_bytes_count".</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1248,8 +1246,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The metric descriptor on which to execute the request. The format is
-                /// projects/{project_id_or_number}/metricDescriptors/{metric_id}. An example value of {metric_id} is
-                /// compute.googleapis.com/instance/disk/read_bytes_count.</summary>
+                /// "projects/{project_id_or_number}/metricDescriptors/{metric_id}". An example value of {metric_id} is
+                /// "compute.googleapis.com/instance/disk/read_bytes_count".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1293,7 +1291,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Lists metric descriptors that match a filter. This method does not require a Stackdriver
             /// account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1313,7 +1311,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1322,9 +1320,9 @@ namespace Google.Apis.Monitoring.v3
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
-                /// Otherwise, the filter (/monitoring/api/v3/filters) specifies which metric descriptors are to be
-                /// returned. For example, the following filter matches all custom metrics (/monitoring/custom-metrics):
-                /// metric.type = starts_with(custom.googleapis.com/) </summary>
+                /// Otherwise, the filter specifies which metric descriptors are to be returned. For example, the
+                /// following filter matches all custom metrics: metric.type = starts_with("custom.googleapis.com/")
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1425,7 +1423,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Gets a single monitored resource descriptor. This method does not require a Stackdriver
             /// account.</summary>
             /// <param name="name">The monitored resource descriptor to get. The format is
-            /// projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}. The {resource_type} is a predefined
+            /// "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}". The {resource_type} is a predefined
             /// type, such as cloudsql_database.</param>
             public virtual GetRequest Get(string name)
             {
@@ -1446,8 +1444,8 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The monitored resource descriptor to get. The format is
-                /// projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}. The {resource_type} is
-                /// a predefined type, such as cloudsql_database.</summary>
+                /// "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}". The {resource_type}
+                /// is a predefined type, such as cloudsql_database.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1491,7 +1489,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Lists monitored resource descriptors that match a filter. This method does not require a
             /// Stackdriver account.</summary>
             /// <param name="name">The project on which to execute the request. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1511,7 +1509,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1519,10 +1517,10 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>An optional filter (/monitoring/api/v3/filters) describing the descriptors to be returned.
-                /// The filter can reference the descriptor's type and labels. For example, the following filter returns
-                /// only Google Compute Engine descriptors that have an id label: resource.type = starts_with(gce_) AND
-                /// resource.label:id </summary>
+                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
+                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
+                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1625,7 +1623,7 @@ namespace Google.Apis.Monitoring.v3
             /// included in the error response.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The project on which to execute the request. The format is
-            /// projects/{project_id_or_number}.</param>
+            /// "projects/{project_id_or_number}".</param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
                 return new CreateRequest(service, body, name);
@@ -1647,7 +1645,7 @@ namespace Google.Apis.Monitoring.v3
 
 
                 /// <summary>The project on which to execute the request. The format is
-                /// projects/{project_id_or_number}.</summary>
+                /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1721,10 +1719,10 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A monitoring filter (/monitoring/api/v3/filters) that specifies which time series should be
-                /// returned. The filter must specify a single metric type, and can additionally specify metric labels
-                /// and other information. For example: metric.type = compute.googleapis.com/instance/cpu/usage_time AND
-                /// metric.label.instance_name = my-instance-name </summary>
+                /// <summary>A monitoring filter that specifies which time series should be returned. The filter must
+                /// specify a single metric type, and can additionally specify metric labels and other information. For
+                /// example: metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+                /// metric.label.instance_name = "my-instance-name" </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -2031,7 +2029,7 @@ namespace Google.Apis.Monitoring.v3.Data
     /// upper bound for the values that are counted for that bucket. The upper bound of a bucket is strictly greater
     /// than the lower bound.The sequence of N buckets for a Distribution consists of an underflow bucket (number 0),
     /// zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are
-    /// contiguous: the lower bound of bucket i (i  0) is the same as the upper bound of bucket i - 1. The buckets span
+    /// contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span
     /// the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the
     /// overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.BucketOptions
     /// describes bucket boundaries in one of three ways. Two describe the boundaries by giving parameters for a formula
@@ -2063,15 +2061,15 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The measurement metadata. Example: process_id - 12345</summary>
+        /// <summary>The measurement metadata. Example: "process_id" -> 12345</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,TypedValue> Metadata { get; set; } 
 
-        /// <summary>The name of the plugin. Example: disk.</summary>
+        /// <summary>The name of the plugin. Example: "disk".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
         public virtual string Plugin { get; set; } 
 
-        /// <summary>The instance name of the plugin Example: hdcl.</summary>
+        /// <summary>The instance name of the plugin Example: "hdcl".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pluginInstance")]
         public virtual string PluginInstance { get; set; } 
 
@@ -2079,11 +2077,11 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>The measurement type. Example: memory.</summary>
+        /// <summary>The measurement type. Example: "memory".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The measurement type instance. Example: used.</summary>
+        /// <summary>The measurement type instance. Example: "used".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeInstance")]
         public virtual string TypeInstance { get; set; } 
 
@@ -2100,7 +2098,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class CollectdValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The data source for the collectd value. For example there are two data sources for network
-        /// measurements: rx and tx.</summary>
+        /// measurements: "rx" and "tx".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceName")]
         public virtual string DataSourceName { get; set; } 
 
@@ -2125,7 +2123,7 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collectdPayloads")]
         public virtual System.Collections.Generic.IList<CollectdPayload> CollectdPayloads { get; set; } 
 
-        /// <summary>The version of collectd that collected the data. Example: 5.3.0-192.el6.</summary>
+        /// <summary>The version of collectd that collected the data. Example: "5.3.0-192.el6".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectdVersion")]
         public virtual string CollectdVersion { get; set; } 
 
@@ -2210,7 +2208,7 @@ namespace Google.Apis.Monitoring.v3.Data
     }    
 
     /// <summary>A set of buckets with arbitrary widths.Defines size(bounds) + 1 (= N) buckets with these boundaries for
-    /// bucket i:Upper bound (0 = i  N-1): boundsi  Lower bound (1 = i  N); boundsi - 1There must be at least one
+    /// bucket i:Upper bound (0 <= i < N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1There must be at least one
     /// element in bounds. If bounds has only one element, there are no finite buckets, and that single element is the
     /// common boundary of the overflow and underflow buckets.</summary>
     public class Explicit : Google.Apis.Requests.IDirectResponseSchema
@@ -2225,8 +2223,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>Specify a sequence of buckets that have a width that is proportional to the value of the lower bound.
     /// Each bucket represents a constant relative uncertainty on a specific value in the bucket.Defines
-    /// num_finite_buckets + 2 (= N) buckets with these boundaries for bucket i:Upper bound (0 = i  N-1): scale *
-    /// (growth_factor ^ i).  Lower bound (1 = i  N): scale * (growth_factor ^ (i - 1)).</summary>
+    /// num_finite_buckets + 2 (= N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1): scale *
+    /// (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
     public class Exponential : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 1.</summary>
@@ -2286,7 +2284,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Nullable<bool> Packed { get; set; } 
 
         /// <summary>The field type URL, without the scheme, for message or enumeration types. Example:
-        /// type.googleapis.com/google.protobuf.Timestamp.</summary>
+        /// "type.googleapis.com/google.protobuf.Timestamp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; } 
 
@@ -2302,9 +2300,9 @@ namespace Google.Apis.Monitoring.v3.Data
     /// the only monitored resources available to be matched by the group's filter are the resources contained in the
     /// parent group. In other words, a group contains the monitored resources that match its filter and the filters of
     /// all the group's ancestors. A group without a parent can contain any monitored resource.For example, consider an
-    /// infrastructure running a set of instances with two user-defined tags: environment and role. A parent group has a
-    /// filter, environment=production. A child of that parent group has a filter, role=transcoder. The parent group
-    /// contains all instances in the production environment, regardless of their roles. The child group contains
+    /// infrastructure running a set of instances with two user-defined tags: "environment" and "role". A parent group
+    /// has a filter, environment="production". A child of that parent group has a filter, role="transcoder". The parent
+    /// group contains all instances in the production environment, regardless of their roles. The child group contains
     /// instances that have the transcoder role and are in the production environment.The monitored resources contained
     /// in a group can change at any moment, depending on what resources exist and what filters are associated with the
     /// group and its ancestors.</summary>
@@ -2324,15 +2322,15 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Nullable<bool> IsCluster { get; set; } 
 
         /// <summary>Output only. The name of this group. The format is
-        /// projects/{project_id_or_number}/groups/{group_id}. When creating a group, this field is ignored and a new
+        /// "projects/{project_id_or_number}/groups/{group_id}". When creating a group, this field is ignored and a new
         /// name is created consisting of the project specified in the call to CreateGroup and a unique {group_id} that
         /// is generated automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The name of the group's parent, if it has one. The format is
-        /// projects/{project_id_or_number}/groups/{group_id}. For groups with no parent, parentName is the empty
-        /// string, .</summary>
+        /// "projects/{project_id_or_number}/groups/{group_id}". For groups with no parent, parentName is the empty
+        /// string, "".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
         public virtual string ParentName { get; set; } 
 
@@ -2361,8 +2359,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>Specify a sequence of buckets that all have the same width (except overflow and underflow). Each bucket
     /// represents a constant absolute uncertainty on the specific value in the bucket.Defines num_finite_buckets + 2 (=
-    /// N) buckets with these boundaries for bucket i:Upper bound (0 = i  N-1): offset + (width * i).  Lower bound (1 =
-    /// i  N): offset + (width * (i - 1)).</summary>
+    /// N) buckets with these boundaries for bucket i:Upper bound (0 <= i < N-1): offset + (width * i).  Lower bound (1
+    /// <= i < N): offset + (width * (i - 1)).</summary>
     public class Linear : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Must be greater than 0.</summary>
@@ -2514,14 +2512,14 @@ namespace Google.Apis.Monitoring.v3.Data
         /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
         /// metric's URL-encoded type, which also appears in the type field of this descriptor. For example, following
         /// is the resource name of a custom metric within the GCP project 123456789:
-        /// projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount </summary>
+        /// "projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
         /// metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical
-        /// grouping. For example: custom.googleapis.com/invoice/paid/amount
-        /// appengine.googleapis.com/http/server/response_latencies </summary>
+        /// grouping. For example: "custom.googleapis.com/invoice/paid/amount"
+        /// "appengine.googleapis.com/http/server/response_latencies" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2533,14 +2531,14 @@ namespace Google.Apis.Monitoring.v3.Data
         /// (10**-12) f femto (10**-15) a atto (10**-18) z zepto (10**-21) y yocto (10**-24) Ki kibi (2**10) Mi mebi
         /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The
         /// grammar also includes these connectors: / division (as an infix operator, e.g. 1/s). . multiplication (as an
-        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { . Component } { /
-        /// Component } ;
+        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { "." Component } {
+        /// "/" Component } ;
         ///
-        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | 1 ;
+        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | "1" ;
         ///
-        /// Annotation = { NAME } ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1 if
-        /// it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-
-        /// blank printable ASCII characters not  containing '{' or '}'.</summary>
+        /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1
+        /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
+        /// non-blank printable ASCII characters not  containing '{' or '}'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -2558,18 +2556,18 @@ namespace Google.Apis.Monitoring.v3.Data
     /// identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels
     /// field identifies the actual resource and its attributes according to the schema. For example, a particular
     /// Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor
-    /// for gce_instance has labels instance_id and zone: { type: gce_instance, labels: { instance_id: 12345678901234,
-    /// zone: us-central1-a }} </summary>
+    /// for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id":
+    /// "12345678901234", "zone": "us-central1-a" }} </summary>
     public class MonitoredResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Values for all of the labels listed in the associated monitored resource descriptor. For
-        /// example, Cloud SQL databases use the labels database_id and zone.</summary>
+        /// example, Cloud SQL databases use the labels "database_id" and "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. The monitored resource type. This field must match the type field of a
         /// MonitoredResourceDescriptor object. For example, the type of a Cloud SQL database is
-        /// cloudsql_database.</summary>
+        /// "cloudsql_database".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2579,7 +2577,7 @@ namespace Google.Apis.Monitoring.v3.Data
 
     /// <summary>An object that describes the schema of a MonitoredResource object using a type name and a set of
     /// labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of
-    /// gce_instance and specifies the use of the labels instance_id and zone to identify particular VM
+    /// "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM
     /// instances.Different APIs can support different monitored resource types. APIs generally provide a list method
     /// that returns the monitored resource descriptors used by the API.</summary>
     public class MonitoredResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
@@ -2591,26 +2589,26 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>Optional. A concise name for the monitored resource type that might be displayed in user
         /// interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example,
-        /// Google Cloud SQL Database.</summary>
+        /// "Google Cloud SQL Database".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Required. A set of labels used to describe instances of this monitored resource type. For example,
-        /// an individual Google Cloud SQL database is identified by values for the labels database_id and
-        /// zone.</summary>
+        /// an individual Google Cloud SQL database is identified by values for the labels "database_id" and
+        /// "zone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
 
         /// <summary>Optional. The resource name of the monitored resource descriptor:
-        /// projects/{project_id}/monitoredResourceDescriptors/{type} where {type} is the value of the type field in
+        /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in
         /// this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs
         /// that do not use project information can use the resource name format
-        /// monitoredResourceDescriptors/{type}.</summary>
+        /// "monitoredResourceDescriptors/{type}".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required. The monitored resource type. For example, the type cloudsql_database represents databases
-        /// in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
+        /// <summary>Required. The monitored resource type. For example, the type "cloudsql_database" represents
+        /// databases in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -2621,11 +2619,11 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The option's name. For example, java_package.</summary>
+        /// <summary>The option's name. For example, "java_package".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The option's value. For example, com.google.protobuf.</summary>
+        /// <summary>The option's value. For example, "com.google.protobuf".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
 
@@ -2673,7 +2671,7 @@ namespace Google.Apis.Monitoring.v3.Data
     public class SourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The path-qualified name of the .proto file that contained the associated protobuf element. For
-        /// example: google/protobuf/source_context.proto.</summary>
+        /// example: "google/protobuf/source_context.proto".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
 
