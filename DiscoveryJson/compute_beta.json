@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/4WujUe_q4ADOgwBU448uOb2U5zg\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/wPilfZcCzmptrDXbmigGrd4Fye4\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20161121",
+ "revision": "20161123",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -2504,7 +2504,7 @@
     },
     "type": {
      "type": "string",
-     "description": "Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.",
+     "description": "Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.",
      "enum": [
       "HTTP",
       "HTTPS",
@@ -6726,7 +6726,7 @@
     },
     "privateKey": {
      "type": "string",
-     "description": "A write-only private key in PEM format. Only insert RPCs will include this field."
+     "description": "A write-only private key in PEM format. Only insert requests will include this field."
     },
     "selfLink": {
      "type": "string",

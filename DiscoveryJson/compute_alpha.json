@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/lq0tp_l2wN8mOV8EXq10eNZwQAk\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/IaWy0zwkA_8MtTKvmUt5Raz78pA\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20161121",
+ "revision": "20161123",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -971,6 +971,10 @@
     "description": {
      "type": "string",
      "description": "An optional description of this resource. Provide this property when you create the resource."
+    },
+    "failover": {
+     "type": "boolean",
+     "description": "This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService."
     },
     "group": {
      "type": "string",
@@ -2840,10 +2844,12 @@
      "description": "The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows images, the server might also populate this property with the value WINDOWS to indicate that this is a Windows image. This value is purely informational and does not enable or disable any features.",
      "enum": [
       "FEATURE_TYPE_UNSPECIFIED",
+      "MULTI_IP_SUBNET",
       "VIRTIO_SCSI_MULTIQUEUE",
       "WINDOWS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -3032,7 +3038,7 @@
     },
     "type": {
      "type": "string",
-     "description": "Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.",
+     "description": "Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match type field.",
      "enum": [
       "HTTP",
       "HTTP2",
@@ -5787,6 +5793,34 @@
     }
    }
   },
+  "NetworksAddPeeringRequest": {
+   "id": "NetworksAddPeeringRequest",
+   "type": "object",
+   "properties": {
+    "autoCreateRoutes": {
+     "type": "boolean",
+     "description": "Whether Google Compute Engine manages the routes automatically."
+    },
+    "name": {
+     "type": "string",
+     "description": "Name of the peering, which should conform to RFC1035."
+    },
+    "peerNetwork": {
+     "type": "string",
+     "description": "URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network."
+    }
+   }
+  },
+  "NetworksRemovePeeringRequest": {
+   "id": "NetworksRemovePeeringRequest",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string",
+     "description": "Name of the peering, which should conform to RFC1035."
+    }
+   }
+  },
   "Operation": {
    "id": "Operation",
    "type": "object",
@@ -7830,7 +7864,7 @@
     },
     "privateKey": {
      "type": "string",
-     "description": "A write-only private key in PEM format. Only insert RPCs will include this field."
+     "description": "A write-only private key in PEM format. Only insert requests will include this field."
     },
     "selfLink": {
      "type": "string",
@@ -17589,6 +17623,42 @@
   },
   "networks": {
    "methods": {
+    "addPeering": {
+     "id": "compute.networks.addPeering",
+     "path": "{project}/global/networks/{network}/addPeering",
+     "httpMethod": "POST",
+     "description": "Adds a peering to the specified network.",
+     "parameters": {
+      "network": {
+       "type": "string",
+       "description": "Name of the network resource to add peering to.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "network"
+     ],
+     "request": {
+      "$ref": "NetworksAddPeeringRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "id": "compute.networks.delete",
      "path": "{project}/global/networks/{network}",
@@ -17732,6 +17802,42 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "removePeering": {
+     "id": "compute.networks.removePeering",
+     "path": "{project}/global/networks/{network}/removePeering",
+     "httpMethod": "POST",
+     "description": "Removes a peering from the specified network.",
+     "parameters": {
+      "network": {
+       "type": "string",
+       "description": "Name of the network resource to remove peering from.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "network"
+     ],
+     "request": {
+      "$ref": "NetworksRemovePeeringRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     },
     "switchToCustomMode": {

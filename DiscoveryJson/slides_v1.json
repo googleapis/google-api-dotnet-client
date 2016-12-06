@@ -546,7 +546,7 @@
           "type": "string"
         },
         "layouts": {
-          "description": "The layouts in the presentation.  A layout is a template that determines\nhow content is arranged and styled on the slides that inherit from that\nlayout.",
+          "description": "The layouts in the presentation. A layout is a template that determines\nhow content is arranged and styled on the slides that inherit from that\nlayout.",
           "type": "array",
           "items": {
             "$ref": "Page"
@@ -799,36 +799,6 @@
           "description": "The thickness of the line.",
           "$ref": "Dimension"
         },
-        "startArrow": {
-          "description": "The style of the arrow at the beginning of the line.",
-          "enum": [
-            "ARROW_STYLE_UNSPECIFIED",
-            "NONE",
-            "STEALTH_ARROW",
-            "FILL_ARROW",
-            "FILL_CIRCLE",
-            "FILL_SQUARE",
-            "FILL_DIAMOND",
-            "OPEN_ARROW",
-            "OPEN_CIRCLE",
-            "OPEN_SQUARE",
-            "OPEN_DIAMOND"
-          ],
-          "enumDescriptions": [
-            "An unspecified arrow style.",
-            "No arrow.",
-            "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
-            "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
-            "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
-            "Filled square.",
-            "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
-            "Hollow arrow.",
-            "Hollow circle.",
-            "Hollow square.",
-            "Hollow diamond."
-          ],
-          "type": "string"
-        },
         "endArrow": {
           "description": "The style of the arrow at the end of the line.",
           "enum": [
@@ -859,6 +829,10 @@
           ],
           "type": "string"
         },
+        "link": {
+          "description": "The hyperlink destination of the line. If unset, there is no link.",
+          "$ref": "Link"
+        },
         "lineFill": {
           "description": "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor.",
           "$ref": "LineFill"
@@ -882,6 +856,36 @@
             "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'.",
             "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'.",
             "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."
+          ],
+          "type": "string"
+        },
+        "startArrow": {
+          "description": "The style of the arrow at the beginning of the line.",
+          "enum": [
+            "ARROW_STYLE_UNSPECIFIED",
+            "NONE",
+            "STEALTH_ARROW",
+            "FILL_ARROW",
+            "FILL_CIRCLE",
+            "FILL_SQUARE",
+            "FILL_DIAMOND",
+            "OPEN_ARROW",
+            "OPEN_CIRCLE",
+            "OPEN_SQUARE",
+            "OPEN_DIAMOND"
+          ],
+          "enumDescriptions": [
+            "An unspecified arrow style.",
+            "No arrow.",
+            "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
+            "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
+            "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
+            "Filled square.",
+            "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
+            "Hollow arrow.",
+            "Hollow circle.",
+            "Hollow square.",
+            "Hollow diamond."
           ],
           "type": "string"
         }
@@ -2415,6 +2419,10 @@
           "description": "The outline of the shape. If unset, the outline is inherited from a\nparent placeholder if it exists. If the shape has no parent, then the\ndefault outline depends on the shape type, matching the defaults for\nnew shapes created in the Slides editor.",
           "$ref": "Outline"
         },
+        "link": {
+          "description": "The hyperlink destination of the shape. If unset, there is no link. Links\nare not inherited from parent placeholders.",
+          "$ref": "Link"
+        },
         "shapeBackgroundFill": {
           "description": "The background fill of the shape. If unset, the background fill is\ninherited from a parent placeholder if it exists. If the shape has no\nparent, then the default background fill depends on the shape type,\nmatching the defaults for new shapes created in the Slides editor.",
           "$ref": "ShapeBackgroundFill"
@@ -2886,7 +2894,7 @@
           "type": "string"
         },
         "placeholder": {
-          "description": "Placeholders are shapes that are inherit from correponding placeholders on\nlayouts and masters.\n\nIf set, the shape is a placeholder shape and any inherited properties\ncan be resolved by looking at the parent placeholder identified by the\nPlaceholder.parent_object_id field.",
+          "description": "Placeholders are shapes that are inherit from corresponding placeholders on\nlayouts and masters.\n\nIf set, the shape is a placeholder shape and any inherited properties\ncan be resolved by looking at the parent placeholder identified by the\nPlaceholder.parent_object_id field.",
           "$ref": "Placeholder"
         }
       },
@@ -2935,6 +2943,10 @@
           "description": "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only.",
           "type": "number",
           "format": "float"
+        },
+        "link": {
+          "description": "The hyperlink destination of the image. If unset, there is no link.",
+          "$ref": "Link"
         },
         "recolor": {
           "description": "The recolor effect of the image. If not set, the image is not recolored.\nThis property is read-only.",
@@ -3433,7 +3445,7 @@
       "id": "Bullet"
     }
   },
-  "revision": "20161122",
+  "revision": "20161202",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

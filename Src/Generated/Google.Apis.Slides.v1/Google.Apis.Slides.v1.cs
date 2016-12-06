@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161122 (691)
+ *      <tr><th>API Rev<td>20161202 (701)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1391,6 +1391,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cropProperties")]
         public virtual CropProperties CropProperties { get; set; } 
 
+        /// <summary>The hyperlink destination of the image. If unset, there is no link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
+
         /// <summary>The outline of the image. If not set, the the image has no outline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outline")]
         public virtual Outline Outline { get; set; } 
@@ -1590,6 +1594,10 @@ namespace Google.Apis.Slides.v1.Data
         /// Slides editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineFill")]
         public virtual LineFill LineFill { get; set; } 
+
+        /// <summary>The hyperlink destination of the line. If unset, there is no link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
 
         /// <summary>The style of the arrow at the beginning of the line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startArrow")]
@@ -1985,8 +1993,8 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A Google Slides presentation.</summary>
     public class Presentation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The layouts in the presentation.  A layout is a template that determines how content is arranged
-        /// and styled on the slides that inherit from that layout.</summary>
+        /// <summary>The layouts in the presentation. A layout is a template that determines how content is arranged and
+        /// styled on the slides that inherit from that layout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layouts")]
         public virtual System.Collections.Generic.IList<Page> Layouts { get; set; } 
 
@@ -2371,7 +2379,7 @@ namespace Google.Apis.Slides.v1.Data
     /// classification.</summary>
     public class Shape : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Placeholders are shapes that are inherit from correponding placeholders on layouts and masters.
+        /// <summary>Placeholders are shapes that are inherit from corresponding placeholders on layouts and masters.
         ///
         /// If set, the shape is a placeholder shape and any inherited properties can be resolved by looking at the
         /// parent placeholder identified by the Placeholder.parent_object_id field.</summary>
@@ -2420,6 +2428,11 @@ namespace Google.Apis.Slides.v1.Data
     /// corresponding property_state field value.</summary>
     public class ShapeProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The hyperlink destination of the shape. If unset, there is no link. Links are not inherited from
+        /// parent placeholders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; } 
+
         /// <summary>The outline of the shape. If unset, the outline is inherited from a parent placeholder if it
         /// exists. If the shape has no parent, then the default outline depends on the shape type, matching the
         /// defaults for new shapes created in the Slides editor.</summary>

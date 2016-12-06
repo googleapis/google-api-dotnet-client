@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20161121 (690)
+ *      <tr><th>API Rev<td>20161123 (692)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -19576,6 +19576,90 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Adds a peering to the specified network.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource to add peering to.</param>
+        public virtual AddPeeringRequest AddPeering(Google.Apis.Compute.alpha.Data.NetworksAddPeeringRequest body, string project, string network)
+        {
+            return new AddPeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Adds a peering to the specified network.</summary>
+        public class AddPeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new AddPeering request.</summary>
+            public AddPeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.NetworksAddPeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource to add peering to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.NetworksAddPeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addPeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/addPeering"; }
+            }
+
+            /// <summary>Initializes AddPeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Deletes the specified network.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
@@ -19937,6 +20021,90 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Removes a peering from the specified network.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource to remove peering from.</param>
+        public virtual RemovePeeringRequest RemovePeering(Google.Apis.Compute.alpha.Data.NetworksRemovePeeringRequest body, string project, string network)
+        {
+            return new RemovePeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Removes a peering from the specified network.</summary>
+        public class RemovePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new RemovePeering request.</summary>
+            public RemovePeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.NetworksRemovePeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource to remove peering from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.NetworksRemovePeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removePeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/removePeering"; }
+            }
+
+            /// <summary>Initializes RemovePeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -38312,6 +38480,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>This field designates whether this is a failover backend. More than one failover backend can be
+        /// configured for a given BackendService.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failover")]
+        public virtual System.Nullable<bool> Failover { get; set; } 
+
         /// <summary>The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of
         /// instances that serve traffic. Member virtual machine instances from each instance group must live in the
         /// same zone as the instance group itself. No two backends in a backend service are allowed to use same
@@ -40218,9 +40391,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not
-        /// specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified,
-        /// which must match type field.</summary>
+        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the
+        /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
+        /// type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -42754,6 +42927,36 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Google Compute Engine manages the routes automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
+        public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
+
+        /// <summary>Name of the peering, which should conform to RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a
+        /// different project. If the partial URL does not contain project, it is assumed that the peer network is in
+        /// the same project as the current network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerNetwork")]
+        public virtual string PeerNetwork { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class NetworksRemovePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the peering, which should conform to RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -44480,7 +44683,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A write-only private key in PEM format. Only insert RPCs will include this field.</summary>
+        /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; } 
 

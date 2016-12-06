@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20161121 (690)
+ *      <tr><th>API Rev<td>20161123 (692)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -34742,9 +34742,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSec")]
         public virtual System.Nullable<int> TimeoutSec { get; set; } 
 
-        /// <summary>Specifies the type of the healthCheck, either TCP, UDP, SSL, HTTP, HTTPS or HTTP2. If not
-        /// specified, the default is TCP. Exactly one of the protocol-specific health check field must be specified,
-        /// which must match type field.</summary>
+        /// <summary>Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If not specified, the
+        /// default is TCP. Exactly one of the protocol-specific health check field must be specified, which must match
+        /// type field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -38482,7 +38482,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>A write-only private key in PEM format. Only insert RPCs will include this field.</summary>
+        /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; } 
 
