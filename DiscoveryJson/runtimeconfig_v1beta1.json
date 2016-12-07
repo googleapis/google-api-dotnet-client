@@ -739,24 +739,6 @@
       },
       "id": "Status"
     },
-    "ListConfigsResponse": {
-      "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results",
-          "type": "string"
-        },
-        "configs": {
-          "description": "A list of the configurations in the project. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
-          "type": "array",
-          "items": {
-            "$ref": "RuntimeConfig"
-          }
-        }
-      },
-      "id": "ListConfigsResponse"
-    },
     "Variable": {
       "description": "Describes a single variable within a RuntimeConfig resource.\nThe name denotes the hierarchical variable name. For example,\n`ports/serving_port` is a valid variable name. The variable value is an\nopaque string and only leaf variables can have values (that is, variables\nthat do not have any child variables).",
       "type": "object",
@@ -795,6 +777,24 @@
         }
       },
       "id": "Variable"
+    },
+    "ListConfigsResponse": {
+      "description": "`ListConfigs()` returns the following response. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
+      "type": "object",
+      "properties": {
+        "nextPageToken": {
+          "description": "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results",
+          "type": "string"
+        },
+        "configs": {
+          "description": "A list of the configurations in the project. The order of returned\nobjects is arbitrary; that is, it is not ordered in any particular way.",
+          "type": "array",
+          "items": {
+            "$ref": "RuntimeConfig"
+          }
+        }
+      },
+      "id": "ListConfigsResponse"
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
@@ -1046,7 +1046,7 @@
       "id": "ListVariablesResponse"
     }
   },
-  "revision": "20161128",
+  "revision": "20161205",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

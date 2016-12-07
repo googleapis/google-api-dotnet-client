@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -755,10 +755,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
         /// and BCP-47 language codes are accepted. **Current Language Restrictions:**
         ///
-        /// * Only English, Spanish, and Japanese textual content are supported, with the following additional
-        /// restriction: * `analyzeSentiment` only supports English text. If the language (either specified by the
-        /// caller or automatically detected) is not supported by the called API method, an `INVALID_ARGUMENT` error is
-        /// returned.</summary>
+        /// * Only English, Spanish, and Japanese textual content are supported. If the language (either specified by
+        /// the caller or automatically detected) is not supported by the called API method, an `INVALID_ARGUMENT` error
+        /// is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -927,7 +926,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("polarity")]
         public virtual System.Nullable<float> Polarity { get; set; } 
 
-        /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment.)</summary>
+        /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; } 
 
@@ -1021,7 +1020,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dependencyEdge")]
         public virtual DependencyEdge DependencyEdge { get; set; } 
 
-        /// <summary> Lemma of the token.</summary>
+        /// <summary>[Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lemma")]
         public virtual string Lemma { get; set; } 
 

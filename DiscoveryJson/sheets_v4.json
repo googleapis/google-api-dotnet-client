@@ -2580,6 +2580,10 @@
           "description": "Overall properties of a spreadsheet.",
           "$ref": "SpreadsheetProperties"
         },
+        "spreadsheetUrl": {
+          "description": "The url of the spreadsheet.\nThis field is read-only.",
+          "type": "string"
+        },
         "sheets": {
           "description": "The sheets that are part of a spreadsheet.",
           "type": "array",
@@ -4000,7 +4004,7 @@
       "id": "DeleteConditionalFormatRuleResponse"
     }
   },
-  "revision": "20161122",
+  "revision": "20161205",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

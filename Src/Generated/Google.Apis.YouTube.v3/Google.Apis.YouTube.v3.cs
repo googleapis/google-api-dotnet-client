@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161017 (655)
+ *      <tr><th>API Rev<td>20161202 (701)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -9701,8 +9701,8 @@ namespace Google.Apis.YouTube.v3
             /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
             /// result set.
             ///
-            /// Note: This parameter is supported for use in conjunction with the myRating parameter, but it is not
-            /// supported for use in conjunction with the id parameter.</summary>
+            /// Note: This parameter is supported for use in conjunction with the myRating and chart parameters, but it
+            /// is not supported for use in conjunction with the id parameter.</summary>
             /// [default: 5]
             /// [minimum: 1]
             /// [maximum: 50]
@@ -9748,8 +9748,8 @@ namespace Google.Apis.YouTube.v3
             /// In an API response, the nextPageToken and prevPageToken properties identify other pages that could be
             /// retrieved.
             ///
-            /// Note: This parameter is supported for use in conjunction with the myRating parameter, but it is not
-            /// supported for use in conjunction with the id parameter.</summary>
+            /// Note: This parameter is supported for use in conjunction with the myRating and chart parameters, but it
+            /// is not supported for use in conjunction with the id parameter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -11951,7 +11951,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 68</summary>
+    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 69</summary>
     public class ContentRating : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The video's Australian Classification Board (ACB) or Australian Communications and Media Authority
@@ -12137,6 +12137,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// Children and Young People.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mccypRating")]
         public virtual string MccypRating { get; set; } 
+
+        /// <summary>The video's rating system for Vietnam - MCST</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcstRating")]
+        public virtual string McstRating { get; set; } 
 
         /// <summary>The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board
         /// of Film Censors (BFC).</summary>
@@ -14052,6 +14056,25 @@ namespace Google.Apis.YouTube.v3.Data
         /// query parameter to this value in your API request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
         public virtual string VideoId { get; set; } 
+
+        /// <summary>The date and time that the video was published to YouTube. The value is specified in ISO 8601
+        /// (YYYY-MM-DDThh:mm:ss.sZ) format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoPublishedAt")]
+        public virtual string VideoPublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="VideoPublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> VideoPublishedAt
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(VideoPublishedAtRaw);
+            }
+            set
+            {
+                VideoPublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

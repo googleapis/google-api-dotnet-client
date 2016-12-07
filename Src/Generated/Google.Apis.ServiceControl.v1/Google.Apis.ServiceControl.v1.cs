@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -348,8 +348,10 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
         /// proceed. It should be called before the operation is executed.
         ///
-        /// If feasible, the client should cache the check results and reuse them for up to 60s. In case of server
-        /// errors, the client may rely on the cached results for longer time.
+        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
+        /// errors, the client can rely on the cached results for longer time.
+        ///
+        /// NOTE: the `CheckRequest` has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -366,8 +368,10 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
         /// proceed. It should be called before the operation is executed.
         ///
-        /// If feasible, the client should cache the check results and reuse them for up to 60s. In case of server
-        /// errors, the client may rely on the cached results for longer time.
+        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
+        /// errors, the client can rely on the cached results for longer time.
+        ///
+        /// NOTE: the `CheckRequest` has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -433,11 +437,14 @@ namespace Google.Apis.ServiceControl.v1
 
         }
 
-        /// <summary>Reports operations to Google Service Control. It should be called after the operation is completed.
+        /// <summary>Reports operation results to Google Service Control, such as logs and metrics. It should be called
+        /// after an operation is completed.
         ///
-        /// If feasible, the client should aggregate reporting data for up to 5s to reduce API traffic. Limiting
-        /// aggregation to 5s is to reduce data loss during client crashes. Clients should carefully choose the
-        /// aggregation window to avoid data loss risk more than 0.01% for business and compliance reasons.
+        /// If feasible, the client should aggregate reporting data for up to 5 seconds to reduce API traffic. Limiting
+        /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
+        /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
+        ///
+        /// NOTE: the `ReportRequest` has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -451,11 +458,14 @@ namespace Google.Apis.ServiceControl.v1
             return new ReportRequest(service, body, serviceName);
         }
 
-        /// <summary>Reports operations to Google Service Control. It should be called after the operation is completed.
+        /// <summary>Reports operation results to Google Service Control, such as logs and metrics. It should be called
+        /// after an operation is completed.
         ///
-        /// If feasible, the client should aggregate reporting data for up to 5s to reduce API traffic. Limiting
-        /// aggregation to 5s is to reduce data loss during client crashes. Clients should carefully choose the
-        /// aggregation window to avoid data loss risk more than 0.01% for business and compliance reasons.
+        /// If feasible, the client should aggregate reporting data for up to 5 seconds to reduce API traffic. Limiting
+        /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
+        /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
+        ///
+        /// NOTE: the `ReportRequest` has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161202 (701)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1416,6 +1416,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         /// <summary>The token for the next page. This should be taken from the previous response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Specify which project (field value is actually project id) to operate. Only used when provided
+        /// credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProjectId")]
+        public virtual string TargetProjectId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161122 (691)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -4239,6 +4239,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The ID of the spreadsheet. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
         public virtual string SpreadsheetId { get; set; } 
+
+        /// <summary>The url of the spreadsheet. This field is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetUrl")]
+        public virtual string SpreadsheetUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

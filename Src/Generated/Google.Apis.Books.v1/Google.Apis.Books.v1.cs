@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161129 (698)
+ *      <tr><th>API Rev<td>20161206 (705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -7854,8 +7854,6 @@ namespace Google.Apis.Books.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Series info list. The client always expects this element in the JSON output, hence declared here as
-        /// OutputAlways.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual System.Collections.Generic.IList<Series.SeriesData> SeriesValue { get; set; } 
 
