@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161013 (651)
+ *      <tr><th>API Rev<td>20161206 (705)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -2335,20 +2335,39 @@ namespace Google.Apis.DeploymentManager.v2
 namespace Google.Apis.DeploymentManager.v2.Data
 {    
 
-    /// <summary>Enables "data access" audit logging for a service and specifies a list of members that are log-
-    /// exempted.</summary>
+    /// <summary>Provides the configuration for non-admin_activity logging for a service. Controls exemptions and
+    /// specific log sub-types.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The configuration for each type of logging</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
         /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
         /// specified above. Follows the same format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for "data access" audit logging. For example,
-        /// `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all
-        /// services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
+        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for a sub-type of logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that are exempted from this type of logging Follows the same format of
+        /// Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

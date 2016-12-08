@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161202 (701)
+ *      <tr><th>API Rev<td>20161206 (705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -94,6 +94,9 @@ namespace Google.Apis.IdentityToolkit.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Google Identity Toolkit API.</summary>
         public class Scope
         {
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
             /// <summary>View and administer all your Firebase data and settings</summary>
             public static string Firebase = "https://www.googleapis.com/auth/firebase";
 
