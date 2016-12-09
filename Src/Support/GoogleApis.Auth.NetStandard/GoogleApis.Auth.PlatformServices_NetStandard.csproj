@@ -56,7 +56,6 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="OAuth2\RsaStandard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +67,9 @@
       <Project>{a6df7ada-7d48-4715-9c94-70dcbc07ea37}</Project>
       <Name>GoogleApis.Core_NetStandard</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OAuth2\" />
   </ItemGroup>
   <Import Project="..\GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

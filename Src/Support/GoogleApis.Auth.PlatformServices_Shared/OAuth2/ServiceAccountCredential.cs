@@ -23,14 +23,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
-
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
-using Org.BouncyCastle.Math;
 
 #if NETSTANDARD
 using RsaKey = System.Security.Cryptography.RSA;
@@ -95,14 +90,9 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts the <see cref="Key"/> from the given PKCS8 private key.</summary>
             public Initializer FromPrivateKey(string privateKey)
             {
-#if NETSTANDARD
-                RsaPrivateCrtKeyParameters parameters = ConvertPKCS8ToRsaPrivateCrtKeyParameters(privateKey);
-                Key = new RsaStandard(parameters);
-#else
-                RSAParameters rsaParameters = ConvertPKCS8ToRSAParameters(privateKey);
-                Key = new RSACryptoServiceProvider();
+                RSAParameters rsaParameters = Pkcs8.DecodeRsaParameters(privateKey);
+                Key = (RsaKey)RSA.Create();
                 Key.ImportParameters(rsaParameters);
-#endif
                 return this;
             }
 
@@ -121,9 +111,6 @@ namespace Google.Apis.Auth.OAuth2
                 return this;
             }
         }
-
-        private const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
-        private const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
 
         /// <summary>Unix epoch as a <c>DateTime</c></summary>
         protected static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -299,52 +286,6 @@ namespace Google.Apis.Auth.OAuth2
             };
 
             return NewtonsoftJsonSerializer.Instance.Serialize(header);
-        }
-
-        /// <summary>
-        /// Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
-        /// </summary>
-        private static RsaPrivateCrtKeyParameters ConvertPKCS8ToRsaPrivateCrtKeyParameters(string pkcs8PrivateKey)
-        {
-            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
-            var base64PrivateKey = pkcs8PrivateKey.Replace(PrivateKeyPrefix, "").Replace("\n", "")
-                .Replace(PrivateKeySuffix, "");
-            var privateKeyBytes = Convert.FromBase64String(base64PrivateKey);
-            return (RsaPrivateCrtKeyParameters)PrivateKeyFactory.CreateKey(privateKeyBytes);
-        }
-
-        /// <summary>
-        /// Converts the PKCS8 private key to RSA parameters. This method uses the Bouncy Castle library.
-        /// </summary>
-        private static RSAParameters ConvertPKCS8ToRSAParameters(string pkcs8PrivateKey)
-        {
-            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, "pkcs8PrivateKey");
-            RsaPrivateCrtKeyParameters crtParameters = ConvertPKCS8ToRsaPrivateCrtKeyParameters(pkcs8PrivateKey);
-            var rp = new RSAParameters();
-            rp.Modulus = crtParameters.Modulus.ToByteArrayUnsigned();
-            rp.Exponent = crtParameters.PublicExponent.ToByteArrayUnsigned();
-            rp.P = crtParameters.P.ToByteArrayUnsigned();
-            rp.Q = crtParameters.Q.ToByteArrayUnsigned();
-            rp.D = ConvertRSAParametersField(crtParameters.Exponent, rp.Modulus.Length);
-            rp.DP = ConvertRSAParametersField(crtParameters.DP, rp.P.Length);
-            rp.DQ = ConvertRSAParametersField(crtParameters.DQ, rp.Q.Length);
-            rp.InverseQ = ConvertRSAParametersField(crtParameters.QInv, rp.Q.Length);
-            return rp;
-        }
-
-        private static byte[] ConvertRSAParametersField(BigInteger n, int size)
-        {
-            byte[] bs = n.ToByteArrayUnsigned();
-
-            if (bs.Length == size)
-                return bs;
-
-            if (bs.Length > size)
-                throw new ArgumentException("Specified size too small", "size");
-
-            byte[] padded = new byte[size];
-            Array.Copy(bs, 0, padded, size - bs.Length, bs.Length);
-            return padded;
         }
 
         /// <summary>
