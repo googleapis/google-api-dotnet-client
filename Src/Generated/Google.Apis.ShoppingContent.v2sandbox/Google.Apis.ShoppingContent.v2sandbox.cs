@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20161110 (679)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -247,7 +247,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         }
 
 
-        /// <summary>Marks an order as acknowledged.</summary>
+        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -257,7 +258,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new AcknowledgeRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks an order as acknowledged.</summary>
+        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class AcknowledgeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersAcknowledgeResponse>
         {
             /// <summary>Constructs a new Acknowledge request.</summary>
@@ -331,7 +333,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
+        /// can only be called for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the test
         /// order to modify.</param>
@@ -340,7 +343,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new AdvancetestorderRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
+        /// can only be called for non-multi-client accounts.</summary>
         public class AdvancetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersAdvanceTestOrderResponse>
         {
             /// <summary>Constructs a new Advancetestorder request.</summary>
@@ -407,7 +411,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Cancels all line items in an order.</summary>
+        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the order
@@ -417,7 +422,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new CancelRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels all line items in an order.</summary>
+        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CancelRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -491,7 +497,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Cancels a line item.</summary>
+        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -501,7 +507,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new CancellineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels a line item.</summary>
+        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
         public class CancellineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelLineItemResponse>
         {
             /// <summary>Constructs a new Cancellineitem request.</summary>
@@ -575,7 +581,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Sandbox only. Creates a test order.</summary>
+        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual CreatetestorderRequest Createtestorder(Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCreateTestOrderRequest body, ulong merchantId)
@@ -583,7 +590,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new CreatetestorderRequest(service, body, merchantId);
         }
 
-        /// <summary>Sandbox only. Creates a test order.</summary>
+        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CreatetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCreateTestOrderResponse>
         {
             /// <summary>Constructs a new Createtestorder request.</summary>
@@ -643,14 +651,16 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -696,7 +706,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account.</summary>
+        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
         /// order.</param>
@@ -705,7 +716,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new GetRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account.</summary>
+        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -772,7 +784,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="merchantOrderId">The merchant
         /// order id to be looked for.</param>
@@ -781,7 +794,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new GetbymerchantorderidRequest(service, merchantId, merchantOrderId);
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class GetbymerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersGetByMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Getbymerchantorderid request.</summary>
@@ -849,7 +863,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox.</summary>
+        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="templateName">The name of the
         /// template to retrieve.</param>
@@ -859,7 +873,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox.</summary>
+        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
         public class GettestordertemplateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersGetTestOrderTemplateResponse>
         {
             /// <summary>Constructs a new Gettestordertemplate request.</summary>
@@ -939,14 +953,16 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Lists the orders in your Merchant Center account.</summary>
+        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the orders in your Merchant Center account.</summary>
+        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1143,7 +1159,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the order
@@ -1153,7 +1170,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new RefundRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class RefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersRefundResponse>
         {
             /// <summary>Constructs a new Refund request.</summary>
@@ -1227,7 +1245,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Returns a line item.</summary>
+        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -1237,7 +1255,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new ReturnlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Returns a line item.</summary>
+        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
         public class ReturnlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersReturnLineItemResponse>
         {
             /// <summary>Constructs a new Returnlineitem request.</summary>
@@ -1311,7 +1329,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Marks line item(s) as shipped.</summary>
+        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -1321,7 +1340,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new ShiplineitemsRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks line item(s) as shipped.</summary>
+        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class ShiplineitemsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersShipLineItemsResponse>
         {
             /// <summary>Constructs a new Shiplineitems request.</summary>
@@ -1395,7 +1415,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Updates the merchant order ID for a given order.</summary>
+        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -1405,7 +1426,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new UpdatemerchantorderidRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates the merchant order ID for a given order.</summary>
+        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class UpdatemerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Updatemerchantorderid request.</summary>
@@ -1479,7 +1501,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -1489,7 +1512,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new UpdateshipmentRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class UpdateshipmentRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateShipmentResponse>
         {
             /// <summary>Constructs a new Updateshipment request.</summary>
@@ -1769,8 +1793,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
         /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
         /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout
-        /// flow.</summary>
+        /// thus not shown the marketing right opt in/out checkbox during the checkout flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 
@@ -2880,8 +2903,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
         /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
         /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.
-        /// Optional.</summary>
+        /// thus not shown the marketing right opt in/out checkbox during the checkout flow. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161128 (697)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -1730,9 +1730,11 @@ namespace Google.Apis.Monitoring.v3
                 /// determine how the time series are partitioned into subsets prior to applying the aggregation
                 /// function. Each subset contains time series that have the same value for each of the grouping fields.
                 /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
-                /// each subset of time series. Fields not specified in groupByFields are aggregated away. If
-                /// groupByFields is not specified, the time series are aggregated into a single output time series. If
-                /// crossSeriesReducer is not defined, this field is ignored.</summary>
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
+                /// If groupByFields is not specified and all the time series have the same resource type, then the time
+                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
+                /// field is ignored.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
 
@@ -2619,11 +2621,15 @@ namespace Google.Apis.Monitoring.v3.Data
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The option's name. For example, "java_package".</summary>
+        /// <summary>The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the
+        /// short name. For example, "map_entry". For custom options, it should be the fully-qualified name. For
+        /// example, "google.api.http".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The option's value. For example, "com.google.protobuf".</summary>
+        /// <summary>The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper
+        /// type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored
+        /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta5
- *      <tr><th>API Rev<td>20161114 (683)
+ *      <tr><th>API Rev<td>20161208 (707)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -627,8 +627,8 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services to override
-            /// the binding to use different resource name schemes, such as `users/operations`.</summary>
+            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding below allows API services to override the
+            /// binding to use different resource name schemes, such as users/operations.</summary>
             /// <param name="appsId">Part of `name`. The name of the operation collection.</param>
             public virtual ListRequest List(string appsId)
             {
@@ -636,8 +636,8 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services to override
-            /// the binding to use different resource name schemes, such as `users/operations`.</summary>
+            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding below allows API services to override the
+            /// binding to use different resource name schemes, such as users/operations.</summary>
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -804,11 +804,11 @@ namespace Google.Apis.Appengine.v1beta5
                     /// <summary>Enables debugging on a VM instance. This allows you to use the SSH command to connect
                     /// to the virtual machine where the instance lives. While in "debug mode", the instance continues
                     /// to serve live traffic. You should delete the instance when you are done debugging and then allow
-                    /// the system to take over and determine if another instance should be started. Only applicable for
+                    /// the system to take over and determine if another instance should be started.Only applicable for
                     /// instances in App Engine flexible environment.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default/versions/v1/instances/instance-1`.</param>
+                    /// apps/myapp/services/default/versions/v1/instances/instance-1.</param>
                     /// <param name="servicesId">Part of
                     /// `name`. See documentation of `appsId`.</param>
                     /// <param name="versionsId">Part of `name`. See documentation of
@@ -822,7 +822,7 @@ namespace Google.Apis.Appengine.v1beta5
                     /// <summary>Enables debugging on a VM instance. This allows you to use the SSH command to connect
                     /// to the virtual machine where the instance lives. While in "debug mode", the instance continues
                     /// to serve live traffic. You should delete the instance when you are done debugging and then allow
-                    /// the system to take over and determine if another instance should be started. Only applicable for
+                    /// the system to take over and determine if another instance should be started.Only applicable for
                     /// instances in App Engine flexible environment.</summary>
                     public class DebugRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
                     {
@@ -840,7 +840,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                         /// <summary>Part of `name`. Name of the resource requested. Example:
-                        /// `apps/myapp/services/default/versions/v1/instances/instance-1`.</summary>
+                        /// apps/myapp/services/default/versions/v1/instances/instance-1.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AppsId { get; private set; }
 
@@ -1037,7 +1037,7 @@ namespace Google.Apis.Appengine.v1beta5
 
                     /// <summary>Gets instance information.</summary>
                     /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default/versions/v1/instances/instance-1`.</param>
+                    /// apps/myapp/services/default/versions/v1/instances/instance-1.</param>
                     /// <param name="servicesId">Part of
                     /// `name`. See documentation of `appsId`.</param>
                     /// <param name="versionsId">Part of `name`. See documentation of
@@ -1064,7 +1064,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                         /// <summary>Part of `name`. Name of the resource requested. Example:
-                        /// `apps/myapp/services/default/versions/v1/instances/instance-1`.</summary>
+                        /// apps/myapp/services/default/versions/v1/instances/instance-1.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AppsId { get; private set; }
 
@@ -1146,11 +1146,10 @@ namespace Google.Apis.Appengine.v1beta5
 
                     /// <summary>Lists the instances of a version.</summary>
                     /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default/versions/v1`.</param>
-                    /// <param name="servicesId">Part of `name`. See
-                    /// documentation of `appsId`.</param>
-                    /// <param name="versionsId">Part of `name`. See documentation of
-                    /// `appsId`.</param>
+                    /// apps/myapp/services/default/versions/v1.</param>
+                    /// <param name="servicesId">Part of `name`. See documentation
+                    /// of `appsId`.</param>
+                    /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                     public virtual ListRequest List(string appsId, string servicesId, string versionsId)
                     {
                         return new ListRequest(service, appsId, servicesId, versionsId);
@@ -1171,7 +1170,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                         /// <summary>Part of `name`. Name of the resource requested. Example:
-                        /// `apps/myapp/services/default/versions/v1`.</summary>
+                        /// apps/myapp/services/default/versions/v1.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string AppsId { get; private set; }
 
@@ -1353,11 +1352,10 @@ namespace Google.Apis.Appengine.v1beta5
 
                 /// <summary>Deletes an existing version.</summary>
                 /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                /// `apps/myapp/services/default/versions/v1`.</param>
-                /// <param name="servicesId">Part of `name`. See
-                /// documentation of `appsId`.</param>
-                /// <param name="versionsId">Part of `name`. See documentation of
-                /// `appsId`.</param>
+                /// apps/myapp/services/default/versions/v1.</param>
+                /// <param name="servicesId">Part of `name`. See documentation
+                /// of `appsId`.</param>
+                /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual DeleteRequest Delete(string appsId, string servicesId, string versionsId)
                 {
                     return new DeleteRequest(service, appsId, servicesId, versionsId);
@@ -1378,7 +1376,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                     /// <summary>Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default/versions/v1`.</summary>
+                    /// apps/myapp/services/default/versions/v1.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
@@ -1445,21 +1443,20 @@ namespace Google.Apis.Appengine.v1beta5
 
                 }
 
-                /// <summary>Gets the specified Version resource. By default, only a `BASIC_VIEW` will be returned.
-                /// Specify the `FULL_VIEW` parameter to get the full resource.</summary>
+                /// <summary>Gets the specified Version resource. By default, only a BASIC_VIEW will be returned.
+                /// Specify the FULL_VIEW parameter to get the full resource.</summary>
                 /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                /// `apps/myapp/services/default/versions/v1`.</param>
-                /// <param name="servicesId">Part of `name`. See
-                /// documentation of `appsId`.</param>
-                /// <param name="versionsId">Part of `name`. See documentation of
-                /// `appsId`.</param>
+                /// apps/myapp/services/default/versions/v1.</param>
+                /// <param name="servicesId">Part of `name`. See documentation
+                /// of `appsId`.</param>
+                /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
                 public virtual GetRequest Get(string appsId, string servicesId, string versionsId)
                 {
                     return new GetRequest(service, appsId, servicesId, versionsId);
                 }
 
-                /// <summary>Gets the specified Version resource. By default, only a `BASIC_VIEW` will be returned.
-                /// Specify the `FULL_VIEW` parameter to get the full resource.</summary>
+                /// <summary>Gets the specified Version resource. By default, only a BASIC_VIEW will be returned.
+                /// Specify the FULL_VIEW parameter to get the full resource.</summary>
                 public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Version>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1474,7 +1471,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                     /// <summary>Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default/versions/v1`.</summary>
+                    /// apps/myapp/services/default/versions/v1.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
@@ -1486,11 +1483,11 @@ namespace Google.Apis.Appengine.v1beta5
                     [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string VersionsId { get; private set; }
 
-                    /// <summary>Controls the set of fields returned in the `Get` response.</summary>
+                    /// <summary>Controls the set of fields returned in the Get response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Controls the set of fields returned in the `Get` response.</summary>
+                    /// <summary>Controls the set of fields returned in the Get response.</summary>
                     public enum ViewEnum
                     {
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1565,7 +1562,7 @@ namespace Google.Apis.Appengine.v1beta5
 
                 /// <summary>Lists the versions of a service.</summary>
                 /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-                /// `apps/myapp/services/default`.</param>
+                /// apps/myapp/services/default.</param>
                 /// <param name="servicesId">Part of `name`. See documentation of
                 /// `appsId`.</param>
                 public virtual ListRequest List(string appsId, string servicesId)
@@ -1587,7 +1584,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                     /// <summary>Part of `name`. Name of the resource requested. Example:
-                    /// `apps/myapp/services/default`.</summary>
+                    /// apps/myapp/services/default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
@@ -1595,11 +1592,11 @@ namespace Google.Apis.Appengine.v1beta5
                     [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ServicesId { get; private set; }
 
-                    /// <summary>Controls the set of fields returned in the `List` response.</summary>
+                    /// <summary>Controls the set of fields returned in the List response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Controls the set of fields returned in the `List` response.</summary>
+                    /// <summary>Controls the set of fields returned in the List response.</summary>
                     public enum ViewEnum
                     {
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -1690,22 +1687,22 @@ namespace Google.Apis.Appengine.v1beta5
                 }
 
                 /// <summary>Updates the specified Version resource. You can specify the following fields depending on
-                /// the App Engine environment and type of scaling that the version resource uses: *
-                /// [`serving_status`](https://cloud.google.com/appengine/docs/admin-
+                /// the App Engine environment and type of scaling that the version resource uses: serving_status
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status): For Version
-                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. *
-                /// [`instance_class`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment.
+                /// instance_class (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class): For Version
-                /// resources that run in the App Engine standard environment. *
-                /// [`automatic_scaling.min_idle_instances`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that run in the App Engine standard environment. automatic_scaling.min_idle_instances
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
-                /// resources that use automatic scaling and run in the App Engine standard environment. *
-                /// [`automatic_scaling.max_idle_instances`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that use automatic scaling and run in the App Engine standard environment.
+                /// automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
                 /// resources that use automatic scaling and run in the App Engine standard environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
-                /// `apps/myapp/services/default/versions/1`.</param>
+                /// apps/myapp/services/default/versions/1.</param>
                 /// <param name="servicesId">Part of `name`. See documentation
                 /// of `appsId`.</param>
                 /// <param name="versionsId">Part of `name`. See documentation of `appsId`.</param>
@@ -1715,17 +1712,17 @@ namespace Google.Apis.Appengine.v1beta5
                 }
 
                 /// <summary>Updates the specified Version resource. You can specify the following fields depending on
-                /// the App Engine environment and type of scaling that the version resource uses: *
-                /// [`serving_status`](https://cloud.google.com/appengine/docs/admin-
+                /// the App Engine environment and type of scaling that the version resource uses: serving_status
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.serving_status): For Version
-                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment. *
-                /// [`instance_class`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that use basic scaling, manual scaling, or run in the App Engine flexible environment.
+                /// instance_class (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.instance_class): For Version
-                /// resources that run in the App Engine standard environment. *
-                /// [`automatic_scaling.min_idle_instances`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that run in the App Engine standard environment. automatic_scaling.min_idle_instances
+                /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
-                /// resources that use automatic scaling and run in the App Engine standard environment. *
-                /// [`automatic_scaling.max_idle_instances`](https://cloud.google.com/appengine/docs/admin-
+                /// resources that use automatic scaling and run in the App Engine standard environment.
+                /// automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta5/apps.services.versions#Version.FIELDS.automatic_scaling): For Version
                 /// resources that use automatic scaling and run in the App Engine standard environment.</summary>
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
@@ -1743,7 +1740,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                     /// <summary>Part of `name`. Name of the resource to update. Example:
-                    /// `apps/myapp/services/default/versions/1`.</summary>
+                    /// apps/myapp/services/default/versions/1.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
@@ -1832,7 +1829,7 @@ namespace Google.Apis.Appengine.v1beta5
 
             /// <summary>Deletes the specified service and all enclosed versions.</summary>
             /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-            /// `apps/myapp/services/default`.</param>
+            /// apps/myapp/services/default.</param>
             /// <param name="servicesId">Part of `name`. See documentation of
             /// `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string servicesId)
@@ -1854,7 +1851,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                 /// <summary>Part of `name`. Name of the resource requested. Example:
-                /// `apps/myapp/services/default`.</summary>
+                /// apps/myapp/services/default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -1910,7 +1907,7 @@ namespace Google.Apis.Appengine.v1beta5
 
             /// <summary>Gets the current configuration of the specified service.</summary>
             /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-            /// `apps/myapp/services/default`.</param>
+            /// apps/myapp/services/default.</param>
             /// <param name="servicesId">Part of `name`. See documentation of
             /// `appsId`.</param>
             public virtual GetRequest Get(string appsId, string servicesId)
@@ -1932,7 +1929,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                 /// <summary>Part of `name`. Name of the resource requested. Example:
-                /// `apps/myapp/services/default`.</summary>
+                /// apps/myapp/services/default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -1987,7 +1984,7 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
             /// <summary>Lists all the services in the application.</summary>
-            /// <param name="appsId">Part of `name`. Name of the resource requested. Example: `apps/myapp`.</param>
+            /// <param name="appsId">Part of `name`. Name of the resource requested. Example: apps/myapp.</param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
@@ -2005,7 +2002,7 @@ namespace Google.Apis.Appengine.v1beta5
                 }
 
 
-                /// <summary>Part of `name`. Name of the resource requested. Example: `apps/myapp`.</summary>
+                /// <summary>Part of `name`. Name of the resource requested. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -2075,7 +2072,7 @@ namespace Google.Apis.Appengine.v1beta5
             /// <summary>Updates the configuration of the specified service.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
-            /// `apps/myapp/services/default`.</param>
+            /// apps/myapp/services/default.</param>
             /// <param name="servicesId">Part of `name`. See documentation of
             /// `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta5.Data.Service body, string appsId, string servicesId)
@@ -2098,7 +2095,7 @@ namespace Google.Apis.Appengine.v1beta5
 
 
                 /// <summary>Part of `name`. Name of the resource to update. Example:
-                /// `apps/myapp/services/default`.</summary>
+                /// apps/myapp/services/default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -2110,18 +2107,17 @@ namespace Google.Apis.Appengine.v1beta5
                 [Google.Apis.Util.RequestParameterAttribute("mask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Mask { get; set; }
 
-                /// <summary>Set to `true` to gradually shift traffic from one version to another single version. By
+                /// <summary>Set to true to gradually shift traffic from one version to another single version. By
                 /// default, traffic is shifted immediately. For gradual traffic migration, the target version must be
-                /// located within instances that are configured for both [warmup
-                /// requests](https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and [automatic
-                /// scaling](https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the
-                /// [`shardBy`](https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1beta5/apps.services#shardby) field in the Service resource. Gradual traffic
-                /// migration is not supported in the App Engine flexible environment. For examples, see [Migrating and
-                /// Splitting Traffic](https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-
-                /// traffic).</summary>
+                /// located within instances that are configured for both warmup requests
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1beta5/apps.services.versions#inboundservicetype) and automatic scaling
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1beta5/apps.services.versions#automaticscaling). You must specify the shardBy
+                /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta5/apps.services#shardby)
+                /// field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible
+                /// environment. For examples, see Migrating and Splitting Traffic
+                /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("migrateTraffic", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> MigrateTraffic { get; set; }
 
@@ -2198,8 +2194,8 @@ namespace Google.Apis.Appengine.v1beta5
 
         /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
         /// excludes an App Engine application. For details about creating a project without an application, see the
-        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
-        /// /creating-project).</summary>
+        /// Google Cloud Resource Manager create project topic (https://cloud.google.com/resource-manager/docs/creating-
+        /// project).</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Appengine.v1beta5.Data.Application body)
         {
@@ -2208,8 +2204,8 @@ namespace Google.Apis.Appengine.v1beta5
 
         /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
         /// excludes an App Engine application. For details about creating a project without an application, see the
-        /// [Google Cloud Resource Manager create project topic](https://cloud.google.com/resource-manager/docs
-        /// /creating-project).</summary>
+        /// Google Cloud Resource Manager create project topic (https://cloud.google.com/resource-manager/docs/creating-
+        /// project).</summary>
         public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2256,7 +2252,7 @@ namespace Google.Apis.Appengine.v1beta5
         }
 
         /// <summary>Gets information about an application.</summary>
-        /// <param name="appsId">Part of `name`. Name of the application to get. Example: `apps/myapp`.</param>
+        /// <param name="appsId">Part of `name`. Name of the application to get. Example: apps/myapp.</param>
         public virtual GetRequest Get(string appsId)
         {
             return new GetRequest(service, appsId);
@@ -2274,14 +2270,14 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
 
-            /// <summary>Part of `name`. Name of the application to get. Example: `apps/myapp`.</summary>
+            /// <summary>Part of `name`. Name of the application to get. Example: apps/myapp.</summary>
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
             /// <summary>Certain resources associated with an application are created on-demand. Controls whether these
-            /// resources should be created when performing the `GET` operation. If specified and any resources could
-            /// not be created, the request will fail with an error code. Additionally, this parameter can cause the
-            /// request to take longer to complete. Note: This parameter will be deprecated in a future version of the
+            /// resources should be created when performing the GET operation. If specified and any resources could not
+            /// be created, the request will fail with an error code. Additionally, this parameter can cause the request
+            /// to take longer to complete. Note: This parameter will be deprecated in a future version of the
             /// API.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ensureResourcesExist", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> EnsureResourcesExist { get; set; }
@@ -2332,22 +2328,22 @@ namespace Google.Apis.Appengine.v1beta5
 
         }
 
-        /// <summary>Updates the specified Application resource. You can update the following fields: *
-        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
-        /// api/reference/rest/v1beta5/apps#Application.FIELDS.auth_domain) *
-        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// <summary>Updates the specified Application resource. You can update the following fields: auth_domain
+        /// (https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta5/apps#Application.FIELDS.auth_domain) default_cookie_expiration
+        /// (https://cloud.google.com/appengine/docs/admin-
         /// api/reference/rest/v1beta5/apps#Application.FIELDS.default_cookie_expiration)</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="appsId">Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</param>
+        /// <param name="appsId">Part of `name`. Name of the Application resource to update. Example: apps/myapp.</param>
         public virtual PatchRequest Patch(Google.Apis.Appengine.v1beta5.Data.Application body, string appsId)
         {
             return new PatchRequest(service, body, appsId);
         }
 
-        /// <summary>Updates the specified Application resource. You can update the following fields: *
-        /// [`auth_domain`](https://cloud.google.com/appengine/docs/admin-
-        /// api/reference/rest/v1beta5/apps#Application.FIELDS.auth_domain) *
-        /// [`default_cookie_expiration`](https://cloud.google.com/appengine/docs/admin-
+        /// <summary>Updates the specified Application resource. You can update the following fields: auth_domain
+        /// (https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1beta5/apps#Application.FIELDS.auth_domain) default_cookie_expiration
+        /// (https://cloud.google.com/appengine/docs/admin-
         /// api/reference/rest/v1beta5/apps#Application.FIELDS.default_cookie_expiration)</summary>
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.Operation>
         {
@@ -2361,7 +2357,7 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
 
-            /// <summary>Part of `name`. Name of the Application resource to update. Example: `apps/myapp`.</summary>
+            /// <summary>Part of `name`. Name of the Application resource to update. Example: apps/myapp.</summary>
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
@@ -2426,16 +2422,16 @@ namespace Google.Apis.Appengine.v1beta5
 namespace Google.Apis.Appengine.v1beta5.Data
 {    
 
-    /// <summary>[Google Cloud Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/) configuration for
+    /// <summary>Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for
     /// API handlers.</summary>
     public class ApiConfigHandler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Action to take when users access resources that require authentication. Defaults to
-        /// `redirect`.</summary>
+        /// redirect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authFailAction")]
         public virtual string AuthFailAction { get; set; } 
 
-        /// <summary>Level of login required to access this resource. Defaults to `optional`.</summary>
+        /// <summary>Level of login required to access this resource. Defaults to optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("login")]
         public virtual string Login { get; set; } 
 
@@ -2469,48 +2465,48 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>An Application resource contains the top-level configuration of an App Engine application.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Apps authentication domain that controls which users can access this application. Defaults
-        /// to open access for any Google Account.</summary>
+        /// <summary>Google Apps authentication domain that controls which users can access this application.Defaults to
+        /// open access for any Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authDomain")]
         public virtual string AuthDomain { get; set; } 
 
         /// <summary>A Google Cloud Storage bucket that can be used for storing files associated with this application.
-        /// This bucket is associated with the application and can be used by the gcloud deployment commands.
-        /// @OutputOnly</summary>
+        /// This bucket is associated with the application and can be used by the gcloud deployment
+        /// commands.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeBucket")]
         public virtual string CodeBucket { get; set; } 
 
-        /// <summary>A Google Cloud Storage bucket that can be used by the application to store content.
-        /// @OutputOnly</summary>
+        /// <summary>A Google Cloud Storage bucket that can be used by the application to store
+        /// content.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBucket")]
         public virtual string DefaultBucket { get; set; } 
 
-        /// <summary>Cookie expiration policy for this application. @OutputOnly</summary>
+        /// <summary>Cookie expiration policy for this application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultCookieExpiration")]
         public virtual string DefaultCookieExpiration { get; set; } 
 
-        /// <summary>Hostname used to reach the application, as resolved by App Engine. @OutputOnly</summary>
+        /// <summary>Hostname used to reach the application, as resolved by App Engine.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHostname")]
         public virtual string DefaultHostname { get; set; } 
 
         /// <summary>HTTP path dispatch rules for requests to the application that do not explicitly target a service or
-        /// version. Rules are order-dependent. @OutputOnly</summary>
+        /// version. Rules are order-dependent.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
         /// <summary>Identifier of the Application resource. This identifier is equivalent to the project ID of the
-        /// Google Cloud Platform project where you want to deploy your application. Example: `myapp`.</summary>
+        /// Google Cloud Platform project where you want to deploy your application. Example: myapp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
         /// <summary>Location from which this application will be run. Application instances will run out of data
-        /// centers in the chosen location, which is also where all of the application's end user content is stored.
-        /// Defaults to `us-central`. Options are: `us-central` - Central US `europe-west` - Western Europe `us-east1` -
+        /// centers in the chosen location, which is also where all of the application's end user content is
+        /// stored.Defaults to us-central.Options are:us-central - Central USeurope-west - Western Europeus-east1 -
         /// Eastern US</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>Full path to the Application resource in the API. Example: `apps/myapp`. @OutputOnly</summary>
+        /// <summary>Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2522,7 +2518,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// metrics.</summary>
     public class AutomaticScaling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Amount of time that the [Autoscaler](https://cloud.google.com/compute/docs/autoscaler/) should wait
+        /// <summary>Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait
         /// between changes to the number of virtual machines. Only applicable for VM runtimes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriod")]
         public virtual string CoolDownPeriod { get; set; } 
@@ -2536,7 +2532,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual DiskUtilization DiskUtilization { get; set; } 
 
         /// <summary>Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns
-        /// a new instance. Defaults to a runtime-specific value.</summary>
+        /// a new instance.Defaults to a runtime-specific value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentRequests")]
         public virtual System.Nullable<int> MaxConcurrentRequests { get; set; } 
 
@@ -2625,13 +2621,13 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for `Instances.DebugInstance`.</summary>
+    /// <summary>Request message for Instances.DebugInstance.</summary>
     public class DebugInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Public SSH key to add to the instance. Example: `[USERNAME]:ssh-rsa KEY_VALUE` or `[USERNAME]:ssh-
-        /// rsa [KEY_VALUE] google-ssh {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}` For more information, see
-        /// [Adding and Removing SSH Keys](https://cloud.google.com/compute/docs/instances/adding-removing-ssh-
-        /// keys)</summary>
+        /// <summary>Public SSH key to add to the instance. Examples: [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME]
+        /// [USERNAME]:ssh-rsa [KEY_VALUE] google-ssh {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more
+        /// information, see Adding and Removing SSH Keys (https://cloud.google.com/compute/docs/instances/adding-
+        /// removing-ssh-keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshKey")]
         public virtual string SshKey { get; set; } 
 
@@ -2684,6 +2680,26 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides
+    /// tooling for serving Open API and gRPC endpoints via an NGINX proxy.The fields here refer to the name and
+    /// configuration id of a "service" resource in the Service Management API (https://cloud.google.com/service-
+    /// management/overview).</summary>
+    public class EndpointsApiService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Endpoints service configuration id as specified by the Service Management API. For example
+        /// "2016-09-19r1"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
+        public virtual string ConfigId { get; set; } 
+
+        /// <summary>Endpoints service name which is the name of the "service" resource in the Service Management API.
+        /// For example "myapi.endpoints.myproject.cloud.goog"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Custom static error page to be served when an error occurs.</summary>
     public class ErrorHandler : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2691,7 +2707,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
         public virtual string ErrorCode { get; set; } 
 
-        /// <summary>MIME type of file. Defaults to `text/html`.</summary>
+        /// <summary>MIME type of file. Defaults to text/html.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -2707,7 +2723,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// be specified separately.</summary>
     public class FileInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The MIME type of the file. Defaults to the value from Google Cloud Storage.</summary>
+        /// <summary>The MIME type of the file.Defaults to the value from Google Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; } 
 
@@ -2716,7 +2732,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string Sha1Sum { get; set; } 
 
         /// <summary>URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the
-        /// form 'http(s)://storage.googleapis.com/\/\'.</summary>
+        /// form 'http(s)://storage.googleapis.com//'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUrl")]
         public virtual string SourceUrl { get; set; } 
 
@@ -2764,74 +2780,74 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// application.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App Engine release this instance is running on. @OutputOnly</summary>
+        /// <summary>App Engine release this instance is running on.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRelease")]
         public virtual string AppEngineRelease { get; set; } 
 
-        /// <summary>Availability of the instance. @OutputOnly</summary>
+        /// <summary>Availability of the instance.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; } 
 
-        /// <summary>Average latency (ms) over the last minute. @OutputOnly</summary>
+        /// <summary>Average latency (ms) over the last minute.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageLatency")]
         public virtual System.Nullable<int> AverageLatency { get; set; } 
 
-        /// <summary>Number of errors since this instance was started. @OutputOnly</summary>
+        /// <summary>Number of errors since this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Nullable<long> Errors { get; set; } 
 
-        /// <summary>Relative name of the instance within the version. Example: `instance-1`. @OutputOnly</summary>
+        /// <summary>Relative name of the instance within the version. Example: instance-1.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Total memory in use (bytes). @OutputOnly</summary>
+        /// <summary>Total memory in use (bytes).@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
         public virtual System.Nullable<long> MemoryUsage { get; set; } 
 
         /// <summary>Full path to the Instance resource in the API. Example:
-        /// `apps/myapp/services/default/versions/v1/instances/instance-1`. @OutputOnly</summary>
+        /// apps/myapp/services/default/versions/v1/instances/instance-1.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Average queries per second (QPS) over the last minute. @OutputOnly</summary>
+        /// <summary>Average queries per second (QPS) over the last minute.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qps")]
         public virtual System.Nullable<float> Qps { get; set; } 
 
-        /// <summary>Number of requests since this instance was started. @OutputOnly</summary>
+        /// <summary>Number of requests since this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Nullable<int> Requests { get; set; } 
 
-        /// <summary>Time that this instance was started. @OutputOnly</summary>
+        /// <summary>Time that this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
         public virtual string StartTimestamp { get; set; } 
 
         /// <summary>Virtual machine ID of this instance. Only applicable for instances in App Engine flexible
-        /// environment. @OutputOnly</summary>
+        /// environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
         public virtual string VmId { get; set; } 
 
-        /// <summary>The IP address of this instance. Only applicable for instances in App Engine flexible environment.
-        /// @OutputOnly</summary>
+        /// <summary>The IP address of this instance. Only applicable for instances in App Engine flexible
+        /// environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmIp")]
         public virtual string VmIp { get; set; } 
 
         /// <summary>Name of the virtual machine where this instance lives. Only applicable for instances in App Engine
-        /// flexible environment. @OutputOnly</summary>
+        /// flexible environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
         public virtual string VmName { get; set; } 
 
         /// <summary>Status of the virtual machine where this instance lives. Only applicable for instances in App
-        /// Engine flexible environment. @OutputOnly</summary>
+        /// Engine flexible environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmStatus")]
         public virtual string VmStatus { get; set; } 
 
         /// <summary>Whether this instance is in debug mode. Only applicable for instances in App Engine flexible
-        /// environment. @OutputOnly</summary>
+        /// environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmUnlocked")]
         public virtual System.Nullable<bool> VmUnlocked { get; set; } 
 
         /// <summary>Zone where the virtual machine is located. Only applicable for instances in App Engine flexible
-        /// environment. @OutputOnly</summary>
+        /// environment.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmZoneName")]
         public virtual string VmZoneName { get; set; } 
 
@@ -2854,7 +2870,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for `Instances.ListInstances`.</summary>
+    /// <summary>Response message for Instances.ListInstances.</summary>
     public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The instances belonging to the requested version.</summary>
@@ -2899,7 +2915,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for `Services.ListServices`.</summary>
+    /// <summary>Response message for Services.ListServices.</summary>
     public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Continuation token for fetching the next page of results.</summary>
@@ -2914,7 +2930,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for `Versions.ListVersions`.</summary>
+    /// <summary>Response message for Versions.ListVersions.</summary>
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Continuation token for fetching the next page of results.</summary>
@@ -2937,7 +2953,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        /// <summary>The canonical id for this location. For example: "us-east1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; } 
 
@@ -2945,8 +2961,8 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
+        /// <summary>Resource name for the location, which may vary between implementations. For example: "projects
+        /// /example-project/locations/us-east1"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2957,11 +2973,11 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Metadata for the given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App Engine Flexible Environment is available in the given location. @OutputOnly</summary>
+        /// <summary>App Engine Flexible Environment is available in the given location.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flexibleEnvironmentAvailable")]
         public virtual System.Nullable<bool> FlexibleEnvironmentAvailable { get; set; } 
 
-        /// <summary>App Engine Standard Environment is available in the given location. @OutputOnly</summary>
+        /// <summary>App Engine Standard Environment is available in the given location.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardEnvironmentAvailable")]
         public virtual System.Nullable<bool> StandardEnvironmentAvailable { get; set; } 
 
@@ -2974,8 +2990,8 @@ namespace Google.Apis.Appengine.v1beta5.Data
     public class ManualScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of instances to assign to the service at the start. This number can later be altered by
-        /// using the [Modules API](https://cloud.google.com/appengine/docs/python/modules/functions)
-        /// `set_num_instances()` function.</summary>
+        /// using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances()
+        /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Nullable<int> Instances { get; set; } 
 
@@ -2996,9 +3012,21 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string InstanceTag { get; set; } 
 
         /// <summary>Google Cloud Platform network where the virtual machines are created. Specify the short name, not
-        /// the resource path. Defaults to `default`.</summary>
+        /// the resource path.Defaults to default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Google Cloud Platform sub-network where the virtual machines are created. Specify the short name,
+        /// not the resource path.If a subnetwork name is specified, a network name will also be required unless it is
+        /// for the default network. If the network the VM instance is being created in is a Legacy network, then the IP
+        /// address is allocated from the IPv4Range. If the network the VM instance is being created in is an auto
+        /// Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address
+        /// is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network
+        /// the VM instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be
+        /// specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork
+        /// must exist in the same region as the Flex app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
+        public virtual string SubnetworkName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3030,8 +3058,8 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
+        /// completed, and either error or response is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
@@ -3046,16 +3074,16 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the name should have the format of
+        /// operations/some/unique/name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
+        /// Get/Create/Update, the response should be the resource. For other methods, the response should have the type
+        /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
+        /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -3066,30 +3094,30 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp that this operation completed. @OutputOnly</summary>
+        /// <summary>Timestamp that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
-        /// <summary>Timestamp that this operation was created. @OutputOnly</summary>
+        /// <summary>Timestamp that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
         /// <summary>API method that initiated this operation. Example:
-        /// `google.appengine.v1beta4.Version.CreateVersion`. @OutputOnly</summary>
+        /// google.appengine.v1beta4.Version.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>Type of this operation. Deprecated, use method field instead. Example: "create_version".
-        /// @OutputOnly</summary>
+        /// <summary>Type of this operation. Deprecated, use method field instead. Example:
+        /// "create_version".@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
-        /// <summary>Name of the resource that this operation is acting on. Example: `apps/myapp/modules/default`.
-        /// @OutputOnly</summary>
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// apps/myapp/modules/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>User who requested this operation. @OutputOnly</summary>
+        /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; } 
 
@@ -3100,25 +3128,25 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataExperimental : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time that this operation completed. @OutputOnly</summary>
+        /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
-        /// <summary>Time that this operation was created. @OutputOnly</summary>
+        /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
         /// <summary>API method that initiated this operation. Example:
-        /// `google.appengine.experimental.CustomDomains.CreateCustomDomain`. @OutputOnly</summary>
+        /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
         /// <summary>Name of the resource that this operation is acting on. Example:
-        /// `apps/myapp/customDomains/example.com`. @OutputOnly</summary>
+        /// apps/myapp/customDomains/example.com.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>User who requested this operation. @OutputOnly</summary>
+        /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; } 
 
@@ -3129,27 +3157,35 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time that this operation completed. @OutputOnly</summary>
+        /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
-        /// <summary>Time that this operation was created. @OutputOnly</summary>
+        /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
+        public virtual string EphemeralMessage { get; set; } 
+
+        /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>API method that initiated this operation. Example: `google.appengine.v1.Versions.CreateVersion`.
-        /// @OutputOnly</summary>
+        /// <summary>API method that initiated this operation. Example:
+        /// google.appengine.v1.Versions.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>Name of the resource that this operation is acting on. Example: `apps/myapp/services/default`.
-        /// @OutputOnly</summary>
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>User who requested this operation. @OutputOnly</summary>
+        /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; } 
+
+        /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3158,25 +3194,25 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1Beta5 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timestamp that this operation completed. @OutputOnly</summary>
+        /// <summary>Timestamp that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; } 
 
-        /// <summary>Timestamp that this operation was created. @OutputOnly</summary>
+        /// <summary>Timestamp that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
         /// <summary>API method name that initiated this operation. Example:
-        /// `google.appengine.v1beta5.Version.CreateVersion`. @OutputOnly</summary>
+        /// google.appengine.v1beta5.Version.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
-        /// <summary>Name of the resource that this operation is acting on. Example: `apps/myapp/services/default`.
-        /// @OutputOnly</summary>
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
-        /// <summary>User who requested this operation. @OutputOnly</summary>
+        /// <summary>User who requested this operation.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; } 
 
@@ -3240,12 +3276,12 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// that service.</summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Relative name of the service within the application. Example: `default`. @OutputOnly</summary>
+        /// <summary>Relative name of the service within the application. Example: default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Full path to the Service resource in the API. Example: `apps/myapp/services/default`.
-        /// @OutputOnly</summary>
+        /// <summary>Full path to the Service resource in the API. Example:
+        /// apps/myapp/services/default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3320,29 +3356,28 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
-    /// Overview The `Status` message contains three pieces of data: error code, error message, and error details. The
-    /// error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The
-    /// error message should be a developer-facing English message that helps developers *understand* and *resolve* the
-    /// error. If a localized user-facing error message is needed, put the localized message in the error details or
-    /// localize it in the client. The optional error details may contain arbitrary information about the error. There
-    /// is a predefined set of error detail types in the package `google.rpc` which can be used for common error
-    /// conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is
-    /// not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and
-    /// different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions
-    /// in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message
-    /// can be used in a variety of environments, either with or without APIs, to provide a consistent developer
-    /// experience across different environments. Example uses of this error model include: - Partial errors. If a
-    /// service needs to return partial errors to the client, it may embed the `Status` in the normal response to
-    /// indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a
-    /// `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch
-    /// response, the `Status` message should be used directly inside batch response, one for each error sub-response. -
-    /// Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message. - Logging. If some API errors are
-    /// stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy
-    /// reasons.</summary>
+    /// <summary>The Status type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to
+    /// be: Simple to use and understand for most users Flexible enough to meet unexpected needsOverviewThe Status
+    /// message contains three pieces of data: error code, error message, and error details. The error code should be an
+    /// enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a
+    /// developer-facing English message that helps developers understand and resolve the error. If a localized user-
+    /// facing error message is needed, put the localized message in the error details or localize it in the client. The
+    /// optional error details may contain arbitrary information about the error. There is a predefined set of error
+    /// detail types in the package google.rpc which can be used for common error conditions.Language mappingThe Status
+    /// message is the logical representation of the error model, but it is not necessarily the actual wire format. When
+    /// the Status message is exposed in different client libraries and different wire protocols, it can be mapped
+    /// differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some
+    /// error codes in C.Other usesThe error model and the Status message can be used in a variety of environments,
+    /// either with or without APIs, to provide a consistent developer experience across different environments.Example
+    /// uses of this error model include: Partial errors. If a service needs to return partial errors to the client, it
+    /// may embed the Status in the normal response to indicate the partial errors. Workflow errors. A typical workflow
+    /// has multiple steps. Each step may have a Status message for error reporting purpose. Batch operations. If a
+    /// client uses batch request and batch response, the Status message should be used directly inside batch response,
+    /// one for each error sub-response. Asynchronous operations. If an API call embeds asynchronous operation results
+    /// in its response, the status of those operations should be represented directly using the Status message.
+    /// Logging. If some API errors are stored in logs, the message Status could be used directly after any stripping
+    /// needed for security/privacy reasons.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
@@ -3388,18 +3423,18 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// <summary>Rules to match an HTTP request and dispatch that request to a service.</summary>
     public class UrlDispatchRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain name to match against. The wildcard "`*`" is supported if specified before a period: "`*.`".
-        /// Defaults to matching all domains: "`*`".</summary>
+        /// <summary>Domain name to match against. The wildcard "*" is supported if specified before a period:
+        /// "*.".Defaults to matching all domains: "*".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; } 
 
-        /// <summary>Pathname within the host. Must start with a "`/`". A single "`*`" can be included at the end of the
+        /// <summary>Pathname within the host. Must start with a "/". A single "*" can be included at the end of the
         /// path. The sum of the lengths of the domain and path may not exceed 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
         /// <summary>Resource id of a service in this application that should serve the matched request. The service
-        /// must already exist. Example: `default`.</summary>
+        /// must already exist. Example: default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -3417,7 +3452,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         public virtual ApiEndpointHandler ApiEndpoint { get; set; } 
 
         /// <summary>Action to take when users access resources that require authentication. Defaults to
-        /// `redirect`.</summary>
+        /// redirect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authFailAction")]
         public virtual string AuthFailAction { get; set; } 
 
@@ -3425,7 +3460,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("login")]
         public virtual string Login { get; set; } 
 
-        /// <summary>`30x` code to use when performing redirects for the `secure` field. Defaults to `302`.</summary>
+        /// <summary>30x code to use when performing redirects for the secure field. Defaults to 302.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectHttpResponseCode")]
         public virtual string RedirectHttpResponseCode { get; set; } 
 
@@ -3455,9 +3490,9 @@ namespace Google.Apis.Appengine.v1beta5.Data
     /// service.</summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Serving configuration for [Google Cloud
-        /// Endpoints](https://cloud.google.com/appengine/docs/python/endpoints/). Only returned in `GET` requests if
-        /// `view=FULL` is set.</summary>
+        /// <summary>Serving configuration for Google Cloud Endpoints
+        /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; } 
 
@@ -3476,57 +3511,61 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betaSettings")]
         public virtual System.Collections.Generic.IDictionary<string,string> BetaSettings { get; set; } 
 
-        /// <summary>Time that this version was created. @OutputOnly</summary>
+        /// <summary>Time that this version was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; } 
 
         /// <summary>Duration that static files should be cached by web proxies and browsers. Only applicable if the
-        /// corresponding [StaticFilesHandler](https://cloud.google.com/appengine/docs/admin-
-        /// api/reference/rest/v1/apps.services.versions#staticfileshandler) does not specify its own expiration time.
-        /// Only returned in `GET` requests if `view=FULL` is set.</summary>
+        /// corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-
+        /// api/reference/rest/v1/apps.services.versions#staticfileshandler) does not specify its own expiration
+        /// time.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultExpiration")]
         public virtual string DefaultExpiration { get; set; } 
 
-        /// <summary>Email address of the user who created this version. @OutputOnly</summary>
+        /// <summary>Email address of the user who created this version.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployer")]
         public virtual string Deployer { get; set; } 
 
-        /// <summary>Code and application artifacts that make up this version. Only returned in `GET` requests if
-        /// `view=FULL` is set.</summary>
+        /// <summary>Code and application artifacts that make up this version.Only returned in GET requests if view=FULL
+        /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual Deployment Deployment { get; set; } 
 
-        /// <summary>Total size of version files hosted on App Engine disk in bytes. @OutputOnly</summary>
+        /// <summary>Total size of version files hosted on App Engine disk in bytes.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUsageBytes")]
         public virtual System.Nullable<long> DiskUsageBytes { get; set; } 
 
-        /// <summary>App Engine execution environment to use for this version. Defaults to `1`.</summary>
+        /// <summary>Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible
+        /// Service Proxy will be provided to serve the API implemented by the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointsApiService")]
+        public virtual EndpointsApiService EndpointsApiService { get; set; } 
+
+        /// <summary>App Engine execution environment to use for this version.Defaults to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual string Env { get; set; } 
 
-        /// <summary>Environment variables made available to the application. Only returned in `GET` requests if
-        /// `view=FULL` is set.</summary>
+        /// <summary>Environment variables made available to the application.Only returned in GET requests if view=FULL
+        /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> EnvVariables { get; set; } 
 
-        /// <summary>Custom static error pages. Limited to 10KB per page. Only returned in `GET` requests if `view=FULL`
-        /// is set.</summary>
+        /// <summary>Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is
+        /// set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorHandlers")]
         public virtual System.Collections.Generic.IList<ErrorHandler> ErrorHandlers { get; set; } 
 
         /// <summary>An ordered list of URL-matching patterns that should be applied to incoming requests. The first
-        /// matching URL handles the request and other request handlers are not attempted. Only returned in `GET`
-        /// requests if `view=FULL` is set.</summary>
+        /// matching URL handles the request and other request handlers are not attempted.Only returned in GET requests
+        /// if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("handlers")]
         public virtual System.Collections.Generic.IList<UrlMap> Handlers { get; set; } 
 
         /// <summary>Configures health checking for VM instances. Unhealthy instances are be stopped and replaced with
-        /// new instances. Only applicable for VM runtimes. Only returned in `GET` requests if `view=FULL` is
-        /// set.</summary>
+        /// new instances. Only applicable for VM runtimes.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
         public virtual HealthCheck HealthCheck { get; set; } 
 
-        /// <summary>Relative name of the version within the module. Example: `v1`. Version names can contain only
+        /// <summary>Relative name of the version within the module. Example: v1. Version names can contain only
         /// lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix
         /// "ah-".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -3537,14 +3576,14 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inboundServices")]
         public virtual System.Collections.Generic.IList<string> InboundServices { get; set; } 
 
-        /// <summary>Instance class that is used to run this version. Valid values are: * AutomaticScaling: `F1`, `F2`,
-        /// `F4`, `F4_1G` * ManualScaling or BasicScaling: `B1`, `B2`, `B4`, `B8`, `B4_1G` Defaults to `F1` for
-        /// AutomaticScaling and `B1` for ManualScaling or BasicScaling.</summary>
+        /// <summary>Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4,
+        /// F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for
+        /// ManualScaling or BasicScaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceClass")]
         public virtual string InstanceClass { get; set; } 
 
-        /// <summary>Configuration for third-party Python runtime libraries required by the application. Only returned
-        /// in `GET` requests if `view=FULL` is set.</summary>
+        /// <summary>Configuration for third-party Python runtime libraries required by the application.Only returned in
+        /// GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("libraries")]
         public virtual System.Collections.Generic.IList<Library> Libraries { get; set; } 
 
@@ -3553,8 +3592,8 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
         public virtual ManualScaling ManualScaling { get; set; } 
 
-        /// <summary>Full path to the Version resource in the API. Example: `apps/myapp/services/default/versions/v1`.
-        /// @OutputOnly</summary>
+        /// <summary>Full path to the Version resource in the API. Example:
+        /// apps/myapp/services/default/versions/v1.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3562,8 +3601,8 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual Network Network { get; set; } 
 
-        /// <summary>Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
-        /// Only returned in `GET` requests if `view=FULL` is set.</summary>
+        /// <summary>Files that match this pattern will not be built into this version. Only applicable for Go
+        /// runtimes.Only returned in GET requests if view=FULL is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nobuildFilesRegex")]
         public virtual string NobuildFilesRegex { get; set; } 
 
@@ -3571,12 +3610,12 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual Resources Resources { get; set; } 
 
-        /// <summary>Desired runtime. Example: `python27`.</summary>
+        /// <summary>Desired runtime. Example: python27.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; } 
 
-        /// <summary>Current serving status of this version. Only the versions with a `SERVING` status create instances
-        /// and can be billed. `SERVING_STATUS_UNSPECIFIED` is an invalid value. Defaults to `SERVING`.</summary>
+        /// <summary>Current serving status of this version. Only the versions with a SERVING status create instances
+        /// and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
         public virtual string ServingStatus { get; set; } 
 
@@ -3599,7 +3638,7 @@ namespace Google.Apis.Appengine.v1beta5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Volume size in GB.</summary>
+        /// <summary>Volume size in gigabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<double> SizeGb { get; set; } 
 

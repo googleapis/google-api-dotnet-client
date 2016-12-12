@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/FLACOLxPiHYFDODqLixW1bMcJVE\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/p_Ki8ZAiDCpzN2N5osErTV2szew\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20161125",
+ "revision": "20161206",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",
@@ -1787,7 +1787,7 @@
        "id": "gmail.users.messages.batchModify",
        "path": "{userId}/messages/batchModify",
        "httpMethod": "POST",
-       "description": "Modifies labels on the given labels.",
+       "description": "Modifies the labels on the specified messages.",
        "parameters": {
         "userId": {
          "type": "string",

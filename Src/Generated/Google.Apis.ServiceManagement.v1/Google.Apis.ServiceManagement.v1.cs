@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161128 (697)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -3627,11 +3627,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The option's name. For example, `"java_package"`.</summary>
+        /// <summary>The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the
+        /// short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For
+        /// example, `"google.api.http"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The option's value. For example, `"com.google.protobuf"`.</summary>
+        /// <summary>The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper
+        /// type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored
+        /// as an int32 value using the google.protobuf.Int32Value type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string,object> Value { get; set; } 
 

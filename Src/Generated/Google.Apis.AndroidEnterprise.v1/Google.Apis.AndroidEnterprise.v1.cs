@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161202 (701)
+ *      <tr><th>API Rev<td>20161207 (706)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -9430,6 +9430,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// "androidenterprise#serviceAccountKey".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Public key data for the credentials file. This is an X.509 cert. If you are using the
+        /// googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url
+        /// inside of the credentials file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicData")]
+        public virtual string PublicData { get; set; } 
 
         /// <summary>The file format of the generated key data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

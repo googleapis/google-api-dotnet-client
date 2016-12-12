@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161110 (679)
+ *      <tr><th>API Rev<td>20161205 (704)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -450,7 +450,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a Merchant Center sub-account.</summary>
+        /// <summary>Deletes a Merchant Center sub-account. This method can only be called for multi-client
+        /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account.</param>
@@ -459,7 +460,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new DeleteRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Deletes a Merchant Center sub-account.</summary>
+        /// <summary>Deletes a Merchant Center sub-account. This method can only be called for multi-client
+        /// accounts.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -539,7 +541,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a Merchant Center account.</summary>
+        /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account.</param>
@@ -548,7 +552,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves a Merchant Center account.</summary>
+        /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -615,7 +621,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Creates a Merchant Center sub-account.</summary>
+        /// <summary>Creates a Merchant Center sub-account. This method can only be called for multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Account body, ulong merchantId)
@@ -623,7 +630,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Creates a Merchant Center sub-account.</summary>
+        /// <summary>Creates a Merchant Center sub-account. This method can only be called for multi-client
+        /// accounts.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -696,14 +704,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the sub-accounts in your Merchant Center account. This method can only be called for multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the sub-accounts in your Merchant Center account. This method can only be called for multi-
+        /// client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -782,7 +792,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account. This method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client accounts. This
+        /// method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -792,7 +803,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account. This method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client accounts. This
+        /// method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -879,7 +891,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -889,7 +902,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client
+        /// accounts.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1059,7 +1073,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account for which to get/update account shipping settings.</param>
@@ -1068,7 +1084,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountShipping>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1135,14 +1153,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
+        /// only be called for multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
+        /// only be called for multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountshippingListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1221,7 +1241,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1231,7 +1253,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountShipping>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1318,7 +1342,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1328,7 +1354,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountShipping>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1485,7 +1513,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account.</param>
@@ -1494,7 +1524,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1561,14 +1593,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account. This method can only be
+        /// called for multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account. This method can only be
+        /// called for multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1730,7 +1764,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the tax settings of the account.</summary>
+        /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account for which to get/update account tax settings.</param>
@@ -1739,7 +1775,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the tax settings of the account.</summary>
+        /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1806,14 +1844,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account. This method can only be
+        /// called for multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account. This method can only be
+        /// called for multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccounttaxListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1892,7 +1932,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the tax settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1902,7 +1944,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1989,7 +2033,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1999,7 +2045,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account.</summary>
+        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2169,7 +2217,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a datafeed from your Merchant Center account.</summary>
+        /// <summary>Deletes a datafeed from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong datafeedId)
@@ -2177,7 +2226,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new DeleteRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Deletes a datafeed from your Merchant Center account.</summary>
+        /// <summary>Deletes a datafeed from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2257,7 +2307,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a datafeed from your Merchant Center account.</summary>
+        /// <summary>Retrieves a datafeed from your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
@@ -2265,7 +2316,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Retrieves a datafeed from your Merchant Center account.</summary>
+        /// <summary>Retrieves a datafeed from your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2332,7 +2384,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Registers a datafeed with your Merchant Center account.</summary>
+        /// <summary>Registers a datafeed with your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Datafeed body, ulong merchantId)
@@ -2340,7 +2393,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Registers a datafeed with your Merchant Center account.</summary>
+        /// <summary>Registers a datafeed with your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -2413,14 +2467,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the datafeeds in your Merchant Center account.</summary>
+        /// <summary>Lists the datafeeds in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the datafeeds in your Merchant Center account.</summary>
+        /// <summary>Lists the datafeeds in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2499,7 +2555,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
@@ -2508,7 +2565,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2595,7 +2653,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
@@ -2604,7 +2663,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account.</summary>
+        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2761,7 +2821,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the status of a datafeed from your Merchant Center account.</summary>
+        /// <summary>Retrieves the status of a datafeed from your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
@@ -2769,7 +2830,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Retrieves the status of a datafeed from your Merchant Center account.</summary>
+        /// <summary>Retrieves the status of a datafeed from your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2836,14 +2898,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2940,7 +3004,8 @@ namespace Google.Apis.ShoppingContent.v2
 
 
         /// <summary>Updates price and availability for multiple products or stores in a single request. This operation
-        /// does not update the expiration date of the products.</summary>
+        /// does not update the expiration date of the products. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.InventoryCustomBatchRequest body)
         {
@@ -2948,7 +3013,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates price and availability for multiple products or stores in a single request. This operation
-        /// does not update the expiration date of the products.</summary>
+        /// does not update the expiration date of the products. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.InventoryCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -3008,7 +3074,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates price and availability of a product in your Merchant Center account. This operation does
-        /// not update the expiration date of the product.</summary>
+        /// not update the expiration date of the product. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="storeCode">The code of the
@@ -3022,7 +3089,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates price and availability of a product in your Merchant Center account. This operation does
-        /// not update the expiration date of the product.</summary>
+        /// not update the expiration date of the product. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class SetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.InventorySetResponse>
         {
             /// <summary>Constructs a new Set request.</summary>
@@ -3141,7 +3209,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Marks an order as acknowledged.</summary>
+        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -3151,7 +3220,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new AcknowledgeRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks an order as acknowledged.</summary>
+        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class AcknowledgeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersAcknowledgeResponse>
         {
             /// <summary>Constructs a new Acknowledge request.</summary>
@@ -3225,7 +3295,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
+        /// can only be called for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the test
         /// order to modify.</param>
@@ -3234,7 +3305,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new AdvancetestorderRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
+        /// can only be called for non-multi-client accounts.</summary>
         public class AdvancetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersAdvanceTestOrderResponse>
         {
             /// <summary>Constructs a new Advancetestorder request.</summary>
@@ -3301,7 +3373,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Cancels all line items in an order.</summary>
+        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the order
@@ -3311,7 +3384,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new CancelRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels all line items in an order.</summary>
+        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CancelRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -3385,7 +3459,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Cancels a line item.</summary>
+        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -3395,7 +3469,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new CancellineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels a line item.</summary>
+        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
         public class CancellineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCancelLineItemResponse>
         {
             /// <summary>Constructs a new Cancellineitem request.</summary>
@@ -3469,7 +3543,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sandbox only. Creates a test order.</summary>
+        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual CreatetestorderRequest Createtestorder(Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestOrderRequest body, ulong merchantId)
@@ -3477,7 +3552,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new CreatetestorderRequest(service, body, merchantId);
         }
 
-        /// <summary>Sandbox only. Creates a test order.</summary>
+        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CreatetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestOrderResponse>
         {
             /// <summary>Constructs a new Createtestorder request.</summary>
@@ -3537,14 +3613,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.OrdersCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -3590,7 +3668,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account.</summary>
+        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
         /// order.</param>
@@ -3599,7 +3678,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account.</summary>
+        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3666,7 +3746,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="merchantOrderId">The merchant
         /// order id to be looked for.</param>
@@ -3675,7 +3756,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetbymerchantorderidRequest(service, merchantId, merchantOrderId);
         }
 
-        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class GetbymerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersGetByMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Getbymerchantorderid request.</summary>
@@ -3743,7 +3825,7 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox.</summary>
+        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="templateName">The name of the
         /// template to retrieve.</param>
@@ -3753,7 +3835,7 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox.</summary>
+        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
         public class GettestordertemplateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersGetTestOrderTemplateResponse>
         {
             /// <summary>Constructs a new Gettestordertemplate request.</summary>
@@ -3833,14 +3915,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the orders in your Merchant Center account.</summary>
+        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the orders in your Merchant Center account.</summary>
+        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4037,7 +4121,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the order
@@ -4047,7 +4132,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new RefundRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class RefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersRefundResponse>
         {
             /// <summary>Constructs a new Refund request.</summary>
@@ -4121,7 +4207,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Returns a line item.</summary>
+        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -4131,7 +4217,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new ReturnlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Returns a line item.</summary>
+        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
         public class ReturnlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersReturnLineItemResponse>
         {
             /// <summary>Constructs a new Returnlineitem request.</summary>
@@ -4205,7 +4291,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Marks line item(s) as shipped.</summary>
+        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -4215,7 +4302,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new ShiplineitemsRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks line item(s) as shipped.</summary>
+        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class ShiplineitemsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersShipLineItemsResponse>
         {
             /// <summary>Constructs a new Shiplineitems request.</summary>
@@ -4289,7 +4377,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the merchant order ID for a given order.</summary>
+        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -4299,7 +4388,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdatemerchantorderidRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates the merchant order ID for a given order.</summary>
+        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class UpdatemerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersUpdateMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Updatemerchantorderid request.</summary>
@@ -4373,7 +4463,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -4383,7 +4474,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateshipmentRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class UpdateshipmentRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersUpdateShipmentResponse>
         {
             /// <summary>Constructs a new Updateshipment request.</summary>
@@ -4474,14 +4566,16 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Retrieves, inserts, and deletes multiple products in a single request.</summary>
+        /// <summary>Retrieves, inserts, and deletes multiple products in a single request. This method can only be
+        /// called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.ProductsCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves, inserts, and deletes multiple products in a single request.</summary>
+        /// <summary>Retrieves, inserts, and deletes multiple products in a single request. This method can only be
+        /// called for non-multi-client accounts.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -4540,7 +4634,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a product from your Merchant Center account.</summary>
+        /// <summary>Deletes a product from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -4549,7 +4644,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new DeleteRequest(service, merchantId, productId);
         }
 
-        /// <summary>Deletes a product from your Merchant Center account.</summary>
+        /// <summary>Deletes a product from your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4629,7 +4725,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a product from your Merchant Center account.</summary>
+        /// <summary>Retrieves a product from your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -4638,7 +4735,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, productId);
         }
 
-        /// <summary>Retrieves a product from your Merchant Center account.</summary>
+        /// <summary>Retrieves a product from your Merchant Center account. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Product>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4705,7 +4803,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Uploads a product to your Merchant Center account.</summary>
+        /// <summary>Uploads a product to your Merchant Center account. If an item with the same channel,
+        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry. This method can
+        /// only be called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Product body, ulong merchantId)
@@ -4713,7 +4813,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Uploads a product to your Merchant Center account.</summary>
+        /// <summary>Uploads a product to your Merchant Center account. If an item with the same channel,
+        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry. This method can
+        /// only be called for non-multi-client accounts.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Product>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4786,14 +4888,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <summary>Lists the products in your Merchant Center account. This method can only be called for non-multi-
+        /// client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4903,14 +5007,16 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Gets the statuses of multiple products in a single request.</summary>
+        /// <summary>Gets the statuses of multiple products in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.ProductstatusesCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Gets the statuses of multiple products in a single request.</summary>
+        /// <summary>Gets the statuses of multiple products in a single request. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -4956,7 +5062,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Gets the status of a product from your Merchant Center account.</summary>
+        /// <summary>Gets the status of a product from your Merchant Center account. This method can only be called for
+        /// non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -4965,7 +5072,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, productId);
         }
 
-        /// <summary>Gets the status of a product from your Merchant Center account.</summary>
+        /// <summary>Gets the status of a product from your Merchant Center account. This method can only be called for
+        /// non-multi-client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5032,14 +5140,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the products in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the products in your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the products in your Merchant Center account.</summary>
+        /// <summary>Lists the statuses of the products in your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5215,7 +5325,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account for which to get/update shipping settings.</param>
@@ -5224,7 +5336,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5351,14 +5465,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
+        /// only be called for multi-client accounts.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
+        /// only be called for multi-client accounts.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5437,7 +5553,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -5447,7 +5565,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5534,7 +5654,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -5544,7 +5666,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account.</summary>
+        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
+        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
+        /// is a multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -7457,8 +7581,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
         /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout
-        /// flow.</summary>
+        /// thus not shown the marketing right opt in/out checkbox during the checkout flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 
@@ -9616,8 +9739,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
         /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the Purchases on Google checkout flow.
-        /// Optional.</summary>
+        /// thus not shown the marketing right opt in/out checkbox during the checkout flow. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 

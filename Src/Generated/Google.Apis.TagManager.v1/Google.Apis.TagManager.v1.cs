@@ -97,22 +97,23 @@ namespace Google.Apis.TagManager.v1
             /// <summary>Delete your Google Tag Manager containers</summary>
             public static string TagmanagerDeleteContainers = "https://www.googleapis.com/auth/tagmanager.delete.containers";
 
-            /// <summary>Manage your Google Tag Manager containers</summary>
+            /// <summary>Manage your Google Tag Manager container and its subcomponents, excluding versioning and
+            /// publishing</summary>
             public static string TagmanagerEditContainers = "https://www.googleapis.com/auth/tagmanager.edit.containers";
 
             /// <summary>Manage your Google Tag Manager container versions</summary>
             public static string TagmanagerEditContainerversions = "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
 
-            /// <summary>Manage your Google Tag Manager accounts</summary>
+            /// <summary>View and manage your Google Tag Manager accounts</summary>
             public static string TagmanagerManageAccounts = "https://www.googleapis.com/auth/tagmanager.manage.accounts";
 
-            /// <summary>Manage user permissions of your Google Tag Manager data</summary>
+            /// <summary>Manage user permissions of your Google Tag Manager account and container</summary>
             public static string TagmanagerManageUsers = "https://www.googleapis.com/auth/tagmanager.manage.users";
 
-            /// <summary>Publish your Google Tag Manager containers</summary>
+            /// <summary>Publish your Google Tag Manager container versions</summary>
             public static string TagmanagerPublish = "https://www.googleapis.com/auth/tagmanager.publish";
 
-            /// <summary>View your Google Tag Manager containers</summary>
+            /// <summary>View your Google Tag Manager container and its subcomponents</summary>
             public static string TagmanagerReadonly = "https://www.googleapis.com/auth/tagmanager.readonly";
 
         }

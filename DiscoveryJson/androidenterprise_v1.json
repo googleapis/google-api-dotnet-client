@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Y9oErRq0nolzo31tCdpay2v5AZ4\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/C94wtsy8mrHkcQY94KxE1tVMlOU\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20161202",
+ "revision": "20161207",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -1199,6 +1199,10 @@
      "type": "string",
      "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#serviceAccountKey\".",
      "default": "androidenterprise#serviceAccountKey"
+    },
+    "publicData": {
+     "type": "string",
+     "description": "Public key data for the credentials file. This is an X.509 cert. If you are using the googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url inside of the credentials file."
     },
     "type": {
      "type": "string",

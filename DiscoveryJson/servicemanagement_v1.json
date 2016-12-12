@@ -22,6 +22,36 @@
   "protocol": "rest",
   "title": "Google Service Management API",
   "resources": {
+    "operations": {
+      "methods": {
+        "get": {
+          "id": "servicemanagement.operations.get",
+          "response": {
+            "$ref": "Operation"
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+          "flatPath": "v1/operations/{operationsId}",
+          "httpMethod": "GET",
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource.",
+              "required": true,
+              "pattern": "^operations/.+$",
+              "location": "path",
+              "type": "string"
+            }
+          },
+          "path": "v1/{+name}",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/service.management"
+          ]
+        }
+      }
+    },
     "services": {
       "resources": {
         "rollouts": {
@@ -587,36 +617,6 @@
             }
           },
           "path": "v1/{+resource}:testIamPermissions",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/service.management"
-          ]
-        }
-      }
-    },
-    "operations": {
-      "methods": {
-        "get": {
-          "id": "servicemanagement.operations.get",
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-          "flatPath": "v1/operations/{operationsId}",
-          "httpMethod": "GET",
-          "parameters": {
-            "name": {
-              "description": "The name of the operation resource.",
-              "required": true,
-              "pattern": "^operations/.+$",
-              "location": "path",
-              "type": "string"
-            }
-          },
-          "path": "v1/{+name}",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/service.management"
@@ -1892,7 +1892,7 @@
       "type": "object",
       "properties": {
         "value": {
-          "description": "The option's value. For example, `\"com.google.protobuf\"`.",
+          "description": "The option's value packed in an Any message. If the value is a primitive,\nthe corresponding wrapper type defined in google/protobuf/wrappers.proto\nshould be used. If the value is an enum, it should be stored as an int32\nvalue using the google.protobuf.Int32Value type.",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
@@ -1900,7 +1900,7 @@
           "type": "object"
         },
         "name": {
-          "description": "The option's name. For example, `\"java_package\"`.",
+          "description": "The option's name. For protobuf built-in options (options defined in\ndescriptor.proto), this is the short name. For example, `\"map_entry\"`.\nFor custom options, it should be the fully-qualified name. For example,\n`\"google.api.http\"`.",
           "type": "string"
         }
       },
@@ -2789,7 +2789,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20161128",
+  "revision": "20161205",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

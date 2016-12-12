@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161125 (694)
+ *      <tr><th>API Rev<td>20161206 (705)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -1914,7 +1914,7 @@ namespace Google.Apis.Gmail.v1
 
             }
 
-            /// <summary>Modifies labels on the given labels.</summary>
+            /// <summary>Modifies the labels on the specified messages.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
             /// user.</param>
@@ -1923,7 +1923,7 @@ namespace Google.Apis.Gmail.v1
                 return new BatchModifyRequest(service, body, userId);
             }
 
-            /// <summary>Modifies labels on the given labels.</summary>
+            /// <summary>Modifies the labels on the specified messages.</summary>
             public class BatchModifyRequest : GmailBaseServiceRequest<string>
             {
                 /// <summary>Constructs a new BatchModify request.</summary>
