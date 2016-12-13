@@ -22,7 +22,7 @@ using NUnit.Framework;
 using System;
 using System.IO;
 
-namespace IntegrationTests_Shared
+namespace IntegrationTests
 {
     [TestFixture]
     public class ServiceAccountTests

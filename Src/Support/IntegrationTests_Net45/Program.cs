@@ -14,12 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-namespace IntegrationTests_Net45
+namespace IntegrationTests
 {
     class Program
     {
         static void Main(string[] args)
         {
+            // Ad-hoc tests can be written here...
         }
     }
 }

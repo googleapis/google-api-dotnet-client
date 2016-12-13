@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 
 namespace Google.Apis.Auth.OAuth2
@@ -43,13 +44,13 @@ namespace Google.Apis.Auth.OAuth2
 
             internal class Decoder
             {
-                public Decoder(byte[] bs)
+                public Decoder(byte[] bytes)
                 {
-                    _bs = bs;
+                    _bytes = bytes;
                     _index = 0;
                 }
 
-                private byte[] _bs;
+                private byte[] _bytes;
                 private int _index;
 
                 public object Decode()
@@ -72,17 +73,20 @@ namespace Google.Apis.Auth.OAuth2
                     }
                 }
 
-                private byte[] ReadInteger()
+                private byte NextByte() => _bytes[_index++];
+
+                private byte[] ReadLengthPrefixedBytes()
                 {
                     int length = ReadLength();
                     return ReadBytes(length);
                 }
 
+                private byte[] ReadInteger() => ReadLengthPrefixedBytes();
+
                 private object ReadOctetString()
                 {
-                    int length = ReadLength();
-                    byte[] bs = ReadBytes(length);
-                    return new Decoder(bs).Decode();
+                    byte[] bytes = ReadLengthPrefixedBytes();
+                    return new Decoder(bytes).Decode();
                 }
 
                 private object ReadNull()
@@ -90,28 +94,24 @@ namespace Google.Apis.Auth.OAuth2
                     int length = ReadLength();
                     if (length != 0)
                     {
-                        throw new InvalidOperationException("Invalid data, Null length must be 0.");
+                        throw new InvalidDataException("Invalid data, Null length must be 0.");
                     }
                     return null;
                 }
 
                 private int[] ReadOid()
                 {
-                    int length = ReadLength();
-                    int endOffset = _index + length;
-                    if (endOffset < 0 || endOffset > _bs.Length)
-                    {
-                        throw new InvalidOperationException("Invalid Oid, too long.");
-                    }
+                    byte[] oidBytes = ReadLengthPrefixedBytes();
                     List<int> result = new List<int>();
                     bool first = true;
-                    while (_index < endOffset)
+                    int index = 0;
+                    while (index < oidBytes.Length)
                     {
                         int subId = 0;
                         byte b;
                         do
                         {
-                            b = NextByte();
+                            b = oidBytes[index++];
                             if ((subId & 0xff000000) != 0)
                             {
                                 throw new NotSupportedException("Oid subId > 2^31 not supported.");
@@ -136,9 +136,9 @@ namespace Google.Apis.Auth.OAuth2
                 {
                     int length = ReadLength();
                     int endOffset = _index + length;
-                    if (endOffset < 0 || endOffset > _bs.Length)
+                    if (endOffset < 0 || endOffset > _bytes.Length)
                     {
-                        throw new InvalidOperationException("Invalid sequence, too long.");
+                        throw new InvalidDataException("Invalid sequence, too long.");
                     }
                     List<object> sequence = new List<object>();
                     while (_index < endOffset)
@@ -148,30 +148,29 @@ namespace Google.Apis.Auth.OAuth2
                     return sequence.ToArray();
                 }
 
-                private byte NextByte() => _bs[_index++];
-
-                public byte[] ReadBytes(int length)
+                private byte[] ReadBytes(int length)
                 {
                     if (length <= 0)
                     {
                         throw new ArgumentOutOfRangeException(nameof(length), "length must be positive.");
                     }
-                    if (_bs.Length - length < 0)
+                    if (_bytes.Length - length < 0)
                     {
                         throw new ArgumentException("Cannot read past end of buffer.");
                     }
                     byte[] result = new byte[length];
-                    Array.Copy(_bs, _index, result, 0, length);
+                    Array.Copy(_bytes, _index, result, 0, length);
                     _index += length;
                     return result;
                 }
 
-                public Tag ReadTag()
+                private Tag ReadTag()
                 {
                     byte b = NextByte();
                     int tag = b & 0x1f;
                     if (tag == 0x1f)
                     {
+                        // A tag value of 0x1f (31) indicates a tag value of >30 (spec section 8.1.2.4)
                         throw new NotSupportedException("Tags of value > 30 not supported.");
                     }
                     else
@@ -180,7 +179,7 @@ namespace Google.Apis.Auth.OAuth2
                     }
                 }
 
-                public int ReadLength()
+                private int ReadLength()
                 {
                     byte b0 = NextByte();
                     if ((b0 & 0x80) == 0)
@@ -191,7 +190,7 @@ namespace Google.Apis.Auth.OAuth2
                     {
                         if (b0 == 0xff)
                         {
-                            throw new InvalidOperationException("Invalid length byte: 0xff");
+                            throw new InvalidDataException("Invalid length byte: 0xff");
                         }
                         int byteCount = b0 & 0x7f;
                         if (byteCount == 0)
@@ -211,8 +210,6 @@ namespace Google.Apis.Auth.OAuth2
                     }
                 }
 
-                public int EndOffset(int length) => _index + length;
-
             }
 
             public static object Decode(byte[] bs) => new Decoder(bs).Decode();
@@ -224,8 +221,10 @@ namespace Google.Apis.Auth.OAuth2
             const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
             const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
 
-            Utilities.ThrowIfNullOrEmpty(pkcs8Base64, "pkcs8PrivateKey");
-            var base64PrivateKey = pkcs8Base64.Replace(PrivateKeyPrefix, "").Replace(PrivateKeySuffix, "");
+            Utilities.ThrowIfNullOrEmpty(pkcs8Base64, nameof(pkcs8Base64));
+            pkcs8Base64 = pkcs8Base64.Trim();
+            string base64PrivateKey = pkcs8Base64.StartsWith(PrivateKeyPrefix) && pkcs8Base64.EndsWith(PrivateKeySuffix) ?
+                pkcs8Base64.Substring(PrivateKeyPrefix.Length, pkcs8Base64.Length - PrivateKeyPrefix.Length - PrivateKeySuffix.Length) : pkcs8Base64;
             byte[] pkcs8Bytes = Convert.FromBase64String(base64PrivateKey);
 
             object ans1 = Asn1.Decode(pkcs8Bytes);

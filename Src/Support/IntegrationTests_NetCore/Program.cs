@@ -9,6 +9,7 @@ namespace IntegrationTests_NetCore
     {
         public static void Main(string[] args)
         {
+            // Ad-hoc tests can be written here...
         }
     }
 }
