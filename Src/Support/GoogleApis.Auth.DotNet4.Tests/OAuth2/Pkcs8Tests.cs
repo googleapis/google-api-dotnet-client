@@ -25,6 +25,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         // This is the private key from a service credential, as downloaded from the Cloud Console on 2016-12-08
         string testPrivateKey = @"
+-----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQvitimRPWE2YM
 tOADu3jb89UQmqZz8ao6NFoAjYiYDdg/6UBUTscQwGb6rIvllMtcT6BdS4rMKUwv
 kSQFbO14gi7FiZBj4eJKveObVnt9RPxqT1txBieEPFtgJalh0GpyCo5GUmadgqe+
@@ -50,7 +51,8 @@ XtARJobeeGdZuuPpNYdVxNhteZQXuyQ9RF2tqKUyYcg1/P5YbzkW15/3EPDUByIz
 UFV8geqIzX1zc7EF9WWHiDDsbpq2vLjIzcg+JKabAoGAI7kuoGBdvIHne3Y3tucQ
 JzcnYI3bppbhyn1dmm8jsaaWrtBvFqCb1y1MjaoL4lNi+brdd6bpV5u447GBQfG8
 o3L1luXTksRPmwh5NbhXWl/ieiWc6WQL6sr8Q+vSYDKAo95zdhWJvWs+/v7NfWoF
-lK1DcBvq+IFLucBdi0/9hXE=";
+lK1DcBvq+IFLucBdi0/9hXE=
+-----END PRIVATE KEY-----";
 
         private string ToHex(byte[] bs) => bs.Aggregate("", (acc, b) => acc + b.ToString("X2"));
 

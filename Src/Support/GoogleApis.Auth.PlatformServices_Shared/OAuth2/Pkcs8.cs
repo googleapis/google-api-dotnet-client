@@ -216,15 +216,21 @@ namespace Google.Apis.Auth.OAuth2
 
         }
 
-        public static RSAParameters DecodeRsaParameters(string pkcs8Base64)
+        public static RSAParameters DecodeRsaParameters(string pkcs8PrivateKey)
         {
             const string PrivateKeyPrefix = "-----BEGIN PRIVATE KEY-----";
             const string PrivateKeySuffix = "-----END PRIVATE KEY-----";
 
-            Utilities.ThrowIfNullOrEmpty(pkcs8Base64, nameof(pkcs8Base64));
-            pkcs8Base64 = pkcs8Base64.Trim();
-            string base64PrivateKey = pkcs8Base64.StartsWith(PrivateKeyPrefix) && pkcs8Base64.EndsWith(PrivateKeySuffix) ?
-                pkcs8Base64.Substring(PrivateKeyPrefix.Length, pkcs8Base64.Length - PrivateKeyPrefix.Length - PrivateKeySuffix.Length) : pkcs8Base64;
+            Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, nameof(pkcs8PrivateKey));
+            pkcs8PrivateKey = pkcs8PrivateKey.Trim();
+            if (!pkcs8PrivateKey.StartsWith(PrivateKeyPrefix) || !pkcs8PrivateKey.EndsWith(PrivateKeySuffix))
+            {
+                throw new ArgumentException(
+                    $"PKCS8 data must be contained within '{PrivateKeyPrefix}' and '{PrivateKeySuffix}'.", nameof(pkcs8PrivateKey));
+            }
+            string base64PrivateKey =
+                pkcs8PrivateKey.Substring(PrivateKeyPrefix.Length, pkcs8PrivateKey.Length - PrivateKeyPrefix.Length - PrivateKeySuffix.Length);
+            // FromBase64String() ignores whitespace, so further Trim()ing isn't required.
             byte[] pkcs8Bytes = Convert.FromBase64String(base64PrivateKey);
 
             object ans1 = Asn1.Decode(pkcs8Bytes);
