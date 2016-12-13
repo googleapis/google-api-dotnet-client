@@ -31,9 +31,10 @@
           <!--
             BouncyCastle is required by the Net45 version of
             Google.Apis.Auth.PlatformServices.
-          -->
-          <dependency id="BouncyCastle" version="1.7.0" />
 
+            The library was included to a static dependency due to Bug #874
+            https://github.com/google/google-api-dotnet-client/issues/874
+          -->
           <dependency id="Google.Apis" version="$version$" />
           <dependency id="Google.Apis.Core" version="$version$" />
         </group>
