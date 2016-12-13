@@ -266,6 +266,8 @@ namespace Google.Apis.Download
                         throw await MediaApiErrorHandling.ExceptionForResponseAsync(service, response).ConfigureAwait(false);
                     }
 
+                    OnResponseReceived(response);
+
                     using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                     {
                         // We send ChunkSize bytes at a time to the caller, but we keep ChunkSize + 1 bytes
@@ -282,6 +284,7 @@ namespace Google.Apis.Download
 
                             // Send one chunk to the caller's stream.
                             int bytesToReturn = Math.Min(ChunkSize, buffer.Count);
+                            OnDataReceived(buffer.Data, bytesToReturn);
                             await stream.WriteAsync(buffer.Data, 0, bytesToReturn, cancellationToken).ConfigureAwait(false);
                             bytesReturned += bytesToReturn;
 
@@ -296,6 +299,7 @@ namespace Google.Apis.Download
                             UpdateProgress(new DownloadProgress(DownloadStatus.Downloading, bytesReturned));
                         }
                     }
+                    OnDownloadCompleted();
 
                     var finalProgress = new DownloadProgress(DownloadStatus.Completed, bytesReturned);
                     UpdateProgress(finalProgress);
@@ -315,6 +319,39 @@ namespace Google.Apis.Download
                 UpdateProgress(progress);
                 return progress;
             }
+        }
+
+        /// <summary>
+        /// Called when a successful HTTP response is received, allowing subclasses to examine headers.
+        /// </summary>
+        /// <remarks>
+        /// For unsuccessful responses, an appropriate exception is thrown immediately, without this method
+        /// being called.
+        /// </remarks>
+        /// <param name="response">HTTP response received.</param>
+        protected virtual void OnResponseReceived(HttpResponseMessage response)
+        {
+            // No-op
+        }
+
+        /// <summary>
+        /// Called when an HTTP response is received, allowing subclasses to examine data before it's
+        /// written to the client stream.
+        /// </summary>
+        /// <param name="data">Byte array containing the data downloaded.</param>
+        /// <param name="length">Length of data downloaded in this chunk, in bytes.</param>
+        protected virtual void OnDataReceived(byte[] data, int length)
+        {
+            // No-op
+        }
+
+        /// <summary>
+        /// Called when a download has completed, allowing subclasses to perform any final validation
+        /// or transformation.
+        /// </summary>
+        protected virtual void OnDownloadCompleted()
+        {
+            // No-op
         }
     }
 }
