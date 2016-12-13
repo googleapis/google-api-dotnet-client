@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApis.Auth.PlatformSer
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GoogleApis.Auth.PlatformServices_Shared", "GoogleApis.Auth.PlatformServices_Shared\GoogleApis.Auth.PlatformServices_Shared.shproj", "{7B616621-A92F-4B9A-95F1-E372B5304820}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests_Net45", "IntegrationTests_Net45\IntegrationTests_Net45.csproj", "{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		GoogleApis.Auth\GoogleApis.Auth_Shared.projitems*{0aaaf32e-2bf0-49c5-bc2d-90874cfb5510}*SharedItemsImports = 4
@@ -1084,6 +1086,54 @@ Global
 		{F813BBCD-A81B-4216-A172-1DFDDDCC512F}.ReleaseTravis|x64.Build.0 = Release|Any CPU
 		{F813BBCD-A81B-4216-A172-1DFDDDCC512F}.ReleaseTravis|x86.ActiveCfg = Release|Any CPU
 		{F813BBCD-A81B-4216-A172-1DFDDDCC512F}.ReleaseTravis|x86.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|ARM.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|Win32.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|x64.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Debug|x86.Build.0 = Debug|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|ARM.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Win32.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|Win32.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|x64.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|x64.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|x86.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.Release|x86.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Any CPU.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|ARM.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|ARM.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Mixed Platforms.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Win32.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|Win32.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|x64.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|x64.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|x86.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseSigned|x86.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Any CPU.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|ARM.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|ARM.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Mixed Platforms.ActiveCfg = ReleaseSigned|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Mixed Platforms.Build.0 = ReleaseSigned|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Win32.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|Win32.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|x64.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|x64.Build.0 = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|x86.ActiveCfg = Release|Any CPU
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61}.ReleaseTravis|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1092,6 +1142,7 @@ Global
 		{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC} = {53189F27-5960-4300-955F-FDF1780F02A8}
 		{548D6C9B-A97B-4316-91AC-9AAD35202884} = {53189F27-5960-4300-955F-FDF1780F02A8}
 		{5A731729-8E99-4930-AE77-FA3524673DA3} = {53189F27-5960-4300-955F-FDF1780F02A8}
+		{5AB1A4E0-E206-4AF7-8378-CA75F4FBBB61} = {53189F27-5960-4300-955F-FDF1780F02A8}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = GoogleApis\GoogleApis.csproj

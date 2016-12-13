@@ -28,19 +28,12 @@
       <tags>Google</tags>
       <dependencies>
         <group targetFramework="net45">
-          <!--
-            BouncyCastle is required by the Net45 version of
-            Google.Apis.Auth.PlatformServices.
-          -->
-          <dependency id="BouncyCastle" version="1.7.0" />
-
           <dependency id="Google.Apis" version="$version$" />
           <dependency id="Google.Apis.Core" version="$version$" />
         </group>
         <group targetFramework="netstandard1.3">
           <dependency id="Google.Apis.Core" version="$version$" />
           <dependency id="Newtonsoft.Json" version="9.0.1" />
-          <dependency id="Portable.BouncyCastle" version="1.8.1.1" />
           <dependency id="System.Collections" version="4.0.11" />
           <dependency id="System.Console" version="4.0.0" />
           <dependency id="System.Diagnostics.Debug" version="4.0.11" />
