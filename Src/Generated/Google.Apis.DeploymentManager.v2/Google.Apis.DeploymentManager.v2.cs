@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161207 (706)
+ *      <tr><th>API Rev<td>20161209 (708)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -408,6 +408,20 @@ namespace Google.Apis.DeploymentManager.v2
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
+            /// <summary>Sets the policy to use for deleting resources.</summary>
+            /// [default: DELETE]
+            [Google.Apis.Util.RequestParameterAttribute("deletePolicy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<DeletePolicyEnum> DeletePolicy { get; set; }
+
+            /// <summary>Sets the policy to use for deleting resources.</summary>
+            public enum DeletePolicyEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("ABANDON")]
+                ABANDON,
+                [Google.Apis.Util.StringValueAttribute("DELETE")]
+                DELETE,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -449,6 +463,15 @@ namespace Google.Apis.DeploymentManager.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "deletePolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deletePolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "DELETE",
+                        Pattern = null,
                     });
             }
 

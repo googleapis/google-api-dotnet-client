@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161205 (704)
+ *      <tr><th>API Rev<td>20161209 (708)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -4141,7 +4141,11 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<bool> Hidden { get; set; } 
 
         /// <summary>The index of the sheet within the spreadsheet. When adding or updating sheet properties, if this
-        /// field is excluded then the sheet will be added or moved to the end of the sheet list.</summary>
+        /// field is excluded then the sheet will be added or moved to the end of the sheet list. When updating sheet
+        /// indices or inserting sheets, movement is considered in "before the move" indexes. For example, if there were
+        /// 3 sheets (S1, S2, S3) in order to move S1 ahead of S2 the index would have to be set to 2. A sheet index
+        /// update request will be ignored if the requested index is identical to the sheets current index or if the
+        /// requested new index is equal to the current sheet index + 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; } 
 
