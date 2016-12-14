@@ -64,11 +64,27 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Newtonsoft.Json.JsonPropertyAttribute("id_token")]
         public string IdToken { get; set; }
 
-        /// <summary>The date and time that this token was issued. <remarks>
-        /// It should be set by the CLIENT after the token was received from the server.
-        /// </remarks> 
+        /// <summary>
+        /// The date and time that this token was issued, expressed in the system time zone.
+        /// This property only exists for backward compatibility; it can cause inappropriate behavior around
+        /// time zone transitions (e.g. daylight saving transitions).
         /// </summary>
-        public DateTime Issued { get; set; }
+        [Obsolete("Use IssuedUtc instead")]
+        [Newtonsoft.Json.JsonPropertyAttribute(Order = 1)] // Serialize this before IssuedUtc, so that IssuedUtc takes priority when deserializing
+        public DateTime Issued
+        {
+            get { return IssuedUtc.ToLocalTime(); }
+            set { IssuedUtc = value.ToUniversalTime(); }
+        }
+
+        /// <summary>
+        /// The date and time that this token was issued, expressed in UTC.
+        /// </summary>
+        /// <remarks>
+        /// This should be set by the CLIENT after the token was received from the server.
+        /// </remarks>
+        [Newtonsoft.Json.JsonPropertyAttribute(Order = 2)]
+        public DateTime IssuedUtc { get; set; }
 
         /// <summary>
         /// Returns <c>true</c> if the token is expired or it's going to be expired in the next minute.
@@ -80,7 +96,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 return true;
             }
 
-            return Issued.AddSeconds(ExpiresInSeconds.Value - 60) <= clock.Now;
+            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - 60) <= clock.UtcNow;
         }
 
         /// <summary>
@@ -111,7 +127,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 // Gets the token and sets its issued time.
                 typeName = nameof(TokenResponse);
                 var newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
-                newToken.Issued = clock.Now;
+                newToken.IssuedUtc = clock.UtcNow;
                 return newToken;
             }
             catch (Newtonsoft.Json.JsonException ex)
