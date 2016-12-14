@@ -1,8 +1,8 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Google.Apis": "1.19.0",
-    "Google.Apis.Core": "1.19.0",
+    "Google.Apis": "1.20.0",
+    "Google.Apis.Core": "1.20.0",
     "Newtonsoft.Json": "9.0.1",
     "System.IO": "4.1.0",
     "System.Runtime": "4.1.0",

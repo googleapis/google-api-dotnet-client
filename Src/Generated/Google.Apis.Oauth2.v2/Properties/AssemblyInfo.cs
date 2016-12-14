@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.19.0.672")]
+[assembly: AssemblyVersion("1.20.0.672")]
