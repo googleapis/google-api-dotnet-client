@@ -20,10 +20,18 @@ using Google.Apis.Util;
 
 namespace Google.Apis.Tests
 {
-    /// <summary>A mock clock which you can get and set its current time.</summary>
+    /// <summary>
+    /// A mock clock which allows you to set its current time. The two
+    /// properties are linked - changes to one are reflected in the other.
+    /// </summary>
     public class MockClock : IClock
     {
-        public DateTime Now { get; set; }
+        public DateTime Now
+        {
+            get { return UtcNow.ToLocalTime(); }
+            set { UtcNow = value.ToUniversalTime(); }
+        }
+
         public DateTime UtcNow { get; set; }
     }
 }

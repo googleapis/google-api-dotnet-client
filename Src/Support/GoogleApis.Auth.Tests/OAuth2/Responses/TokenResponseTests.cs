@@ -14,15 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using NUnit.Framework;
-using Newtonsoft.Json;
-
 using Google.Apis.Tests;
+using Newtonsoft.Json;
+using NUnit.Framework;
+using System;
 
 namespace Google.Apis.Auth.OAuth2.Responses
 {
@@ -40,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
             Assert.Null(response.ExpiresInSeconds);
             Assert.Null(response.RefreshToken);
             Assert.Null(response.Scope);
-            Assert.AreEqual(DateTime.MinValue, response.Issued);
+            Assert.AreEqual(DateTime.MinValue, response.IssuedUtc);
         }
 
         [Test]
@@ -62,12 +57,12 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Test]
         public void IsExpired()
         {
-            var issued = DateTime.Now;
-            var newNow = DateTime.Now.AddSeconds(100);
+            var issued = DateTime.UtcNow;
+            var newNow = DateTime.UtcNow.AddSeconds(100);
 
             var mockClock = new MockClock
             {
-                Now = newNow
+                UtcNow = newNow
             };
 
             // Issued not set.
@@ -75,29 +70,62 @@ namespace Google.Apis.Auth.OAuth2.Responses
             Assert.True(response.IsExpired(mockClock));
 
             // ExpiresInSeconds is not set.
-            response = new TokenResponse() { Issued = issued };
+            response = new TokenResponse() { IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 1, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 1, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 158, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 158, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 159, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 159, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 160, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 160, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 161, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 161, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 162, Issued = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 162, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
+        }
+
+        [Test]
+        public void DeserializeFromJustIssued()
+        {
+            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(
+                @"{
+                 'Issued': '2016-12-14T09:00:00+05'
+                }");
+            // The Issued value will depend on the local time zone; it may not be +5. But the UTC value
+            // should be correct... unless it can't be due to a time zone transition, but there's
+            // not a lot we can do about that.
+            Assert.AreEqual(new DateTime(2016, 12, 14, 4, 0, 0, DateTimeKind.Utc), tokenResponse.IssuedUtc);
+        }
+
+        [Test]
+        public void DeserializeFromDifferentIssuedAndIssuedUtc()
+        {
+            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(
+                @"{
+                 'Issued': '2016-06-14T09:00:00+05',
+                 'IssuedUtc': '2016-12-25T08:00:00Z'
+                }");
+            // Issued will be set first, then IssuedUtc - there's only one underlying field, so IssuedUtc wins.
+            // That's the desirable behavior, as it's system-independent
+            Assert.AreEqual(new DateTime(2016, 12, 25, 8, 0, 0, DateTimeKind.Utc), tokenResponse.IssuedUtc);
+            // The Issued value will depend on the system local time zone, but it should be within this 3 day window.
+            // Importantly, it's *not* June 14th - that value in the JSON is effectively irrelevant.
+            // (It would be very odd for them to be out of sync anyway, admittedly.)
+#pragma warning disable CS0618
+            Assert.Greater(tokenResponse.Issued, new DateTime(2016, 12, 24, 0, 0, 0, DateTimeKind.Local));
+            Assert.Less(tokenResponse.Issued, new DateTime(2016, 12, 27, 0, 0, 0, DateTimeKind.Local));
+#pragma warning restore CS0618
         }
     }
 }

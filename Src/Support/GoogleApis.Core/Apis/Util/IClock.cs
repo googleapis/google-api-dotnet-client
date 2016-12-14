@@ -25,6 +25,7 @@ namespace Google.Apis.Util
         /// Gets a <see cref="System.DateTime"/> object that is set to the current date and time on this computer, 
         /// expressed as the local time.
         /// </summary>
+        [Obsolete("System local time is almost always inappropriate to use. If you really need this, call UtcNow and then call ToLocalTime on the result")]
         DateTime Now { get; }
 
         /// <summary>
@@ -34,7 +35,10 @@ namespace Google.Apis.Util
         DateTime UtcNow { get; }
     }
 
-    /// <summary>A default clock implementation that wraps the <see cref="System.DateTime.Now"/> property.</summary>
+    /// <summary>
+    /// A default clock implementation that wraps the <see cref="System.DateTime.UtcNow"/>
+    /// and <see cref="System.DateTime.Now"/> properties.
+    /// </summary>
     public class SystemClock : IClock
     {
         /// <summary>Constructs a new system clock.</summary>
@@ -43,14 +47,8 @@ namespace Google.Apis.Util
         /// <summary>The default instance.</summary>
         public static readonly IClock Default = new SystemClock();
 
-        public DateTime Now
-        {
-            get { return DateTime.Now; }
-        }
+        public DateTime Now => DateTime.Now;
 
-        public DateTime UtcNow
-        {
-            get { return DateTime.UtcNow; }
-        }
+        public DateTime UtcNow => DateTime.UtcNow;
     }
 }

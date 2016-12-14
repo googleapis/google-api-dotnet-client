@@ -59,7 +59,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
 
             // Gets the token and sets its issued time.
             var newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
-            newToken.Issued = clock.Now;
+            newToken.IssuedUtc = clock.UtcNow;
             return newToken;
         }
     }

@@ -125,8 +125,8 @@ namespace Google.Apis.Tests.Apis.Http
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, location);
-                request.Headers.IfModifiedSince = new DateTimeOffset(DateTime.Now);
-                request.Headers.IfUnmodifiedSince = new DateTimeOffset(DateTime.Now);
+                request.Headers.IfModifiedSince = DateTimeOffset.UtcNow;
+                request.Headers.IfUnmodifiedSince = DateTimeOffset.UtcNow;
                 request.Headers.IfMatch.Add(new EntityTagHeaderValue("\"a\""));
                 request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue("\"b\""));
 
@@ -157,8 +157,8 @@ namespace Google.Apis.Tests.Apis.Http
             using (var client = new HttpClient(configurableHanlder))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, location);
-                request.Headers.IfModifiedSince = new DateTimeOffset(DateTime.Now);
-                request.Headers.IfUnmodifiedSince = new DateTimeOffset(DateTime.Now);
+                request.Headers.IfModifiedSince = DateTimeOffset.UtcNow;
+                request.Headers.IfUnmodifiedSince = DateTimeOffset.UtcNow;
                 request.Headers.IfMatch.Add(new EntityTagHeaderValue("\"a\""));
                 request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue("\"b\""));
 
