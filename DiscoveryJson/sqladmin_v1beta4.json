@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_SgIKPOObAEfzfmWstkaHktsaJo\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/zyhp6b48ey3HpDh3VFAj4lFLBFo\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20161209",
+ "revision": "20161213",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -2282,6 +2282,52 @@
      "parameterOrder": [
       "project",
       "instance"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/sqlservice.admin"
+     ]
+    },
+    "truncateLog": {
+     "id": "sql.instances.truncateLog",
+     "path": "projects/{project}/instances/{instance}/truncateLog",
+     "httpMethod": "POST",
+     "description": "Truncate MySQL general and slow query log tables",
+     "parameters": {
+      "instance": {
+       "type": "string",
+       "description": "Cloud SQL instance ID. This does not include the project ID.",
+       "required": true,
+       "location": "path"
+      },
+      "logType": {
+       "type": "string",
+       "description": "The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE",
+       "required": true,
+       "enum": [
+        "MYSQL_GENERAL_TABLE",
+        "MYSQL_SLOW_TABLE"
+       ],
+       "enumDescriptions": [
+        "Truncate mysql.general_log table",
+        "Truncate mysql.slow_log table"
+       ],
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID of the Cloud SQL project.",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "instance",
+      "logType"
      ],
      "response": {
       "$ref": "Operation"

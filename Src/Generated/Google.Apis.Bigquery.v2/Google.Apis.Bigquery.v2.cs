@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161029 (667)
+ *      <tr><th>API Rev<td>20161130 (699)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3188,6 +3188,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; } 
 
+        /// <summary>[Optional] This string will be interpreted as a null value when it appears in a CSV file. The
+        /// default value is the empty string. Please refer to the documentation for further information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
+        public virtual string NullMarker { get; set; } 
+
         /// <summary>[Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to
         /// load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level
         /// properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found
@@ -3541,6 +3546,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// legacy SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
+
+        /// <summary>[Output-only, Experimental] The type of query statement, if valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
+        public virtual string StatementType { get; set; } 
 
         /// <summary>[Output-only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
@@ -3931,6 +3940,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>[Experimental] The labels associated with this table. You can use these to organize and group your
+        /// tables. Label keys and values can be no longer than 63 characters, can only contain letters, numeric
+        /// characters, underscores and dashes. International characters are allowed. Label values are optional. Label
+        /// keys must start with a letter and must be unique within a dataset. Both keys and values are additionally
+        /// constrained to be <= 128 bytes in size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>[Output-only] The time when this table was last modified, in milliseconds since the
         /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
@@ -4116,9 +4133,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, FLOAT, BOOLEAN,
-        /// TIMESTAMP, DATE, TIME, DATETIME, or RECORD (where RECORD indicates that the field contains a nested
-        /// schema).</summary>
+        /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as
+        /// INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME,
+        /// RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as
+        /// RECORD).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -4163,6 +4181,11 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>The resource type.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; } 
+
+            /// <summary>[Experimental] The labels associated with this table. You can use these to organize and group
+            /// your tables.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+            public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
             /// <summary>A reference uniquely identifying the table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]

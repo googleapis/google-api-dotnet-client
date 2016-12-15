@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161017 (655)
+ *      <tr><th>API Rev<td>20161212 (711)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -5668,6 +5668,7 @@ namespace Google.Apis.AndroidPublisher.v2
             this.service = service;
             products = new ProductsResource(service);
             subscriptions = new SubscriptionsResource(service);
+            voidedpurchases = new VoidedpurchasesResource(service);
 
         }
 
@@ -6297,6 +6298,161 @@ namespace Google.Apis.AndroidPublisher.v2
 
             }
         }
+        private readonly VoidedpurchasesResource voidedpurchases;
+
+        /// <summary>Gets the Voidedpurchases resource.</summary>
+        public virtual VoidedpurchasesResource Voidedpurchases
+        {
+            get { return voidedpurchases; }
+        }
+
+        /// <summary>The "voidedpurchases" collection of methods.</summary>
+        public class VoidedpurchasesResource
+        {
+            private const string Resource = "voidedpurchases";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VoidedpurchasesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists the purchases that were cancelled, refunded or charged-back.</summary>
+            /// <param name="packageName">The package name of the application for which voided purchases need to be returned (for
+            /// example, 'com.some.thing').</param>
+            public virtual ListRequest List(string packageName)
+            {
+                return new ListRequest(service, packageName);
+            }
+
+            /// <summary>Lists the purchases that were cancelled, refunded or charged-back.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.VoidedPurchasesListResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string packageName)
+                    : base(service)
+                {
+                    PackageName = packageName;
+                    InitParameters();
+                }
+
+
+                /// <summary>The package name of the application for which voided purchases need to be returned (for
+                /// example, 'com.some.thing').</summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>The end time of list window, in milliseconds since the epoch (Jan 1, 1970). If not
+                /// specified, default to current time, which is also the latest accepted end time. This parameter will
+                /// be ignored if pagination token is set.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> EndTime { get; set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> StartIndex { get; set; }
+
+                /// <summary>The start time of list window, in milliseconds since the epoch (Jan 1, 1970). If not
+                /// specified, default to current time - 30 days, which is also the earlies accepted start time. This
+                /// parameter will be ignored if pagination token is set.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> StartTime { get; set; }
+
+
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Token { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "{packageName}/purchases/voidedpurchases"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "packageName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "packageName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "startIndex", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startIndex",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "token", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "token",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
     }
 
     /// <summary>The "reviews" collection of methods.</summary>
@@ -6347,6 +6503,10 @@ namespace Google.Apis.AndroidPublisher.v2
             public virtual string ReviewId { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("translationLanguage", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TranslationLanguage { get; set; }
+
+
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -6385,6 +6545,15 @@ namespace Google.Apis.AndroidPublisher.v2
                         Name = "reviewId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "translationLanguage", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "translationLanguage",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -6428,6 +6597,10 @@ namespace Google.Apis.AndroidPublisher.v2
 
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("translationLanguage", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TranslationLanguage { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -6484,6 +6657,15 @@ namespace Google.Apis.AndroidPublisher.v2
                     "token", new Google.Apis.Discovery.Parameter
                     {
                         Name = "token",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "translationLanguage", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "translationLanguage",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6753,6 +6935,56 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>The content of the comment, i.e. reply body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device CPU make e.g. "Qualcomm"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuMake")]
+        public virtual string CpuMake { get; set; } 
+
+        /// <summary>Device CPU model e.g. "MSM8974"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuModel")]
+        public virtual string CpuModel { get; set; } 
+
+        /// <summary>Device class (e.g. tablet)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceClass")]
+        public virtual string DeviceClass { get; set; } 
+
+        /// <summary>OpenGL version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glEsVersion")]
+        public virtual System.Nullable<int> GlEsVersion { get; set; } 
+
+        /// <summary>Device manufacturer (e.g. Motorola)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+        public virtual string Manufacturer { get; set; } 
+
+        /// <summary>Comma separated list of native platforms (e.g. "arm", "arm7")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativePlatform")]
+        public virtual string NativePlatform { get; set; } 
+
+        /// <summary>Device model name (e.g. Droid)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productName")]
+        public virtual string ProductName { get; set; } 
+
+        /// <summary>Device RAM in Megabytes e.g. "2048"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ramMb")]
+        public virtual System.Nullable<int> RamMb { get; set; } 
+
+        /// <summary>Screen density in DPI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenDensityDpi")]
+        public virtual System.Nullable<int> ScreenDensityDpi { get; set; } 
+
+        /// <summary>Screen height in pixels</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenHeightPx")]
+        public virtual System.Nullable<int> ScreenHeightPx { get; set; } 
+
+        /// <summary>Screen width in pixels</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenWidthPx")]
+        public virtual System.Nullable<int> ScreenWidthPx { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7526,9 +7758,18 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual string Device { get; set; } 
 
+        /// <summary>Some information about the characteristics of the user's device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
+        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+
         /// <summary>The last time at which this comment was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
         public virtual Timestamp LastModified { get; set; } 
+
+        /// <summary>Untranslated text of the review, in the case where the review has been translated. If the review
+        /// has not been translated this is left blank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
+        public virtual string OriginalText { get; set; } 
 
         /// <summary>Language code for the reviewer. This is taken from the device settings so is not guaranteed to
         /// match the language the review is written in. May be absent.</summary>
@@ -7544,6 +7785,53 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// character.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
+
+        /// <summary>Number of users who have given this review a thumbs down</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbsDownCount")]
+        public virtual System.Nullable<int> ThumbsDownCount { get; set; } 
+
+        /// <summary>Number of users who have given this review a thumbs up</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbsUpCount")]
+        public virtual System.Nullable<int> ThumbsUpCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A VoidedPurchase resource indicates the purchase was either cancelled/refunded/charged-back.</summary>
+    public class VoidedPurchase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This kind represents a voided purchase object in the androidpublisher service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The time the purchase was made, in milliseconds since the epoch (Jan 1, 1970).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
+        public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
+
+        /// <summary>The token that was generated when a purchase was made and uniquely identifies a purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
+        public virtual string PurchaseToken { get; set; } 
+
+        /// <summary>The time when the purchase was cancelled/refunded/chargeback, in milliseconds since the epoch (Jan
+        /// 1, 1970).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voidedTimeMillis")]
+        public virtual System.Nullable<long> VoidedTimeMillis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class VoidedPurchasesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("voidedPurchases")]
+        public virtual System.Collections.Generic.IList<VoidedPurchase> VoidedPurchases { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

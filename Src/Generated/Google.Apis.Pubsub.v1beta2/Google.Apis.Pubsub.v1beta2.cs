@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20161003 (641)
+ *      <tr><th>API Rev<td>20161122 (691)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -124,7 +124,18 @@ namespace Google.Apis.Pubsub.v1beta2
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -133,7 +144,21 @@ namespace Google.Apis.Pubsub.v1beta2
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -346,9 +371,10 @@ namespace Google.Apis.Pubsub.v1beta2
 
 
             /// <summary>Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The
-            /// Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack
-            /// deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message
-            /// more than once will not result in an error.</summary>
+            /// Pub/Sub system can remove the relevant messages from the subscription.
+            ///
+            /// Acknowledging a message whose ack deadline has expired may succeed, but such a message may be
+            /// redelivered later. Acknowledging a message more than once will not result in an error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The subscription whose message is being acknowledged.</param>
             public virtual AcknowledgeRequest Acknowledge(Google.Apis.Pubsub.v1beta2.Data.AcknowledgeRequest body, string subscription)
@@ -357,9 +383,10 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The
-            /// Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack
-            /// deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message
-            /// more than once will not result in an error.</summary>
+            /// Pub/Sub system can remove the relevant messages from the subscription.
+            ///
+            /// Acknowledging a message whose ack deadline has expired may succeed, but such a message may be
+            /// redelivered later. Acknowledging a message more than once will not result in an error.</summary>
             public class AcknowledgeRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new Acknowledge request.</summary>
@@ -413,16 +440,17 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
             }
 
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
-            /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+            ///
+            /// If the name is not provided in the request, the server will assign a random name for this subscription
+            /// on the same project as the topic. Note that for REST API requests, you must specify a name.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the subscription. It must have the format
             /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
@@ -435,9 +463,10 @@ namespace Google.Apis.Pubsub.v1beta2
             }
 
             /// <summary>Creates a subscription to a given topic. If the subscription already exists, returns
-            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
-            /// provided in the request, the server will assign a random name for this subscription on the same project
-            /// as the topic. Note that for REST API requests, you must specify a name.</summary>
+            /// `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`.
+            ///
+            /// If the name is not provided in the request, the server will assign a random name for this subscription
+            /// on the same project as the topic. Note that for REST API requests, you must specify a name.</summary>
             public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Subscription>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -495,7 +524,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -561,7 +590,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -621,7 +650,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -685,7 +714,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -755,7 +784,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -847,16 +876,18 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
             }
 
-            /// <summary>Modifies the `PushConfig` for a specified subscription. This may be used to change a push
-            /// subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint
-            /// URL and other attributes of a push subscription. Messages will accumulate for delivery continuously
-            /// through the call regardless of changes to the `PushConfig`.</summary>
+            /// <summary>Modifies the `PushConfig` for a specified subscription.
+            ///
+            /// This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or
+            /// vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will
+            /// accumulate for delivery continuously through the call regardless of changes to the
+            /// `PushConfig`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The name of the subscription.</param>
             public virtual ModifyPushConfigRequest ModifyPushConfig(Google.Apis.Pubsub.v1beta2.Data.ModifyPushConfigRequest body, string subscription)
@@ -864,10 +895,12 @@ namespace Google.Apis.Pubsub.v1beta2
                 return new ModifyPushConfigRequest(service, body, subscription);
             }
 
-            /// <summary>Modifies the `PushConfig` for a specified subscription. This may be used to change a push
-            /// subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint
-            /// URL and other attributes of a push subscription. Messages will accumulate for delivery continuously
-            /// through the call regardless of changes to the `PushConfig`.</summary>
+            /// <summary>Modifies the `PushConfig` for a specified subscription.
+            ///
+            /// This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or
+            /// vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will
+            /// accumulate for delivery continuously through the call regardless of changes to the
+            /// `PushConfig`.</summary>
             public class ModifyPushConfigRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1beta2.Data.Empty>
             {
                 /// <summary>Constructs a new ModifyPushConfig request.</summary>
@@ -921,7 +954,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -993,7 +1026,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -1065,7 +1098,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -1136,7 +1169,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/subscriptions/[^/]*$",
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
                         });
                 }
 
@@ -1254,7 +1287,7 @@ namespace Google.Apis.Pubsub.v1beta2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                                Pattern = @"^projects/[^/]+/topics/[^/]+$",
                             });
                         RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
@@ -1347,7 +1380,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1413,7 +1446,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1473,7 +1506,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1537,7 +1570,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1606,7 +1639,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1696,7 +1729,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1768,7 +1801,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1839,7 +1872,7 @@ namespace Google.Apis.Pubsub.v1beta2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/topics/[^/]*$",
+                            Pattern = @"^projects/[^/]+/topics/[^/]+$",
                         });
                 }
 
@@ -1867,14 +1900,26 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`. *
-        /// `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For
-        /// example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain name that represents all the users
-        /// of that domain. For example, `google.com` or `example.com`.</summary>
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` or `joe@example.com`.
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1888,9 +1933,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1970,9 +2017,11 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     /// <summary>Request for the ModifyPushConfig method.</summary>
     public class ModifyPushConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The push configuration for future deliveries. An empty `pushConfig` indicates that the Pub/Sub
-        /// system should stop pushing messages from the given subscription and allow messages to be pulled and
-        /// acknowledged - effectively pausing the subscription if `Pull` is not called.</summary>
+        /// <summary>The push configuration for future deliveries.
+        ///
+        /// An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given
+        /// subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if
+        /// `Pull` is not called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; } 
 
@@ -1981,12 +2030,20 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     }    
 
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members`
-    /// to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A
-    /// `role` is a named list of permissions defined by IAM. **Example** { "bindings": [ { "role": "roles/owner",
-    /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
-    /// a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
@@ -1998,8 +2055,10 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. If no `etag`
-        /// is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -2054,7 +2113,7 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>The time at which the message was published, populated by the server when it receives the `Publish`
         /// call. It must not be populated by the publisher in a `Publish` call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual string PublishTime { get; set; } 
+        public virtual object PublishTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2095,16 +2154,24 @@ namespace Google.Apis.Pubsub.v1beta2.Data
     /// <summary>Configuration for a push delivery endpoint.</summary>
     public class PushConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be
-        /// used to control different aspects of the message delivery. The currently supported attribute is `x-goog-
-        /// version`, which you can use to change the format of the push message. This attribute indicates the version
-        /// of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and
-        /// metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the
-        /// `CreateSubscription` call, it will default to the version of the API used to make such call. If not present
-        /// during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return
-        /// a valid version, even if the subscription was created without this attribute. The possible values for this
-        /// attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`:
-        /// uses the push format defined in the v1 Pub/Sub API.</summary>
+        /// <summary>Endpoint configuration attributes.
+        ///
+        /// Every endpoint has a set of API supported attributes that can be used to control different aspects of the
+        /// message delivery.
+        ///
+        /// The currently supported attribute is `x-goog-version`, which you can use to change the format of the push
+        /// message. This attribute indicates the version of the data expected by the endpoint. This controls the shape
+        /// of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub
+        /// API.
+        ///
+        /// If not present during the `CreateSubscription` call, it will default to the version of the API used to make
+        /// such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
+        /// calls will always return a valid version, even if the subscription was created without this attribute.
+        ///
+        /// The possible values for this attribute are:
+        ///
+        /// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push
+        /// format defined in the v1 Pub/Sub API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string,string> Attributes { get; set; } 
 
@@ -2151,12 +2218,17 @@ namespace Google.Apis.Pubsub.v1beta2.Data
         /// <summary>This value is the maximum time after a subscriber receives a message before the subscriber should
         /// acknowledge the message. After message delivery but before the ack deadline expires and before the message
         /// is acknowledged, it is an outstanding message and will not be delivered again during that time (on a best-
-        /// effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To
-        /// override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using
-        /// pull. The maximum custom deadline you can specify is 600 seconds (10 minutes). For push delivery, this value
-        /// is also used to set the request timeout for the call to the push endpoint. If the subscriber never
-        /// acknowledges the message, the Pub/Sub system will eventually redeliver the message. If this parameter is 0,
-        /// a default value of 10 seconds is used.</summary>
+        /// effort basis).
+        ///
+        /// For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value
+        /// for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using pull. The maximum
+        /// custom deadline you can specify is 600 seconds (10 minutes).
+        ///
+        /// For push delivery, this value is also used to set the request timeout for the call to the push endpoint.
+        ///
+        /// If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
+        ///
+        /// If this parameter is 0, a default value of 10 seconds is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 

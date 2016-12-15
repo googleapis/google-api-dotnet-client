@@ -771,7 +771,7 @@
       "type": "object",
       "properties": {
         "parent": {
-          "description": "An optional reference to a parent Resource.\n\nThe only supported parent type is \"organization\". Once set, the parent\ncannot be modified.\n\nRead-write.",
+          "description": "An optional reference to a parent Resource.\n\nThe only supported parent type is \"organization\". Once set, the parent\ncannot be modified. The `parent` can be set on creation or using the\n`UpdateProject` method; the end user must have the\n`resourcemanager.projects.create` permission on the parent.\n\nRead-write.",
           "$ref": "ResourceId"
         },
         "labels": {
@@ -848,7 +848,7 @@
       "id": "OrganizationOwner"
     }
   },
-  "revision": "20161207",
+  "revision": "20161212",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

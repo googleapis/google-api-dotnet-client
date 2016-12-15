@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161207 (706)
+ *      <tr><th>API Rev<td>20161212 (711)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1949,7 +1949,9 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
         /// <summary>An optional reference to a parent Resource.
         ///
-        /// The only supported parent type is "organization". Once set, the parent cannot be modified.
+        /// The only supported parent type is "organization". Once set, the parent cannot be modified. The `parent` can
+        /// be set on creation or using the `UpdateProject` method; the end user must have the
+        /// `resourcemanager.projects.create` permission on the parent.
         ///
         /// Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]

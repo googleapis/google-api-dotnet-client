@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161209 (708)
+ *      <tr><th>API Rev<td>20161213 (712)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -2530,6 +2530,111 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Truncate MySQL general and slow query log tables</summary>
+        /// <param name="project">Project ID of the Cloud SQL project.</param>
+        /// <param name="instance">Cloud SQL instance
+        /// ID. This does not include the project ID.</param>
+        /// <param name="logType">The type of Log Table to truncate.
+        /// Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE</param>
+        public virtual TruncateLogRequest TruncateLog(string project, string instance, TruncateLogRequest.LogTypeEnum logType)
+        {
+            return new TruncateLogRequest(service, project, instance, logType);
+        }
+
+        /// <summary>Truncate MySQL general and slow query log tables</summary>
+        public class TruncateLogRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new TruncateLog request.</summary>
+            public TruncateLogRequest(Google.Apis.Services.IClientService service, string project, string instance, TruncateLogRequest.LogTypeEnum logType)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                LogType = logType;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the Cloud SQL project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and
+            /// MYSQL_SLOW_TABLE</summary>
+            [Google.Apis.Util.RequestParameterAttribute("logType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual LogTypeEnum LogType { get; private set; }
+
+            /// <summary>The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and
+            /// MYSQL_SLOW_TABLE</summary>
+            public enum LogTypeEnum
+            {
+                /// <summary>Truncate mysql.general_log table</summary>
+                [Google.Apis.Util.StringValueAttribute("MYSQL_GENERAL_TABLE")]
+                MYSQLGENERALTABLE,
+                /// <summary>Truncate mysql.slow_log table</summary>
+                [Google.Apis.Util.StringValueAttribute("MYSQL_SLOW_TABLE")]
+                MYSQLSLOWTABLE,
+            }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "truncateLog"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/truncateLog"; }
+            }
+
+            /// <summary>Initializes TruncateLog parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "logType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "logType",
+                        IsRequired = true,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
