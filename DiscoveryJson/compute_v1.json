@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/3Dg4v3oEGyyJc7V0vtKKohO41OY\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/BIPueDp4_YHmOXWnzCh7vT7JOHQ\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
@@ -1090,6 +1090,10 @@
    "id": "CacheInvalidationRule",
    "type": "object",
    "properties": {
+    "host": {
+     "type": "string",
+     "description": "If set, this invalidation rule will only apply to requests with a Host header matching host."
+    },
     "path": {
      "type": "string"
     }
@@ -11472,11 +11476,31 @@
      "httpMethod": "POST",
      "description": "Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action.",
      "parameters": {
+      "filter": {
+       "type": "string",
+       "location": "query"
+      },
       "instanceGroupManager": {
        "type": "string",
        "description": "The name of the managed instance group.",
        "required": true,
        "location": "path"
+      },
+      "maxResults": {
+       "type": "integer",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "500",
+       "location": "query"
+      },
+      "order_by": {
+       "type": "string",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "location": "query"
       },
       "project": {
        "type": "string",
@@ -14495,11 +14519,31 @@
      "httpMethod": "POST",
      "description": "Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances.",
      "parameters": {
+      "filter": {
+       "type": "string",
+       "location": "query"
+      },
       "instanceGroupManager": {
        "type": "string",
        "description": "The name of the managed instance group.",
        "required": true,
        "location": "path"
+      },
+      "maxResults": {
+       "type": "integer",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "maximum": "500",
+       "location": "query"
+      },
+      "order_by": {
+       "type": "string",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "location": "query"
       },
       "project": {
        "type": "string",

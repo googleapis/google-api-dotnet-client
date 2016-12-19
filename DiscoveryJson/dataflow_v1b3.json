@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2ldmPeHEvQ6NGgRE1Cb3tnvrYr8\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/OdfM46if3NfMPx8deyjo8_CiDmc\"",
  "discoveryVersion": "v1",
  "id": "dataflow:v1b3",
  "name": "dataflow",
@@ -909,6 +909,14 @@
     "serviceAccountEmail": {
      "type": "string",
      "description": "The service account to run the job as."
+    },
+    "tempLocation": {
+     "type": "string",
+     "description": "The temp location to use for the job."
+    },
+    "bypassTempDirValidation": {
+     "type": "boolean",
+     "description": "Bypass the safety checks for the job's temp directory. Use with caution."
     }
    }
   },

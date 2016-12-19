@@ -13565,6 +13565,25 @@ namespace Google.Apis.Compute.alpha
             public virtual string InstanceGroupManager { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -13612,6 +13631,42 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "order_by", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order_by",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -24588,6 +24643,25 @@ namespace Google.Apis.Compute.alpha
             public virtual string InstanceGroupManager { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -24635,6 +24709,42 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "order_by", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order_by",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -38088,20 +38198,39 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Enables "data access" audit logging for a service and specifies a list of members that are log-
-    /// exempted.</summary>
+    /// <summary>Provides the configuration for non-admin_activity logging for a service. Controls exemptions and
+    /// specific log sub-types.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The configuration for each type of logging</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
         /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
         /// specified above. Follows the same format of Binding.members.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for "data access" audit logging. For example,
-        /// `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all
-        /// services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
+        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for a sub-type of logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that are exempted from this type of logging Follows the same format of
+        /// Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38653,6 +38782,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>Headers that the HTTP/S load balancer should add to proxied requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRequestHeaders")]
+        public virtual System.Collections.Generic.IList<string> CustomRequestHeaders { get; set; } 
 
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
@@ -39787,10 +39920,26 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range
+        /// tuple that describes a permitted connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denied")]
+        public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
+        /// IP address in these ranges. These ranges must be expressed in CIDR format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
+        public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
+
+        /// <summary>Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic,
+        /// it is NOT supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify
+        /// sourceRanges OR sourceTags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -39816,6 +39965,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// projects/myproject/global/networks/my-network - global/networks/default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified,
+        /// the value assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of
+        /// priority implies higher precedence (eg, a rule with priority 0 has higher precedence than a rule with
+        /// priority 1). DENY rules take precedence over ALLOW rules having equal priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -39849,6 +40005,24 @@ namespace Google.Apis.Compute.alpha.Data
         
 
         public class AllowedData
+        {
+            /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
+            /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
+            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
+            public virtual string IPProtocol { get; set; } 
+
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
+            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// connections through any port.
+            ///
+            /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+            public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
+
+        }    
+
+        public class DeniedData
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
@@ -41536,6 +41710,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
         public virtual System.Nullable<int> Restarting { get; set; } 
 
+        /// <summary>[Output Only] The number of instances in the managed instance group that are being
+        /// verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifying")]
+        public virtual System.Nullable<int> Verifying { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -41573,7 +41752,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupManagerAutoHealingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for the HttpHealthCheck or HttpsHealthCheck that signals autohealing.</summary>
+        /// <summary>The URL for the health check that signals autohealing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
         public virtual string HealthCheck { get; set; } 
 

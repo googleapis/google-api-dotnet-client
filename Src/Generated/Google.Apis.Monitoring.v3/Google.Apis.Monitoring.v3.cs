@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161205 (704)
+ *      <tr><th>API Rev<td>20161216 (715)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>

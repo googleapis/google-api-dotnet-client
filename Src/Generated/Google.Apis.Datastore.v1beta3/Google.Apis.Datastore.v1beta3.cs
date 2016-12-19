@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20161203 (702)
+ *      <tr><th>API Rev<td>20161108 (677)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>

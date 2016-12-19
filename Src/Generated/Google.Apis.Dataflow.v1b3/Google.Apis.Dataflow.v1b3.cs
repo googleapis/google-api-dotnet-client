@@ -4076,6 +4076,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Environment values to set at runtime.</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Bypass the safety checks for the job's temp directory. Use with caution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassTempDirValidation")]
+        public virtual System.Nullable<bool> BypassTempDirValidation { get; set; } 
+
         /// <summary>The maximum number of workers to start for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkers")]
         public virtual System.Nullable<int> MaxWorkers { get; set; } 
@@ -4083,6 +4087,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The service account to run the job as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>The temp location to use for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tempLocation")]
+        public virtual string TempLocation { get; set; } 
 
         /// <summary>The zone to start the workers in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
