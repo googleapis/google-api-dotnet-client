@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161212 (711)
+ *      <tr><th>API Rev<td>20161218 (717)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2604,8 +2604,8 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         public virtual System.Nullable<long> CompletedTrialCount { get; set; } 
 
         /// <summary>The amount of ML units consumed by the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consumedMlUnits")]
-        public virtual System.Nullable<double> ConsumedMlUnits { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("consumedMLUnits")]
+        public virtual System.Nullable<double> ConsumedMLUnits { get; set; } 
 
         /// <summary>Results for individual Hyperparameter trials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]

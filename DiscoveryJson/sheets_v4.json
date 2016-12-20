@@ -3115,11 +3115,11 @@
       "type": "object",
       "properties": {
         "footerColor": {
-          "description": "The color of the last row or column. If this field is not set, the last\nrow or column will be filled with either first_row_color or\nsecond_row_color, depending on the color of the previous row or\ncolumn.",
+          "description": "The color of the last row or column. If this field is not set, the last\nrow or column will be filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.",
           "$ref": "Color"
         },
         "headerColor": {
-          "description": "The color of the first row or column. If this field is set, the first\nrow or column will be filled with this color and the colors will\nalternate between first_band_color and [second_band_color[] starting\nfrom the second row or column. Otherwise, the first row or column will be\nfilled with first_band_color and the colors will proceed to alternate\nas they normally would.",
+          "description": "The color of the first row or column. If this field is set, the first\nrow or column will be filled with this color and the colors will\nalternate between first_band_color and second_band_color starting\nfrom the second row or column. Otherwise, the first row or column will be\nfilled with first_band_color and the colors will proceed to alternate\nas they normally would.",
           "$ref": "Color"
         },
         "secondBandColor": {
@@ -4004,7 +4004,7 @@
       "id": "DeleteConditionalFormatRuleResponse"
     }
   },
-  "revision": "20161209",
+  "revision": "20161215",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

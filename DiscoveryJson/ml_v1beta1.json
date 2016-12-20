@@ -835,7 +835,7 @@
       "description": "Represents results of a training job.",
       "type": "object",
       "properties": {
-        "consumedMlUnits": {
+        "consumedMLUnits": {
           "description": "The amount of ML units consumed by the job.",
           "type": "number",
           "format": "double"
@@ -1275,7 +1275,7 @@
       "id": "GoogleCloudMlV1beta1__Model"
     }
   },
-  "revision": "20161212",
+  "revision": "20161218",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

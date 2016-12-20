@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20161209 (708)
+ *      <tr><th>API Rev<td>20161215 (714)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -1990,15 +1990,15 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual Color FirstBandColor { get; set; } 
 
         /// <summary>The color of the last row or column. If this field is not set, the last row or column will be
-        /// filled with either first_row_color or second_row_color, depending on the color of the previous row or
+        /// filled with either first_band_color or second_band_color, depending on the color of the previous row or
         /// column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footerColor")]
         public virtual Color FooterColor { get; set; } 
 
         /// <summary>The color of the first row or column. If this field is set, the first row or column will be filled
-        /// with this color and the colors will alternate between first_band_color and [second_band_color[] starting
-        /// from the second row or column. Otherwise, the first row or column will be filled with first_band_color and
-        /// the colors will proceed to alternate as they normally would.</summary>
+        /// with this color and the colors will alternate between first_band_color and second_band_color starting from
+        /// the second row or column. Otherwise, the first row or column will be filled with first_band_color and the
+        /// colors will proceed to alternate as they normally would.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
         public virtual Color HeaderColor { get; set; } 
 
