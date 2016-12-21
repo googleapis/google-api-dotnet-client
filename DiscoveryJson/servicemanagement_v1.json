@@ -458,7 +458,7 @@
             "$ref": "ListServicesResponse"
           },
           "parameterOrder": [],
-          "description": "Lists all managed services. The result is limited to services that the\ncaller has \"servicemanagement.services.get\" permission for. If the request\nis made without authentication, it returns only public services that are\navailable to everyone.",
+          "description": "Lists managed services.\n\nIf called without any authentication, it returns only the public services.\nIf called with authentication, it returns all services that the caller has\n\"servicemanagement.services.get\" permission for.\n\n**BETA:** If the caller specifies the `consumer_id`, it returns only the\nservices enabled on the consumer. The `consumer_id` must have the format\nof \"project:{PROJECT-ID}\".",
           "flatPath": "v1/services",
           "httpMethod": "GET",
           "parameters": {
@@ -1691,6 +1691,11 @@
       "description": "Request message for `SetIamPolicy` method.",
       "type": "object",
       "properties": {
+        "updateMask": {
+          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, a default\nmask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
+          "type": "string",
+          "format": "google-fieldmask"
+        },
         "policy": {
           "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
           "$ref": "Policy"
@@ -2789,7 +2794,7 @@
       "id": "SourceContext"
     }
   },
-  "revision": "20161205",
+  "revision": "20161212",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

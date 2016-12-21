@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161205 (704)
+ *      <tr><th>API Rev<td>20161212 (711)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1618,17 +1618,25 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Lists all managed services. The result is limited to services that the caller has
-        /// "servicemanagement.services.get" permission for. If the request is made without authentication, it returns
-        /// only public services that are available to everyone.</summary>
+        /// <summary>Lists managed services.
+        ///
+        /// If called without any authentication, it returns only the public services. If called with authentication, it
+        /// returns all services that the caller has "servicemanagement.services.get" permission for.
+        ///
+        /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
+        /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all managed services. The result is limited to services that the caller has
-        /// "servicemanagement.services.get" permission for. If the request is made without authentication, it returns
-        /// only public services that are available to everyone.</summary>
+        /// <summary>Lists managed services.
+        ///
+        /// If called without any authentication, it returns only the public services. If called with authentication, it
+        /// returns all services that the caller has "servicemanagement.services.get" permission for.
+        ///
+        /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
+        /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServicesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3956,6 +3964,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; } 
+
+        /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
+        /// will be modified. If no mask is provided, a default mask is used: paths: "bindings, etag" This field is only
+        /// used by Cloud IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
