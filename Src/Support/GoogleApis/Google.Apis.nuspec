@@ -28,12 +28,6 @@
         <tags>Google</tags>
       <dependencies>
         <group targetFramework="net45">
-          <!--
-            log4net is required by the Net45 version of
-            Google.Apis.PlatformServices.
-          -->
-          <dependency id="log4net" version="2.0.3" />
-
           <dependency id="Google.Apis.Core" version="$version$" />
           <dependency id="Zlib.Portable.Signed" version="1.11.0" />
         </group>
