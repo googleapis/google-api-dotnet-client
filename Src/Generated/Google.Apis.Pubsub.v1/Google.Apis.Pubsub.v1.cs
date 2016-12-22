@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161122 (691)
+ *      <tr><th>API Rev<td>20161209 (708)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -507,7 +507,8 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -516,7 +517,8 @@ namespace Google.Apis.Pubsub.v1
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1353,7 +1355,8 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -1362,7 +1365,8 @@ namespace Google.Apis.Pubsub.v1
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2062,7 +2066,8 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -2071,7 +2076,8 @@ namespace Google.Apis.Pubsub.v1
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
-            /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2250,10 +2256,11 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>Request for the ModifyAckDeadline method.</summary>
     public class ModifyAckDeadlineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be
-        /// >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the
-        /// `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another
-        /// pull request.</summary>
+        /// <summary>The new ack deadline with respect to the time this request was sent to the Pub/Sub system. For
+        /// example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
+        /// was made. Specifying zero may immediately make the message available for another pull request. The minimum
+        /// deadline you can specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
+        /// minutes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 
@@ -2377,10 +2384,10 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxMessages")]
         public virtual System.Nullable<int> MaxMessages { get; set; } 
 
-        /// <summary>If this is specified as true the system will respond immediately even if it is not able to return a
-        /// message in the `Pull` response. Otherwise the system is allowed to wait until at least one message is
-        /// available rather than returning no messages. The client may cancel the request if it does not wish to wait
-        /// any longer for the response.</summary>
+        /// <summary>If this field set to true, the system will respond immediately even if it there are no messages
+        /// available to return in the `Pull` response. Otherwise, the system may wait (for a bounded amount of time)
+        /// until at least one message is available, rather than returning no messages. The client may cancel the
+        /// request if it does not wish to wait any longer for the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnImmediately")]
         public virtual System.Nullable<bool> ReturnImmediately { get; set; } 
 

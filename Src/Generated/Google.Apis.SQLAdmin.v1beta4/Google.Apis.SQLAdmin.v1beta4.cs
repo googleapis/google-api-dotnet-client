@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161213 (712)
+ *      <tr><th>API Rev<td>20161220 (719)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -2538,26 +2538,25 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Truncate MySQL general and slow query log tables</summary>
+        /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the Cloud SQL project.</param>
         /// <param name="instance">Cloud SQL instance
         /// ID. This does not include the project ID.</param>
-        /// <param name="logType">The type of Log Table to truncate.
-        /// Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE</param>
-        public virtual TruncateLogRequest TruncateLog(string project, string instance, TruncateLogRequest.LogTypeEnum logType)
+        public virtual TruncateLogRequest TruncateLog(Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest body, string project, string instance)
         {
-            return new TruncateLogRequest(service, project, instance, logType);
+            return new TruncateLogRequest(service, body, project, instance);
         }
 
         /// <summary>Truncate MySQL general and slow query log tables</summary>
         public class TruncateLogRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new TruncateLog request.</summary>
-            public TruncateLogRequest(Google.Apis.Services.IClientService service, string project, string instance, TruncateLogRequest.LogTypeEnum logType)
+            public TruncateLogRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest body, string project, string instance)
                 : base(service)
             {
                 Project = project;
                 Instance = instance;
-                LogType = logType;
+                Body = body;
                 InitParameters();
             }
 
@@ -2570,23 +2569,12 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and
-            /// MYSQL_SLOW_TABLE</summary>
-            [Google.Apis.Util.RequestParameterAttribute("logType", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual LogTypeEnum LogType { get; private set; }
 
-            /// <summary>The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and
-            /// MYSQL_SLOW_TABLE</summary>
-            public enum LogTypeEnum
-            {
-                /// <summary>Truncate mysql.general_log table</summary>
-                [Google.Apis.Util.StringValueAttribute("MYSQL_GENERAL_TABLE")]
-                MYSQLGENERALTABLE,
-                /// <summary>Truncate mysql.slow_log table</summary>
-                [Google.Apis.Util.StringValueAttribute("MYSQL_SLOW_TABLE")]
-                MYSQLSLOWTABLE,
-            }
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest Body { get; set; }
 
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2626,15 +2614,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "logType", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "logType",
-                        IsRequired = true,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4575,6 +4554,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Instance truncate log request.</summary>
+    public class InstancesTruncateLogRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains details about the truncate log operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncateLogContext")]
+        public virtual TruncateLogContext TruncateLogContext { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>IP Management configuration.</summary>
     public class IpConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5249,6 +5239,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#tiersList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Database Instance truncate log context.</summary>
+    public class TruncateLogContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#truncateLogContext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

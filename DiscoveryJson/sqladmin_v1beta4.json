@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/zyhp6b48ey3HpDh3VFAj4lFLBFo\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/t9edOSlewaa7VyZ4dauqNzzg4MU\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20161213",
+ "revision": "20161220",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -736,6 +736,17 @@
     }
    }
   },
+  "InstancesTruncateLogRequest": {
+   "id": "InstancesTruncateLogRequest",
+   "type": "object",
+   "description": "Instance truncate log request.",
+   "properties": {
+    "truncateLogContext": {
+     "$ref": "TruncateLogContext",
+     "description": "Contains details about the truncate log operation."
+    }
+   }
+  },
   "IpConfiguration": {
    "id": "IpConfiguration",
    "type": "object",
@@ -1342,6 +1353,22 @@
      "type": "string",
      "description": "This is always sql#tiersList.",
      "default": "sql#tiersList"
+    }
+   }
+  },
+  "TruncateLogContext": {
+   "id": "TruncateLogContext",
+   "type": "object",
+   "description": "Database Instance truncate log context.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "This is always sql#truncateLogContext.",
+     "default": "sql#truncateLogContext"
+    },
+    "logType": {
+     "type": "string",
+     "description": "The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE."
     }
    }
   },
@@ -2303,20 +2330,6 @@
        "required": true,
        "location": "path"
       },
-      "logType": {
-       "type": "string",
-       "description": "The type of Log Table to truncate. Valid values are MYSQL_GENERAL_TABLE and MYSQL_SLOW_TABLE",
-       "required": true,
-       "enum": [
-        "MYSQL_GENERAL_TABLE",
-        "MYSQL_SLOW_TABLE"
-       ],
-       "enumDescriptions": [
-        "Truncate mysql.general_log table",
-        "Truncate mysql.slow_log table"
-       ],
-       "location": "query"
-      },
       "project": {
        "type": "string",
        "description": "Project ID of the Cloud SQL project.",
@@ -2326,9 +2339,11 @@
      },
      "parameterOrder": [
       "project",
-      "instance",
-      "logType"
+      "instance"
      ],
+     "request": {
+      "$ref": "InstancesTruncateLogRequest"
+     },
      "response": {
       "$ref": "Operation"
      },

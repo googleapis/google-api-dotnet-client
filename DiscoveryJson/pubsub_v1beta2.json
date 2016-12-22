@@ -288,7 +288,7 @@
               "parameterOrder": [
                 "resource"
               ],
-              "description": "Returns permissions that a caller has on the specified resource.",
+              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
               "request": {
                 "$ref": "TestIamPermissionsRequest"
               },
@@ -595,7 +595,7 @@
               "parameterOrder": [
                 "resource"
               ],
-              "description": "Returns permissions that a caller has on the specified resource.",
+              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
               "request": {
                 "$ref": "TestIamPermissionsRequest"
               },
@@ -966,7 +966,7 @@
       "id": "Binding"
     }
   },
-  "revision": "20161122",
+  "revision": "20161209",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
