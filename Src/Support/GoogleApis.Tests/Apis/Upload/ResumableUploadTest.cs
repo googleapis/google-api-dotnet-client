@@ -61,7 +61,7 @@ namespace Google.Apis.Tests.Apis.Upload
             if (useLogger)
             {
 #if !NETSTANDARD
-                ApplicationContext.RegisterLogger(new Google.Apis.Logging.Log4NetLogger());
+                ApplicationContext.RegisterLogger(new Google.Apis.Tests.Logging.Log4NetLogger());
 #endif
             }
         }
