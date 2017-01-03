@@ -99,6 +99,18 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Loads credential from a string containing JSON credential data.
+        /// <para>
+        /// The string can contain a Service Account key file in JSON format from the Google Developers
+        /// Console or a stored user credential using the format supported by the Cloud SDK.
+        /// </para>
+        /// </summary>
+        public static GoogleCredential FromJson(string json)
+        {
+            return defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
+        }
+
+        /// <summary>
         /// <para>Returns <c>true</c> only if this credential type has no scopes by default and requires
         /// a call to <see cref="o:CreateScoped"/> before use.</para>
         ///

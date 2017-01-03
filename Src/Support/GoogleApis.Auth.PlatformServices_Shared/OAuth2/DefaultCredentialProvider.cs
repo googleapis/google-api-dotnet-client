@@ -172,19 +172,35 @@ namespace Google.Apis.Auth.OAuth2
             {
                 throw new InvalidOperationException("Error deserializing JSON credential data.", e);
             }
-            return CreateDefaultCredentialFromJson(credentialParameters);
+            return CreateDefaultCredentialFromParameters(credentialParameters);
         }
 
+        /// <summary>Creates a default credential from a string that contains JSON credential data.</summary>
+        internal GoogleCredential CreateDefaultCredentialFromJson(string json)
+        {
+            JsonCredentialParameters credentialParameters;
+            try
+            {
+                credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Error deserializing JSON credential data.", e);
+            }
+            return CreateDefaultCredentialFromParameters(credentialParameters);
+        }
+
+
         /// <summary>Creates a default credential from JSON data.</summary>
-        private static GoogleCredential CreateDefaultCredentialFromJson(JsonCredentialParameters credentialParameters)
+        private static GoogleCredential CreateDefaultCredentialFromParameters(JsonCredentialParameters credentialParameters)
         {
             switch (credentialParameters.Type)
             {
                 case JsonCredentialParameters.AuthorizedUserCredentialType:
-                    return new GoogleCredential(CreateUserCredentialFromJson(credentialParameters));
+                    return new GoogleCredential(CreateUserCredentialFromParameters(credentialParameters));
                 case JsonCredentialParameters.ServiceAccountCredentialType:
                     return GoogleCredential.FromCredential(
-                        CreateServiceAccountCredentialFromJson(credentialParameters));
+                        CreateServiceAccountCredentialFromParameters(credentialParameters));
                 default:
                     throw new InvalidOperationException(
                         String.Format("Error creating credential from JSON. Unrecognized credential type {0}.", 
@@ -193,7 +209,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Creates a user credential from JSON data.</summary>
-        private static UserCredential CreateUserCredentialFromJson(JsonCredentialParameters credentialParameters)
+        private static UserCredential CreateUserCredentialFromParameters(JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.AuthorizedUserCredentialType ||
                 string.IsNullOrEmpty(credentialParameters.ClientId) ||
@@ -220,7 +236,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Creates a <see cref="ServiceAccountCredential"/> from JSON data.</summary>
-        private static ServiceAccountCredential CreateServiceAccountCredentialFromJson(
+        private static ServiceAccountCredential CreateServiceAccountCredentialFromParameters(
             JsonCredentialParameters credentialParameters)
         {
             if (credentialParameters.Type != JsonCredentialParameters.ServiceAccountCredentialType ||
