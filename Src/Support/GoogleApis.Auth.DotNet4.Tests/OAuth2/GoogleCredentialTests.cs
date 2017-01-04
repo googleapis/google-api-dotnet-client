@@ -74,6 +74,21 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.IsTrue(credential.IsCreateScopedRequired);
         }
 
+        [Test]
+        public void FromJson_UserCredential()
+        {
+            var credential = GoogleCredential.FromJson(DummyUserCredentialFileContents);
+            Assert.IsFalse(credential.IsCreateScopedRequired);
+        }
+
+        [Test]
+        public void FromJson_ServiceAccountCredential()
+        {
+            var credential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
+            Assert.IsTrue(credential.IsCreateScopedRequired);
+        }
+
         /// <summary>
         /// Creates service account credential from stream, obtains a JWT token
         /// from the credential and checks the access token is well-formed.
