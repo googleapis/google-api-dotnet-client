@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20161020 (658)
+ *      <tr><th>API Rev<td>20170104 (734)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3040,8 +3040,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                 ProposeAndAccept,
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
                 UnknownAction,
-                [Google.Apis.Util.StringValueAttribute("updateFinalized")]
-                UpdateFinalized,
+                [Google.Apis.Util.StringValueAttribute("updateNonTerms")]
+                UpdateNonTerms,
             }
 
 
@@ -3281,8 +3281,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
                 ProposeAndAccept,
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
                 UnknownAction,
-                [Google.Apis.Util.StringValueAttribute("updateFinalized")]
-                UpdateFinalized,
+                [Google.Apis.Util.StringValueAttribute("updateNonTerms")]
+                UpdateNonTerms,
             }
 
 
@@ -4544,7 +4544,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flightStartTimeMs")]
         public virtual System.Nullable<long> FlightStartTimeMs { get; set; } 
 
-        /// <summary>Description for the deal terms. (updatable)</summary>
+        /// <summary>Description for the deal terms. (buyer-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryDescription")]
         public virtual string InventoryDescription { get; set; } 
 
@@ -4866,6 +4866,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
+        /// <summary>Requests where the predicted viewability is below the specified decile will not match. E.g. if the
+        /// buyer sets this value to 5, requests from slots where the predicted viewability is below 50% will not match.
+        /// If the predicted viewability is unknown this field will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumViewabilityDecile")]
+        public virtual System.Nullable<int> MinimumViewabilityDecile { get; set; } 
+
         /// <summary>Requests containing any of these mobile carrier ids will match. Values are from mobile-carriers.csv
         /// in the downloadable files section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileCarriers")]
@@ -5108,6 +5114,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Optional legacy offer id if this offer is a preferred deal offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyOfferId")]
         public virtual string LegacyOfferId { get; set; } 
+
+        /// <summary>Marketplace publisher profile Id. This Id differs from the regular publisher_profile_id in that 1.
+        /// This is a new id, the old Id will be deprecated in 2017. 2. This id uniquely identifies a publisher profile
+        /// by itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketplacePublisherProfileId")]
+        public virtual string MarketplacePublisherProfileId { get; set; } 
 
         /// <summary>The name for this product as set by the seller. (buyer-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
