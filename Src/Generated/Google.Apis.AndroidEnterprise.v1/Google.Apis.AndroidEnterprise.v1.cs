@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161214 (713)
+ *      <tr><th>API Rev<td>20170105 (735)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1853,7 +1853,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token
-        /// into the Play for Work javascript API. Each token may only be used to start one UI session. See the
+        /// into the managed Google Play javascript API. Each token may only be used to start one UI session. See the
         /// javascript API documentation for further information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -1863,7 +1863,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token
-        /// into the Play for Work javascript API. Each token may only be used to start one UI session. See the
+        /// into the managed Google Play javascript API. Each token may only be used to start one UI session. See the
         /// javascript API documentation for further information.</summary>
         public class CreateWebTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebToken>
         {
@@ -2705,10 +2705,10 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
-        /// basic store layout is enabled. The basic layout only contains apps approved by the administrator, and that
-        /// have been added to the available product set for a user (using the  setAvailableProductSet call). Apps on
-        /// the page are sorted in order of their product ID value. If you create a custom store layout (by setting
-        /// storeLayoutType = "custom"), the basic store layout is disabled.</summary>
+        /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
+        /// added to the available product set for a user (using the  setAvailableProductSet call). Apps on the page are
+        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
+        /// "custom"), the basic store layout is disabled.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetStoreLayoutRequest SetStoreLayout(Google.Apis.AndroidEnterprise.v1.Data.StoreLayout body, string enterpriseId)
@@ -2717,10 +2717,10 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
         /// <summary>Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the
-        /// basic store layout is enabled. The basic layout only contains apps approved by the administrator, and that
-        /// have been added to the available product set for a user (using the  setAvailableProductSet call). Apps on
-        /// the page are sorted in order of their product ID value. If you create a custom store layout (by setting
-        /// storeLayoutType = "custom"), the basic store layout is disabled.</summary>
+        /// basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been
+        /// added to the available product set for a user (using the  setAvailableProductSet call). Apps on the page are
+        /// sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType =
+        /// "custom"), the basic store layout is disabled.</summary>
         public class SetStoreLayoutRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.StoreLayout>
         {
             /// <summary>Constructs a new SetStoreLayout request.</summary>
@@ -5302,7 +5302,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
         /// products that you can approve per enterprise customer is 1,000.
         ///
-        /// To learn how to use Google Play for Work to design and create a store layout to display approved products to
+        /// To learn how to use managed Google Play to design and create a store layout to display approved products to
         /// your users, see Store Layout Design.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -5316,7 +5316,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Approves the specified product and the relevant app permissions, if any. The maximum number of
         /// products that you can approve per enterprise customer is 1,000.
         ///
-        /// To learn how to use Google Play for Work to design and create a store layout to display approved products to
+        /// To learn how to use managed Google Play to design and create a store layout to display approved products to
         /// your users, see Store Layout Design.</summary>
         public class ApproveRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
@@ -5586,8 +5586,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Retrieves the schema that defines the configurable properties for this product. All products have a
         /// schema, but this schema may be empty if no managed configurations have been defined. This schema can be used
-        /// to populate a UI that allows an administrator to configure the product. To apply a managed configuration
-        /// based on the schema obtained using this API, see Managed Configurations through Play.</summary>
+        /// to populate a UI that allows an admin to configure the product. To apply a managed configuration based on
+        /// the schema obtained using this API, see Managed Configurations through Play.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="productId">The ID of the
         /// product.</param>
@@ -5598,8 +5598,8 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>Retrieves the schema that defines the configurable properties for this product. All products have a
         /// schema, but this schema may be empty if no managed configurations have been defined. This schema can be used
-        /// to populate a UI that allows an administrator to configure the product. To apply a managed configuration
-        /// based on the schema obtained using this API, see Managed Configurations through Play.</summary>
+        /// to populate a UI that allows an admin to configure the product. To apply a managed configuration based on
+        /// the schema obtained using this API, see Managed Configurations through Play.</summary>
         public class GetAppRestrictionsSchemaRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AppRestrictionsSchema>
         {
             /// <summary>Constructs a new GetAppRestrictionsSchema request.</summary>
@@ -5795,7 +5795,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>The search query as typed in the Google Play Store search box. If omitted, all approved apps
+            /// <summary>The search query as typed in the Google Play store search box. If omitted, all approved apps
             /// will be returned (using the pagination parameters), including apps that are not available in the store
             /// (e.g. unpublished apps).</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -7495,7 +7495,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Generates a token (activation code) to allow this user to configure their work account in the
+        /// <summary>Generates a token (activation code) to allow this user to configure their managed account in the
         /// Android Setup Wizard. Revokes any previously generated token.
         ///
         /// This call only works with Google managed accounts.</summary>
@@ -7507,7 +7507,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new GenerateTokenRequest(service, enterpriseId, userId);
         }
 
-        /// <summary>Generates a token (activation code) to allow this user to configure their work account in the
+        /// <summary>Generates a token (activation code) to allow this user to configure their managed account in the
         /// Android Setup Wizard. Revokes any previously generated token.
         ///
         /// This call only works with Google managed accounts.</summary>
@@ -8234,11 +8234,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 namespace Google.Apis.AndroidEnterprise.v1.Data
 {    
 
-    /// <summary>This represents an enterprise administrator who can manage the enterprise in the Google Play for Work
-    /// Store.</summary>
+    /// <summary>This represents an enterprise admin who can manage the enterprise in the managed Google Play
+    /// store.</summary>
     public class Administrator : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The administrator's email address.</summary>
+        /// <summary>The admin's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
@@ -8246,7 +8246,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A token authorizing an administrator to access an iframe.</summary>
+    /// <summary>A token authorizing an admin to access an iframe.</summary>
     public class AdministratorWebToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -8411,7 +8411,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
         public virtual System.Nullable<int> VersionCode { get; set; } 
 
-        /// <summary>The string used in the Play Store by the app developer to identify the version. The string is not
+        /// <summary>The string used in the Play store by the app developer to identify the version. The string is not
         /// necessarily unique or localized (for example, the string could be "1.4").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionString")]
         public virtual string VersionString { get; set; } 
@@ -8456,7 +8456,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>A collection resource defines a named set of apps that is visible to a set of users in the Google Play
-    /// Store app running on those users' managed devices. Those users can then install any of those apps if they wish
+    /// store app running on those users' managed devices. Those users can then install any of those apps if they wish
     /// (which will trigger creation of install and entitlement resources). A user cannot install an app on a managed
     /// device unless the app is listed in at least one collection that is visible to that user.
     ///
@@ -8516,7 +8516,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>The collection resources for the enterprise.</summary>
     public class CollectionsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An ordered collection of products which can be made visible on the Google Play Store to a selected
+        /// <summary>An ordered collection of products which can be made visible on the Google Play store to a selected
         /// group of users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual System.Collections.Generic.IList<Collection> Collection { get; set; } 
@@ -8547,16 +8547,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Identifies the extent to which the device is controlled by an Android for Work EMM in various
+        /// <summary>Identifies the extent to which the device is controlled by a managed Google Play EMM in various
         /// deployment configurations.
         ///
         /// Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as
-        /// the device owner, - "managedProfile", a device that has a work profile managed by the DPC (DPC is profile
-        /// owner) in addition to a separate, personal profile that is unavailable to the DPC, - "containerApp", a
-        /// device running the Android for Work App. The Android for Work App is managed by the DPC, -
-        /// "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin Console to enable
-        /// the privilege) to use Android for Work apps or Google Apps for Work, but the profile is itself not owned by
-        /// a DPC.</summary>
+        /// the device owner, - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner)
+        /// in addition to a separate, personal profile that is unavailable to the DPC, - "containerApp", a device
+        /// running the container App. The container App is managed by the DPC, - "unmanagedProfile", a device that has
+        /// been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google
+        /// Play, but the profile is itself not owned by a DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -8603,14 +8602,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// can be instantiated in one of two different ways using this API as follows: - For Google managed domain
     /// customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with
     /// artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-
-    /// or-less manual process. - For Android for Work Accounts customers, the process involves using
-    /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the Android for Work Sign-up UI
-    /// (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or
+    /// or-less manual process. - For managed Google Play Accounts customers, the process involves using
+    /// Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up
+    /// UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or
     /// both approaches in your EMM console. See Create an Enterprise for details.</summary>
     public class Enterprise : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Administrators of the enterprise. This is only supported for enterprises created via the EMM-
-        /// initiated flow.</summary>
+        /// <summary>Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated
+        /// flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("administrator")]
         public virtual System.Collections.Generic.IList<Administrator> Administrator { get; set; } 
 
@@ -9170,7 +9169,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Products resource represents an app in the Google Play Store that is available to at least some users
+    /// <summary>A Products resource represents an app in the Google Play store that is available to at least some users
     /// in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made
     /// available outside that enterprise.)
     ///
@@ -9192,7 +9191,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string DetailsUrl { get; set; } 
 
         /// <summary>How and to whom the package is made available. The value publicGoogleHosted means that the package
-        /// is available through the Play Store and not restricted to a specific enterprise. The value
+        /// is available through the Play store and not restricted to a specific enterprise. The value
         /// privateGoogleHosted means that the package is a private app (restricted to an enterprise) but hosted by
         /// Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise)
         /// and is privately hosted.</summary>
@@ -9220,8 +9219,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productPricing")]
         public virtual string ProductPricing { get; set; } 
 
-        /// <summary>Whether this app can only be installed on devices using the Android for Work container
-        /// app.</summary>
+        /// <summary>Whether this app can only be installed on devices using the Android container app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresContainerApp")]
         public virtual System.Nullable<bool> RequiresContainerApp { get; set; } 
 
@@ -9234,8 +9232,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>A link to the Google Play for Work details page for the product, for use by an Enterprise
-        /// administrator.</summary>
+        /// <summary>A link to the managed Google Play details page for the product, for use by an Enterprise
+        /// admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workDetailsUrl")]
         public virtual string WorkDetailsUrl { get; set; } 
 
@@ -9379,7 +9377,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
         public virtual PageInfo PageInfo { get; set; } 
 
-        /// <summary>Information about a product (e.g. an app) in the Google Play Store, for display to an enterprise
+        /// <summary>Information about a product (e.g. an app) in the Google Play store, for display to an enterprise
         /// admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual System.Collections.Generic.IList<Product> Product { get; set; } 
@@ -9478,7 +9476,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Definition of a Google Play for Work store cluster, a list of products displayed as part of a store
+    /// <summary>Definition of a managed Google Play store cluster, a list of products displayed as part of a store
     /// page.</summary>
     public class StoreCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9515,12 +9513,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>General setting for the Google Play for Work store layout, currently only specifying the page to
-    /// display the first time the store is opened.</summary>
+    /// <summary>General setting for the managed Google Play store layout, currently only specifying the page to display
+    /// the first time the store is opened.</summary>
     public class StoreLayout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the store page to be used as the homepage. The homepage will be used as the first page
-        /// shown in the Google Play for Work store.
+        /// shown in the managed Google Play store.
         ///
         /// If a homepage has not been set, the Play store shown on devices will be empty. Not specifying a homepage on
         /// a store layout effectively empties the store.
@@ -9578,7 +9576,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Definition of a Google Play for Work store page, made of a localized name and links to other pages. A
+    /// <summary>Definition of a managed Google Play store page, made of a localized name and links to other pages. A
     /// page also contains clusters defined as a subcollection.</summary>
     public class StorePage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9623,10 +9621,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>A Users resource represents an account associated with an enterprise. The account may be specific to a
     /// device or to an individual user (who can then use the account across multiple devices). The account may provide
-    /// access to Google Play for Work only, or to other Google services, depending on the identity model: - Google
-    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). - Android
-    /// for Work Accounts identity model provides a dynamic means for enterprises to create user or device accounts as
-    /// needed. These accounts provide access to Google Play for Work only.</summary>
+    /// access to managed Google Play only, or to other Google services, depending on the identity model: - The Google
+    /// managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The
+    /// managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device
+    /// accounts as needed. These accounts provide access to managed Google Play.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A unique identifier you create for this user, such as "user342" or "asset#44418". Do not use
@@ -9671,9 +9669,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A UserToken is used by a user when setting up a managed device or profile with their work account on a
-    /// device. When the user enters their email address and token (activation code) the appropriate EMM app can be
-    /// automatically downloaded.</summary>
+    /// <summary>A UserToken is used by a user when setting up a managed device or profile with their managed Google
+    /// Play account on a device. When the user enters their email address and token (activation code) the appropriate
+    /// EMM app can be automatically downloaded.</summary>
     public class UserToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string

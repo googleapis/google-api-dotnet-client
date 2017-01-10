@@ -849,6 +849,10 @@
             "type": "string"
           }
         },
+        "entrypoint": {
+          "description": "Optional entrypoint to be used instead of the build step image's default\nIf unset, the image's default will be used.",
+          "type": "string"
+        },
         "name": {
           "description": "The name of the container image that will run this particular build step.\n\nIf the image is already available in the host's Docker daemon's cache, it\nwill be run directly. If not, the host will attempt to pull the image\nfirst, using the builder service account's credentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n(https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon\nwill also have cached many of the layers for some popular images, like\n\"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to\nuse them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
           "type": "string"
@@ -919,7 +923,7 @@
       "id": "ListBuildsResponse"
     }
   },
-  "revision": "20170105",
+  "revision": "20170109",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

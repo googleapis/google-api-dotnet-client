@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170105 (735)
+ *      <tr><th>API Rev<td>20170109 (739)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1538,6 +1538,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; } 
+
+        /// <summary>Optional entrypoint to be used instead of the build step image's default If unset, the image's
+        /// default will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
+        public virtual string Entrypoint { get; set; } 
 
         /// <summary>A list of environment variable definitions to be used when running a step.
         ///

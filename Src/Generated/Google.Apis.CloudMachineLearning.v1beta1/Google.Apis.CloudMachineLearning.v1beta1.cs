@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20161218 (717)
+ *      <tr><th>API Rev<td>20170105 (735)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2480,6 +2480,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
         public virtual System.Nullable<long> ErrorCount { get; set; } 
 
+        /// <summary>Node hours used by the batch prediction job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeHours")]
+        public virtual System.Nullable<double> NodeHours { get; set; } 
+
         /// <summary>The output Google Cloud Storage location provided at the job creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputPath")]
         public virtual string OutputPath { get; set; } 
@@ -2596,10 +2600,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents results of a training job.</summary>
+    /// <summary>Represents results of a training job. Output only.</summary>
     public class GoogleCloudMlV1beta1TrainingOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of hyperparameter tuning trials that completed successfully.</summary>
+        /// <summary>The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter
+        /// tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedTrialCount")]
         public virtual System.Nullable<long> CompletedTrialCount { get; set; } 
 
@@ -2607,7 +2612,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumedMLUnits")]
         public virtual System.Nullable<double> ConsumedMLUnits { get; set; } 
 
-        /// <summary>Results for individual Hyperparameter trials.</summary>
+        /// <summary>Whether this job is a hyperparameter tuning job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isHyperparameterTuningJob")]
+        public virtual System.Nullable<bool> IsHyperparameterTuningJob { get; set; } 
+
+        /// <summary>Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1beta1HyperparameterOutput> Trials { get; set; } 
 
@@ -2657,6 +2666,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// The version name must be unique within the model it is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
+        public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

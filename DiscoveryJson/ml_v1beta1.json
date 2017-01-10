@@ -832,7 +832,7 @@
       "id": "GoogleCloudMlV1beta1__CancelJobRequest"
     },
     "GoogleCloudMlV1beta1__TrainingOutput": {
-      "description": "Represents results of a training job.",
+      "description": "Represents results of a training job. Output only.",
       "type": "object",
       "properties": {
         "consumedMLUnits": {
@@ -841,12 +841,16 @@
           "format": "double"
         },
         "completedTrialCount": {
-          "description": "The number of hyperparameter tuning trials that completed successfully.",
+          "description": "The number of hyperparameter tuning trials that completed successfully.\nOnly set for hyperparameter tuning jobs.",
           "type": "string",
           "format": "int64"
         },
+        "isHyperparameterTuningJob": {
+          "description": "Whether this job is a hyperparameter tuning job.",
+          "type": "boolean"
+        },
         "trials": {
-          "description": "Results for individual Hyperparameter trials.",
+          "description": "Results for individual Hyperparameter trials.\nOnly set for hyperparameter tuning jobs.",
           "type": "array",
           "items": {
             "$ref": "GoogleCloudMlV1beta1__HyperparameterOutput"
@@ -881,6 +885,11 @@
           "description": "The number of data instances which resulted in errors.",
           "type": "string",
           "format": "int64"
+        },
+        "nodeHours": {
+          "description": "Node hours used by the batch prediction job.",
+          "type": "number",
+          "format": "double"
         },
         "predictionCount": {
           "description": "The number of generated predictions.",
@@ -1096,6 +1105,10 @@
           "description": "Required. The Google Cloud Storage location of the trained model used to\ncreate the version. See the\n[overview of model deployment](/ml/docs/concepts/deployment-overview) for\nmore informaiton.\n\nWhen passing Version to\n[projects.models.versions.create](/ml/reference/rest/v1beta1/projects.models.versions/create)\nthe model service uses the specified location as the source of the model.\nOnce deployed, the model version is hosted by the prediction service, so\nthis location is useful only as a historical record.",
           "type": "string"
         },
+        "onlinePredictionLogging": {
+          "description": "Optional. If true, enables StackDriver Logging for online prediction.\nDefault is false.",
+          "type": "boolean"
+        },
         "createTime": {
           "description": "Output only. The time the version was created.",
           "type": "string",
@@ -1275,7 +1288,7 @@
       "id": "GoogleCloudMlV1beta1__Model"
     }
   },
-  "revision": "20161218",
+  "revision": "20170105",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

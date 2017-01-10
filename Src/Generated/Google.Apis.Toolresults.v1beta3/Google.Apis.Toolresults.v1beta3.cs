@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170104 (734)
+ *      <tr><th>API Rev<td>20170108 (738)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -2295,6 +2295,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can
     /// be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
     ///
+    /// # Examples
+    ///
     /// Example 1: Compute Duration from two Timestamps in pseudo code.
     ///
     /// Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
@@ -2314,7 +2316,15 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// Example 3: Compute Duration from datetime.timedelta in Python.
     ///
-    /// td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)</summary>
+    /// td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td)
+    ///
+    /// # JSON Mapping
+    ///
+    /// In JSON format, the Duration type is encoded as a string rather than an object, where the string ends in the
+    /// suffix "s" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed as
+    /// fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "3s", while 3
+    /// seconds and 1 nanosecond should be expressed in JSON format as "3.000000001s", and 3 seconds and 1 microsecond
+    /// should be expressed in JSON format as "3.000001s".</summary>
     public class Duration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one
