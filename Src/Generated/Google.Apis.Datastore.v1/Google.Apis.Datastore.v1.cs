@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161203 (702)
+ *      <tr><th>API Rev<td>20170103 (733)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -1044,7 +1044,10 @@ namespace Google.Apis.Datastore.v1.Data
     /// NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) ==
     /// NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) ==
     /// NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) ==
-    /// NormalizeLatLng(-270.0, 10.0)</summary>
+    /// NormalizeLatLng(-270.0, 10.0)
+    ///
+    /// The code in logs/storage/validator/logs_validator_traits.cc treats this type as if it were annotated as
+    /// ST_LOCATION.</summary>
     public class LatLng : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>

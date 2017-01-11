@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161212 (711)
+ *      <tr><th>API Rev<td>20170109 (739)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -351,7 +351,7 @@ namespace Google.Apis.ServiceControl.v1
         /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
         /// errors, the client can rely on the cached results for longer time.
         ///
-        /// NOTE: the `CheckRequest` has the size limit of 1MB.
+        /// NOTE: the `CheckRequest` has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -371,7 +371,7 @@ namespace Google.Apis.ServiceControl.v1
         /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
         /// errors, the client can rely on the cached results for longer time.
         ///
-        /// NOTE: the `CheckRequest` has the size limit of 1MB.
+        /// NOTE: the `CheckRequest` has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>

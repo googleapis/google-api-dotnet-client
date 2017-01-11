@@ -3324,15 +3324,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>The resource name of the metric descriptor. Depending on the implementation, the name typically
         /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
         /// metric's URL-encoded type, which also appears in the `type` field of this descriptor. For example, following
-        /// is the resource name of a custom metric within the GCP project 123456789:
+        /// is the resource name of a custom metric within the GCP project `my-project-id`:
         ///
-        /// "projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"</summary>
+        /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded.  All user-defined
-        /// metric types have the DNS name `custom.googleapis.com`.  Metric types should use a natural hierarchical
-        /// grouping. For example:
+        /// custom metric types have the DNS name `custom.googleapis.com`.  Metric types should use a natural
+        /// hierarchical grouping. For example:
         ///
         /// "custom.googleapis.com/invoice/paid/amount"
         /// "appengine.googleapis.com/http/server/response_latencies"</summary>

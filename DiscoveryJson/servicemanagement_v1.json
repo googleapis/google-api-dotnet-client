@@ -1647,11 +1647,11 @@
           "type": "string"
         },
         "name": {
-          "description": "The resource name of the metric descriptor. Depending on the\nimplementation, the name typically includes: (1) the parent resource name\nthat defines the scope of the metric type or of its data; and (2) the\nmetric's URL-encoded type, which also appears in the `type` field of this\ndescriptor. For example, following is the resource name of a custom\nmetric within the GCP project 123456789:\n\n    \"projects/123456789/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount\"",
+          "description": "The resource name of the metric descriptor. Depending on the\nimplementation, the name typically includes: (1) the parent resource name\nthat defines the scope of the metric type or of its data; and (2) the\nmetric's URL-encoded type, which also appears in the `type` field of this\ndescriptor. For example, following is the resource name of a custom\nmetric within the GCP project `my-project-id`:\n\n    \"projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount\"",
           "type": "string"
         },
         "type": {
-          "description": "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined metric types have the DNS name\n`custom.googleapis.com`.  Metric types should use a natural hierarchical\ngrouping. For example:\n\n    \"custom.googleapis.com/invoice/paid/amount\"\n    \"appengine.googleapis.com/http/server/response_latencies\"",
+          "description": "The metric type, including its DNS name prefix. The type is not\nURL-encoded.  All user-defined custom metric types have the DNS name\n`custom.googleapis.com`.  Metric types should use a natural hierarchical\ngrouping. For example:\n\n    \"custom.googleapis.com/invoice/paid/amount\"\n    \"appengine.googleapis.com/http/server/response_latencies\"",
           "type": "string"
         }
       },
