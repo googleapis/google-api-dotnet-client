@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170109 (739)
+ *      <tr><th>API Rev<td>20170106 (736)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>

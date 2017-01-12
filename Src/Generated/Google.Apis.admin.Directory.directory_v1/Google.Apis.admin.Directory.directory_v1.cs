@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20161124 (693)
+ *      <tr><th>API Rev<td>20161214 (713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -10421,6 +10421,14 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Boolean indicating if the user is delegated admin (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDelegatedAdmin")]
         public virtual System.Nullable<bool> IsDelegatedAdmin { get; set; } 
+
+        /// <summary>Is 2-step verification enforced (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isEnforcedIn2Sv")]
+        public virtual System.Nullable<bool> IsEnforcedIn2Sv { get; set; } 
+
+        /// <summary>Is enrolled in 2-step verification (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isEnrolledIn2Sv")]
+        public virtual System.Nullable<bool> IsEnrolledIn2Sv { get; set; } 
 
         /// <summary>Is mailbox setup (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMailboxSetup")]

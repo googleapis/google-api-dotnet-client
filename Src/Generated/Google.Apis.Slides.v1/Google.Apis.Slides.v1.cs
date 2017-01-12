@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161216 (715)
+ *      <tr><th>API Rev<td>20170110 (740)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -973,7 +973,7 @@ namespace Google.Apis.Slides.v1.Data
 
     /// <summary>Creates an embedded Google Sheets chart.
     ///
-    /// NOTE: Chart creation requires  at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive
+    /// NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive
     /// OAuth scopes.</summary>
     public class CreateSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2294,7 +2294,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateObject")]
         public virtual DuplicateObjectResponse DuplicateObject { get; set; } 
 
-        /// <summary>The result of replacing all shapes containing the specified text with an image.</summary>
+        /// <summary>The result of replacing all shapes matching some criteria with an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithImage")]
         public virtual ReplaceAllShapesWithImageResponse ReplaceAllShapesWithImage { get; set; } 
 

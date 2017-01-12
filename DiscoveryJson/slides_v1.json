@@ -773,7 +773,7 @@
           "$ref": "CreateShapeResponse"
         },
         "replaceAllShapesWithImage": {
-          "description": "The result of replacing all shapes containing the specified text with\nan image.",
+          "description": "The result of replacing all shapes matching some criteria with an\nimage.",
           "$ref": "ReplaceAllShapesWithImageResponse"
         },
         "createVideo": {
@@ -1196,7 +1196,7 @@
       "id": "Placeholder"
     },
     "CreateSheetsChartRequest": {
-      "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires  at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
+      "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
       "type": "object",
       "properties": {
         "chartId": {
@@ -3445,7 +3445,7 @@
       "id": "Bullet"
     }
   },
-  "revision": "20161216",
+  "revision": "20170110",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
