@@ -966,6 +966,10 @@
             "type": "string"
           }
         },
+        "runtimeVersion": {
+          "description": "Optional. The Google Cloud ML runtime version to use for this batch\nprediction. If not set, Google Cloud ML will choose a version.",
+          "type": "string"
+        },
         "dataFormat": {
           "description": "Required. The format of the input data files.",
           "enum": [
@@ -1049,6 +1053,10 @@
             "type": "string"
           }
         },
+        "runtimeVersion": {
+          "description": "Optional. The Google Cloud ML runtime version to use for training.  If not\nset, Google Cloud ML will choose the latest stable version.",
+          "type": "string"
+        },
         "hyperparameters": {
           "description": "Optional. The set of Hyperparameters to tune.",
           "$ref": "GoogleCloudMlV1beta1__HyperparameterSpec"
@@ -1099,6 +1107,10 @@
       "properties": {
         "description": {
           "description": "Optional. The description specified for the version when it was created.",
+          "type": "string"
+        },
+        "runtimeVersion": {
+          "description": "Optional. The Google Cloud ML runtime version to use for this deployment.\nIf not set, Google Cloud ML will choose a version.",
           "type": "string"
         },
         "deploymentUri": {
@@ -1276,6 +1288,13 @@
           "description": "Optional. The description specified for the model when it was created.",
           "type": "string"
         },
+        "regions": {
+          "description": "Optional. The list of regions where the model is going to be deployed.\nCurrently only one region per model is supported.\nDefaults to 'us-central1' if nothing is set.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "defaultVersion": {
           "description": "Output only. The default version of the model. This version will be used to\nhandle prediction requests that do not specify a version.\n\nYou can change the default version by calling\n[projects.methods.versions.setDefault](/ml/reference/rest/v1beta1/projects.models.versions/setDefault).",
           "$ref": "GoogleCloudMlV1beta1__Version"
@@ -1288,7 +1307,7 @@
       "id": "GoogleCloudMlV1beta1__Model"
     }
   },
-  "revision": "20170105",
+  "revision": "20170111",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

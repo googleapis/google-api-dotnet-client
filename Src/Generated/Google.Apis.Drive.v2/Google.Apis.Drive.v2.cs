@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161212 (711)
+ *      <tr><th>API Rev<td>20170110 (740)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -7151,7 +7151,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of apps.</summary>
+        /// <summary>The list of apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<App> Items { get; set; } 
 
@@ -7221,7 +7221,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of changes.</summary>
+        /// <summary>The list of changes. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Change> Items { get; set; } 
 
@@ -7237,7 +7238,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>The page token for the next page of changes.</summary>
+        /// <summary>The page token for the next page of changes. This will be absent if the end of the changes list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -7305,7 +7308,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of children.</summary>
+        /// <summary>The list of children. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<ChildReference> Items { get; set; } 
 
@@ -7317,7 +7321,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>The page token for the next page of children.</summary>
+        /// <summary>The page token for the next page of children. This will be absent if the end of the children list
+        /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -7468,7 +7474,8 @@ namespace Google.Apis.Drive.v2.Data
     /// <summary>A list of comments on a file in Google Drive.</summary>
     public class CommentList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of comments.</summary>
+        /// <summary>The list of comments. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Comment> Items { get; set; } 
 
@@ -7480,7 +7487,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>The token to use to request the next page of results.</summary>
+        /// <summary>The page token for the next page of comments. This will be absent if the end of the comments list
+        /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -7571,7 +7580,8 @@ namespace Google.Apis.Drive.v2.Data
     /// <summary>A list of replies to a comment on a file in Google Drive.</summary>
     public class CommentReplyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of reply.</summary>
+        /// <summary>The list of replies. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<CommentReply> Items { get; set; } 
 
@@ -7583,7 +7593,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>The token to use to request the next page of results.</summary>
+        /// <summary>The page token for the next page of replies. This will be absent if the end of the replies list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -7911,8 +7923,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; } 
 
-        /// <summary>The thumbnail version for use in client-contructable thumbnail URLs or thumbnail cache
-        /// invalidation.</summary>
+        /// <summary>The thumbnail version for use in thumbnail cache invalidation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailVersion")]
         public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
 
@@ -8138,7 +8149,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of files.</summary>
+        /// <summary>The list of files. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<File> Items { get; set; } 
 
@@ -8150,7 +8162,9 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextLink")]
         public virtual string NextLink { get; set; } 
 
-        /// <summary>The page token for the next page of files.</summary>
+        /// <summary>The page token for the next page of files. This will be absent if the end of the files list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -8186,7 +8200,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of parents.</summary>
+        /// <summary>The list of parents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<ParentReference> Items { get; set; } 
 
@@ -8334,7 +8348,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of permissions.</summary>
+        /// <summary>The list of permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Permission> Items { get; set; } 
 
@@ -8510,7 +8524,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The actual list of revisions.</summary>
+        /// <summary>The list of revisions. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Revision> Items { get; set; } 
 

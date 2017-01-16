@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170105 (735)
+ *      <tr><th>API Rev<td>20170111 (741)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2263,6 +2263,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Optional. The list of regions where the model is going to be deployed. Currently only one region
+        /// per model is supported. Defaults to 'us-central1' if nothing is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2462,6 +2467,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
+        /// <summary>Optional. The Google Cloud ML runtime version to use for this batch prediction. If not set, Google
+        /// Cloud ML will choose a version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; } 
+
         /// <summary>Use this field if you want to specify a version of the model to use. The string is formatted the
         /// same way as `model_version`, with the addition of the version information:
         ///
@@ -2574,6 +2584,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
+        /// <summary>Optional. The Google Cloud ML runtime version to use for training.  If not set, Google Cloud ML
+        /// will choose the latest stable version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; } 
+
         /// <summary>Required. Specifies the machine types, the number of replicas for workers and parameter
         /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
@@ -2670,6 +2685,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
         public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
+
+        /// <summary>Optional. The Google Cloud ML runtime version to use for this deployment. If not set, Google Cloud
+        /// ML will choose a version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

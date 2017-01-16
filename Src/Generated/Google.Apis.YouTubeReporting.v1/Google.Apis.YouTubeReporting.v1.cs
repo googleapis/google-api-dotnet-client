@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160719 (565)
+ *      <tr><th>API Rev<td>20170111 (741)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -142,7 +142,18 @@ namespace Google.Apis.YouTubeReporting.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -151,7 +162,21 @@ namespace Google.Apis.YouTubeReporting.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -480,30 +505,30 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OnBehalfOfContentOwner { get; set; }
 
+                /// <summary>If set, only reports whose start time is greater than or equal the specified date/time are
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTimeAtOrAfter { get; set; }
+
+                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTimeBefore { get; set; }
+
                 /// <summary>Requested page size. Server may return fewer report types than requested. If unspecified,
                 /// server will pick an appropriate default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>If set, only reports created after the specified date/time are returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object CreatedAfter { get; set; }
 
                 /// <summary>A token identifying a page of results the server should return. Typically, this is the
                 /// value of ListReportsResponse.next_page_token returned in response to the previous call to the
                 /// `ListReports` method.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>If set, only reports created after the specified date/time are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CreatedAfter { get; set; }
-
-                /// <summary>If set, only reports whose start time is greater than or equal the specified date/time are
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string StartTimeAtOrAfter { get; set; }
-
-                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string StartTimeBefore { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -548,18 +573,27 @@ namespace Google.Apis.YouTubeReporting.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "startTimeAtOrAfter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "startTimeAtOrAfter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "startTimeBefore", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "startTimeBefore",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -575,18 +609,9 @@ namespace Google.Apis.YouTubeReporting.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTimeAtOrAfter", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTimeAtOrAfter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startTimeBefore", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTimeBefore",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -829,26 +854,26 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
-            /// acting for himself (his own channel).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OnBehalfOfContentOwner { get; set; }
-
             /// <summary>Requested page size. Server may return fewer jobs than requested. If unspecified, server will
             /// pick an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>If set to true, also system-managed jobs will be returned; otherwise only user-created jobs
+            /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
+
+            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
+            /// acting for himself (his own channel).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
 
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs`
             /// method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>If set to true, also system-managed jobs will be returned; otherwise only user-created jobs
-            /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -875,15 +900,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -893,18 +909,27 @@ namespace Google.Apis.YouTubeReporting.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "includeSystemManaged",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeSystemManaged",
+                        Name = "onBehalfOfContentOwner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -933,7 +958,7 @@ namespace Google.Apis.YouTubeReporting.v1
 
         /// <summary>Method for media download. Download is supported on the URI
         /// `/v1/media/{+name}?alt=media`.</summary>
-        /// <param name="resourceName">Name of the media that is being downloaded. See ReadRequest.resource_name.</param>
+        /// <param name="resourceName">Name of the media that is being downloaded.  See ReadRequest.resource_name.</param>
         public virtual DownloadRequest Download(string resourceName)
         {
             return new DownloadRequest(service, resourceName);
@@ -953,7 +978,7 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>Name of the media that is being downloaded. See ReadRequest.resource_name.</summary>
+            /// <summary>Name of the media that is being downloaded.  See ReadRequest.resource_name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -988,7 +1013,7 @@ namespace Google.Apis.YouTubeReporting.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^.*$",
+                        Pattern = @"^.+$",
                     });
             }
 
@@ -1050,26 +1075,26 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
-            /// acting for himself (his own channel).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OnBehalfOfContentOwner { get; set; }
-
             /// <summary>Requested page size. Server may return fewer report types than requested. If unspecified,
             /// server will pick an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>If set to true, also system-managed report types will be returned; otherwise only the report
+            /// types that can be used to create new reporting jobs will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
+
+            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
+            /// acting for himself (his own channel).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
 
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the
             /// `ListReportTypes` method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>If set to true, also system-managed report types will be returned; otherwise only the report
-            /// types that can be used to create new reporting jobs will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1096,15 +1121,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1114,18 +1130,27 @@ namespace Google.Apis.YouTubeReporting.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "includeSystemManaged",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeSystemManaged",
+                        Name = "onBehalfOfContentOwner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1141,9 +1166,11 @@ namespace Google.Apis.YouTubeReporting.v1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1155,12 +1182,12 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The creation date/time of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>The date/time when this job will expire/expired. After a job expired, no new reports are
         /// generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTime { get; set; } 
+        public virtual object ExpireTime { get; set; } 
 
         /// <summary>The server-generated ID of the job (max. 40 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -1246,7 +1273,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The date/time when this report was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>The URL from which the report can be downloaded (max. 1000 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
@@ -1254,7 +1281,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
 
         /// <summary>The end of the time period that the report instance covers. The value is exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
         /// <summary>The server-generated ID of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -1262,7 +1289,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
 
         /// <summary>The date/time when the job this report belongs to will expire/expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobExpireTime")]
-        public virtual string JobExpireTime { get; set; } 
+        public virtual object JobExpireTime { get; set; } 
 
         /// <summary>The ID of the job that created this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
@@ -1270,7 +1297,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
 
         /// <summary>The start of the time period that the report instance covers. The value is inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1281,7 +1308,7 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     {
         /// <summary>The date/time when this report type was/will be deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecateTime")]
-        public virtual string DeprecateTime { get; set; } 
+        public virtual object DeprecateTime { get; set; } 
 
         /// <summary>The ID of the report type (max. 100 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

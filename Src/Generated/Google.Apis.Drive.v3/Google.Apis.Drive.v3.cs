@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161212 (711)
+ *      <tr><th>API Rev<td>20170110 (740)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3876,7 +3876,8 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of changes for a user.</summary>
     public class ChangeList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The page of changes.</summary>
+        /// <summary>The list of changes. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
         public virtual System.Collections.Generic.IList<Change> Changes { get; set; } 
 
@@ -3889,8 +3890,9 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newStartPageToken")]
         public virtual string NewStartPageToken { get; set; } 
 
-        /// <summary>The page token for the next page of changes. This will be absent if the end of the current changes
-        /// list has been reached.</summary>
+        /// <summary>The page token for the next page of changes. This will be absent if the end of the changes list has
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4053,7 +4055,8 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of comments on a file.</summary>
     public class CommentList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The page of comments.</summary>
+        /// <summary>The list of comments. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
         public virtual System.Collections.Generic.IList<Comment> Comments { get; set; } 
 
@@ -4062,7 +4065,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The page token for the next page of comments. This will be absent if the end of the comments list
-        /// has been reached.</summary>
+        /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4302,8 +4306,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; } 
 
-        /// <summary>The thumbnail version for use in client-contructable thumbnail URLs or thumbnail cache
-        /// invalidation.</summary>
+        /// <summary>The thumbnail version for use in thumbnail cache invalidation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailVersion")]
         public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
 
@@ -4550,7 +4553,8 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>A list of files.</summary>
     public class FileList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The page of files.</summary>
+        /// <summary>The list of files. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; } 
 
@@ -4559,7 +4563,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The page token for the next page of files. This will be absent if the end of the files list has
-        /// been reached.</summary>
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4658,7 +4663,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The full list of permissions.</summary>
+        /// <summary>The list of permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
 
@@ -4747,11 +4752,13 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The page token for the next page of replies. This will be absent if the end of the replies list has
-        /// been reached.</summary>
+        /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The page of replies.</summary>
+        /// <summary>The list of replies. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<Reply> Replies { get; set; } 
 
@@ -4843,11 +4850,13 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>The page token for the next page of revisions. This will be absent if the end of the revisions list
-        /// has been reached.</summary>
+        /// has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
+        /// restarted from the first page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The full list of revisions.</summary>
+        /// <summary>The list of revisions. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
         public virtual System.Collections.Generic.IList<Revision> Revisions { get; set; } 
 

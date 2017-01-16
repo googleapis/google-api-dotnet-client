@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161212 (711)
+ *      <tr><th>API Rev<td>20170105 (735)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6347,9 +6347,9 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
 
-                /// <summary>The end time of list window, in milliseconds since the epoch (Jan 1, 1970). If not
-                /// specified, default to current time, which is also the latest accepted end time. This parameter will
-                /// be ignored if pagination token is set.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the newest voided in-app product purchase
+                /// that you want to see in the response. The value of this parameter cannot be greater than the current
+                /// time and is ignored if a pagination token is set. Default value is current time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> EndTime { get; set; }
 
@@ -6361,9 +6361,9 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartIndex { get; set; }
 
-                /// <summary>The start time of list window, in milliseconds since the epoch (Jan 1, 1970). If not
-                /// specified, default to current time - 30 days, which is also the earlies accepted start time. This
-                /// parameter will be ignored if pagination token is set.</summary>
+                /// <summary>The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase
+                /// that you want to see in the response. The value of this parameter cannot be older than 30 days and
+                /// is ignored if a pagination token is set. Default value is current time minus 30 days.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartTime { get; set; }
 
@@ -7798,23 +7798,25 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A VoidedPurchase resource indicates the purchase was either cancelled/refunded/charged-back.</summary>
+    /// <summary>A VoidedPurchase resource indicates a purchase that was either cancelled/refunded/charged-
+    /// back.</summary>
     public class VoidedPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This kind represents a voided purchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The time the purchase was made, in milliseconds since the epoch (Jan 1, 1970).</summary>
+        /// <summary>The time at which the purchase was made, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
 
-        /// <summary>The token that was generated when a purchase was made and uniquely identifies a purchase.</summary>
+        /// <summary>The token that was generated when a purchase was made. This uniquely identifies a
+        /// purchase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; } 
 
-        /// <summary>The time when the purchase was cancelled/refunded/chargeback, in milliseconds since the epoch (Jan
-        /// 1, 1970).</summary>
+        /// <summary>The time at which the purchase was cancelled/refunded/charged-back, in milliseconds since the epoch
+        /// (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedTimeMillis")]
         public virtual System.Nullable<long> VoidedTimeMillis { get; set; } 
 
