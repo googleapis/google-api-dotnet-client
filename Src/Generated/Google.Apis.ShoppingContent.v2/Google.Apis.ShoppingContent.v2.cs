@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161205 (704)
+ *      <tr><th>API Rev<td>20170111 (741)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -792,8 +792,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client accounts. This
-        /// method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -803,8 +804,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client accounts. This
-        /// method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -891,8 +893,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client
-        /// accounts.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -902,8 +905,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for multi-client
-        /// accounts.</summary>
+        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
+        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
+        /// multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -5767,9 +5771,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
         public virtual System.Nullable<bool> AdultContent { get; set; } 
 
-        /// <summary>List of linked AdWords accounts, active or pending approval. To create a new link request, add a
-        /// new link with status active to the list. It will remain is state pending until approved or rejected in the
-        /// AdWords interface. To delete an active link or to cancel a link request, remove it from the list.</summary>
+        /// <summary>List of linked AdWords accounts that are active or pending approval. To create a new link request,
+        /// add a new link with status active to the list. It will remain in a pending state until approved or rejected
+        /// either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel a link
+        /// request, remove it from the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adwordsLinks")]
         public virtual System.Collections.Generic.IList<AccountAdwordsLink> AdwordsLinks { get; set; } 
 
