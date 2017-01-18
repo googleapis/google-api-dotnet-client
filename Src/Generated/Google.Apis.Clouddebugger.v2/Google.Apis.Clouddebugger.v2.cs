@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20160810 (587)
+ *      <tr><th>API Rev<td>20170111 (741)
  *      <tr><th>API Docs
  *          <td><a href='http://cloud.google.com/debugger'>
  *              http://cloud.google.com/debugger</a>
@@ -133,7 +133,18 @@ namespace Google.Apis.CloudDebugger.v2
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -142,7 +153,21 @@ namespace Google.Apis.CloudDebugger.v2
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -377,26 +402,34 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>Returns the list of all active breakpoints for the debuggee. The breakpoint specification
-                /// (location, condition, and expression fields) is semantically immutable, although the field values
-                /// may change. For example, an agent may update the location line number to reflect the actual line
-                /// where the breakpoint was set, but this doesn't change the breakpoint semantics. This means that an
-                /// agent does not need to check if a breakpoint has changed when it encounters the same breakpoint on a
-                /// successive call. Moreover, an agent should remember the breakpoints that are completed until the
-                /// controller removes them from the active list to avoid setting those breakpoints again.</summary>
+                /// <summary>Returns the list of all active breakpoints for the debuggee.
+                ///
+                /// The breakpoint specification (location, condition, and expression fields) is semantically immutable,
+                /// although the field values may change. For example, an agent may update the location line number to
+                /// reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint
+                /// semantics.
+                ///
+                /// This means that an agent does not need to check if a breakpoint has changed when it encounters the
+                /// same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are
+                /// completed until the controller removes them from the active list to avoid setting those breakpoints
+                /// again.</summary>
                 /// <param name="debuggeeId">Identifies the debuggee.</param>
                 public virtual ListRequest List(string debuggeeId)
                 {
                     return new ListRequest(service, debuggeeId);
                 }
 
-                /// <summary>Returns the list of all active breakpoints for the debuggee. The breakpoint specification
-                /// (location, condition, and expression fields) is semantically immutable, although the field values
-                /// may change. For example, an agent may update the location line number to reflect the actual line
-                /// where the breakpoint was set, but this doesn't change the breakpoint semantics. This means that an
-                /// agent does not need to check if a breakpoint has changed when it encounters the same breakpoint on a
-                /// successive call. Moreover, an agent should remember the breakpoints that are completed until the
-                /// controller removes them from the active list to avoid setting those breakpoints again.</summary>
+                /// <summary>Returns the list of all active breakpoints for the debuggee.
+                ///
+                /// The breakpoint specification (location, condition, and expression fields) is semantically immutable,
+                /// although the field values may change. For example, an agent may update the location line number to
+                /// reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint
+                /// semantics.
+                ///
+                /// This means that an agent does not need to check if a breakpoint has changed when it encounters the
+                /// same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are
+                /// completed until the controller removes them from the active list to avoid setting those breakpoints
+                /// again.</summary>
                 public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListActiveBreakpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -412,18 +445,19 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
+                    /// response field to `true` when the server-selected timeout has expired (recommended).
+                    ///
+                    /// If set to `false`, returns `google.rpc.Code.ABORTED` status when the server-selected timeout has
+                    /// expired (deprecated).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
+
                     /// <summary>A wait token that, if specified, blocks the method call until the list of active
-                    /// breakpoints has changed, or a server selected timeout has expired. The value should be set from
+                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
                     /// the last returned response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
-
-                    /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
-                    /// response field to `true` when the server-selected timeout has expired (recommended). If set to
-                    /// `false`, returns `google.rpc.Code.ABORTED` status when the server-selected timeout has expired
-                    /// (deprecated).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -459,18 +493,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "successOnTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "successOnTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
+                            "waitToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "successOnTimeout",
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -481,10 +515,12 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
                 /// <summary>Updates the breakpoint state or mutable fields. The entire Breakpoint message must be sent
-                /// back to the controller service. Updates to active breakpoint fields are only allowed if the new
-                /// value does not change the breakpoint specification. Updates to the `location`, `condition` and
-                /// `expression` fields should not alter the breakpoint semantics. These may only make changes such as
-                /// canonicalizing a value or snapping the location to the correct line of code.</summary>
+                /// back to the controller service.
+                ///
+                /// Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint
+                /// specification. Updates to the `location`, `condition` and `expression` fields should not alter the
+                /// breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the
+                /// location to the correct line of code.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="debuggeeId">Identifies the debuggee being debugged.</param>
                 /// <param name="id">Breakpoint
@@ -495,10 +531,12 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
                 /// <summary>Updates the breakpoint state or mutable fields. The entire Breakpoint message must be sent
-                /// back to the controller service. Updates to active breakpoint fields are only allowed if the new
-                /// value does not change the breakpoint specification. Updates to the `location`, `condition` and
-                /// `expression` fields should not alter the breakpoint semantics. These may only make changes such as
-                /// canonicalizing a value or snapping the location to the correct line of code.</summary>
+                /// back to the controller service.
+                ///
+                /// Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint
+                /// specification. Updates to the `location`, `condition` and `expression` fields should not alter the
+                /// breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the
+                /// location to the correct line of code.</summary>
                 public class UpdateRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointResponse>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -573,22 +611,28 @@ namespace Google.Apis.CloudDebugger.v2
                 }
             }
 
-            /// <summary>Registers the debuggee with the controller service. All agents attached to the same application
-            /// should call this method with the same request content to get back the same stable `debuggee_id`. Agents
-            /// should call this method again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller
-            /// method. This allows the controller service to disable the agent or recover from any data loss. If the
-            /// debuggee is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
+            /// <summary>Registers the debuggee with the controller service.
+            ///
+            /// All agents attached to the same application should call this method with the same request content to get
+            /// back the same stable `debuggee_id`. Agents should call this method again whenever
+            /// `google.rpc.Code.NOT_FOUND` is returned from any controller method.
+            ///
+            /// This allows the controller service to disable the agent or recover from any data loss. If the debuggee
+            /// is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual RegisterRequest Register(Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body)
             {
                 return new RegisterRequest(service, body);
             }
 
-            /// <summary>Registers the debuggee with the controller service. All agents attached to the same application
-            /// should call this method with the same request content to get back the same stable `debuggee_id`. Agents
-            /// should call this method again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller
-            /// method. This allows the controller service to disable the agent or recover from any data loss. If the
-            /// debuggee is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
+            /// <summary>Registers the debuggee with the controller service.
+            ///
+            /// All agents attached to the same application should call this method with the same request content to get
+            /// back the same stable `debuggee_id`. Agents should call this method again whenever
+            /// `google.rpc.Code.NOT_FOUND` is returned from any controller method.
+            ///
+            /// This allows the controller service to disable the agent or recover from any data loss. If the debuggee
+            /// is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
             public class RegisterRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeResponse>
             {
                 /// <summary>Constructs a new Register request.</summary>
@@ -903,15 +947,20 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
+
                     /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
                     /// Otherwise, it includes only breakpoints set by the caller.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
-                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
-                    /// it includes only active breakpoints.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
+                    /// <summary>This field is deprecated. The following fields are always stripped out of the result:
+                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> StripResults { get; set; }
 
                     /// <summary>Only breakpoints with the specified action will pass the filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("action.value", Google.Apis.Util.RequestParameterType.Query)]
@@ -926,22 +975,17 @@ namespace Google.Apis.CloudDebugger.v2
                         LOG,
                     }
 
-                    /// <summary>When set to `true`, the response breakpoints are stripped of the results fields:
-                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> StripResults { get; set; }
+                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
+                    /// it includes only active breakpoints.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
                     /// <summary>A wait token that, if specified, blocks the call until the breakpoints list has
-                    /// changed, or a server selected timeout has expired. The value should be set from the last
+                    /// changed, or a server selected timeout has expired.  The value should be set from the last
                     /// response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
                     /// should be called again with the same `wait_token`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
-
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
-                    /// `google.com/intellij/v1`).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientVersion { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -977,27 +1021,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clientVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "includeAllUsers", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "includeAllUsers",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "action.value", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1013,18 +1048,27 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "action.value", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            "includeInactive", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clientVersion",
+                                Name = "includeInactive",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "waitToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1134,14 +1178,14 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Project { get; set; }
-
                 /// <summary>When set to `true`, the result includes all debuggees. Otherwise, the result includes only
                 /// debuggees that are active.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Project { get; set; }
 
                 /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
                 /// `google.com/intellij/v1`).</summary>
@@ -1173,18 +1217,18 @@ namespace Google.Apis.CloudDebugger.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
+                        "includeInactive", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "project",
+                            Name = "includeInactive",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeInactive", new Google.Apis.Discovery.Parameter
+                        "project", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "includeInactive",
+                            Name = "project",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1238,7 +1282,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
 
         /// <summary>Time this breakpoint was created by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>Values of evaluated expressions at breakpoint time. The evaluated expressions appear in exactly the
         /// same order they are listed in the `expressions` field. The `name` field holds the original expression text,
@@ -1255,7 +1299,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
 
         /// <summary>Time this breakpoint was finalized as seen by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalTime")]
-        public virtual string FinalTime { get; set; } 
+        public virtual object FinalTime { get; set; } 
 
         /// <summary>Breakpoint identifier, unique in the scope of the debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -1282,7 +1326,9 @@ namespace Google.Apis.CloudDebugger.v2.Data
         /// <summary>Only relevant when action is `LOG`. Defines the message to log when the breakpoint hits. The
         /// message may include parameter placeholders `$0`, `$1`, etc. These placeholders are replaced with the
         /// evaluated value of the appropriate expression. Expressions not referenced in `log_message_format` are not
-        /// logged. Example: `Message received, id = $0, count = $1` with `expressions` = `[ message.id, message.count
+        /// logged.
+        ///
+        /// Example: `Message received, id = $0, count = $1` with `expressions` = `[ message.id, message.count
         /// ]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logMessageFormat")]
         public virtual string LogMessageFormat { get; set; } 
@@ -1291,11 +1337,20 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<StackFrame> StackFrames { get; set; } 
 
-        /// <summary>Breakpoint status. The status includes an error flag and a human readable message. This field is
-        /// usually unset. The message can be either informational or an error message. Regardless, clients should
-        /// always display the text message back to the user. Error status indicates complete failure of the breakpoint.
-        /// Example (non-final state): `Still loading symbols...` Examples (final state): * `Invalid line number`
-        /// referring to location * `Field f not found in class C` referring to condition</summary>
+        /// <summary>Breakpoint status.
+        ///
+        /// The status includes an error flag and a human readable message. This field is usually unset. The message can
+        /// be either informational or an error message. Regardless, clients should always display the text message back
+        /// to the user.
+        ///
+        /// Error status indicates complete failure of the breakpoint.
+        ///
+        /// Example (non-final state): `Still loading symbols...`
+        ///
+        /// Examples (final state):
+        ///
+        /// *   `Invalid line number` referring to location *   `Field f not found in class C` referring to
+        /// condition</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual StatusMessage Status { get; set; } 
 
@@ -1303,13 +1358,15 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; } 
 
-        /// <summary>The `variable_table` exists to aid with computation, memory and network traffic optimization. It
+        /// <summary>The `variable_table` exists to aid with computation, memory and network traffic optimization.  It
         /// enables storing a variable once and reference it from multiple variables, including variables stored in the
         /// `variable_table` itself. For example, the same `this` object, which may appear at many levels of the stack,
-        /// can have all of its data stored once in this table. The stack frame variables then would hold only a
-        /// reference to it. The variable `var_table_index` field is an index into this repeated field. The stored
-        /// objects are nameless and get their name from the referencing variable. The effective variable is a merge of
-        /// the referencing variable and the referenced variable.</summary>
+        /// can have all of its data stored once in this table.  The stack frame variables then would hold only a
+        /// reference to it.
+        ///
+        /// The variable `var_table_index` field is an index into this repeated field. The stored objects are nameless
+        /// and get their name from the referencing variable. The effective variable is a merge of the referencing
+        /// variable and the referenced variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableTable")]
         public virtual System.Collections.Generic.IList<Variable> VariableTable { get; set; } 
 
@@ -1345,7 +1402,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// associated with a repo where modified files can be stored before they are committed.</summary>
     public class CloudWorkspaceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The unique name of the workspace within the repo. This is the name chosen by the client in the
+        /// <summary>The unique name of the workspace within the repo.  This is the name chosen by the client in the
         /// Source API's CreateWorkspace method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -1390,6 +1447,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         public virtual string Description { get; set; } 
 
         /// <summary>References to the locations and revisions of the source code used in the deployed application.
+        ///
         /// Contexts describing a remote repo related to the source code have a `category` label of `remote_repo`.
         /// Source snapshot source contexts have a `category` of `snapshot`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extSourceContexts")]
@@ -1419,6 +1477,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
         public virtual string Project { get; set; } 
 
         /// <summary>References to the locations and revisions of the source code used in the deployed application.
+        ///
         /// NOTE: This field is deprecated. Consumers should use `ext_source_contexts` if it is not empty. Debug agents
         /// should populate both this field and `ext_source_contexts`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContexts")]
@@ -1439,9 +1498,11 @@ namespace Google.Apis.CloudDebugger.v2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1468,9 +1529,12 @@ namespace Google.Apis.CloudDebugger.v2.Data
     public class FormatMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Format template for the message. The `format` uses placeholders `$0`, `$1`, etc. to reference
-        /// parameters. `$$` can be used to denote the `$` character. Examples: * `Failed to load '$0' which helps debug
-        /// $1 the first time it is loaded. Again, $0 is very important.` * `Please pay $$10 to use $0 instead of
-        /// $1.`</summary>
+        /// parameters. `$$` can be used to denote the `$` character.
+        ///
+        /// Examples:
+        ///
+        /// *   `Failed to load '$0' which helps debug $1 the first time it is loaded.  Again, $0 is very important.` *
+        /// `Please pay $$10 to use $0 instead of $1.`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
 
@@ -1562,8 +1626,9 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Response for listing breakpoints.</summary>
     public class ListBreakpointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of all breakpoints with complete state. The fields `id` and `location` are guaranteed to be
-        /// set on each breakpoint.</summary>
+        /// <summary>List of breakpoints matching the request. The fields `id` and `location` are guaranteed to be set
+        /// on each breakpoint. The fields: `stack_frames`, `evaluated_expressions` and `variable_table` are cleared on
+        /// each breakpoint regardless of it's status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoints")]
         public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; } 
 
@@ -1580,8 +1645,8 @@ namespace Google.Apis.CloudDebugger.v2.Data
     public class ListDebuggeesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of debuggees accessible to the calling user. Note that the `description` field is the only
-        /// human readable field that should be displayed to the user. The fields `debuggee.id` and `description` fields
-        /// are guaranteed to be set on each debuggee.</summary>
+        /// human readable field that should be displayed to the user. The fields `debuggee.id` and  `description`
+        /// fields are guaranteed to be set on each debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggees")]
         public virtual System.Collections.Generic.IList<Debuggee> Debuggees { get; set; } 
 
@@ -1761,28 +1826,71 @@ namespace Google.Apis.CloudDebugger.v2.Data
     }    
 
     /// <summary>Represents a variable or an argument possibly of a compound object type. Note how the following
-    /// variables are represented: 1) A simple variable: int x = 5 { name: "x", value: "5", type: "int" } // Captured
-    /// variable 2) A compound object: struct T { int m1; int m2; }; T x = { 3, 7 }; { // Captured variable name: "x",
-    /// type: "T", members { name: "m1", value: "3", type: "int" }, members { name: "m2", value: "7", type: "int" } } 3)
-    /// A pointer where the pointee was captured: T x = { 3, 7 }; T* p =  { // Captured variable name: "p", type: "T*",
-    /// value: "0x00500500", members { name: "m1", value: "3", type: "int" }, members { name: "m2", value: "7", type:
-    /// "int" } } 4) A pointer where the pointee was not captured: T* p = new T; { // Captured variable name: "p", type:
-    /// "T*", value: "0x00400400" status { is_error: true, description { format: "unavailable" } } } The status should
-    /// describe the reason for the missing value, such as ``, ``, ` `. Note that a null pointer should not have
-    /// members. 5) An unnamed value: int* p = new int(7); { // Captured variable name: "p", value: "0x00500500", type:
-    /// "int*", members { value: "7", type: "int" } } 6) An unnamed pointer where the pointee was not captured: int* p =
-    /// new int(7); int** pp =  { // Captured variable name: "pp", value: "0x00500500", type: "int**", members { value:
-    /// "0x00400400", type: "int*" status { is_error: true, description: { format: "unavailable" } } } } } To optimize
-    /// computation, memory and network traffic, variables that repeat in the output multiple times can be stored once
-    /// in a shared variable table and be referenced using the `var_table_index` field. The variables stored in the
-    /// shared table are nameless and are essentially a partition of the complete variable. To reconstruct the complete
-    /// variable, merge the referencing variable with the referenced variable. When using the shared variable table, the
-    /// following variables: T x = { 3, 7 }; T* p =  T& r = x; { name: "x", var_table_index: 3, type: "T" } // Captured
-    /// variables { name: "p", value "0x00500500", type="T*", var_table_index: 3 } { name: "r", type="T&",
-    /// var_table_index: 3 } { // Shared variable table entry #3: members { name: "m1", value: "3", type: "int" },
-    /// members { name: "m2", value: "7", type: "int" } } Note that the pointer address is stored with the referencing
-    /// variable and not with the referenced variable. This allows the referenced variable to be shared between pointers
-    /// and references. The type field is optional. The debugger agent may or may not support it.</summary>
+    /// variables are represented:
+    ///
+    /// 1) A simple variable:
+    ///
+    /// int x = 5
+    ///
+    /// { name: "x", value: "5", type: "int" }  // Captured variable
+    ///
+    /// 2) A compound object:
+    ///
+    /// struct T { int m1; int m2; }; T x = { 3, 7 };
+    ///
+    /// {  // Captured variable name: "x", type: "T", members { name: "m1", value: "3", type: "int" }, members { name:
+    /// "m2", value: "7", type: "int" } }
+    ///
+    /// 3) A pointer where the pointee was captured:
+    ///
+    /// T x = { 3, 7 }; T* p =
+    ///
+    /// {   // Captured variable name: "p", type: "T*", value: "0x00500500", members { name: "m1", value: "3", type:
+    /// "int" }, members { name: "m2", value: "7", type: "int" } }
+    ///
+    /// 4) A pointer where the pointee was not captured:
+    ///
+    /// T* p = new T;
+    ///
+    /// {   // Captured variable name: "p", type: "T*", value: "0x00400400" status { is_error: true, description {
+    /// format: "unavailable" } } }
+    ///
+    /// The status should describe the reason for the missing value, such as ``, ``, ``.
+    ///
+    /// Note that a null pointer should not have members.
+    ///
+    /// 5) An unnamed value:
+    ///
+    /// int* p = new int(7);
+    ///
+    /// {   // Captured variable name: "p", value: "0x00500500", type: "int*", members { value: "7", type: "int" } }
+    ///
+    /// 6) An unnamed pointer where the pointee was not captured:
+    ///
+    /// int* p = new int(7); int** pp =
+    ///
+    /// {  // Captured variable name: "pp", value: "0x00500500", type: "int**", members { value: "0x00400400", type:
+    /// "int*" status { is_error: true, description: { format: "unavailable" } } } } }
+    ///
+    /// To optimize computation, memory and network traffic, variables that repeat in the output multiple times can be
+    /// stored once in a shared variable table and be referenced using the `var_table_index` field.  The variables
+    /// stored in the shared table are nameless and are essentially a partition of the complete variable. To reconstruct
+    /// the complete variable, merge the referencing variable with the referenced variable.
+    ///
+    /// When using the shared variable table, the following variables:
+    ///
+    /// T x = { 3, 7 }; T* p = T& r = x;
+    ///
+    /// { name: "x", var_table_index: 3, type: "T" }  // Captured variables { name: "p", value "0x00500500", type="T*",
+    /// var_table_index: 3 } { name: "r", type="T&", var_table_index: 3 }
+    ///
+    /// {  // Shared variable table entry #3: members { name: "m1", value: "3", type: "int" }, members { name: "m2",
+    /// value: "7", type: "int" } }
+    ///
+    /// Note that the pointer address is stored with the referencing variable and not with the referenced variable. This
+    /// allows the referenced variable to be shared between pointers and references.
+    ///
+    /// The type field is optional. The debugger agent may or may not support it.</summary>
     public class Variable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Members contained or pointed to by the variable.</summary>
@@ -1795,12 +1903,18 @@ namespace Google.Apis.CloudDebugger.v2.Data
 
         /// <summary>Status associated with the variable. This field will usually stay unset. A status of a single
         /// variable only applies to that variable or expression. The rest of breakpoint data still remains valid.
-        /// Variables might be reported in error state even when breakpoint is not in final state. The message may refer
-        /// to variable name with `refers_to` set to `VARIABLE_NAME`. Alternatively `refers_to` will be set to
-        /// `VARIABLE_VALUE`. In either case variable value and members will be unset. Example of error message applied
-        /// to name: `Invalid expression syntax`. Example of information message applied to value: `Not captured`.
-        /// Examples of error message applied to value: * `Malformed string`, * `Field f not found in class C` * `Null
-        /// pointer dereference`</summary>
+        /// Variables might be reported in error state even when breakpoint is not in final state.
+        ///
+        /// The message may refer to variable name with `refers_to` set to `VARIABLE_NAME`. Alternatively `refers_to`
+        /// will be set to `VARIABLE_VALUE`. In either case variable value and members will be unset.
+        ///
+        /// Example of error message applied to name: `Invalid expression syntax`.
+        ///
+        /// Example of information message applied to value: `Not captured`.
+        ///
+        /// Examples of error message applied to value:
+        ///
+        /// *   `Malformed string`, *   `Field f not found in class C` *   `Null pointer dereference`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual StatusMessage Status { get; set; } 
 

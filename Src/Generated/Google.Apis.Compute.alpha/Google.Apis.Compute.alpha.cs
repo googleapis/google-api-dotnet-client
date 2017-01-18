@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20161123 (692)
+ *      <tr><th>API Rev<td>20161208 (707)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -18709,8 +18709,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is
-            /// false.</summary>
+            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is false (==
+            /// preserve localSSD data).</summary>
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
 
@@ -18820,8 +18820,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is
-            /// false.</summary>
+            /// <summary>If true, discard the contents of any attached localSSD partitions. Default value is false (==
+            /// preserve localSSD data).</summary>
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
 
@@ -20744,6 +20744,25 @@ namespace Google.Apis.Compute.alpha
             public virtual string Project { get; private set; }
 
 
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            /// [maximum: 500]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
@@ -20775,6 +20794,42 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "order_by", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order_by",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37767,14 +37822,25 @@ namespace Google.Apis.Compute.alpha
 namespace Google.Apis.Compute.alpha.Data
 {    
 
+    /// <summary>A specification of the type and number of accelerator cards attached to the instance.</summary>
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of the guest accelerator cards exposed to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<int> AcceleratorCount { get; set; } 
+
+        /// <summary>Full or partial URL of the accelerator type resource to expose to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An access configuration attached to an instance's network interface. Only one access config per
     /// instance is supported.</summary>
     public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The public DNS domain name for the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
-        public virtual string DnsName { get; set; } 
-
         /// <summary>[Output Only] Type of the resource. Always compute#accessConfig for access configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -37791,25 +37857,29 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string NatIP { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this access configuration and can only take
-        /// the following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_STANDARD. If this field is not specified, it is
+        /// the following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_SELECT. If this field is not specified, it is
         /// assumed to be CLOUD_NETWORK_PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
-        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_ptr field is
-        /// enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ptrDomainName")]
-        public virtual string PtrDomainName { get; set; } 
+        /// <summary>[Output Only] The public DNS domain name for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicDnsName")]
+        public virtual string PublicDnsName { get; set; } 
 
-        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
-        /// instance to a DNS domain name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setPtr")]
-        public virtual System.Nullable<bool> SetPtr { get; set; } 
+        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_public_ptr
+        /// field is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
+        public virtual string PublicPtrDomainName { get; set; } 
 
         /// <summary>Specifies whether a public DNS ?A? record should be created for the external IP address of this
         /// access configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setPublicDns")]
         public virtual System.Nullable<bool> SetPublicDns { get; set; } 
+
+        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
+        /// instance to a DNS domain name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setPublicPtr")]
+        public virtual System.Nullable<bool> SetPublicPtr { get; set; } 
 
         /// <summary>The type of configuration. The default and only option is ONE_TO_ONE_NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -37822,7 +37892,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource.</summary>
+        /// <summary>The static external IP address represented by this resource. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -37867,7 +37937,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Name { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this Address and can only take the
-        /// following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_STANDARD. If this field is not specified, it is
+        /// following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_SELECT. If this field is not specified, it is
         /// assumed to be CLOUD_NETWORK_PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
@@ -39931,7 +40001,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Description { get; set; } 
 
         /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
-        /// IP address in these ranges. These ranges must be expressed in CIDR format.</summary>
+        /// IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
         public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
 
@@ -39981,7 +40051,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags
         /// may be set. If both properties are set, the firewall will apply to traffic that has source IP address within
         /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply.</summary>
+        /// not need to match both properties for the firewall to apply. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
@@ -39993,6 +40063,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// connection does not need to match both properties for the firewall to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
+
+        /// <summary>A list of service accounts indicating sets of instances located in the network that may make
+        /// network connections as specified in allowed[]. targetServiceAccounts cannot be used at the same time as
+        /// targetTags or sourceTags. If neither targetServiceAccounts nor targetTags are specified, the firewall rule
+        /// applies to all instances on the specified network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAccounts")]
+        public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; } 
 
         /// <summary>A list of instance tags indicating sets of instances located in the network that may make network
         /// connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all
@@ -40105,7 +40182,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
         /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
-        /// network configured for this forwarding rule.</summary>
+        /// network configured for this forwarding rule. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -40178,7 +40255,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Network { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this load balancer and can only take the
-        /// following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_STANDARD. If this field is not specified, it is
+        /// following values: CLOUD_NETWORK_PREMIUM , CLOUD_NETWORK_SELECT. If this field is not specified, it is
         /// assumed to be CLOUD_NETWORK_PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
@@ -41256,6 +41333,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
+
         /// <summary>Full or partial URL of the host resource that the instance should be placed on, in the format:
         /// zones/zone/hosts/host.
         ///
@@ -41629,6 +41709,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
+        /// <summary>Policy valid only for regional managed instance groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadingPolicy")]
+        public virtual SpreadingPolicy SpreadingPolicy { get; set; } 
+
         /// <summary>The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The
         /// target pools automatically apply to all of the instances in the managed instance group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPools")]
@@ -41710,8 +41794,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restarting")]
         public virtual System.Nullable<int> Restarting { get; set; } 
 
-        /// <summary>[Output Only] The number of instances in the managed instance group that are being
-        /// verified.</summary>
+        /// <summary>[Output Only] The number of instances in the managed instance group that are being verified. More
+        /// details regarding verification process are covered in the documentation of
+        /// ManagedInstance.InstanceAction.VERIFYING enum field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifying")]
         public virtual System.Nullable<int> Verifying { get; set; } 
 
@@ -41764,10 +41849,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySec")]
         public virtual System.Nullable<int> InitialDelaySec { get; set; } 
 
-        /// <summary>Maximum number of instances that can be unavailable when auto-healing. The instance is considered
-        /// available if all of the following conditions are satisfied: 1. instance's status is RUNNING 2. instance's
-        /// liveness health check result was observed to be HEALTHY at least once By default, a percent value of 100% is
-        /// used.</summary>
+        /// <summary>Maximum number of instances that can be unavailable when autohealing. The instance is considered
+        /// available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's
+        /// liveness health check result was observed to be HEALTHY at least once. By default, a percent value of 100%
+        /// is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual FixedOrPercent MaxUnavailable { get; set; } 
 
@@ -41843,8 +41928,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual FixedOrPercent MaxSurge { get; set; } 
 
         /// <summary>Maximum number of instances that can be unavailable during the update process. The instance is
-        /// considered available if all of the following conditions are satisfied: 1. instance's status is RUNNING 2.
-        /// instance's liveness health check result was observed to be HEALTHY at least once By default, a fixed value
+        /// considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2.
+        /// Instance's liveness health check result was observed to be HEALTHY at least once. By default, a fixed value
         /// of 1 is used. At least one of { maxSurge, maxUnavailable } must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual FixedOrPercent MaxUnavailable { get; set; } 
@@ -43002,6 +43087,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
 
+        /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
+        /// interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
         /// <summary>[Output Only] The name of the network interface, generated by the server. For network devices,
         /// these are eth0, eth1, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -43625,6 +43715,13 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
         /// <summary>XPN resources attached to this project as their XPN host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<XpnResourceId> Resources { get; set; } 
@@ -44083,7 +44180,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The destination range of outgoing packets that this route applies to.</summary>
+        /// <summary>The destination range of outgoing packets that this route applies to. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destRange")]
         public virtual string DestRange { get; set; } 
 
@@ -44119,7 +44217,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopInstance")]
         public virtual string NextHopInstance { get; set; } 
 
-        /// <summary>The network IP address of an instance that should handle matching packets.</summary>
+        /// <summary>The network IP address of an instance that should handle matching packets. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopIp")]
         public virtual string NextHopIp { get; set; } 
 
@@ -44339,7 +44438,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interfaceName")]
         public virtual string InterfaceName { get; set; } 
 
-        /// <summary>IP address of the interface inside Google Cloud Platform.</summary>
+        /// <summary>IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
@@ -44352,7 +44451,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerAsn")]
         public virtual System.Nullable<long> PeerAsn { get; set; } 
 
-        /// <summary>IP address of the BGP interface outside Google cloud.</summary>
+        /// <summary>IP address of the BGP interface outside Google cloud. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
         public virtual string PeerIpAddress { get; set; } 
 
@@ -44827,6 +44926,26 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class SpreadingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<SpreadingPolicyZoneConfiguration> Zones { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SpreadingPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of the zone where managed instance group is spawning instances (for regional resources). Zone
+        /// has to belong to the region where managed instance group is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to
     /// the load balancer to serve secure connections from the user.</summary>
     public class SslCertificate : Google.Apis.Requests.IDirectResponseSchema
@@ -44928,7 +45047,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The range of internal addresses that are owned by this subnetwork. Provide this property when you
         /// create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping
-        /// within a network.</summary>
+        /// within a network. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -45039,7 +45158,7 @@ namespace Google.Apis.Compute.alpha.Data
     {
         /// <summary>The range of IP addresses belonging to this subnetwork secondary range. Provide this property when
         /// you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP
-        /// ranges within a network.</summary>
+        /// ranges within a network. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -46470,7 +46589,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> LocalTrafficSelector { get; set; } 
 
@@ -46482,7 +46602,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>IP address of the peer VPN gateway.</summary>
+        /// <summary>IP address of the peer VPN gateway. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIp")]
         public virtual string PeerIp { get; set; } 
 
@@ -46491,7 +46611,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Region { get; set; } 
 
         /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
 

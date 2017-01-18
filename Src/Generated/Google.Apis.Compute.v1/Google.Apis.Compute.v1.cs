@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161123 (692)
+ *      <tr><th>API Rev<td>20161208 (707)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -13325,6 +13325,105 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <summary>Initializes SetScheduling parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the service account on the instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to start.</param>
+        public virtual SetServiceAccountRequest SetServiceAccount(Google.Apis.Compute.v1.Data.InstancesSetServiceAccountRequest body, string project, string zone, string instance)
+        {
+            return new SetServiceAccountRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Sets the service account on the instance.</summary>
+        public class SetServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetServiceAccount request.</summary>
+            public SetServiceAccountRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstancesSetServiceAccountRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to start.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstancesSetServiceAccountRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setServiceAccount"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setServiceAccount"; }
+            }
+
+            /// <summary>Initializes SetServiceAccount parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -27628,7 +27727,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource.</summary>
+        /// <summary>The static external IP address represented by this resource. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -29151,7 +29250,7 @@ namespace Google.Apis.Compute.v1.Data
         /// in these ranges. These ranges must be expressed in CIDR format. One or both of sourceRanges and sourceTags
         /// may be set. If both properties are set, the firewall will apply to traffic that has source IP address within
         /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply.</summary>
+        /// not need to match both properties for the firewall to apply. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
@@ -29237,7 +29336,7 @@ namespace Google.Apis.Compute.v1.Data
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
         /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
-        /// network configured for this forwarding rule.</summary>
+        /// network configured for this forwarding rule. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -31070,6 +31169,20 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class InstancesSetServiceAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The list of scopes to be made available for this service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class InstancesStartWithEncryptionKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Array of disks associated with this instance that are protected with a customer-supplied encryption
@@ -31506,6 +31619,11 @@ namespace Google.Apis.Compute.v1.Data
         /// access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
+        /// interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>[Output Only] The name of the network interface, generated by the server. For network devices,
         /// these are eth0, eth1, etc.</summary>
@@ -32322,7 +32440,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The destination range of outgoing packets that this route applies to.</summary>
+        /// <summary>The destination range of outgoing packets that this route applies to. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destRange")]
         public virtual string DestRange { get; set; } 
 
@@ -32358,7 +32477,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopInstance")]
         public virtual string NextHopInstance { get; set; } 
 
-        /// <summary>The network IP address of an instance that should handle matching packets.</summary>
+        /// <summary>The network IP address of an instance that should handle matching packets. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopIp")]
         public virtual string NextHopIp { get; set; } 
 
@@ -32573,7 +32693,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interfaceName")]
         public virtual string InterfaceName { get; set; } 
 
-        /// <summary>IP address of the interface inside Google Cloud Platform.</summary>
+        /// <summary>IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
 
@@ -32586,7 +32706,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerAsn")]
         public virtual System.Nullable<long> PeerAsn { get; set; } 
 
-        /// <summary>IP address of the BGP interface outside Google cloud.</summary>
+        /// <summary>IP address of the BGP interface outside Google cloud. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIpAddress")]
         public virtual string PeerIpAddress { get; set; } 
 
@@ -33109,7 +33229,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The range of internal addresses that are owned by this subnetwork. Provide this property when you
         /// create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping
-        /// within a network.</summary>
+        /// within a network. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -34444,7 +34564,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> LocalTrafficSelector { get; set; } 
 
@@ -34456,7 +34577,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>IP address of the peer VPN gateway.</summary>
+        /// <summary>IP address of the peer VPN gateway. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerIp")]
         public virtual string PeerIp { get; set; } 
 
@@ -34465,7 +34586,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Region { get; set; } 
 
         /// <summary>Remote traffic selectors to use when establishing the VPN tunnel with peer VPN gateway. The value
-        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint.</summary>
+        /// should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+        /// supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteTrafficSelector")]
         public virtual System.Collections.Generic.IList<string> RemoteTrafficSelector { get; set; } 
 
