@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20170110 (740)
+ *      <tr><th>API Rev<td>20170117 (747)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -2856,6 +2856,23 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Deletes a range of cells, shifting other cells into the deleted area.</summary>
+    public class DeleteRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range of cells to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; } 
+
+        /// <summary>The dimension from which deleted cells will be replaced with. If ROWS, existing cells will be
+        /// shifted upward to replace the deleted cells. If COLUMNS, existing cells will be shifted left to replace the
+        /// deleted cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shiftDimension")]
+        public virtual string ShiftDimension { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Deletes the requested sheet.</summary>
     public class DeleteSheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3359,6 +3376,22 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The dimensions to insert.  Both the start and end indexes must be bounded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual DimensionRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Inserts cells into a range, shifting the existing cells over or down.</summary>
+    public class InsertRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range to insert new cells into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; } 
+
+        /// <summary>The dimension which will be shifted when inserting cells. If ROWS, existing cells will be shifted
+        /// down. If COLUMNS, existing cells will be shifted right.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shiftDimension")]
+        public virtual string ShiftDimension { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3878,6 +3911,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteProtectedRange")]
         public virtual DeleteProtectedRangeRequest DeleteProtectedRange { get; set; } 
 
+        /// <summary>Deletes a range of cells from a sheet, shifting the remaining cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteRange")]
+        public virtual DeleteRangeRequest DeleteRange { get; set; } 
+
         /// <summary>Deletes a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteSheet")]
         public virtual DeleteSheetRequest DeleteSheet { get; set; } 
@@ -3897,6 +3934,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Inserts new rows or columns in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertDimension")]
         public virtual InsertDimensionRequest InsertDimension { get; set; } 
+
+        /// <summary>Inserts new cells in a sheet, shifting the existing cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertRange")]
+        public virtual InsertRangeRequest InsertRange { get; set; } 
 
         /// <summary>Merges cells together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mergeCells")]

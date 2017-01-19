@@ -2246,6 +2246,56 @@
       },
       "id": "DeleteConditionalFormatRuleRequest"
     },
+    "DeleteRangeRequest": {
+      "description": "Deletes a range of cells, shifting other cells into the deleted area.",
+      "type": "object",
+      "properties": {
+        "shiftDimension": {
+          "description": "The dimension from which deleted cells will be replaced with.\nIf ROWS, existing cells will be shifted upward to\nreplace the deleted cells. If COLUMNS, existing cells\nwill be shifted left to replace the deleted cells.",
+          "enum": [
+            "DIMENSION_UNSPECIFIED",
+            "ROWS",
+            "COLUMNS"
+          ],
+          "enumDescriptions": [
+            "The default value, do not use.",
+            "Operates on the rows of a sheet.",
+            "Operates on the columns of a sheet."
+          ],
+          "type": "string"
+        },
+        "range": {
+          "description": "The range of cells to delete.",
+          "$ref": "GridRange"
+        }
+      },
+      "id": "DeleteRangeRequest"
+    },
+    "InsertRangeRequest": {
+      "description": "Inserts cells into a range, shifting the existing cells over or down.",
+      "type": "object",
+      "properties": {
+        "shiftDimension": {
+          "description": "The dimension which will be shifted when inserting cells.\nIf ROWS, existing cells will be shifted down.\nIf COLUMNS, existing cells will be shifted right.",
+          "enum": [
+            "DIMENSION_UNSPECIFIED",
+            "ROWS",
+            "COLUMNS"
+          ],
+          "enumDescriptions": [
+            "The default value, do not use.",
+            "Operates on the rows of a sheet.",
+            "Operates on the columns of a sheet."
+          ],
+          "type": "string"
+        },
+        "range": {
+          "description": "The range to insert new cells into.",
+          "$ref": "GridRange"
+        }
+      },
+      "id": "InsertRangeRequest"
+    },
     "ChartSpec": {
       "description": "The specifications of a chart.",
       "type": "object",
@@ -2942,6 +2992,25 @@
       },
       "id": "BasicChartSeries"
     },
+    "NamedRange": {
+      "description": "A named range.",
+      "type": "object",
+      "properties": {
+        "namedRangeId": {
+          "description": "The ID of the named range.",
+          "type": "string"
+        },
+        "range": {
+          "description": "The range this represents.",
+          "$ref": "GridRange"
+        },
+        "name": {
+          "description": "The name of the named range.",
+          "type": "string"
+        }
+      },
+      "id": "NamedRange"
+    },
     "RepeatCellRequest": {
       "description": "Updates all cells in the range to the values in the given Cell object.\nOnly the fields listed in the fields field are updated; others are\nunchanged.\n\nIf writing a cell with a formula, the formula's ranges will automatically\nincrement for each field in the range.\nFor example, if writing a cell with formula `=A1` into range B2:C4,\nB2 would be `=A1`, B3 would be `=A2`, B4 would be `=A3`,\nC2 would be `=B1`, C3 would be `=B2`, C4 would be `=B3`.\n\nTo keep the formula's ranges static, use the `$` indicator.\nFor example, use the formula `=$A$1` to prevent both the row and the\ncolumn from incrementing.",
       "type": "object",
@@ -3036,25 +3105,6 @@
         }
       },
       "id": "BasicChartSpec"
-    },
-    "NamedRange": {
-      "description": "A named range.",
-      "type": "object",
-      "properties": {
-        "namedRangeId": {
-          "description": "The ID of the named range.",
-          "type": "string"
-        },
-        "range": {
-          "description": "The range this represents.",
-          "$ref": "GridRange"
-        },
-        "name": {
-          "description": "The name of the named range.",
-          "type": "string"
-        }
-      },
-      "id": "NamedRange"
     },
     "UpdateEmbeddedObjectPositionRequest": {
       "description": "Update an embedded object's position (such as a moving or resizing a\nchart or image).",
@@ -3760,6 +3810,10 @@
           "description": "Unmerges merged cells.",
           "$ref": "UnmergeCellsRequest"
         },
+        "insertRange": {
+          "description": "Inserts new cells in a sheet, shifting the existing cells.",
+          "$ref": "InsertRangeRequest"
+        },
         "updateProtectedRange": {
           "description": "Updates a protected range.",
           "$ref": "UpdateProtectedRangeRequest"
@@ -3855,6 +3909,10 @@
         "updateChartSpec": {
           "description": "Updates a chart's specifications.",
           "$ref": "UpdateChartSpecRequest"
+        },
+        "deleteRange": {
+          "description": "Deletes a range of cells from a sheet, shifting the remaining cells.",
+          "$ref": "DeleteRangeRequest"
         },
         "deleteDimension": {
           "description": "Deletes rows or columns in a sheet.",
@@ -4004,7 +4062,7 @@
       "id": "DeleteConditionalFormatRuleResponse"
     }
   },
-  "revision": "20170110",
+  "revision": "20170117",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

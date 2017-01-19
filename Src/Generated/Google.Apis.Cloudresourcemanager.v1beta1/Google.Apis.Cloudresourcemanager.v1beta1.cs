@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170104 (734)
+ *      <tr><th>API Rev<td>20170116 (746)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1963,9 +1963,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// Clients should store labels in a representation such as JSON that does not depend on specific characters
         /// being disallowed.
         ///
-        /// Example: "environment" : "dev"
-        ///
-        /// Read-write.</summary>
+        /// Example: "environment" : "dev" Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -1979,9 +1977,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
         /// point.
         ///
-        /// Example: My Project
-        ///
-        /// Read-write.</summary>
+        /// Example: My Project Read-write.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1998,17 +1994,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         /// <summary>The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or
         /// hyphens. It must start with a letter. Trailing hyphens are prohibited.
         ///
-        /// Example: tokyo-rain-123
-        ///
-        /// Read-only after creation.</summary>
+        /// Example: tokyo-rain-123 Read-only after creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
         /// <summary>The number uniquely identifying the project.
         ///
-        /// Example: 415104041262
-        ///
-        /// Read-only.</summary>
+        /// Example: 415104041262 Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; } 
 

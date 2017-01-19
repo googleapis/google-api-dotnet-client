@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170111 (741)
+ *      <tr><th>API Rev<td>20170117 (747)
  *      <tr><th>API Docs
  *          <td><a href='http://cloud.google.com/debugger'>
  *              http://cloud.google.com/debugger</a>

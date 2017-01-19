@@ -2981,6 +2981,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cumulative")]
         public virtual System.Nullable<bool> Cumulative { get; set; } 
 
+        /// <summary>Distribution data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distribution")]
+        public virtual DistributionUpdate Distribution { get; set; } 
+
         /// <summary>Floating point value for Sum, Max, Min.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floatingPoint")]
         public virtual System.Nullable<double> FloatingPoint { get; set; } 
@@ -3123,6 +3127,34 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A metric value representing a distribution.</summary>
+    public class DistributionUpdate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The count of the number of elements present in the distribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual SplitInt64 Count { get; set; } 
+
+        /// <summary>The maximum value present in the distribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual SplitInt64 Max { get; set; } 
+
+        /// <summary>The minimum value present in the distribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual SplitInt64 Min { get; set; } 
+
+        /// <summary>Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect
+        /// it and use an additional int64 or a double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual SplitInt64 Sum { get; set; } 
+
+        /// <summary>Use a double since the sum of squares is likely to overflow int64.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquares")]
+        public virtual System.Nullable<double> SumOfSquares { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
