@@ -33,7 +33,7 @@ namespace Google.Apis.Upload
         /// See https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information.
         /// </summary>
         /// <remarks>
-        /// Note: If these options are used with a <see cref="ResumableUpload"/> created using <see cref="ResumableUpload.CreateFromSessionUri"/>,
+        /// Note: If these options are used with a <see cref="ResumableUpload"/> created using <see cref="ResumableUpload.CreateFromUploadUri"/>,
         /// this property will be ignored as the session has already been initiated.
         /// </remarks>
         public Action<HttpRequestMessage> ModifySessionInitiationRequest { get; set; }
@@ -50,7 +50,10 @@ namespace Google.Apis.Upload
         /// This will be used to set the <see cref="GoogleApiException.ServiceName"/> in the event of an error.
         /// </remarks>
         public string ServiceName { get; set; }
-        
-        internal ConfigurableHttpClient ConfigurableHttpClient { get { return HttpClient as ConfigurableHttpClient; } }
+
+        /// <summary>
+        /// Gets the <see cref="HttpClient"/> as a <see cref="Google.Apis.Http.ConfigurableHttpClient"/> if it is an instance of one.
+        /// </summary>
+        internal ConfigurableHttpClient ConfigurableHttpClient => HttpClient as ConfigurableHttpClient;
     }
 }

@@ -316,6 +316,43 @@ namespace Google.Apis.Tests.Apis.Upload
         }
 
         /// <summary>
+        /// An upload using a pre-established session.
+        /// </summary>
+        [Test, Combinatorial]
+        public void TestInitiatedResumableUpload(
+            [Values("", "text/plain")] string contentType)
+        {
+            using (var server = new SingleChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = new MemoryStream(uploadTestBytes);
+                var tmpUploader = new TestResumableUpload(
+                    service, "SingleChunk", "POST", content, contentType, uploadLength);
+                Uri uploadUri = null;
+                tmpUploader.UploadSessionData += sessionData => {
+                    uploadUri = sessionData.UploadUri;
+                    // Throw an exception so the upload fails.
+                    throw new Exception();
+                };
+                var progress = tmpUploader.Upload();
+                Assert.That(progress.Status, Is.EqualTo(UploadStatus.Failed));
+
+                var uploader = ResumableUpload.CreateFromUploadUri(uploadUri, content);
+                progress = uploader.Upload();
+
+                Assert.That(server.Requests.Count, Is.EqualTo(2));
+                var r0 = server.Requests[0];
+                Assert.That(r0.Headers["X-Upload-Content-Type"], Is.EqualTo(contentType));
+                Assert.That(r0.Headers["X-Upload-Content-Length"], Is.EqualTo(uploadTestBytes.Length.ToString()));
+                var r1 = server.Requests[1];
+                Assert.That(server.RemovePrefix(r1.Url.AbsolutePath), Is.EqualTo(uploadPath));
+                Assert.That(r1.Headers["Content-Range"], Is.EqualTo($"bytes 0-{uploadLength - 1}/{uploadLength}"));
+                Assert.That(progress.Status, Is.EqualTo(UploadStatus.Completed));
+                Assert.That(progress.BytesSent, Is.EqualTo(uploadTestBytes.Length));
+            }
+        }
+
+        /// <summary>
         /// Upload of an empty file.
         /// </summary>
         [Test, Combinatorial]

@@ -44,7 +44,7 @@ namespace Google.Apis.Upload
     /// <remarks>
     /// See: https://developers.google.com/drive/manage-uploads#resumable for more information on the protocol.
     /// </remarks>
-    public class ResumableUpload
+    public abstract class ResumableUpload
     {
         #region Constants
 
@@ -93,19 +93,35 @@ namespace Google.Apis.Upload
         /// </summary>
         /// <remarks>
         /// See https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information about initiating
-        /// resumable upload sessions and saving the session URI.
+        /// resumable upload sessions and saving the session URI, or upload URI.
         /// </remarks>
-        /// <param name="sessionUri">The session URI of the resumable upload session. Must not be null.</param>
+        /// <param name="uploadUri">The session URI of the resumable upload session. Must not be null.</param>
         /// <param name="contentStream">The data to be uploaded. Must not be null.</param>
         /// <param name="options">The options for the upload operation. May be null.</param>
         /// <returns>The instance which can be used to upload the specified content.</returns>
-        public static ResumableUpload CreateFromSessionUri(
-            Uri sessionUri,
+        public static ResumableUpload CreateFromUploadUri(
+            Uri uploadUri,
             Stream contentStream,
             ResumableUploadOptions options = null)
         {
-            sessionUri.ThrowIfNull(nameof(sessionUri));
-            return new ResumableUpload(contentStream, options) { UploadUri = sessionUri };
+            uploadUri.ThrowIfNull(nameof(uploadUri));
+            return new InitiatedResumableUpload(uploadUri, contentStream, options);
+        }
+
+        private sealed class InitiatedResumableUpload : ResumableUpload
+        {
+            private Uri _initiatedUploadUri;
+
+            public InitiatedResumableUpload(Uri uploadUri, Stream contentStream, ResumableUploadOptions options)
+                : base(contentStream, options)
+            {
+                _initiatedUploadUri = uploadUri;
+            }
+
+            protected override Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
+            {
+                return TaskEx.FromResult(_initiatedUploadUri);
+            }
         }
 
         #endregion // Construction
@@ -146,7 +162,7 @@ namespace Google.Apis.Upload
         private int LastMediaLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the resumable session Uri. 
+        /// Gets or sets the resumable session URI. 
         /// See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
         /// </summary>
         private Uri UploadUri { get; set; }
@@ -580,7 +596,7 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>
-        /// Initiates the resumable upload session and returns the session URI.
+        /// Initiates the resumable upload session and returns the session URI, or upload URI.
         /// See https://developers.google.com/drive/manage-uploads#start-resumable and
         /// https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information.
         /// </summary>
@@ -588,15 +604,7 @@ namespace Google.Apis.Upload
         /// <returns>
         /// The task containing the session URI to use for the resumable upload.
         /// </returns>
-        protected virtual Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
-        {
-            if (UploadUri != null)
-            {
-                return TaskEx.FromResult(UploadUri);
-            }
-
-            throw new InvalidOperationException($"Could not initiate the resumable upload session with the information in the {this.GetType().Name} instance.");
-        }
+        protected abstract Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Process a response from the final upload chunk call.

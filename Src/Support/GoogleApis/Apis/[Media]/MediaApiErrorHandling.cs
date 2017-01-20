@@ -72,7 +72,7 @@ namespace Google.Apis.Media
                 // as a cause, for example. The expectation is that the exception returned by this method (below)
                 // will be thrown by the caller.
             }
-            return new GoogleApiException(name ?? string.Empty, message)
+            return new GoogleApiException(name ?? "", message)
             {
                 Error = parsedError,
                 HttpStatusCode = response.StatusCode
