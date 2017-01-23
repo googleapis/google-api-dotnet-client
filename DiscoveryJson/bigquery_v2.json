@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/wyP_l3wPjLK3LUrJqeSGHNESSW0\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8QZR0WZ1-NVsTgfIYMT8jh3XhtQ\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20161130",
+ "revision": "20170114",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -442,6 +442,10 @@
      "description": "Number of records written by the stage.",
      "format": "int64"
     },
+    "status": {
+     "type": "string",
+     "description": "Current status for the stage."
+    },
     "steps": {
      "type": "array",
      "description": "List of operations within the stage in dependency order (approximately chronological).",
@@ -785,7 +789,7 @@
     },
     "nullMarker": {
      "type": "string",
-     "description": "[Optional] This string will be interpreted as a null value when it appears in a CSV file. The default value is the empty string. Please refer to the documentation for further information."
+     "description": "[Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify \"\\N\", BigQuery interprets \"\\N\" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery still interprets the empty string as a null value for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value."
     },
     "projectionFields": {
      "type": "array",
@@ -879,7 +883,7 @@
     },
     "parameterMode": {
      "type": "string",
-     "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query."
+     "description": "[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query."
     },
     "preserveNulls": {
      "type": "boolean",
@@ -1390,7 +1394,7 @@
     },
     "parameterMode": {
      "type": "string",
-     "description": "[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query parameters in this query."
+     "description": "[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query."
     },
     "preserveNulls": {
      "type": "boolean",

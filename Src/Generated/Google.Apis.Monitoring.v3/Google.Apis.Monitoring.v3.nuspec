@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Monitoring.v3</id>
-        <version>1.20.0.743</version>
+        <version>1.20.0.750</version>
         <title>Google.Apis.Monitoring.v3 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/knowledge-graph/'>Knowledge Graph Search API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20151215 (348)
+ *      <tr><th>API Rev<td>20170109 (739)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/knowledge-graph/'>
  *              https://developers.google.com/knowledge-graph/</a>
@@ -115,7 +115,18 @@ namespace Google.Apis.Kgsearch.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -124,7 +135,21 @@ namespace Google.Apis.Kgsearch.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -330,34 +355,36 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
-            /// <summary>The literal query string for search.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
+            /// <summary>Limits the number of entities to be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Limit { get; set; }
 
-            /// <summary>The list of entity id to be used for search instead of query string.</summary>
+            /// <summary>The list of entity id to be used for search instead of query string. To specify multiple ids in
+            /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
-
-            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
-
-            /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
-            /// http://schema.org/Person).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
-
-            /// <summary>Enables indenting of json results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Indent { get; set; }
 
             /// <summary>Enables prefix match against names and aliases of entities</summary>
             [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Prefix { get; set; }
 
-            /// <summary>Limits the number of entities to be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Limit { get; set; }
+            /// <summary>The literal query string for search.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Enables indenting of json results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Indent { get; set; }
+
+            /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
+            /// http://schema.org/Person). If multiple types are specified, returned entities will contain one or more
+            /// of these types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
+
+            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -384,9 +411,9 @@ namespace Google.Apis.Kgsearch.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
+                    "limit", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "query",
+                        Name = "limit",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -402,18 +429,18 @@ namespace Google.Apis.Kgsearch.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "languages", new Google.Apis.Discovery.Parameter
+                    "prefix", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "languages",
+                        Name = "prefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "types", new Google.Apis.Discovery.Parameter
+                    "query", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "types",
+                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -429,18 +456,18 @@ namespace Google.Apis.Kgsearch.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
+                    "types", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "prefix",
+                        Name = "types",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "limit", new Google.Apis.Discovery.Parameter
+                    "languages", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "limit",
+                        Name = "languages",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -461,16 +488,16 @@ namespace Google.Apis.Kgsearch.v1.Data
     {
         /// <summary>The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld
         /// /#context-definitions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        [Newtonsoft.Json.JsonPropertyAttribute("@context")]
         public virtual object Context { get; set; } 
+
+        /// <summary>The schema type of top-level JSON-LD object, e.g. ItemList.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("@type")]
+        public virtual object Type { get; set; } 
 
         /// <summary>The item list of search results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemListElement")]
         public virtual System.Collections.Generic.IList<object> ItemListElement { get; set; } 
-
-        /// <summary>The schema type of top-level JSON-LD object, e.g. ItemList.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual object Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

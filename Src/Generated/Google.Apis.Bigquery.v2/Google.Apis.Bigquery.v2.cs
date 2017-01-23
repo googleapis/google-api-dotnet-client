@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161130 (699)
+ *      <tr><th>API Rev<td>20170114 (744)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2816,6 +2816,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
         public virtual System.Nullable<long> RecordsWritten { get; set; } 
 
+        /// <summary>Current status for the stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
         /// <summary>List of operations within the stage in dependency order (approximately chronological).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<ExplainQueryStep> Steps { get; set; } 
@@ -3188,8 +3192,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; } 
 
-        /// <summary>[Optional] This string will be interpreted as a null value when it appears in a CSV file. The
-        /// default value is the empty string. Please refer to the documentation for further information.</summary>
+        /// <summary>[Optional] Specifies a string that represents a null value in a CSV file. For example, if you
+        /// specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the
+        /// empty string. If you set this property to a custom value, BigQuery still interprets the empty string as a
+        /// null value for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets
+        /// the empty string as an empty value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; } 
 
@@ -3301,8 +3308,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
         public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
 
-        /// <summary>[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query
-        /// parameters in this query.</summary>
+        /// <summary>[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to
+        /// NAMED to use named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; } 
 
@@ -3781,8 +3788,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; } 
 
-        /// <summary>[Experimental] Standard SQL only. Whether to use positional (?) or named (@myparam) query
-        /// parameters in this query.</summary>
+        /// <summary>[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to
+        /// NAMED to use named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; } 
 

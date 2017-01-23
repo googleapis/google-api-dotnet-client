@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170104 (734)
+ *      <tr><th>API Rev<td>20170118 (748)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3473,10 +3473,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         public class BidderLocationData
         {
-            /// <summary>The protocol that the bidder endpoint is using. By default, OpenRTB protocols use JSON, except
-            /// PROTOCOL_OPENRTB_PROTOBUF. PROTOCOL_OPENRTB_PROTOBUF uses protobuf encoding over the latest OpenRTB
-            /// protocol version, which is 2.4 right now. Allowed values: - PROTOCOL_ADX - PROTOCOL_OPENRTB_2_2 -
-            /// PROTOCOL_OPENRTB_2_3 - PROTOCOL_OPENRTB_2_4 - PROTOCOL_OPENRTB_PROTOBUF</summary>
+            /// <summary>The protocol that the bidder endpoint is using. OpenRTB protocols with prefix
+            /// PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values: - PROTOCOL_ADX -
+            /// PROTOCOL_OPENRTB_2_2 - PROTOCOL_OPENRTB_2_3 - PROTOCOL_OPENRTB_2_4 - PROTOCOL_OPENRTB_PROTOBUF_2_3 -
+            /// PROTOCOL_OPENRTB_PROTOBUF_2_4</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bidProtocol")]
             public virtual string BidProtocol { get; set; } 
 
