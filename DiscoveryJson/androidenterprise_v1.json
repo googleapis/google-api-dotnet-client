@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/AnvhsO1al4ataX8d07JiUi-38Ec\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/POjkLwx_Ki840e_TX5U8lbxSuxE\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20170111",
+ "revision": "20170117",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -1021,11 +1021,6 @@
      "description": "The permissions required by the app.",
      "items": {
       "$ref": "ProductPermission"
-     },
-     "annotations": {
-      "required": [
-       "androidenterprise.products.updatePermissions"
-      ]
      }
     },
     "productId": {
@@ -3129,39 +3124,6 @@
       "enterpriseId",
       "productId"
      ],
-     "scopes": [
-      "https://www.googleapis.com/auth/androidenterprise"
-     ]
-    },
-    "updatePermissions": {
-     "id": "androidenterprise.products.updatePermissions",
-     "path": "enterprises/{enterpriseId}/products/{productId}/permissions",
-     "httpMethod": "PUT",
-     "description": "This method has been deprecated. To programmatically approve applications, you must use the iframe mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information, see the  Play EMM API usage requirements.\n\nThe updatePermissions method (deprecated) updates the set of Android app permissions for this app that have been accepted by the enterprise.",
-     "parameters": {
-      "enterpriseId": {
-       "type": "string",
-       "description": "The ID of the enterprise.",
-       "required": true,
-       "location": "path"
-      },
-      "productId": {
-       "type": "string",
-       "description": "The ID of the product.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "enterpriseId",
-      "productId"
-     ],
-     "request": {
-      "$ref": "ProductPermissions"
-     },
-     "response": {
-      "$ref": "ProductPermissions"
-     },
      "scopes": [
       "https://www.googleapis.com/auth/androidenterprise"
      ]

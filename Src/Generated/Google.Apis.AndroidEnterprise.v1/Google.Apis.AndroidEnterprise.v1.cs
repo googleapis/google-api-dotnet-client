@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170111 (741)
+ *      <tr><th>API Rev<td>20170117 (747)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -4971,100 +4971,6 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
             /// <summary>Initializes Unapprove parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "enterpriseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "enterpriseId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>This method has been deprecated. To programmatically approve applications, you must use the iframe
-        /// mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information,
-        /// see the  Play EMM API usage requirements.
-        ///
-        /// The updatePermissions method (deprecated) updates the set of Android app permissions for this app that have
-        /// been accepted by the enterprise.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="enterpriseId">The ID of the enterprise.</param>
-        /// <param name="productId">The ID of the
-        /// product.</param>
-        public virtual UpdatePermissionsRequest UpdatePermissions(Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions body, string enterpriseId, string productId)
-        {
-            return new UpdatePermissionsRequest(service, body, enterpriseId, productId);
-        }
-
-        /// <summary>This method has been deprecated. To programmatically approve applications, you must use the iframe
-        /// mechanism via the  generateApprovalUrl and  approve methods of the Products resource. For more information,
-        /// see the  Play EMM API usage requirements.
-        ///
-        /// The updatePermissions method (deprecated) updates the set of Android app permissions for this app that have
-        /// been accepted by the enterprise.</summary>
-        public class UpdatePermissionsRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions>
-        {
-            /// <summary>Constructs a new UpdatePermissions request.</summary>
-            public UpdatePermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions body, string enterpriseId, string productId)
-                : base(service)
-            {
-                EnterpriseId = enterpriseId;
-                ProductId = productId;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the enterprise.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string EnterpriseId { get; private set; }
-
-            /// <summary>The ID of the product.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ProductId { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AndroidEnterprise.v1.Data.ProductPermissions Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "updatePermissions"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "PUT"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "enterprises/{enterpriseId}/products/{productId}/permissions"; }
-            }
-
-            /// <summary>Initializes UpdatePermissions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
