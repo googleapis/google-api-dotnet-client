@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/P1nSOVfcIgLwg7Nv_EHtJFN7Dbw\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/G_W0aSealb46qrcEV-upOrgKchs\"",
  "discoveryVersion": "v1",
  "id": "webmasters:v3",
  "name": "webmasters",
  "version": "v3",
- "revision": "20160317",
+ "revision": "20170117",
  "title": "Search Console API",
  "description": "View Google Search Console data for your verified sites.",
  "ownerDomain": "google.com",

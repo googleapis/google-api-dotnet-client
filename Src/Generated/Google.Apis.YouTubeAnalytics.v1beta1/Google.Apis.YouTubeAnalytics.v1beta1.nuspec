@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.YouTubeAnalytics.v1beta1</id>
-        <version>1.20.0.752</version>
+        <version>1.20.0.753</version>
         <title>Google.Apis.YouTubeAnalytics.v1beta1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

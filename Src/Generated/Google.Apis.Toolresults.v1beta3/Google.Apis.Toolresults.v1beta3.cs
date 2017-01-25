@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170123 (753)
+ *      <tr><th>API Rev<td>20170124 (754)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -4376,6 +4376,8 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// can convert to and from RFC 3339 date strings. See
     /// [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
     ///
+    /// # Examples
+    ///
     /// Example 1: Compute Timestamp from POSIX `time()`.
     ///
     /// Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
@@ -4403,7 +4405,27 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     ///
     /// Example 5: Compute Timestamp from current time in Python.
     ///
-    /// timestamp = Timestamp() timestamp.GetCurrentTime()</summary>
+    /// timestamp = Timestamp() timestamp.GetCurrentTime()
+    ///
+    /// # JSON Mapping
+    ///
+    /// In JSON format, the Timestamp type is encoded as a string in the [RFC
+    /// 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
+    /// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using four digits while
+    /// {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can
+    /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix indicates the timezone
+    /// ("UTC"); the timezone is required, though only UTC (as indicated by "Z") is presently supported.
+    ///
+    /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.
+    ///
+    /// In JavaScript, one can convert a Date object to this format using the standard
+    /// [toISOString()](https://developer.mozilla.org/en-
+    /// US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString] method. In Python, a standard
+    /// `datetime.datetime` object can be converted to this format using
+    /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format spec
+    /// '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda Time's [`ISODateTimeFormat.dateTime()`]( http
+    /// ://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()) to obtain a
+    /// formatter capable of generating timestamps in this format.</summary>
     public class Timestamp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions
