@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170117 (747)
+ *      <tr><th>API Rev<td>20170123 (753)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -536,6 +536,110 @@ namespace Google.Apis.ServiceControl.v1
 namespace Google.Apis.ServiceControl.v1.Data
 {    
 
+    /// <summary>Common audit log format for Google Cloud Platform API operations.
+    ///
+    /// </summary>
+    public class AuditLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationInfo")]
+        public virtual AuthenticationInfo AuthenticationInfo { get; set; } 
+
+        /// <summary>Authorization information. If there are multiple resources or permissions involved, then there is
+        /// one AuthorizationInfo element for each {resource, permission} tuple.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationInfo")]
+        public virtual System.Collections.Generic.IList<AuthorizationInfo> AuthorizationInfo { get; set; } 
+
+        /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
+        /// method. For example,
+        ///
+        /// "google.datastore.v1.Datastore.RunQuery" "google.logging.v1.LoggingService.DeleteLog"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
+        public virtual string MethodName { get; set; } 
+
+        /// <summary>The number of items returned from a List or Query API method, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numResponseItems")]
+        public virtual System.Nullable<long> NumResponseItems { get; set; } 
+
+        /// <summary>The operation request. This may not include all request parameters, such as those that are too
+        /// large, privacy-sensitive, or duplicated elsewhere in the log record. It should never include user-generated
+        /// data, such as file contents. When the JSON object represented here has a proto equivalent, the proto name
+        /// will be indicated in the `@type` property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Request { get; set; } 
+
+        /// <summary>Metadata about the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestMetadata")]
+        public virtual RequestMetadata RequestMetadata { get; set; } 
+
+        /// <summary>The resource or collection that is the target of the operation. The name is a scheme-less URI, not
+        /// including the API service name. For example:
+        ///
+        /// "shelves/SHELF_ID/books" "shelves/SHELF_ID/books/BOOK_ID"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>The operation response. This may not include all response elements, such as those that are too
+        /// large, privacy-sensitive, or duplicated elsewhere in the log record. It should never include user-generated
+        /// data, such as file contents. When the JSON object represented here has a proto equivalent, the proto name
+        /// will be indicated in the `@type` property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>Other service-specific data about the request, response, and other activities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceData")]
+        public virtual System.Collections.Generic.IDictionary<string,object> ServiceData { get; set; } 
+
+        /// <summary>The name of the API service performing the operation. For example,
+        /// `"datastore.googleapis.com"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
+
+        /// <summary>The status of the overall operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Authentication information for the operation.</summary>
+    public class AuthenticationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The authority selector specified by the requestor, if any. It is not guaranteed that the principal
+        /// was allowed to use this authority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authoritySelector")]
+        public virtual string AuthoritySelector { get; set; } 
+
+        /// <summary>The email address of the authenticated user making the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
+        public virtual string PrincipalEmail { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Authorization information for the operation.</summary>
+    public class AuthorizationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not authorization for `resource` and `permission` was granted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("granted")]
+        public virtual System.Nullable<bool> Granted { get; set; } 
+
+        /// <summary>The required IAM permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
+        public virtual string Permission { get; set; } 
+
+        /// <summary>The resource being accessed, as a REST-style string. For example:
+        ///
+        /// bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines the errors to be returned in google.api.servicecontrol.v1.CheckResponse.check_errors.</summary>
     public class CheckError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -939,6 +1043,27 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata about the request.</summary>
+    public class RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address of the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerIp")]
+        public virtual string CallerIp { get; set; } 
+
+        /// <summary>The user agent of the caller. This information is not authenticated and should be treated
+        /// accordingly. For example:
+        ///
+        /// +   `google-api-python-client/1.4.0`: The request was made by the Google API client for Python. +   `Cloud
+        /// SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the Google Cloud SDK CLI
+        /// (gcloud). +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`: The request was
+        /// made from the `my-project` App Engine app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
+        public virtual string CallerSuppliedUserAgent { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

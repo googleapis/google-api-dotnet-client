@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/genomics/'>Genomics API</a>
+ *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20160928 (636)
+ *      <tr><th>API Rev<td>20170125 (755)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/genomics/'>
- *              https://cloud.google.com/genomics/</a>
+ *          <td><a href='https://cloud.google.com/genomics'>
+ *              https://cloud.google.com/genomics</a>
  *      <tr><th>Discovery Name<td>genomics
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Genomics API can be found at
- * <a href='https://cloud.google.com/genomics/'>https://cloud.google.com/genomics/</a>.
+ * <a href='https://cloud.google.com/genomics'>https://cloud.google.com/genomics</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -136,7 +136,18 @@ namespace Google.Apis.Genomics.v1alpha2
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -145,7 +156,21 @@ namespace Google.Apis.Genomics.v1alpha2
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -406,7 +431,7 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -414,7 +439,7 @@ namespace Google.Apis.Genomics.v1alpha2
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Operation>
         {
@@ -491,19 +516,25 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>A string for filtering Operations. The following filter fields are supported: * projectId:
-            /// Required. Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in
-            /// seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `= 1432140000` *
-            /// `projectId = my-project AND createTime >= 1432140000 AND createTime <= 1432150000 AND status = RUNNING`
-            /// * `projectId = my-project AND labels.color = *` * `projectId = my-project AND labels.color =
-            /// red`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
             /// 2048.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A string for filtering Operations. The following filter fields are supported
+            ///
+            /// * projectId Required. Corresponds to OperationMetadata.projectId. * createTime The time this job was
+            /// created, in seconds from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `>=` and/or `<=`
+            /// operators. * status Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may be
+            /// specified. * labels.key where key is a label key.
+            ///
+            /// Examples
+            ///
+            /// * `projectId = my-project AND createTime >= 1432140000` * `projectId = my-project AND createTime >=
+            /// 1432140000 AND createTime <= 1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color
+            /// = *` * `projectId = my-project AND labels.color = red`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -543,18 +574,18 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "filter",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "filter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -592,7 +623,9 @@ namespace Google.Apis.Genomics.v1alpha2
 
         /// <summary>Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than
         /// `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used
-        /// to run the pipeline. Caller must have WRITE permission to the project.</summary>
+        /// to run the pipeline.
+        ///
+        /// Caller must have WRITE permission to the project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Genomics.v1alpha2.Data.Pipeline body)
         {
@@ -601,7 +634,9 @@ namespace Google.Apis.Genomics.v1alpha2
 
         /// <summary>Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than
         /// `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used
-        /// to run the pipeline. Caller must have WRITE permission to the project.</summary>
+        /// to run the pipeline.
+        ///
+        /// Caller must have WRITE permission to the project.</summary>
         public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Pipeline>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -647,7 +682,9 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Deletes a pipeline based on ID. Caller must have WRITE permission to the project.</summary>
+        /// <summary>Deletes a pipeline based on ID.
+        ///
+        /// Caller must have WRITE permission to the project.</summary>
         /// <param name="pipelineId">Caller must have WRITE access to the project in which this pipeline is
         /// defined.</param>
         public virtual DeleteRequest Delete(string pipelineId)
@@ -655,7 +692,9 @@ namespace Google.Apis.Genomics.v1alpha2
             return new DeleteRequest(service, pipelineId);
         }
 
-        /// <summary>Deletes a pipeline based on ID. Caller must have WRITE permission to the project.</summary>
+        /// <summary>Deletes a pipeline based on ID.
+        ///
+        /// Caller must have WRITE permission to the project.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -708,14 +747,18 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Retrieves a pipeline based on ID. Caller must have READ permission to the project.</summary>
+        /// <summary>Retrieves a pipeline based on ID.
+        ///
+        /// Caller must have READ permission to the project.</summary>
         /// <param name="pipelineId">Caller must have READ access to the project in which this pipeline is defined.</param>
         public virtual GetRequest Get(string pipelineId)
         {
             return new GetRequest(service, pipelineId);
         }
 
-        /// <summary>Retrieves a pipeline based on ID. Caller must have READ permission to the project.</summary>
+        /// <summary>Retrieves a pipeline based on ID.
+        ///
+        /// Caller must have READ permission to the project.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Pipeline>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -841,13 +884,17 @@ namespace Google.Apis.Genomics.v1alpha2
 
         }
 
-        /// <summary>Lists pipelines. Caller must have READ permission to the project.</summary>
+        /// <summary>Lists pipelines.
+        ///
+        /// Caller must have READ permission to the project.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists pipelines. Caller must have READ permission to the project.</summary>
+        /// <summary>Lists pipelines.
+        ///
+        /// Caller must have READ permission to the project.</summary>
         public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.ListPipelinesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -858,19 +905,19 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
+            /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Required. The name of the project to search for pipelines. Caller must have READ access to this
             /// project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>Pipelines with names that match this prefix should be returned. If unspecified, all pipelines
+            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
             /// in the project, up to `pageSize`, will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NamePrefix { get; set; }
-
-            /// <summary>Number of pipelines to return at once. Defaults to 256, and max is 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
             /// of results.</summary>
@@ -902,6 +949,15 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -914,15 +970,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "namePrefix", new Google.Apis.Discovery.Parameter
                     {
                         Name = "namePrefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -942,9 +989,12 @@ namespace Google.Apis.Genomics.v1alpha2
         }
 
         /// <summary>Runs a pipeline. If `pipelineId` is specified in the request, then run a saved pipeline. If
-        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy. The caller must have
-        /// READ permission to the project where the pipeline is stored and WRITE permission to the project where the
-        /// pipeline will be run, as VMs will be created and storage will be used.</summary>
+        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy.
+        ///
+        /// The caller must have READ permission to the project where the pipeline is stored and WRITE permission to the
+        /// project where the pipeline will be run, as VMs will be created and storage will be used.
+        ///
+        /// If a pipeline operation is still running after 6 days, it will be canceled.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RunRequest Run(Google.Apis.Genomics.v1alpha2.Data.RunPipelineRequest body)
         {
@@ -952,9 +1002,12 @@ namespace Google.Apis.Genomics.v1alpha2
         }
 
         /// <summary>Runs a pipeline. If `pipelineId` is specified in the request, then run a saved pipeline. If
-        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy. The caller must have
-        /// READ permission to the project where the pipeline is stored and WRITE permission to the project where the
-        /// pipeline will be run, as VMs will be created and storage will be used.</summary>
+        /// `ephemeralPipeline` is specified, then run that pipeline once without saving a copy.
+        ///
+        /// The caller must have READ permission to the project where the pipeline is stored and WRITE permission to the
+        /// project where the pipeline will be run, as VMs will be created and storage will be used.
+        ///
+        /// If a pipeline operation is still running after 6 days, it will be canceled.</summary>
         public class RunRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1alpha2.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
@@ -1127,10 +1180,8 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// <summary>A Google Compute Engine disk resource specification.</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies whether or not to delete the disk when the pipeline completes. This field is applicable
-        /// only for newly created disks. See https://cloud.google.com/compute/docs/reference/latest/instances#resource
-        /// for more details. By default, `autoDelete` is `false`. `autoDelete` will be enabled if set to `true` at
-        /// create time or run time.</summary>
+        /// <summary>Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run,
+        /// regardless of what this field is set to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
         public virtual System.Nullable<bool> AutoDelete { get; set; } 
 
@@ -1145,12 +1196,6 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// characters. The name "boot" is reserved for system use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>Specifies how a sourced-base persistent disk will be mounted. See
-        /// https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only
-        /// be set at create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
-        public virtual System.Nullable<bool> ReadOnly__ { get; set; } 
 
         /// <summary>The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
@@ -1174,9 +1219,12 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     public class DockerExecutor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The command or newline delimited script to run. The command string will be executed
-        /// within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will
-        /// be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is
-        /// 16384.</summary>
+        /// within a bash shell.
+        ///
+        /// If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the
+        /// pipeline operation's `error` field will be populated.
+        ///
+        /// Maximum command string length is 16384.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmd")]
         public virtual string Cmd { get; set; } 
 
@@ -1190,9 +1238,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1303,12 +1353,12 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
+        /// For example `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>If importing ReadGroupSets, an ImportReadGroupSetsResponse is returned. If importing Variants, an
-        /// ImportVariantsResponse is returned. For exports, an empty response is returned.</summary>
+        /// ImportVariantsResponse is returned. For pipelines and exports, an empty response is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1326,11 +1376,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>Optional time of when event finished. An event can have a start time and no finish time. If an
         /// event has a finish time, there must be a start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
         /// <summary>Optional time of when event started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1346,11 +1396,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
         /// <summary>The time at which the job was submitted to the Genomics service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTime { get; set; } 
+        public virtual object CreateTime { get; set; } 
 
         /// <summary>The time at which the job stopped running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
         /// <summary>Optional event messages that were generated during the job's execution. This also contains any
         /// warnings that were generated during import or export.</summary>
@@ -1377,7 +1427,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
         /// <summary>The time at which the job began to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1421,7 +1471,10 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores
+        /// <summary>Required. Specifies resource requirements for the pipeline run. Required fields:
+        ///
+        /// * minimumCpuCores
+        ///
         /// * minimumRamGb</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual PipelineResources Resources { get; set; } 
@@ -1431,28 +1484,61 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     }    
 
     /// <summary>Parameters facilitate setting and delivering data into the pipeline's execution environment. They are
-    /// defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then
-    /// the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment
-    /// variable with the given name. A default value can be optionally specified at create time. The default can be
-    /// overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If
-    /// `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on
-    /// the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by
-    /// default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run
-    /// time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set
-    /// otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated
-    /// data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were
-    /// provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the
-    /// `inputParameters` list: ``` {name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}} ``` where `disk` is
-    /// defined in the `PipelineResources` object as: ``` {name: "pd1", mountPoint: "/mnt/disk/"} ``` We create a disk
-    /// named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an
-    /// entry for `input_file` would be required in the inputs map, such as: ``` inputs["input_file"] = "gs://my-
-    /// bucket/bar.txt" ``` This would generate the following gsutil call: ``` gsutil cp gs://my-bucket/bar.txt
-    /// /mnt/pd1/file.txt ``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container.
-    /// Acceptable paths are:   Google Cloud storage pathLocal path   filefile globdirectory   For outputs, the
-    /// direction of the copy is reversed: ``` gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt ``` Acceptable paths
-    /// are:   Local pathGoogle Cloud Storage path   filefile  file directory - directory must already exist   glob
-    /// directory - directory will be created if it doesn't exist   One restriction due to docker limitations, is that
-    /// for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.</summary>
+    /// defined at create time, with optional defaults, and can be overridden at run time.
+    ///
+    /// If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the
+    /// value of the environment variable with the given name.  A default value can be optionally specified at create
+    /// time. The default can be overridden at run time using the inputs map. If no default is given, a value must be
+    /// supplied at runtime.
+    ///
+    /// If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and
+    /// on the Docker container where the pipeline computation is run. The service account associated with the Pipeline
+    /// (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths.
+    ///
+    /// At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must
+    /// be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The
+    /// indicated data copies will be carried out before/after pipeline execution, just as if the corresponding
+    /// arguments were provided to `gsutil cp`.
+    ///
+    /// For example: Given the following `PipelineParameter`, specified in the `inputParameters` list:
+    ///
+    /// ``` {name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}} ```
+    ///
+    /// where `disk` is defined in the `PipelineResources` object as:
+    ///
+    /// ``` {name: "pd1", mountPoint: "/mnt/disk/"} ```
+    ///
+    /// We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker
+    /// container.  At runtime, an entry for `input_file` would be required in the inputs map, such as:
+    ///
+    /// ``` inputs["input_file"] = "gs://my-bucket/bar.txt" ```
+    ///
+    /// This would generate the following gsutil call:
+    ///
+    /// ``` gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt ```
+    ///
+    /// The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are:
+    ///
+    /// Google Cloud storage pathLocal path
+    ///
+    /// filefile globdirectory
+    ///
+    /// For outputs, the direction of the copy is reversed:
+    ///
+    /// ``` gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt ```
+    ///
+    /// Acceptable paths are:
+    ///
+    /// Local pathGoogle Cloud Storage path
+    ///
+    /// filefile
+    ///
+    /// file directory - directory must already exist
+    ///
+    /// glob directory - directory will be created if it doesn't exist
+    ///
+    /// One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path
+    /// cannot be a glob and must be a file.</summary>
     public class PipelineParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The default value for this parameter. Can be overridden at runtime. If `localCopy` is present, then
@@ -1503,7 +1589,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// (https://cloud.google.com/sdk/gcloud/reference/compute/instances/create). In order to use this, must be true
         /// for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh
         /// into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal
-        /// IP. If noAddress is set, this pipeline run may only load docker images from Google Container Registry and
+        /// IP.  If noAddress is set, this pipeline run may only load docker images from Google Container Registry and
         /// not Docker Hub. ** Note: To use this option, your project must be in Google Access for Private IPs Early
         /// Access Program.**</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
@@ -1541,7 +1627,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ClientId { get; set; } 
 
         /// <summary>Pipeline input arguments; keys are defined in the pipeline documentation. All input parameters that
-        /// do not have default values must be specified. If parameters with defaults are specified here, the defaults
+        /// do not have default values  must be specified. If parameters with defaults are specified here, the defaults
         /// will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
         public virtual System.Collections.Generic.IDictionary<string,string> Inputs { get; set; } 
@@ -1550,7 +1636,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// output files failed, etc). While the VM is up, one can ssh into the VM to debug. Default is 0; maximum
         /// allowed value is 1 day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keepVmAliveOnFailureDuration")]
-        public virtual string KeepVmAliveOnFailureDuration { get; set; } 
+        public virtual object KeepVmAliveOnFailureDuration { get; set; } 
 
         /// <summary>Labels to apply to this pipeline run. Labels will also be applied to compute resources (VM, disks)
         /// created by this pipeline run. When listing operations, operations can filtered by labels. Label keys may not
@@ -1566,9 +1652,9 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logging")]
         public virtual LoggingOptions Logging { get; set; } 
 
-        /// <summary>Pipeline output arguments; keys are defined in the pipeline documentation. All output parameters of
-        /// without default values must be specified. If parameters with defaults are specified here, the defaults will
-        /// be overridden.</summary>
+        /// <summary>Pipeline output arguments; keys are defined in the pipeline documentation.  All output parameters
+        /// of without default values must be specified.  If parameters with defaults are specified here, the defaults
+        /// will be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
         public virtual System.Collections.Generic.IDictionary<string,string> Outputs { get; set; } 
 
@@ -1633,9 +1719,11 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string Email { get; set; } 
 
         /// <summary>List of scopes to be enabled for this service account on the VM. The following scopes are
-        /// automatically included: * https://www.googleapis.com/auth/compute *
-        /// https://www.googleapis.com/auth/devstorage.full_control * https://www.googleapis.com/auth/genomics *
-        /// https://www.googleapis.com/auth/logging.write * https://www.googleapis.com/auth/monitoring.write</summary>
+        /// automatically included:
+        ///
+        /// * https://www.googleapis.com/auth/compute * https://www.googleapis.com/auth/devstorage.full_control *
+        /// https://www.googleapis.com/auth/genomics * https://www.googleapis.com/auth/logging.write *
+        /// https://www.googleapis.com/auth/monitoring.write</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
 
@@ -1668,34 +1756,54 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
-    /// Overview The `Status` message contains three pieces of data: error code, error message, and error details. The
-    /// error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The
-    /// error message should be a developer-facing English message that helps developers *understand* and *resolve* the
-    /// error. If a localized user-facing error message is needed, put the localized message in the error details or
-    /// localize it in the client. The optional error details may contain arbitrary information about the error. There
-    /// is a predefined set of error detail types in the package `google.rpc` which can be used for common error
-    /// conditions. # Language mapping The `Status` message is the logical representation of the error model, but it is
-    /// not necessarily the actual wire format. When the `Status` message is exposed in different client libraries and
-    /// different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions
-    /// in Java, but more likely mapped to some error codes in C. # Other uses The error model and the `Status` message
-    /// can be used in a variety of environments, either with or without APIs, to provide a consistent developer
-    /// experience across different environments. Example uses of this error model include: - Partial errors. If a
-    /// service needs to return partial errors to the client, it may embed the `Status` in the normal response to
-    /// indicate the partial errors. - Workflow errors. A typical workflow has multiple steps. Each step may have a
-    /// `Status` message for error reporting purpose. - Batch operations. If a client uses batch request and batch
-    /// response, the `Status` message should be used directly inside batch response, one for each error sub-response. -
-    /// Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message. - Logging. If some API errors are
-    /// stored in logs, the message `Status` could be used directly after any stripping needed for security/privacy
-    /// reasons.</summary>
+    /// is designed to be:
+    ///
+    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
+    ///
+    /// # Overview
+    ///
+    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
+    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
+    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
+    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
+    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
+    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    ///
+    /// # Language mapping
+    ///
+    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
+    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
+    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
+    /// to some error codes in C.
+    ///
+    /// # Other uses
+    ///
+    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
+    /// to provide a consistent developer experience across different environments.
+    ///
+    /// Example uses of this error model include:
+    ///
+    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
+    /// normal response to indicate the partial errors.
+    ///
+    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
+    /// reporting purpose.
+    ///
+    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
+    /// directly inside batch response, one for each error sub-response.
+    ///
+    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
+    /// those operations should be represented directly using the `Status` message.
+    ///
+    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
+    /// stripping needed for security/privacy reasons.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
+        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
         /// APIs to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
@@ -1718,7 +1826,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
         /// <summary>The time this event occured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string Timestamp { get; set; } 
+        public virtual object Timestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

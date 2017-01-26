@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160421 (476)
+ *      <tr><th>API Rev<td>20161024 (662)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -809,6 +809,246 @@ namespace Google.Apis.Container.v1
                         }
 
                     }
+
+                    /// <summary>Roll back the previously Aborted or Failed NodePool upgrade. This will be an no-op if
+                    /// the last upgrade successfully completed.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</param>
+                    /// <param name="zone">The name of the Google
+                    /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                    /// <param
+                    /// name="clusterId">The name of the cluster to rollback.</param>
+                    /// <param name="nodePoolId">The name of the node
+                    /// pool to rollback.</param>
+                    public virtual RollbackRequest Rollback(Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                    {
+                        return new RollbackRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                    }
+
+                    /// <summary>Roll back the previously Aborted or Failed NodePool upgrade. This will be an no-op if
+                    /// the last upgrade successfully completed.</summary>
+                    public class RollbackRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Rollback request.</summary>
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            Zone = zone;
+                            ClusterId = clusterId;
+                            NodePoolId = nodePoolId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+                        /// which the cluster resides.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Zone { get; private set; }
+
+                        /// <summary>The name of the cluster to rollback.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+                        /// <summary>The name of the node pool to rollback.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NodePoolId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1.Data.RollbackNodePoolUpgradeRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "rollback"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback"; }
+                        }
+
+                        /// <summary>Initializes Rollback parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Sets the NodeManagement options for a node pool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</param>
+                    /// <param name="zone">The name of the Google
+                    /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                    /// <param
+                    /// name="clusterId">The name of the cluster to update.</param>
+                    /// <param name="nodePoolId">The name of the node
+                    /// pool to update.</param>
+                    public virtual SetManagementRequest SetManagement(Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                    {
+                        return new SetManagementRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                    }
+
+                    /// <summary>Sets the NodeManagement options for a node pool.</summary>
+                    public class SetManagementRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new SetManagement request.</summary>
+                        public SetManagementRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolManagementRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            Zone = zone;
+                            ClusterId = clusterId;
+                            NodePoolId = nodePoolId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+                        /// which the cluster resides.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Zone { get; private set; }
+
+                        /// <summary>The name of the cluster to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+                        /// <summary>The name of the node pool to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NodePoolId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1.Data.SetNodePoolManagementRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "setManagement"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement"; }
+                        }
+
+                        /// <summary>Initializes SetManagement parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
@@ -1311,6 +1551,109 @@ namespace Google.Apis.Container.v1
                 }
 
 
+                /// <summary>Cancels the specified operation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the operation resides.</param>
+                /// <param
+                /// name="operationId">The server-assigned `name` of the operation.</param>
+                public virtual CancelRequest Cancel(Google.Apis.Container.v1.Data.CancelOperationRequest body, string projectId, string zone, string operationId)
+                {
+                    return new CancelRequest(service, body, projectId, zone, operationId);
+                }
+
+                /// <summary>Cancels the specified operation.</summary>
+                public class CancelRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CancelOperationRequest body, string projectId, string zone, string operationId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        OperationId = operationId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the operation resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The server-assigned `name` of the operation.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string OperationId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.CancelOperationRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "cancel"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel"; }
+                    }
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Gets the specified operation.</summary>
                 /// <param name="projectId">The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840).</param>
@@ -1589,6 +1932,31 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will
+    /// proceed.</summary>
+    public class AutoUpgradeOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] This field is set when upgrades are about to commence with the approximate start time
+        /// for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgradeStartTime")]
+        public virtual string AutoUpgradeStartTime { get; set; } 
+
+        /// <summary>[Output only] This field is set when upgrades are about to commence with the description of the
+        /// upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>CancelOperationRequest cancels a single operation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Google Container Engine cluster.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1625,11 +1993,23 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g.
+        /// v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes.
+        /// The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are
+        /// automatically deleted thirty days after creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableKubernetesAlpha")]
+        public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; } 
+
         /// <summary>[Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from
         /// the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for
         /// username and password information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; } 
+
+        /// <summary>[Output only] The time the cluster will be automatically deleted in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTime { get; set; } 
 
         /// <summary>[Output only] The software version of the master endpoint and kubelets used in the cluster when it
         /// was first created. The version can be upgraded over time.</summary>
@@ -1695,9 +2075,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrSize")]
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; } 
 
-        /// <summary>The node pools associated with this cluster. When creating a new cluster, only a single node pool
-        /// should be specified. This field should not be set if "node_config" or "initial_node_count" are
-        /// specified.</summary>
+        /// <summary>The node pools associated with this cluster. This field should not be set if "node_config" or
+        /// "initial_node_count" are specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
 
@@ -1742,6 +2121,18 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; } 
 
+        /// <summary>The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as
+        /// well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
+        public virtual string DesiredImageType { get; set; } 
+
+        /// <summary>The desired list of Google Compute Engine [locations](/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
+        /// created or removed from the cluster, depending on whether locations are being added or removed. This list
+        /// must always include the cluster's primary zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
+        public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
+
         /// <summary>The Kubernetes version to change the master to. The only valid value is the latest supported
         /// version. Use "-" to have the server automatically select the latest version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
@@ -1753,8 +2144,15 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; } 
 
-        /// <summary>The node pool to be upgraded. This field is mandatory if the "desired_node_version" or
-        /// "desired_image_family" is specified and there is more than one node pool on the cluster.</summary>
+        /// <summary>Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one
+        /// pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node
+        /// pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoscaling")]
+        public virtual NodePoolAutoscaling DesiredNodePoolAutoscaling { get; set; } 
+
+        /// <summary>The node pool to be upgraded. This field is mandatory if "desired_node_version",
+        /// "desired_image_family" or "desired_node_pool_autoscaling" is specified and there is more than one node pool
+        /// on the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolId")]
         public virtual string DesiredNodePoolId { get; set; } 
 
@@ -1785,6 +2183,16 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
         public virtual NodePool NodePool { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
+    /// JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1897,6 +2305,25 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; } 
 
+        /// <summary>The image type to use for this node. Note that for a given image type, the latest version of it
+        /// will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; } 
+
+        /// <summary>The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in
+        /// addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys,
+        /// the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is
+        /// undefined and conflicts should be avoided. For more information, including usage and the valid values, see:
+        /// http://kubernetes.io/v1.1/docs/user-guide/labels.html</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The number of local SSD disks to be attached to the node. The limit for this value is dependant
+        /// upon the maximum number of disks available on a machine per zone. See:
+        /// https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits for more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
+        public virtual System.Nullable<int> LocalSsdCount { get; set; } 
+
         /// <summary>The name of a Google Compute Engine [machine type](/compute/docs/machine-types) (e.g.
         /// `n1-standard-1`). If unspecified, the default machine type is `n1-standard-1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
@@ -1921,6 +2348,38 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
+        /// <summary>Whether the nodes are created as preemptible VM instances. See:
+        /// https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM
+        /// instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
+        public virtual System.Nullable<bool> Preemptible { get; set; } 
+
+        /// <summary>The Google Cloud Platform Service Account to be used by the node VMs. If no Service Account is
+        /// specified, the "default" service account is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; } 
+
+        /// <summary>The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets
+        /// for network firewalls and are specified by the client during cluster or node pool creation. Each tag within
+        /// the list must comply with RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>NodeManagement defines the set of node management services turned on for the node pool.</summary>
+    public class NodeManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the nodes will be automatically upgraded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpgrade")]
+        public virtual System.Nullable<bool> AutoUpgrade { get; set; } 
+
+        /// <summary>Specifies the Auto Upgrade knobs for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeOptions")]
+        public virtual AutoUpgradeOptions UpgradeOptions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1931,6 +2390,11 @@ namespace Google.Apis.Container.v1.Data
     /// may also be resized up or down, to accommodate the workload.</summary>
     public class NodePool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
+        public virtual NodePoolAutoscaling Autoscaling { get; set; } 
+
         /// <summary>The node configuration of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual NodeConfig Config { get; set; } 
@@ -1945,15 +2409,19 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 
+        /// <summary>NodeManagement configuration for this NodePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual NodeManagement Management { get; set; } 
+
         /// <summary>The name of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Server-defined URL for the resource.</summary>
+        /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>The status of the nodes in this pool instance.</summary>
+        /// <summary>[Output only] The status of the nodes in this pool instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -1962,9 +2430,30 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>The version of the Kubernetes of this node.</summary>
+        /// <summary>[Output only] The version of the Kubernetes of this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node
+    /// pool to the current cluster usage.</summary>
+    public class NodePoolAutoscaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Is autoscaling enabled for this node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to
+        /// scale up the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<int> MaxNodeCount { get; set; } 
+
+        /// <summary>Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<int> MinNodeCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2011,6 +2500,14 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed NodePool upgrade. This will
+    /// be an no-op if the last upgrade successfully completed.</summary>
+    public class RollbackNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Container Engine service configuration.</summary>
     public class ServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2018,17 +2515,32 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultClusterVersion")]
         public virtual string DefaultClusterVersion { get; set; } 
 
-        /// <summary>Default image family.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultImageFamily")]
-        public virtual string DefaultImageFamily { get; set; } 
+        /// <summary>Default image type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultImageType")]
+        public virtual string DefaultImageType { get; set; } 
 
-        /// <summary>List of valid image families.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validImageFamilies")]
-        public virtual System.Collections.Generic.IList<string> ValidImageFamilies { get; set; } 
+        /// <summary>List of valid image types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validImageTypes")]
+        public virtual System.Collections.Generic.IList<string> ValidImageTypes { get; set; } 
+
+        /// <summary>List of valid master versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validMasterVersions")]
+        public virtual System.Collections.Generic.IList<string> ValidMasterVersions { get; set; } 
 
         /// <summary>List of valid node upgrade target versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
         public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetNodePoolManagementRequest sets the node management properties of a node pool.</summary>
+    public class SetNodePoolManagementRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>NodeManagement configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual NodeManagement Management { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
