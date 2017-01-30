@@ -32,6 +32,10 @@ using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 
+#if NET45 || NETSTANDARD
+using TaskEx = System.Threading.Tasks.Task;
+#endif
+
 namespace Google.Apis.Upload
 {
     /// <summary>
@@ -40,16 +44,12 @@ namespace Google.Apis.Upload
     /// <remarks>
     /// See: https://developers.google.com/drive/manage-uploads#resumable for more information on the protocol.
     /// </remarks>
-    /// <typeparam name="TRequest">
-    /// The type of the body of this request. Generally this should be the metadata related to the content to be 
-    /// uploaded. Must be serializable to/from JSON.
-    /// </typeparam>
-    public class ResumableUpload<TRequest>
+    public abstract class ResumableUpload
     {
         #region Constants
 
         /// <summary>The class logger.</summary>
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ResumableUpload<TRequest>>();
+        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ResumableUpload>();
 
         private const int KB = 0x400;
         private const int MB = 0x100000;
@@ -68,22 +68,6 @@ namespace Google.Apis.Upload
 
         /// <summary>Indicates the stream's size is unknown.</summary>
         private const int UnknownSize = -1;
-
-        /// <summary>The mime type for the encoded JSON body.</summary>
-        private const string JsonMimeType = "application/json; charset=UTF-8";
-
-        /// <summary>Payload description headers, describing the content itself.</summary>
-        private const string PayloadContentTypeHeader = "X-Upload-Content-Type";
-
-        /// <summary>Payload description headers, describing the content itself.</summary>
-        private const string PayloadContentLengthHeader = "X-Upload-Content-Length";
-
-        /// <summary>Specify the type of this upload (this class supports resumable only).</summary>
-        private const string UploadType = "uploadType";
-
-        /// <summary>The uploadType parameter value for resumable uploads.</summary>
-        private const string Resumable = "resumable";
-
         /// <summary>Content-Range header value for the body upload of zero length files.</summary>
         private const string ZeroByteContentRangeHeader = "bytes */0";
 
@@ -92,63 +76,77 @@ namespace Google.Apis.Upload
         #region Construction
 
         /// <summary>
-        /// Create a resumable upload instance with the required parameters.
+        /// Creates a <see cref="ResumableUpload"/> instance.
         /// </summary>
-        /// <param name="service">The client service.</param>
-        /// <param name="path">The path for this media upload method.</param>
-        /// <param name="httpMethod">The HTTP method to start this upload.</param>
-        /// <param name="contentStream">The stream containing the content to upload.</param>
-        /// <param name="contentType">Content type of the content to be uploaded. Some services
-        /// may allow this to be null; others require a content type to be specified and will
-        /// fail when the upload is started if the value is null.</param>
-        /// <remarks>
-        /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the upload is 
-        /// completed.
-        /// Caller is responsible for closing the <paramref name="contentStream"/>.
-        /// </remarks>
-        protected ResumableUpload(IClientService service, string path, string httpMethod, Stream contentStream,
-            string contentType)
+        /// <param name="contentStream">The data to be uploaded. Must not be null.</param>
+        /// <param name="options">The options for the upload operation. May be null.</param>
+        protected ResumableUpload(Stream contentStream, ResumableUploadOptions options)
         {
-            service.ThrowIfNull(nameof(service));
-            path.ThrowIfNull(nameof(path));
-            httpMethod.ThrowIfNullOrEmpty(nameof(httpMethod));
             contentStream.ThrowIfNull(nameof(contentStream));
+            ContentStream = contentStream;
+            HttpClient = options?.ConfigurableHttpClient ?? new ConfigurableHttpClient(new ConfigurableMessageHandler(new HttpClientHandler()));
+            Options = options;
+        }
 
-            this.Service = service;
-            this.Path = path;
-            this.HttpMethod = httpMethod;
-            this.ContentStream = contentStream;
-            this.ContentType = contentType;
+        /// <summary>
+        /// Creates a <see cref="ResumableUpload"/> instance for a resumable upload session which has already been initiated.
+        /// </summary>
+        /// <remarks>
+        /// See https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information about initiating
+        /// resumable upload sessions and saving the session URI, or upload URI.
+        /// </remarks>
+        /// <param name="uploadUri">The session URI of the resumable upload session. Must not be null.</param>
+        /// <param name="contentStream">The data to be uploaded. Must not be null.</param>
+        /// <param name="options">The options for the upload operation. May be null.</param>
+        /// <returns>The instance which can be used to upload the specified content.</returns>
+        public static ResumableUpload CreateFromUploadUri(
+            Uri uploadUri,
+            Stream contentStream,
+            ResumableUploadOptions options = null)
+        {
+            uploadUri.ThrowIfNull(nameof(uploadUri));
+            return new InitiatedResumableUpload(uploadUri, contentStream, options);
+        }
+
+        private sealed class InitiatedResumableUpload : ResumableUpload
+        {
+            private Uri _initiatedUploadUri;
+
+            public InitiatedResumableUpload(Uri uploadUri, Stream contentStream, ResumableUploadOptions options)
+                : base(contentStream, options)
+            {
+                _initiatedUploadUri = uploadUri;
+            }
+
+            protected override Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
+            {
+                return TaskEx.FromResult(_initiatedUploadUri);
+            }
         }
 
         #endregion // Construction
 
         #region Properties
 
-        /// <summary>Gets or sets the service.</summary>
-        public IClientService Service { get; private set; }
 
         /// <summary>
-        /// Gets or sets the path of the method (combined with
-        /// <see cref="Google.Apis.Services.IClientService.BaseUri"/>) to produce 
-        /// absolute Uri. 
+        /// Gets the options used to control the resumable upload.
         /// </summary>
-        public string Path { get; private set; }
+        protected ResumableUploadOptions Options { get; }
 
-        /// <summary>Gets or sets the HTTP method of this upload (used to initialize the upload).</summary>
-        public string HttpMethod { get; private set; }
+        /// <summary>
+        /// Gets the HTTP client to use to make requests.
+        /// </summary>
+        internal ConfigurableHttpClient HttpClient { get; }
 
         /// <summary>Gets or sets the stream to upload.</summary>
-        public Stream ContentStream { get; private set; }
-
-        /// <summary>Gets or sets the stream's Content-Type.</summary>
-        public string ContentType { get; private set; }
+        public Stream ContentStream { get; }
 
         /// <summary>
         /// Gets or sets the length of the steam. Will be <see cref="UnknownSize" /> if the media content length is 
         /// unknown. 
         /// </summary>
-        private long StreamLength { get; set; }
+        internal long StreamLength { get; set; }
 
         /// <summary>
         /// Gets or sets the content of the last buffer request to the server or <c>null</c>. It is used when the media
@@ -164,7 +162,7 @@ namespace Google.Apis.Upload
         private int LastMediaLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the resumable session Uri. 
+        /// Gets or sets the resumable session URI. 
         /// See https://developers.google.com/drive/manage-uploads#save-session-uri" for more details.
         /// </summary>
         private Uri UploadUri { get; set; }
@@ -174,9 +172,6 @@ namespace Google.Apis.Upload
 
         /// <summary>Gets or sets the amount of bytes the client had sent so far.</summary>
         private long BytesClientSent { get; set; }
-
-        /// <summary>Gets or sets the body of this request.</summary>
-        public TRequest Body { get; set; }
 
         /// <summary>Change this value ONLY for testing purposes!</summary>
         [VisibleForTestOnly]
@@ -219,17 +214,17 @@ namespace Google.Apis.Upload
         /// </summary>
         class ServerErrorCallback : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler, IDisposable
         {
-            private ResumableUpload<TRequest> Owner { get; set; }
+            private ResumableUpload Owner { get; set; }
 
             /// <summary>
             /// Constructs a new callback and register it as unsuccessful response handler and exception handler on the 
             /// configurable message handler.
             /// </summary>
-            public ServerErrorCallback(ResumableUpload<TRequest> resumable)
+            public ServerErrorCallback(ResumableUpload resumable)
             {
                 this.Owner = resumable;
-                Owner.Service.HttpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
-                Owner.Service.HttpClient.MessageHandler.AddExceptionHandler(this);
+                Owner.HttpClient.MessageHandler.AddUnsuccessfulResponseHandler(this);
+                Owner.HttpClient.MessageHandler.AddExceptionHandler(this);
             }
 
             public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
@@ -275,8 +270,8 @@ namespace Google.Apis.Upload
 
             public void Dispose()
             {
-                Owner.Service.HttpClient.MessageHandler.RemoveUnsuccessfulResponseHandler(this);
-                Owner.Service.HttpClient.MessageHandler.RemoveExceptionHandler(this);
+                Owner.HttpClient.MessageHandler.RemoveUnsuccessfulResponseHandler(this);
+                Owner.HttpClient.MessageHandler.RemoveExceptionHandler(this);
             }
         }
 
@@ -412,7 +407,7 @@ namespace Google.Apis.Upload
 
             try
             {
-                UploadUri = await InitializeUpload(cancellationToken).ConfigureAwait(false);
+                UploadUri = await InitiateSessionAsync(cancellationToken).ConfigureAwait(false);
                 if (ContentStream.CanSeek)
                 {
                     SendUploadSessionData(new ResumeableUploadSessionData(UploadUri));
@@ -543,7 +538,7 @@ namespace Google.Apis.Upload
                 HttpResponseMessage response;
                 using (var callback = new ServerErrorCallback(this))
                 {
-                    response = await Service.HttpClient.SendAsync(request, cancellationToken)
+                    response = await HttpClient.SendAsync(request, cancellationToken)
                       .ConfigureAwait(false);
                 }
 
@@ -601,23 +596,15 @@ namespace Google.Apis.Upload
         }
 
         /// <summary>
-        /// Initializes the resumable upload by calling the resumable rest interface to get a unique upload location.
-        /// See https://developers.google.com/drive/manage-uploads#start-resumable for more details.
+        /// Initiates the resumable upload session and returns the session URI, or upload URI.
+        /// See https://developers.google.com/drive/manage-uploads#start-resumable and
+        /// https://cloud.google.com/storage/docs/json_api/v1/how-tos/resumable-upload#start-resumable for more information.
         /// </summary>
+        /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
         /// <returns>
-        /// The unique upload location for this upload, returned in the Location header
+        /// The task containing the session URI to use for the resumable upload.
         /// </returns>
-        private async Task<Uri> InitializeUpload(CancellationToken cancellationToken)
-        {
-            HttpRequestMessage request = CreateInitializeRequest();
-            var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            
-            if (!response.IsSuccessStatusCode)
-            {
-                throw await MediaApiErrorHandling.ExceptionForResponseAsync(Service, response).ConfigureAwait(false);
-            }
-            return response.Headers.Location;
-        }
+        protected abstract Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken);
 
         /// <summary>
         /// Process a response from the final upload chunk call.
@@ -649,7 +636,7 @@ namespace Google.Apis.Upload
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
-            HttpResponseMessage response = await Service.HttpClient.SendAsync(request, cancellationToken)
+            HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
             return await HandleResponse(response).ConfigureAwait(false);
         }
@@ -673,7 +660,17 @@ namespace Google.Apis.Upload
                 Logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
             }
-            throw await MediaApiErrorHandling.ExceptionForResponseAsync(Service, response).ConfigureAwait(false);
+            throw await ExceptionForResponseAsync(response).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="GoogleApiException"/> instance using the error response from the server.
+        /// </summary>
+        /// <param name="response">The error response.</param>
+        /// <returns>An exception which can be thrown by the caller.</returns>
+        protected Task<GoogleApiException> ExceptionForResponseAsync(HttpResponseMessage response)
+        {
+            return MediaApiErrorHandling.ExceptionForResponseAsync(Options?.Serializer, Options?.ServiceName, response);
         }
 
         /// <summary>A callback when the media was uploaded successfully.</summary>
@@ -805,6 +802,115 @@ namespace Google.Apis.Upload
             }
         }
 
+        #endregion Upload Implementation
+    }
+
+    /// <summary>
+    /// Media upload which uses Google's resumable media upload protocol to upload data.
+    /// </summary>
+    /// <remarks>
+    /// See: https://developers.google.com/drive/manage-uploads#resumable for more information on the protocol.
+    /// </remarks>
+    /// <typeparam name="TRequest">
+    /// The type of the body of this request. Generally this should be the metadata related to the content to be 
+    /// uploaded. Must be serializable to/from JSON.
+    /// </typeparam>
+    public class ResumableUpload<TRequest> : ResumableUpload
+    {
+        #region Constants
+
+        /// <summary>Payload description headers, describing the content itself.</summary>
+        private const string PayloadContentTypeHeader = "X-Upload-Content-Type";
+
+        /// <summary>Payload description headers, describing the content itself.</summary>
+        private const string PayloadContentLengthHeader = "X-Upload-Content-Length";
+
+        /// <summary>Specify the type of this upload (this class supports resumable only).</summary>
+        private const string UploadType = "uploadType";
+
+        /// <summary>The uploadType parameter value for resumable uploads.</summary>
+        private const string Resumable = "resumable";
+
+        #endregion // Constants
+
+        #region Construction
+
+        /// <summary>
+        /// Create a resumable upload instance with the required parameters.
+        /// </summary>
+        /// <param name="service">The client service.</param>
+        /// <param name="path">The path for this media upload method.</param>
+        /// <param name="httpMethod">The HTTP method to start this upload.</param>
+        /// <param name="contentStream">The stream containing the content to upload.</param>
+        /// <param name="contentType">Content type of the content to be uploaded. Some services
+        /// may allow this to be null; others require a content type to be specified and will
+        /// fail when the upload is started if the value is null.</param>
+        /// <remarks>
+        /// Caller is responsible for maintaining the <paramref name="contentStream"/> open until the upload is 
+        /// completed.
+        /// Caller is responsible for closing the <paramref name="contentStream"/>.
+        /// </remarks>
+        protected ResumableUpload(IClientService service, string path, string httpMethod, Stream contentStream, string contentType)
+            : base(contentStream,
+                   new ResumableUploadOptions
+                   {
+                       HttpClient = service.HttpClient,
+                       Serializer = service.Serializer,
+                       ServiceName = service.Name
+                   })
+        {
+            service.ThrowIfNull(nameof(service));
+            path.ThrowIfNull(nameof(path));
+            httpMethod.ThrowIfNullOrEmpty(nameof(httpMethod));
+            contentStream.ThrowIfNull(nameof(contentStream));
+
+            this.Service = service;
+            this.Path = path;
+            this.HttpMethod = httpMethod;
+            this.ContentType = contentType;
+        }
+
+        #endregion // Construction
+
+        #region Properties
+
+        /// <summary>Gets or sets the service.</summary>
+        public IClientService Service { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the path of the method (combined with
+        /// <see cref="Google.Apis.Services.IClientService.BaseUri"/>) to produce 
+        /// absolute Uri. 
+        /// </summary>
+        public string Path { get; private set; }
+
+        /// <summary>Gets or sets the HTTP method of this upload (used to initialize the upload).</summary>
+        public string HttpMethod { get; private set; }
+
+        /// <summary>Gets or sets the stream's Content-Type.</summary>
+        public string ContentType { get; private set; }
+
+        /// <summary>Gets or sets the body of this request.</summary>
+        public TRequest Body { get; set; }
+
+        #endregion // Properties
+
+        #region Upload Implementation
+
+        /// <inheritdoc/>
+        protected override async Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
+        {
+            HttpRequestMessage request = CreateInitializeRequest();
+            Options?.ModifySessionInitiationRequest?.Invoke(request);
+            var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw await ExceptionForResponseAsync(response).ConfigureAwait(false);
+            }
+            return response.Headers.Location;
+        }
+
         /// <summary>Creates a request to initialize a request.</summary>
         private HttpRequestMessage CreateInitializeRequest()
         {
@@ -817,7 +923,7 @@ namespace Google.Apis.Upload
 
             // init parameters
             builder.AddParameter(RequestParameterType.Query, "key", Service.ApiKey);
-            builder.AddParameter(RequestParameterType.Query, "uploadType", "resumable");
+            builder.AddParameter(RequestParameterType.Query, UploadType, Resumable);
             SetAllPropertyValues(builder);
 
             HttpRequestMessage request = builder.CreateRequest();
