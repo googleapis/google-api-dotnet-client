@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170114 (744)
+ *      <tr><th>API Rev<td>20170121 (751)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -643,10 +643,10 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Optional. Determines the kind of IAM identity returned as writer_identity in the new sink.
                 /// If this value is omitted or set to false, and if the sink's parent is a project, then the value
-                /// returned as writer_identity is cloud-logs@google.com, the same identity used before the addition of
-                /// writer identities to this API. The sink's destination must be in the same project as the sink
-                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
+                /// returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before
+                /// the addition of writer identities to this API. The sink's destination must be in the same project as
+                /// the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such
+                /// as an organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -1284,17 +1284,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1330,18 +1330,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1411,10 +1411,10 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Optional. Determines the kind of IAM identity returned as writer_identity in the new sink.
                 /// If this value is omitted or set to false, and if the sink's parent is a project, then the value
-                /// returned as writer_identity is cloud-logs@google.com, the same identity used before the addition of
-                /// writer identities to this API. The sink's destination must be in the same project as the sink
-                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
+                /// returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before
+                /// the addition of writer identities to this API. The sink's destination must be in the same project as
+                /// the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such
+                /// as an organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -2146,10 +2146,10 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Optional. Determines the kind of IAM identity returned as writer_identity in the new sink.
                 /// If this value is omitted or set to false, and if the sink's parent is a project, then the value
-                /// returned as writer_identity is cloud-logs@google.com, the same identity used before the addition of
-                /// writer identities to this API. The sink's destination must be in the same project as the sink
-                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
+                /// returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before
+                /// the addition of writer identities to this API. The sink's destination must be in the same project as
+                /// the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such
+                /// as an organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -3171,10 +3171,10 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Optional. Determines the kind of IAM identity returned as writer_identity in the new sink.
                 /// If this value is omitted or set to false, and if the sink's parent is a project, then the value
-                /// returned as writer_identity is cloud-logs@google.com, the same identity used before the addition of
-                /// writer identities to this API. The sink's destination must be in the same project as the sink
-                /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
+                /// returned as writer_identity is cloud-logs@system.gserviceaccount.com, the same identity used before
+                /// the addition of writer identities to this API. The sink's destination must be in the same project as
+                /// the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such
+                /// as an organization, then the value of writer_identity will be a unique service account used only for
                 /// exports from the new sink. For more information, see writer_identity in LogSink.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }

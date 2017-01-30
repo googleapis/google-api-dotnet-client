@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170111 (741)
+ *      <tr><th>API Rev<td>20170125 (755)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -603,6 +603,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -616,10 +620,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -655,6 +655,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -667,15 +676,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1874,37 +1874,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
         /// <summary>Performs prediction on the data in the request.
         ///
-        /// Responses are very similar to requests. There are two top-level fields, each of which are JSON lists:
-        ///
-        /// predictions The list of predictions, one per instance in the request. error An error message returned
-        /// instead of a prediction list if any instance produced an error.
-        ///
-        /// If the call is successful, the response body will contain one prediction entry per instance in the request
-        /// body. If prediction fails for any instance, the response body will contain no predictions and will contian a
-        /// single error entry instead.
-        ///
-        /// Even though there is one prediction per instance, the format of a prediction is not directly related to the
-        /// format of an instance. Predictions take whatever format is specified in the outputs collection defined in
-        /// the model. The collection of predictions is returned in a JSON list. Each member of the list can be a simple
-        /// value, a list, or a JSON object of any complexity. If your model has more than one output tensor, each
-        /// prediction will be a JSON object containing a name/value pair for each output. The names identify the output
-        /// aliases in the graph.
-        ///
-        /// The following examples show some possible responses:
-        ///
-        /// A simple set of predictions for three input instances, where each prediction is an integer value:
-        ///
-        /// {"predictions": [5, 4, 3]}
-        ///
-        /// A more complex set of predictions, each containing two named values that correspond to output tensors, named
-        /// **label** and **scores** respectively. The value of **label** is the predicted category ("car" or "beach")
-        /// and **scores** contains a list of probabilities for that instance across the possible categories.
-        ///
-        /// {"predictions": [{"label": "beach", "scores": [0.1, 0.9]}, {"label": "car", "scores": [0.75, 0.25]}]}
-        ///
-        /// A response when there is an error processing an input instance:
-        ///
-        /// {"error": "Divide by zero"} </summary>
+        /// **** REMOVE FROM GENERATED DOCUMENTATION</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The resource name of a model or a version.
         ///
@@ -1916,37 +1886,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
         /// <summary>Performs prediction on the data in the request.
         ///
-        /// Responses are very similar to requests. There are two top-level fields, each of which are JSON lists:
-        ///
-        /// predictions The list of predictions, one per instance in the request. error An error message returned
-        /// instead of a prediction list if any instance produced an error.
-        ///
-        /// If the call is successful, the response body will contain one prediction entry per instance in the request
-        /// body. If prediction fails for any instance, the response body will contain no predictions and will contian a
-        /// single error entry instead.
-        ///
-        /// Even though there is one prediction per instance, the format of a prediction is not directly related to the
-        /// format of an instance. Predictions take whatever format is specified in the outputs collection defined in
-        /// the model. The collection of predictions is returned in a JSON list. Each member of the list can be a simple
-        /// value, a list, or a JSON object of any complexity. If your model has more than one output tensor, each
-        /// prediction will be a JSON object containing a name/value pair for each output. The names identify the output
-        /// aliases in the graph.
-        ///
-        /// The following examples show some possible responses:
-        ///
-        /// A simple set of predictions for three input instances, where each prediction is an integer value:
-        ///
-        /// {"predictions": [5, 4, 3]}
-        ///
-        /// A more complex set of predictions, each containing two named values that correspond to output tensors, named
-        /// **label** and **scores** respectively. The value of **label** is the predicted category ("car" or "beach")
-        /// and **scores** contains a list of probabilities for that instance across the possible categories.
-        ///
-        /// {"predictions": [{"label": "beach", "scores": [0.1, 0.9]}, {"label": "car", "scores": [0.75, 0.25]}]}
-        ///
-        /// A response when there is an error processing an input instance:
-        ///
-        /// {"error": "Divide by zero"} </summary>
+        /// **** REMOVE FROM GENERATED DOCUMENTATION</summary>
         public class PredictRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
@@ -2122,6 +2062,13 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual string Goal { get; set; } 
 
+        /// <summary>Optional. The Tensorflow summary tag name to use for optimizing trials. For current versions of
+        /// Tensorflow, this tag name should exactly match what is shown in Tensorboard, including all scopes.  For
+        /// versions of Tensorflow prior to 0.12, this should be only the tag passed to tf.Summary. By default,
+        /// "training/hptuning/metric" will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperparameterMetricTag")]
+        public virtual string HyperparameterMetricTag { get; set; } 
+
         /// <summary>Optional. The number of training trials to run concurrently. You can reduce the time it takes to
         /// perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the
         /// information gained in completed trials. That means that a trial does not get access to the results of trials
@@ -2263,6 +2210,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
+        public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
+
         /// <summary>Optional. The list of regions where the model is going to be deployed. Currently only one region
         /// per model is supported. Defaults to 'us-central1' if nothing is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
@@ -2358,7 +2309,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
     /// The structure of each element of the instances list is determined by your model's input definition. Instances
     /// can include named inputs or can contain only unlabeled values.
     ///
-    /// Most data does not include named inputs. Some instances will be simple JSON values (boolean, number, or string).
+    /// Not all data includes named inputs. Some instances will be simple JSON values (boolean, number, or string).
     /// However, instances are often lists of simple values, or complex nested lists. Here are some examples of request
     /// bodies:
     ///
@@ -2372,7 +2323,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
     ///
     /// Sentences encoded as lists of words (vectors of strings):
     ///
-    /// {"instances": [["the","quick","brown"], ["la","bruja","le"]]}
+    /// { "instances": [ ["the","quick","brown"], ["la","bruja","le"], ... ] }
     ///
     /// Floating point scalar values:
     ///
@@ -2380,20 +2331,20 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
     ///
     /// Vectors of integers:
     ///
-    /// {"instances": [[0, 1, 2], [3, 4, 5],...]}
+    /// { "instances": [ [0, 1, 2], [3, 4, 5], ... ] }
     ///
     /// Tensors (in this case, two-dimensional tensors):
     ///
-    /// {"instances": [[[0, 1, 2], [3, 4, 5]], ...]}
+    /// { "instances": [ [ [0, 1, 2], [3, 4, 5] ], ... ] }
     ///
-    /// Images represented as a three-dimensional list. In this encoding scheme the first two dimensions represent the
-    /// rows and columns of the image, and the third contains the R, G, and B values for each pixel.
+    /// Images can be represented different ways. In this encoding scheme the first two dimensions represent the rows
+    /// and columns of the image, and the third contains lists (vectors) of the R, G, and B values for each pixel.
     ///
-    /// {"instances": [[[[138, 30, 66], [130, 20, 56], ...]]]]}
+    /// { "instances": [ [ [ [138, 30, 66], [130, 20, 56], ... ], [ [126, 38, 61], [122, 24, 57], ... ], ... ], ... ] }
     ///
-    /// Data must be encoded as UTF-8. If your data uses another character encoding, you must base64 encode the data and
-    /// mark it as binary. To mark a JSON string as binary, replace it with an object with a single attribute named `b`:
-    /// {"b": "..."} For example:
+    /// JSON strings must be encoded as UTF-8. To send binary data, you must base64-encode the data and mark it as
+    /// binary. To mark a JSON string as binary, replace it with a JSON object with a single attribute named `b64`:
+    /// {"b64": "..."} For example:
     ///
     /// Two Serialized tf.Examples (fake data, for illustrative purposes only):
     ///
@@ -2408,19 +2359,21 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
     ///
     /// JSON input data to be preprocessed:
     ///
-    /// {"instances": [{"a": 1.0,  "b": true,  "c": "x"}, {"a": -2.0, "b": false, "c": "y"}]}
+    /// { "instances": [ { "a": 1.0, "b": true, "c": "x" }, { "a": -2.0, "b": false, "c": "y" } ] }
     ///
     /// Some models have an underlying TensorFlow graph that accepts multiple input tensors. In this case, you should
     /// use the names of JSON name/value pairs to identify the input tensors, as shown in the following exmaples:
     ///
     /// For a graph with input tensor aliases "tag" (string) and "image" (base64-encoded string):
     ///
-    /// {"instances": [{"tag": "beach", "image": {"b64": "ASa8asdf"}}, {"tag": "car", "image": {"b64": "JLK7ljk3"}}]}
+    /// { "instances": [ { "tag": "beach", "image": {"b64": "ASa8asdf"} }, { "tag": "car", "image": {"b64": "JLK7ljk3"}
+    /// } ] }
     ///
     /// For a graph with input tensor aliases "tag" (string) and "image" (3-dimensional array of 8-bit ints):
     ///
-    /// {"instances": [{"tag": "beach", "image": [[[263, 1, 10], [262, 2, 11], ...]]}, {"tag": "car", "image": [[[10,
-    /// 11, 24], [23, 10, 15], ...]]}]}
+    /// { "instances": [ { "tag": "beach", "image": [ [ [138, 30, 66], [130, 20, 56], ... ], [ [126, 38, 61], [122, 24,
+    /// 57], ... ], ... ] }, { "tag": "car", "image": [ [ [255, 0, 102], [255, 0, 97], ... ], [ [254, 1, 101], [254, 2,
+    /// 93], ... ], ... ] }, ... ] }
     ///
     /// If the call is successful, the response body will contain one prediction entry per instance in the request body.
     /// If prediction fails for any instance, the response body will contain no predictions and will contian a single
@@ -2468,9 +2421,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         public virtual string Region { get; set; } 
 
         /// <summary>Optional. The Google Cloud ML runtime version to use for this batch prediction. If not set, Google
-        /// Cloud ML will choose a version.</summary>
+        /// Cloud ML will pick the runtime version used during the CreateVersion request for this model version, or
+        /// choose the latest stable version when model version information is not available such as when the model is
+        /// specified by uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
+
+        /// <summary>Use this field if you want to specify a GCS path to the model to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>Use this field if you want to specify a version of the model to use. The string is formatted the
         /// same way as `model_version`, with the addition of the version information:
@@ -2523,6 +2482,12 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// <summary>Optional. The set of Hyperparameters to tune.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]
         public virtual GoogleCloudMlV1beta1HyperparameterSpec Hyperparameters { get; set; } 
+
+        /// <summary>Optional. A GCS path in which to store training outputs and other data needed for training. This
+        /// path will be passed to your TensorFlow program as the 'job_dir' command-line arg. The benefit of specifying
+        /// this field is that Cloud ML will validate the path for use in training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobDir")]
+        public virtual string JobDir { get; set; } 
 
         /// <summary>Optional. Specifies the type of virtual machine to use for your training job's master worker.
         ///
@@ -2681,10 +2646,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// The version name must be unique within the model it is created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>Optional. If true, enables StackDriver Logging for online prediction. Default is false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onlinePredictionLogging")]
-        public virtual System.Nullable<bool> OnlinePredictionLogging { get; set; } 
 
         /// <summary>Optional. The Google Cloud ML runtime version to use for this deployment. If not set, Google Cloud
         /// ML will choose a version.</summary>

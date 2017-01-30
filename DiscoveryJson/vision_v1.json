@@ -42,7 +42,7 @@
       "type": "object",
       "properties": {
         "gcsImageUri": {
-          "description": "Google Cloud Storage image URI, which must be in the following form:\n`gs://bucket_name/object_name` (for details, see\n[Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)).\nNOTE: Cloud Storage object versioning is not supported.",
+          "description": "NOTE: For new code `image_uri` below is preferred.\nGoogle Cloud Storage image URI, which must be in the following form:\n`gs://bucket_name/object_name` (for details, see\n[Google Cloud Storage Request\nURIs](https://cloud.google.com/storage/docs/reference-uris)).\nNOTE: Cloud Storage object versioning is not supported.",
           "type": "string"
         }
       },
@@ -97,7 +97,7 @@
           "$ref": "ImageProperties"
         },
         "textAnnotations": {
-          "description": "If present, text (OCR) detection has completed successfully.",
+          "description": "If present, text (OCR) detection or document (OCR) text detection has\ncompleted successfully.",
           "type": "array",
           "items": {
             "$ref": "EntityAnnotation"
@@ -770,7 +770,7 @@
             "Run logo detection.",
             "Run label detection.",
             "Run OCR.",
-            "Run computer vision models to compute image safe-search properties.",
+            "precedence when both DOCUMENT_TEXT_DETECTION\nand TEXT_DETECTION are present.\nRun computer vision models to compute image safe-search properties.",
             "Compute a set of image properties, such as the image's dominant colors."
           ],
           "type": "string"
@@ -848,7 +848,7 @@
       "id": "Position"
     }
   },
-  "revision": "20170112",
+  "revision": "20170126",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
