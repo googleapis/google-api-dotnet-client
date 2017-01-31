@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170104 (734)
+ *      <tr><th>API Rev<td>20170123 (753)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -5296,7 +5296,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The ID of the bucket.</summary>
+        /// <summary>The ID of the bucket. For buckets, the id and name properities are the same.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -5801,7 +5801,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; } 
 
-        /// <summary>The ID of the object.</summary>
+        /// <summary>The ID of the object, including the bucket name, object name, and generation number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -5828,7 +5828,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metageneration")]
         public virtual System.Nullable<long> Metageneration { get; set; } 
 
-        /// <summary>The name of this object. Required if not specified by URL parameter.</summary>
+        /// <summary>The name of the object. Required if not specified by URL parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud KMS API Version v1beta1
+ *   Google Cloud Key Management Service (KMS) API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/kms/'>Google Cloud KMS API</a>
+ *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170117 (747)
+ *      <tr><th>API Rev<td>20170124 (754)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud KMS API can be found at
+ * The complete API documentation for using Google Cloud Key Management Service (KMS) API can be found at
  * <a href='https://cloud.google.com/kms/'>https://cloud.google.com/kms/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.CloudKMS.v1beta1
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud KMS API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Key Management Service (KMS) API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -2187,6 +2187,10 @@ namespace Google.Apis.CloudKMS.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2194,10 +2198,6 @@ namespace Google.Apis.CloudKMS.v1beta1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2233,6 +2233,15 @@ namespace Google.Apis.CloudKMS.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2245,15 +2254,6 @@ namespace Google.Apis.CloudKMS.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
