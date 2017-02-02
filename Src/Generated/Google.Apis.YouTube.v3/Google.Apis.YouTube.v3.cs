@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20161202 (701)
+ *      <tr><th>API Rev<td>20170130 (760)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -85,6 +85,7 @@ namespace Google.Apis.YouTube.v3
             search = new SearchResource(this);
             sponsors = new SponsorsResource(this);
             subscriptions = new SubscriptionsResource(this);
+            superChatEvents = new SuperChatEventsResource(this);
             thumbnails = new ThumbnailsResource(this);
             videoAbuseReportReasons = new VideoAbuseReportReasonsResource(this);
             videoCategories = new VideoCategoriesResource(this);
@@ -308,6 +309,14 @@ namespace Google.Apis.YouTube.v3
         public virtual SubscriptionsResource Subscriptions
         {
             get { return subscriptions; }
+        }
+
+        private readonly SuperChatEventsResource superChatEvents;
+
+        /// <summary>Gets the SuperChatEvents resource.</summary>
+        public virtual SuperChatEventsResource SuperChatEvents
+        {
+            get { return superChatEvents; }
         }
 
         private readonly ThumbnailsResource thumbnails;
@@ -8739,6 +8748,136 @@ namespace Google.Apis.YouTube.v3
         }
     }
 
+    /// <summary>The "superChatEvents" collection of methods.</summary>
+    public class SuperChatEventsResource
+    {
+        private const string Resource = "superChatEvents";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SuperChatEventsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists Super Chat events for a channel.</summary>
+        /// <param name="part">The part parameter specifies the superChatEvent resource parts that the API response will
+        /// include. Supported values are id and snippet.</param>
+        public virtual ListRequest List(string part)
+        {
+            return new ListRequest(service, part);
+        }
+
+        /// <summary>Lists Super Chat events for a channel.</summary>
+        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.SuperChatEventListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string part)
+                : base(service)
+            {
+                Part = part;
+                InitParameters();
+            }
+
+
+            /// <summary>The part parameter specifies the superChatEvent resource parts that the API response will
+            /// include. Supported values are id and snippet.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Part { get; private set; }
+
+            /// <summary>The hl parameter instructs the API to retrieve localized resource metadata for a specific
+            /// application language that the YouTube website supports. The parameter value must be a language code
+            /// included in the list returned by the i18nLanguages.list method.
+            ///
+            /// If localized resource details are available in that language, the resource's snippet.localized object
+            /// will contain the localized values. However, if localized details are not available, the
+            /// snippet.localized object will contain resource details in the resource's default language.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Hl { get; set; }
+
+            /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
+            /// result set.</summary>
+            /// [default: 5]
+            /// [minimum: 0]
+            /// [maximum: 50]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The pageToken parameter identifies a specific page in the result set that should be returned.
+            /// In an API response, the nextPageToken and prevPageToken properties identify other pages that could be
+            /// retrieved.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "superChatEvents"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "part", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "part",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "hl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "hl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "5",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "thumbnails" collection of methods.</summary>
     public class ThumbnailsResource
     {
@@ -11670,6 +11809,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Freebase topic information related to the channel.</summary>
     public class ChannelTopicDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of Wikipedia URLs that describe the channel's content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicCategories")]
+        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; } 
+
         /// <summary>A list of Freebase topic IDs associated with the channel. You can retrieve information about each
         /// topic using the Freebase Topic API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicIds")]
@@ -13415,7 +13558,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the
         /// user that just became a sponsor messageDeletedEvent - the moderator that took the action
         /// messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took
-        /// the action</summary>
+        /// the action superChatEvent - the user that made the purchase</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; } 
 
@@ -13471,6 +13614,10 @@ namespace Google.Apis.YouTube.v3.Data
                 PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        /// <summary>Details about the Super Chat event, this is only set if the type is 'superChatEvent'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superChatDetails")]
+        public virtual LiveChatSuperChatDetails SuperChatDetails { get; set; } 
 
         /// <summary>Details about the text message, this is only set if the type is 'textMessageEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textMessageDetails")]
@@ -13628,6 +13775,33 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The poll the user voted on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollId")]
         public virtual string PollId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiveChatSuperChatDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A rendered string that displays the fund amount and currency to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountDisplayString")]
+        public virtual string AmountDisplayString { get; set; } 
+
+        /// <summary>The amount purchased by the user, in micros (1,750,000 micros = 1.75).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+
+        /// <summary>The currency in which the purchase was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; } 
+
+        /// <summary>The tier in which the amount belongs to. Lower amounts belong to lower tiers. Starts at
+        /// 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual System.Nullable<long> Tier { get; set; } 
+
+        /// <summary>The comment added by the user to this Super Chat event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
+        public virtual string UserComment { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14809,6 +14983,120 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A superChatEvent resource represents a Super Chat purchase on a YouTube channel.</summary>
+    public class SuperChatEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The ID that YouTube assigns to uniquely identify the Super Chat event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "youtube#superChatEvent".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The snippet object contains basic details about the Super Chat event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual SuperChatEventSnippet Snippet { get; set; } 
+
+    }    
+
+    public class SuperChatEventListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Serialized EventId of the request which produced this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; } 
+
+        /// <summary>A list of Super Chat purchases that match the request criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<SuperChatEvent> Items { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "youtube#superChatEventListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
+        /// result set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
+        public virtual PageInfo PageInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
+        public virtual TokenPagination TokenPagination { get; set; } 
+
+        /// <summary>The visitorId identifies the visitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
+        public virtual string VisitorId { get; set; } 
+
+    }    
+
+    public class SuperChatEventSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The purchase amount, in micros of the purchase currency. e.g., 1 is represented as
+        /// 1000000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
+
+        /// <summary>Channel id where the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
+        public virtual string ChannelId { get; set; } 
+
+        /// <summary>The text contents of the comment left by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentText")]
+        public virtual string CommentText { get; set; } 
+
+        /// <summary>The date and time when the event occurred. The value is specified in ISO 8601 (YYYY-MM-
+        /// DDThh:mm:ss.sZ) format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
+        public virtual string CreatedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> CreatedAt
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedAtRaw);
+            }
+            set
+            {
+                CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>The currency in which the purchase was made. ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; } 
+
+        /// <summary>A rendered string that displays the purchase amount and currency (e.g., "$1.00"). The string is
+        /// rendered for the given language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayString")]
+        public virtual string DisplayString { get; set; } 
+
+        /// <summary>The tier for the paid message, which is based on the amount of money spent to purchase the
+        /// message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual System.Nullable<long> MessageType { get; set; } 
+
+        /// <summary>Details about the supporter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supporterDetails")]
+        public virtual ChannelProfileDetails SupporterDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A thumbnail is an image representing a YouTube resource.</summary>
     public class Thumbnail : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15955,6 +16243,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// Freebase Topic API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevantTopicIds")]
         public virtual System.Collections.Generic.IList<string> RelevantTopicIds { get; set; } 
+
+        /// <summary>A list of Wikipedia URLs that provide a high-level description of the video's content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicCategories")]
+        public virtual System.Collections.Generic.IList<string> TopicCategories { get; set; } 
 
         /// <summary>A list of Freebase topic IDs that are centrally associated with the video. These are topics that
         /// are centrally featured in the video, and it can be said that the video is mainly about each of these. You

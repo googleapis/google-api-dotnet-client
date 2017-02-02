@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/8IKdD_GkxmHITZPPBvAy8YZADEQ\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/IwkFJZ7Dzm-xUxmcD7GdVxm6Qnk\"",
  "discoveryVersion": "v1",
  "id": "dataflow:v1b3",
  "name": "dataflow",
@@ -1157,17 +1157,17 @@
      "type": "string",
      "description": "Counter name. Not necessarily globally-unique, but unique within the context of the other fields. Required."
     },
-    "standardOrigin": {
+    "origin": {
      "type": "string",
      "description": "One of the standard Origins defined above.",
      "enum": [
-      "DATAFLOW",
+      "SYSTEM",
       "USER"
      ]
     },
-    "otherOrigin": {
+    "originNamespace": {
      "type": "string",
-     "description": "A string containing the origin of the counter."
+     "description": "A string containing a more specific namespace of the counter's origin."
     },
     "originalStepName": {
      "type": "string",
@@ -2799,16 +2799,16 @@
   "ResourceUtilizationReport": {
    "id": "ResourceUtilizationReport",
    "type": "object",
-   "description": "Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of sources. For more information, see go/df-resource-signals. Note that this proto closely follows the structure of its DFE siblings in its contents.",
+   "description": "Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of sources. For more information, see go/df-resource-signals.",
    "properties": {
-    "metrics": {
+    "metric": {
      "type": "array",
-     "description": "Each Struct must parallel DFE worker metrics protos (eg., cpu_time metric will have nested values “timestamp_ms, total_ms, rate”).",
+     "description": "'Any' is used to provide extensibility of reported metrics without requiring changes to the public API.",
      "items": {
       "type": "object",
       "additionalProperties": {
        "type": "any",
-       "description": "Properties of the object."
+       "description": "Properties of the object. Contains field @type with type URL."
       }
      }
     }

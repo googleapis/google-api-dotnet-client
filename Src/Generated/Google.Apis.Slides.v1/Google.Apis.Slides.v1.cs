@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170118 (748)
+ *      <tr><th>API Rev<td>20170201 (762)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1042,6 +1042,12 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
 
+        /// <summary>An optional list of object ID mappings from the placeholder(s) on the layout to the placeholder(s)
+        /// that will be created on the new slide from that specified layout. Can only be used when
+        /// `slide_layout_reference` is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholderIdMappings")]
+        public virtual System.Collections.Generic.IList<LayoutPlaceholderIdMapping> PlaceholderIdMappings { get; set; } 
+
         /// <summary>Layout reference of the slide to be inserted, based on the *current master*, which is one of the
         /// following:
         ///
@@ -1514,6 +1520,35 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The user-specified ID mapping for a placeholder that will be created on a slide from a specified
+    /// layout.</summary>
+    public class LayoutPlaceholderIdMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The placeholder on a layout that will be applied to a slide. Only type and index are needed. For
+        /// example, a predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder with index 0 and a BODY
+        /// placeholder with index 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutPlaceholder")]
+        public virtual Placeholder LayoutPlaceholder { get; set; } 
+
+        /// <summary>The object ID of the placeholder on a layout that will be applied to a slide.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutPlaceholderObjectId")]
+        public virtual string LayoutPlaceholderObjectId { get; set; } 
+
+        /// <summary>A user-supplied object ID for the placeholder identified above that to be created onto a slide.
+        ///
+        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
+        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
+        /// not be less than 5 or greater than 50.
+        ///
+        /// If you don't specify an ID, a unique one is generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The properties of Page are only relevant for pages with page_type LAYOUT.</summary>
     public class LayoutProperties : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1667,6 +1702,20 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The properties of Page that are only relevant for pages with page_type NOTES.</summary>
+    public class NotesProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the shape on this notes page that contains the speaker notes for the corresponding
+        /// slide. The actual shape may not always exist on the notes page. Inserting text using this object ID will
+        /// automatically create the shape. In this case, the actual shape may have different object ID. The
+        /// `GetPresentation` or `GetPage` action will always return the latest object ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerNotesObjectId")]
+        public virtual string SpeakerNotesObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A themeable solid color value.</summary>
     public class OpaqueColor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1742,6 +1791,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Layout specific properties. Only set if page_type = LAYOUT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutProperties")]
         public virtual LayoutProperties LayoutProperties { get; set; } 
+
+        /// <summary>Notes specific properties. Only set if page_type = NOTES.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notesProperties")]
+        public virtual NotesProperties NotesProperties { get; set; } 
 
         /// <summary>The object ID for this page. Object IDs used by Page and PageElement share the same
         /// namespace.</summary>
@@ -2012,6 +2065,18 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masters")]
         public virtual System.Collections.Generic.IList<Page> Masters { get; set; } 
 
+        /// <summary>The notes master in the presentation. It serves three purposes:
+        ///
+        /// - Placeholder shapes on a notes master contain the default text styles and shape properties of all
+        /// placeholder shapes on notes pages. Specifically, a SLIDE_IMAGE placeholder shape is defined to contain the
+        /// slide thumbnail, and a BODY placeholder shape is defined to contain the speaker notes. - The notes master
+        /// page properties define the common page properties inherited by all notes pages. - Any other shapes on the
+        /// notes master will appear on all notes pages.
+        ///
+        /// The notes master is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notesMaster")]
+        public virtual Page NotesMaster { get; set; } 
+
         /// <summary>The size of pages in the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual Size PageSize { get; set; } 
@@ -2107,6 +2172,46 @@ namespace Google.Apis.Slides.v1.Data
     public class ReplaceAllShapesWithImageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of shapes replaced with images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrencesChanged")]
+        public virtual System.Nullable<int> OccurrencesChanged { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Replaces all shapes that match the given criteria with the provided Google Sheets chart. The chart will
+    /// be scaled and centered to fit within the bounds of the original shape.
+    ///
+    /// NOTE: Replacing shapes with a chart requires at least one of the spreadsheets.readonly, spreadsheets,
+    /// drive.readonly, or drive OAuth scopes.</summary>
+    public class ReplaceAllShapesWithSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the specific chart in the Google Sheets spreadsheet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chartId")]
+        public virtual System.Nullable<int> ChartId { get; set; } 
+
+        /// <summary>The criteria that the shapes must match in order to be replaced. The request will replace all of
+        /// the shapes that contain the given text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsText")]
+        public virtual SubstringMatchCriteria ContainsText { get; set; } 
+
+        /// <summary>The mode with which the chart is linked to the source spreadsheet. When not specified, the chart
+        /// will be an image that is not linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkingMode")]
+        public virtual string LinkingMode { get; set; } 
+
+        /// <summary>The ID of the Google Sheets spreadsheet that contains the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
+        public virtual string SpreadsheetId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of replacing shapes with a Google Sheets chart.</summary>
+    public class ReplaceAllShapesWithSheetsChartResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of shapes replaced with charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrencesChanged")]
         public virtual System.Nullable<int> OccurrencesChanged { get; set; } 
 
@@ -2215,6 +2320,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithImage")]
         public virtual ReplaceAllShapesWithImageRequest ReplaceAllShapesWithImage { get; set; } 
 
+        /// <summary>Replaces all shapes matching some criteria with a Google Sheets chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithSheetsChart")]
+        public virtual ReplaceAllShapesWithSheetsChartRequest ReplaceAllShapesWithSheetsChart { get; set; } 
+
         /// <summary>Replaces all instances of specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
         public virtual ReplaceAllTextRequest ReplaceAllText { get; set; } 
@@ -2297,6 +2406,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The result of replacing all shapes matching some criteria with an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithImage")]
         public virtual ReplaceAllShapesWithImageResponse ReplaceAllShapesWithImage { get; set; } 
+
+        /// <summary>The result of replacing all shapes matching some criteria with a Google Sheets chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithSheetsChart")]
+        public virtual ReplaceAllShapesWithSheetsChartResponse ReplaceAllShapesWithSheetsChart { get; set; } 
 
         /// <summary>The result of replacing text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
@@ -2516,6 +2629,14 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The object ID of the master that this slide is based on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterObjectId")]
         public virtual string MasterObjectId { get; set; } 
+
+        /// <summary>The notes page that this slide is associated with. It defines the visual appearance of a notes page
+        /// when printing or exporting slides with speaker notes. A notes page inherits properties from the notes mater.
+        /// The placeholder shape with type BODY on the notes page contains the speaker notes for this slide. The ID of
+        /// this shape is identified by the speaker notes object id field. The notes page is read-only except for the
+        /// text content and styles of the speaker notes shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notesPage")]
+        public virtual Page NotesPage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Google Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160915 (623)
+ *      <tr><th>API Rev<td>20170126 (756)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -130,7 +130,18 @@ namespace Google.Apis.Iam.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -139,7 +150,21 @@ namespace Google.Apis.Iam.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -377,8 +402,9 @@ namespace Google.Apis.Iam.v1
                 /// <summary>Creates a ServiceAccountKey and returns it.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer the project from
-                /// the account. The `account` value can be the `email` address or the `unique_id` of the service account.</param>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will infer
+                /// the project from the account. The `account` value can be the `email` address or the `unique_id` of the service
+                /// account.</param>
                 public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.CreateServiceAccountKeyRequest body, string name)
                 {
                     return new CreateRequest(service, body, name);
@@ -398,9 +424,9 @@ namespace Google.Apis.Iam.v1
 
 
                     /// <summary>The resource name of the service account in the following format:
-                    /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will
-                    /// infer the project from the account. The `account` value can be the `email` address or the
-                    /// `unique_id` of the service account.</summary>
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the
+                    /// project will infer the project from the account. The `account` value can be the `email` address
+                    /// or the `unique_id` of the service account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -441,7 +467,7 @@ namespace Google.Apis.Iam.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                                Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                             });
                     }
 
@@ -449,9 +475,9 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>Deletes a ServiceAccountKey.</summary>
                 /// <param name="name">The resource name of the service account key in the following format:
-                /// `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using `-` as a wildcard for the project will infer the
-                /// project from the account. The `account` value can be the `email` address or the `unique_id` of the service
-                /// account.</param>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`. Using `-` as a wildcard for the project
+                /// will infer the project from the account. The `account` value can be the `email` address or the `unique_id` of the
+                /// service account.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -470,9 +496,9 @@ namespace Google.Apis.Iam.v1
 
 
                     /// <summary>The resource name of the service account key in the following format:
-                    /// `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using `-` as a wildcard for the
-                    /// project will infer the project from the account. The `account` value can be the `email` address
-                    /// or the `unique_id` of the service account.</summary>
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`. Using `-` as a
+                    /// wildcard for the project will infer the project from the account. The `account` value can be the
+                    /// `email` address or the `unique_id` of the service account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -507,7 +533,7 @@ namespace Google.Apis.Iam.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*/keys/[^/]*$",
+                                Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
                             });
                     }
 
@@ -515,9 +541,10 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>Gets the ServiceAccountKey by key id.</summary>
                 /// <param name="name">The resource name of the service account key in the following format:
-                /// `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using `-` as a wildcard for the project will infer the
-                /// project from the account. The `account` value can be the `email` address or the `unique_id` of the service
-                /// account.</param>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+                ///
+                /// Using `-` as a wildcard for the project will infer the project from the account. The `account` value can be the
+                /// `email` address or the `unique_id` of the service account.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -536,9 +563,10 @@ namespace Google.Apis.Iam.v1
 
 
                     /// <summary>The resource name of the service account key in the following format:
-                    /// `projects/{project}/serviceAccounts/{account}/keys/{key}`. Using `-` as a wildcard for the
-                    /// project will infer the project from the account. The `account` value can be the `email` address
-                    /// or the `unique_id` of the service account.</summary>
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+                    ///
+                    /// Using `-` as a wildcard for the project will infer the project from the account. The `account`
+                    /// value can be the `email` address or the `unique_id` of the service account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -590,7 +618,7 @@ namespace Google.Apis.Iam.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*/keys/[^/]*$",
+                                Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
                             });
                         RequestParameters.Add(
                             "publicKeyType", new Google.Apis.Discovery.Parameter
@@ -607,8 +635,10 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>Lists ServiceAccountKeys.</summary>
                 /// <param name="name">The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project, will infer the project from
-                /// the account. The `account` value can be the `email` address or the `unique_id` of the service account.</param>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+                ///
+                /// Using `-` as a wildcard for the project, will infer the project from the account. The `account` value can be the
+                /// `email` address or the `unique_id` of the service account.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -627,9 +657,10 @@ namespace Google.Apis.Iam.v1
 
 
                     /// <summary>The resource name of the service account in the following format:
-                    /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project, will
-                    /// infer the project from the account. The `account` value can be the `email` address or the
-                    /// `unique_id` of the service account.</summary>
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+                    ///
+                    /// Using `-` as a wildcard for the project, will infer the project from the account. The `account`
+                    /// value can be the `email` address or the `unique_id` of the service account.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -681,7 +712,7 @@ namespace Google.Apis.Iam.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                                Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                             });
                         RequestParameters.Add(
                             "keyTypes", new Google.Apis.Discovery.Parameter
@@ -761,7 +792,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                 }
 
@@ -769,8 +800,9 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>Deletes a ServiceAccount.</summary>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer the project from
-            /// the account. The `account` value can be the `email` address or the `unique_id` of the service account.</param>
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will infer
+            /// the project from the account. The `account` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -789,9 +821,9 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer
-                /// the project from the account. The `account` value can be the `email` address or the `unique_id` of
-                /// the service account.</summary>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the
+                /// project will infer the project from the account. The `account` value can be the `email` address or
+                /// the `unique_id` of the service account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -826,7 +858,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -834,8 +866,9 @@ namespace Google.Apis.Iam.v1
 
             /// <summary>Gets a ServiceAccount.</summary>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer the project from
-            /// the account. The `account` value can be the `email` address or the `unique_id` of the service account.</param>
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will infer
+            /// the project from the account. The `account` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -854,9 +887,9 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer
-                /// the project from the account. The `account` value can be the `email` address or the `unique_id` of
-                /// the service account.</summary>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the
+                /// project will infer the project from the account. The `account` value can be the `email` address or
+                /// the `unique_id` of the service account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -891,7 +924,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -953,7 +986,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -984,16 +1017,16 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional pagination token returned in an earlier
+                /// ListServiceAccountsResponse.next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional limit on the number of service accounts to include in the response. Further
                 /// accounts can subsequently be obtained by including the ListServiceAccountsResponse.next_page_token
                 /// in a subsequent request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional pagination token returned in an earlier
-                /// ListServiceAccountsResponse.next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1026,21 +1059,21 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*$",
+                            Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1114,7 +1147,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -1123,8 +1156,9 @@ namespace Google.Apis.Iam.v1
             /// <summary>Signs a blob using a service account's system-managed private key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer the project from
-            /// the account. The `account` value can be the `email` address or the `unique_id` of the service account.</param>
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will infer
+            /// the project from the account. The `account` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
             public virtual SignBlobRequest SignBlob(Google.Apis.Iam.v1.Data.SignBlobRequest body, string name)
             {
                 return new SignBlobRequest(service, body, name);
@@ -1144,9 +1178,9 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer
-                /// the project from the account. The `account` value can be the `email` address or the `unique_id` of
-                /// the service account.</summary>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the
+                /// project will infer the project from the account. The `account` value can be the `email` address or
+                /// the `unique_id` of the service account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1187,7 +1221,87 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Signs a JWT using a service account's system-managed private key.
+            ///
+            /// If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an an expiry time of one hour by
+            /// default. If you request an expiry time of more than one hour, the request will fail.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The resource name of the service account in the following format:
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will infer
+            /// the project from the account. The `account` value can be the `email` address or the `unique_id` of the service
+            /// account.</param>
+            public virtual SignJwtRequest SignJwt(Google.Apis.Iam.v1.Data.SignJwtRequest body, string name)
+            {
+                return new SignJwtRequest(service, body, name);
+            }
+
+            /// <summary>Signs a JWT using a service account's system-managed private key.
+            ///
+            /// If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an an expiry time of one hour by
+            /// default. If you request an expiry time of more than one hour, the request will fail.</summary>
+            public class SignJwtRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.SignJwtResponse>
+            {
+                /// <summary>Constructs a new SignJwt request.</summary>
+                public SignJwtRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.SignJwtRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the service account in the following format:
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the
+                /// project will infer the project from the account. The `account` value can be the `email` address or
+                /// the `unique_id` of the service account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Iam.v1.Data.SignJwtRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "signJwt"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:signJwt"; }
+                }
+
+                /// <summary>Initializes SignJwt parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -1260,27 +1374,32 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
             }
 
-            /// <summary>Updates a ServiceAccount. Currently, only the following fields are updatable: `display_name` .
-            /// The `etag` is mandatory.</summary>
+            /// <summary>Updates a ServiceAccount.
+            ///
+            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The resource name of the service account in the following format:
-            /// `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a wildcard for the project will infer the
-            /// project from the `account` and the `account` value can be the `email` address or the `unique_id` of the service
-            /// account. In responses the resource name will always be in the format
-            /// `projects/{project}/serviceAccounts/{email}`.</param>
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+            ///
+            /// Requests using `-` as a wildcard for the project will infer the project from the `account` and the `account` value
+            /// can be the `email` address or the `unique_id` of the service account.
+            ///
+            /// In responses the resource name will always be in the format
+            /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.</param>
             public virtual UpdateRequest Update(Google.Apis.Iam.v1.Data.ServiceAccount body, string name)
             {
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates a ServiceAccount. Currently, only the following fields are updatable: `display_name` .
-            /// The `etag` is mandatory.</summary>
+            /// <summary>Updates a ServiceAccount.
+            ///
+            /// Currently, only the following fields are updatable: `display_name` . The `etag` is mandatory.</summary>
             public class UpdateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccount>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1294,10 +1413,13 @@ namespace Google.Apis.Iam.v1
 
 
                 /// <summary>The resource name of the service account in the following format:
-                /// `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a wildcard for the project
-                /// will infer the project from the `account` and the `account` value can be the `email` address or the
-                /// `unique_id` of the service account. In responses the resource name will always be in the format
-                /// `projects/{project}/serviceAccounts/{email}`.</summary>
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+                ///
+                /// Requests using `-` as a wildcard for the project will infer the project from the `account` and the
+                /// `account` value can be the `email` address or the `unique_id` of the service account.
+                ///
+                /// In responses the resource name will always be in the format
+                /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1338,7 +1460,7 @@ namespace Google.Apis.Iam.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]*/serviceAccounts/[^/]*$",
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+$",
                         });
                 }
 
@@ -1438,14 +1560,26 @@ namespace Google.Apis.Iam.v1.Data
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`. *
-        /// `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
-        /// app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For
-        /// example, `admins@example.com`. * `domain:{domain}`: A Google Apps domain name that represents all the users
-        /// of that domain. For example, `google.com` or `example.com`.</summary>
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` or `joe@example.com`.
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; } 
 
@@ -1483,7 +1617,7 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>The service account key create request.</summary>
     public class CreateServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which type of key and algorithm to use for the key. The default is currently a 4K RSA key. However
+        /// <summary>Which type of key and algorithm to use for the key. The default is currently a 4K RSA key.  However
         /// this may change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
         public virtual string KeyAlgorithm { get; set; } 
@@ -1516,9 +1650,11 @@ namespace Google.Apis.Iam.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1553,12 +1689,20 @@ namespace Google.Apis.Iam.v1.Data
     }    
 
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
-    /// for Cloud Platform resources. A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members`
-    /// to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A
-    /// `role` is a named list of permissions defined by IAM. **Example** { "bindings": [ { "role": "roles/owner",
-    /// "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
-    /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
-    /// a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).</summary>
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
@@ -1570,8 +1714,10 @@ namespace Google.Apis.Iam.v1.Data
         /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
-        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. If no `etag`
-        /// is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly.</summary>
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1595,9 +1741,10 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>The grantable role query request.</summary>
     public class QueryGrantableRolesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full resource name to query from the list of grantable roles. The name follows the
-        /// Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be
-        /// named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
+        /// <summary>Required. The full resource name to query from the list of grantable roles.
+        ///
+        /// The name follows the Google Cloud Platform resource format. For example, a Cloud Platform project with id
+        /// `my-project` will be named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; } 
 
@@ -1619,18 +1766,21 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>A role in the Identity and Access Management API.</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A human-readable description for the role.</summary>
+        /// <summary>Optional.  A human-readable description for the role.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is
-        /// used in output and other input such as UpdateRole, the role name is the complete path, e.g.,
-        /// roles/logging.viewer for curated roles and organizations/{organization-id}/roles/logging.viewer for custom
+        /// <summary>The name of the role.
+        ///
+        /// When Role is used in CreateRole, the role name must not be set.
+        ///
+        /// When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g.,
+        /// roles/logging.viewer for curated roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom
         /// roles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8
+        /// <summary>Optional.  A human-readable title for the role.  Typically this is limited to 100 UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -1639,18 +1789,22 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A service account in the Identity and Access Management API. To create a service account, specify the
-    /// `project_id` and the `account_id` for the account. The `account_id` is unique within the project, and is used to
-    /// generate the service account email address and a stable `unique_id`. If the account already exists, the
-    /// account's resource name is returned in util::Status's ResourceInfo.resource_name in the format of
-    /// projects/{project}/serviceAccounts/{email}. The caller can use the name in other methods to access the account.
+    /// <summary>A service account in the Identity and Access Management API.
+    ///
+    /// To create a service account, specify the `project_id` and the `account_id` for the account.  The `account_id` is
+    /// unique within the project, and is used to generate the service account email address and a stable `unique_id`.
+    ///
+    /// If the account already exists, the account's resource name is returned in util::Status's
+    /// ResourceInfo.resource_name in the format of projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}. The
+    /// caller can use the name in other methods to access the account.
+    ///
     /// All other methods can identify the service account using the format
-    /// `projects/{project}/serviceAccounts/{account}`. Using `-` as a wildcard for the project will infer the project
-    /// from the account. The `account` value can be the `email` address or the `unique_id` of the service
-    /// account.</summary>
+    /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`. Using `-` as a wildcard for the project will
+    /// infer the project from the account. The `account` value can be the `email` address or the `unique_id` of the
+    /// service account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A user-specified description of the service account. Must be fewer than 100 UTF-8
+        /// <summary>Optional. A user-specified description of the service account.  Must be fewer than 100 UTF-8
         /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
@@ -1664,10 +1818,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; } 
 
         /// <summary>The resource name of the service account in the following format:
-        /// `projects/{project}/serviceAccounts/{account}`. Requests using `-` as a wildcard for the project will infer
-        /// the project from the `account` and the `account` value can be the `email` address or the `unique_id` of the
-        /// service account. In responses the resource name will always be in the format
-        /// `projects/{project}/serviceAccounts/{email}`.</summary>
+        /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+        ///
+        /// Requests using `-` as a wildcard for the project will infer the project from the `account` and the `account`
+        /// value can be the `email` address or the `unique_id` of the service account.
+        ///
+        /// In responses the resource name will always be in the format
+        /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1687,11 +1844,17 @@ namespace Google.Apis.Iam.v1.Data
 
     }    
 
-    /// <summary>Represents a service account key. A service account has two sets of key-pairs: user-managed, and
-    /// system-managed. User-managed key-pairs can be created and deleted by users. Users are responsible for rotating
-    /// these keys periodically to ensure security of their service accounts. Users retain the private key of these key-
-    /// pairs, and Google retains ONLY the public key. System-managed key-pairs are managed automatically by Google, and
-    /// rotated daily without user intervention. The private key never leaves Google's servers to maximize security.
+    /// <summary>Represents a service account key.
+    ///
+    /// A service account has two sets of key-pairs: user-managed, and system-managed.
+    ///
+    /// User-managed key-pairs can be created and deleted by users.  Users are responsible for rotating these keys
+    /// periodically to ensure security of their service accounts.  Users retain the private key of these key-pairs, and
+    /// Google retains ONLY the public key.
+    ///
+    /// System-managed key-pairs are managed automatically by Google, and rotated daily without user intervention.  The
+    /// private key never leaves Google's servers to maximize security.
+    ///
     /// Public keys for all service accounts are also published at the OAuth2 Service Account API.</summary>
     public class ServiceAccountKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1700,7 +1863,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string KeyAlgorithm { get; set; } 
 
         /// <summary>The resource name of the service account key in the following format
-        /// `projects/{project}/serviceAccounts/{account}/keys/{key}`.</summary>
+        /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1709,8 +1872,9 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string PrivateKeyData { get; set; } 
 
         /// <summary>The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in
-        /// `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private
-        /// keys, and never retains user-managed private keys.</summary>
+        /// `GetServiceAccountKey` or `ListServiceAccountKey` responses.
+        ///
+        /// Google never exposes system-managed private keys, and never retains user-managed private keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyType")]
         public virtual string PrivateKeyType { get; set; } 
 
@@ -1720,11 +1884,11 @@ namespace Google.Apis.Iam.v1.Data
 
         /// <summary>The key can be used after this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validAfterTime")]
-        public virtual string ValidAfterTime { get; set; } 
+        public virtual object ValidAfterTime { get; set; } 
 
         /// <summary>The key can be used before this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validBeforeTime")]
-        public virtual string ValidBeforeTime { get; set; } 
+        public virtual object ValidBeforeTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1764,6 +1928,32 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>The signed blob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The service account sign JWT request.</summary>
+    public class SignJwtRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JWT payload to sign, a JSON JWT Claim set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The service account sign JWT response.</summary>
+    public class SignJwtResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the key used to sign the JWT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; } 
+
+        /// <summary>The signed JWT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedJwt")]
+        public virtual string SignedJwt { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

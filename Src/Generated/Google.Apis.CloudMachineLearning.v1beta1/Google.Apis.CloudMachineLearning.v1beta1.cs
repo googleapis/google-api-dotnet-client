@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170125 (755)
+ *      <tr><th>API Rev<td>20170131 (761)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -603,6 +603,12 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of jobs to retrieve per "page" of results. If there are more remaining
                 /// results than this number, the response message will contain a valid value in the `next_page_token`
                 /// field.
@@ -614,12 +620,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -655,6 +655,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -667,15 +676,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1407,6 +1407,12 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of models to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1414,12 +1420,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1455,18 +1455,18 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1986,6 +1986,93 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// <summary>HTTP body binary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleCloudMlV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the operation was submitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The time operation processing completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Indicates whether a request to cancel this operation has been made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCancellationRequested")]
+        public virtual System.Nullable<bool> IsCancellationRequested { get; set; } 
+
+        /// <summary>Contains the name of the model associated with the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; } 
+
+        /// <summary>The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>The time operation processing started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Contains the version associated with the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual GoogleCloudMlV1Version Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a version of the model.
+    ///
+    /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
+    /// multiple versions. You can get information about all of the versions of a given model by calling
+    /// [projects.models.versions.list](/ml/reference/rest/v1/projects.models.versions/list).</summary>
+    public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Required. The Google Cloud Storage location of the trained model used to create the version. See
+        /// the [overview of model deployment](/ml/docs/concepts/deployment-overview) for more informaiton.
+        ///
+        /// When passing Version to
+        /// [projects.models.versions.create](/ml/reference/rest/v1/projects.models.versions/create) the model service
+        /// uses the specified location as the source of the model. Once deployed, the model version is hosted by the
+        /// prediction service, so this location is useful only as a historical record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentUri")]
+        public virtual string DeploymentUri { get; set; } 
+
+        /// <summary>Optional. The description specified for the version when it was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Output only. If true, this version will be used to handle prediction requests that do not specify a
+        /// version.
+        ///
+        /// You can change the default version by calling
+        /// [projects.methods.versions.setDefault](/ml/reference/rest/v1/projects.models.versions/setDefault).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; } 
+
+        /// <summary>Output only. The time the version was last used for prediction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]
+        public virtual object LastUseTime { get; set; } 
+
+        /// <summary>Required.The name specified for the version when it was created.
+        ///
+        /// The version name must be unique within the model it is created in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Optional. The Google Cloud ML runtime version to use for this deployment. If not set, Google Cloud
+        /// ML will choose a version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

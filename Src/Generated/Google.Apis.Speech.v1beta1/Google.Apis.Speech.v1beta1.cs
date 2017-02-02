@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170125 (755)
+ *      <tr><th>API Rev<td>20170201 (762)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -794,16 +794,15 @@ namespace Google.Apis.Speech.v1beta1
 namespace Google.Apis.Speech.v1beta1.Data
 {    
 
-    /// <summary>`AsyncRecognizeRequest` is the top-level message sent by the client for the `AsyncRecognize`
-    /// method.</summary>
+    /// <summary>The top-level message sent by the client for the `AsyncRecognize` method.</summary>
     public class AsyncRecognizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The audio data to be recognized.</summary>
+        /// <summary>*Required* The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
         public virtual RecognitionAudio Audio { get; set; } 
 
-        /// <summary>[Required] The `config` message provides information to the recognizer that specifies how to
-        /// process the request.</summary>
+        /// <summary>*Required* Provides information to the recognizer that specifies how to process the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
 
@@ -902,42 +901,41 @@ namespace Google.Apis.Speech.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `RecognitionConfig` message provides information to the recognizer that specifies how to process
-    /// the request.</summary>
+    /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] Encoding of audio data sent in all `RecognitionAudio` messages.</summary>
+        /// <summary>*Required* Encoding of audio data sent in all `RecognitionAudio` messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; } 
 
-        /// <summary>[Optional] The language of the supplied audio as a BCP-47 language tag. Example: "en-GB"
+        /// <summary>*Optional* The language of the supplied audio as a BCP-47 language tag. Example: "en-GB"
         /// https://www.rfc-editor.org/rfc/bcp/bcp47.txt If omitted, defaults to "en-US". See [Language
         /// Support](https://cloud.google.com/speech/docs/languages) for a list of the currently supported language
         /// codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
 
-        /// <summary>[Optional] Maximum number of recognition hypotheses to be returned. Specifically, the maximum
+        /// <summary>*Optional* Maximum number of recognition hypotheses to be returned. Specifically, the maximum
         /// number of `SpeechRecognitionAlternative` messages within each `SpeechRecognitionResult`. The server may
         /// return fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will return a maximum
         /// of one. If omitted, will return a maximum of one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAlternatives")]
         public virtual System.Nullable<int> MaxAlternatives { get; set; } 
 
-        /// <summary>[Optional] If set to `true`, the server will attempt to filter out profanities, replacing all but
+        /// <summary>*Optional* If set to `true`, the server will attempt to filter out profanities, replacing all but
         /// the initial character in each filtered word with asterisks, e.g. "f***". If set to `false` or omitted,
         /// profanities won't be filtered out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
         public virtual System.Nullable<bool> ProfanityFilter { get; set; } 
 
-        /// <summary>[Required] Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid
+        /// <summary>*Required* Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid
         /// values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to
         /// 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-
         /// sampling).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
         public virtual System.Nullable<int> SampleRate { get; set; } 
 
-        /// <summary>[Optional] A means to provide context to assist the speech recognition.</summary>
+        /// <summary>*Optional* A means to provide context to assist the speech recognition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContext")]
         public virtual SpeechContext SpeechContext { get; set; } 
 
@@ -948,7 +946,7 @@ namespace Google.Apis.Speech.v1beta1.Data
     /// <summary>Provides "hints" to the speech recognizer to favor specific words and phrases in the results.</summary>
     public class SpeechContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] A list of strings containing words and phrases "hints" so that the speech recognition is
+        /// <summary>*Optional* A list of strings containing words and phrases "hints" so that the speech recognition is
         /// more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for
         /// example, if specific commands are typically spoken by the user. This can also be used to add additional
         /// words to the vocabulary of the recognizer. See [usage
@@ -963,7 +961,7 @@ namespace Google.Apis.Speech.v1beta1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// <summary>*Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. This field is typically provided only for the top
         /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
         /// not guaranteed to be accurate, or even set, in any of the results. The default of 0.0 is a sentinel value
@@ -971,7 +969,7 @@ namespace Google.Apis.Speech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>[Output-only] Transcript text representing the words that the user spoke.</summary>
+        /// <summary>*Output-only* Transcript text representing the words that the user spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
@@ -982,7 +980,7 @@ namespace Google.Apis.Speech.v1beta1.Data
     /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
     public class SpeechRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] May contain one or more recognition hypotheses (up to the maximum specified in
+        /// <summary>*Output-only* May contain one or more recognition hypotheses (up to the maximum specified in
         /// `max_alternatives`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; } 
@@ -1054,16 +1052,15 @@ namespace Google.Apis.Speech.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`SyncRecognizeRequest` is the top-level message sent by the client for the `SyncRecognize`
-    /// method.</summary>
+    /// <summary>The top-level message sent by the client for the `SyncRecognize` method.</summary>
     public class SyncRecognizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The audio data to be recognized.</summary>
+        /// <summary>*Required* The audio data to be recognized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]
         public virtual RecognitionAudio Audio { get; set; } 
 
-        /// <summary>[Required] The `config` message provides information to the recognizer that specifies how to
-        /// process the request.</summary>
+        /// <summary>*Required* Provides information to the recognizer that specifies how to process the
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
 
@@ -1071,11 +1068,11 @@ namespace Google.Apis.Speech.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`SyncRecognizeResponse` is the only message returned to the client by `SyncRecognize`. It contains the
-    /// result as zero or more sequential `SpeechRecognitionResult` messages.</summary>
+    /// <summary>The only message returned to the client by `SyncRecognize`. method. It contains the result as zero or
+    /// more sequential `SpeechRecognitionResult` messages.</summary>
     public class SyncRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] Sequential list of transcription results corresponding to sequential portions of
+        /// <summary>*Output-only* Sequential list of transcription results corresponding to sequential portions of
         /// audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 

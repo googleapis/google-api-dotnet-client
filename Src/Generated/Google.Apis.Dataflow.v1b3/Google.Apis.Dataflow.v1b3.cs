@@ -2929,21 +2929,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>One of the standard Origins defined above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; } 
+
+        /// <summary>A string containing a more specific namespace of the counter's origin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originNamespace")]
+        public virtual string OriginNamespace { get; set; } 
+
         /// <summary>System generated name of the original step in the user's graph, before optimization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalStepName")]
         public virtual string OriginalStepName { get; set; } 
 
-        /// <summary>A string containing the origin of the counter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("otherOrigin")]
-        public virtual string OtherOrigin { get; set; } 
-
         /// <summary>Portion of this counter, either key or value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portion")]
         public virtual string Portion { get; set; } 
-
-        /// <summary>One of the standard Origins defined above.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("standardOrigin")]
-        public virtual string StandardOrigin { get; set; } 
 
         /// <summary>ID of a particular worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
@@ -4109,14 +4109,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
     }    
 
     /// <summary>Worker metrics exported from workers. This contains resource utilization metrics accumulated from a
-    /// variety of sources. For more information, see go/df-resource-signals. Note that this proto closely follows the
-    /// structure of its DFE siblings in its contents.</summary>
+    /// variety of sources. For more information, see go/df-resource-signals.</summary>
     public class ResourceUtilizationReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Each Struct must parallel DFE worker metrics protos (eg., cpu_time metric will have nested values
-        /// “timestamp_ms, total_ms, rate”).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metrics { get; set; } 
+        /// <summary>'Any' is used to provide extensibility of reported metrics without requiring changes to the public
+        /// API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metric { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170111 (741)
+ *      <tr><th>API Rev<td>20170123 (753)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6157,6 +6157,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
+        /// <summary>A more detailed description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
         /// <summary>Actual value displayed on the landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayedValue")]
         public virtual string DisplayedValue { get; set; } 
@@ -6172,6 +6176,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Last time the account was checked for this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChecked")]
         public virtual string LastChecked { get; set; } 
+
+        /// <summary>The attribute name that is relevant for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>Number of items in the account found to have the said issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numItems")]
