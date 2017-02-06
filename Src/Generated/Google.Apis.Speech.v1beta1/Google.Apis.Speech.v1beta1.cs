@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170201 (762)
+ *      <tr><th>API Rev<td>20170204 (765)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -357,11 +357,10 @@ namespace Google.Apis.Speech.v1beta1
         /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
         /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
         /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-        /// <param name="body">The body of the request.</param>
         /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(Google.Apis.Speech.v1beta1.Data.CancelOperationRequest body, string name)
+        public virtual CancelRequest Cancel(string name)
         {
-            return new CancelRequest(service, body, name);
+            return new CancelRequest(service, name);
         }
 
         /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
@@ -373,11 +372,10 @@ namespace Google.Apis.Speech.v1beta1
         public class CancelRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Speech.v1beta1.Data.CancelOperationRequest body, string name)
+            public CancelRequest(Google.Apis.Services.IClientService service, string name)
                 : base(service)
             {
                 Name = name;
-                Body = body;
                 InitParameters();
             }
 
@@ -386,12 +384,6 @@ namespace Google.Apis.Speech.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Speech.v1beta1.Data.CancelOperationRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -580,10 +572,6 @@ namespace Google.Apis.Speech.v1beta1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation collection.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -595,6 +583,10 @@ namespace Google.Apis.Speech.v1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -621,15 +613,6 @@ namespace Google.Apis.Speech.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -651,6 +634,15 @@ namespace Google.Apis.Speech.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -806,13 +798,6 @@ namespace Google.Apis.Speech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Operations.CancelOperation.</summary>
-    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

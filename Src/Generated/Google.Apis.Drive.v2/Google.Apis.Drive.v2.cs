@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170119 (749)
+ *      <tr><th>API Rev<td>20170131 (761)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -712,6 +712,51 @@ namespace Google.Apis.Drive.v2
 
         }
 
+        /// <summary>Gets the starting pageToken for listing future changes.</summary>
+        public virtual GetStartPageTokenRequest GetStartPageToken()
+        {
+            return new GetStartPageTokenRequest(service);
+        }
+
+        /// <summary>Gets the starting pageToken for listing future changes.</summary>
+        public class GetStartPageTokenRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.StartPageToken>
+        {
+            /// <summary>Constructs a new GetStartPageToken request.</summary>
+            public GetStartPageTokenRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getStartPageToken"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "changes/startPageToken"; }
+            }
+
+            /// <summary>Initializes GetStartPageToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Lists the changes for a user.</summary>
         public virtual ListRequest List()
         {
@@ -747,7 +792,9 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Page token for changes.</summary>
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of 'nextPageToken' from the previous response or to the response from the getStartPageToken
+            /// method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -879,7 +926,9 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Page token for changes.</summary>
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of 'nextPageToken' from the previous response or to the response from the getStartPageToken
+            /// method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -8543,6 +8592,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+    }    
+
+    public class StartPageToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#startPageToken".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The starting page token for listing changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startPageToken")]
+        public virtual string StartPageTokenValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Information about a Drive user.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161221 (720)
+ *      <tr><th>API Rev<td>20170126 (756)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -764,10 +764,10 @@ namespace Google.Apis.DeploymentManager.v2
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1580,10 +1580,10 @@ namespace Google.Apis.DeploymentManager.v2
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1826,10 +1826,10 @@ namespace Google.Apis.DeploymentManager.v2
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2086,10 +2086,10 @@ namespace Google.Apis.DeploymentManager.v2
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2256,10 +2256,10 @@ namespace Google.Apis.DeploymentManager.v2
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
-            /// [maximum: 500]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2358,16 +2358,18 @@ namespace Google.Apis.DeploymentManager.v2
 namespace Google.Apis.DeploymentManager.v2.Data
 {    
 
-    /// <summary>Provides the configuration for non-admin_activity logging for a service. Controls exemptions and
-    /// specific log sub-types.</summary>
+    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
+    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration for each type of logging</summary>
+        /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
 
         /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
-        /// specified above. Follows the same format of Binding.members.</summary>
+        /// specified above. Follows the same format of Binding.members. This field is deprecated in favor of per-
+        /// permission-type exemptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
@@ -2380,11 +2382,17 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Provides the configuration for a sub-type of logging.</summary>
+    /// <summary>Provides the configuration for logging a type of permissions. Example:
+    ///
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// "log_type": "DATA_WRITE", } ] }
+    ///
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// logging.</summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the identities that are exempted from this type of logging Follows the same format of
-        /// Binding.members.</summary>
+        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+        /// format of [Binding.members][].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
@@ -2553,6 +2561,11 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output Only] An optional user-provided description of the deployment after the current update has
+        /// been applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>[Output Only] Map of labels; provided by the client when the resource is created or updated.
         /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
         /// expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must
@@ -2731,7 +2744,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
-        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>[Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -2937,10 +2950,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies audit logging configs for "data access". "data access": generally refers to data
-        /// reads/writes and admin reads. "admin activity": generally refers to admin writes.
-        ///
-        /// Note: `AuditConfig` doesn't apply to "admin activity", which always enables audit logging.</summary>
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 

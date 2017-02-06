@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170124 (754)
+ *      <tr><th>API Rev<td>20170131 (761)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -1113,6 +1113,23 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
+                /// <summary>History types to be returned by the function</summary>
+                [Google.Apis.Util.RequestParameterAttribute("historyTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<HistoryTypesEnum> HistoryTypes { get; set; }
+
+                /// <summary>History types to be returned by the function</summary>
+                public enum HistoryTypesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("labelAdded")]
+                    LabelAdded,
+                    [Google.Apis.Util.StringValueAttribute("labelRemoved")]
+                    LabelRemoved,
+                    [Google.Apis.Util.StringValueAttribute("messageAdded")]
+                    MessageAdded,
+                    [Google.Apis.Util.StringValueAttribute("messageDeleted")]
+                    MessageDeleted,
+                }
+
                 /// <summary>Only return messages with a label matching the ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("labelId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelId { get; set; }
@@ -1168,6 +1185,15 @@ namespace Google.Apis.Gmail.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = "me",
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "historyTypes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "historyTypes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
@@ -2213,8 +2239,8 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
-                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to
-                /// a Vault administrator. Only used for Google Apps for Work accounts.</summary>
+                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
+                /// Vault administrator. Only used for G Suite accounts.</summary>
                 /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
@@ -2389,8 +2415,8 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
-                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to
-                /// a Vault administrator. Only used for Google Apps for Work accounts.</summary>
+                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
+                /// Vault administrator. Only used for G Suite accounts.</summary>
                 /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
@@ -2461,8 +2487,8 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
-                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to
-                /// a Vault administrator. Only used for Google Apps for Work accounts.</summary>
+                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
+                /// Vault administrator. Only used for G Suite accounts.</summary>
                 /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
@@ -2607,8 +2633,8 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
-                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to
-                /// a Vault administrator. Only used for Google Apps for Work accounts.</summary>
+                /// <summary>Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a
+                /// Vault administrator. Only used for G Suite accounts.</summary>
                 /// [default: false]
                 [Google.Apis.Util.RequestParameterAttribute("deleted", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Deleted { get; set; }
@@ -3836,9 +3862,489 @@ namespace Google.Apis.Gmail.v1
                 public SendAsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    smimeInfo = new SmimeInfoResource(service);
 
                 }
 
+                private readonly SmimeInfoResource smimeInfo;
+
+                /// <summary>Gets the SmimeInfo resource.</summary>
+                public virtual SmimeInfoResource SmimeInfo
+                {
+                    get { return smimeInfo; }
+                }
+
+                /// <summary>The "smimeInfo" collection of methods.</summary>
+                public class SmimeInfoResource
+                {
+                    private const string Resource = "smimeInfo";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SmimeInfoResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Deletes the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+                    /// user.</param>
+                    /// <param name="sendAsEmail">The email address that appears in the "From:" header for mail sent
+                    /// using this alias.</param>
+                    /// <param name="id">The immutable ID for the SmimeInfo.</param>
+                    public virtual DeleteRequest Delete(string userId, string sendAsEmail, string id)
+                    {
+                        return new DeleteRequest(service, userId, sendAsEmail, id);
+                    }
+
+                    /// <summary>Deletes the specified S/MIME config for the specified send-as alias.</summary>
+                    public class DeleteRequest : GmailBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
+                            : base(service)
+                        {
+                            UserId = userId;
+                            SendAsEmail = sendAsEmail;
+                            Id = id;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The user's email address. The special value me can be used to indicate the
+                        /// authenticated user.</summary>
+                        /// [default: me]
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address that appears in the "From:" header for mail sent using this
+                        /// alias.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sendAsEmail", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SendAsEmail { get; private set; }
+
+                        /// <summary>The immutable ID for the SmimeInfo.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Id { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "delete"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "DELETE"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
+                        }
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "userId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = "me",
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "sendAsEmail", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sendAsEmail",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "id", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "id",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Gets the specified S/MIME config for the specified send-as alias.</summary>
+                    /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+                    /// user.</param>
+                    /// <param name="sendAsEmail">The email address that appears in the "From:" header for mail sent
+                    /// using this alias.</param>
+                    /// <param name="id">The immutable ID for the SmimeInfo.</param>
+                    public virtual GetRequest Get(string userId, string sendAsEmail, string id)
+                    {
+                        return new GetRequest(service, userId, sendAsEmail, id);
+                    }
+
+                    /// <summary>Gets the specified S/MIME config for the specified send-as alias.</summary>
+                    public class GetRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
+                            : base(service)
+                        {
+                            UserId = userId;
+                            SendAsEmail = sendAsEmail;
+                            Id = id;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The user's email address. The special value me can be used to indicate the
+                        /// authenticated user.</summary>
+                        /// [default: me]
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address that appears in the "From:" header for mail sent using this
+                        /// alias.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sendAsEmail", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SendAsEmail { get; private set; }
+
+                        /// <summary>The immutable ID for the SmimeInfo.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Id { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "userId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = "me",
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "sendAsEmail", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sendAsEmail",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "id", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "id",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Insert (upload) the given S/MIME config for the specified send-as alias. Note that
+                    /// pkcs12 format is required for the key.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+                    /// user.</param>
+                    /// <param name="sendAsEmail">The email address that appears in the "From:" header for mail sent
+                    /// using this alias.</param>
+                    public virtual InsertRequest Insert(Google.Apis.Gmail.v1.Data.SmimeInfo body, string userId, string sendAsEmail)
+                    {
+                        return new InsertRequest(service, body, userId, sendAsEmail);
+                    }
+
+                    /// <summary>Insert (upload) the given S/MIME config for the specified send-as alias. Note that
+                    /// pkcs12 format is required for the key.</summary>
+                    public class InsertRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SmimeInfo>
+                    {
+                        /// <summary>Constructs a new Insert request.</summary>
+                        public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Gmail.v1.Data.SmimeInfo body, string userId, string sendAsEmail)
+                            : base(service)
+                        {
+                            UserId = userId;
+                            SendAsEmail = sendAsEmail;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The user's email address. The special value me can be used to indicate the
+                        /// authenticated user.</summary>
+                        /// [default: me]
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address that appears in the "From:" header for mail sent using this
+                        /// alias.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sendAsEmail", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SendAsEmail { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Gmail.v1.Data.SmimeInfo Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "insert"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
+                        }
+
+                        /// <summary>Initializes Insert parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "userId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = "me",
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "sendAsEmail", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sendAsEmail",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists S/MIME configs for the specified send-as alias.</summary>
+                    /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+                    /// user.</param>
+                    /// <param name="sendAsEmail">The email address that appears in the "From:" header for mail sent
+                    /// using this alias.</param>
+                    public virtual ListRequest List(string userId, string sendAsEmail)
+                    {
+                        return new ListRequest(service, userId, sendAsEmail);
+                    }
+
+                    /// <summary>Lists S/MIME configs for the specified send-as alias.</summary>
+                    public class ListRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ListSmimeInfoResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail)
+                            : base(service)
+                        {
+                            UserId = userId;
+                            SendAsEmail = sendAsEmail;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The user's email address. The special value me can be used to indicate the
+                        /// authenticated user.</summary>
+                        /// [default: me]
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address that appears in the "From:" header for mail sent using this
+                        /// alias.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sendAsEmail", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SendAsEmail { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "userId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = "me",
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "sendAsEmail", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sendAsEmail",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Sets the default S/MIME config for the specified send-as alias.</summary>
+                    /// <param name="userId">The user's email address. The special value me can be used to indicate the authenticated
+                    /// user.</param>
+                    /// <param name="sendAsEmail">The email address that appears in the "From:" header for mail sent
+                    /// using this alias.</param>
+                    /// <param name="id">The immutable ID for the SmimeInfo.</param>
+                    public virtual SetDefaultRequest SetDefault(string userId, string sendAsEmail, string id)
+                    {
+                        return new SetDefaultRequest(service, userId, sendAsEmail, id);
+                    }
+
+                    /// <summary>Sets the default S/MIME config for the specified send-as alias.</summary>
+                    public class SetDefaultRequest : GmailBaseServiceRequest<string>
+                    {
+                        /// <summary>Constructs a new SetDefault request.</summary>
+                        public SetDefaultRequest(Google.Apis.Services.IClientService service, string userId, string sendAsEmail, string id)
+                            : base(service)
+                        {
+                            UserId = userId;
+                            SendAsEmail = sendAsEmail;
+                            Id = id;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The user's email address. The special value me can be used to indicate the
+                        /// authenticated user.</summary>
+                        /// [default: me]
+                        [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string UserId { get; private set; }
+
+                        /// <summary>The email address that appears in the "From:" header for mail sent using this
+                        /// alias.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("sendAsEmail", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SendAsEmail { get; private set; }
+
+                        /// <summary>The immutable ID for the SmimeInfo.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Id { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "setDefault"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault"; }
+                        }
+
+                        /// <summary>Initializes SetDefault parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "userId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "userId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = "me",
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "sendAsEmail", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sendAsEmail",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "id", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "id",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
 
                 /// <summary>Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to
                 /// connect to the SMTP service to validate the configuration before creating the alias. If ownership
@@ -6156,6 +6662,16 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListSmimeInfoResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of SmimeInfo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smimeInfo")]
+        public virtual System.Collections.Generic.IList<SmimeInfo> SmimeInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListThreadsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Page token to retrieve the next page of results in the list.</summary>
@@ -6422,6 +6938,45 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An S/MIME email config.</summary>
+    public class SmimeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Encrypted key password, when key is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedKeyPassword")]
+        public virtual string EncryptedKeyPassword { get; set; } 
+
+        /// <summary>When the certificate expires (in milliseconds since epoch).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
+        public virtual System.Nullable<long> Expiration { get; set; } 
+
+        /// <summary>The immutable ID for the SmimeInfo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Whether this SmimeInfo is the default one for this user's send-as address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; } 
+
+        /// <summary>The S/MIME certificate issuer's common name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuerCn")]
+        public virtual string IssuerCn { get; set; } 
+
+        /// <summary>PEM formatted X509 concatenated certificate string (standard base64 encoding). Format used for
+        /// returning key, which includes public key as well as certificate chain (not private key).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pem")]
+        public virtual string Pem { get; set; } 
+
+        /// <summary>PKCS#12 format containing a single private/public key pair and certificate chain. This format is
+        /// only accepted from client for creating a new SmimeInfo and is never returned, because the private key is not
+        /// intended to be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
+        /// appropriately.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkcs12")]
+        public virtual string Pkcs12 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for communication with an SMTP service.</summary>
     public class SmtpMsa : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6509,7 +7064,7 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual System.Nullable<bool> RestrictToContacts { get; set; } 
 
         /// <summary>Flag that determines whether responses are sent to recipients who are outside of the user's domain.
-        /// This feature is only available for Google Apps users.</summary>
+        /// This feature is only available for G Suite users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictToDomain")]
         public virtual System.Nullable<bool> RestrictToDomain { get; set; } 
 

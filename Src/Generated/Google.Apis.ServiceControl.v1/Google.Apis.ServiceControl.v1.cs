@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170123 (753)
+ *      <tr><th>API Rev<td>20170130 (760)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -345,6 +345,88 @@ namespace Google.Apis.ServiceControl.v1
         }
 
 
+        /// <summary>Attempts to allocate quota for the specified consumer. It should be called before the operation is
+        /// executed.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
+        /// `"pubsub.googleapis.com"`.
+        ///
+        /// See google.api.Service for the definition of a service name.</param>
+        public virtual AllocateQuotaRequest AllocateQuota(Google.Apis.ServiceControl.v1.Data.AllocateQuotaRequest body, string serviceName)
+        {
+            return new AllocateQuotaRequest(service, body, serviceName);
+        }
+
+        /// <summary>Attempts to allocate quota for the specified consumer. It should be called before the operation is
+        /// executed.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        public class AllocateQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.AllocateQuotaResponse>
+        {
+            /// <summary>Constructs a new AllocateQuota request.</summary>
+            public AllocateQuotaRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceControl.v1.Data.AllocateQuotaRequest body, string serviceName)
+                : base(service)
+            {
+                ServiceName = serviceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the service as specified in the service configuration. For example,
+            /// `"pubsub.googleapis.com"`.
+            ///
+            /// See google.api.Service for the definition of a service name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ServiceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceControl.v1.Data.AllocateQuotaRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "allocateQuota"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services/{serviceName}:allocateQuota"; }
+            }
+
+            /// <summary>Initializes AllocateQuota parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
         /// proceed. It should be called before the operation is executed.
         ///
@@ -420,6 +502,166 @@ namespace Google.Apis.ServiceControl.v1
             }
 
             /// <summary>Initializes Check parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Signals the quota controller that service ends the ongoing usage reconciliation.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
+        /// `"pubsub.googleapis.com"`.
+        ///
+        /// See google.api.Service for the definition of a service name.</param>
+        public virtual EndReconciliationRequest EndReconciliation(Google.Apis.ServiceControl.v1.Data.EndReconciliationRequest body, string serviceName)
+        {
+            return new EndReconciliationRequest(service, body, serviceName);
+        }
+
+        /// <summary>Signals the quota controller that service ends the ongoing usage reconciliation.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        public class EndReconciliationRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.EndReconciliationResponse>
+        {
+            /// <summary>Constructs a new EndReconciliation request.</summary>
+            public EndReconciliationRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceControl.v1.Data.EndReconciliationRequest body, string serviceName)
+                : base(service)
+            {
+                ServiceName = serviceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the service as specified in the service configuration. For example,
+            /// `"pubsub.googleapis.com"`.
+            ///
+            /// See google.api.Service for the definition of a service name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ServiceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceControl.v1.Data.EndReconciliationRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "endReconciliation"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services/{serviceName}:endReconciliation"; }
+            }
+
+            /// <summary>Initializes EndReconciliation parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Releases previously allocated quota done through AllocateQuota method.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
+        /// `"pubsub.googleapis.com"`.
+        ///
+        /// See google.api.Service for the definition of a service name.</param>
+        public virtual ReleaseQuotaRequest ReleaseQuota(Google.Apis.ServiceControl.v1.Data.ReleaseQuotaRequest body, string serviceName)
+        {
+            return new ReleaseQuotaRequest(service, body, serviceName);
+        }
+
+        /// <summary>Releases previously allocated quota done through AllocateQuota method.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        public class ReleaseQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.ReleaseQuotaResponse>
+        {
+            /// <summary>Constructs a new ReleaseQuota request.</summary>
+            public ReleaseQuotaRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceControl.v1.Data.ReleaseQuotaRequest body, string serviceName)
+                : base(service)
+            {
+                ServiceName = serviceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the service as specified in the service configuration. For example,
+            /// `"pubsub.googleapis.com"`.
+            ///
+            /// See google.api.Service for the definition of a service name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ServiceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceControl.v1.Data.ReleaseQuotaRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "releaseQuota"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services/{serviceName}:releaseQuota"; }
+            }
+
+            /// <summary>Initializes ReleaseQuota parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -530,11 +772,171 @@ namespace Google.Apis.ServiceControl.v1
             }
 
         }
+
+        /// <summary>Unlike rate quota, allocation quota does not get refilled periodically. So, it is possible that the
+        /// quota usage as seen by the service differs from what the One Platform considers the usage is. This is
+        /// expected to happen only rarely, but over time this can accumulate. Services can invoke StartReconciliation
+        /// and EndReconciliation to correct this usage drift, as described below: 1. Service sends StartReconciliation
+        /// with a timestamp in future for each metric that needs to be reconciled. The timestamp being in future allows
+        /// to account for in-flight AllocateQuota and ReleaseQuota requests for the same metric. 2. One Platform
+        /// records this timestamp and starts tracking subsequent AllocateQuota and ReleaseQuota requests until
+        /// EndReconciliation is called. 3. At or after the time specified in the StartReconciliation, service sends
+        /// EndReconciliation with the usage that needs to be reconciled to. 4. One Platform adjusts its own record of
+        /// usage for that metric to the value specified in EndReconciliation by taking in to account any allocation or
+        /// release between StartReconciliation and EndReconciliation.
+        ///
+        /// Signals the quota controller that the service wants to perform a usage reconciliation as specified in the
+        /// request.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
+        /// `"pubsub.googleapis.com"`.
+        ///
+        /// See google.api.Service for the definition of a service name.</param>
+        public virtual StartReconciliationRequest StartReconciliation(Google.Apis.ServiceControl.v1.Data.StartReconciliationRequest body, string serviceName)
+        {
+            return new StartReconciliationRequest(service, body, serviceName);
+        }
+
+        /// <summary>Unlike rate quota, allocation quota does not get refilled periodically. So, it is possible that the
+        /// quota usage as seen by the service differs from what the One Platform considers the usage is. This is
+        /// expected to happen only rarely, but over time this can accumulate. Services can invoke StartReconciliation
+        /// and EndReconciliation to correct this usage drift, as described below: 1. Service sends StartReconciliation
+        /// with a timestamp in future for each metric that needs to be reconciled. The timestamp being in future allows
+        /// to account for in-flight AllocateQuota and ReleaseQuota requests for the same metric. 2. One Platform
+        /// records this timestamp and starts tracking subsequent AllocateQuota and ReleaseQuota requests until
+        /// EndReconciliation is called. 3. At or after the time specified in the StartReconciliation, service sends
+        /// EndReconciliation with the usage that needs to be reconciled to. 4. One Platform adjusts its own record of
+        /// usage for that metric to the value specified in EndReconciliation by taking in to account any allocation or
+        /// release between StartReconciliation and EndReconciliation.
+        ///
+        /// Signals the quota controller that the service wants to perform a usage reconciliation as specified in the
+        /// request.
+        ///
+        /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        public class StartReconciliationRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.StartReconciliationResponse>
+        {
+            /// <summary>Constructs a new StartReconciliation request.</summary>
+            public StartReconciliationRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceControl.v1.Data.StartReconciliationRequest body, string serviceName)
+                : base(service)
+            {
+                ServiceName = serviceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the service as specified in the service configuration. For example,
+            /// `"pubsub.googleapis.com"`.
+            ///
+            /// See google.api.Service for the definition of a service name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ServiceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceControl.v1.Data.StartReconciliationRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "startReconciliation"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services/{serviceName}:startReconciliation"; }
+            }
+
+            /// <summary>Initializes StartReconciliation parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 }
 
 namespace Google.Apis.ServiceControl.v1.Data
 {    
+
+    /// <summary>Request message for the AllocateQuota method.</summary>
+    public class AllocateQuotaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation that describes the quota allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocateOperation")]
+        public virtual QuotaOperation AllocateOperation { get; set; } 
+
+        /// <summary>Allocation mode for this operation. Deprecated: use QuotaMode inside the QuotaOperation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocationMode")]
+        public virtual string AllocationMode { get; set; } 
+
+        /// <summary>Specifies which version of service configuration should be used to process the request. If
+        /// unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the AllocateQuota method.</summary>
+    public class AllocateQuotaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the decision of the allocate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocateErrors")]
+        public virtual System.Collections.Generic.IList<QuotaError> AllocateErrors { get; set; } 
+
+        /// <summary>The same operation_id value used in the AllocateQuotaRequest. Used for logging and diagnostics
+        /// purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Quota metrics to indicate the result of allocation. Depending on the request, one or more of the
+        /// following metrics will be included:
+        ///
+        /// 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the
+        /// following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count"
+        ///
+        /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        ///
+        /// 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the
+        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>ID of the actual config used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Common audit log format for Google Cloud Platform API operations.
     ///
@@ -655,6 +1057,17 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class CheckInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of fields and label keys that are ignored by the server. The client doesn't need to send
+        /// them for following requests to improve performance and allow better aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unusedArguments")]
+        public virtual System.Collections.Generic.IList<string> UnusedArguments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for the Check method.</summary>
     public class CheckRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -662,11 +1075,20 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
+        /// <summary>Requests the project settings to be returned as part of the check response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestProjectSettings")]
+        public virtual System.Nullable<bool> RequestProjectSettings { get; set; } 
+
         /// <summary>Specifies which version of service configuration should be used to process the request.
         ///
         /// If unspecified or no matching version can be found, the latest one will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>Indicates if service activation check should be skipped for this request. Default behavior is to
+        /// perform the check and apply relevant quota.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipActivationCheck")]
+        public virtual System.Nullable<bool> SkipActivationCheck { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -682,10 +1104,18 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("checkErrors")]
         public virtual System.Collections.Generic.IList<CheckError> CheckErrors { get; set; } 
 
+        /// <summary>Feedback data returned from the server during processing a Check request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkInfo")]
+        public virtual CheckInfo CheckInfo { get; set; } 
+
         /// <summary>The same operation_id value used in the CheckRequest. Used for logging and diagnostics
         /// purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
+
+        /// <summary>Quota information for the check request associated with this response. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
+        public virtual QuotaInfo QuotaInfo { get; set; } 
 
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
@@ -748,6 +1178,44 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// fails.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
         public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class EndReconciliationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation that describes the quota reconciliation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciliationOperation")]
+        public virtual QuotaOperation ReconciliationOperation { get; set; } 
+
+        /// <summary>Specifies which version of service configuration should be used to process the request. If
+        /// unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class EndReconciliationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The same operation_id value used in the EndReconciliationRequest. Used for logging and diagnostics
+        /// purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Metric values as tracked by One Platform before the adjustment was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>Indicates the decision of the reconciliation end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciliationErrors")]
+        public virtual System.Collections.Generic.IList<QuotaError> ReconciliationErrors { get; set; } 
+
+        /// <summary>ID of the actual config used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -888,6 +1356,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>A money value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moneyValue")]
+        public virtual Money MoneyValue { get; set; } 
+
         /// <summary>The start of the time period over which this metric value's measurement applies. The time period
         /// has different semantics for different metric types (cumulative, delta, and gauge). See the metric definition
         /// documentation in the service configuration for details.</summary>
@@ -913,6 +1385,29 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The values in this metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricValues")]
         public virtual System.Collections.Generic.IList<MetricValue> MetricValues { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; } 
+
+        /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
+        /// dollar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -978,9 +1473,197 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
         public virtual string OperationName { get; set; } 
 
+        /// <summary>Represents the properties needed for quota check. Applicable only if this operation is for a quota
+        /// check request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaProperties")]
+        public virtual QuotaProperties QuotaProperties { get; set; } 
+
+        /// <summary>The resource name of the parent of a resource in the resource hierarchy.
+        ///
+        /// This can be in one of the following formats: - “projects/” - “folders/” - “organizations/”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; } 
+
         /// <summary>Required. Start time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
+
+        /// <summary>User defined labels for the resource that this operation is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class QuotaError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>Free-form text that provides details on the cause of the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Subject to whom this error applies. See the specific enum for more details on this field. For
+        /// example, "clientip:" or "project:".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains the quota information for a quota check response.</summary>
+    public class QuotaInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Quota Metrics that have exceeded quota limits. For QuotaGroup-based quota, this is QuotaGroup.name
+        /// For QuotaLimit-based quota, this is QuotaLimit.name See: google.api.Quota Deprecated: Use quota_metrics to
+        /// get per quota group limit exceeded status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitExceeded")]
+        public virtual System.Collections.Generic.IList<string> LimitExceeded { get; set; } 
+
+        /// <summary>Map of quota group name to the actual number of tokens consumed. If the quota check was not
+        /// successful, then this will not be populated due to no quota consumption. Deprecated: Use quota_metrics to
+        /// get per quota group usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaConsumed")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> QuotaConsumed { get; set; } 
+
+        /// <summary>Quota metrics to indicate the usage. Depending on the check request, one or more of the following
+        /// metrics will be included:
+        ///
+        /// 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the
+        /// following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count"
+        ///
+        /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        ///
+        /// 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the
+        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents information regarding a quota operation.</summary>
+    public class QuotaOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity of the consumer for whom this quota operation is being performed.
+        ///
+        /// This can be in one of the following formats: project:, project_number:, api_key:.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
+        public virtual string ConsumerId { get; set; } 
+
+        /// <summary>Labels describing the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Fully qualified name of the API method for which this quota operation is requested. This name is
+        /// used for matching quota rules or metric rules and billing status rules defined in service configuration.
+        /// This field is not required if the quota operation is performed on non-API resources.
+        ///
+        /// Example of an RPC method name: google.example.library.v1.LibraryService.CreateShelf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
+        public virtual string MethodName { get; set; } 
+
+        /// <summary>Identity of the operation. This must be unique within the scope of the service that generated the
+        /// operation. If the service calls AllocateQuota and ReleaseQuota on the same operation, the two calls should
+        /// carry the same ID.
+        ///
+        /// UUID version 4 is recommended, though not required. In scenarios where an operation is computed from
+        /// existing information and an idempotent id is desirable for deduplication purpose, UUID version 5 is
+        /// recommended. See RFC 4122 for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Represents information about this operation. Each MetricValueSet corresponds to a metric defined in
+        /// the service configuration. The data type used in the MetricValueSet must agree with the data type specified
+        /// in the metric definition.
+        ///
+        /// Within a single operation, it is not allowed to have more than one MetricValue instances that have the same
+        /// metric names and identical label value combinations. If a request has such duplicated MetricValue instances,
+        /// the entire request is rejected with an invalid argument error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>Quota mode for this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMode")]
+        public virtual string QuotaMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the properties needed for quota operations.
+    ///
+    /// Use the metric_value_sets field in Operation message to provide cost override with metric_name in /quota//cost
+    /// format. Overrides for unmatched quota groups will be ignored. Costs are expected to be >= 0. Cost 0 will cause
+    /// no quota check, but still traffic restrictions will be enforced.</summary>
+    public class QuotaProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>LimitType IDs that should be used for checking quota. Key in this map should be a valid LimitType
+        /// string, and the value is the ID to be used. For example, an entry  will cause all user quota limits to use
+        /// 123 as the user ID. See google/api/quota.proto for the definition of LimitType. CLIENT_PROJECT: Not
+        /// supported. USER: Value of this entry will be used for enforcing user-level quota limits. If none specified,
+        /// caller IP passed in the servicecontrol.googleapis.com/caller_ip label will be used instead. If the server
+        /// cannot resolve a value for this LimitType, an error will be thrown. No validation will be performed on this
+        /// ID. Deprecated: use servicecontrol.googleapis.com/user label to send user ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitByIds")]
+        public virtual System.Collections.Generic.IDictionary<string,string> LimitByIds { get; set; } 
+
+        /// <summary>Quota mode for this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMode")]
+        public virtual string QuotaMode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for the ReleaseQuota method.</summary>
+    public class ReleaseQuotaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation that describes the quota release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseOperation")]
+        public virtual QuotaOperation ReleaseOperation { get; set; } 
+
+        /// <summary>Specifies which version of service configuration should be used to process the request. If
+        /// unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the ReleaseQuota method.</summary>
+    public class ReleaseQuotaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The same operation_id value used in the ReleaseQuotaRequest. Used for logging and diagnostics
+        /// purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Quota metrics to indicate the result of release. Depending on the request, one or more of the
+        /// following metrics will be included:
+        ///
+        /// 1. For rate quota, per quota group or per quota metric released amount will be specified using the following
+        /// delta metric: "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
+        ///
+        /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>Indicates the decision of the release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseErrors")]
+        public virtual System.Collections.Generic.IList<QuotaError> ReleaseErrors { get; set; } 
+
+        /// <summary>ID of the actual config used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -996,6 +1679,20 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Details of the error when processing the `Operation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ReportInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Operation.operation_id value from the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Quota usage info when processing the `Operation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
+        public virtual QuotaInfo QuotaInfo { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1040,6 +1737,16 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportErrors")]
         public virtual System.Collections.Generic.IList<ReportError> ReportErrors { get; set; } 
 
+        /// <summary>Quota usage for each quota release `Operation` request.
+        ///
+        /// Fully or partially failed quota release request may or may not be present in `report_quota_info`. For
+        /// example, a failed quota release request will have the current quota usage info when precise quota library
+        /// returns the info. A deadline exceeded quota request will not have quota usage info.
+        ///
+        /// If there is no quota release request, report_quota_info will be empty. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportInfos")]
+        public virtual System.Collections.Generic.IList<ReportInfo> ReportInfos { get; set; } 
+
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
@@ -1064,6 +1771,44 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// made from the `my-project` App Engine app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class StartReconciliationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation that describes the quota reconciliation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciliationOperation")]
+        public virtual QuotaOperation ReconciliationOperation { get; set; } 
+
+        /// <summary>Specifies which version of service configuration should be used to process the request. If
+        /// unspecified or no matching version can be found, the latest one will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class StartReconciliationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The same operation_id value used in the StartReconciliationRequest. Used for logging and
+        /// diagnostics purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>Metric values as tracked by One Platform before the start of reconciliation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
+        public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
+
+        /// <summary>Indicates the decision of the reconciliation start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciliationErrors")]
+        public virtual System.Collections.Generic.IList<QuotaError> ReconciliationErrors { get; set; } 
+
+        /// <summary>ID of the actual config used to process the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
+        public virtual string ServiceConfigId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

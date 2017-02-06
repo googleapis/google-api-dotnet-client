@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170126 (756)
+ *      <tr><th>API Rev<td>20170131 (761)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -935,6 +935,8 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Set of features pertaining to the image, computed by computer vision methods over safe-search verticals
+    /// (for example, adult, spoof, medical, violence).</summary>
     public class SafeSearchAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Represents the adult content likelihood for the image.</summary>
