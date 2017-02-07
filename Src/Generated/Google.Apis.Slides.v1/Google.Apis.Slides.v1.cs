@@ -1226,6 +1226,29 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Deletes bullets from all of the paragraphs that overlap with the given text index range.
+    ///
+    /// The nesting level of each paragraph will be visually preserved by adding indent to the start of the
+    /// corresponding paragraph.</summary>
+    public class DeleteParagraphBulletsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The optional table cell location if the text to be modified is in a table cell. If present, the
+        /// object_id must refer to a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
+        public virtual TableCellLocation CellLocation { get; set; } 
+
+        /// <summary>The object ID of the shape or table containing the text to delete bullets from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The range of text to delete bullets from, based on TextElement indexes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
+        public virtual Range TextRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Deletes a column from a table.</summary>
     public class DeleteTableColumnRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1978,7 +2001,8 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
         public virtual string Alignment { get; set; } 
 
-        /// <summary>The text direction of this paragraph. This property is read-only.</summary>
+        /// <summary>The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since text
+        /// direction is not inherited. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
@@ -2121,8 +2145,17 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A recolor effect applied on an image.</summary>
     public class Recolor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The recolor effect is represented by a gradient, which is a list of color stops. This property is
-        /// read-only.</summary>
+        /// <summary>The name of the recolor effect.
+        ///
+        /// The name is determined from the `recolor_stops` by matching the gradient against the colors in the page's
+        /// current color scheme. This property is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The recolor effect is represented by a gradient, which is a list of color stops.
+        ///
+        /// The colors in the gradient will replace the corresponding colors at the same position in the color palette
+        /// and apply to the image. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recolorStops")]
         public virtual System.Collections.Generic.IList<ColorStop> RecolorStops { get; set; } 
 
@@ -2283,6 +2316,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Deletes a page or page element from the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObject")]
         public virtual DeleteObjectRequest DeleteObject { get; set; } 
+
+        /// <summary>Deletes bullets from paragraphs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteParagraphBullets")]
+        public virtual DeleteParagraphBulletsRequest DeleteParagraphBullets { get; set; } 
 
         /// <summary>Deletes a column from a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTableColumn")]
@@ -3229,7 +3266,7 @@ namespace Google.Apis.Slides.v1.Data
         /// At least one field must be specified. The root `style` is implied and should not be specified. A single
         /// `"*"` can be used as short-hand for listing every field.
         ///
-        /// For example to update the text style to bold, set `fields` to `"bold"`.
+        /// For example, to update the text style to bold, set `fields` to `"bold"`.
         ///
         /// To reset a property to its default value, include its field name in the field mask but leave the field
         /// itself unset.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160210 (405)
+ *      <tr><th>API Rev<td>20170202 (763)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -100,7 +100,7 @@ namespace Google.Apis.People.v1
             /// <summary>View your contacts</summary>
             public static string ContactsReadonly = "https://www.googleapis.com/auth/contacts.readonly";
 
-            /// <summary>Know your basic profile info and list of people in your circles.</summary>
+            /// <summary>Know the list of people in your circles, your age range, and language</summary>
             public static string PlusLogin = "https://www.googleapis.com/auth/plus.login";
 
             /// <summary>View your street addresses</summary>
@@ -145,7 +145,18 @@ namespace Google.Apis.People.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -154,7 +165,21 @@ namespace Google.Apis.People.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -337,182 +362,196 @@ namespace Google.Apis.People.v1
         public PeopleResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            connections = new ConnectionsResource(service);
+            me = new MeResource(service);
 
         }
 
-        private readonly ConnectionsResource connections;
+        private readonly MeResource me;
 
-        /// <summary>Gets the Connections resource.</summary>
-        public virtual ConnectionsResource Connections
+        /// <summary>Gets the Me resource.</summary>
+        public virtual MeResource Me
         {
-            get { return connections; }
+            get { return me; }
         }
 
-        /// <summary>The "connections" collection of methods.</summary>
-        public class ConnectionsResource
+        /// <summary>The "me" collection of methods.</summary>
+        public class MeResource
         {
-            private const string Resource = "connections";
+            private const string Resource = "me";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public ConnectionsResource(Google.Apis.Services.IClientService service)
+            public MeResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                connections = new ConnectionsResource(service);
 
             }
 
+            private readonly ConnectionsResource connections;
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
-            /// <param name="resourceName">The resource name to return connections for. Only `people/me` is valid.</param>
-            public virtual ListRequest List(string resourceName)
+            /// <summary>Gets the Connections resource.</summary>
+            public virtual ConnectionsResource Connections
             {
-                return new ListRequest(service, resourceName);
+                get { return connections; }
             }
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
-            public class ListRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.ListConnectionsResponse>
+            /// <summary>The "connections" collection of methods.</summary>
+            public class ConnectionsResource
             {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string resourceName)
-                    : base(service)
+                private const string Resource = "connections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConnectionsResource(Google.Apis.Services.IClientService service)
                 {
-                    ResourceName = resourceName;
-                    InitParameters();
+                    this.service = service;
+
                 }
 
 
-                /// <summary>The resource name to return connections for. Only `people/me` is valid.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string ResourceName { get; private set; }
-
-                /// <summary>The token of the page to be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                public enum SortOrderEnum
+                /// <summary>Provides a list of the authenticated user's contacts merged with any linked
+                /// profiles.</summary>
+                public virtual ListRequest List()
                 {
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
+                    return new ListRequest(service);
                 }
 
-                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
-                /// changed since the sync token was created are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SyncToken { get; set; }
-
-                /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
-                /// include all fields. Each path should start with `person.`: for example, `person.names` or
-                /// `person.photos`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestMaskIncludeField { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
+                /// <summary>Provides a list of the authenticated user's contacts merged with any linked
+                /// profiles.</summary>
+                public class ListRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.ListConnectionsResponse>
                 {
-                    get { return "list"; }
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service)
+                        : base(service)
+                    {
+                        InitParameters();
+                    }
+
+
+                    /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
+                    /// changed since the sync token was created will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SyncToken { get; set; }
+
+                    /// <summary>The token of the page to be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The number of connections to include in the response. Valid values are between 1 and
+                    /// 500, inclusive. Defaults to 100.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
+                    /// include all fields except for connections.list requests, which have a default mask that includes
+                    /// common fields like metadata, name, photo, and profile url. Each path should start with
+                    /// `person.`: for example, `person.names` or `person.photos`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object RequestMaskIncludeField { get; set; }
+
+                    /// <summary>The order in which the connections should be sorted. Defaults to
+                    /// `LAST_MODIFIED_ASCENDING`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                    /// <summary>The order in which the connections should be sorted. Defaults to
+                    /// `LAST_MODIFIED_ASCENDING`.</summary>
+                    public enum SortOrderEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                        LASTMODIFIEDASCENDING,
+                        [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                        FIRSTNAMEASCENDING,
+                        [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                        LASTNAMEASCENDING,
+                    }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/people/me/connections"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "syncToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "syncToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestMask.includeField",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "sortOrder", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "sortOrder",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+resourceName}/connections"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "resourceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "resourceName",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^people/[^/]*$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "syncToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "syncToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestMask.includeField",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
             }
         }
 
         /// <summary>Provides information about a person resource for a resource name. Use `people/me` to indicate the
         /// authenticated user.</summary>
-        /// <param name="resourceName">The resource name of the person to provide information about. - To get information about
-        /// the authenticated user, specify `people/me`. - To get information about any user, specify the resource name that
-        /// identifies the user, such as the resource names returned by
+        /// <param name="resourceName">The resource name of the person to provide information about.
+        ///
+        /// - To get information about the authenticated user, specify `people/me`. - To get information about any user, specify
+        /// the resource name that   identifies the user, such as the resource names returned by
         /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
         public virtual GetRequest Get(string resourceName)
         {
@@ -532,18 +571,20 @@ namespace Google.Apis.People.v1
             }
 
 
-            /// <summary>The resource name of the person to provide information about. - To get information about the
-            /// authenticated user, specify `people/me`. - To get information about any user, specify the resource name
-            /// that identifies the user, such as the resource names returned by
+            /// <summary>The resource name of the person to provide information about.
+            ///
+            /// - To get information about the authenticated user, specify `people/me`. - To get information about any
+            /// user, specify the resource name that identifies the user, such as the resource names returned by
             /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
             /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will include
-            /// all fields. Each path should start with `person.`: for example, `person.names` or
-            /// `person.photos`.</summary>
+            /// all fields except for connections.list requests, which have a default mask that includes common fields
+            /// like metadata, name, photo, and profile url. Each path should start with `person.`: for example,
+            /// `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMaskIncludeField { get; set; }
+            public virtual object RequestMaskIncludeField { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -576,7 +617,7 @@ namespace Google.Apis.People.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^people/[^/]*$",
+                        Pattern = @"^people/[^/]+$",
                     });
                 RequestParameters.Add(
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
@@ -610,17 +651,18 @@ namespace Google.Apis.People.v1
             }
 
 
+            /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will include
+            /// all fields except for connections.list requests, which have a default mask that includes common fields
+            /// like metadata, name, photo, and profile url. Each path should start with `person.`: for example,
+            /// `person.names` or `person.photos`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object RequestMaskIncludeField { get; set; }
+
             /// <summary>The resource name, such as one returned by
             /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
             /// provide information about. You can include this parameter up to 50 times in one request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
-            /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will include
-            /// all fields. Each path should start with `person.`: for example, `person.names` or
-            /// `person.photos`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMaskIncludeField { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -647,18 +689,18 @@ namespace Google.Apis.People.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "requestMask.includeField",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMask.includeField",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -698,8 +740,8 @@ namespace Google.Apis.People.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
-        /// <summary>The read-only value of the address formatted in the viewer's account locale or the `Accept-
-        /// Language` HTTP header locale.</summary>
+        /// <summary>The unstructured value of the address. If this is not set by the user it will be automatically
+        /// constructed from structured values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedValue")]
         public virtual string FormattedValue { get; set; } 
 
@@ -724,7 +766,9 @@ namespace Google.Apis.People.v1.Data
         public virtual string StreetAddress { get; set; } 
 
         /// <summary>The type of the address. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following: * `home` * `work` * `other`</summary>
+        /// limited to, the following:
+        ///
+        /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -735,6 +779,10 @@ namespace Google.Apis.People.v1.Data
     /// <summary>A person's short biography.</summary>
     public class Biography : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The content type of the biography.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
         /// <summary>Metadata about the biography.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
@@ -786,8 +834,9 @@ namespace Google.Apis.People.v1.Data
     public class ContactGroupMembership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contact group ID for the contact group membership. The contact group ID can be custom or
-        /// predefined. Possible values include, but are not limited to, the following: * `myContacts` * `starred` * A
-        /// numerical ID for user-created groups.</summary>
+        /// predefined. Possible values include, but are not limited to, the following:
+        ///
+        /// *  `myContacts` *  `starred` *  A numerical ID for user-created groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupId")]
         public virtual string ContactGroupId { get; set; } 
 
@@ -795,8 +844,8 @@ namespace Google.Apis.People.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's cover photo. A large image shown on the person's profile page that represents who they are
-    /// or what they care about.</summary>
+    /// <summary>A person's read-only cover photo. A large image shown on the person's profile page that represents who
+    /// they are or what they care about.</summary>
     public class CoverPhoto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the cover photo is the default cover photo; false if the cover photo is a user-provided
@@ -854,6 +903,10 @@ namespace Google.Apis.People.v1.Data
     /// <summary>A person's email address.</summary>
     public class EmailAddress : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The display name of the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
         /// <summary>The read-only type of the email address translated and formatted in the viewer's account locale or
         /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
@@ -864,7 +917,9 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The type of the email address. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following: * `home` * `work` * `other`</summary>
+        /// are not limited to, the following:
+        ///
+        /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -893,7 +948,9 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The type of the event. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following: * `anniversary` * `other`</summary>
+        /// limited to, the following:
+        ///
+        /// * `anniversary` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -934,7 +991,9 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The gender for the person. The gender can be custom or predefined. Possible values include, but are
-        /// not limited to, the following: * `male` * `female` * `other` * `unknown`</summary>
+        /// not limited to, the following:
+        ///
+        /// * `male` * `female` * `other` * `unknown`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -970,13 +1029,16 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The protocol of the IM client. The protocol can be custom or predefined. Possible values include,
-        /// but are not limited to, the following: * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` *
-        /// `jabber` * `netMeeting`</summary>
+        /// but are not limited to, the following:
+        ///
+        /// * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; } 
 
         /// <summary>The type of the IM client. The type can be custom or predefined. Possible values include, but are
-        /// not limited to, the following: * `home` * `work` * `other`</summary>
+        /// not limited to, the following:
+        ///
+        /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1037,7 +1099,7 @@ namespace Google.Apis.People.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's membership in a group.</summary>
+    /// <summary>A person's read-only membership in a group.</summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contact group membership.</summary>
@@ -1059,10 +1121,15 @@ namespace Google.Apis.People.v1.Data
     /// <summary>A person's name. If the name is a mononym, the family name is empty.</summary>
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display name formatted according to the locale specified by the viewer's account or the Accept-
-        /// Language HTTP header.</summary>
+        /// <summary>The read-only display name formatted according to the locale specified by the viewer's account or
+        /// the Accept-Language HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
+
+        /// <summary>The read-only display name with the last name first formatted according to the locale specified by
+        /// the viewer's account or the Accept-Language HTTP header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayNameLastFirst")]
+        public virtual string DisplayNameLastFirst { get; set; } 
 
         /// <summary>The family name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
@@ -1091,6 +1158,10 @@ namespace Google.Apis.People.v1.Data
         /// <summary>The family name spelled as it sounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticFamilyName")]
         public virtual string PhoneticFamilyName { get; set; } 
+
+        /// <summary>The full name spelled as it sounds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneticFullName")]
+        public virtual string PhoneticFullName { get; set; } 
 
         /// <summary>The given name spelled as it sounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneticGivenName")]
@@ -1205,7 +1276,9 @@ namespace Google.Apis.People.v1.Data
         public virtual string Title { get; set; } 
 
         /// <summary>The type of the organization. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following: * `work` * `school`</summary>
+        /// are not limited to, the following:
+        ///
+        /// * `work` * `school`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1214,9 +1287,10 @@ namespace Google.Apis.People.v1.Data
     }    
 
     /// <summary>Information about a person merged from various data sources such as the authenticated user's contacts
-    /// and profile data. Fields other than IDs, metadata, and group memberships are user-edited. Most fields can have
-    /// multiple items. The items in a field have no guaranteed order, but each non-empty field is guaranteed to have
-    /// exactly one field with `metadata.primary` set to true.</summary>
+    /// and profile data. Fields other than IDs, metadata, and group memberships are user-edited.
+    ///
+    /// Most fields can have multiple items. The items in a field have no guaranteed order, but each non-empty field is
+    /// guaranteed to have exactly one field with `metadata.primary` set to true.</summary>
     public class Person : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The person's street addresses.</summary>
@@ -1339,7 +1413,7 @@ namespace Google.Apis.People.v1.Data
 
     }    
 
-    /// <summary>Metadata about a person.</summary>
+    /// <summary>The read-only metadata about a person.</summary>
     public class PersonMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>True if the person resource has been deleted. Populated only for
@@ -1348,14 +1422,19 @@ namespace Google.Apis.People.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
+        /// <summary>Resource names of people linked to this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedPeopleResourceNames")]
+        public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; } 
+
         /// <summary>The type of the person object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
         /// <summary>Any former resource names this person has had. Populated only for
-        /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token. The
-        /// resource name may change when adding or removing fields that link a contact and profile such as a verified
-        /// email, verified phone number, or profile URL.</summary>
+        /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token.
+        ///
+        /// The resource name may change when adding or removing fields that link a contact and profile such as a
+        /// verified email, verified phone number, or profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousResourceNames")]
         public virtual System.Collections.Generic.IList<string> PreviousResourceNames { get; set; } 
 
@@ -1379,8 +1458,10 @@ namespace Google.Apis.People.v1.Data
         public virtual Person Person { get; set; } 
 
         /// <summary>The original requested resource name. May be different than the resource name on the returned
-        /// person. The resource name can change when adding or removing fields that link a contact and profile such as
-        /// a verified email, verified phone number, or a profile URL.</summary>
+        /// person.
+        ///
+        /// The resource name can change when adding or removing fields that link a contact and profile such as a
+        /// verified email, verified phone number, or a profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
         public virtual string RequestedResourceName { get; set; } 
 
@@ -1407,8 +1488,10 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The type of the phone number. The type can be custom or predefined. Possible values include, but
-        /// are not limited to, the following: * `home` * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` *
-        /// `pager` * `workMobile` * `workPager` * `main` * `googleVoice` * `other`</summary>
+        /// are not limited to, the following:
+        ///
+        /// * `home` * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` *
+        /// `main` * `googleVoice` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1420,7 +1503,7 @@ namespace Google.Apis.People.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's photo. A picture shown next to the person's name to help others recognize the
+    /// <summary>A person's read-only photo. A picture shown next to the person's name to help others recognize the
     /// person.</summary>
     public class Photo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1453,9 +1536,10 @@ namespace Google.Apis.People.v1.Data
         public virtual string Person { get; set; } 
 
         /// <summary>The person's relation to the other person. The type can be custom or predefined. Possible values
-        /// include, but are not limited to, the following values: * `spouse` * `child` * `mother` * `father` * `parent`
-        /// * `brother` * `sister` * `friend` * `relative` * `domesticPartner` * `manager` * `assistant` * `referredBy`
-        /// * `partner`</summary>
+        /// include, but are not limited to, the following values:
+        ///
+        /// * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative` *
+        /// `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -1463,7 +1547,7 @@ namespace Google.Apis.People.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The kind of relationship the person is looking for.</summary>
+    /// <summary>A person's read-only relationship interest .</summary>
     public class RelationshipInterest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The value of the relationship interest translated and formatted in the viewer's account locale or
@@ -1476,8 +1560,9 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The kind of relationship the person is looking for. The value can be custom or predefined. Possible
-        /// values include, but are not limited to, the following values: * `friend` * `date` * `relationship` *
-        /// `networking`</summary>
+        /// values include, but are not limited to, the following values:
+        ///
+        /// * `friend` * `date` * `relationship` * `networking`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -1485,7 +1570,7 @@ namespace Google.Apis.People.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A person's relationship status.</summary>
+    /// <summary>A person's read-only relationship status.</summary>
     public class RelationshipStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The read-only value of the relationship status translated and formatted in the viewer's account
@@ -1498,8 +1583,10 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The relationship status. The value can be custom or predefined. Possible values include, but are
-        /// not limited to, the following: * `single` * `inARelationship` * `engaged` * `married` * `itsComplicated` *
-        /// `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`</summary>
+        /// not limited to, the following:
+        ///
+        /// * `single` * `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` *
+        /// `inDomesticPartnership` * `inCivilUnion`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -1545,19 +1632,26 @@ namespace Google.Apis.People.v1.Data
     /// <summary>The source of a field.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A unique identifier within the source type generated by the server.</summary>
+        /// <summary>The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache
+        /// validation. Only populated in person.metadata.sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The unique identifier within the source type generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>The resource name of the source. Only set if there is a separate resource endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The source type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A brief one-line description of the person.</summary>
+    /// <summary>A read-only brief one-line description of the person.</summary>
     public class Tagline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata about the tagline.</summary>
@@ -1585,8 +1679,10 @@ namespace Google.Apis.People.v1.Data
         public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The type of the URL. The type can be custom or predefined. Possible values include, but are not
-        /// limited to, the following: * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` *
-        /// `appInstallPage`: website for a Google+ application. * `other`</summary>
+        /// limited to, the following:
+        ///
+        /// * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for
+        /// a Google+ application. * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
