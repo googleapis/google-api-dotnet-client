@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170125 (755)
+ *      <tr><th>API Rev<td>20170131 (761)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -6991,7 +6991,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Modifies the set of products a user is entitled to access.</summary>
+        /// <summary>Modifies the set of products that a user is entitled to access (referred to as whitelisted
+        /// products). Only products that are approved or products that were previously approved (products with revoked
+        /// approval) can be whitelisted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -7001,7 +7003,9 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetAvailableProductSetRequest(service, body, enterpriseId, userId);
         }
 
-        /// <summary>Modifies the set of products a user is entitled to access.</summary>
+        /// <summary>Modifies the set of products that a user is entitled to access (referred to as whitelisted
+        /// products). Only products that are approved or products that were previously approved (products with revoked
+        /// approval) can be whitelisted.</summary>
         public class SetAvailableProductSetRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ProductSet>
         {
             /// <summary>Constructs a new SetAvailableProductSet request.</summary>
@@ -8216,11 +8220,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
 
-        /// <summary>The interpretation of this product set. "unknown" should never be sent and ignored if received.
+        /// <summary>The interpretation of this product set. "unknown" should never be sent and is ignored if received.
         /// "whitelist" means that this product set constitutes a whitelist. "includeAll" means that all products are
-        /// accessible, including products that are approved, not approved, and even products where approval has been
-        /// revoked. If the value is "includeAll", the value of the productId field is therefore ignored. If a value is
-        /// not supplied, it is interpreted to be "whitelist" for backwards compatibility.</summary>
+        /// accessible, including products that are approved, products with revoked approval, and products that have
+        /// never been approved. If the value is "includeAll", the value of the productId field is therefore ignored. If
+        /// a value is not supplied, it is interpreted to be "whitelist" for backwards compatibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
         public virtual string ProductSetBehavior { get; set; } 
 

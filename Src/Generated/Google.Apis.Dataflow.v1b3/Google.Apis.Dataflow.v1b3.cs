@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20170127 (757)
+ *      <tr><th>API Rev<td>20170201 (762)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -617,6 +617,15 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
+                    /// the latest messages available).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object EndTime { get; set; }
+
+                    /// <summary>The location which contains the job specified by job_id.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Location { get; set; }
+
                     /// <summary>If supplied, this should be the value of next_page_token returned by an earlier call.
                     /// This will cause the next page of results to be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -653,15 +662,6 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                         JOBMESSAGEERROR,
                     }
-
-                    /// <summary>The location which contains the job specified by job_id.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Location { get; set; }
-
-                    /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up to
-                    /// the latest messages available).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object EndTime { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -706,6 +706,24 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "endTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "location", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "location",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -736,24 +754,6 @@ namespace Google.Apis.Dataflow.v1b3
                             "minimumImportance", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "minimumImportance",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "location", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "location",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "endTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "endTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1646,20 +1646,15 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string JobId { get; private set; }
 
-                        /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
-                        /// to the latest messages available).</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object EndTime { get; set; }
+                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
+                        /// call. This will cause the next page of results to be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
                         /// <summary>If specified, return only messages with timestamps >= start_time. The default is
                         /// the job creation time (i.e. beginning of messages).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object StartTime { get; set; }
-
-                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
-                        /// call. This will cause the next page of results to be returned.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
 
                         /// <summary>If specified, determines the maximum number of messages to return.  If unspecified,
                         /// the service may choose an appropriate default, or may return an arbitrarily large number of
@@ -1687,6 +1682,11 @@ namespace Google.Apis.Dataflow.v1b3
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
                             JOBMESSAGEERROR,
                         }
+
+                        /// <summary>Return only messages with timestamps < end_time. The default is now (i.e. return up
+                        /// to the latest messages available).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object EndTime { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1740,9 +1740,9 @@ namespace Google.Apis.Dataflow.v1b3
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "endTime", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "endTime",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1752,15 +1752,6 @@ namespace Google.Apis.Dataflow.v1b3
                                 "startTime", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "startTime",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1779,6 +1770,15 @@ namespace Google.Apis.Dataflow.v1b3
                                 "minimumImportance", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "minimumImportance",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "endTime", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "endTime",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2862,6 +2862,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The maximum number of workers to cap scaling at.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNumWorkers")]
         public virtual System.Nullable<int> MaxNumWorkers { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Modeled after information exposed by /proc/stat.</summary>
+    public class CPUTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Average CPU utilization rate (% non-idle cpu / second) since previous sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rate")]
+        public virtual System.Nullable<double> Rate { get; set; } 
+
+        /// <summary>Timestamp of the measurement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; } 
+
+        /// <summary>Total active CPU time across all cores (ie., non-idle) in milliseconds since start-up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalMs")]
+        public virtual System.Nullable<ulong> TotalMs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4179,10 +4198,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// variety of sources. For more information, see go/df-resource-signals.</summary>
     public class ResourceUtilizationReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>'Any' is used to provide extensibility of reported metrics without requiring changes to the public
-        /// API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metric { get; set; } 
+        /// <summary>CPU utilization samples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuTime")]
+        public virtual System.Collections.Generic.IList<CPUTime> CpuTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

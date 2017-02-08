@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170202 (763)
+ *      <tr><th>API Rev<td>20170206 (767)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -433,11 +433,6 @@ namespace Google.Apis.People.v1
                     }
 
 
-                    /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
-                    /// changed since the sync token was created will be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string SyncToken { get; set; }
-
                     /// <summary>The token of the page to be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -471,6 +466,11 @@ namespace Google.Apis.People.v1
                         LASTNAMEASCENDING,
                     }
 
+                    /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
+                    /// changed since the sync token was created will be returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SyncToken { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -495,15 +495,6 @@ namespace Google.Apis.People.v1
                     {
                         base.InitParameters();
 
-                        RequestParameters.Add(
-                            "syncToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "syncToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                         RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
@@ -535,6 +526,15 @@ namespace Google.Apis.People.v1
                             "sortOrder", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "sortOrder",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "syncToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "syncToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
