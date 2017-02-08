@@ -127,6 +127,11 @@ namespace Google.Apis.Download
             this.service = service;
         }
 
+        /// <summary>
+        /// Gets or sets the callback for modifying requests made when downloading.
+        /// </summary>
+        public Action<HttpRequestMessage> ModifyRequest { get; set; }
+
         #region IMediaDownloader Overrides
 
         public event Action<IDownloadProgress> ProgressChanged;
@@ -249,6 +254,7 @@ namespace Google.Apis.Download
 
             var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
             request.Headers.Range = Range;
+            ModifyRequest?.Invoke(request);
 
             // Number of bytes sent to the caller's stream.
             long bytesReturned = 0;

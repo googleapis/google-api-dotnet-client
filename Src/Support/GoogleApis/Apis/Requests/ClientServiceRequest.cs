@@ -49,6 +49,11 @@ namespace Google.Apis.Requests
         /// <summary>Defines whether the E-Tag will be used in a specified way or be ignored.</summary>
         public ETagAction ETagAction { get; set; }
 
+        /// <summary>
+        /// Gets or sets the callback for modifying HTTP requests made by this service request.
+        /// </summary>
+        public Action<HttpRequestMessage> ModifyRequest { get; set; }
+
         #region IClientServiceRequest Properties
 
         public abstract string MethodName { get; }
@@ -187,6 +192,7 @@ namespace Google.Apis.Requests
             request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
                 ? overrideGZipEnabled.Value : service.GZipEnabled);
             AddETag(request);
+            ModifyRequest?.Invoke(request);
             return request;
         }
 
