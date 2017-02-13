@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170131 (761)
+ *      <tr><th>API Rev<td>20170206 (767)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -452,8 +452,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotation")]
         public virtual SafeSearchAnnotation SafeSearchAnnotation { get; set; } 
 
-        /// <summary>If present, text (OCR) detection or document (OCR) text detection has completed
-        /// successfully.</summary>
+        /// <summary>If present, text (OCR) detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnnotations")]
         public virtual System.Collections.Generic.IList<EntityAnnotation> TextAnnotations { get; set; } 
 

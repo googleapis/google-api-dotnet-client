@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170130 (760)
+ *      <tr><th>API Rev<td>20170210 (771)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -424,17 +424,20 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-            /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
-            /// information about log names, see LogEntry.</param>
+            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
+            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
+            /// names, see LogEntry.</param>
             public virtual DeleteRequest Delete(string logName)
             {
                 return new DeleteRequest(service, logName);
             }
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -447,10 +450,10 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects
-                /// /my-project-id/logs/syslog",
-                /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information
-                /// about log names, see LogEntry.</summary>
+                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
+                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
+                /// more information about log names, see LogEntry.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LogName { get; private set; }
 
@@ -491,15 +494,17 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" </param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -512,21 +517,22 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" </summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -562,18 +568,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -613,7 +619,8 @@ namespace Google.Apis.Logging.v2
             /// entries only from the resource owning the sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project", "organizations/123456789".</param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -636,8 +643,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project",
-                /// "organizations/123456789".</summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -706,9 +713,9 @@ namespace Google.Apis.Logging.v2
             /// <summary>Deletes a sink. If the sink has a unique writer_identity, then that service account is also
             /// deleted.</summary>
             /// <param name="sinkName">Required. The full resource name of the sink to delete, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an
-            /// error if the sink does not exist. Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink
-            /// does not exist.</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual DeleteRequest Delete(string sinkName)
             {
                 return new DeleteRequest(service, sinkName);
@@ -729,9 +736,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to delete, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an error if the sink does not exist.
-                /// Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink does not
-                /// exist.</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -773,8 +780,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Gets a sink.</summary>
-            /// <param name="sinkName">Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
+            /// <param name="sinkName">Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
             public virtual GetRequest Get(string sinkName)
             {
                 return new GetRequest(service, sinkName);
@@ -792,9 +800,10 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// <summary>Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -836,8 +845,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="parent">Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-            /// project", "organizations/123456789".</param>
+            /// <param name="parent">Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -855,22 +864,23 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-                /// project", "organizations/123456789".</summary>
+                /// <summary>Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -906,18 +916,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -933,8 +943,9 @@ namespace Google.Apis.Logging.v2
             /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -958,8 +969,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to update, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1192,17 +1204,20 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-            /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
-            /// information about log names, see LogEntry.</param>
+            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
+            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
+            /// names, see LogEntry.</param>
             public virtual DeleteRequest Delete(string logName)
             {
                 return new DeleteRequest(service, logName);
             }
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1215,10 +1230,10 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects
-                /// /my-project-id/logs/syslog",
-                /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information
-                /// about log names, see LogEntry.</summary>
+                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
+                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
+                /// more information about log names, see LogEntry.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LogName { get; private set; }
 
@@ -1259,15 +1274,17 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" </param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1280,7 +1297,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" </summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1381,7 +1399,8 @@ namespace Google.Apis.Logging.v2
             /// entries only from the resource owning the sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project", "organizations/123456789".</param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1404,8 +1423,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project",
-                /// "organizations/123456789".</summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1474,9 +1493,9 @@ namespace Google.Apis.Logging.v2
             /// <summary>Deletes a sink. If the sink has a unique writer_identity, then that service account is also
             /// deleted.</summary>
             /// <param name="sinkName">Required. The full resource name of the sink to delete, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an
-            /// error if the sink does not exist. Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink
-            /// does not exist.</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual DeleteRequest Delete(string sinkName)
             {
                 return new DeleteRequest(service, sinkName);
@@ -1497,9 +1516,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to delete, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an error if the sink does not exist.
-                /// Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink does not
-                /// exist.</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1541,8 +1560,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Gets a sink.</summary>
-            /// <param name="sinkName">Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
+            /// <param name="sinkName">Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
             public virtual GetRequest Get(string sinkName)
             {
                 return new GetRequest(service, sinkName);
@@ -1560,9 +1580,10 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// <summary>Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1604,8 +1625,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="parent">Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-            /// project", "organizations/123456789".</param>
+            /// <param name="parent">Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1623,8 +1644,9 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-                /// project", "organizations/123456789".</summary>
+                /// <summary>Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1701,8 +1723,9 @@ namespace Google.Apis.Logging.v2
             /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -1726,8 +1749,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to update, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -1927,17 +1951,20 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-            /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
-            /// information about log names, see LogEntry.</param>
+            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
+            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
+            /// names, see LogEntry.</param>
             public virtual DeleteRequest Delete(string logName)
             {
                 return new DeleteRequest(service, logName);
             }
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1950,10 +1977,10 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects
-                /// /my-project-id/logs/syslog",
-                /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information
-                /// about log names, see LogEntry.</summary>
+                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
+                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
+                /// more information about log names, see LogEntry.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LogName { get; private set; }
 
@@ -1994,15 +2021,17 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" </param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2015,7 +2044,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" </summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2116,7 +2146,8 @@ namespace Google.Apis.Logging.v2
             /// entries only from the resource owning the sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project", "organizations/123456789".</param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2139,8 +2170,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project",
-                /// "organizations/123456789".</summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2209,9 +2240,9 @@ namespace Google.Apis.Logging.v2
             /// <summary>Deletes a sink. If the sink has a unique writer_identity, then that service account is also
             /// deleted.</summary>
             /// <param name="sinkName">Required. The full resource name of the sink to delete, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an
-            /// error if the sink does not exist. Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink
-            /// does not exist.</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual DeleteRequest Delete(string sinkName)
             {
                 return new DeleteRequest(service, sinkName);
@@ -2232,9 +2263,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to delete, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an error if the sink does not exist.
-                /// Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink does not
-                /// exist.</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -2276,8 +2307,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Gets a sink.</summary>
-            /// <param name="sinkName">Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
+            /// <param name="sinkName">Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
             public virtual GetRequest Get(string sinkName)
             {
                 return new GetRequest(service, sinkName);
@@ -2295,9 +2327,10 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// <summary>Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -2339,8 +2372,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="parent">Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-            /// project", "organizations/123456789".</param>
+            /// <param name="parent">Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2358,22 +2391,23 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-                /// project", "organizations/123456789".</summary>
+                /// <summary>Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2409,18 +2443,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2436,8 +2470,9 @@ namespace Google.Apis.Logging.v2
             /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -2461,8 +2496,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to update, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -2571,17 +2607,20 @@ namespace Google.Apis.Logging.v2
             }
 
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             /// <param name="logName">Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
-            /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
-            /// information about log names, see LogEntry.</param>
+            /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+            /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog",
+            /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information about log
+            /// names, see LogEntry.</param>
             public virtual DeleteRequest Delete(string logName)
             {
                 return new DeleteRequest(service, logName);
             }
 
-            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries.</summary>
+            /// <summary>Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries
+            /// written shortly before the delete operation might not be deleted.</summary>
             public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -2594,10 +2633,10 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name of the log to delete: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects
-                /// /my-project-id/logs/syslog",
-                /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more information
-                /// about log names, see LogEntry.</summary>
+                /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+                /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
+                /// id/logs/syslog", "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For
+                /// more information about log names, see LogEntry.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("logName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LogName { get; private set; }
 
@@ -2638,15 +2677,17 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             /// <param name="parent">Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" </param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the logs in projects or organizations. Only logs that have entries are listed.</summary>
+            /// <summary>Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have
+            /// entries are listed.</summary>
             public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListLogsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2659,7 +2700,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource name that owns the logs: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" </summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3141,7 +3183,8 @@ namespace Google.Apis.Logging.v2
             /// entries only from the resource owning the sink.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-            /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project", "organizations/123456789".</param>
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
             public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogSink body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3164,8 +3207,8 @@ namespace Google.Apis.Logging.v2
 
 
                 /// <summary>Required. The resource in which to create the sink: "projects/[PROJECT_ID]"
-                /// "organizations/[ORGANIZATION_ID]" Examples: "projects/my-logging-project",
-                /// "organizations/123456789".</summary>
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3234,9 +3277,9 @@ namespace Google.Apis.Logging.v2
             /// <summary>Deletes a sink. If the sink has a unique writer_identity, then that service account is also
             /// deleted.</summary>
             /// <param name="sinkName">Required. The full resource name of the sink to delete, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an
-            /// error if the sink does not exist. Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink
-            /// does not exist.</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual DeleteRequest Delete(string sinkName)
             {
                 return new DeleteRequest(service, sinkName);
@@ -3257,9 +3300,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to delete, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" It is an error if the sink does not exist.
-                /// Example: "projects/my-project-id/sinks/my-sink-id". It is an error if the sink does not
-                /// exist.</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -3301,8 +3344,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Gets a sink.</summary>
-            /// <param name="sinkName">Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
+            /// <param name="sinkName">Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+            /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+            /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-id".</param>
             public virtual GetRequest Get(string sinkName)
             {
                 return new GetRequest(service, sinkName);
@@ -3320,9 +3364,10 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// <summary>Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -3364,8 +3409,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>Lists sinks.</summary>
-            /// <param name="parent">Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-            /// project", "organizations/123456789".</param>
+            /// <param name="parent">Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -3383,8 +3428,9 @@ namespace Google.Apis.Logging.v2
                 }
 
 
-                /// <summary>Required. The parent resource whose sinks are to be listed. Examples: "projects/my-logging-
-                /// project", "organizations/123456789".</summary>
+                /// <summary>Required. The parent resource whose sinks are to be listed: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3461,8 +3507,9 @@ namespace Google.Apis.Logging.v2
             /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
-            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example:
-            /// "projects/my-project-id/sinks/my-sink-id".</param>
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -3486,8 +3533,9 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>Required. The full resource name of the sink to update, including the parent resource and
                 /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" Example: "projects/my-project-id/sinks/my-sink-
-                /// id".</summary>
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
@@ -3695,9 +3743,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; } 
 
-        /// <summary>Required. Names of one or more resources from which to retrieve log entries:
-        /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" Projects listed in the project_ids field are added
-        /// to this list.</summary>
+        /// <summary>Required. Names of one or more parent resources from which to retrieve log entries:
+        /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]"
+        /// "folders/[FOLDER_ID]" Projects listed in the project_ids field are added to this list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
 
@@ -3817,8 +3865,9 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Required. The resource name of the log to which this log entry belongs:
-        /// "projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-
-        /// encoded within log_name. Example:
+        /// "projects/[PROJECT_ID]/logs/[LOG_ID]" "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+        /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]" "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be
+        /// URL-encoded within log_name. Example:
         /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
         /// 512 characters long and can only include the following characters: upper and lower case alphanumeric
         /// characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins
@@ -3978,7 +4027,7 @@ namespace Google.Apis.Logging.v2.Data
 
     /// <summary>Describes a sink used to export log entries to one of the following destinations in any project: a
     /// Cloud Storage bucket, a BigQuery dataset, or a Cloud Pub/Sub topic. A logs filter controls which log entries are
-    /// exported. The sink must be created within a project or organization.</summary>
+    /// exported. The sink must be created within a project, organization, billing account, or folder.</summary>
     public class LogSink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
@@ -4303,9 +4352,10 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Optional. A default log resource name that is assigned to all log entries in entries that do not
         /// specify a value for log_name: "projects/[PROJECT_ID]/logs/[LOG_ID]"
-        /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-
-        /// project-id/logs/syslog" or "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-        /// For more information about log names, see LogEntry.</summary>
+        /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+        /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For example, "projects/my-project-
+        /// id/logs/syslog" or "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity". For more
+        /// information about log names, see LogEntry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
