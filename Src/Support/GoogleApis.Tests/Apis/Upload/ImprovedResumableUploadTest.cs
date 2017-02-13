@@ -319,7 +319,7 @@ namespace Google.Apis.Tests.Apis.Upload
         /// An upload using a pre-established session.
         /// </summary>
         [Test, Combinatorial]
-        public void TestInitiatedResumableUpload(
+        public async Task TestInitiatedResumableUpload(
             [Values("", "text/plain")] string contentType)
         {
             using (var server = new SingleChunkServer(_server))
@@ -328,17 +328,10 @@ namespace Google.Apis.Tests.Apis.Upload
                 var content = new MemoryStream(uploadTestBytes);
                 var tmpUploader = new TestResumableUpload(
                     service, "SingleChunk", "POST", content, contentType, uploadLength);
-                Uri uploadUri = null;
-                tmpUploader.UploadSessionData += sessionData => {
-                    uploadUri = sessionData.UploadUri;
-                    // Throw an exception so the upload fails.
-                    throw new Exception();
-                };
-                var progress = tmpUploader.Upload();
-                Assert.That(progress.Status, Is.EqualTo(UploadStatus.Failed));
+                var uploadUri = await tmpUploader.InitiateSessionAsync();
 
                 var uploader = ResumableUpload.CreateFromUploadUri(uploadUri, content);
-                progress = uploader.Upload();
+                var progress = uploader.Upload();
 
                 Assert.That(server.Requests.Count, Is.EqualTo(2));
                 var r0 = server.Requests[0];
