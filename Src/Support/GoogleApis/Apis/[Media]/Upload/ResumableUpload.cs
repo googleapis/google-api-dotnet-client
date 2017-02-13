@@ -84,6 +84,8 @@ namespace Google.Apis.Upload
         {
             contentStream.ThrowIfNull(nameof(contentStream));
             ContentStream = contentStream;
+            // Check if the stream length is known.
+            StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
             HttpClient = options?.ConfigurableHttpClient ?? new ConfigurableHttpClient(new ConfigurableMessageHandler(new HttpClientHandler()));
             Options = options;
         }
@@ -118,7 +120,7 @@ namespace Google.Apis.Upload
                 _initiatedUploadUri = uploadUri;
             }
 
-            protected override Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
+            public override Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken = default(CancellationToken))
             {
                 return TaskEx.FromResult(_initiatedUploadUri);
             }
@@ -402,8 +404,6 @@ namespace Google.Apis.Upload
         {
             BytesServerReceived = 0;
             UpdateProgress(new ResumableUploadProgress(UploadStatus.Starting, 0));
-            // Check if the stream length is known.
-            StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
 
             try
             {
@@ -512,7 +512,6 @@ namespace Google.Apis.Upload
                 {
                     Logger.Info("Resuming after program restart: UploadUri={0}", uploadUri);
                     UploadUri = uploadUri;
-                    StreamLength =  ContentStream.Length;
                 }
                 else
                 {
@@ -604,7 +603,7 @@ namespace Google.Apis.Upload
         /// <returns>
         /// The task containing the session URI to use for the resumable upload.
         /// </returns>
-        protected abstract Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken);
+        public abstract Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Process a response from the final upload chunk call.
@@ -898,7 +897,7 @@ namespace Google.Apis.Upload
         #region Upload Implementation
 
         /// <inheritdoc/>
-        protected override async Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken)
+        public override async Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             HttpRequestMessage request = CreateInitializeRequest();
             Options?.ModifySessionInitiationRequest?.Invoke(request);
