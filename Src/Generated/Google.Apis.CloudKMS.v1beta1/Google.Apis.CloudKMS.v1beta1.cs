@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170201 (762)
+ *      <tr><th>API Rev<td>20170208 (769)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -1516,7 +1516,10 @@ namespace Google.Apis.CloudKMS.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    ///
+                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
                     /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -1526,7 +1529,10 @@ namespace Google.Apis.CloudKMS.v1beta1
                     }
 
                     /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
-                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                    ///
+                    /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                    /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                     public class TestIamPermissionsRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1beta1.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2031,7 +2037,10 @@ namespace Google.Apis.CloudKMS.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
                 /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -2041,7 +2050,10 @@ namespace Google.Apis.CloudKMS.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>

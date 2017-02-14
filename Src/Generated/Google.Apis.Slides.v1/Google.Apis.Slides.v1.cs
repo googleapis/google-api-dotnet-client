@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170201 (762)
+ *      <tr><th>API Rev<td>20170209 (770)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1997,48 +1997,46 @@ namespace Google.Apis.Slides.v1.Data
     /// Inherited paragraph styles are represented as unset fields in this message.</summary>
     public class ParagraphStyle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text alignment for this paragraph. This property is read-only.</summary>
+        /// <summary>The text alignment for this paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alignment")]
         public virtual string Alignment { get; set; } 
 
         /// <summary>The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since text
-        /// direction is not inherited. This property is read-only.</summary>
+        /// direction is not inherited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
         /// <summary>The amount indentation for the paragraph on the side that corresponds to the end of the text, based
-        /// on the current text direction. If unset, the value is inherited from the parent. This property is read-
-        /// only.</summary>
+        /// on the current text direction. If unset, the value is inherited from the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indentEnd")]
         public virtual Dimension IndentEnd { get; set; } 
 
         /// <summary>The amount of indentation for the start of the first line of the paragraph. If unset, the value is
-        /// inherited from the parent. This property is read-only.</summary>
+        /// inherited from the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indentFirstLine")]
         public virtual Dimension IndentFirstLine { get; set; } 
 
         /// <summary>The amount indentation for the paragraph on the side that corresponds to the start of the text,
-        /// based on the current text direction. If unset, the value is inherited from the parent. This property is
-        /// read-only.</summary>
+        /// based on the current text direction. If unset, the value is inherited from the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indentStart")]
         public virtual Dimension IndentStart { get; set; } 
 
         /// <summary>The amount of space between lines, as a percentage of normal, where normal is represented as 100.0.
-        /// If unset, the value is inherited from the parent. This property is read-only.</summary>
+        /// If unset, the value is inherited from the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineSpacing")]
         public virtual System.Nullable<float> LineSpacing { get; set; } 
 
-        /// <summary>The amount of extra space above the paragraph. If unset, the value is inherited from the parent.
-        /// This property is read-only.</summary>
+        /// <summary>The amount of extra space above the paragraph. If unset, the value is inherited from the
+        /// parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceAbove")]
         public virtual Dimension SpaceAbove { get; set; } 
 
-        /// <summary>The amount of extra space above the paragraph. If unset, the value is inherited from the parent.
-        /// This property is read-only.</summary>
+        /// <summary>The amount of extra space above the paragraph. If unset, the value is inherited from the
+        /// parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceBelow")]
         public virtual Dimension SpaceBelow { get; set; } 
 
-        /// <summary>The spacing mode for the paragraph. This property is read-only.</summary>
+        /// <summary>The spacing mode for the paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spacingMode")]
         public virtual string SpacingMode { get; set; } 
 
@@ -2380,6 +2378,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Updates the properties of a Page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatePageProperties")]
         public virtual UpdatePagePropertiesRequest UpdatePageProperties { get; set; } 
+
+        /// <summary>Updates the styling of paragraphs within a Shape or Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateParagraphStyle")]
+        public virtual UpdateParagraphStyleRequest UpdateParagraphStyle { get; set; } 
 
         /// <summary>Updates the properties of a Shape.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateShapeProperties")]
@@ -2999,7 +3001,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baselineOffset")]
         public virtual string BaselineOffset { get; set; } 
 
-        /// <summary>Whether or not the text is bold.</summary>
+        /// <summary>Whether or not the text is rendered as bold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bold")]
         public virtual System.Nullable<bool> Bold { get; set; } 
 
@@ -3175,6 +3177,43 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Updates the styling for all of the paragraphs within a Shape or Table that overlap with the given text
+    /// index range.</summary>
+    public class UpdateParagraphStyleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the cell in the table containing the paragraph(s) to style. If object_id refers to
+        /// a table, cell_location must have a value. Otherwise, it must not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
+        public virtual TableCellLocation CellLocation { get; set; } 
+
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `style` is implied and should not be specified. A single
+        /// `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example, to update the paragraph alignment, set `fields` to `"alignment"`.
+        ///
+        /// To reset a property to its default value, include its field name in the field mask but leave the field
+        /// itself unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The object ID of the shape or table with the text to be styled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The paragraph's style.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("style")]
+        public virtual ParagraphStyle Style { get; set; } 
+
+        /// <summary>The range of text containing the paragraph(s) to style.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
+        public virtual Range TextRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Update the properties of a Shape.</summary>
     public class UpdateShapePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3256,8 +3295,8 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the styling of text in a Shape or Table.</summary>
     public class UpdateTextStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The optional table cell location if the text to be styled is in a table cell. If present, the
-        /// object_id must refer to a table.</summary>
+        /// <summary>The location of the cell in the table containing the text to style. If object_id refers to a table,
+        /// cell_location must have a value. Otherwise, it must not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 

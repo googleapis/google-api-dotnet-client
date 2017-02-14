@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170209 (770)
+ *      <tr><th>API Rev<td>20170211 (772)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -2632,19 +2632,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("readGroupSetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReadGroupSetId { get; private set; }
 
-                /// <summary>The desired width of each reported coverage bucket in base pairs. This will be rounded down
-                /// to the nearest precomputed bucket width; the value of which is returned as `bucketWidth` in the
-                /// response. Defaults to infinity (each bucket spans an entire reference sequence) or the length of the
-                /// target range, if specified. The smallest precomputed `bucketWidth` is currently 2048 base pairs;
-                /// this is subject to change.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("targetBucketWidth", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> TargetBucketWidth { get; set; }
-
-                /// <summary>The name of the reference to query, within the reference set associated with this query.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ReferenceName { get; set; }
-
                 /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
                 /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
                 /// reference.</summary>
@@ -2666,6 +2653,19 @@ namespace Google.Apis.Genomics.v1
                 /// `referenceName` must also be specified. Defaults to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> Start { get; set; }
+
+                /// <summary>The desired width of each reported coverage bucket in base pairs. This will be rounded down
+                /// to the nearest precomputed bucket width; the value of which is returned as `bucketWidth` in the
+                /// response. Defaults to infinity (each bucket spans an entire reference sequence) or the length of the
+                /// target range, if specified. The smallest precomputed `bucketWidth` is currently 2048 base pairs;
+                /// this is subject to change.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("targetBucketWidth", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> TargetBucketWidth { get; set; }
+
+                /// <summary>The name of the reference to query, within the reference set associated with this query.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ReferenceName { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2701,24 +2701,6 @@ namespace Google.Apis.Genomics.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "targetBucketWidth", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "targetBucketWidth",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "referenceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "referenceName",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "end", new Google.Apis.Discovery.Parameter
                         {
                             Name = "end",
@@ -2749,6 +2731,24 @@ namespace Google.Apis.Genomics.v1
                         "start", new Google.Apis.Discovery.Parameter
                         {
                             Name = "start",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "targetBucketWidth", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "targetBucketWidth",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "referenceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "referenceName",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3398,10 +3398,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("referenceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReferenceId { get; private set; }
 
-                /// <summary>The start position (0-based) of this query. Defaults to 0.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> Start { get; set; }
-
                 /// <summary>The end position (0-based, exclusive) of this query. Defaults to the length of this
                 /// reference.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
@@ -3417,6 +3413,10 @@ namespace Google.Apis.Genomics.v1
                 /// (kilo base pairs). The maximum value is 10Mbp (mega base pairs).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The start position (0-based) of this query. Defaults to 0.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> Start { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3452,15 +3452,6 @@ namespace Google.Apis.Genomics.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "start", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "start",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "end", new Google.Apis.Discovery.Parameter
                         {
                             Name = "end",
@@ -3482,6 +3473,15 @@ namespace Google.Apis.Genomics.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "start", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "start",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
