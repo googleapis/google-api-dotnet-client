@@ -94,7 +94,7 @@ namespace Google.Apis.Appsactivity.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Apps Activity API.</summary>
         public class Scope
         {
-            /// <summary>View the activity history of your Google Apps</summary>
+            /// <summary>View the activity history of your Google apps</summary>
             public static string Activity = "https://www.googleapis.com/auth/activity";
 
             /// <summary>View and manage the files in your Google Drive</summary>

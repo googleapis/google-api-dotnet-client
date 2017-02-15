@@ -94,7 +94,7 @@ namespace Google.Apis.Licensing.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Enterprise License Manager API.</summary>
         public class Scope
         {
-            /// <summary>View and manage Google Apps licenses for your domain</summary>
+            /// <summary>View and manage G Suite licenses for your domain</summary>
             public static string AppsLicensing = "https://www.googleapis.com/auth/apps.licensing";
 
         }

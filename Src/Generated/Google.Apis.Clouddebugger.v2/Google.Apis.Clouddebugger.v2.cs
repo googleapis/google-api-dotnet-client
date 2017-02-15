@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170208 (769)
+ *      <tr><th>API Rev<td>20170214 (775)
  *      <tr><th>API Docs
  *          <td><a href='http://cloud.google.com/debugger'>
  *              http://cloud.google.com/debugger</a>
@@ -445,6 +445,12 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
+                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
+                    /// the last returned response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WaitToken { get; set; }
+
                     /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
                     /// response field to `true` when the server-selected timeout has expired (recommended).
                     ///
@@ -452,12 +458,6 @@ namespace Google.Apis.CloudDebugger.v2
                     /// expired (deprecated).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
-
-                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
-                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
-                    /// the last returned response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string WaitToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -493,18 +493,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
+                            "waitToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "successOnTimeout",
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "successOnTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "successOnTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -972,15 +972,15 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
 
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
-
                     /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
                     /// it includes only active breakpoints.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
 
                     /// <summary>This field is deprecated. The following fields are always stripped out of the result:
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
@@ -1048,18 +1048,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            "includeInactive", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeAllUsers",
+                                Name = "includeInactive",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "includeInactive",
+                                Name = "includeAllUsers",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

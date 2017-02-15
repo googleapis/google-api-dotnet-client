@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170131 (761)
+ *      <tr><th>API Rev<td>20170213 (774)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -956,18 +956,18 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated; use this to unenroll
-        /// customers that were previously enrolled with the 'insert' call, then enroll them again with the 'enroll'
-        /// call.</summary>
+        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated. Use this method only to
+        /// unenroll customers that were previously enrolled with the insert call, then enroll them again with the
+        /// enroll call.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual DeleteRequest Delete(string enterpriseId)
         {
             return new DeleteRequest(service, enterpriseId);
         }
 
-        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated; use this to unenroll
-        /// customers that were previously enrolled with the 'insert' call, then enroll them again with the 'enroll'
-        /// call.</summary>
+        /// <summary>Deletes the binding between the EMM and enterprise. This is now deprecated. Use this method only to
+        /// unenroll customers that were previously enrolled with the insert call, then enroll them again with the
+        /// enroll call.</summary>
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1516,7 +1516,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
         /// authenticated for the request. The notification set may be empty if no notification are pending. A
         /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises​.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
         /// acknowledged within the 20 seconds will eventually be included again in the response to another
         /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
         /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
@@ -1531,7 +1531,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>Pulls and returns a notification set for the enterprises associated with the service account
         /// authenticated for the request. The notification set may be empty if no notification are pending. A
         /// notification set returned needs to be acknowledged within 20 seconds by calling
-        /// Enterprises​.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
+        /// Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not
         /// acknowledged within the 20 seconds will eventually be included again in the response to another
         /// PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to
         /// the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to
@@ -1668,7 +1668,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Set the account that will be used to authenticate to the API as the enterprise.</summary>
+        /// <summary>Sets the account that will be used to authenticate to the API as the enterprise.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetAccountRequest SetAccount(Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount body, string enterpriseId)
@@ -1676,7 +1676,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetAccountRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Set the account that will be used to authenticate to the API as the enterprise.</summary>
+        /// <summary>Sets the account that will be used to authenticate to the API as the enterprise.</summary>
         public class SetAccountRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterpriseAccount>
         {
             /// <summary>Constructs a new SetAccount request.</summary>
@@ -2073,7 +2073,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>List of all entitlements for the specified user. Only the ID is set.</summary>
+        /// <summary>Lists all entitlements for the specified user. Only the ID is set.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -2082,7 +2082,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new ListRequest(service, enterpriseId, userId);
         }
 
-        /// <summary>List of all entitlements for the specified user. Only the ID is set.</summary>
+        /// <summary>Lists all entitlements for the specified user. Only the ID is set.</summary>
         public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EntitlementsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2951,7 +2951,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed then
+        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed, then
         /// it is updated to the latest version if necessary. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -2965,7 +2965,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new PatchRequest(service, body, enterpriseId, userId, deviceId, installId);
         }
 
-        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed then
+        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed, then
         /// it is updated to the latest version if necessary. This method supports patch semantics.</summary>
         public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Install>
         {
@@ -3068,7 +3068,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed then
+        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed, then
         /// it is updated to the latest version if necessary.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -3082,7 +3082,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UpdateRequest(service, body, enterpriseId, userId, deviceId, installId);
         }
 
-        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed then
+        /// <summary>Requests to install the latest version of an app to a device. If the app is already installed, then
         /// it is updated to the latest version if necessary.</summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Install>
         {
@@ -7397,14 +7397,14 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A device resource represents a mobile device managed by the EMM and belonging to a specific enterprise
+    /// <summary>A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise
     /// user.
     ///
-    /// This collection cannot be modified via the API; it is automatically populated as devices are set up to be
+    /// This collection cannot be modified via the API. It is automatically populated as devices are set up to be
     /// managed.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string, e.g.
+        /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string. For example,
         /// "123456789abcdef0".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidId")]
         public virtual string AndroidId { get; set; } 
@@ -7549,28 +7549,28 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The existence of an entitlement resource means that a user has the right to use a particular app on any
-    /// of their devices. This might be because the app is free or because they have been allocated a license to the app
-    /// from a group license purchased by the enterprise.
+    /// <summary>The existence of an Entitlements resource means that a user has the right to use a particular app on
+    /// any of their devices. This might be because the app is free or because they have been allocated a license to the
+    /// app from a group license purchased by the enterprise.
     ///
     /// It should always be true that a user has an app installed on one of their devices only if they have an
-    /// entitlement to it. So if an entitlement is deleted, the app will be uninstalled from all devices. Similarly if
-    /// the user installs an app (and is permitted to do so), or the EMM triggers an install of the app, an entitlement
-    /// to that app is automatically created. If this is impossible - e.g. the enterprise has not purchased sufficient
-    /// licenses - then installation fails.
+    /// entitlement to it. So if an entitlement is deleted, the app will be uninstalled from all devices. Similarly, if
+    /// the user installs an app (and is permitted to do so), or if the EMM triggers an install of the app, an
+    /// entitlement to that app is automatically created. If this is impossible—if, for example, the enterprise has not
+    /// purchased sufficient licenses—then installation fails.
     ///
-    /// Note that entitlements are always user specific, not device specific; a user may have an entitlement even though
-    /// they have not installed the app anywhere. Once they have an entitlement they can install the app on multiple
+    /// Note that entitlements are always user specific, not device specific: a user may have an entitlement even though
+    /// they have not installed the app anywhere. Once they have an entitlement, they can install the app on multiple
     /// devices.
     ///
-    /// The API can be used to create an entitlement. If the app is a free app, a group license for that app is created.
-    /// If it's a paid app, creating the entitlement consumes one license; it remains consumed until the entitlement is
-    /// removed. Optionally an installation of the app on all the user's managed devices can be triggered at the time
-    /// the entitlement is created. An entitlement cannot be created for an app if the app requires permissions that the
-    /// enterprise has not yet accepted.
+    /// The API can be used to create an entitlement. If the app is a free app, creating the entitlement also creates a
+    /// group license for that app. If it's a paid app, creating the entitlement consumes one license, and that license
+    /// remains consumed until the entitlement is removed. Optionally an installation of the app on all the user's
+    /// managed devices can be triggered at the time the entitlement is created. An entitlement cannot be created for an
+    /// app if the app requires permissions that the enterprise has not yet accepted.
     ///
-    /// Entitlements for paid apps that are due to purchases by the user on a non-managed profile will have
-    /// "userPurchase" as entitlement reason; those entitlements cannot be removed via the API.</summary>
+    /// Entitlements for paid apps that are due to purchases by the user on a unmanaged profile will have "userPurchase"
+    /// as the entitlement reason. Those entitlements cannot be removed via the API.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -7578,12 +7578,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The ID of the product that the entitlement is for, e.g. "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product that the entitlement is for. For example,
+        /// "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>The reason for the entitlement, e.g. "free" for free apps. This is temporary, it will be replaced
-        /// by the acquisition kind field of group licenses.</summary>
+        /// <summary>The reason for the entitlement. For example, "free" for free apps. This property is temporary: it
+        /// will be replaced by the acquisition kind field of group licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
 
@@ -7624,16 +7625,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// Google Play.</summary>
     public class GroupLicense : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How this group license was acquired. "bulkPurchase" means that this group license object was
-        /// created because the enterprise purchased licenses for this product; this is "free" otherwise (for free
+        /// <summary>How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was
+        /// created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free
         /// products).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionKind")]
         public virtual string AcquisitionKind { get; set; } 
 
-        /// <summary>Whether the product to which this group license relates is currently approved by the enterprise, as
-        /// either "approved" or "unapproved". Products are approved when a group license is first created, but this
-        /// approval may be revoked by an enterprise admin via Google Play. Unapproved products will not be visible to
-        /// end users in collections and new entitlements to them should not normally be created.</summary>
+        /// <summary>Whether the product to which this group license relates is currently approved by the enterprise.
+        /// Products are approved when a group license is first created, but this approval may be revoked by an
+        /// enterprise admin via Google Play. Unapproved products will not be visible to end users in collections, and
+        /// new entitlements to them should not normally be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approval")]
         public virtual string Approval { get; set; } 
 
@@ -7647,13 +7648,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numProvisioned")]
         public virtual System.Nullable<int> NumProvisioned { get; set; } 
 
-        /// <summary>The number of purchased licenses (possibly in multiple purchases). If this field is omitted then
-        /// there is no limit on the number of licenses that can be provisioned (e.g. if the acquisition kind is
+        /// <summary>The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then
+        /// there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is
         /// "free").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPurchased")]
         public virtual System.Nullable<int> NumPurchased { get; set; } 
 
-        /// <summary>The ID of the product that the license is for, e.g. "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product that the license is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7693,18 +7694,18 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The existence of an install resource indicates that an app is installed on a particular device (or that
-    /// an install is pending).
+    /// <summary>The existence of an Installs resource indicates that an app is installed on a particular device (or
+    /// that an install is pending).
     ///
     /// The API can be used to create an install resource using the update method. This triggers the actual install of
-    /// the app on the device. If the user does not already have an entitlement for the app then an attempt is made to
-    /// create one. If this fails (e.g. because the app is not free and there is no available license) then the creation
-    /// of the install fails.
+    /// the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to
+    /// create one. If this fails (for example, because the app is not free and there is no available license), then the
+    /// creation of the install fails.
     ///
-    /// The API can also be used to update an installed app. If the update method is used on an existing install then
+    /// The API can also be used to update an installed app. If the update method is used on an existing install, then
     /// the app will be updated to the latest available version.
     ///
-    /// Note that it is not possible to force the installation of a specific version of an app; the version code is
+    /// Note that it is not possible to force the installation of a specific version of an app: the version code is
     /// read-only.
     ///
     /// If a user installs an app themselves (as permitted by the enterprise), then again an install resource and
@@ -7727,7 +7728,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The ID of the product that the install is for, e.g. "app:com.google.android.gm".</summary>
+        /// <summary>The ID of the product that the install is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
@@ -7914,8 +7915,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
-        /// <summary>Identifies the extent to which the device is controlled by an Android for Work EMM in various
-        /// deployment configurations.
+        /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
+        /// configurations.
         ///
         /// Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as
         /// the device owner, - "managedProfile", a device that has a work profile managed by the DPC (DPC is profile
@@ -8034,16 +8035,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A permission represents some extra capability, to be granted to an Android app, which requires explicit
-    /// consent. An enterprise admin must consent to these permissions on behalf of their users before an entitlement
-    /// for the app can be created.
+    /// <summary>A Permissions resource represents some extra capability, to be granted to an Android app, which
+    /// requires explicit consent. An enterprise admin must consent to these permissions on behalf of their users before
+    /// an entitlement for the app can be created.
     ///
     /// The permissions collection is read-only. The information provided for each permission (localized name and
-    /// description) is intended to be used in the EMM user interface when obtaining consent from the
+    /// description) is intended to be used in the MDM user interface when obtaining consent from the
     /// enterprise.</summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A longer description of the permissions giving more details of what it affects.</summary>
+        /// <summary>A longer description of the Permissions resource, giving more details of what it affects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -8077,7 +8078,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual System.Collections.Generic.IList<AppVersion> AppVersion { get; set; } 
 
-        /// <summary>The name of the author of the product (e.g. the app developer).</summary>
+        /// <summary>The name of the author of the product (for example, the app developer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
         public virtual string AuthorName { get; set; } 
 

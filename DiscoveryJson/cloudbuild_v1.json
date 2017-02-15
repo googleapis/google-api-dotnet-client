@@ -1,14 +1,4 @@
 {
-  "baseUrl": "https://cloudbuild.googleapis.com/",
-  "description": "Builds container images in the cloud.",
-  "servicePath": "",
-  "kind": "discovery#restDescription",
-  "basePath": "",
-  "id": "cloudbuild:v1",
-  "revision": "20170213",
-  "documentationLink": "https://cloud.google.com/container-builder/docs/",
-  "discoveryVersion": "v1",
-  "version_module": "True",
   "schemas": {
     "BuildOptions": {
       "description": "Optional arguments to enable specific features of builds.",
@@ -27,10 +17,6 @@
           "type": "string"
         },
         "sourceProvenanceHash": {
-          "enumDescriptions": [
-            "No hash requested.",
-            "Use a sha256 hash."
-          ],
           "description": "Requested hash for SourceProvenance.",
           "type": "array",
           "items": {
@@ -39,7 +25,11 @@
               "SHA256"
             ],
             "type": "string"
-          }
+          },
+          "enumDescriptions": [
+            "No hash requested.",
+            "Use a sha256 hash."
+          ]
         }
       },
       "id": "BuildOptions"
@@ -101,8 +91,8 @@
       "type": "object",
       "properties": {
         "resolvedRepoSource": {
-          "description": "A copy of the build's source.repo_source, if exists, with any\nrevisions resolved.",
-          "$ref": "RepoSource"
+          "$ref": "RepoSource",
+          "description": "A copy of the build's source.repo_source, if exists, with any\nrevisions resolved."
         },
         "resolvedStorageSource": {
           "description": "A copy of the build's source.storage_source, if exists, with any\ngenerations resolved.",
@@ -124,41 +114,6 @@
       "properties": {},
       "id": "CancelOperationRequest"
     },
-    "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
-      "properties": {
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        },
-        "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
-          "type": "object"
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
-        }
-      },
-      "id": "Operation"
-    },
     "ListBuildTriggersResponse": {
       "description": "Response containing existing BuildTriggers.",
       "type": "object",
@@ -173,84 +128,60 @@
       },
       "id": "ListBuildTriggersResponse"
     },
+    "Operation": {
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object",
+      "properties": {
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
+        },
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        },
+        "response": {
+          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          }
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
+          "type": "string"
+        }
+      },
+      "id": "Operation"
+    },
     "BuiltImage": {
       "description": "BuiltImage describes an image built by the pipeline.",
       "type": "object",
       "properties": {
-        "digest": {
-          "description": "Docker Registry 2.0 digest.",
-          "type": "string"
-        },
         "name": {
           "description": "Name used to push the container image to Google Container Registry, as\npresented to `docker push`.",
+          "type": "string"
+        },
+        "digest": {
+          "description": "Docker Registry 2.0 digest.",
           "type": "string"
         }
       },
       "id": "BuiltImage"
     },
-    "RepoSource": {
-      "description": "RepoSource describes the location of the source in a Google Cloud Source\nRepository.",
-      "type": "object",
-      "properties": {
-        "projectId": {
-          "description": "ID of the project that owns the repo. If omitted, the project ID requesting\nthe build is assumed.",
-          "type": "string"
-        },
-        "repoName": {
-          "description": "Name of the repo. If omitted, the name \"default\" is assumed.",
-          "type": "string"
-        },
-        "branchName": {
-          "description": "Name of the branch to build.",
-          "type": "string"
-        },
-        "tagName": {
-          "description": "Name of the tag to build.",
-          "type": "string"
-        },
-        "commitSha": {
-          "description": "Explicit commit SHA to build.",
-          "type": "string"
-        }
-      },
-      "id": "RepoSource"
-    },
-    "Hash": {
-      "description": "Container message for hash values.",
-      "type": "object",
-      "properties": {
-        "type": {
-          "enumDescriptions": [
-            "No hash requested.",
-            "Use a sha256 hash."
-          ],
-          "enum": [
-            "NONE",
-            "SHA256"
-          ],
-          "description": "The type of hash that was performed.",
-          "type": "string"
-        },
-        "value": {
-          "description": "The hash value.",
-          "format": "byte",
-          "type": "string"
-        }
-      },
-      "id": "Hash"
-    },
     "BuildStep": {
       "description": "BuildStep describes a step to perform in the build pipeline.",
       "type": "object",
       "properties": {
-        "entrypoint": {
-          "description": "Optional entrypoint to be used instead of the build step image's default\nIf unset, the image's default will be used.",
-          "type": "string"
-        },
-        "id": {
-          "description": "Optional unique identifier for this build step, used in wait_for to\nreference this build step as a dependency.",
-          "type": "string"
-        },
         "dir": {
           "description": "Working directory (relative to project source root) to use when running\nthis operation's container.",
           "type": "string"
@@ -279,9 +210,68 @@
         "name": {
           "description": "The name of the container image that will run this particular build step.\n\nIf the image is already available in the host's Docker daemon's cache, it\nwill be run directly. If not, the host will attempt to pull the image\nfirst, using the builder service account's credentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n(https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon\nwill also have cached many of the layers for some popular images, like\n\"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to\nuse them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
           "type": "string"
+        },
+        "entrypoint": {
+          "description": "Optional entrypoint to be used instead of the build step image's default\nIf unset, the image's default will be used.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Optional unique identifier for this build step, used in wait_for to\nreference this build step as a dependency.",
+          "type": "string"
         }
       },
       "id": "BuildStep"
+    },
+    "Hash": {
+      "description": "Container message for hash values.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of hash that was performed.",
+          "type": "string",
+          "enumDescriptions": [
+            "No hash requested.",
+            "Use a sha256 hash."
+          ],
+          "enum": [
+            "NONE",
+            "SHA256"
+          ]
+        },
+        "value": {
+          "description": "The hash value.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "id": "Hash"
+    },
+    "RepoSource": {
+      "description": "RepoSource describes the location of the source in a Google Cloud Source\nRepository.",
+      "type": "object",
+      "properties": {
+        "tagName": {
+          "description": "Name of the tag to build.",
+          "type": "string"
+        },
+        "commitSha": {
+          "description": "Explicit commit SHA to build.",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "ID of the project that owns the repo. If omitted, the project ID requesting\nthe build is assumed.",
+          "type": "string"
+        },
+        "repoName": {
+          "description": "Name of the repo. If omitted, the name \"default\" is assumed.",
+          "type": "string"
+        },
+        "branchName": {
+          "description": "Name of the branch to build.",
+          "type": "string"
+        }
+      },
+      "id": "RepoSource"
     },
     "FileHashes": {
       "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
@@ -334,30 +324,13 @@
       "description": "Configuration for an automated build in response to source repository\nchanges.",
       "type": "object",
       "properties": {
-        "disabled": {
-          "description": "If true, the trigger will never result in a build.",
-          "type": "boolean"
-        },
-        "createTime": {
-          "description": "Time when the trigger was created.\n\n@OutputOnly",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "filename": {
-          "description": "Path, from the source root, to a file whose contents is used for the\ntemplate.",
-          "type": "string"
-        },
-        "triggerTemplate": {
-          "$ref": "RepoSource",
-          "description": "Template describing the types of source changes to trigger a build.\n\nBranch and tag names in trigger templates are interpreted as regular\nexpressions. Any branch or tag change that matches that regular expression\nwill trigger a build."
-        },
         "id": {
           "description": "Unique identifier of the trigger.\n\n@OutputOnly",
           "type": "string"
         },
         "build": {
-          "description": "Contents of the build template.",
-          "$ref": "Build"
+          "$ref": "Build",
+          "description": "Contents of the build template."
         },
         "substitutions": {
           "description": "Substitutions data for Build resource.",
@@ -369,6 +342,23 @@
         "description": {
           "description": "Human-readable description of this trigger.",
           "type": "string"
+        },
+        "createTime": {
+          "description": "Time when the trigger was created.\n\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "disabled": {
+          "description": "If true, the trigger will never result in a build.",
+          "type": "boolean"
+        },
+        "filename": {
+          "description": "Path, from the source root, to a file whose contents is used for the\ntemplate.",
+          "type": "string"
+        },
+        "triggerTemplate": {
+          "description": "Template describing the types of source changes to trigger a build.\n\nBranch and tag names in trigger templates are interpreted as regular\nexpressions. Any branch or tag change that matches that regular expression\nwill trigger a build.",
+          "$ref": "RepoSource"
         }
       },
       "id": "BuildTrigger"
@@ -377,8 +367,36 @@
       "description": "A build resource in the Container Builder API.\n\nAt a high level, a Build describes where to find source code, how to build\nit (for example, the builder image to run on the source), and what tag to\napply to the built image when it is pushed to Google Container Registry.\n\nFields can include the following variables which will be expanded when the\nbuild is created:\n\n- $PROJECT_ID: the project ID of the build.\n- $BUILD_ID: the autogenerated ID of the build.\n- $REPO_NAME: the source repository name specified by RepoSource.\n- $BRANCH_NAME: the branch name specified by RepoSource.\n- $TAG_NAME: the tag name specified by RepoSource.\n- $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or\n  resolved from the specified branch or tag.",
       "type": "object",
       "properties": {
-        "logUrl": {
-          "description": "URL to logs for this build in Google Cloud Logging.\n@OutputOnly",
+        "startTime": {
+          "description": "Time at which execution of the build was started.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "substitutions": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Substitutions data for Build resource.",
+          "type": "object"
+        },
+        "createTime": {
+          "description": "Time at which the request to create the build was received.\n@OutputOnly",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "sourceProvenance": {
+          "$ref": "SourceProvenance",
+          "description": "A permanent fixed identifier for source.\n@OutputOnly"
+        },
+        "images": {
+          "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projectId": {
+          "description": "ID of the project.\n@OutputOnly.",
           "type": "string"
         },
         "finishTime": {
@@ -386,13 +404,17 @@
           "format": "google-datetime",
           "type": "string"
         },
-        "options": {
-          "$ref": "BuildOptions",
-          "description": "Special options for this build."
+        "logUrl": {
+          "description": "URL to logs for this build in Google Cloud Logging.\n@OutputOnly",
+          "type": "string"
         },
         "source": {
           "description": "Describes where to find the source files to build.",
           "$ref": "Source"
+        },
+        "options": {
+          "$ref": "BuildOptions",
+          "description": "Special options for this build."
         },
         "statusDetail": {
           "description": "Customer-readable message about the current status.\n@OutputOnly",
@@ -427,13 +449,13 @@
           "format": "google-duration",
           "type": "string"
         },
-        "results": {
-          "description": "Results of the build.\n@OutputOnly",
-          "$ref": "Results"
-        },
         "logsBucket": {
           "description": "Google Cloud Storage bucket where logs should be written (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).\nLogs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
           "type": "string"
+        },
+        "results": {
+          "$ref": "Results",
+          "description": "Results of the build.\n@OutputOnly"
         },
         "steps": {
           "description": "Describes the operations to be performed on the workspace.",
@@ -449,38 +471,6 @@
         "id": {
           "description": "Unique identifier of the build.\n@OutputOnly",
           "type": "string"
-        },
-        "startTime": {
-          "description": "Time at which execution of the build was started.\n@OutputOnly",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "substitutions": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Substitutions data for Build resource.",
-          "type": "object"
-        },
-        "createTime": {
-          "description": "Time at which the request to create the build was received.\n@OutputOnly",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "sourceProvenance": {
-          "description": "A permanent fixed identifier for source.\n@OutputOnly",
-          "$ref": "SourceProvenance"
-        },
-        "images": {
-          "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "projectId": {
-          "description": "ID of the project.\n@OutputOnly.",
-          "type": "string"
         }
       },
       "id": "Build"
@@ -495,16 +485,16 @@
       "description": "Response including listed builds.",
       "type": "object",
       "properties": {
-        "nextPageToken": {
-          "description": "Token to receive the next page of results.",
-          "type": "string"
-        },
         "builds": {
           "description": "Builds will be sorted by create_time, descending.",
           "type": "array",
           "items": {
             "$ref": "Build"
           }
+        },
+        "nextPageToken": {
+          "description": "Token to receive the next page of results.",
+          "type": "string"
         }
       },
       "id": "ListBuildsResponse"
@@ -513,16 +503,16 @@
       "description": "The response message for Operations.ListOperations.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
         "operations": {
           "description": "A list of operations that matches the specified filter in the request.",
           "type": "array",
           "items": {
             "$ref": "Operation"
           }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
         }
       },
       "id": "ListOperationsResponse"
@@ -531,13 +521,13 @@
       "description": "Source describes the location of the source in a supported storage\nservice.",
       "type": "object",
       "properties": {
-        "storageSource": {
-          "description": "If provided, get the source from this location in in Google Cloud\nStorage.",
-          "$ref": "StorageSource"
-        },
         "repoSource": {
           "description": "If provided, get source from this location in a Cloud Repo.",
           "$ref": "RepoSource"
+        },
+        "storageSource": {
+          "description": "If provided, get the source from this location in in Google Cloud\nStorage.",
+          "$ref": "StorageSource"
         }
       },
       "id": "Source"
@@ -570,23 +560,24 @@
         "builds": {
           "methods": {
             "get": {
-              "httpMethod": "GET",
+              "flatPath": "v1/projects/{projectId}/builds/{id}",
+              "path": "v1/projects/{projectId}/builds/{id}",
+              "id": "cloudbuild.projects.builds.get",
+              "description": "Returns information about a previously requested build.\n\nThe Build that is returned includes its status (e.g., success or failure,\nor in-progress), and timing information.",
+              "response": {
+                "$ref": "Build"
+              },
               "parameterOrder": [
                 "projectId",
                 "id"
               ],
-              "response": {
-                "$ref": "Build"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
+              "httpMethod": "GET",
               "parameters": {
                 "projectId": {
+                  "location": "path",
                   "description": "ID of the project.",
                   "required": true,
-                  "type": "string",
-                  "location": "path"
+                  "type": "string"
                 },
                 "id": {
                   "location": "path",
@@ -595,10 +586,9 @@
                   "type": "string"
                 }
               },
-              "flatPath": "v1/projects/{projectId}/builds/{id}",
-              "id": "cloudbuild.projects.builds.get",
-              "path": "v1/projects/{projectId}/builds/{id}",
-              "description": "Returns information about a previously requested build.\n\nThe Build that is returned includes its status (e.g., success or failure,\nor in-progress), and timing information."
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
             },
             "list": {
               "description": "Lists previously requested builds.\n\nPreviously requested builds may still be in-progress, or may have finished\nsuccessfully or unsuccessfully.",
@@ -613,18 +603,6 @@
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "parameters": {
-                "pageSize": {
-                  "location": "query",
-                  "description": "Number of results to return in the list.",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "projectId": {
-                  "description": "ID of the project.",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
-                },
                 "filter": {
                   "description": "The raw filter text to constrain the results.",
                   "type": "string",
@@ -634,6 +612,18 @@
                   "location": "query",
                   "description": "Token to provide to skip to a particular spot in the list.",
                   "type": "string"
+                },
+                "pageSize": {
+                  "description": "Number of results to return in the list.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                },
+                "projectId": {
+                  "location": "path",
+                  "description": "ID of the project.",
+                  "required": true,
+                  "type": "string"
                 }
               },
               "flatPath": "v1/projects/{projectId}/builds",
@@ -641,6 +631,9 @@
               "path": "v1/projects/{projectId}/builds"
             },
             "create": {
+              "flatPath": "v1/projects/{projectId}/builds",
+              "path": "v1/projects/{projectId}/builds",
+              "id": "cloudbuild.projects.builds.create",
               "description": "Starts a build with the specified configuration.\n\nThe long-running Operation returned by this method will include the ID of\nthe build, which can be passed to GetBuild to determine its status (e.g.,\nsuccess or failure).",
               "request": {
                 "$ref": "Build"
@@ -662,16 +655,13 @@
                   "type": "string",
                   "location": "path"
                 }
-              },
-              "flatPath": "v1/projects/{projectId}/builds",
-              "path": "v1/projects/{projectId}/builds",
-              "id": "cloudbuild.projects.builds.create"
+              }
             },
             "cancel": {
-              "description": "Cancels a requested build in progress.",
               "request": {
                 "$ref": "CancelBuildRequest"
               },
+              "description": "Cancels a requested build in progress.",
               "response": {
                 "$ref": "Build"
               },
@@ -680,9 +670,6 @@
                 "id"
               ],
               "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "projectId": {
                   "description": "ID of the project.",
@@ -691,12 +678,15 @@
                   "location": "path"
                 },
                 "id": {
-                  "location": "path",
                   "description": "ID of the build.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "location": "path"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1/projects/{projectId}/builds/{id}:cancel",
               "path": "v1/projects/{projectId}/builds/{id}:cancel",
               "id": "cloudbuild.projects.builds.cancel"
@@ -706,14 +696,17 @@
         "triggers": {
           "methods": {
             "get": {
-              "response": {
-                "$ref": "BuildTrigger"
-              },
+              "httpMethod": "GET",
               "parameterOrder": [
                 "projectId",
                 "triggerId"
               ],
-              "httpMethod": "GET",
+              "response": {
+                "$ref": "BuildTrigger"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "triggerId": {
                   "location": "path",
@@ -728,12 +721,9 @@
                   "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
-              "path": "v1/projects/{projectId}/triggers/{triggerId}",
               "id": "cloudbuild.projects.triggers.get",
+              "path": "v1/projects/{projectId}/triggers/{triggerId}",
               "description": "Gets information about a BuildTrigger.\n\nThis API is experimental."
             },
             "list": {
@@ -744,9 +734,6 @@
                 "projectId"
               ],
               "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "projectId": {
                   "location": "path",
@@ -755,24 +742,30 @@
                   "type": "string"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v1/projects/{projectId}/triggers",
               "path": "v1/projects/{projectId}/triggers",
               "id": "cloudbuild.projects.triggers.list",
               "description": "Lists existing BuildTrigger.\n\nThis API is experimental."
             },
             "patch": {
+              "description": "Updates an BuildTrigger by its project ID and trigger ID.\n\nThis API is experimental.",
               "request": {
                 "$ref": "BuildTrigger"
               },
-              "description": "Updates an BuildTrigger by its project ID and trigger ID.\n\nThis API is experimental.",
-              "response": {
-                "$ref": "BuildTrigger"
-              },
+              "httpMethod": "PATCH",
               "parameterOrder": [
                 "projectId",
                 "triggerId"
               ],
-              "httpMethod": "PATCH",
+              "response": {
+                "$ref": "BuildTrigger"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "triggerId": {
                   "description": "ID of the BuildTrigger to update.",
@@ -787,21 +780,15 @@
                   "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
-              "path": "v1/projects/{projectId}/triggers/{triggerId}",
-              "id": "cloudbuild.projects.triggers.patch"
+              "id": "cloudbuild.projects.triggers.patch",
+              "path": "v1/projects/{projectId}/triggers/{triggerId}"
             },
             "create": {
-              "flatPath": "v1/projects/{projectId}/triggers",
-              "id": "cloudbuild.projects.triggers.create",
-              "path": "v1/projects/{projectId}/triggers",
-              "description": "Creates a new BuildTrigger.\n\nThis API is experimental.",
               "request": {
                 "$ref": "BuildTrigger"
               },
+              "description": "Creates a new BuildTrigger.\n\nThis API is experimental.",
               "httpMethod": "POST",
               "parameterOrder": [
                 "projectId"
@@ -809,26 +796,33 @@
               "response": {
                 "$ref": "BuildTrigger"
               },
+              "parameters": {
+                "projectId": {
+                  "description": "ID of the project for which to configure automatic builds.",
+                  "required": true,
+                  "type": "string",
+                  "location": "path"
+                }
+              },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "parameters": {
-                "projectId": {
-                  "location": "path",
-                  "description": "ID of the project for which to configure automatic builds.",
-                  "required": true,
-                  "type": "string"
-                }
-              }
+              "flatPath": "v1/projects/{projectId}/triggers",
+              "id": "cloudbuild.projects.triggers.create",
+              "path": "v1/projects/{projectId}/triggers"
             },
             "delete": {
+              "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
+              "path": "v1/projects/{projectId}/triggers/{triggerId}",
+              "id": "cloudbuild.projects.triggers.delete",
+              "description": "Deletes an BuildTrigger by its project ID and trigger ID.\n\nThis API is experimental.",
+              "response": {
+                "$ref": "Empty"
+              },
               "parameterOrder": [
                 "projectId",
                 "triggerId"
               ],
-              "response": {
-                "$ref": "Empty"
-              },
               "httpMethod": "DELETE",
               "parameters": {
                 "triggerId": {
@@ -846,11 +840,7 @@
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
-              "path": "v1/projects/{projectId}/triggers/{triggerId}",
-              "id": "cloudbuild.projects.triggers.delete",
-              "description": "Deletes an BuildTrigger by its project ID and trigger ID.\n\nThis API is experimental."
+              ]
             }
           }
         }
@@ -859,6 +849,9 @@
     "operations": {
       "methods": {
         "cancel": {
+          "flatPath": "v1/operations/{operationsId}:cancel",
+          "id": "cloudbuild.operations.cancel",
+          "path": "v1/{+name}:cancel",
           "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
           "request": {
             "$ref": "CancelOperationRequest"
@@ -881,25 +874,16 @@
               "pattern": "^operations/.+$",
               "location": "path"
             }
-          },
-          "flatPath": "v1/operations/{operationsId}:cancel",
-          "id": "cloudbuild.operations.cancel",
-          "path": "v1/{+name}:cancel"
+          }
         },
         "list": {
-          "flatPath": "v1/operations",
-          "id": "cloudbuild.operations.list",
-          "path": "v1/{+name}",
           "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding below allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`.",
           "httpMethod": "GET",
-          "parameterOrder": [
-            "name"
-          ],
           "response": {
             "$ref": "ListOperationsResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
+          "parameterOrder": [
+            "name"
           ],
           "parameters": {
             "filter": {
@@ -908,11 +892,11 @@
               "location": "query"
             },
             "name": {
-              "location": "path",
               "description": "The name of the operation collection.",
               "required": true,
               "type": "string",
-              "pattern": "^operations$"
+              "pattern": "^operations$",
+              "location": "path"
             },
             "pageToken": {
               "location": "query",
@@ -925,16 +909,23 @@
               "type": "integer",
               "location": "query"
             }
-          }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/operations",
+          "id": "cloudbuild.operations.list",
+          "path": "v1/{+name}"
         },
         "get": {
-          "response": {
-            "$ref": "Operation"
-          },
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+          "httpMethod": "GET",
           "parameterOrder": [
             "name"
           ],
-          "httpMethod": "GET",
+          "response": {
+            "$ref": "Operation"
+          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
@@ -948,22 +939,53 @@
             }
           },
           "flatPath": "v1/operations/{operationsId}",
-          "path": "v1/{+name}",
           "id": "cloudbuild.operations.get",
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
+          "path": "v1/{+name}"
         }
       }
     }
   },
   "parameters": {
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
     "uploadType": {
       "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
     "$.xgafv": {
@@ -985,12 +1007,6 @@
       "location": "query"
     },
     "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -998,11 +1014,12 @@
         "media",
         "proto"
       ],
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
       "location": "query"
     },
     "access_token": {
@@ -1010,38 +1027,21 @@
       "type": "string",
       "location": "query"
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
       "location": "query"
     }
   },
-  "version": "v1"
+  "version": "v1",
+  "baseUrl": "https://cloudbuild.googleapis.com/",
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "Builds container images in the cloud.",
+  "basePath": "",
+  "revision": "20170214",
+  "documentationLink": "https://cloud.google.com/container-builder/docs/",
+  "id": "cloudbuild:v1",
+  "discoveryVersion": "v1",
+  "version_module": "True"
 }

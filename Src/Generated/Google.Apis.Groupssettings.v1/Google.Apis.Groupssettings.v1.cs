@@ -94,7 +94,7 @@ namespace Google.Apis.Groupssettings.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Groups Settings API.</summary>
         public class Scope
         {
-            /// <summary>View and manage the settings of a Google Apps Group</summary>
+            /// <summary>View and manage the settings of a G Suite group</summary>
             public static string AppsGroupsSettings = "https://www.googleapis.com/auth/apps.groups.settings";
 
         }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160329 (453)
+ *      <tr><th>API Rev<td>20170214 (775)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.Reseller.v1
             : base(initializer)
         {
             customers = new CustomersResource(this);
+            resellernotify = new ResellernotifyResource(this);
             subscriptions = new SubscriptionsResource(this);
         }
 
@@ -111,6 +112,14 @@ namespace Google.Apis.Reseller.v1
         public virtual CustomersResource Customers
         {
             get { return customers; }
+        }
+
+        private readonly ResellernotifyResource resellernotify;
+
+        /// <summary>Gets the Resellernotify resource.</summary>
+        public virtual ResellernotifyResource Resellernotify
+        {
+            get { return resellernotify; }
         }
 
         private readonly SubscriptionsResource subscriptions;
@@ -259,14 +268,16 @@ namespace Google.Apis.Reseller.v1
         }
 
 
-        /// <summary>Gets a customer resource if one exists and is owned by the reseller.</summary>
-        /// <param name="customerId">Id of the Customer</param>
+        /// <summary>Get a customer account.</summary>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
         public virtual GetRequest Get(string customerId)
         {
             return new GetRequest(service, customerId);
         }
 
-        /// <summary>Gets a customer resource if one exists and is owned by the reseller.</summary>
+        /// <summary>Get a customer account.</summary>
         public class GetRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -278,7 +289,9 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -319,14 +332,14 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Creates a customer resource if one does not already exist.</summary>
+        /// <summary>Order a new customer's account.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Reseller.v1.Data.Customer body)
         {
             return new InsertRequest(service, body);
         }
 
-        /// <summary>Creates a customer resource if one does not already exist.</summary>
+        /// <summary>Order a new customer's account.</summary>
         public class InsertRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -338,8 +351,10 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>An auth token needed for inserting a customer for which domain already exists. Can be generated
-            /// at https://admin.google.com/TransferToken. Optional.</summary>
+            /// <summary>The customerAuthToken query string is required when creating a resold account that transfers a
+            /// direct customer's subscription or transfers another reseller customer's subscription to your reseller
+            /// management. This is a hexadecimal authentication token needed to complete the subscription transfer. For
+            /// more information, see the administrator help center.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerAuthToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerAuthToken { get; set; }
 
@@ -386,17 +401,17 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Update a customer resource if one it exists and is owned by the reseller. This method supports
-        /// patch semantics.</summary>
+        /// <summary>Update a customer account's settings. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
         public virtual PatchRequest Patch(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
             return new PatchRequest(service, body, customerId);
         }
 
-        /// <summary>Update a customer resource if one it exists and is owned by the reseller. This method supports
-        /// patch semantics.</summary>
+        /// <summary>Update a customer account's settings. This method supports patch semantics.</summary>
         public class PatchRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -409,7 +424,9 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -456,15 +473,17 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Update a customer resource if one it exists and is owned by the reseller.</summary>
+        /// <summary>Update a customer account's settings.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
         public virtual UpdateRequest Update(Google.Apis.Reseller.v1.Data.Customer body, string customerId)
         {
             return new UpdateRequest(service, body, customerId);
         }
 
-        /// <summary>Update a customer resource if one it exists and is owned by the reseller.</summary>
+        /// <summary>Update a customer account's settings.</summary>
         public class UpdateRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Customer>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -477,7 +496,9 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -525,6 +546,184 @@ namespace Google.Apis.Reseller.v1
         }
     }
 
+    /// <summary>The "resellernotify" collection of methods.</summary>
+    public class ResellernotifyResource
+    {
+        private const string Resource = "resellernotify";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ResellernotifyResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns all the details of the watch corresponding to the reseller.</summary>
+        public virtual GetwatchdetailsRequest Getwatchdetails()
+        {
+            return new GetwatchdetailsRequest(service);
+        }
+
+        /// <summary>Returns all the details of the watch corresponding to the reseller.</summary>
+        public class GetwatchdetailsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyGetwatchdetailsResponse>
+        {
+            /// <summary>Constructs a new Getwatchdetails request.</summary>
+            public GetwatchdetailsRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getwatchdetails"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "resellernotify/getwatchdetails"; }
+            }
+
+            /// <summary>Initializes Getwatchdetails parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Registers a Reseller for receiving notifications.</summary>
+        public virtual RegisterRequest Register()
+        {
+            return new RegisterRequest(service);
+        }
+
+        /// <summary>Registers a Reseller for receiving notifications.</summary>
+        public class RegisterRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyResource>
+        {
+            /// <summary>Constructs a new Register request.</summary>
+            public RegisterRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The service account which will own the created Cloud-PubSub topic.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceAccountEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ServiceAccountEmailAddress { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "register"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "resellernotify/register"; }
+            }
+
+            /// <summary>Initializes Register parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceAccountEmailAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Unregisters a Reseller for receiving notifications.</summary>
+        public virtual UnregisterRequest Unregister()
+        {
+            return new UnregisterRequest(service);
+        }
+
+        /// <summary>Unregisters a Reseller for receiving notifications.</summary>
+        public class UnregisterRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.ResellernotifyResource>
+        {
+            /// <summary>Constructs a new Unregister request.</summary>
+            public UnregisterRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The service account which owns the Cloud-PubSub topic.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceAccountEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ServiceAccountEmailAddress { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "unregister"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "resellernotify/unregister"; }
+            }
+
+            /// <summary>Initializes Unregister parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "serviceAccountEmailAddress", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "serviceAccountEmailAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "subscriptions" collection of methods.</summary>
     public class SubscriptionsResource
     {
@@ -542,9 +741,13 @@ namespace Google.Apis.Reseller.v1
 
 
         /// <summary>Activates a subscription previously suspended by the reseller</summary>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual ActivateRequest Activate(string customerId, string subscriptionId)
         {
             return new ActivateRequest(service, customerId, subscriptionId);
@@ -563,11 +766,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -617,17 +825,23 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Changes the plan of a subscription</summary>
+        /// <summary>Update a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan
+        /// subscription to an annual commitment plan with monthly or yearly payments.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual ChangePlanRequest ChangePlan(Google.Apis.Reseller.v1.Data.ChangePlanRequest body, string customerId, string subscriptionId)
         {
             return new ChangePlanRequest(service, body, customerId, subscriptionId);
         }
 
-        /// <summary>Changes the plan of a subscription</summary>
+        /// <summary>Update a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan
+        /// subscription to an annual commitment plan with monthly or yearly payments.</summary>
         public class ChangePlanRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangePlan request.</summary>
@@ -641,11 +855,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -701,17 +920,23 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Changes the renewal settings of a subscription</summary>
+        /// <summary>Update a user license's renewal settings. This is applicable for accounts with annual commitment
+        /// plans only.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual ChangeRenewalSettingsRequest ChangeRenewalSettings(Google.Apis.Reseller.v1.Data.RenewalSettings body, string customerId, string subscriptionId)
         {
             return new ChangeRenewalSettingsRequest(service, body, customerId, subscriptionId);
         }
 
-        /// <summary>Changes the renewal settings of a subscription</summary>
+        /// <summary>Update a user license's renewal settings. This is applicable for accounts with annual commitment
+        /// plans only.</summary>
         public class ChangeRenewalSettingsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangeRenewalSettings request.</summary>
@@ -725,11 +950,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -785,17 +1015,21 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Changes the seats configuration of a subscription</summary>
+        /// <summary>Update a subscription's user license settings.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual ChangeSeatsRequest ChangeSeats(Google.Apis.Reseller.v1.Data.Seats body, string customerId, string subscriptionId)
         {
             return new ChangeSeatsRequest(service, body, customerId, subscriptionId);
         }
 
-        /// <summary>Changes the seats configuration of a subscription</summary>
+        /// <summary>Update a subscription's user license settings.</summary>
         public class ChangeSeatsRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new ChangeSeats request.</summary>
@@ -809,11 +1043,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -869,18 +1108,23 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Cancels/Downgrades a subscription.</summary>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
-        /// <param name="deletionType">Whether the subscription is to be fully
-        /// cancelled or downgraded</param>
+        /// <summary>Cancel, suspend or transfer a subscription to direct.</summary>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
+        /// <param
+        /// name="deletionType">The deletionType query string enables the cancellation, downgrade, or suspension of a
+        /// subscription.</param>
         public virtual DeleteRequest Delete(string customerId, string subscriptionId, DeleteRequest.DeletionTypeEnum deletionType)
         {
             return new DeleteRequest(service, customerId, subscriptionId, deletionType);
         }
 
-        /// <summary>Cancels/Downgrades a subscription.</summary>
+        /// <summary>Cancel, suspend or transfer a subscription to direct.</summary>
         public class DeleteRequest : ResellerBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -894,31 +1138,57 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
-            /// <summary>Whether the subscription is to be fully cancelled or downgraded</summary>
+            /// <summary>The deletionType query string enables the cancellation, downgrade, or suspension of a
+            /// subscription.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deletionType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual DeletionTypeEnum DeletionType { get; private set; }
 
-            /// <summary>Whether the subscription is to be fully cancelled or downgraded</summary>
+            /// <summary>The deletionType query string enables the cancellation, downgrade, or suspension of a
+            /// subscription.</summary>
             public enum DeletionTypeEnum
             {
-                /// <summary>Cancels the subscription immediately</summary>
+                /// <summary>Cancels the subscription immediately. This does not apply to a G Suite
+                /// subscription.</summary>
                 [Google.Apis.Util.StringValueAttribute("cancel")]
                 Cancel,
-                /// <summary>Downgrades a Google Apps for Business subscription to Google Apps</summary>
+                /// <summary>Downgrades a G Suite subscription to a Google Apps Free edition subscription only if the
+                /// customer was initially subscribed to a Google Apps Free edition (also known as the Standard
+                /// edition). Once downgraded, the customer no longer has access to the previous G Suite subscription
+                /// and is no longer managed by the reseller.
+                ///
+                /// A G Suite subscription's downgrade cannot be invoked if an active or suspended Google Drive or
+                /// Google Vault subscription is present. The Google Drive or Google Vault subscription must be
+                /// cancelled before the G Suite subscription's downgrade is invoked.
+                ///
+                /// The downgrade deletionType does not apply to other products or G Suite SKUs.</summary>
                 [Google.Apis.Util.StringValueAttribute("downgrade")]
                 Downgrade,
-                /// <summary>Suspends the subscriptions for 4 days before cancelling it</summary>
+                /// <summary>(DEPRECATED) The G Suite account is suspended for four days and then cancelled. Once
+                /// suspended, an administrator has access to the suspended account, but the account users can not
+                /// access their services. A suspension can be lifted, using the reseller tools.
+                ///
+                /// A G Suite subscription's suspension can not be invoked if an active or suspended Google Drive or
+                /// Google Vault subscription is present. The Google Drive or Google Vault subscription must be
+                /// cancelled before the G Suite subscription's suspension is invoked.</summary>
                 [Google.Apis.Util.StringValueAttribute("suspend")]
                 Suspend,
-                /// <summary>Transfers a subscription directly to Google</summary>
+                /// <summary>Transfers a subscription directly to Google.  The customer is immediately transferred to a
+                /// direct billing relationship with Google and is given a short amount of time with no service
+                /// interruption. The customer can then choose to set up billing directly with Google by using a credit
+                /// card, or they can transfer to another reseller.</summary>
                 [Google.Apis.Util.StringValueAttribute("transfer_to_direct")]
                 TransferToDirect,
             }
@@ -978,16 +1248,20 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Gets a subscription of the customer.</summary>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <summary>Get a specific subscription.</summary>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual GetRequest Get(string customerId, string subscriptionId)
         {
             return new GetRequest(service, customerId, subscriptionId);
         }
 
-        /// <summary>Gets a subscription of the customer.</summary>
+        /// <summary>Get a specific subscription.</summary>
         public class GetRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1000,11 +1274,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -1054,15 +1333,17 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Creates/Transfers a subscription for the customer.</summary>
+        /// <summary>Create or transfer a subscription.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Id of the Customer</param>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
         public virtual InsertRequest Insert(Google.Apis.Reseller.v1.Data.Subscription body, string customerId)
         {
             return new InsertRequest(service, body, customerId);
         }
 
-        /// <summary>Creates/Transfers a subscription for the customer.</summary>
+        /// <summary>Create or transfer a subscription.</summary>
         public class InsertRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -1075,12 +1356,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>An auth token needed for transferring a subscription. Can be generated at
-            /// https://www.google.com/a/cpanel/customer-domain/TransferToken. Optional.</summary>
+            /// <summary>The customerAuthToken query string is required when creating a resold account that transfers a
+            /// direct customer's subscription or transfers another reseller customer's subscription to your reseller
+            /// management. This is a hexadecimal authentication token needed to complete the subscription transfer. For
+            /// more information, see the administrator help center.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerAuthToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerAuthToken { get; set; }
 
@@ -1136,13 +1421,15 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Lists subscriptions of a reseller, optionally filtered by a customer name prefix.</summary>
+        /// <summary>List of subscriptions managed by the reseller. The list can be all subscriptions, all of a
+        /// customer's subscriptions, or all of a customer's transferable subscriptions.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists subscriptions of a reseller, optionally filtered by a customer name prefix.</summary>
+        /// <summary>List of subscriptions managed by the reseller. The list can be all subscriptions, all of a
+        /// customer's subscriptions, or all of a customer's transferable subscriptions.</summary>
         public class ListRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscriptions>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1153,21 +1440,29 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>An auth token needed if the customer is not a resold customer of this reseller. Can be
-            /// generated at https://www.google.com/a/cpanel/customer-domain/TransferToken.Optional.</summary>
+            /// <summary>The customerAuthToken query string is required when creating a resold account that transfers a
+            /// direct customer's subscription or transfers another reseller customer's subscription to your reseller
+            /// management. This is a hexadecimal authentication token needed to complete the subscription transfer. For
+            /// more information, see the administrator help center.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerAuthToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerAuthToken { get; set; }
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
-            /// <summary>Prefix of the customer's domain name by which the subscriptions should be filtered.
-            /// Optional</summary>
+            /// <summary>When retrieving all of your subscriptions and filtering for specific customers, you can enter a
+            /// prefix for a customer name. Using an example customer group that includes exam.com, example20.com and
+            /// example.com: - exa -- Returns all customer names that start with 'exa' which could include exam.com,
+            /// example20.com, and example.com. A name prefix is similar to using a regular expression's asterisk, exa*.
+            /// - example -- Returns example20.com and example.com.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerNamePrefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerNamePrefix { get; set; }
 
-            /// <summary>Maximum number of results to return</summary>
+            /// <summary>When retrieving a large list, the maxResults is the maximum number of results per page. The
+            /// nextPageToken value takes you to the next page. The default is 20.</summary>
             /// [minimum: 1]
             /// [maximum: 100]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1250,16 +1545,20 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Starts paid service of a trial subscription</summary>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <summary>Immediately move a 30-day free trial subscription to a paid service subscription.</summary>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual StartPaidServiceRequest StartPaidService(string customerId, string subscriptionId)
         {
             return new StartPaidServiceRequest(service, customerId, subscriptionId);
         }
 
-        /// <summary>Starts paid service of a trial subscription</summary>
+        /// <summary>Immediately move a 30-day free trial subscription to a paid service subscription.</summary>
         public class StartPaidServiceRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new StartPaidService request.</summary>
@@ -1272,11 +1571,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -1326,16 +1630,20 @@ namespace Google.Apis.Reseller.v1
 
         }
 
-        /// <summary>Suspends an active subscription</summary>
-        /// <param name="customerId">Id of the Customer</param>
-        /// <param name="subscriptionId">Id of the subscription,
-        /// which is unique for a customer</param>
+        /// <summary>Suspends an active subscription.</summary>
+        /// <param name="customerId">Either the customer's primary domain name or the customer's unique identifier. If using the
+        /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a
+        /// customerId is changed, the Google system automatically updates.</param>
+        /// <param name="subscriptionId">This is
+        /// a required property. The subscriptionId is the subscription identifier and is unique for each customer. Since a
+        /// subscriptionId changes when a subscription is updated, we recommend to not use this ID as a key for persistent data.
+        /// And the subscriptionId can be found using the retrieve all reseller subscriptions method.</param>
         public virtual SuspendRequest Suspend(string customerId, string subscriptionId)
         {
             return new SuspendRequest(service, customerId, subscriptionId);
         }
 
-        /// <summary>Suspends an active subscription</summary>
+        /// <summary>Suspends an active subscription.</summary>
         public class SuspendRequest : ResellerBaseServiceRequest<Google.Apis.Reseller.v1.Data.Subscription>
         {
             /// <summary>Constructs a new Suspend request.</summary>
@@ -1348,11 +1656,16 @@ namespace Google.Apis.Reseller.v1
             }
 
 
-            /// <summary>Id of the Customer</summary>
+            /// <summary>Either the customer's primary domain name or the customer's unique identifier. If using the
+            /// domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for
+            /// a customerId is changed, the Google system automatically updates.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Id of the subscription, which is unique for a customer</summary>
+            /// <summary>This is a required property. The subscriptionId is the subscription identifier and is unique
+            /// for each customer. Since a subscriptionId changes when a subscription is updated, we recommend to not
+            /// use this ID as a key for persistent data. And the subscriptionId can be found using the retrieve all
+            /// reseller subscriptions method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SubscriptionId { get; private set; }
 
@@ -1410,46 +1723,46 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for address of a customer.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Address line 1 of the address.</summary>
+        /// <summary>A customer's physical address. An address can be composed of one to three lines. The addressline2
+        /// and addressLine3 are optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine1")]
         public virtual string AddressLine1 { get; set; } 
 
-        /// <summary>Address line 2 of the address.</summary>
+        /// <summary>Line 2 of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine2")]
         public virtual string AddressLine2 { get; set; } 
 
-        /// <summary>Address line 3 of the address.</summary>
+        /// <summary>Line 3 of the address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine3")]
         public virtual string AddressLine3 { get; set; } 
 
-        /// <summary>Name of the contact person.</summary>
+        /// <summary>The customer contact's name. This is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactName")]
         public virtual string ContactName { get; set; } 
 
-        /// <summary>ISO 3166 country code.</summary>
+        /// <summary>For countryCode information, see the ISO 3166 country code elements. Verify that country is
+        /// approved for resale of Google products. This property is required when creating a new customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; } 
 
-        /// <summary>Identifies the resource as a customer address.</summary>
+        /// <summary>Identifies the resource as a customer address. Value: customers#address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the locality. This is in accordance with - http://portablecontacts.net/draft-
-        /// spec.html#address_element.</summary>
+        /// <summary>An example of a locality value is the city of San Francisco.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locality")]
         public virtual string Locality { get; set; } 
 
-        /// <summary>Name of the organization.</summary>
+        /// <summary>The company or company division name. This is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationName")]
         public virtual string OrganizationName { get; set; } 
 
-        /// <summary>The postal code. This is in accordance with - http://portablecontacts.net/draft-
-        /// spec.html#address_element.</summary>
+        /// <summary>A postalCode example is a postal zip code such as 94043. This property is required when creating a
+        /// new customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; } 
 
-        /// <summary>Name of the region. This is in accordance with - http://portablecontacts.net/draft-
-        /// spec.html#address_element.</summary>
+        /// <summary>An example of a region value is CA for the state of California.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -1460,24 +1773,36 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for the ChangePlan rpc request.</summary>
     public class ChangePlanRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>External name of the deal code applicable for the subscription. This field is optional. If missing,
-        /// the deal price plan won't be used.</summary>
+        /// <summary>Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be
+        /// included in changePlan request in order to receive discounted rate. This property is optional. If a deal
+        /// code has already been added to a subscription, this property may be left empty and the existing discounted
+        /// rate will still apply (if not empty, only provide the deal code that is already present on the
+        /// subscription). If a deal code has never been added to a subscription and this property is left blank,
+        /// regular pricing will apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
         public virtual string DealCode { get; set; } 
 
-        /// <summary>Identifies the resource as a subscription change plan request.</summary>
+        /// <summary>Identifies the resource as a subscription change plan request. Value:
+        /// subscriptions#changePlanRequest</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the plan to change to.</summary>
+        /// <summary>The planName property is required. This is the name of the subscription's payment plan. For more
+        /// information about the Google payment plans, see API concepts.
+        ///
+        /// Possible values are: - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments -
+        /// ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments - FLEXIBLE - The flexible plan - TRIAL -
+        /// The 30-day free trial plan</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planName")]
         public virtual string PlanName { get; set; } 
 
-        /// <summary>Purchase order id for your order tracking purposes.</summary>
+        /// <summary>This is an optional property. This purchase order (PO) information is for resellers to use for
+        /// their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows
+        /// up in the invoice. The property accepts up to 80 plain text characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
         public virtual string PurchaseOrderId { get; set; } 
 
-        /// <summary>Number/Limit of seats in the new plan.</summary>
+        /// <summary>This is a required property. The seats property is the number of user seat licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seats")]
         public virtual Seats Seats { get; set; } 
 
@@ -1488,11 +1813,14 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for a customer.</summary>
     public class Customer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The alternate email of the customer.</summary>
+        /// <summary>Like the "Customer email" in the reseller tools, this email is the secondary contact used if
+        /// something happens to the customer's service such as service outage or a security issue. This property is
+        /// required when creating a new customer and should not use the same domain as customerDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateEmail")]
         public virtual string AlternateEmail { get; set; } 
 
-        /// <summary>The domain name of the customer.</summary>
+        /// <summary>The customer's primary domain name string. customerDomain is required when creating a new customer.
+        /// Do not include the www prefix in the domain when adding a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomain")]
         public virtual string CustomerDomain { get; set; } 
 
@@ -1500,23 +1828,27 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomainVerified")]
         public virtual System.Nullable<bool> CustomerDomainVerified { get; set; } 
 
-        /// <summary>The id of the customer.</summary>
+        /// <summary>This property will always be returned in a response as the unique identifier generated by Google.
+        /// In a request, this property can be either the primary domain or the unique identifier generated by
+        /// Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
-        /// <summary>Identifies the resource as a customer.</summary>
+        /// <summary>Identifies the resource as a customer. Value: reseller#customer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The phone number of the customer.</summary>
+        /// <summary>Customer contact phone number. This can be continuous numbers, with spaces, etc. But it must be a
+        /// real phone number and not, for example, "123". See phone  local format conventions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
 
-        /// <summary>The postal address of the customer.</summary>
+        /// <summary>A customer's address information. Each field has a limit of 255 charcters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalAddress")]
         public virtual Address PostalAddress { get; set; } 
 
-        /// <summary>Ui url for customer resource.</summary>
+        /// <summary>URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This
+        /// is used if your client application requires the customer to complete a task in the Admin console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUiUrl")]
         public virtual string ResourceUiUrl { get; set; } 
 
@@ -1527,13 +1859,42 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for a subscription renewal settings.</summary>
     public class RenewalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies the resource as a subscription renewal setting.</summary>
+        /// <summary>Identifies the resource as a subscription renewal setting. Value:
+        /// subscriptions#renewalSettings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Subscription renewal type.</summary>
+        /// <summary>Renewal settings for the annual commitment plan. For more detailed information, see renewal options
+        /// in the administrator help center. When renewing a subscription, the renewalType is a required
+        /// property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalType")]
         public virtual string RenewalType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for resellernotify getwatchdetails response.</summary>
+    public class ResellernotifyGetwatchdetailsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of registered service accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountEmailAddresses { get; set; } 
+
+        /// <summary>Topic name of the PubSub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
+        public virtual string TopicName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for resellernotify response.</summary>
+    public class ResellernotifyResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Topic name of the PubSub</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
+        public virtual string TopicName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1542,7 +1903,7 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for subscription seats.</summary>
     public class Seats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies the resource as a subscription change plan request.</summary>
+        /// <summary>Identifies the resource as a subscription change plan request. Value: subscriptions#seats</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -1551,12 +1912,29 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("licensedNumberOfSeats")]
         public virtual System.Nullable<int> LicensedNumberOfSeats { get; set; } 
 
-        /// <summary>Maximum number of seats that can be purchased. This needs to be provided only for a non-commitment
-        /// plan. For a commitment plan it is decided by the contract.</summary>
+        /// <summary>The maximumNumberOfSeats property is the maximum number of licenses that the customer can purchase.
+        /// This property applies to plans other than the annual commitment plan. How a user's licenses are managed
+        /// depends on the subscription's payment plan: - annual commitment plan (with monthly or yearly payments) — For
+        /// this plan, a reseller is invoiced on the number of user licenses in the numberOfSeats property. The
+        /// maximumNumberOfSeats property is a read-only property in the API's response. - flexible plan — For this
+        /// plan, a reseller is invoiced on the actual number of users which is capped by the maximumNumberOfSeats. This
+        /// is the maximum number of user licenses a customer has for user license provisioning. This quantity can be
+        /// increased up to the maximum limit defined in the reseller's contract. And the minimum quantity is the
+        /// current number of users in the customer account. - 30-day free trial plan — A subscription in a 30-day free
+        /// trial is restricted to maximum 10 seats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumNumberOfSeats")]
         public virtual System.Nullable<int> MaximumNumberOfSeats { get; set; } 
 
-        /// <summary>Number of seats to purchase. This is applicable only for a commitment plan.</summary>
+        /// <summary>The numberOfSeats property holds the customer's number of user licenses. How a user's licenses are
+        /// managed depends on the subscription's plan: - annual commitment plan (with monthly or yearly pay) — For this
+        /// plan, a reseller is invoiced on the number of user licenses in the numberOfSeats property. This is the
+        /// maximum number of user licenses that a reseller's customer can create. The reseller can add more licenses,
+        /// but once set, the numberOfSeats can not be reduced until renewal. The reseller is invoiced based on the
+        /// numberOfSeats value regardless of how many of these user licenses are provisioned users. - flexible plan —
+        /// For this plan, a reseller is invoiced on the actual number of users which is capped by the
+        /// maximumNumberOfSeats. The numberOfSeats property is not used in the request or response for flexible plan
+        /// customers. - 30-day free trial plan — The numberOfSeats property is not used in the request or response for
+        /// an account in a 30-day trial.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberOfSeats")]
         public virtual System.Nullable<int> NumberOfSeats { get; set; } 
 
@@ -1567,11 +1945,12 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for a subscription.</summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Billing method of this subscription.</summary>
+        /// <summary>Read-only field that returns the current billing method for a subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingMethod")]
         public virtual string BillingMethod { get; set; } 
 
-        /// <summary>Creation time of this subscription in milliseconds since Unix epoch.</summary>
+        /// <summary>The creationTime property is the date when subscription was created. It is in milliseconds using
+        /// the Epoch format. See an example Epoch converter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; } 
 
@@ -1579,67 +1958,85 @@ namespace Google.Apis.Reseller.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerDomain")]
         public virtual string CustomerDomain { get; set; } 
 
-        /// <summary>The id of the customer to whom the subscription belongs.</summary>
+        /// <summary>This property will always be returned in a response as the unique identifier generated by Google.
+        /// In a request, this property can be either the primary domain or the unique identifier generated by
+        /// Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; } 
 
-        /// <summary>External name of the deal, if this subscription was provisioned under one. Otherwise this field
-        /// will be empty.</summary>
+        /// <summary>Google-issued code (100 char max) for discounted pricing on subscription plans. Deal code must be
+        /// included in insert requests in order to receive discounted rate. This property is optional, regular pricing
+        /// applies if left empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
         public virtual string DealCode { get; set; } 
 
-        /// <summary>Identifies the resource as a Subscription.</summary>
+        /// <summary>Identifies the resource as a Subscription. Value: reseller#subscription</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Plan details of the subscription</summary>
+        /// <summary>The plan property is required. In this version of the API, the G Suite plans are the flexible plan,
+        /// annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans,
+        /// see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
         public virtual Subscription.PlanData Plan { get; set; } 
 
-        /// <summary>Purchase order id for your order tracking purposes.</summary>
+        /// <summary>This is an optional property. This purchase order (PO) information is for resellers to use for
+        /// their company tracking usage. If a purchaseOrderId value is given it appears in the API responses and shows
+        /// up in the invoice. The property accepts up to 80 plain text characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderId")]
         public virtual string PurchaseOrderId { get; set; } 
 
-        /// <summary>Renewal settings of the subscription.</summary>
+        /// <summary>Renewal settings for the annual commitment plan. For more detailed information, see renewal options
+        /// in the administrator help center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalSettings")]
         public virtual RenewalSettings RenewalSettings { get; set; } 
 
-        /// <summary>Ui url for subscription resource.</summary>
+        /// <summary>URL to customer's Subscriptions page in the Admin console. The read-only URL is generated by the
+        /// API service. This is used if your client application requires the customer to complete a task using the
+        /// Subscriptions page in the Admin console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUiUrl")]
         public virtual string ResourceUiUrl { get; set; } 
 
-        /// <summary>Number/Limit of seats in the new plan.</summary>
+        /// <summary>This is a required property. The number and limit of user seat licenses in the plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seats")]
         public virtual Seats Seats { get; set; } 
 
-        /// <summary>Name of the sku for which this subscription is purchased.</summary>
+        /// <summary>A required property. The skuId is a unique system identifier for a product's SKU assigned to a
+        /// customer in the subscription. For products and SKUs available in this version of the API, see  Product and
+        /// SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
 
-        /// <summary>Status of the subscription.</summary>
+        /// <summary>This is an optional property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>The id of the subscription.</summary>
+        /// <summary>The subscriptionId is the subscription identifier and is unique for each customer. This is a
+        /// required property. Since a subscriptionId changes when a subscription is updated, we recommend not using
+        /// this ID as a key for persistent data. Use the subscriptionId as described in retrieve all reseller
+        /// subscriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
         public virtual string SubscriptionId { get; set; } 
 
         /// <summary>Read-only field containing an enumerable of all the current suspension reasons for a subscription.
         /// It is possible for a subscription to have many concurrent, overlapping suspension reasons. A subscription's
-        /// STATUS is SUSPENDED until all pending suspensions are removed. Possible options include: -
-        /// PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the Google Apps Resold Terms of
-        /// Services. - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was cancelled at
-        /// the end of their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. - TRIAL_ENDED - The
-        /// customer's trial expired without a plan selected. - OTHER - The customer is suspended for an internal Google
-        /// reason (e.g. abuse or otherwise).</summary>
+        /// STATUS is SUSPENDED until all pending suspensions are removed.
+        ///
+        /// Possible options include: - PENDING_TOS_ACCEPTANCE - The customer has not logged in and accepted the G Suite
+        /// Resold Terms of Services. - RENEWAL_WITH_TYPE_CANCEL - The customer's commitment ended and their service was
+        /// cancelled at the end of their term. - RESELLER_INITIATED - A manual suspension invoked by a Reseller. -
+        /// TRIAL_ENDED - The customer's trial expired without a plan selected. - OTHER - The customer is suspended for
+        /// an internal Google reason (e.g. abuse or otherwise).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; } 
 
-        /// <summary>Transfer related information for the subscription.</summary>
+        /// <summary>Read-only transfer related information for the subscription. For more information, see retrieve
+        /// transferable subscriptions for a customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferInfo")]
         public virtual Subscription.TransferInfoData TransferInfo { get; set; } 
 
-        /// <summary>Trial Settings of the subscription.</summary>
+        /// <summary>The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more
+        /// information, see the API concepts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialSettings")]
         public virtual Subscription.TrialSettingsData TrialSettings { get; set; } 
 
@@ -1647,57 +2044,79 @@ namespace Google.Apis.Reseller.v1.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Plan details of the subscription</summary>
+        /// <summary>The plan property is required. In this version of the API, the G Suite plans are the flexible plan,
+        /// annual commitment plan, and the 30-day free trial plan. For more information about the API"s payment plans,
+        /// see the API concepts.</summary>
         public class PlanData
         {
-            /// <summary>Interval of the commitment if it is a commitment plan.</summary>
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("commitmentInterval")]
             public virtual PlanData.CommitmentIntervalData CommitmentInterval { get; set; } 
 
-            /// <summary>Whether the plan is a commitment plan or not.</summary>
+            /// <summary>The isCommitmentPlan property's boolean value identifies the plan as an annual commitment plan:
+            /// - true — The subscription's plan is an annual commitment plan. - false — The plan is not an annual
+            /// commitment plan.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isCommitmentPlan")]
             public virtual System.Nullable<bool> IsCommitmentPlan { get; set; } 
 
-            /// <summary>The plan name of this subscription's plan.</summary>
+            /// <summary>The planName property is required. This is the name of the subscription's plan. For more
+            /// information about the Google payment plans, see the API concepts.
+            ///
+            /// Possible values are: - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments -
+            /// ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments - FLEXIBLE — The flexible plan -
+            /// TRIAL — The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if
+            /// no payment plan is assigned. Calling changePlan will assign a payment plan to a trial but will not
+            /// activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or
+            /// immediately after calling startPaidService.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("planName")]
             public virtual string PlanName { get; set; } 
 
             
 
-            /// <summary>Interval of the commitment if it is a commitment plan.</summary>
+            /// <summary>In this version of the API, annual commitment plan's interval is one year.</summary>
             public class CommitmentIntervalData
             {
-                /// <summary>End time of the commitment interval in milliseconds since Unix epoch.</summary>
+                /// <summary>An annual commitment plan's interval's endTime in milliseconds using the UNIX Epoch format.
+                /// See an example Epoch converter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
                 public virtual System.Nullable<long> EndTime { get; set; } 
 
-                /// <summary>Start time of the commitment interval in milliseconds since Unix epoch.</summary>
+                /// <summary>An annual commitment plan's interval's startTime in milliseconds using UNIX Epoch format.
+                /// See an example Epoch converter.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
                 public virtual System.Nullable<long> StartTime { get; set; } 
 
             }
         }    
 
-        /// <summary>Transfer related information for the subscription.</summary>
+        /// <summary>Read-only transfer related information for the subscription. For more information, see retrieve
+        /// transferable subscriptions for a customer.</summary>
         public class TransferInfoData
         {
+            /// <summary>When inserting a subscription, this is the minimum number of seats listed in the transfer order
+            /// for this product. For example, if the customer has 20 users, the reseller cannot place a transfer order
+            /// of 15 seats. The minimum is 20 seats.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("minimumTransferableSeats")]
             public virtual System.Nullable<int> MinimumTransferableSeats { get; set; } 
 
-            /// <summary>Time when transfer token or intent to transfer will expire.</summary>
+            /// <summary>The time when transfer token or intent to transfer will expire. The time is in milliseconds
+            /// using UNIX Epoch format.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("transferabilityExpirationTime")]
             public virtual System.Nullable<long> TransferabilityExpirationTime { get; set; } 
 
         }    
 
-        /// <summary>Trial Settings of the subscription.</summary>
+        /// <summary>The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more
+        /// information, see the API concepts.</summary>
         public class TrialSettingsData
         {
-            /// <summary>Whether the subscription is in trial.</summary>
+            /// <summary>Determines if a subscription's plan is in a 30-day free trial or not: - true — The plan is in
+            /// trial. - false — The plan is not in trial.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("isInTrial")]
             public virtual System.Nullable<bool> IsInTrial { get; set; } 
 
-            /// <summary>End time of the trial in milliseconds since Unix epoch.</summary>
+            /// <summary>Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an
+            /// example Epoch converter.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("trialEndTime")]
             public virtual System.Nullable<long> TrialEndTime { get; set; } 
 
@@ -1707,7 +2126,7 @@ namespace Google.Apis.Reseller.v1.Data
     /// <summary>JSON template for a subscription list.</summary>
     public class Subscriptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies the resource as a collection of subscriptions.</summary>
+        /// <summary>Identifies the resource as a collection of subscriptions. Value: reseller#subscriptions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/ozYA8Z74DRFFh4T6pgKkxncXYbU\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/zJ5oB_-fgrbQ0iOreAf3q87BGmk\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
@@ -1490,7 +1490,10 @@
            ],
            "response": {
             "$ref": "PerfMetricsSummary"
-           }
+           },
+           "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+           ]
           },
           "list": {
            "id": "toolresults.projects.histories.executions.steps.list",

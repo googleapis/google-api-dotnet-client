@@ -97,10 +97,10 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <summary>Available OAuth 2.0 scopes for use with the Admin Reports API.</summary>
         public class Scope
         {
-            /// <summary>View audit reports of Google Apps for your domain</summary>
+            /// <summary>View audit reports for your G Suite domain</summary>
             public static string AdminReportsAuditReadonly = "https://www.googleapis.com/auth/admin.reports.audit.readonly";
 
-            /// <summary>View usage reports of Google Apps for your domain</summary>
+            /// <summary>View usage reports for your G Suite domain</summary>
             public static string AdminReportsUsageReadonly = "https://www.googleapis.com/auth/admin.reports.usage.readonly";
 
         }
