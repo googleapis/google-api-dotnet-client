@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-user/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170209 (770)
+ *      <tr><th>API Rev<td>20170211 (772)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-user/'>
  *              https://cloud.google.com/service-user/</a>
@@ -561,13 +561,13 @@ namespace Google.Apis.ServiceUser.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Requested size of the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -603,18 +603,18 @@ namespace Google.Apis.ServiceUser.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -805,6 +805,23 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration of authorization.
+    ///
+    /// This section determines the authorization provider, if unspecified, then no authorization check will be done.
+    ///
+    /// Example:
+    ///
+    /// experimental: authorization: provider: firebaserules.googleapis.com</summary>
+    public class AuthorizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the authorization provider, such as firebaserules.googleapis.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1150,6 +1167,18 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// <summary>Protocol buffer options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Experimental service configuration. These configuration options can only be used by whitelisted
+    /// users.</summary>
+    public class Experimental : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authorization configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
+        public virtual AuthorizationConfig Authorization { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1991,6 +2020,10 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// enums: - name: google.someapi.v1.SomeEnum</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enums")]
         public virtual System.Collections.Generic.IList<Enum> Enums { get; set; } 
+
+        /// <summary>Experimental configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimental")]
+        public virtual Experimental Experimental { get; set; } 
 
         /// <summary>HTTP configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("http")]
