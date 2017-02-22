@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/RMxqHhxi3XYWkY-t3pMdWzhzkWY\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/zGPGa-LIIu53_wHsQE6CSF1P9Iw\"",
  "discoveryVersion": "v1",
  "id": "reseller:v1",
  "name": "reseller",
  "version": "v1",
- "revision": "20170214",
+ "revision": "20170216",
  "title": "Enterprise Apps Reseller API",
  "description": "Creates and manages your customers and their subscriptions.",
  "ownerDomain": "google.com",

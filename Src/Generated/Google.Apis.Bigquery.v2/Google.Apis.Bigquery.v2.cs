@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170114 (744)
+ *      <tr><th>API Rev<td>20170218 (779)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3076,10 +3076,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual JobConfigurationExtract Extract { get; set; } 
 
         /// <summary>[Experimental] The labels associated with this job. You can use these to organize and group your
-        /// jobs. Label keys and values can be no longer than 63 characters, can only contain letters, numeric
+        /// jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric
         /// characters, underscores and dashes. International characters are allowed. Label values are optional. Label
-        /// keys must start with a letter and must be unique within a dataset. Both keys and values are additionally
-        /// constrained to be <= 128 bytes in size.</summary>
+        /// keys must start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -3948,10 +3947,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Kind { get; set; } 
 
         /// <summary>[Experimental] The labels associated with this table. You can use these to organize and group your
-        /// tables. Label keys and values can be no longer than 63 characters, can only contain letters, numeric
-        /// characters, underscores and dashes. International characters are allowed. Label values are optional. Label
-        /// keys must start with a letter and must be unique within a dataset. Both keys and values are additionally
-        /// constrained to be <= 128 bytes in size.</summary>
+        /// tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters,
+        /// numeric characters, underscores and dashes. International characters are allowed. Label values are optional.
+        /// Label keys must start with a letter and each label in the list must have a different key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4202,6 +4200,20 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
 
+            /// <summary>Additional details for a view.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("view")]
+            public virtual TablesData.ViewData View { get; set; } 
+
+            
+
+            /// <summary>Additional details for a view.</summary>
+            public class ViewData
+            {
+                /// <summary>True if view is defined in legacy SQL dialect, false if in standard SQL.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
+                public virtual System.Nullable<bool> UseLegacySql { get; set; } 
+
+            }
         }
     }    
 

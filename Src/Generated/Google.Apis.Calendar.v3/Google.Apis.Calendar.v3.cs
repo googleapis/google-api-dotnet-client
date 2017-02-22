@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170212 (773)
+ *      <tr><th>API Rev<td>20170219 (780)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4572,8 +4572,7 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The method used to deliver the notification. Possible values are: - "email" - Reminders are sent
         /// via email. - "sms" - Reminders are sent via SMS. This value is read-only and is ignored on inserts and
-        /// updates. SMS reminders are only available for Google Apps for Work, Education, and Government
-        /// customers.</summary>
+        /// updates. SMS reminders are only available for G Suite customers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
@@ -5188,9 +5187,8 @@ namespace Google.Apis.Calendar.v3.Data
     public class EventReminder : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. -
-        /// "sms" - Reminders are sent via SMS. These are only available for Google Apps for Work, Education, and
-        /// Government customers. Requests to set SMS reminders for other account types are ignored. - "popup" -
-        /// Reminders are sent via a UI popup.</summary>
+        /// "sms" - Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS
+        /// reminders for other account types are ignored. - "popup" - Reminders are sent via a UI popup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 

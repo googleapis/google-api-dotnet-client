@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170213 (774)
+ *      <tr><th>API Rev<td>20170215 (776)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1889,7 +1889,7 @@ namespace Google.Apis.AndroidEnterprise.v1
         }
 
 
-        /// <summary>Removes an entitlement to an app for a user and uninstalls it.</summary>
+        /// <summary>Removes an entitlement to an app for a user.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
         /// user.</param>
@@ -1900,7 +1900,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new DeleteRequest(service, enterpriseId, userId, entitlementId);
         }
 
-        /// <summary>Removes an entitlement to an app for a user and uninstalls it.</summary>
+        /// <summary>Removes an entitlement to an app for a user.</summary>
         public class DeleteRequest : AndroidEnterpriseBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4833,9 +4833,9 @@ namespace Google.Apis.AndroidEnterprise.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>A pagination token is contained in a requests response when there are more products. The token
-            /// can be used in a subsequent request to obtain more products, and so forth. This parameter cannot be used
-            /// in the initial request.</summary>
+            /// <summary>A pagination token is contained in a request''s response when there are more products. The
+            /// token can be used in a subsequent request to obtain more products, and so forth. This parameter cannot
+            /// be used in the initial request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Token { get; set; }
 
@@ -7549,28 +7549,24 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The existence of an Entitlements resource means that a user has the right to use a particular app on
-    /// any of their devices. This might be because the app is free or because they have been allocated a license to the
-    /// app from a group license purchased by the enterprise.
+    /// <summary>The presence of an Entitlements resource indicates that a user has the right to use a particular app.
+    /// Entitlements are user specific, not device specific. This allows a user with an entitlement to an app to install
+    /// the app on all their devices. It's also possible for a user to hold an entitlement to an app without installing
+    /// the app on any device.
     ///
-    /// It should always be true that a user has an app installed on one of their devices only if they have an
-    /// entitlement to it. So if an entitlement is deleted, the app will be uninstalled from all devices. Similarly, if
-    /// the user installs an app (and is permitted to do so), or if the EMM triggers an install of the app, an
-    /// entitlement to that app is automatically created. If this is impossible—if, for example, the enterprise has not
-    /// purchased sufficient licenses—then installation fails.
+    /// The API can be used to create an entitlement. As an option, you can also use the API to trigger the installation
+    /// of an app on all a user's managed devices at the same time the entitlement is created.
     ///
-    /// Note that entitlements are always user specific, not device specific: a user may have an entitlement even though
-    /// they have not installed the app anywhere. Once they have an entitlement, they can install the app on multiple
-    /// devices.
+    /// If the app is free, creating the entitlement also creates a group license for that app. For paid apps, creating
+    /// the entitlement consumes one license, and that license remains consumed until the entitlement is removed. If the
+    /// enterprise hasn't purchased enough licenses, then no entitlement is created and the installation fails. An
+    /// entitlement is also not created for an app if the app requires permissions that the enterprise hasn't accepted.
     ///
-    /// The API can be used to create an entitlement. If the app is a free app, creating the entitlement also creates a
-    /// group license for that app. If it's a paid app, creating the entitlement consumes one license, and that license
-    /// remains consumed until the entitlement is removed. Optionally an installation of the app on all the user's
-    /// managed devices can be triggered at the time the entitlement is created. An entitlement cannot be created for an
-    /// app if the app requires permissions that the enterprise has not yet accepted.
+    /// If an entitlement is deleted, the app may be uninstalled from a user's device. As a best practice, uninstall the
+    /// app by calling  Installs.delete() before deleting the entitlement.
     ///
-    /// Entitlements for paid apps that are due to purchases by the user on a unmanaged profile will have "userPurchase"
-    /// as the entitlement reason. Those entitlements cannot be removed via the API.</summary>
+    /// Entitlements for apps that a user pays for on an unmanaged profile have "userPurchase" as the entitlement
+    /// reason. These entitlements cannot be removed via the API.</summary>
     public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -7918,9 +7914,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
         /// configurations.
         ///
-        /// Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as
-        /// the device owner, - "managedProfile", a device that has a work profile managed by the DPC (DPC is profile
-        /// owner) in addition to a separate, personal profile that is unavailable to the DPC,</summary>
+        /// Possible values include: - "managedDevice", a device where the DPC is set as device owner, -
+        /// "managedProfile", a device where the DPC is set as profile owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 

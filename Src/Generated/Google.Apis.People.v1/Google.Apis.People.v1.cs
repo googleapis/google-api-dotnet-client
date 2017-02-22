@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170215 (776)
+ *      <tr><th>API Rev<td>20170220 (781)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -362,187 +362,189 @@ namespace Google.Apis.People.v1
         public PeopleResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            me = new MeResource(service);
+            connections = new ConnectionsResource(service);
 
         }
 
-        private readonly MeResource me;
+        private readonly ConnectionsResource connections;
 
-        /// <summary>Gets the Me resource.</summary>
-        public virtual MeResource Me
+        /// <summary>Gets the Connections resource.</summary>
+        public virtual ConnectionsResource Connections
         {
-            get { return me; }
+            get { return connections; }
         }
 
-        /// <summary>The "me" collection of methods.</summary>
-        public class MeResource
+        /// <summary>The "connections" collection of methods.</summary>
+        public class ConnectionsResource
         {
-            private const string Resource = "me";
+            private const string Resource = "connections";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public MeResource(Google.Apis.Services.IClientService service)
+            public ConnectionsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                connections = new ConnectionsResource(service);
 
             }
 
-            private readonly ConnectionsResource connections;
 
-            /// <summary>Gets the Connections resource.</summary>
-            public virtual ConnectionsResource Connections
+            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
+            /// <param name="resourceName">The resource name to return connections for. Only `people/me` is valid.</param>
+            public virtual ListRequest List(string resourceName)
             {
-                get { return connections; }
+                return new ListRequest(service, resourceName);
             }
 
-            /// <summary>The "connections" collection of methods.</summary>
-            public class ConnectionsResource
+            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
+            public class ListRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.ListConnectionsResponse>
             {
-                private const string Resource = "connections";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ConnectionsResource(Google.Apis.Services.IClientService service)
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string resourceName)
+                    : base(service)
                 {
-                    this.service = service;
-
+                    ResourceName = resourceName;
+                    InitParameters();
                 }
 
 
-                /// <summary>Provides a list of the authenticated user's contacts merged with any linked
-                /// profiles.</summary>
-                public virtual ListRequest List()
+                /// <summary>The resource name to return connections for. Only `people/me` is valid.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ResourceName { get; private set; }
+
+                /// <summary>Whether the response should include a sync token, which can be used to get all changes
+                /// since the last request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> RequestSyncToken { get; set; }
+
+                /// <summary>The token of the page to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
+                /// include all fields except for connections.list requests, which have a default mask that includes
+                /// common fields like metadata, name, photo, and profile url. Each path should start with `person.`:
+                /// for example, `person.names` or `person.photos`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
+                /// changed since the sync token was created will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SyncToken { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                public enum SortOrderEnum
                 {
-                    return new ListRequest(service);
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                    LASTMODIFIEDASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                    FIRSTNAMEASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                    LASTNAMEASCENDING,
                 }
 
-                /// <summary>Provides a list of the authenticated user's contacts merged with any linked
-                /// profiles.</summary>
-                public class ListRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.ListConnectionsResponse>
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
                 {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service)
-                        : base(service)
-                    {
-                        InitParameters();
-                    }
-
-
-                    /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
-                    /// changed since the sync token was created will be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string SyncToken { get; set; }
-
-                    /// <summary>The token of the page to be returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>The number of connections to include in the response. Valid values are between 1 and
-                    /// 500, inclusive. Defaults to 100.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
-                    /// include all fields except for connections.list requests, which have a default mask that includes
-                    /// common fields like metadata, name, photo, and profile url. Each path should start with
-                    /// `person.`: for example, `person.names` or `person.photos`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object RequestMaskIncludeField { get; set; }
-
-                    /// <summary>The order in which the connections should be sorted. Defaults to
-                    /// `LAST_MODIFIED_ASCENDING`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                    /// <summary>The order in which the connections should be sorted. Defaults to
-                    /// `LAST_MODIFIED_ASCENDING`.</summary>
-                    public enum SortOrderEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                        LASTMODIFIEDASCENDING,
-                        [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                        FIRSTNAMEASCENDING,
-                        [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                        LASTNAMEASCENDING,
-                    }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v1/people/me/connections"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "syncToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "syncToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "requestMask.includeField", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestMask.includeField",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "sortOrder", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "sortOrder",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
+                    get { return "list"; }
                 }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resourceName}/connections"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resourceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "requestSyncToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestSyncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestMask.includeField",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "syncToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "syncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
             }
         }
 

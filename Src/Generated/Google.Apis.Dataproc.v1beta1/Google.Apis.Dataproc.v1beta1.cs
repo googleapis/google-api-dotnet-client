@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170207 (768)
+ *      <tr><th>API Rev<td>20170214 (775)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -578,10 +578,6 @@ namespace Google.Apis.Dataproc.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -589,6 +585,10 @@ namespace Google.Apis.Dataproc.v1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -624,15 +624,6 @@ namespace Google.Apis.Dataproc.v1beta1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -645,6 +636,15 @@ namespace Google.Apis.Dataproc.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1496,6 +1496,20 @@ namespace Google.Apis.Dataproc.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Optional The page token, returned by a previous call, to request the next page of
+                /// results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional The number of results to return in each response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
+                /// cluster.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClusterName { get; set; }
+
                 /// <summary>Optional A filter constraining which jobs to list. Valid filters contain job state and
                 /// label terms such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1515,20 +1529,6 @@ namespace Google.Apis.Dataproc.v1beta1
                     [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                     NONACTIVE,
                 }
-
-                /// <summary>Optional The page token, returned by a previous call, to request the next page of
-                /// results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional The number of results to return in each response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
-                /// cluster.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ClusterName { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1564,24 +1564,6 @@ namespace Google.Apis.Dataproc.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobStateMatcher",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1603,6 +1585,24 @@ namespace Google.Apis.Dataproc.v1beta1
                         "clusterName", new Google.Apis.Discovery.Parameter
                         {
                             Name = "clusterName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobStateMatcher",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1988,11 +1988,11 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The location where output from diagnostic command can be found.</summary>
+    /// <summary>The location of diagnostic output.</summary>
     public class DiagnoseClusterOutputLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The Google Cloud Storage URI of the diagnostic output. This will be a plain text file
-        /// with summary of collected diagnostics.</summary>
+        /// <summary>Output-only The Google Cloud Storage URI of the diagnostic output. This is a plain text file with a
+        /// summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
 
@@ -2342,7 +2342,7 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         /// <summary>Required The job ID, which must be unique within the project. The job ID is generated by the server
         /// upon job submission or provided by the user as a means to perform retries without creating duplicate jobs.
         /// The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum
-        /// length is 512 characters.</summary>
+        /// length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
@@ -2529,33 +2529,9 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>A message containing any operation metadata details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
-
-        /// <summary>The time that the operation completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>A message containing the detailed operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
-        public virtual string InnerState { get; set; } 
-
-        /// <summary>The time that the operation was requested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
         /// <summary>Output-only The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
-
-        /// <summary>The time that the operation was started by the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
-
-        /// <summary>A message containing the operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
 
         /// <summary>Output-only Current operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

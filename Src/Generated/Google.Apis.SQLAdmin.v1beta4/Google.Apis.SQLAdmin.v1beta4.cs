@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20170111 (741)
+ *      <tr><th>API Rev<td>20170217 (778)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -1285,6 +1285,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
 
+            /// <summary>Database version for flag retrieval. Flags are specific to the database version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("databaseVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DatabaseVersion { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1309,6 +1313,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "databaseVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "databaseVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1917,6 +1930,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>A filter expression for filtering listed instances.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The maximum number of results to return per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -1956,6 +1973,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "project",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4621,6 +4647,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>User defined labels for Cloud SQL instances.</summary>
+    public class Labels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The value of the label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Preferred location. This specifies where a Cloud SQL instance should preferably be located, either in a
     /// specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location
     /// is not available, the instance will be located as close as possible within the region. Only one location may be
@@ -4970,11 +5011,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedGaeApplications")]
         public virtual System.Collections.Generic.IList<string> AuthorizedGaeApplications { get; set; } 
 
-        /// <summary>The availability type. This can be one of the following. ZONAL: A Cloud SQL instance that is
-        /// zonally available. The instance is bound to a single GCE zone and may be inaccessible during an outage for
-        /// that GCE zone. REGIONAL: A Cloud SQL instance that is regionally available. The instance is provisioned in
-        /// multiple zones within a region and is able to provide higher availability than an instance with a zonal
-        /// availability type.</summary>
+        /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
         public virtual string AvailabilityType { get; set; } 
 
@@ -5015,6 +5052,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>User defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<Labels> Labels { get; set; } 
 
         /// <summary>The location preference settings. This allows the instance to be located as near as possible to
         /// either an App Engine app or GCE zone for better performance. App Engine co-location is only applicable to

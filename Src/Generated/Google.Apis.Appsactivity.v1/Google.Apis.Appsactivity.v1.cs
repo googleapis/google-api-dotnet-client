@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Apps Activity API Version v1
+ *   G Suite Activity API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/google-apps/activity/'>Google Apps Activity API</a>
+ *          <td><a href='https://developers.google.com/google-apps/activity/'>G Suite Activity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161202 (701)
+ *      <tr><th>API Rev<td>20170215 (776)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/activity/'>
  *              https://developers.google.com/google-apps/activity/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Apps Activity API can be found at
+ * The complete API documentation for using G Suite Activity API can be found at
  * <a href='https://developers.google.com/google-apps/activity/'>https://developers.google.com/google-apps/activity/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -91,7 +91,7 @@ namespace Google.Apis.Appsactivity.v1
             get { return "appsactivity/v1/"; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Apps Activity API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the G Suite Activity API.</summary>
         public class Scope
         {
             /// <summary>View the activity history of your Google apps</summary>

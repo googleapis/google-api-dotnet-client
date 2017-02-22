@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/nTAQY_qt-UTPitXU3W2WOvJpMCs\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/HY0tRuJ-vWPnM8lK2hqBBFUYsUk\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20170111",
+ "revision": "20170217",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -789,6 +789,21 @@
     }
    }
   },
+  "Labels": {
+   "id": "Labels",
+   "type": "object",
+   "description": "User defined labels for Cloud SQL instances.",
+   "properties": {
+    "key": {
+     "type": "string",
+     "description": "The key of the label."
+    },
+    "value": {
+     "type": "string",
+     "description": "The value of the label."
+    }
+   }
+  },
   "LocationPreference": {
    "id": "LocationPreference",
    "type": "object",
@@ -1101,7 +1116,7 @@
     },
     "availabilityType": {
      "type": "string",
-     "description": "The availability type. This can be one of the following.\nZONAL: A Cloud SQL instance that is zonally available. The instance is bound to a single GCE zone and may be inaccessible during an outage for that GCE zone.\nREGIONAL: A Cloud SQL instance that is regionally available. The instance is provisioned in multiple zones within a region and is able to provide higher availability than an instance with a zonal availability type."
+     "description": "Reserved for future use."
     },
     "backupConfiguration": {
      "$ref": "BackupConfiguration",
@@ -1139,6 +1154,13 @@
      "type": "string",
      "description": "This is always sql#settings.",
      "default": "sql#settings"
+    },
+    "labels": {
+     "type": "array",
+     "description": "User defined labels.",
+     "items": {
+      "$ref": "Labels"
+     }
     },
     "locationPreference": {
      "$ref": "LocationPreference",
@@ -1834,6 +1856,13 @@
      "path": "flags",
      "httpMethod": "GET",
      "description": "List all available database flags for Google Cloud SQL instances.",
+     "parameters": {
+      "databaseVersion": {
+       "type": "string",
+       "description": "Database version for flag retrieval. Flags are specific to the database version.",
+       "location": "query"
+      }
+     },
      "response": {
       "$ref": "FlagsListResponse"
      },
@@ -2075,6 +2104,11 @@
      "httpMethod": "GET",
      "description": "Lists instances under a given project in the alphabetical order of the instance name.",
      "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression for filtering listed instances.",
+       "location": "query"
+      },
       "maxResults": {
        "type": "integer",
        "description": "The maximum number of results to return per response.",

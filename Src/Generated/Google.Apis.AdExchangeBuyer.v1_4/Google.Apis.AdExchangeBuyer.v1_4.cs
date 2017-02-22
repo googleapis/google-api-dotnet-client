@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170118 (748)
+ *      <tr><th>API Rev<td>20170215 (776)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3705,7 +3705,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserId { get; set; } 
 
-        /// <summary>The name of the company being advertised in the creative.</summary>
+        /// <summary>The name of the company being advertised in the creative. The value provided must exist in the
+        /// advertisers.txt file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
         public virtual string AdvertiserName { get; set; } 
 
@@ -3732,7 +3733,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             }
         }
 
-        /// <summary>All attributes for the ads that may be shown from this snippet.</summary>
+        /// <summary>List of buyer selectable attributes for the ads that may be shown from this snippet. Each attribute
+        /// is represented by an integer as defined in  buyer-declarable-creative-attributes.txt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Attribute { get; set; } 
 
@@ -3794,16 +3796,18 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("openAuctionStatus")]
         public virtual string OpenAuctionStatus { get; set; } 
 
-        /// <summary>Detected product categories, if any. Read-only. This field should not be set in requests.</summary>
+        /// <summary>Detected product categories, if any. Each category is represented by an integer as defined in  ad-
+        /// product-categories.txt. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> ProductCategories { get; set; } 
 
-        /// <summary>All restricted categories for the ads that may be shown from this snippet.</summary>
+        /// <summary>All restricted categories for the ads that may be shown from this snippet. Each category is
+        /// represented by an integer as defined in the  ad-restricted-categories.txt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> RestrictedCategories { get; set; } 
 
-        /// <summary>Detected sensitive categories, if any. Read-only. This field should not be set in
-        /// requests.</summary>
+        /// <summary>Detected sensitive categories, if any. Each category is represented by an integer as defined in
+        /// ad-sensitive-categories.txt. Read-only. This field should not be set in requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SensitiveCategories { get; set; } 
 
@@ -3813,7 +3817,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
         public virtual System.Collections.Generic.IList<Creative.ServingRestrictionsData> ServingRestrictions { get; set; } 
 
-        /// <summary>All vendor types for the ads that may be shown from this snippet.</summary>
+        /// <summary>List of vendor types for the ads that may be shown from this snippet. Each vendor type is
+        /// represented by an integer as defined in vendors.txt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vendorType")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorType { get; set; } 
 
@@ -3896,8 +3901,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringCount")]
                 public virtual System.Nullable<long> FilteringCount { get; set; } 
 
-                /// <summary>The filtering status code. Please refer to the creative-status-codes.txt file for different
-                /// statuses.</summary>
+                /// <summary>The filtering status code as defined in  creative-status-codes.txt.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringStatus")]
                 public virtual System.Nullable<int> FilteringStatus { get; set; } 
 
@@ -4041,7 +4045,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
                 public virtual string ContextType { get; set; } 
 
                 /// <summary>Only set when contextType=LOCATION. Represents the geo criterias this restriction applies
-                /// to.</summary>
+                /// to. Impressions are considered to match a context if either the user location or publisher location
+                /// matches a given geoCriteriaId.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("geoCriteriaId")]
                 public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaId { get; set; } 
 
@@ -4121,6 +4126,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
     public class DealServingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>True if alcohol ads are allowed for this deal (read-only). This field is only populated when
+        /// querying for finalized orders using the method GetFinalizedOrderDeals</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alcoholAdsAllowed")]
+        public virtual System.Nullable<bool> AlcoholAdsAllowed { get; set; } 
+
         /// <summary>Tracks which parties (if any) have paused a deal. (readonly, except via PauseResumeOrderDeals
         /// action)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealPauseStatus")]

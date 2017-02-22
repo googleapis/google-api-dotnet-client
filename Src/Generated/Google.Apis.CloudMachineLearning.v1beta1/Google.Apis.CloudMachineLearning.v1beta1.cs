@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170210 (771)
+ *      <tr><th>API Rev<td>20170216 (777)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -603,12 +603,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The number of jobs to retrieve per "page" of results. If there are more remaining
                 /// results than this number, the response message will contain a valid value in the `next_page_token`
                 /// field.
@@ -620,6 +614,12 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -655,15 +655,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -676,6 +667,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2514,7 +2514,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
 
-        /// <summary>Use this field if you want to specify a GCS path to the model to use.</summary>
+        /// <summary>Use this field if you want to specify a Google Cloud Storage path for the model to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; } 
 
@@ -2570,9 +2570,9 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hyperparameters")]
         public virtual GoogleCloudMlV1beta1HyperparameterSpec Hyperparameters { get; set; } 
 
-        /// <summary>Optional. A GCS path in which to store training outputs and other data needed for training. This
-        /// path will be passed to your TensorFlow program as the 'job_dir' command-line arg. The benefit of specifying
-        /// this field is that Cloud ML will validate the path for use in training.</summary>
+        /// <summary>Optional. A Google Cloud Storage path in which to store training outputs and other data needed for
+        /// training. This path is passed to your TensorFlow program as the 'job_dir' command-line argument. The benefit
+        /// of specifying this field is that Cloud ML validates the path for use in training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobDir")]
         public virtual string JobDir { get; set; } 
 
@@ -2601,6 +2601,16 @@ namespace Google.Apis.CloudMachineLearning.v1beta1.Data
         /// complex_model_l
         ///
         /// A machine with roughly twice the number of cores and roughly double the memory of complex_model_m.
+        ///
+        /// standard_gpu
+        ///
+        /// A machine equivalent to standard that also includes a
+        ///
+        /// GPU that you can use in your trainer.
+        ///
+        /// complex_model_m_gpu
+        ///
+        /// A machine equivalent to coplex_model_m that also includes four GPUs.
         ///
         /// You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]

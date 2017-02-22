@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Sheets.v4</id>
-        <version>1.21.0.764</version>
+        <version>1.21.0.779</version>
         <title>Google.Apis.Sheets.v4 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

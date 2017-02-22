@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170214 (775)
+ *      <tr><th>API Rev<td>20170217 (778)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>
@@ -339,6 +339,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             this.service = service;
             clients = new ClientsResource(service);
+            creatives = new CreativesResource(service);
 
         }
 
@@ -1334,11 +1335,938 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             }
         }
+        private readonly CreativesResource creatives;
+
+        /// <summary>Gets the Creatives resource.</summary>
+        public virtual CreativesResource Creatives
+        {
+            get { return creatives; }
+        }
+
+        /// <summary>The "creatives" collection of methods.</summary>
+        public class CreativesResource
+        {
+            private const string Resource = "creatives";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CreativesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                dealAssociations = new DealAssociationsResource(service);
+
+            }
+
+            private readonly DealAssociationsResource dealAssociations;
+
+            /// <summary>Gets the DealAssociations resource.</summary>
+            public virtual DealAssociationsResource DealAssociations
+            {
+                get { return dealAssociations; }
+            }
+
+            /// <summary>The "dealAssociations" collection of methods.</summary>
+            public class DealAssociationsResource
+            {
+                private const string Resource = "dealAssociations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DealAssociationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Associate an existing deal with a creative.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The account the creative belongs to.</param>
+                /// <param name="creativeId">The ID of the
+                /// creative associated with the deal.</param>
+                public virtual AddRequest Add(Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest body, string accountId, string creativeId)
+                {
+                    return new AddRequest(service, body, accountId, creativeId);
+                }
+
+                /// <summary>Associate an existing deal with a creative.</summary>
+                public class AddRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Add request.</summary>
+                    public AddRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest body, string accountId, string creativeId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        CreativeId = creativeId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The account the creative belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The ID of the creative associated with the deal.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CreativeId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AdExchangeBuyerII.v2beta1.Data.AddDealAssociationRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "add"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add"; }
+                    }
+
+                    /// <summary>Initializes Add parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "creativeId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>List all creative-deal associations.</summary>
+                /// <param name="accountId">The account to list the associations from. Specify "-" to list all creatives the current
+                /// user has access to.</param>
+                /// <param name="creativeId">The creative ID to list the associations from. Specify
+                /// "-" to list all creatives under the above account.</param>
+                public virtual ListRequest List(string accountId, string creativeId)
+                {
+                    return new ListRequest(service, accountId, creativeId);
+                }
+
+                /// <summary>List all creative-deal associations.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListDealAssociationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        CreativeId = creativeId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The account to list the associations from. Specify "-" to list all creatives the
+                    /// current user has access to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The creative ID to list the associations from. Specify "-" to list all creatives under
+                    /// the above account.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CreativeId { get; private set; }
+
+                    /// <summary>An optional query string to filter deal associations. If no filter is specified, all
+                    /// associations will be returned. Supported queries are:
+                    ///
+                    /// accountId=account_id_string creativeId=creative_id_string dealsId=deals_id_string
+                    /// dealsStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    /// openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    ///
+                    /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Query { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
+                    /// 'ListDealAssociations' method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size. Server may return fewer associations than requested. If
+                    /// unspecified, server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "creativeId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "query", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "query",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Remove the association between a deal and a creative.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="accountId">The account the creative belongs to.</param>
+                /// <param name="creativeId">The ID of the
+                /// creative associated with the deal.</param>
+                public virtual RemoveRequest Remove(Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest body, string accountId, string creativeId)
+                {
+                    return new RemoveRequest(service, body, accountId, creativeId);
+                }
+
+                /// <summary>Remove the association between a deal and a creative.</summary>
+                public class RemoveRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Remove request.</summary>
+                    public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest body, string accountId, string creativeId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        CreativeId = creativeId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The account the creative belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string AccountId { get; private set; }
+
+                    /// <summary>The ID of the creative associated with the deal.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string CreativeId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AdExchangeBuyerII.v2beta1.Data.RemoveDealAssociationRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "remove"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove"; }
+                    }
+
+                    /// <summary>Initializes Remove parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "creativeId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "creativeId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+
+            /// <summary>Creates a creative.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">The account that this creative belongs to. Can be used to filter the response of the
+            /// creatives.list method.</param>
+            public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId)
+            {
+                return new CreateRequest(service, body, accountId);
+            }
+
+            /// <summary>Creates a creative.</summary>
+            public class CreateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account that this creative belongs to. Can be used to filter the response of the
+                /// creatives.list method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID
+                /// per creative).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("duplicateIdMode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DuplicateIdModeEnum> DuplicateIdMode { get; set; }
+
+                /// <summary>Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID
+                /// per creative).</summary>
+                public enum DuplicateIdModeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("NO_DUPLICATES")]
+                    NODUPLICATES,
+                    [Google.Apis.Util.StringValueAttribute("FORCE_ENABLE_DUPLICATE_IDS")]
+                    FORCEENABLEDUPLICATEIDS,
+                }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "duplicateIdMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "duplicateIdMode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a creative.</summary>
+            /// <param name="accountId">The account the creative belongs to.</param>
+            /// <param name="creativeId">The ID of the
+            /// creative to retrieve.</param>
+            public virtual GetRequest Get(string accountId, string creativeId)
+            {
+                return new GetRequest(service, accountId, creativeId);
+            }
+
+            /// <summary>Gets a creative.</summary>
+            public class GetRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string accountId, string creativeId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    CreativeId = creativeId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account the creative belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The ID of the creative to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CreativeId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists creatives.</summary>
+            /// <param name="accountId">The account to list the creatives from. Specify "-" to list all creatives the current user
+            /// has access to.</param>
+            public virtual ListRequest List(string accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>Lists creatives.</summary>
+            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string accountId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account to list the creatives from. Specify "-" to list all creatives the current user
+                /// has access to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                /// value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives'
+                /// method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer creatives than requested (due to timeout
+                /// constraint) even if more are available via another call. If unspecified, server will pick an
+                /// appropriate default. Acceptable values are 1 to 1000, inclusive.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>An optional query string to filter creatives. If no filter is specified, all active
+                /// creatives will be returned. Supported queries are:
+                ///
+                /// accountId=account_id_string creativeId=creative_id_string dealsStatus: {approved,
+                /// conditionally_approved, disapproved, not_checked} openAuctionStatus: {approved,
+                /// conditionally_approved, disapproved, not_checked} attribute: {a numeric attribute from the list of
+                /// attributes} disapprovalReason: {a reason from DisapprovalReason
+                ///
+                /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content)
+                /// OR attribute:47'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Stops watching a creative. Will stop push notifications being sent to the topics when the
+            /// creative changes status.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">The account of the creative to stop notifications for.</param>
+            /// <param
+            /// name="creativeId">The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account
+            /// level notifications.</param>
+            public virtual StopWatchingRequest StopWatching(Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest body, string accountId, string creativeId)
+            {
+                return new StopWatchingRequest(service, body, accountId, creativeId);
+            }
+
+            /// <summary>Stops watching a creative. Will stop push notifications being sent to the topics when the
+            /// creative changes status.</summary>
+            public class StopWatchingRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new StopWatching request.</summary>
+                public StopWatchingRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest body, string accountId, string creativeId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    CreativeId = creativeId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account of the creative to stop notifications for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The creative ID of the creative to stop notifications for. Specify "-" to specify stopping
+                /// account level notifications.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CreativeId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.StopWatchingCreativeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "stopWatching"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching"; }
+                }
+
+                /// <summary>Initializes StopWatching parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a creative.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">The account that this creative belongs to. Can be used to filter the response of the
+            /// creatives.list method.</param>
+            /// <param name="creativeId">The buyer-defined creative ID of this creative. Can
+            /// be used to filter the response of the creatives.list method.</param>
+            public virtual UpdateRequest Update(Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId, string creativeId)
+            {
+                return new UpdateRequest(service, body, accountId, creativeId);
+            }
+
+            /// <summary>Updates a creative.</summary>
+            public class UpdateRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative body, string accountId, string creativeId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    CreativeId = creativeId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account that this creative belongs to. Can be used to filter the response of the
+                /// creatives.list method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The buyer-defined creative ID of this creative. Can be used to filter the response of the
+                /// creatives.list method.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CreativeId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Watches a creative. Will result in push notifications being sent to the topic when the creative
+            /// changes status.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">The account of the creative to watch.</param>
+            /// <param name="creativeId">The creative
+            /// ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level
+            /// and account-level notifications are sent, only a single notification will be sent to the creative-level notification
+            /// topic.</param>
+            public virtual WatchRequest Watch(Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest body, string accountId, string creativeId)
+            {
+                return new WatchRequest(service, body, accountId, creativeId);
+            }
+
+            /// <summary>Watches a creative. Will result in push notifications being sent to the topic when the creative
+            /// changes status.</summary>
+            public class WatchRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Watch request.</summary>
+                public WatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest body, string accountId, string creativeId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    CreativeId = creativeId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The account of the creative to watch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The creative ID to watch for status changes. Specify "-" to watch all creatives under the
+                /// above account. If both creative-level and account-level notifications are sent, only a single
+                /// notification will be sent to the creative-level notification topic.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CreativeId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.WatchCreativeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "watch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/accounts/{accountId}/creatives/{creativeId}:watch"; }
+                }
+
+                /// <summary>Initializes Watch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "creativeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "creativeId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
     }
 }
 
 namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 {    
+
+    /// <summary>A request for associating a deal and a creative.</summary>
+    public class AddDealAssociationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The association between a creative and a deal that should be added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("association")]
+        public virtual CreativeDealAssociation Association { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly The app type the restriction applies to for mobile device.</summary>
+    public class AppContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The app types this restriction applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appTypes")]
+        public virtual System.Collections.Generic.IList<string> AppTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly The auction type the restriction applies to.</summary>
+    public class AuctionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auction types this restriction applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auctionTypes")]
+        public virtual System.Collections.Generic.IList<string> AuctionTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A client resource represents a client buyeran agency, a brand, or an advertiser customer of the sponsor
     /// buyer. Users associated with the client buyer have restricted access to the Ad Exchange Marketplace and certain
@@ -1452,6 +2380,276 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>@OutputOnly Shows any corrections that were applied to this creative.</summary>
+    public class Correction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contexts for the correction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; } 
+
+        /// <summary>Additional details about what was corrected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+
+        /// <summary>The type of correction that was applied to the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A creative and its classification data.</summary>
+    public class Creative : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The account that this creative belongs to. Can be used to filter the response of the creatives.list
+        /// method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The link to AdChoices destination page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adChoicesDestinationUrl")]
+        public virtual string AdChoicesDestinationUrl { get; set; } 
+
+        /// <summary>The name of the company being advertised in the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
+        public virtual string AdvertiserName { get; set; } 
+
+        /// <summary>The agency ID for this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
+        public virtual System.Nullable<long> AgencyId { get; set; } 
+
+        /// <summary>@OutputOnly The last update timestamp of the creative via API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
+        public virtual object ApiUpdateTime { get; set; } 
+
+        /// <summary>All attributes for the ads that may be shown from this creative. Can be used to filter the response
+        /// of the creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<string> Attributes { get; set; } 
+
+        /// <summary>The set of destination URLs for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrls")]
+        public virtual System.Collections.Generic.IList<string> ClickThroughUrls { get; set; } 
+
+        /// <summary>@OutputOnly Shows any corrections that were applied to this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corrections")]
+        public virtual System.Collections.Generic.IList<Correction> Corrections { get; set; } 
+
+        /// <summary>The buyer-defined creative ID of this creative. Can be used to filter the response of the
+        /// creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual string CreativeId { get; set; } 
+
+        /// <summary>@OutputOnly The top-level deals status of this creative. If disapproved, an entry for
+        /// 'auctionType=DIRECT_DEALS' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced
+        /// with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions
+        /// directly. Can be used to filter the response of the creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealsStatus")]
+        public virtual string DealsStatus { get; set; } 
+
+        /// <summary>@OutputOnly Detected advertiser IDs, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedAdvertiserIds { get; set; } 
+
+        /// <summary>@OutputOnly The detected domains for this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedDomains")]
+        public virtual System.Collections.Generic.IList<string> DetectedDomains { get; set; } 
+
+        /// <summary>@OutputOnly The detected languages for this creative. The order is arbitrary. The codes are 2 or 5
+        /// characters and are documented at
+        /// https://developers.google.com/adwords/api/docs/appendix/languagecodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguages")]
+        public virtual System.Collections.Generic.IList<string> DetectedLanguages { get; set; } 
+
+        /// <summary>@OutputOnly Detected product categories, if any. See the ad-product-categories.txt file in the
+        /// technical documentation for a list of IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedProductCategories")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedProductCategories { get; set; } 
+
+        /// <summary>@OutputOnly Detected sensitive categories, if any. See the ad-sensitive-categories.txt file in the
+        /// technical documentation for a list of IDs. You should use these IDs along with the excluded-sensitive-
+        /// category field in the bid request to filter your bids.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedSensitiveCategories")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedSensitiveCategories { get; set; } 
+
+        /// <summary>@OutputOnly The filtering stats for this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringStats")]
+        public virtual FilteringStats FilteringStats { get; set; } 
+
+        /// <summary>An HTML creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("html")]
+        public virtual HtmlContent Html { get; set; } 
+
+        /// <summary>The set of URLs to be called to record an impression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionTrackingUrls")]
+        public virtual System.Collections.Generic.IList<string> ImpressionTrackingUrls { get; set; } 
+
+        /// <summary>A native creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("native")]
+        public virtual NativeContent Native { get; set; } 
+
+        /// <summary>@OutputOnly The top-level open auction status of this creative. If disapproved, an entry for
+        /// 'auctionType = OPEN_AUCTION' (or 'ALL') in serving_restrictions will also exist. Note that this may be
+        /// nuanced with other contextual restrictions, in which case, it may be preferable to read from
+        /// serving_restrictions directly. Can be used to filter the response of the creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openAuctionStatus")]
+        public virtual string OpenAuctionStatus { get; set; } 
+
+        /// <summary>All restricted categories for the ads that may be shown from this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
+        public virtual System.Collections.Generic.IList<string> RestrictedCategories { get; set; } 
+
+        /// <summary>@OutputOnly The granular status of this ad in specific contexts. A context here relates to where
+        /// something ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the
+        /// type of auction).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
+        public virtual System.Collections.Generic.IList<ServingRestriction> ServingRestrictions { get; set; } 
+
+        /// <summary>All vendor IDs for the ads that may be shown from this creative. See https://storage.googleapis.com
+        /// /adx-rtb-dictionaries/vendors.txt for possible values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendorIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> VendorIds { get; set; } 
+
+        /// <summary>@OutputOnly The version of this creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+        /// <summary>A video creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual VideoContent Video { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The association between a creative and a deal.</summary>
+    public class CreativeDealAssociation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The account the creative belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>The ID of the creative associated with the deal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
+        public virtual string CreativeId { get; set; } 
+
+        /// <summary>The externalDealId for the deal associated with the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealsId")]
+        public virtual string DealsId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
+    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
+    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
+    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+        /// year/month where the day is not significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; } 
+
+        /// <summary>Month of year. Must be from 1 to 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; } 
+
+        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly The reason and details for a disapproval.</summary>
+    public class Disapproval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional details about the reason for disapproval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<string> Details { get; set; } 
+
+        /// <summary>The categorized reason for disapproval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly Filtering reasons for this creative during a period of a single day (from midnight to
+    /// midnight Pacific).</summary>
+    public class FilteringStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The day during which the data was collected. The data is collected from 00:00:00 to 23:59:59 PT.
+        /// During switches from PST to PDT and back, the day may contain 23 or 25 hours of data instead of the usual
+        /// 24.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; } 
+
+        /// <summary>The set of filtering reasons for this date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<Reason> Reasons { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>HTML content for a creative.</summary>
+    public class HtmlContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The height of the HTML snippet in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>The HTML snippet that displays the ad when inserted in the web page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; } 
+
+        /// <summary>The width of the HTML snippet in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An image resource. You may provide a larger image than was requested, so long as the aspect ratio is
+    /// preserved.</summary>
+    public class Image : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Image height in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>The URL of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>Image width in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ListClientUserInvitationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The returned list of client users.</summary>
@@ -1495,6 +2693,248 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A response for listing creatives.</summary>
+    public class ListCreativesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of creatives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatives")]
+        public virtual System.Collections.Generic.IList<Creative> Creatives { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the
+        /// ListCreativesRequest.page_token field in the subsequent call to `ListCreatives` method to retrieve the next
+        /// page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A response for listing creative and deal associations</summary>
+    public class ListDealAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of associations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IList<CreativeDealAssociation> Associations { get; set; } 
+
+        /// <summary>A token to retrieve the next page of results. Pass this value in the
+        /// ListDealAssociationsRequest.page_token field in the subsequent call to 'ListDealAssociation' method to
+        /// retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly The Geo criteria the restriction applies to.</summary>
+    public class LocationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IDs representing the geo location for this context. Please refer to the [geo-
+        /// table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo
+        /// criteria IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoCriteriaIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GeoCriteriaIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Native content for a creative.</summary>
+    public class NativeContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the advertiser or sponsor, to be displayed in the ad creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserName")]
+        public virtual string AdvertiserName { get; set; } 
+
+        /// <summary>The app icon, for app download ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIcon")]
+        public virtual Image AppIcon { get; set; } 
+
+        /// <summary>A long description of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; } 
+
+        /// <summary>A label for the button that the user is supposed to click.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToAction")]
+        public virtual string CallToAction { get; set; } 
+
+        /// <summary>The URL that the browser/SDK will load when the user clicks the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickLinkUrl")]
+        public virtual string ClickLinkUrl { get; set; } 
+
+        /// <summary>The URL to use for click tracking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickTrackingUrl")]
+        public virtual string ClickTrackingUrl { get; set; } 
+
+        /// <summary>A short title for the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; } 
+
+        /// <summary>A large image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual Image Image { get; set; } 
+
+        /// <summary>A smaller image, for the advertiser's logo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logo")]
+        public virtual Image Logo { get; set; } 
+
+        /// <summary>The price of the promoted app including currency info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceDisplayText")]
+        public virtual string PriceDisplayText { get; set; } 
+
+        /// <summary>The app rating in the app store. Must be in the range [0-5].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("starRating")]
+        public virtual System.Nullable<double> StarRating { get; set; } 
+
+        /// <summary>The URL to the app store to purchase/download the promoted app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeUrl")]
+        public virtual string StoreUrl { get; set; } 
+
+        /// <summary>The URL to fetch a native video ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
+        public virtual string VideoUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly The type of platform the restriction applies to.</summary>
+    public class PlatformContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The platforms this restriction applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
+        public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A specific filtering status and how many times it occurred.</summary>
+    public class Reason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of times the creative was filtered for the status. The count is aggregated across all
+        /// publishers on the exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; } 
+
+        /// <summary>The filtering status code. Please refer to the [creative-status-
+        /// codes.txt](https://storage.googleapis.com/adx-rtb-dictionaries/creative-status-codes.txt) file for different
+        /// statuses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual System.Nullable<int> Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request for removing the association between a deal and a creative.</summary>
+    public class RemoveDealAssociationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The association between a creative and a deal that should be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("association")]
+        public virtual CreativeDealAssociation Association { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly A security context.</summary>
+    public class SecurityContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The security types in this context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securities")]
+        public virtual System.Collections.Generic.IList<string> Securities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The serving context for this restriction.</summary>
+    public class ServingContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Matches all contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("all")]
+        public virtual string All { get; set; } 
+
+        /// <summary>Matches impressions for a particular app type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual AppContext AppType { get; set; } 
+
+        /// <summary>Matches impressions for a particular auction type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auctionType")]
+        public virtual AuctionContext AuctionType { get; set; } 
+
+        /// <summary>Matches impressions coming from users *or* publishers in a specific location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual LocationContext Location { get; set; } 
+
+        /// <summary>Matches impressions coming from a particular platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual PlatformContext Platform { get; set; } 
+
+        /// <summary>Matches impressions for a particular security type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityType")]
+        public virtual SecurityContext SecurityType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>@OutputOnly A representation of the status of an ad in a specific context. A context here relates to
+    /// where something ultimately serves (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,
+    /// or the type of auction).</summary>
+    public class ServingRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contexts for the restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<ServingContext> Contexts { get; set; } 
+
+        /// <summary>Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to
+        /// filter the response of the creatives.list method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
+        public virtual System.Collections.Generic.IList<Disapproval> DisapprovalReasons { get; set; } 
+
+        /// <summary>The status of the creative in this context (for example, it has been explicitly disapproved or is
+        /// pending review).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request for stopping notifications for changes to creative Status.</summary>
+    public class StopWatchingCreativeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Video content for a creative.</summary>
+    public class VideoContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL to fetch a video ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
+        public virtual string VideoUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request for watching changes to creative Status.</summary>
+    public class WatchCreativeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Pub/Sub topic to publish notifications to. This topic must already exist and must give
+        /// permission to ad-exchange-buyside-reports@google.com to write to the topic. This should be the full resource
+        /// name in "projects/{project_id}/topics/{topic_id}" format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
