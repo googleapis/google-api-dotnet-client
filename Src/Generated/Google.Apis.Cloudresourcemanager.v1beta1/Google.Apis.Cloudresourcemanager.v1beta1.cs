@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170213 (774)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1940,7 +1940,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
 
     }    
 
-    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, AppEngine
+    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, App Engine
     /// Apps, VMs, and other Google Cloud Platform resources.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2031,7 +2031,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
 
     /// <summary>A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a
     /// generic term for something you (a developer) may want to interact with through one of our API's. Some examples
-    /// are an AppEngine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
+    /// are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
     public class ResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required field for the type-specific id. This should correspond to the id used in the type-specific

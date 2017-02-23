@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Google Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170210 (771)
+ *      <tr><th>API Rev<td>20151222 (355)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -130,18 +130,7 @@ namespace Google.Apis.Cloudbilling.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
-
-        /// <summary>V1 error format.</summary>
-        public enum XgafvEnum
-        {
-            /// <summary>v1 error format</summary>
-            [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
-            /// <summary>v2 error format</summary>
-            [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
-        }
+        public virtual string Xgafv { get; set; }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -150,21 +139,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual System.Nullable<AltEnum> Alt { get; set; }
-
-        /// <summary>Data format for response.</summary>
-        public enum AltEnum
-        {
-            /// <summary>Responses with Content-Type of application/json</summary>
-            [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
-            /// <summary>Media download with context-dependent Content-Type</summary>
-            [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
-            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
-            [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
-        }
+        public virtual string Alt { get; set; }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -443,7 +418,7 @@ namespace Google.Apis.Cloudbilling.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^billingAccounts/[^/]+$",
+                            Pattern = @"^billingAccounts/[^/]*$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -526,7 +501,7 @@ namespace Google.Apis.Cloudbilling.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^billingAccounts/[^/]+$",
+                        Pattern = @"^billingAccounts/[^/]*$",
                     });
             }
 
@@ -682,7 +657,7 @@ namespace Google.Apis.Cloudbilling.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
+                        Pattern = @"^projects/[^/]*$",
                     });
             }
 
@@ -692,25 +667,19 @@ namespace Google.Apis.Cloudbilling.v1
         /// by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing
         /// account. Associating a project with an open billing account enables billing on the project and allows
         /// charges for resource usage. If the project already had a billing account, this method changes the billing
-        /// account used for resource usage charges.
-        ///
-        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud
-        /// Console may be billed to the new billing account, even if the charge occurred before the new billing account
-        /// was assigned to the project.
-        ///
-        /// The current authenticated user must have ownership privileges for both the
-        /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing
-        /// account](https://support.google.com/cloud/answer/4430947).
-        ///
-        /// You can disable billing on the project by setting the `billing_account_name` field to empty. This action
+        /// account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the
+        /// transaction history of the Google Developers Console may be billed to the new billing account, even if the
+        /// charge occurred before the new billing account was assigned to the project. The current authenticated user
+        /// must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-
+        /// overview#h.bgs0oxofvnoo ) and the [billing account](https://support.google.com/cloud/answer/4430947). You
+        /// can disable billing on the project by setting the `billing_account_name` field to empty. This action
         /// disassociates the current billing account from the project. Any billable activity of your in-use services
         /// will stop, and your application could stop functioning as expected. Any unbilled charges to date will be
         /// billed to the previously associated account. The current authenticated user must be either an owner of the
-        /// project or an owner of the billing account for the project.
-        ///
-        /// Note that associating a project with a *closed* billing account will have much the same effect as disabling
-        /// billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to
-        /// disable billing, you should always call this method with the name of an *open* billing account.</summary>
+        /// project or an owner of the billing account for the project. Note that associating a project with a *closed*
+        /// billing account will have much the same effect as disabling billing on the project: any paid resources used
+        /// by the project will be shut down. Thus, unless you wish to disable billing, you should always call this
+        /// method with the name of an *open* billing account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the project associated with the billing information that you want to update.
         /// For example, `projects/tokyo-rain-123`.</param>
@@ -723,25 +692,19 @@ namespace Google.Apis.Cloudbilling.v1
         /// by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing
         /// account. Associating a project with an open billing account enables billing on the project and allows
         /// charges for resource usage. If the project already had a billing account, this method changes the billing
-        /// account used for resource usage charges.
-        ///
-        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud
-        /// Console may be billed to the new billing account, even if the charge occurred before the new billing account
-        /// was assigned to the project.
-        ///
-        /// The current authenticated user must have ownership privileges for both the
-        /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing
-        /// account](https://support.google.com/cloud/answer/4430947).
-        ///
-        /// You can disable billing on the project by setting the `billing_account_name` field to empty. This action
+        /// account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the
+        /// transaction history of the Google Developers Console may be billed to the new billing account, even if the
+        /// charge occurred before the new billing account was assigned to the project. The current authenticated user
+        /// must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-
+        /// overview#h.bgs0oxofvnoo ) and the [billing account](https://support.google.com/cloud/answer/4430947). You
+        /// can disable billing on the project by setting the `billing_account_name` field to empty. This action
         /// disassociates the current billing account from the project. Any billable activity of your in-use services
         /// will stop, and your application could stop functioning as expected. Any unbilled charges to date will be
         /// billed to the previously associated account. The current authenticated user must be either an owner of the
-        /// project or an owner of the billing account for the project.
-        ///
-        /// Note that associating a project with a *closed* billing account will have much the same effect as disabling
-        /// billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to
-        /// disable billing, you should always call this method with the name of an *open* billing account.</summary>
+        /// project or an owner of the billing account for the project. Note that associating a project with a *closed*
+        /// billing account will have much the same effect as disabling billing on the project: any paid resources used
+        /// by the project will be shut down. Thus, unless you wish to disable billing, you should always call this
+        /// method with the name of an *open* billing account.</summary>
         public class UpdateBillingInfoRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ProjectBillingInfo>
         {
             /// <summary>Constructs a new UpdateBillingInfo request.</summary>
@@ -796,7 +759,7 @@ namespace Google.Apis.Cloudbilling.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
+                        Pattern = @"^projects/[^/]*$",
                     });
             }
 
@@ -807,12 +770,12 @@ namespace Google.Apis.Cloudbilling.v1
 namespace Google.Apis.Cloudbilling.v1.Data
 {    
 
-    /// <summary>A billing account in [Google Cloud Console](https://console.cloud.google.com/). You can assign a
-    /// billing account to one or more projects.</summary>
+    /// <summary>A billing account in [Google Developers Console](https://console.developers.google.com/). You can
+    /// assign a billing account to one or more projects.</summary>
     public class BillingAccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The display name given to the billing account, such as `My Billing Account`. This name is displayed
-        /// in the Google Cloud Console.</summary>
+        /// in the Google Developers Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -867,8 +830,8 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Encapsulation of billing information for a Cloud Console project. A project has at most one associated
-    /// billing account at a time (but a billing account can be assigned to multiple projects).</summary>
+    /// <summary>Encapsulation of billing information for a Developers Console project. A project has at most one
+    /// associated billing account at a time (but a billing account can be assigned to multiple projects).</summary>
     public class ProjectBillingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the billing account associated with the project, if any. For example,

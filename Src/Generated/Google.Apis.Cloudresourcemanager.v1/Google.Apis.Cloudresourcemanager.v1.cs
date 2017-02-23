@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170213 (774)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.CloudResourceManager.v1
         public CloudResourceManagerService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            liens = new LiensResource(this);
             operations = new OperationsResource(this);
             organizations = new OrganizationsResource(this);
             projects = new ProjectsResource(this);
@@ -105,6 +106,14 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
 
+
+        private readonly LiensResource liens;
+
+        /// <summary>Gets the Liens resource.</summary>
+        public virtual LiensResource Liens
+        {
+            get { return liens; }
+        }
 
         private readonly OperationsResource operations;
 
@@ -344,6 +353,242 @@ namespace Google.Apis.CloudResourceManager.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "liens" collection of methods.</summary>
+    public class LiensResource
+    {
+        private const string Resource = "liens";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LiensResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, applying to
+        /// `projects/1234` requires permission `resourcemanager.projects.updateLiens`.
+        ///
+        /// NOTE: Some resources may limit the number of Liens which may be applied.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Lien body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Create a Lien which applies to the resource denoted by the `parent` field.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, applying to
+        /// `projects/1234` requires permission `resourcemanager.projects.updateLiens`.
+        ///
+        /// NOTE: Some resources may limit the number of Liens which may be applied.</summary>
+        public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.Lien body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v1.Data.Lien Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/liens"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Delete a Lien by `name`.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
+        /// of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.</summary>
+        /// <param name="name">The name/identifier of the Lien to delete.</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>Delete a Lien by `name`.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
+        /// of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.</summary>
+        public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The name/identifier of the Lien to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^liens/.+$",
+                    });
+            }
+
+        }
+
+        /// <summary>List all Liens applied to the `parent` resource.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
+        /// of `projects/1234` requires permission `resourcemanager.projects.get`.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>List all Liens applied to the `parent` resource.
+        ///
+        /// Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent`
+        /// of `projects/1234` requires permission `resourcemanager.projects.get`.</summary>
+        public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListLiensResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/liens"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 
@@ -1756,6 +2001,70 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A Lien represents an encumbrance on the actions that can be performed on a resource.</summary>
+    public class Lien : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of this Lien.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>A system-generated unique identifier for this Lien.
+        ///
+        /// Example: `liens/1234abcd`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be
+        /// inspected programmatically. Maximum length of 200 characters.
+        ///
+        /// Example: 'compute.googleapis.com'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; } 
+
+        /// <summary>A reference to the resource this Lien is attached to. The server will validate the parent against
+        /// those for which Liens are supported.
+        ///
+        /// Example: `projects/1234`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum
+        /// lenth of 200 characters.
+        ///
+        /// Example: 'Holds production API key'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; } 
+
+        /// <summary>The types of operations which should be blocked as a result of this Lien. Each value should
+        /// correspond to an IAM permission. The server will validate the permissions against those for which Liens are
+        /// supported.
+        ///
+        /// An empty list is meaningless and will be rejected.
+        ///
+        /// Example: ['resourcemanager.projects.delete']</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
+        public virtual System.Collections.Generic.IList<string> Restrictions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Liens.ListLiens.</summary>
+    public class ListLiensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of Liens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liens")]
+        public virtual System.Collections.Generic.IList<Lien> Liens { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A page of the response received from the ListProjects method.
     ///
     /// A paginated response where more pages are available has `next_page_token` set. This token can be used in a
@@ -1902,7 +2211,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
     }    
 
-    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, AppEngine
+    /// <summary>A Project is a high-level Google Cloud Platform entity.  It is a container for ACLs, APIs, App Engine
     /// Apps, VMs, and other Google Cloud Platform resources.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1993,7 +2302,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
     /// <summary>A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a
     /// generic term for something you (a developer) may want to interact with through one of our API's. Some examples
-    /// are an AppEngine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
+    /// are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.</summary>
     public class ResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required field for the type-specific id. This should correspond to the id used in the type-specific

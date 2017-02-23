@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.ToolResults.v1beta3firstparty</id>
-        <version>1.21.0.782</version>
+        <version>1.21.0.783</version>
         <title>Google.Apis.ToolResults.v1beta3firstparty Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
