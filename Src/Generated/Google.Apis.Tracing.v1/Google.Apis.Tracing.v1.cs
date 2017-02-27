@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Google Tracing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170208 (769)
+ *      <tr><th>API Rev<td>20170223 (784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -419,7 +419,7 @@ namespace Google.Apis.Tracing.v1
                 ///<summary>Gets the HTTP method.</summary>
                 public override string HttpMethod
                 {
-                    get { return "PATCH"; }
+                    get { return "POST"; }
                 }
 
                 ///<summary>Gets the REST path.</summary>
@@ -848,14 +848,14 @@ namespace Google.Apis.Tracing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Binary module.</summary>
     public class Module : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Build_id is a unique identifier for the module, usually a hash of its contents</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual string BuildId { get; set; } 
 
-        /// <summary>Binary module. E.g. main binary, kernel modules, and dynamic libraries such as libc.so,
-        /// sharedlib.so</summary>
+        /// <summary>E.g. main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
         public virtual string ModuleValue { get; set; } 
 
@@ -880,6 +880,7 @@ namespace Google.Apis.Tracing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSize")]
         public virtual System.Nullable<ulong> MessageSize { get; set; } 
 
+        /// <summary>Type of a NetworkEvent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -950,9 +951,10 @@ namespace Google.Apis.Tracing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Collection of spans.</summary>
+    /// <summary>Collection of spans to update.</summary>
     public class SpanUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A collection of spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<Span> Spans { get; set; } 
 
@@ -998,6 +1000,7 @@ namespace Google.Apis.Tracing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>StackTrace collected in a trace.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Stack frames of this stack trace.</summary>

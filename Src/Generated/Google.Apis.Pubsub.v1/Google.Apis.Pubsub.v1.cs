@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170124 (754)
+ *      <tr><th>API Rev<td>20170214 (775)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -508,7 +508,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -518,7 +521,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1356,7 +1362,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -1366,7 +1375,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2067,7 +2079,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
             /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
@@ -2077,7 +2092,10 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>

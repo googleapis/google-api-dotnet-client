@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170211 (772)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -570,6 +570,19 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ConfigId { get; private set; }
 
+                /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC,
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -609,6 +622,15 @@ namespace Google.Apis.ServiceManagement.v1
                             Name = "configId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1500,6 +1522,19 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConfigId { get; set; }
 
+            /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL,
+            }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1537,6 +1572,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "configId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "configId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1620,8 +1664,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Lists managed services.
         ///
-        /// If called without any authentication, it returns only the public services. If called with authentication, it
-        /// returns all services that the caller has "servicemanagement.services.get" permission for.
+        /// Returns all public services. For authenticated users, also returns all services the calling user has
+        /// "servicemanagement.services.get" permission for.
         ///
         /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
         /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
@@ -1632,8 +1676,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>Lists managed services.
         ///
-        /// If called without any authentication, it returns only the public services. If called with authentication, it
-        /// returns all services that the caller has "servicemanagement.services.get" permission for.
+        /// Returns all public services. For authenticated users, also returns all services the calling user has
+        /// "servicemanagement.services.get" permission for.
         ///
         /// **BETA:** If the caller specifies the `consumer_id`, it returns only the services enabled on the consumer.
         /// The `consumer_id` must have the format of "project:{PROJECT-ID}".</summary>
@@ -2013,17 +2057,23 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more
-    /// AuditLogConfigs.</summary>
+    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices" "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] },
+    /// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service": "fooservice@googleapis.com"
+    /// "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:bar@gmail.com" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE
+    /// logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
 
-        /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
-        /// specified above. Follows the same format of Binding.members. This field is deprecated in favor of per-
-        /// permission-type exemptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
@@ -3047,13 +3097,13 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("get")]
         public virtual string Get { get; set; } 
 
-        /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to
-        /// your configuration.</summary>
+        /// <summary>Use this only for Scotty Requests. Do not use this for bytestream methods. For media support, add
+        /// instead [][google.bytestream.RestByteStream] as an API to your configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDownload")]
         public virtual MediaDownload MediaDownload { get; set; } 
 
-        /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to
-        /// your configuration.</summary>
+        /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+        /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
         public virtual MediaUpload MediaUpload { get; set; } 
 
@@ -3280,10 +3330,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to your
-    /// configuration.</summary>
+    /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+    /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
     public class MediaDownload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+        ///
+        /// Specify name of the download service if one is used for download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadService")]
+        public virtual string DownloadService { get; set; } 
+
         /// <summary>Whether download is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
@@ -3292,13 +3348,19 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to your
-    /// configuration.</summary>
+    /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+    /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
     public class MediaUpload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether upload is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+        ///
+        /// Specify name of the upload service if one is used for upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadService")]
+        public virtual string UploadService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

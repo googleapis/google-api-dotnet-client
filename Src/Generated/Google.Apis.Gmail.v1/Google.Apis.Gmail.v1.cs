@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170206 (767)
+ *      <tr><th>API Rev<td>20170222 (783)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -3548,7 +3548,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
                 /// to the recipient and the resource's verification status will be set to pending; otherwise, the
-                /// resource will be created with verification status set to accepted.</summary>
+                /// resource will be created with verification status set to accepted.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -3559,7 +3562,10 @@ namespace Google.Apis.Gmail.v1
 
                 /// <summary>Creates a forwarding address. If ownership verification is required, a message will be sent
                 /// to the recipient and the resource's verification status will be set to pending; otherwise, the
-                /// resource will be created with verification status set to accepted.</summary>
+                /// resource will be created with verification status set to accepted.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.ForwardingAddress>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3622,7 +3628,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Deletes the specified forwarding address and revokes any verification that may have been
-                /// required.</summary>
+                /// required.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="forwardingEmail">The forwarding address to be deleted.</param>
@@ -3632,7 +3641,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Deletes the specified forwarding address and revokes any verification that may have been
-                /// required.</summary>
+                /// required.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4351,7 +4363,10 @@ namespace Google.Apis.Gmail.v1
                 /// verification is required for the alias, a message will be sent to the email address and the
                 /// resource's verification status will be set to pending; otherwise, the resource will be created with
                 /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.</summary>
+                /// saving it with the alias.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -4365,7 +4380,10 @@ namespace Google.Apis.Gmail.v1
                 /// verification is required for the alias, a message will be sent to the email address and the
                 /// resource's verification status will be set to pending; otherwise, the resource will be created with
                 /// verification status set to accepted. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.</summary>
+                /// saving it with the alias.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 public class CreateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4428,7 +4446,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Deletes the specified send-as alias. Revokes any verification that may have been required
-                /// for using it.</summary>
+                /// for using it.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be deleted.</param>
@@ -4438,7 +4459,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Deletes the specified send-as alias. Revokes any verification that may have been required
-                /// for using it.</summary>
+                /// for using it.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 public class DeleteRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4653,7 +4677,11 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias. This method supports patch semantics.</summary>
+                /// saving it with the alias.
+                ///
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority. This method supports patch
+                /// semantics.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -4664,7 +4692,11 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias. This method supports patch semantics.</summary>
+                /// saving it with the alias.
+                ///
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority. This method supports patch
+                /// semantics.</summary>
                 public class PatchRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4741,7 +4773,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.</summary>
+                /// saving it with the alias.
+                ///
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
@@ -4752,7 +4787,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before
-                /// saving it with the alias.</summary>
+                /// saving it with the alias.
+                ///
+                /// Addresses other than the primary address for the account can only be updated by service account
+                /// clients that have been delegated domain-wide authority.</summary>
                 public class UpdateRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.SendAs>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -4829,7 +4867,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Sends a verification email to the specified send-as alias address. The verification status
-                /// must be pending.</summary>
+                /// must be pending.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
                 /// user.</param>
                 /// <param name="sendAsEmail">The send-as alias to be verified.</param>
@@ -4839,7 +4880,10 @@ namespace Google.Apis.Gmail.v1
                 }
 
                 /// <summary>Sends a verification email to the specified send-as alias address. The verification status
-                /// must be pending.</summary>
+                /// must be pending.
+                ///
+                /// This method is only available to service account clients that have been delegated domain-wide
+                /// authority.</summary>
                 public class VerifyRequest : GmailBaseServiceRequest<string>
                 {
                     /// <summary>Constructs a new Verify request.</summary>
@@ -5162,7 +5206,10 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Updates the auto-forwarding setting for the specified account. A verified forwarding address
-            /// must be specified when auto-forwarding is enabled.</summary>
+            /// must be specified when auto-forwarding is enabled.
+            ///
+            /// This method is only available to service account clients that have been delegated domain-wide
+            /// authority.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userId">User's email address. The special value "me" can be used to indicate the authenticated
             /// user.</param>
@@ -5172,7 +5219,10 @@ namespace Google.Apis.Gmail.v1
             }
 
             /// <summary>Updates the auto-forwarding setting for the specified account. A verified forwarding address
-            /// must be specified when auto-forwarding is enabled.</summary>
+            /// must be specified when auto-forwarding is enabled.
+            ///
+            /// This method is only available to service account clients that have been delegated domain-wide
+            /// authority.</summary>
             public class UpdateAutoForwardingRequest : GmailBaseServiceRequest<Google.Apis.Gmail.v1.Data.AutoForwarding>
             {
                 /// <summary>Constructs a new UpdateAutoForwarding request.</summary>

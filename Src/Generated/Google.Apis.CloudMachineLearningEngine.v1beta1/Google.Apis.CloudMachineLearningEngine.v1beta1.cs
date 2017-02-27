@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Machine Learning Version v1beta1
+ *   Google Cloud Machine Learning Engine Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning</a>
+ *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170216 (777)
+ *      <tr><th>API Rev<td>20170222 (783)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Machine Learning can be found at
+ * The complete API documentation for using Google Cloud Machine Learning Engine can be found at
  * <a href='https://cloud.google.com/ml/'>https://cloud.google.com/ml/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.CloudMachineLearning.v1beta1
+namespace Google.Apis.CloudMachineLearningEngine.v1beta1
 {
-    /// <summary>The CloudMachineLearning Service.</summary>
-    public class CloudMachineLearningService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudMachineLearningEngine Service.</summary>
+    public class CloudMachineLearningEngineService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1beta1";
@@ -56,12 +56,12 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudMachineLearningService() :
+        public CloudMachineLearningEngineService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudMachineLearningService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudMachineLearningEngineService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             projects = new ProjectsResource(this);
@@ -91,7 +91,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             get { return ""; }
         }
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Machine Learning.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Machine Learning Engine.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -110,11 +110,11 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
         }
     }
 
-    ///<summary>A base abstract class for CloudMachineLearning requests.</summary>
-    public abstract class CloudMachineLearningBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudMachineLearningEngine requests.</summary>
+    public abstract class CloudMachineLearningEngineBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new CloudMachineLearningBaseServiceRequest instance.</summary>
-        protected CloudMachineLearningBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudMachineLearningEngineBaseServiceRequest instance.</summary>
+        protected CloudMachineLearningEngineBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -201,7 +201,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes CloudMachineLearning parameter list.</summary>
+        /// <summary>Initializes CloudMachineLearningEngine parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -373,16 +373,16 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <param name="name">Required. The name of the job to cancel.
             ///
             /// Authorization: requires `Editor` role on the parent project.</param>
-            public virtual CancelRequest Cancel(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest body, string name)
+            public virtual CancelRequest Cancel(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest body, string name)
             {
                 return new CancelRequest(service, body, name);
             }
 
             /// <summary>Cancels a running job.</summary>
-            public class CancelRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleProtobufEmpty>
+            public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest body, string name)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest body, string name)
                     : base(service)
                 {
                     Name = name;
@@ -399,7 +399,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest Body { get; set; }
+                Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1CancelJobRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -445,16 +445,16 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <param name="parent">Required. The project name.
             ///
             /// Authorization: requires `Editor` role on the specified project.</param>
-            public virtual CreateRequest Create(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Job body, string parent)
+            public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Job body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>Creates a training or a batch prediction job.</summary>
-            public class CreateRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Job>
+            public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Job>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Job body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Job body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -471,7 +471,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Job Body { get; set; }
+                Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Job Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -522,7 +522,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             }
 
             /// <summary>Describes a job.</summary>
-            public class GetRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Job>
+            public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Job>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -586,7 +586,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             }
 
             /// <summary>Lists the jobs in the project.</summary>
-            public class ListRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1ListJobsResponse>
+            public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -603,10 +603,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -620,6 +616,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -655,15 +655,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -676,6 +667,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -744,7 +744,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// <param name="parent">Required. The name of the model.
                 ///
                 /// Authorization: requires `Editor` role on the parent project.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Version body, string parent)
+                public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Version body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
@@ -756,10 +756,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// already has one or more versions, the default version does not automatically change. If you want a
                 /// new version to be the default, you must call [projects.models.versions.setDefault](/ml/reference/res
                 /// t/v1beta1/projects.models.versions/setDefault).</summary>
-                public class CreateRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleLongrunningOperation>
+                public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Version body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Version body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -776,7 +776,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Version Body { get; set; }
+                    Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Version Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -840,7 +840,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 ///
                 /// Note: You cannot delete the version that is set as the default version of the model unless it is the
                 /// only remaining version.</summary>
-                public class DeleteRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleLongrunningOperation>
+                public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -914,7 +914,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// Models can have multiple versions. You can call
                 /// [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list) to get the
                 /// same information that this method returns for all of the versions of a model.</summary>
-                public class GetRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Version>
+                public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Version>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -984,7 +984,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 ///
                 /// If you expect that a model has a lot of versions, or if you need to handle only a limited number of
                 /// results at a time, you can request that the list be retrieved in batches (called pages):</summary>
-                public class ListRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1ListVersionsResponse>
+                public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1ListVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1001,6 +1001,13 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. A page token to request the next page of results.
+                    ///
+                    /// You get the token from the `next_page_token` field of the response from the previous
+                    /// call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The number of versions to retrieve per "page" of results. If there are more
                     /// remaining results than this number, the response message will contain a valid value in the
                     /// `next_page_token` field.
@@ -1008,13 +1015,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                     /// The default value is 20, and the maximum page size is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. A page token to request the next page of results.
-                    ///
-                    /// You get the token from the `next_page_token` field of the response from the previous
-                    /// call.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1050,18 +1050,18 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1084,7 +1084,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// [projects.models.versions.list](/ml/reference/rest/v1beta1/projects.models.versions/list).
                 ///
                 /// Authorization: requires `Editor` role on the parent project.</param>
-                public virtual SetDefaultRequest SetDefault(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest body, string name)
+                public virtual SetDefaultRequest SetDefault(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest body, string name)
                 {
                     return new SetDefaultRequest(service, body, name);
                 }
@@ -1096,10 +1096,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 ///
                 /// The first version to be created for a model is automatically set as the default. You must make any
                 /// subsequent changes to the default version setting manually using this method.</summary>
-                public class SetDefaultRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Version>
+                public class SetDefaultRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Version>
                 {
                     /// <summary>Constructs a new SetDefault request.</summary>
-                    public SetDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest body, string name)
+                    public SetDefaultRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -1118,7 +1118,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest Body { get; set; }
+                    Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1169,7 +1169,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <param name="parent">Required. The project name.
             ///
             /// Authorization: requires `Editor` role on the specified project.</param>
-            public virtual CreateRequest Create(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Model body, string parent)
+            public virtual CreateRequest Create(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Model body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
@@ -1179,10 +1179,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// You must add at least one version before you can request predictions from the model. Add versions by
             /// calling
             /// [projects.models.versions.create](/ml/reference/rest/v1beta1/projects.models.versions/create).</summary>
-            public class CreateRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Model>
+            public class CreateRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Model>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Model body, string parent)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Model body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -1199,7 +1199,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Model Body { get; set; }
+                Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Model Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -1256,7 +1256,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             ///
             /// You can only delete a model if there are no versions in it. You can delete versions by calling
             /// [projects.models.versions.delete](/ml/reference/rest/v1beta1/projects.models.versions/delete).</summary>
-            public class DeleteRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleLongrunningOperation>
+            public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1322,7 +1322,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
             /// <summary>Gets information about a model, including its name, the description (if set), and the default
             /// version (if at least one version of the model has been deployed).</summary>
-            public class GetRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1Model>
+            public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1Model>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1390,7 +1390,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <summary>Lists the models in a project.
             ///
             /// Each project can contain multiple models, and each model can have multiple versions.</summary>
-            public class ListRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1ListModelsResponse>
+            public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1ListModelsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1518,7 +1518,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
             /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
             /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-            public class CancelRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleProtobufEmpty>
+            public class CancelRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
                 public CancelRequest(Google.Apis.Services.IClientService service, string name)
@@ -1582,7 +1582,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested
             /// in the operation result. It does not cancel the operation. If the server doesn't support this method, it
             /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-            public class DeleteRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleProtobufEmpty>
+            public class DeleteRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1644,7 +1644,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
             /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
-            public class GetRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleLongrunningOperation>
+            public class GetRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1712,7 +1712,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
             ///
             /// NOTE: the `name` binding below allows API services to override the binding to use different resource
             /// name schemes, such as `users/operations`.</summary>
-            public class ListRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+            public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -1727,6 +1727,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1734,10 +1738,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1773,6 +1773,15 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1785,15 +1794,6 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1818,7 +1818,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
         /// <summary>Get the service account information associated with your project. You need this information in
         /// order to grant the service account persmissions for the Google Cloud Storage location where you put your
         /// model training code for training the model with Google Cloud Machine Learning.</summary>
-        public class GetConfigRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1GetConfigResponse>
+        public class GetConfigRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1GetConfigResponse>
         {
             /// <summary>Constructs a new GetConfig request.</summary>
             public GetConfigRequest(Google.Apis.Services.IClientService service, string name)
@@ -1879,7 +1879,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
         /// <param name="name">Required. The resource name of a model or a version.
         ///
         /// Authorization: requires `Viewer` role on the parent project.</param>
-        public virtual PredictRequest Predict(Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest body, string name)
+        public virtual PredictRequest Predict(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest body, string name)
         {
             return new PredictRequest(service, body, name);
         }
@@ -1887,10 +1887,10 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
         /// <summary>Performs prediction on the data in the request.
         ///
         /// **** REMOVE FROM GENERATED DOCUMENTATION</summary>
-        public class PredictRequest : CloudMachineLearningBaseServiceRequest<Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleApiHttpBody>
+        public class PredictRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
-            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest body, string name)
+            public PredictRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest body, string name)
                 : base(service)
             {
                 Name = name;
@@ -1907,7 +1907,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudMachineLearning.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest Body { get; set; }
+            Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1PredictRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -1950,7 +1950,7 @@ namespace Google.Apis.CloudMachineLearning.v1beta1
     }
 }
 
-namespace Google.Apis.CloudMachineLearning.v1beta1.Data
+namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
 {    
 
     /// <summary>Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't

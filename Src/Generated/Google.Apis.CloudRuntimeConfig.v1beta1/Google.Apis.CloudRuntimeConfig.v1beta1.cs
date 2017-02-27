@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170123 (753)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -458,16 +458,22 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                 {
                     return new TestIamPermissionsRequest(service, resource);
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -479,9 +485,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     }
 
 
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                    /// usually specified as a path. For example, a Project resource is specified as
-                    /// `projects/{project}`.</summary>
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
@@ -602,13 +607,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>An optional but recommended unique request_id. If the server receives two create()
-                    /// requests  with the same request_id, then the second request will be ignored and the first
-                    /// resource created and stored in the backend is returned. Empty request_id fields are ignored.
+                    /// <summary>An optional but recommended unique `request_id`. If the server receives two `create()`
+                    /// requests  with the same `request_id`, then the second request will be ignored and the first
+                    /// resource created and stored in the backend is returned. Empty `request_id` fields are ignored.
                     ///
-                    /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                    /// It is responsibility of the client to ensure uniqueness of the `request_id` strings.
                     ///
-                    /// request_id strings are limited to 64 characters.</summary>
+                    /// `request_id` strings are limited to 64 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -814,7 +819,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
                 /// <summary>Lists variables within given a configuration, matching any provided filters. This only
-                /// lists variable names, not the values.</summary>
+                /// lists variable names, not the values, unless `return_values` is true, in which case only variables
+                /// that user has IAM permission to GetVariable will be returned.</summary>
                 /// <param name="parent">The path to the RuntimeConfig resource for which you want to list variables. The configuration
                 /// must exist beforehand; the path must by in the format:
                 ///
@@ -825,7 +831,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
                 /// <summary>Lists variables within given a configuration, matching any provided filters. This only
-                /// lists variable names, not the values.</summary>
+                /// lists variable names, not the values, unless `return_values` is true, in which case only variables
+                /// that user has IAM permission to GetVariable will be returned.</summary>
                 public class ListRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.ListVariablesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -844,11 +851,6 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
-                    /// the specified number, returns all elements.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Filters variables by matching the specified filter. For example:
                     ///
                     /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.</summary>
@@ -859,6 +861,17 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     /// previous list request to get the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The flag indicates whether the user wants to return values of variables. If true, then
+                    /// only those variables that user has IAM GetVariable permission will be returned along with their
+                    /// values.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("returnValues", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ReturnValues { get; set; }
+
+                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
+                    /// the specified number, returns all elements.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -894,15 +907,6 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -920,21 +924,45 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "returnValues", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "returnValues",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                 {
                     return new TestIamPermissionsRequest(service, resource);
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -946,9 +974,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     }
 
 
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                    /// usually specified as a path. For example, a Project resource is specified as
-                    /// `projects/{project}`.</summary>
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
@@ -1229,13 +1256,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>An optional but recommended unique request_id. If the server receives two create()
-                    /// requests  with the same request_id, then the second request will be ignored and the first
-                    /// resource created and stored in the backend is returned. Empty request_id fields are ignored.
+                    /// <summary>An optional but recommended unique `request_id`. If the server receives two `create()`
+                    /// requests  with the same `request_id`, then the second request will be ignored and the first
+                    /// resource created and stored in the backend is returned. Empty `request_id` fields are ignored.
                     ///
-                    /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                    /// It is responsibility of the client to ensure uniqueness of the `request_id` strings.
                     ///
-                    /// request_id strings are limited to 64 characters.</summary>
+                    /// `request_id` strings are limited to 64 characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
@@ -1514,16 +1541,22 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
                 {
                     return new TestIamPermissionsRequest(service, resource);
                 }
 
                 /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+                ///
+                /// Note: This operation is designed to be used for building permission-aware UIs and command-line
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -1535,9 +1568,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     }
 
 
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                    /// usually specified as a path. For example, a Project resource is specified as
-                    /// `projects/{project}`.</summary>
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
@@ -1623,13 +1655,13 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>An optional but recommended unique request_id. If the server receives two create() requests
-                /// with the same request_id, then the second request will be ignored and the first resource created and
-                /// stored in the backend is returned. Empty request_id fields are ignored.
+                /// <summary>An optional but recommended unique `request_id`. If the server receives two `create()`
+                /// requests  with the same `request_id`, then the second request will be ignored and the first resource
+                /// created and stored in the backend is returned. Empty `request_id` fields are ignored.
                 ///
-                /// It is responsibility of the client to ensure uniqueness of the request_id strings.
+                /// It is responsibility of the client to ensure uniqueness of the `request_id` strings.
                 ///
-                /// request_id strings are limited to 64 characters.</summary>
+                /// `request_id` strings are limited to 64 characters.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestId { get; set; }
 
@@ -1815,8 +1847,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
             /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
@@ -1835,8 +1867,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1970,8 +2002,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudRuntimeConfig.v1beta1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -1991,8 +2023,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2040,17 +2072,23 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
             }
 
             /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
-            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
             public class TestIamPermissionsRequest : CloudRuntimeConfigBaseServiceRequest<Google.Apis.CloudRuntimeConfig.v1beta1.Data.TestIamPermissionsResponse>
             {
                 /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2063,9 +2101,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path. For example, a Project resource is specified as
-                /// `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2557,7 +2594,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         public virtual string State { get; set; } 
 
         /// <summary>The string value of the variable. The length of the value must be less than 4096 bytes. Empty
-        /// values are also accepted. For example, text: "my text value".</summary>
+        /// values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170214 (775)
+ *      <tr><th>API Rev<td>20170223 (784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -578,10 +578,6 @@ namespace Google.Apis.Dataproc.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -589,6 +585,10 @@ namespace Google.Apis.Dataproc.v1beta1
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -624,15 +624,6 @@ namespace Google.Apis.Dataproc.v1beta1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -645,6 +636,15 @@ namespace Google.Apis.Dataproc.v1beta1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1027,6 +1027,11 @@ namespace Google.Apis.Dataproc.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Optional A filter constraining which clusters to list. Valid filters contain label terms
+                /// such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard List page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1034,11 +1039,6 @@ namespace Google.Apis.Dataproc.v1beta1
                 /// <summary>The standard List page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional A filter constraining which clusters to list. Valid filters contain label terms
-                /// such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1074,6 +1074,15 @@ namespace Google.Apis.Dataproc.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1086,15 +1095,6 @@ namespace Google.Apis.Dataproc.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1496,6 +1496,11 @@ namespace Google.Apis.Dataproc.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
+                /// cluster.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClusterName { get; set; }
+
                 /// <summary>Optional A filter constraining which jobs to list. Valid filters contain job state and
                 /// label terms such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1524,11 +1529,6 @@ namespace Google.Apis.Dataproc.v1beta1
                 /// <summary>Optional The number of results to return in each response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
-                /// cluster.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ClusterName { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1564,6 +1564,15 @@ namespace Google.Apis.Dataproc.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1594,15 +1603,6 @@ namespace Google.Apis.Dataproc.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "clusterName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clusterName",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1785,6 +1785,23 @@ namespace Google.Apis.Dataproc.v1beta1
 
 namespace Google.Apis.Dataproc.v1beta1.Data
 {    
+
+    /// <summary>Specifies the type and number of accelerator cards attached to the instances of an instance group (see
+    /// GPUs on Compute Engine).</summary>
+    public class AcceleratorConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of the accelerator cards of this type exposed to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<int> AcceleratorCount { get; set; } 
+
+        /// <summary>Full or partial URI of the accelerator type resource to expose to this instance. See Google Compute
+        /// Engine AcceleratorTypes( /compute/docs/reference/beta/acceleratorTypes)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
+        public virtual string AcceleratorTypeUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A request to cancel a job.</summary>
     public class CancelJobRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2193,6 +2210,10 @@ namespace Google.Apis.Dataproc.v1beta1.Data
     /// or worker group.</summary>
     public class InstanceGroupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional The Google Compute Engine accelerator configuration for these instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfiguration> Accelerators { get; set; } 
+
         /// <summary>Disk option configuration settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfiguration")]
         public virtual DiskConfiguration DiskConfiguration { get; set; } 

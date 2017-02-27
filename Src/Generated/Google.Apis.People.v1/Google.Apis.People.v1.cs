@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170221 (782)
+ *      <tr><th>API Rev<td>20170223 (784)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -413,10 +413,6 @@ namespace Google.Apis.People.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
-                /// <summary>The token of the page to be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
                 /// include all fields except for connections.list requests, which have a default mask that includes
                 /// common fields like metadata, name, photo, and profile url. Each path should start with `person.`:
@@ -456,6 +452,10 @@ namespace Google.Apis.People.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
+                /// <summary>The token of the page to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -488,15 +488,6 @@ namespace Google.Apis.People.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "requestMask.includeField", new Google.Apis.Discovery.Parameter
@@ -538,6 +529,15 @@ namespace Google.Apis.People.v1
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestSyncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -773,6 +773,21 @@ namespace Google.Apis.People.v1.Data
         /// * `home` * `work` * `other`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A person's age range.</summary>
+    public class AgeRangeType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The age range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
+        public virtual string AgeRange { get; set; } 
+
+        /// <summary>Metadata about the age range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual FieldMetadata Metadata { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1292,7 +1307,7 @@ namespace Google.Apis.People.v1.Data
     /// and profile data. Fields other than IDs, metadata, and group memberships are user-edited.
     ///
     /// Most fields can have multiple items. The items in a field have no guaranteed order, but each non-empty field is
-    /// guaranteed to have exactly one field with `metadata.primary` set to true.</summary>
+    /// guaranteed to have exactly one field with `metadata.primary` set to true. NEXT_ID: 31</summary>
     public class Person : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The person's street addresses.</summary>
@@ -1302,6 +1317,10 @@ namespace Google.Apis.People.v1.Data
         /// <summary>The person's age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; } 
+
+        /// <summary>The person's age ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageRanges")]
+        public virtual System.Collections.Generic.IList<AgeRangeType> AgeRanges { get; set; } 
 
         /// <summary>The person's biographies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biographies")]

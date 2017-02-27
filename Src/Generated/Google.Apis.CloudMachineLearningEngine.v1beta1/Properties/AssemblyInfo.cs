@@ -22,12 +22,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Google.Apis.CloudMachineLearning.v1beta1")]
+[assembly: AssemblyTitle("Google.Apis.CloudMachineLearningEngine.v1beta1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Google.Apis.CloudMachineLearning.v1beta1")]
+[assembly: AssemblyProduct("Google.Apis.CloudMachineLearningEngine.v1beta1")]
 [assembly: AssemblyCompany("Google Inc.")]
 [assembly: AssemblyCopyright("Copyright © Google Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.21.0.777")]
+[assembly: AssemblyVersion("1.21.0.783")]

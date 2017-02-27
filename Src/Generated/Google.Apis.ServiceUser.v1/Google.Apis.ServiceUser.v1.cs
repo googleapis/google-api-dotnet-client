@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/service-user/'>Google Service User API</a>
+ *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170211 (772)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/service-user/'>
- *              https://cloud.google.com/service-user/</a>
+ *          <td><a href='https://cloud.google.com/service-management/'>
+ *              https://cloud.google.com/service-management/</a>
  *      <tr><th>Discovery Name<td>serviceuser
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google Service User API can be found at
- * <a href='https://cloud.google.com/service-user/'>https://cloud.google.com/service-user/</a>.
+ * <a href='https://cloud.google.com/service-management/'>https://cloud.google.com/service-management/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// <summary>An EnabledService message contains the details about a service that has been enabled for use.</summary>
     public class EnabledService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Service definition for the enabled service Only the name and title fields will be
+        /// <summary>The Service definition for the enabled service. Only the name and title fields will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual Service Service { get; set; } 
@@ -1386,13 +1386,13 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("get")]
         public virtual string Get { get; set; } 
 
-        /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to
-        /// your configuration.</summary>
+        /// <summary>Use this only for Scotty Requests. Do not use this for bytestream methods. For media support, add
+        /// instead [][google.bytestream.RestByteStream] as an API to your configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDownload")]
         public virtual MediaDownload MediaDownload { get; set; } 
 
-        /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to
-        /// your configuration.</summary>
+        /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+        /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaUpload")]
         public virtual MediaUpload MediaUpload { get; set; } 
 
@@ -1539,10 +1539,16 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to your
-    /// configuration.</summary>
+    /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+    /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
     public class MediaDownload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+        ///
+        /// Specify name of the download service if one is used for download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadService")]
+        public virtual string DownloadService { get; set; } 
+
         /// <summary>Whether download is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
@@ -1551,13 +1557,19 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Do not use this. For media support, add instead [][google.bytestream.RestByteStream] as an API to your
-    /// configuration.</summary>
+    /// <summary>Use this only for Scotty Requests. Do not use this for media support using Bytestream, add instead
+    /// [][google.bytestream.RestByteStream] as an API to your configuration for Bytestream methods.</summary>
     public class MediaUpload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether upload is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>DO NOT USE THIS FIELD UNTIL THIS WARNING IS REMOVED.
+        ///
+        /// Specify name of the upload service if one is used for upload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadService")]
+        public virtual string UploadService { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

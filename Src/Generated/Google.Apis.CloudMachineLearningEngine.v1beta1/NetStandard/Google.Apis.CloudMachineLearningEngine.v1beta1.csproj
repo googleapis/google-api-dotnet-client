@@ -8,15 +8,15 @@
     <ProjectGuid>{E5F5E62A-616D-4F0D-8508-A76D7E760619}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Google.Apis.CloudMachineLearning.v1beta1</RootNamespace>
-    <AssemblyName>Google.Apis.CloudMachineLearning.v1beta1</AssemblyName>
+    <RootNamespace>Google.Apis.CloudMachineLearningEngine.v1beta1</RootNamespace>
+    <AssemblyName>Google.Apis.CloudMachineLearningEngine.v1beta1</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
-    <DocumentationFile>Google.Apis.CloudMachineLearning.v1beta1.xml</DocumentationFile>
+    <DocumentationFile>Google.Apis.CloudMachineLearningEngine.v1beta1.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +52,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Google.Apis.CloudMachineLearning.v1beta1.cs" />
+    <Compile Include="..\Google.Apis.CloudMachineLearningEngine.v1beta1.cs" />
     <Compile Include="..\Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
