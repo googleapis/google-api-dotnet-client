@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20170223 (784)
+ *      <tr><th>API Rev<td>20170225 (786)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -516,6 +516,10 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
             /// 2048.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -535,10 +539,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// = *` * `projectId = my-project AND labels.color = red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -574,6 +574,15 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -586,15 +595,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

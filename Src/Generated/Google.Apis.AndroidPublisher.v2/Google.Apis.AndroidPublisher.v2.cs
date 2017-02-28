@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170105 (735)
+ *      <tr><th>API Rev<td>20170222 (783)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6561,7 +6561,7 @@ namespace Google.Apis.AndroidPublisher.v2
 
         }
 
-        /// <summary>Returns a list of reviews.</summary>
+        /// <summary>Returns a list of reviews. Only reviews from last week will be returned.</summary>
         /// <param name="packageName">Unique identifier for the Android app for which we want reviews; for example,
         /// "com.spiffygame".</param>
         public virtual ListRequest List(string packageName)
@@ -6569,7 +6569,7 @@ namespace Google.Apis.AndroidPublisher.v2
             return new ListRequest(service, packageName);
         }
 
-        /// <summary>Returns a list of reviews.</summary>
+        /// <summary>Returns a list of reviews. Only reviews from last week will be returned.</summary>
         public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.ReviewsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7647,6 +7647,11 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]
         public virtual System.Nullable<long> StartTimeMillis { get; set; } 
+
+        /// <summary>The time at which the subscription was canceled by the user, in milliseconds since the epoch. Only
+        /// present if cancelReason is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCancellationTimeMillis")]
+        public virtual System.Nullable<long> UserCancellationTimeMillis { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

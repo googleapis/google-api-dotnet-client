@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170124 (754)
+ *      <tr><th>API Rev<td>20170201 (762)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -705,7 +705,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -948,7 +949,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1117,7 +1119,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1535,7 +1538,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1803,7 +1807,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2221,7 +2226,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2911,7 +2917,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3243,7 +3250,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3696,7 +3704,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4116,7 +4125,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4359,7 +4369,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4528,7 +4539,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5079,7 +5091,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5767,7 +5780,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -6181,7 +6195,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -6603,7 +6618,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7197,7 +7213,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7665,7 +7682,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7995,7 +8013,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8292,7 +8311,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8676,7 +8696,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9316,7 +9337,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9956,7 +9978,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10763,7 +10786,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11203,7 +11227,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11745,7 +11770,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -12002,10 +12028,10 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method. This method supports patch semantics.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -12017,10 +12043,10 @@ namespace Google.Apis.Compute.beta
             return new PatchRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method. This method supports patch semantics.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -12858,10 +12884,10 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -12873,10 +12899,10 @@ namespace Google.Apis.Compute.beta
             return new UpdateRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -13130,7 +13156,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -13555,7 +13582,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -13724,7 +13752,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14441,7 +14470,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14800,7 +14830,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -15454,8 +15485,10 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("port", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Port { get; set; }
 
-            /// <summary>For the initial request, leave this field unspecified. For subsequent calls, this field should
-            /// be set to the next value that was returned in the previous call.</summary>
+            /// <summary>Returns output starting from a specific byte position. Use this to page through output when the
+            /// output is too large to return in a single request. For the initial request, leave this field
+            /// unspecified. For subsequent calls, this field should be set to the next value returned in the previous
+            /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Start { get; set; }
 
@@ -15672,7 +15705,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -16492,7 +16526,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the service account on the instance.</summary>
+        /// <summary>Sets the service account on the instance. For more information, read Changing the service account
+        /// and access scopes for an instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -16503,7 +16538,8 @@ namespace Google.Apis.Compute.beta
             return new SetServiceAccountRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets the service account on the instance.</summary>
+        /// <summary>Sets the service account on the instance. For more information, read Changing the service account
+        /// and access scopes for an instance.</summary>
         public class SetServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetServiceAccount request.</summary>
@@ -17239,7 +17275,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17482,7 +17519,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17873,7 +17911,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -19001,7 +19040,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -19847,7 +19887,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -20824,7 +20865,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -22076,7 +22118,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -22248,7 +22291,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -22820,7 +22864,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23067,7 +23112,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23227,7 +23273,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23738,7 +23785,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -24529,7 +24577,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -24935,7 +24984,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -25489,7 +25539,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -25733,7 +25784,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26341,7 +26393,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26932,7 +26985,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27484,7 +27538,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27896,7 +27951,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28316,7 +28372,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28784,7 +28841,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -29306,7 +29364,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30110,7 +30169,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30606,7 +30666,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31026,7 +31087,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31604,7 +31666,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32104,7 +32167,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32524,7 +32588,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32981,7 +33046,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -33228,7 +33294,8 @@ namespace Google.Apis.Compute.beta
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -34452,7 +34519,7 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The protocol this BackendService uses to communicate with backends.
         ///
-        /// Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+        /// Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
         ///
         /// For internal load balancing, the possible values are TCP and UDP, and the default is TCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
@@ -34574,7 +34641,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -34884,8 +34954,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -35025,7 +35094,7 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
         /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
         /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
+        /// paging through the results. Acceptable values are 0 to 500, inclusive. (Default: 500)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -35052,7 +35121,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>This token allows you to get the next page of results for list requests. If the number of results
+        /// is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next
+        /// list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -35544,9 +35616,8 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
-        /// a global TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of a type appropriate
-        /// to the target object. For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires
-        /// HTTPS traffic.
+        /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
+        /// For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
         ///
         /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -36201,8 +36272,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this image. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this image. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -36359,8 +36429,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -36409,9 +36478,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Service
-        /// accounts generate access tokens that can be accessed through the metadata server and used to authenticate
-        /// applications on the instance. See Service Accounts for more information.</summary>
+        /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Only one
+        /// service account per VM instance is supported.
+        ///
+        /// Service accounts generate access tokens that can be accessed through the metadata server and used to
+        /// authenticate applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
@@ -37207,8 +37278,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
-        /// <summary>Labels to apply to instances that are created from this template. Each label key/value pair must
-        /// comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -37409,14 +37479,6 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>A list of labels to apply for this instance. Changing instance labels will also change the instance
-        /// tags.
-        ///
-        /// Each label key & value must comply with RFC1035. Specifically, the name must be 1-63 characters long and
-        /// match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase
-        /// letter, and all following characters must be a dash, lowercase letter, or digit, except the last character,
-        /// which cannot be a dash. For example, "webserver-frontend": "images". A label value can also be empty (e.g.
-        /// "my-label": "").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -38024,7 +38086,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
-        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>[Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -39429,9 +39491,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The starting byte position of the output that was returned. This should match the
-        /// start parameter sent with the request. If the serial console output exceeds the size of the buffer, older
-        /// output will be overwritten by newer content and the start values will be mismatched.</summary>
+        /// <summary>The starting byte position of the output that was returned. This should match the start parameter
+        /// sent with the request. If the serial console output exceeds the size of the buffer, older output will be
+        /// overwritten by newer content and the start values will be mismatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual System.Nullable<long> Start { get; set; } 
 
@@ -39488,8 +39550,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values
+        /// may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -39711,6 +39773,11 @@ namespace Google.Apis.Compute.beta.Data
         /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP
+        /// addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
 
         /// <summary>URL of the region where the Subnetwork resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
@@ -40232,8 +40299,8 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources,
-    /// and the fallback target pool.</summary>
+    /// <summary>A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck
+    /// resource, and the fallback target pool.</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -40273,9 +40340,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failoverRatio")]
         public virtual System.Nullable<float> FailoverRatio { get; set; } 
 
-        /// <summary>A list of URLs to the HttpHealthCheck resource. A member instance in this pool is considered
-        /// healthy if and only if all specified health checks pass. An empty list means all member instances will be
-        /// considered healthy at all times.</summary>
+        /// <summary>The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if
+        /// and only if the health checks pass. An empty list means all member instances will be considered healthy at
+        /// all times. Only HttpHealthChecks are supported. Only one health check may be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
@@ -40397,7 +40464,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class TargetPoolsAddHealthCheckRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of HttpHealthCheck resources to add to the target pool.</summary>
+        /// <summary>The HttpHealthCheck to add to the target pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<HealthCheckReference> HealthChecks { get; set; } 
 

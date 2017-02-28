@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170216 (777)
+ *      <tr><th>API Rev<td>20170223 (784)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2670,10 +2670,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string MasterObjectId { get; set; } 
 
         /// <summary>The notes page that this slide is associated with. It defines the visual appearance of a notes page
-        /// when printing or exporting slides with speaker notes. A notes page inherits properties from the notes mater.
-        /// The placeholder shape with type BODY on the notes page contains the speaker notes for this slide. The ID of
-        /// this shape is identified by the speaker notes object id field. The notes page is read-only except for the
-        /// text content and styles of the speaker notes shape.</summary>
+        /// when printing or exporting slides with speaker notes. A notes page inherits properties from the notes
+        /// master. The placeholder shape with type BODY on the notes page contains the speaker notes for this slide.
+        /// The ID of this shape is identified by the speakerNotesObjectId field. The notes page is read-only except for
+        /// the text content and styles of the speaker notes shape.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesPage")]
         public virtual Page NotesPage { get; set; } 
 

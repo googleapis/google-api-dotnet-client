@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170124 (754)
+ *      <tr><th>API Rev<td>20170201 (762)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -768,7 +768,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1011,7 +1012,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1180,7 +1182,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1312,6 +1315,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1362,6 +1369,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1492,6 +1508,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Address Body { get; set; }
@@ -1539,6 +1559,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1598,7 +1627,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1743,6 +1773,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest Body { get; set; }
@@ -1799,6 +1833,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1967,7 +2010,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2099,6 +2143,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2149,6 +2197,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2279,6 +2336,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -2326,6 +2387,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2385,7 +2455,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -2530,6 +2601,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -2586,6 +2661,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2726,6 +2810,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -2783,6 +2871,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2834,6 +2931,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2875,6 +2976,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -3063,6 +3173,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendBucket Body { get; set; }
@@ -3101,6 +3215,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -3153,7 +3276,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3254,7 +3378,7 @@ namespace Google.Apis.Compute.alpha
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
-        /// BackendBucket resource to update.</param>
+        /// BackendBucket resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.BackendBucket body, string project, string backendBucket)
         {
             return new PatchRequest(service, body, project, backendBucket);
@@ -3279,9 +3403,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the BackendBucket resource to update.</summary>
+            /// <summary>Name of the BackendBucket resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3330,6 +3458,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -3535,6 +3672,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendBucket Body { get; set; }
@@ -3582,6 +3723,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -3653,7 +3803,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3779,6 +3930,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3820,6 +3975,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -4016,6 +4180,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -4054,6 +4222,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -4106,7 +4283,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4238,6 +4416,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -4285,6 +4467,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -4410,6 +4601,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -4457,6 +4652,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -4627,7 +4831,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -4816,99 +5021,6 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone for this
-        /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
-        public virtual GetIamPolicyRequest GetIamPolicy(string project, string zone, string resource)
-        {
-            return new GetIamPolicyRequest(service, project, zone, resource);
-        }
-
-        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
-        /// exists.</summary>
-        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
-        {
-            /// <summary>Constructs a new GetIamPolicy request.</summary>
-            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Resource = resource;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the resource for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getIamPolicy"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments/{resource}/getIamPolicy"; }
-            }
-
-            /// <summary>Initializes GetIamPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-            }
-
-        }
-
         /// <summary>Creates an commitment in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -4940,6 +5052,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the zone for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -4988,6 +5104,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -5047,7 +5172,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5147,105 +5273,6 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone for this
-        /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.alpha.Data.Policy body, string project, string zone, string resource)
-        {
-            return new SetIamPolicyRequest(service, body, project, zone, resource);
-        }
-
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
-        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
-        {
-            /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Policy body, string project, string zone, string resource)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the resource for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.Policy Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "setIamPolicy"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments/{resource}/setIamPolicy"; }
-            }
-
-            /// <summary>Initializes SetIamPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -5414,7 +5441,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5657,7 +5685,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5826,7 +5855,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -5964,6 +5994,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Snapshot Body { get; set; }
@@ -6030,6 +6064,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -6073,6 +6116,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the persistent disk to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -6122,6 +6169,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "disk",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -6258,6 +6314,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
             /// <summary>Optional. Source image to restore onto a disk.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceImage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceImage { get; set; }
@@ -6309,6 +6369,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "sourceImage", new Google.Apis.Discovery.Parameter
@@ -6377,7 +6446,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -6520,6 +6590,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.DisksResizeRequest Body { get; set; }
@@ -6577,6 +6651,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -6620,6 +6703,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -6677,6 +6764,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -6828,6 +6924,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -6869,6 +6969,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -6975,6 +7084,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Firewall Body { get; set; }
@@ -7013,6 +7126,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7065,7 +7187,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7166,7 +7289,7 @@ namespace Google.Apis.Compute.alpha
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
-        /// to update.</param>
+        /// to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Firewall body, string project, string firewall)
         {
             return new PatchRequest(service, body, project, firewall);
@@ -7191,9 +7314,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall rule to update.</summary>
+            /// <summary>Name of the firewall rule to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -7242,6 +7369,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7363,6 +7499,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Firewall Body { get; set; }
@@ -7410,6 +7550,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7479,7 +7628,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -7612,6 +7762,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -7662,6 +7816,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7793,6 +7956,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.ForwardingRule Body { get; set; }
@@ -7840,6 +8007,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7901,7 +8077,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8046,6 +8223,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest Body { get; set; }
@@ -8103,6 +8284,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -8147,6 +8337,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the ForwardingRule resource in which target is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -8204,6 +8398,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -8355,6 +8558,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -8396,6 +8603,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -8506,6 +8722,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Address Body { get; set; }
@@ -8544,6 +8764,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -8596,7 +8825,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -8909,6 +9139,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -8950,6 +9184,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9060,6 +9303,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.ForwardingRule Body { get; set; }
@@ -9098,6 +9345,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9150,7 +9406,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9366,6 +9623,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetReference Body { get; set; }
@@ -9413,6 +9674,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9566,7 +9836,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -9863,7 +10134,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10006,6 +10278,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -10047,6 +10323,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10157,6 +10442,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HealthCheck Body { get; set; }
@@ -10195,6 +10484,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10247,7 +10545,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10348,7 +10647,7 @@ namespace Google.Apis.Compute.alpha
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
-        /// resource to update.</param>
+        /// resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.HealthCheck body, string project, string healthCheck)
         {
             return new PatchRequest(service, body, project, healthCheck);
@@ -10373,9 +10672,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the HealthCheck resource to update.</summary>
+            /// <summary>Name of the HealthCheck resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -10424,6 +10727,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10547,6 +10859,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HealthCheck Body { get; set; }
@@ -10594,6 +10910,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10663,7 +10988,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -10906,7 +11232,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11075,7 +11402,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11207,6 +11535,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Host { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -11257,6 +11589,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -11478,6 +11819,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Host Body { get; set; }
@@ -11525,6 +11870,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -11584,7 +11938,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -11934,6 +12289,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -11975,6 +12334,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12085,6 +12453,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HttpHealthCheck Body { get; set; }
@@ -12123,6 +12495,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12175,7 +12556,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -12305,6 +12687,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HttpHealthCheck Body { get; set; }
@@ -12352,6 +12738,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12475,6 +12870,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HttpHealthCheck Body { get; set; }
@@ -12522,6 +12921,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12574,6 +12982,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -12615,6 +13027,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12725,6 +13146,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HttpsHealthCheck Body { get; set; }
@@ -12763,6 +13188,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -12815,7 +13249,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -12916,7 +13351,7 @@ namespace Google.Apis.Compute.alpha
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
-        /// HttpsHealthCheck resource to update.</param>
+        /// HttpsHealthCheck resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.HttpsHealthCheck body, string project, string httpsHealthCheck)
         {
             return new PatchRequest(service, body, project, httpsHealthCheck);
@@ -12941,9 +13376,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the HttpsHealthCheck resource to update.</summary>
+            /// <summary>Name of the HttpsHealthCheck resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12992,6 +13431,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -13115,6 +13563,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.HttpsHealthCheck Body { get; set; }
@@ -13162,6 +13614,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -13214,6 +13675,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -13256,6 +13721,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -13294,6 +13768,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Image name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -13342,6 +13820,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -13528,6 +14015,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forceCreation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceCreation { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Image Body { get; set; }
@@ -13571,6 +14062,15 @@ namespace Google.Apis.Compute.alpha
                     "forceCreation", new Google.Apis.Discovery.Parameter
                     {
                         Name = "forceCreation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -13635,7 +14135,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -13967,6 +14468,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManagersAbandonInstancesRequest Body { get; set; }
@@ -14024,6 +14529,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -14075,7 +14589,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14212,6 +14727,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -14260,6 +14779,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -14313,6 +14841,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -14368,6 +14900,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -14509,6 +15050,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
@@ -14554,6 +15099,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "zone",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -14617,7 +15171,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -14874,10 +15429,10 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method. This method supports patch semantics.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -14889,10 +15444,10 @@ namespace Google.Apis.Compute.alpha
             return new PatchRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method. This method supports patch semantics.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -14918,6 +15473,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the instance group manager.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -14976,6 +15535,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15026,6 +15594,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15081,6 +15653,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -15143,6 +15724,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -15199,6 +15784,15 @@ namespace Google.Apis.Compute.alpha
                     {
                         Name = "size",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -15260,6 +15854,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManagersResizeAdvancedRequest Body { get; set; }
@@ -15317,6 +15915,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15359,6 +15966,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the instance group manager.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15417,6 +16028,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15461,6 +16081,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15519,6 +16143,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15569,6 +16202,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15624,6 +16261,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -15730,10 +16376,10 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -15745,10 +16391,10 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Updates a managed instance group using the information that you specify in the request. The field
-        /// statefulPolicy is updated using PATCH semantics. This operation is marked as DONE when the group is updated
-        /// even if the instances in the group have not yet been updated. You must separately verify the status of the
-        /// individual instances with the listmanagedinstances method.</summary>
+        /// <summary>Updates a managed instance group using the information that you specify in the request. This
+        /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
+        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// method.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -15774,6 +16420,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the instance group manager.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -15829,6 +16479,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -15894,6 +16553,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupsAddInstancesRequest Body { get; set; }
@@ -15951,6 +16614,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16002,7 +16674,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -16139,6 +16812,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -16187,6 +16864,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -16321,6 +17007,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroup Body { get; set; }
@@ -16366,6 +17056,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "zone",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -16427,7 +17126,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -16596,7 +17296,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -16757,6 +17458,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupsRemoveInstancesRequest Body { get; set; }
@@ -16814,6 +17519,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16856,6 +17570,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the instance group where the named ports are updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16911,6 +17629,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -17068,6 +17795,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceTemplate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceTemplate { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -17109,6 +17840,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -17221,6 +17961,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceTemplate Body { get; set; }
@@ -17259,6 +18003,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -17313,7 +18066,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17555,6 +18309,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.AccessConfig Body { get; set; }
@@ -17621,6 +18379,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17672,7 +18439,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -17811,6 +18579,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceAttach { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.AttachedDisk Body { get; set; }
@@ -17877,6 +18649,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17918,6 +18699,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance resource to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -17969,6 +18754,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18023,6 +18817,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the network interface.</summary>
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18093,6 +18891,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18139,6 +18946,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Disk device name to detach.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18196,6 +19007,15 @@ namespace Google.Apis.Compute.alpha
                     {
                         Name = "deviceName",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -18433,8 +19253,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("port", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Port { get; set; }
 
-            /// <summary>For the initial request, leave this field unspecified. For subsequent calls, this field should
-            /// be set to the next value that was returned in the previous call.</summary>
+            /// <summary>Returns output starting from a specific byte position. Use this to page through output when the
+            /// output is too large to return in a single request. For the initial request, leave this field
+            /// unspecified. For subsequent calls, this field should be set to the next value returned in the previous
+            /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Start { get; set; }
 
@@ -18545,6 +19367,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Instance Body { get; set; }
@@ -18592,6 +19418,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18651,7 +19486,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -18792,6 +19628,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -18842,6 +19682,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18896,6 +19745,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The device name of the disk to modify.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18965,6 +19818,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"\w[\w.-]{0,254}",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -19109,6 +19971,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstancesSetLabelsRequest Body { get; set; }
@@ -19166,6 +20032,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19209,6 +20084,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19267,6 +20146,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19310,6 +20198,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19368,6 +20260,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19409,6 +20310,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19467,6 +20372,129 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the minimum cpu/platform that this instance should be started as. This is called on a
+        /// stopped instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual SetMinCpuPlatformRequest SetMinCpuPlatform(Google.Apis.Compute.alpha.Data.InstancesSetMinCpuPlatformRequest body, string project, string zone, string instance)
+        {
+            return new SetMinCpuPlatformRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Changes the minimum cpu/platform that this instance should be started as. This is called on a
+        /// stopped instance.</summary>
+        public class SetMinCpuPlatformRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new SetMinCpuPlatform request.</summary>
+            public SetMinCpuPlatformRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstancesSetMinCpuPlatformRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.InstancesSetMinCpuPlatformRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setMinCpuPlatform"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setMinCpuPlatform"; }
+            }
+
+            /// <summary>Initializes SetMinCpuPlatform parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19508,6 +20536,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Instance name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19566,11 +20598,21 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Sets the service account on the instance.</summary>
+        /// <summary>Sets the service account on the instance. For more information, read Changing the service account
+        /// and access scopes for an instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19581,7 +20623,8 @@ namespace Google.Apis.Compute.alpha
             return new SetServiceAccountRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets the service account on the instance.</summary>
+        /// <summary>Sets the service account on the instance. For more information, read Changing the service account
+        /// and access scopes for an instance.</summary>
         public class SetServiceAccountRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetServiceAccount request.</summary>
@@ -19607,6 +20650,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19665,6 +20712,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19706,6 +20762,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19764,6 +20824,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19805,6 +20874,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -19857,6 +20930,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19900,6 +20982,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19958,6 +21044,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -20008,6 +21103,10 @@ namespace Google.Apis.Compute.alpha
             /// preserve localSSD data).</summary>
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -20069,6 +21168,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -20119,6 +21227,10 @@ namespace Google.Apis.Compute.alpha
             /// preserve localSSD data).</summary>
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -20175,6 +21287,15 @@ namespace Google.Apis.Compute.alpha
                     "discardLocalSsd", new Google.Apis.Discovery.Parameter
                     {
                         Name = "discardLocalSsd",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -20330,6 +21451,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.AccessConfig Body { get; set; }
@@ -20392,6 +21517,15 @@ namespace Google.Apis.Compute.alpha
                     {
                         Name = "networkInterface",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -20559,7 +21693,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -20802,7 +21937,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -20956,6 +22092,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.NetworksAddPeeringRequest Body { get; set; }
@@ -21004,6 +22144,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21037,6 +22186,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the network to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -21079,6 +22232,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -21187,6 +22349,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Network Body { get; set; }
@@ -21225,6 +22391,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -21277,7 +22452,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -21405,6 +22581,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.NetworksRemovePeeringRequest Body { get; set; }
@@ -21453,6 +22633,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21486,6 +22675,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the network to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -21528,6 +22721,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -21657,6 +22859,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -21690,6 +22896,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21718,6 +22933,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -21758,6 +22977,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21784,6 +23012,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -21818,6 +23050,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21848,6 +23089,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -21887,6 +23132,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -22273,6 +23527,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.DiskMoveRequest Body { get; set; }
@@ -22312,6 +23570,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22340,6 +23607,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22380,6 +23651,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22410,6 +23690,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22450,6 +23734,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22480,6 +23773,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22520,6 +23817,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22550,6 +23856,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22589,6 +23899,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -22647,6 +23966,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -22697,6 +24020,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -22825,6 +24157,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -22872,6 +24208,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -22931,7 +24276,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23076,6 +24422,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -23132,6 +24482,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -23272,6 +24631,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Autoscaler Body { get; set; }
@@ -23328,6 +24691,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -23387,6 +24759,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -23437,6 +24813,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -23669,6 +25054,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -23716,6 +25105,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -23777,7 +25175,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -23925,6 +25324,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -23981,6 +25384,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -24128,6 +25540,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.BackendService Body { get; set; }
@@ -24184,6 +25600,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -24353,7 +25778,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -24517,6 +25943,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Snapshot Body { get; set; }
@@ -24583,6 +26013,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -24626,6 +26065,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the regional persistent disk to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -24675,6 +26118,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "disk",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -24807,6 +26259,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
             /// <summary>Optional. Source image to restore onto a disk.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceImage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceImage { get; set; }
@@ -24858,6 +26314,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "sourceImage", new Google.Apis.Discovery.Parameter
@@ -24926,7 +26391,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -25069,6 +26535,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionDisksResizeRequest Body { get; set; }
@@ -25126,6 +26596,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -25167,6 +26646,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -25224,6 +26707,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -25393,6 +26885,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersAbandonInstancesRequest Body { get; set; }
@@ -25450,6 +26946,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -25490,6 +26995,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the managed instance group to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -25542,6 +27051,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -25591,6 +27109,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -25646,6 +27168,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -25785,6 +27316,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
@@ -25830,6 +27365,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "region",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -25893,7 +27437,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -26191,6 +27736,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
@@ -26248,6 +27797,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26297,6 +27855,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -26355,6 +27917,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26410,6 +27981,10 @@ namespace Google.Apis.Compute.alpha
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -26471,6 +28046,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26512,6 +28096,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -26570,6 +28158,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26614,6 +28211,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -26672,6 +28273,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26715,6 +28325,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -26770,6 +28384,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -26921,6 +28544,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.InstanceGroupManager Body { get; set; }
@@ -26975,6 +28602,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -27145,7 +28781,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27317,7 +28954,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -27476,6 +29114,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionInstanceGroupsSetNamedPortsRequest Body { get; set; }
@@ -27530,6 +29172,15 @@ namespace Google.Apis.Compute.alpha
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -27889,7 +29540,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28136,7 +29788,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28296,7 +29949,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28428,6 +30082,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -28478,6 +30136,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -28701,6 +30368,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Router Body { get; set; }
@@ -28748,6 +30419,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -28807,7 +30487,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -28952,6 +30633,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Router Body { get; set; }
@@ -29008,6 +30693,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29251,6 +30945,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Router Body { get; set; }
@@ -29308,6 +31006,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -29359,6 +31066,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("route", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Route { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -29400,6 +31111,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29508,6 +31228,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Route Body { get; set; }
@@ -29546,6 +31270,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29598,7 +31331,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -29833,6 +31567,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Snapshot { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -29874,6 +31612,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -30004,7 +31751,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30317,6 +32065,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("sslCertificate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SslCertificate { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -30358,6 +32110,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -30468,6 +32229,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.SslCertificate Body { get; set; }
@@ -30506,6 +32271,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -30558,7 +32332,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30802,7 +32577,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -30934,6 +32710,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -30985,6 +32765,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -31026,6 +32815,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the Subnetwork resource to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -31083,6 +32876,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31304,6 +33106,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.Subnetwork Body { get; set; }
@@ -31351,6 +33157,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31410,7 +33225,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -31654,6 +33470,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.SubnetworksSetPrivateIpGoogleAccessRequest Body { get; set; }
@@ -31710,6 +33530,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31861,6 +33690,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -31902,6 +33735,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32012,6 +33854,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetHttpProxy Body { get; set; }
@@ -32050,6 +33896,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32102,7 +33957,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32230,6 +34086,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMapReference Body { get; set; }
@@ -32277,6 +34137,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32413,6 +34282,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -32454,6 +34327,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32564,6 +34446,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetHttpsProxy Body { get; set; }
@@ -32602,6 +34488,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32654,7 +34549,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -32782,6 +34678,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetHttpsProxiesSetSslCertificatesRequest Body { get; set; }
@@ -32830,6 +34730,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -32865,6 +34774,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetHttpsProxy resource whose URL map is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -32913,6 +34826,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33066,7 +34988,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -33198,6 +35121,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetInstance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetInstance { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -33248,6 +35175,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33380,6 +35316,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetInstance Body { get; set; }
@@ -33427,6 +35367,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33486,7 +35435,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -33746,6 +35696,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetPoolsAddHealthCheckRequest Body { get; set; }
@@ -33803,6 +35757,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -33845,6 +35808,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetPool resource to add instances to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -33903,6 +35870,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -33954,7 +35930,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -34086,6 +36063,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -34136,6 +36117,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34370,6 +36360,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetPool Body { get; set; }
@@ -34417,6 +36411,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34476,7 +36479,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -34619,6 +36623,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetPoolsRemoveHealthCheckRequest Body { get; set; }
@@ -34676,6 +36684,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -34718,6 +36735,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetPool resource to remove instances from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -34776,6 +36797,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -34822,6 +36852,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>New failoverRatio value for the target pool.</summary>
             [Google.Apis.Util.RequestParameterAttribute("failoverRatio", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<float> FailoverRatio { get; set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -34884,6 +36918,15 @@ namespace Google.Apis.Compute.alpha
                     "failoverRatio", new Google.Apis.Discovery.Parameter
                     {
                         Name = "failoverRatio",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -35039,6 +37082,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -35080,6 +37127,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -35190,6 +37246,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetSslProxy Body { get; set; }
@@ -35228,6 +37288,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -35280,7 +37349,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -35408,6 +37478,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetSslProxiesSetBackendServiceRequest Body { get; set; }
@@ -35456,6 +37530,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -35491,6 +37574,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetSslProxy resource whose ProxyHeader is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -35540,6 +37627,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -35575,6 +37671,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetSslProxy resource whose SslCertificate resource is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -35623,6 +37723,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -35759,6 +37868,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -35800,6 +37913,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -35910,6 +38032,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetTcpProxy Body { get; set; }
@@ -35948,6 +38074,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -36000,7 +38135,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -36128,6 +38264,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetTcpProxiesSetBackendServiceRequest Body { get; set; }
@@ -36176,6 +38316,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -36211,6 +38360,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the TargetTcpProxy resource whose ProxyHeader is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -36259,6 +38412,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -36412,7 +38574,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -36544,6 +38707,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetVpnGateway { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -36594,6 +38761,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -36726,6 +38902,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.TargetVpnGateway Body { get; set; }
@@ -36773,6 +38953,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -36832,7 +39021,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -37083,6 +39273,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -37124,6 +39318,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37234,6 +39437,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -37273,6 +39480,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -37310,6 +39526,10 @@ namespace Google.Apis.Compute.alpha
             /// <summary>Name of the UrlMap scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -37358,6 +39578,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37410,7 +39639,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -37540,6 +39770,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -37587,6 +39821,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37708,6 +39951,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -37755,6 +40002,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -37910,7 +40166,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -38042,6 +40299,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("vpnTunnel", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VpnTunnel { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -38092,6 +40353,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -38224,6 +40494,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.VpnTunnel Body { get; set; }
@@ -38271,6 +40545,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -38330,7 +40613,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -38475,6 +40759,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.RegionSetLabelsRequest Body { get; set; }
@@ -38531,6 +40819,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -38888,7 +41185,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -39135,7 +41433,8 @@ namespace Google.Apis.Compute.alpha
 
             /// <summary>The maximum number of results per page that should be returned. If the number of available
             /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests.</summary>
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
             /// [default: 500]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -40488,7 +42787,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The protocol this BackendService uses to communicate with backends.
         ///
-        /// Possible values are HTTP, HTTPS, HTTP2, TCP and SSL. The default is HTTP.
+        /// Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
         ///
         /// For internal load balancing, the possible values are TCP and UDP, and the default is TCP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
@@ -40498,6 +42797,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// applicable to global backend services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>[Output Only] The resource URL for the security policy associated with this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual string SecurityPolicy { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -40557,6 +42861,19 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheKeyPolicy")]
         public virtual CacheKeyPolicy CacheKeyPolicy { get; set; } 
 
+        /// <summary>[Output Only] Names of the keys currently configured for Cloud CDN Signed URL on this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlKeyNames")]
+        public virtual System.Collections.Generic.IList<string> SignedUrlKeyNames { get; set; } 
+
+        /// <summary>Number of seconds up to which the response to a signed URL request will be cached in the CDN. After
+        /// this time period, the Signed URL will be revalidated before being served. Defaults to 1hr (3600s). If this
+        /// field is set, Cloud CDN will internally act as though all responses from this backend had a ?Cache-Control:
+        /// public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in
+        /// responses will not be altered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlTtlSec")]
+        public virtual System.Nullable<long> SignedUrlTtlSec { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -40610,7 +42927,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -40794,6 +43114,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plan")]
         public virtual string Plan { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where this commitment may be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
 
         /// <summary>List of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments
         /// must occur together.</summary>
@@ -41106,8 +43430,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -41257,7 +43580,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
         /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
         /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
+        /// paging through the results. Acceptable values are 0 to 500, inclusive. (Default: 500)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -41284,7 +43607,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>This token allows you to get the next page of results for list requests. If the number of results
+        /// is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next
+        /// list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -41541,6 +43867,26 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
+    }    
+
+    public class DistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<DistributionPolicyZoneConfiguration> Zones { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DistributionPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of the zone where managed instance group is spawning instances (for regional resources). Zone
+        /// has to belong to the region where managed instance group is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Represents a Firewall resource.</summary>
@@ -41897,9 +44243,8 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
-        /// a global TargetHttpProxy or TargetHttpsProxy resource. The forwarded traffic must be of a type appropriate
-        /// to the target object. For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires
-        /// HTTPS traffic.
+        /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
+        /// For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
         ///
         /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -42946,8 +45291,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this image. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this image. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -43131,8 +45475,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -43186,9 +45529,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Service
-        /// accounts generate access tokens that can be accessed through the metadata server and used to authenticate
-        /// applications on the instance. See Service Accounts for more information.</summary>
+        /// <summary>A list of service accounts, with their specified scopes, authorized for this instance. Only one
+        /// service account per VM instance is supported.
+        ///
+        /// Service accounts generate access tokens that can be accessed through the metadata server and used to
+        /// authenticate applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
@@ -43405,6 +45750,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Policy valid only for regional managed instance groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionPolicy")]
+        public virtual DistributionPolicy DistributionPolicy { get; set; } 
+
         /// <summary>The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The
         /// default is NO_FAILOVER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverAction")]
@@ -43464,7 +45813,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
-        /// <summary>Policy valid only for regional managed instance groups.</summary>
+        /// <summary>Policy valid only for regional managed instance groups. Deprecated in favor of
+        /// distribution_policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadingPolicy")]
         public virtual SpreadingPolicy SpreadingPolicy { get; set; } 
 
@@ -44111,8 +46461,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
-        /// <summary>Labels to apply to instances that are created from this template. Each label key/value pair must
-        /// comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -44320,14 +46669,6 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>A list of labels to apply for this instance. Changing instance labels will also change the instance
-        /// tags.
-        ///
-        /// Each label key & value must comply with RFC1035. Specifically, the name must be 1-63 characters long and
-        /// match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase
-        /// letter, and all following characters must be a dash, lowercase letter, or digit, except the last character,
-        /// which cannot be a dash. For example, "webserver-frontend": "images". A label value can also be empty (e.g.
-        /// "my-label": "").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -44350,6 +46691,16 @@ namespace Google.Apis.Compute.alpha.Data
         /// types. For example: zones/us-central1-f/machineTypes/n1-standard-1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstancesSetMinCpuPlatformRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Minimum cpu/platform this instance should be started at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44414,6 +46765,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequirements")]
+        public virtual LicenseResourceRequirements ResourceRequirements { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -44422,6 +46776,22 @@ namespace Google.Apis.Compute.alpha.Data
         /// disk from snapshot, or snapshot from disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferable")]
         public virtual System.Nullable<bool> Transferable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LicenseResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and
+        /// Instance start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minGuestCpuCount")]
+        public virtual System.Nullable<int> MinGuestCpuCount { get; set; } 
+
+        /// <summary>Minimum memory required to use the Instance. Enforced at Instance creation and Instance
+        /// start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minMemoryMb")]
+        public virtual System.Nullable<int> MinMemoryMb { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45029,7 +47399,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
-        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        /// <summary>[Deprecated] This field is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
@@ -46569,9 +48939,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The starting byte position of the output that was returned. This should match the
-        /// start parameter sent with the request. If the serial console output exceeds the size of the buffer, older
-        /// output will be overwritten by newer content and the start values will be mismatched.</summary>
+        /// <summary>The starting byte position of the output that was returned. This should match the start parameter
+        /// sent with the request. If the serial console output exceeds the size of the buffer, older output will be
+        /// overwritten by newer content and the start values will be mismatched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("start")]
         public virtual System.Nullable<long> Start { get; set; } 
 
@@ -46628,8 +48998,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
 
-        /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Each label
-        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values
+        /// may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -46730,6 +49100,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Deprecated in favor of distribution policy.</summary>
     public class SpreadingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
@@ -47436,8 +49807,8 @@ namespace Google.Apis.Compute.alpha.Data
         }
     }    
 
-    /// <summary>A TargetPool resource. This resource defines a pool of instances, associated HttpHealthCheck resources,
-    /// and the fallback target pool.</summary>
+    /// <summary>A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck
+    /// resource, and the fallback target pool.</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -47477,9 +49848,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failoverRatio")]
         public virtual System.Nullable<float> FailoverRatio { get; set; } 
 
-        /// <summary>A list of URLs to the HttpHealthCheck resource. A member instance in this pool is considered
-        /// healthy if and only if all specified health checks pass. An empty list means all member instances will be
-        /// considered healthy at all times.</summary>
+        /// <summary>The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if
+        /// and only if the health checks pass. An empty list means all member instances will be considered healthy at
+        /// all times. Only HttpHealthChecks are supported. Only one health check may be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<string> HealthChecks { get; set; } 
 
@@ -47601,7 +49972,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class TargetPoolsAddHealthCheckRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of HttpHealthCheck resources to add to the target pool.</summary>
+        /// <summary>The HttpHealthCheck to add to the target pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
         public virtual System.Collections.Generic.IList<HealthCheckReference> HealthChecks { get; set; } 
 

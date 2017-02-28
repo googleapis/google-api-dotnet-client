@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161010 (648)
+ *      <tr><th>API Rev<td>20170224 (785)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -875,7 +875,7 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
 
         /// <summary>The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID
         /// must be specified. Only one ID is allowed for the ADVERTISER_ID filter type. For INSERTION_ORDER_ID or
-        /// LINE_ITEM_ID filter types all IDs must be from the same Advertiser.</summary>
+        /// LINE_ITEM_ID filter types, all IDs must be from the same Advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; } 
 

@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Tool Results firstparty API</a>
+ *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170224 (785)
+ *      <tr><th>API Rev<td>20170227 (788)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/cloud-test-lab/'>
- *              https://developers.google.com/cloud-test-lab/</a>
+ *          <td><a href='https://firebase.google.com/docs/test-lab/'>
+ *              https://firebase.google.com/docs/test-lab/</a>
  *      <tr><th>Discovery Name<td>toolresults
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud Tool Results firstparty API can be found at
- * <a href='https://developers.google.com/cloud-test-lab/'>https://developers.google.com/cloud-test-lab/</a>.
+ * <a href='https://firebase.google.com/docs/test-lab/'>https://firebase.google.com/docs/test-lab/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
