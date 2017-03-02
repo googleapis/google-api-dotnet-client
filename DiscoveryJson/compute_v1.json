@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Lca6PPKE0ApuDfZlPNSgJGpXh1I\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/2r-KYylgeCVqVKbBLdmgF6oHJmk\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20170201",
+ "revision": "20170228",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -4855,6 +4855,7 @@
      "description": "[Output Only] Name of the quota metric.",
      "enum": [
       "AUTOSCALERS",
+      "BACKEND_BUCKETS",
       "BACKEND_SERVICES",
       "CPUS",
       "CPUS_ALL_REGIONS",
@@ -4890,6 +4891,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",

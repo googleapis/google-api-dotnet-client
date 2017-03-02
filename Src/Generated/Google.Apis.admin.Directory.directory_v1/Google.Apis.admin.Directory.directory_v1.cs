@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20170216 (777)
+ *      <tr><th>API Rev<td>20161214 (713)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -10481,18 +10481,12 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phones")]
         public virtual System.Collections.Generic.IList<UserPhone> Phones { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
-        public virtual object PosixAccounts { get; set; } 
-
         /// <summary>username of User</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryEmail")]
         public virtual string PrimaryEmail { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<UserRelation> Relations { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
-        public virtual object SshPublicKeys { get; set; } 
 
         /// <summary>Indicates if user is suspended</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
@@ -10818,45 +10812,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
-    /// <summary>JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.</summary>
-    public class UserPosixAccount : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The GECOS (user information) entry for this account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gecos")]
-        public virtual string Gecos { get; set; } 
-
-        /// <summary>The default group ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gid")]
-        public virtual System.Nullable<int> Gid { get; set; } 
-
-        /// <summary>The path to the home directory for this account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
-        public virtual string HomeDirectory { get; set; } 
-
-        /// <summary>If this is user's primary account within the SystemId.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<bool> Primary { get; set; } 
-
-        /// <summary>The path to the login shell for this account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shell")]
-        public virtual string Shell { get; set; } 
-
-        /// <summary>System identifier for which account Username or Uid apply to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
-        public virtual string SystemId { get; set; } 
-
-        /// <summary>The user ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual System.Nullable<int> Uid { get; set; } 
-
-        /// <summary>The username of the account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>JSON template for a relation entry.</summary>
     public class UserRelation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10872,25 +10827,6 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>The name of the relation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>JSON template for a POSIX account entry.</summary>
-    public class UserSshPublicKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An expiration time in microseconds since epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expirationTimeUsec")]
-        public virtual System.Nullable<long> ExpirationTimeUsec { get; set; } 
-
-        /// <summary>A SHA-256 fingerprint of the SSH public key. (Read-only)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; } 
-
-        /// <summary>An SSH public key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

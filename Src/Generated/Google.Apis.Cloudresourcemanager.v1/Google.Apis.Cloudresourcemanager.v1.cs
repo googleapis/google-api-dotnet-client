@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170221 (782)
+ *      <tr><th>API Rev<td>20170227 (788)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -751,8 +751,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// resource exists. The `resource` field should be the organization's resource name, e.g.
         /// "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
@@ -773,8 +773,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -881,8 +881,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
         /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
@@ -902,8 +902,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -953,8 +953,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
         /// the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
@@ -974,8 +974,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1345,8 +1345,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
@@ -1366,8 +1366,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1550,8 +1550,8 @@ namespace Google.Apis.CloudResourceManager.v1
         /// inoperable. It is important to understand how the service account is being used before removing or updating
         /// its roles.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
@@ -1599,8 +1599,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1649,8 +1649,8 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Returns permissions that a caller has on the specified Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
@@ -1669,8 +1669,8 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -2310,8 +2310,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Required field representing the resource type this id is for. At present, the only valid type is
-        /// "organization".</summary>
+        /// <summary>Required field representing the resource type this id is for. At present, the valid types are:
+        /// "organization"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

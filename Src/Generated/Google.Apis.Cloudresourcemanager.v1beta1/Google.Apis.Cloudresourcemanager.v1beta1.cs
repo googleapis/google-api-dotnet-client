@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170221 (782)
+ *      <tr><th>API Rev<td>20170227 (788)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -432,8 +432,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// resource exists. The `resource` field should be the organization's resource name, e.g.
         /// "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
@@ -454,8 +454,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -523,6 +523,16 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
+            /// where listing should continue. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Organizations to return in the response. This field is
+            /// optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
             /// rules are case-insensitive.
             ///
@@ -536,16 +546,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
-            /// where listing should continue. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Organizations to return in the response. This field is
-            /// optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -572,15 +572,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -598,6 +589,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -605,8 +605,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
         /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
@@ -626,8 +626,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -677,8 +677,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
         /// the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
@@ -698,8 +698,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1150,8 +1150,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
@@ -1171,8 +1171,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1238,6 +1238,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
@@ -1254,20 +1268,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1294,15 +1294,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1315,6 +1306,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1355,8 +1355,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// inoperable. It is important to understand how the service account is being used before removing or updating
         /// its roles.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v1beta1.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
@@ -1404,8 +1404,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually specified
-            /// as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -1454,8 +1454,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
 
         /// <summary>Returns permissions that a caller has on the specified Project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-        /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v1beta1.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
@@ -1474,8 +1474,8 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 

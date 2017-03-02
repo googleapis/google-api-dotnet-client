@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170209 (770)
+ *      <tr><th>API Rev<td>20170227 (788)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -72,6 +72,7 @@ namespace Google.Apis.Drive.v3
             permissions = new PermissionsResource(this);
             replies = new RepliesResource(this);
             revisions = new RevisionsResource(this);
+            teamdrives = new TeamdrivesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -192,6 +193,14 @@ namespace Google.Apis.Drive.v3
         public virtual RevisionsResource Revisions
         {
             get { return revisions; }
+        }
+
+        private readonly TeamdrivesResource teamdrives;
+
+        /// <summary>Gets the Teamdrives resource.</summary>
+        public virtual TeamdrivesResource Teamdrives
+        {
+            get { return teamdrives; }
         }
     }
 
@@ -411,6 +420,16 @@ namespace Google.Apis.Drive.v3
             }
 
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>The ID of the Team Drive for which the starting pageToken for listing future changes from that
+            /// Team Drive will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TeamDriveId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -435,11 +454,29 @@ namespace Google.Apis.Drive.v3
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Lists changes for a user.</summary>
+        /// <summary>Lists the changes for a user or Team Drive.</summary>
         /// <param name="pageToken">The token for continuing a previous list request on the next page. This should be set to the
         /// value of 'nextPageToken' from the previous response or to the response from the getStartPageToken
         /// method.</param>
@@ -448,7 +485,7 @@ namespace Google.Apis.Drive.v3
             return new ListRequest(service, pageToken);
         }
 
-        /// <summary>Lists changes for a user.</summary>
+        /// <summary>Lists the changes for a user or Team Drive.</summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ChangeList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -466,11 +503,23 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; private set; }
 
-            /// <summary>Whether to include changes indicating that items have left the view of the changes list, for
-            /// example by deletion or lost access.</summary>
+            /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
+            /// the time of the request, even when a file was removed from the list of changes and there will be no
+            /// further change entries for this file.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
+
+            /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
+            /// for example by deletion or loss of access.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
+
+            /// <summary>Whether Team Drive files or changes should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>The maximum number of changes to return per page.</summary>
             /// [default: 100]
@@ -491,6 +540,16 @@ namespace Google.Apis.Drive.v3
             /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>The Team Drive from which changes will be returned. If specified the change IDs will be
+            /// reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TeamDriveId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -526,12 +585,30 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeCorpusRemovals",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "includeRemoved", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeRemoved",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "true",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeTeamDriveItems",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -559,6 +636,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "drive",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
             }
@@ -594,11 +689,23 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; private set; }
 
-            /// <summary>Whether to include changes indicating that items have left the view of the changes list, for
-            /// example by deletion or lost access.</summary>
+            /// <summary>Whether changes should include the file resource if the file is still accessible by the user at
+            /// the time of the request, even when a file was removed from the list of changes and there will be no
+            /// further change entries for this file.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeCorpusRemovals", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeCorpusRemovals { get; set; }
+
+            /// <summary>Whether to include changes indicating that items have been removed from the list of changes,
+            /// for example by deletion or loss of access.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeRemoved", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeRemoved { get; set; }
+
+            /// <summary>Whether Team Drive files or changes should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>The maximum number of changes to return per page.</summary>
             /// [default: 100]
@@ -619,6 +726,16 @@ namespace Google.Apis.Drive.v3
             /// [default: drive]
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>The Team Drive from which changes will be returned. If specified the change IDs will be
+            /// reflective of the Team Drive; use the combined Team Drive ID and change ID as an identifier.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TeamDriveId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -660,12 +777,30 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "includeCorpusRemovals", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeCorpusRemovals",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "includeRemoved", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeRemoved",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "true",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeTeamDriveItems",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -693,6 +828,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "drive",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
             }
@@ -1279,6 +1432,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.File Body { get; set; }
@@ -1345,6 +1503,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1384,6 +1551,11 @@ namespace Google.Apis.Drive.v3
             /// <summary>A language hint for OCR processing during image import (ISO 639-1 code).</summary>
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
             /// [default: false]
@@ -1445,6 +1617,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1533,6 +1714,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("ocrLanguage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OcrLanguage { get; set; }
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
@@ -1546,16 +1732,18 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the target is a
-        /// folder, all descendants owned by the user are also deleted.</summary>
+        /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to
+        /// a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
+        /// by the user are also deleted.</summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual DeleteRequest Delete(string fileId)
         {
             return new DeleteRequest(service, fileId);
         }
 
-        /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the target is a
-        /// folder, all descendants owned by the user are also deleted.</summary>
+        /// <summary>Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to
+        /// a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned
+        /// by the user are also deleted.</summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1570,6 +1758,11 @@ namespace Google.Apis.Drive.v3
             /// <summary>The ID of the file.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1602,6 +1795,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
             }
@@ -1858,6 +2060,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1895,6 +2102,15 @@ namespace Google.Apis.Drive.v3
                     "acknowledgeAbuse", new Google.Apis.Discovery.Parameter
                     {
                         Name = "acknowledgeAbuse",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -1943,12 +2159,18 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The source of files to list.</summary>
-            /// [default: user]
+            /// <summary>Comma-separated list of bodies of items (files/documents) to which the query applies. Supported
+            /// bodies are 'user', 'domain', 'teamDrive' and 'allTeamDrives'. 'allTeamDrives' must be combined with
+            /// 'user'; all other values must be used in isolation. Prefer 'user' or 'teamDrive' to 'allTeamDrives' for
+            /// efficiency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("corpora", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Corpora { get; set; }
+
+            /// <summary>The source of files to list. Deprecated: use 'corpora' instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("corpus", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CorpusEnum> Corpus { get; set; }
 
-            /// <summary>The source of files to list.</summary>
+            /// <summary>The source of files to list. Deprecated: use 'corpora' instead.</summary>
             public enum CorpusEnum
             {
                 /// <summary>Files shared to the user's domain.</summary>
@@ -1958,6 +2180,11 @@ namespace Google.Apis.Drive.v3
                 [Google.Apis.Util.StringValueAttribute("user")]
                 User,
             }
+
+            /// <summary>Whether Team Drive items should be included in results.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
             /// <summary>A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder',
             /// 'modifiedByMeTime', 'modifiedTime', 'name', 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred',
@@ -1990,6 +2217,15 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>ID of Team Drive to search.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TeamDriveId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2015,12 +2251,30 @@ namespace Google.Apis.Drive.v3
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "corpora", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "corpora",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "corpus", new Google.Apis.Discovery.Parameter
                     {
                         Name = "corpus",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "user",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeTeamDriveItems", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeTeamDriveItems",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2066,6 +2320,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "drive",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
                         Pattern = null,
                     });
             }
@@ -2114,6 +2386,11 @@ namespace Google.Apis.Drive.v3
             /// <summary>A comma-separated list of parent IDs to remove.</summary>
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
             /// [default: false]
@@ -2193,6 +2470,15 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2287,6 +2573,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
             /// <summary>Whether to use the uploaded content as indexable text.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("useContentAsIndexableText", Google.Apis.Util.RequestParameterType.Query)]
@@ -2333,6 +2624,11 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2382,6 +2678,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = "false",
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
             /// <summary>Gets the media downloader.</summary>
@@ -2425,15 +2730,15 @@ namespace Google.Apis.Drive.v3
         }
 
 
-        /// <summary>Creates a permission for a file.</summary>
+        /// <summary>Creates a permission for a file or Team Drive.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="fileId">The ID of the file.</param>
+        /// <param name="fileId">The ID of the file or Team Drive.</param>
         public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.Permission body, string fileId)
         {
             return new CreateRequest(service, body, fileId);
         }
 
-        /// <summary>Creates a permission for a file.</summary>
+        /// <summary>Creates a permission for a file or Team Drive.</summary>
         public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Permission>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2446,7 +2751,7 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file.</summary>
+            /// <summary>The ID of the file or Team Drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -2459,6 +2764,11 @@ namespace Google.Apis.Drive.v3
             /// transfers.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sendNotificationEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SendNotificationEmail { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to transfer ownership to the specified user and downgrade the current owner to a
             /// writer. This parameter is required as an acknowledgement of the side effect.</summary>
@@ -2524,6 +2834,15 @@ namespace Google.Apis.Drive.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "transferOwnership", new Google.Apis.Discovery.Parameter
                     {
                         Name = "transferOwnership",
@@ -2537,7 +2856,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Deletes a permission.</summary>
-        /// <param name="fileId">The ID of the file.</param>
+        /// <param name="fileId">The ID of the file or Team Drive.</param>
         /// <param name="permissionId">The ID of the
         /// permission.</param>
         public virtual DeleteRequest Delete(string fileId, string permissionId)
@@ -2558,13 +2877,18 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file.</summary>
+            /// <summary>The ID of the file or Team Drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
             /// <summary>The ID of the permission.</summary>
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2608,6 +2932,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2641,6 +2974,11 @@ namespace Google.Apis.Drive.v3
             /// <summary>The ID of the permission.</summary>
             [Google.Apis.Util.RequestParameterAttribute("permissionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PermissionId { get; private set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2684,18 +3022,27 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Lists a file's permissions.</summary>
-        /// <param name="fileId">The ID of the file.</param>
+        /// <summary>Lists a file's or Team Drive's permissions.</summary>
+        /// <param name="fileId">The ID of the file or Team Drive.</param>
         public virtual ListRequest List(string fileId)
         {
             return new ListRequest(service, fileId);
         }
 
-        /// <summary>Lists a file's permissions.</summary>
+        /// <summary>Lists a file's or Team Drive's permissions.</summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.PermissionList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2707,9 +3054,27 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file.</summary>
+            /// <summary>The ID of the file or Team Drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
+
+            /// <summary>The maximum number of permissions to return per page. When not set for files in a Team Drive,
+            /// at most 100 results will be returned. When not set for files that are not in a Team Drive, the entire
+            /// list will be returned.</summary>
+            /// [minimum: 1]
+            /// [maximum: 100]
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of 'nextPageToken' from the previous response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2744,13 +3109,40 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
 
         /// <summary>Updates a permission with patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="fileId">The ID of the file.</param>
+        /// <param name="fileId">The ID of the file or Team Drive.</param>
         /// <param name="permissionId">The ID of the
         /// permission.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Permission body, string fileId, string permissionId)
@@ -2772,7 +3164,7 @@ namespace Google.Apis.Drive.v3
             }
 
 
-            /// <summary>The ID of the file.</summary>
+            /// <summary>The ID of the file or Team Drive.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -2784,6 +3176,11 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("removeExpiration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RemoveExpiration { get; set; }
+
+            /// <summary>Whether the requesting application supports Team Drives.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
 
             /// <summary>Whether to transfer ownership to the specified user and downgrade the current owner to a
             /// writer. This parameter is required as an acknowledgement of the side effect.</summary>
@@ -2843,6 +3240,15 @@ namespace Google.Apis.Drive.v3
                     "removeExpiration", new Google.Apis.Discovery.Parameter
                     {
                         Name = "removeExpiration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "supportsTeamDrives", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "supportsTeamDrives",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -3760,6 +4166,361 @@ namespace Google.Apis.Drive.v3
 
         }
     }
+
+    /// <summary>The "teamdrives" collection of methods.</summary>
+    public class TeamdrivesResource
+    {
+        private const string Resource = "teamdrives";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TeamdrivesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a new Team Drive.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="requestId">An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+        /// creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating
+        /// duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be
+        /// returned.</param>
+        public virtual CreateRequest Create(Google.Apis.Drive.v3.Data.TeamDrive body, string requestId)
+        {
+            return new CreateRequest(service, body, requestId);
+        }
+
+        /// <summary>Creates a new Team Drive.</summary>
+        public class CreateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string requestId)
+                : base(service)
+            {
+                RequestId = requestId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+            /// creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid
+            /// creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409
+            /// error will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.TeamDrive Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "teamdrives"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain
+        /// any untrashed items.</summary>
+        /// <param name="teamDriveId">The ID of the Team Drive</param>
+        public virtual DeleteRequest Delete(string teamDriveId)
+        {
+            return new DeleteRequest(service, teamDriveId);
+        }
+
+        /// <summary>Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain
+        /// any untrashed items.</summary>
+        public class DeleteRequest : DriveBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string teamDriveId)
+                : base(service)
+            {
+                TeamDriveId = teamDriveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the Team Drive</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TeamDriveId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "teamdrives/{teamDriveId}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets a Team Drive's metadata by ID.</summary>
+        /// <param name="teamDriveId">The ID of the Team Drive</param>
+        public virtual GetRequest Get(string teamDriveId)
+        {
+            return new GetRequest(service, teamDriveId);
+        }
+
+        /// <summary>Gets a Team Drive's metadata by ID.</summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string teamDriveId)
+                : base(service)
+            {
+                TeamDriveId = teamDriveId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the Team Drive</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TeamDriveId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "teamdrives/{teamDriveId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the user's Team Drives.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists the user's Team Drives.</summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDriveList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Maximum number of Team Drives to return.</summary>
+            /// [default: 10]
+            /// [minimum: 1]
+            /// [maximum: 100]
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Page token for Team Drives.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "teamdrives"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "10",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a Team Drive's metadata</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="teamDriveId">The ID of the Team Drive</param>
+        public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.TeamDrive body, string teamDriveId)
+        {
+            return new UpdateRequest(service, body, teamDriveId);
+        }
+
+        /// <summary>Updates a Team Drive's metadata</summary>
+        public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.TeamDrive>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Drive.v3.Data.TeamDrive body, string teamDriveId)
+                : base(service)
+            {
+                TeamDriveId = teamDriveId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the Team Drive</summary>
+            [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TeamDriveId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Drive.v3.Data.TeamDrive Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "teamdrives/{teamDriveId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "teamDriveId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teamDriveId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.Drive.v3.Data
@@ -3831,10 +4592,11 @@ namespace Google.Apis.Drive.v3.Data
         }
     }    
 
-    /// <summary>A change to a file.</summary>
+    /// <summary>A change to a file or Team Drive.</summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated state of the file. Present if the file has not been removed.</summary>
+        /// <summary>The updated state of the file. Present if the type is file and the file has not been removed from
+        /// this list of changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("file")]
         public virtual File File { get; set; } 
 
@@ -3846,10 +4608,19 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether the file has been removed from the view of the changes list, for example by deletion or
-        /// lost access.</summary>
+        /// <summary>Whether the file or Team Drive has been removed from this list of changes, for example by deletion
+        /// or loss of access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removed")]
         public virtual System.Nullable<bool> Removed { get; set; } 
+
+        /// <summary>The updated state of the Team Drive. Present if the type is teamDrive, the user is still a member
+        /// of the Team Drive, and the Team Drive has not been removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDrive")]
+        public virtual TeamDrive TeamDrive { get; set; } 
+
+        /// <summary>The ID of the Team Drive associated with this change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
+        public virtual string TeamDriveId { get; set; } 
 
         /// <summary>The time of this change (RFC 3339 date-time).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
@@ -3868,6 +4639,10 @@ namespace Google.Apis.Drive.v3.Data
                 TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        /// <summary>The type of the change. Possible values are file and teamDrive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4082,7 +4857,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appProperties")]
         public virtual System.Collections.Generic.IDictionary<string,string> AppProperties { get; set; } 
 
-        /// <summary>Capabilities the current user has on the file.</summary>
+        /// <summary>Capabilities the current user has on the file. Each capability corresponds to a fine-grained action
+        /// that a user may take.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual File.CapabilitiesData Capabilities { get; set; } 
 
@@ -4135,6 +4911,11 @@ namespace Google.Apis.Drive.v3.Data
         /// contain a valid extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullFileExtension")]
         public virtual string FullFileExtension { get; set; } 
+
+        /// <summary>Whether any users are granted file access directly on this file. This field is only populated for
+        /// Team Drive files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasAugmentedPermissions")]
+        public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; } 
 
         /// <summary>Whether this file has a thumbnail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasThumbnail")]
@@ -4231,12 +5012,12 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalFilename")]
         public virtual string OriginalFilename { get; set; } 
 
-        /// <summary>Whether the user owns the file.</summary>
+        /// <summary>Whether the user owns the file. Not populated for Team Drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownedByMe")]
         public virtual System.Nullable<bool> OwnedByMe { get; set; } 
 
-        /// <summary>The owners of the file. Currently, only certain legacy files may have more than one
-        /// owner.</summary>
+        /// <summary>The owners of the file. Currently, only certain legacy files may have more than one owner. Not
+        /// populated for Team Drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; } 
 
@@ -4247,7 +5028,7 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<string> Parents { get; set; } 
 
         /// <summary>The full list of permissions for the file. This is only available if the requesting user can share
-        /// the file.</summary>
+        /// the file. Not populated for Team Drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
 
@@ -4261,7 +5042,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quotaBytesUsed")]
         public virtual System.Nullable<long> QuotaBytesUsed { get; set; } 
 
-        /// <summary>Whether the file has been shared.</summary>
+        /// <summary>Whether the file has been shared. Not populated for Team Drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shared")]
         public virtual System.Nullable<bool> Shared { get; set; } 
 
@@ -4301,6 +5082,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("starred")]
         public virtual System.Nullable<bool> Starred { get; set; } 
 
+        /// <summary>ID of the Team Drive the file resides in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDriveId")]
+        public virtual string TeamDriveId { get; set; } 
+
         /// <summary>A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours.
         /// Only populated when the requesting app can access the file's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
@@ -4314,6 +5099,30 @@ namespace Google.Apis.Drive.v3.Data
         /// owner may trash a file, and other users cannot see files in the owner's trash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
         public virtual System.Nullable<bool> Trashed { get; set; } 
+
+        /// <summary>The time that the item was trashed (RFC 3339 date-time). Only populated for Team Drive
+        /// files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trashedTime")]
+        public virtual string TrashedTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TrashedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> TrashedTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(TrashedTimeRaw);
+            }
+            set
+            {
+                TrashedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
+        /// <summary>If the file has been explicitly trashed, the user who trashed it. Only populated for Team Drive
+        /// files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trashingUser")]
+        public virtual User TrashingUser { get; set; } 
 
         /// <summary>A monotonically increasing version number for the file. This reflects every change made to the file
         /// on the server, even those not visible to the user.</summary>
@@ -4360,7 +5169,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webViewLink")]
         public virtual string WebViewLink { get; set; } 
 
-        /// <summary>Whether users with only writer permission can modify the file's permissions.</summary>
+        /// <summary>Whether users with only writer permission can modify the file's permissions. Not populated for Team
+        /// Drive files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writersCanShare")]
         public virtual System.Nullable<bool> WritersCanShare { get; set; } 
 
@@ -4368,28 +5178,83 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Capabilities the current user has on the file.</summary>
+        /// <summary>Capabilities the current user has on the file. Each capability corresponds to a fine-grained action
+        /// that a user may take.</summary>
         public class CapabilitiesData
         {
+            /// <summary>Whether the user can add children to this folder. This is always false when the item is not a
+            /// folder.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
+            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+
             /// <summary>Whether the user can comment on the file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
             public virtual System.Nullable<bool> CanComment { get; set; } 
 
-            /// <summary>Whether the user can copy the file.</summary>
+            /// <summary>Whether the user can copy the file. For a Team Drive item, whether non-folder descendants of
+            /// this item, or this item itself if it is not a folder, can be copied.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; } 
+
+            /// <summary>Whether the file can be deleted by the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
+            public virtual System.Nullable<bool> CanDelete { get; set; } 
+
+            /// <summary>Whether the file can be downloaded by the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
+            public virtual System.Nullable<bool> CanDownload { get; set; } 
 
             /// <summary>Whether the user can edit the file's content.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; } 
 
-            /// <summary>Whether the current user has read access to the Revisions resource of the file.</summary>
+            /// <summary>Whether the user can list the children of this folder. This is always false when the item is
+            /// not a folder.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
+            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+
+            /// <summary>Whether the current user can move this item into a Team Drive. If the item is in a Team Drive,
+            /// this field is equivalent to canMoveTeamDriveItem.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemIntoTeamDrive")]
+            public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; } 
+
+            /// <summary>Whether the user can move this Team Drive item by changing its parent. Note that a request to
+            /// change the parent for this item may still fail depending on the new parent that is being added. Only
+            /// populated for Team Drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canMoveTeamDriveItem")]
+            public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; } 
+
+            /// <summary>Whether the user has read access to the Revisions resource of the file. For a Team Drive item,
+            /// whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can
+            /// be read.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+
+            /// <summary>Whether the user has read access to the Team Drive to which this file belongs. Only populated
+            /// for Team Drive files.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canReadTeamDrive")]
+            public virtual System.Nullable<bool> CanReadTeamDrive { get; set; } 
+
+            /// <summary>Whether the user can remove children from this folder. This is always false when the item is
+            /// not a folder.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
+            public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+
+            /// <summary>Whether the file can be renamed by the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
+            public virtual System.Nullable<bool> CanRename { get; set; } 
 
             /// <summary>Whether the user can modify the file's permissions and sharing settings.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
             public virtual System.Nullable<bool> CanShare { get; set; } 
+
+            /// <summary>Whether the file can be trashed by the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canTrash")]
+            public virtual System.Nullable<bool> CanTrash { get; set; } 
+
+            /// <summary>Whether the file can be restored from the trash by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canUntrash")]
+            public virtual System.Nullable<bool> CanUntrash { get; set; } 
 
         }    
 
@@ -4558,6 +5423,13 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; } 
 
+        /// <summary>Whether the search process was incomplete. If true, then some search results may be missing, since
+        /// all documents were not searched. This may occur when searching multiple Team Drives with the
+        /// "user,allTeamDrives" corpora, but all corpora could not be searched. When this happens, it is suggested that
+        /// clients narrow their query by choosing a different corpus such as "user" or "teamDrive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incompleteSearch")]
+        public virtual System.Nullable<bool> IncompleteSearch { get; set; } 
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#fileList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
@@ -4612,7 +5484,9 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
 
-        /// <summary>The time at which this permission will expire (RFC 3339 date-time).</summary>
+        /// <summary>The time at which this permission will expire (RFC 3339 date-time). Expiration times have the
+        /// following restrictions: - They can only be set on user and group permissions - The time must be in the
+        /// future - The time cannot be more than a year in the future</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw { get; set; }
 
@@ -4643,10 +5517,15 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("photoLink")]
         public virtual string PhotoLink { get; set; } 
 
-        /// <summary>The role granted by this permission. Valid values are: - owner - writer - commenter -
-        /// reader</summary>
+        /// <summary>The role granted by this permission. While new values may be supported in the future, the following
+        /// are currently allowed: - organizer - owner - writer - commenter - reader</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
+
+        /// <summary>Details of whether the Permissions on this Team Drive item are inherited or directly on this item.
+        /// This is an output-only field which is present only for Team Drive items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
+        public virtual System.Collections.Generic.IList<Permission.TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
 
         /// <summary>The type of the grantee. Valid values are: - user - group - domain - anyone</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -4654,6 +5533,31 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        public class TeamDrivePermissionDetailsData
+        {
+            /// <summary>Whether this permission is inherited. This field is always populated. This is an output-only
+            /// field.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("inherited")]
+            public virtual System.Nullable<bool> Inherited { get; set; } 
+
+            /// <summary>The ID of the item from which this permission is inherited. This is an output-only field and is
+            /// only populated for members of the Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("inheritedFrom")]
+            public virtual string InheritedFrom { get; set; } 
+
+            /// <summary>The primary role for this user. While new values may be added in the future, the following are
+            /// currently possible: - organizer - writer - commenter - reader</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("role")]
+            public virtual string Role { get; set; } 
+
+            /// <summary>The Team Drive permission type for this user. While new values may be added in future, the
+            /// following are currently possible: - file - - member</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionType")]
+            public virtual string TeamDrivePermissionType { get; set; } 
+
+        }
     }    
 
     /// <summary>A list of permissions for a file.</summary>
@@ -4663,7 +5567,14 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The list of permissions.</summary>
+        /// <summary>The page token for the next page of permissions. This field will be absent if the end of the
+        /// permissions list has been reached. If the token is rejected for any reason, it should be discarded, and
+        /// pagination should be restarted from the first page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of permissions. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<Permission> Permissions { get; set; } 
 
@@ -4873,6 +5784,112 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>The starting page token for listing changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPageToken")]
         public virtual string StartPageTokenValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of a Team Drive.</summary>
+    public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Capabilities the current user has on this Team Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual TeamDrive.CapabilitiesData Capabilities { get; set; } 
+
+        /// <summary>The ID of this Team Drive which is also the ID of the top level folder for this Team
+        /// Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#teamDrive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of this Team Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Capabilities the current user has on this Team Drive.</summary>
+        public class CapabilitiesData
+        {
+            /// <summary>Whether the current user can add children to folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
+            public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+
+            /// <summary>Whether the current user can comment on files in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
+            public virtual System.Nullable<bool> CanComment { get; set; } 
+
+            /// <summary>Whether files in this Team Drive can be copied by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
+            public virtual System.Nullable<bool> CanCopy { get; set; } 
+
+            /// <summary>Whether this Team Drive can be deleted by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDeleteTeamDrive")]
+            public virtual System.Nullable<bool> CanDeleteTeamDrive { get; set; } 
+
+            /// <summary>Whether files in this Team Drive can be downloaded by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
+            public virtual System.Nullable<bool> CanDownload { get; set; } 
+
+            /// <summary>Whether files in this Team Drive can be edited by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
+            public virtual System.Nullable<bool> CanEdit { get; set; } 
+
+            /// <summary>Whether the current user can list the children of folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
+            public virtual System.Nullable<bool> CanListChildren { get; set; } 
+
+            /// <summary>Whether the current user can add members to this Team Drive or remove them or change their
+            /// role.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canManageMembers")]
+            public virtual System.Nullable<bool> CanManageMembers { get; set; } 
+
+            /// <summary>Whether the current user has read access to the Revisions resource of files in this Team
+            /// Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
+            public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
+
+            /// <summary>Whether the current user can remove children from folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
+            public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
+
+            /// <summary>Whether files or folders in this Team Drive can be renamed by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
+            public virtual System.Nullable<bool> CanRename { get; set; } 
+
+            /// <summary>Whether this Team Drive can be renamed by the current user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRenameTeamDrive")]
+            public virtual System.Nullable<bool> CanRenameTeamDrive { get; set; } 
+
+            /// <summary>Whether the current user can share files or folders in this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
+            public virtual System.Nullable<bool> CanShare { get; set; } 
+
+        }
+    }    
+
+    /// <summary>A list of Team Drives.</summary>
+    public class TeamDriveList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "drive#teamDriveList".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The page token for the next page of Team Drives. This will be absent if the end of the Team Drives
+        /// list has been reached. If the token is rejected for any reason, it should be discarded, and pagination
+        /// should be restarted from the first page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of Team Drives. If nextPageToken is populated, then this list may be incomplete and an
+        /// additional page of results should be fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDrives")]
+        public virtual System.Collections.Generic.IList<TeamDrive> TeamDrives { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
