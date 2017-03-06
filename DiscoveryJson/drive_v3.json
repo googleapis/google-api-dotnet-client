@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/Ce5ehw696Yg7pzegv8eSmeGWRhk\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_OPinYCRtT0LlK4YpUqsg4iEUmE\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20170227",
+ "revision": "20170228",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -2922,7 +2922,7 @@
     "update": {
      "id": "drive.teamdrives.update",
      "path": "teamdrives/{teamDriveId}",
-     "httpMethod": "PUT",
+     "httpMethod": "PATCH",
      "description": "Updates a Team Drive's metadata",
      "parameters": {
       "teamDriveId": {

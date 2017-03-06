@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170208 (769)
+ *      <tr><th>API Rev<td>20170224 (785)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1163,7 +1163,9 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Maximum number of buckets to return.</summary>
+            /// <summary>Maximum number of buckets to return in a single response. The service will use this parameter
+            /// or 1,000 items, whichever is smaller.</summary>
+            /// [default: 1000]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -1231,7 +1233,7 @@ namespace Google.Apis.Storage.v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4180,8 +4182,10 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("delimiter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Delimiter { get; set; }
 
-            /// <summary>Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total
-            /// results may be returned than requested. The default value of this parameter is 1,000 items.</summary>
+            /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
+            /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
+            /// parameter or 1,000 items, whichever is smaller.</summary>
+            /// [default: 1000]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -4263,7 +4267,7 @@ namespace Google.Apis.Storage.v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -5140,8 +5144,10 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("delimiter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Delimiter { get; set; }
 
-            /// <summary>Maximum number of items plus prefixes to return. As duplicate prefixes are omitted, fewer total
-            /// results may be returned than requested. The default value of this parameter is 1,000 items.</summary>
+            /// <summary>Maximum number of items plus prefixes to return in a single page of responses. As duplicate
+            /// prefixes are omitted, fewer total results may be returned than requested. The service will use this
+            /// parameter or 1,000 items, whichever is smaller.</summary>
+            /// [default: 1000]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -5229,7 +5235,7 @@ namespace Google.Apis.Storage.v1
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(

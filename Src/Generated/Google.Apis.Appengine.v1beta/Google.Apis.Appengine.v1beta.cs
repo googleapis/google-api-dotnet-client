@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20170221 (782)
+ *      <tr><th>API Rev<td>20170302 (791)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -678,6 +678,10 @@ namespace Google.Apis.Appengine.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -685,10 +689,6 @@ namespace Google.Apis.Appengine.v1beta
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -724,6 +724,15 @@ namespace Google.Apis.Appengine.v1beta
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -736,15 +745,6 @@ namespace Google.Apis.Appengine.v1beta
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1169,7 +1169,9 @@ namespace Google.Apis.Appengine.v1beta
 
                     }
 
-                    /// <summary>Lists the instances of a version.</summary>
+                    /// <summary>Lists the instances of a version.Tip: To aggregate details about instances over time,
+                    /// see the Stackdriver Monitoring API
+                    /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).</summary>
                     /// <param name="appsId">Part of `parent`. Name of the parent Version resource. Example:
                     /// apps/myapp/services/default/versions/v1.</param>
                     /// <param name="servicesId">Part of `parent`. See
@@ -1181,7 +1183,9 @@ namespace Google.Apis.Appengine.v1beta
                         return new ListRequest(service, appsId, servicesId, versionsId);
                     }
 
-                    /// <summary>Lists the instances of a version.</summary>
+                    /// <summary>Lists the instances of a version.Tip: To aggregate details about instances over time,
+                    /// see the Stackdriver Monitoring API
+                    /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).</summary>
                     public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListInstancesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1208,13 +1212,13 @@ namespace Google.Apis.Appengine.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string VersionsId { get; private set; }
 
-                        /// <summary>Continuation token for fetching the next page of results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>Maximum results to return per page.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1268,18 +1272,18 @@ namespace Google.Apis.Appengine.v1beta
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2573,6 +2577,11 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
+        /// <summary>The Google Container Registry domain used for storing managed build docker images for this
+        /// application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcrDomain")]
+        public virtual string GcrDomain { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("iap")]
         public virtual IdentityAwareProxy Iap { get; set; } 
 
@@ -2591,6 +2600,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Serving status of this application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
+        public virtual string ServingStatus { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

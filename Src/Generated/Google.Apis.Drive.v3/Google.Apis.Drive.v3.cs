@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170227 (788)
+ *      <tr><th>API Rev<td>20170228 (789)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4494,7 +4494,7 @@ namespace Google.Apis.Drive.v3
             ///<summary>Gets the HTTP method.</summary>
             public override string HttpMethod
             {
-                get { return "PUT"; }
+                get { return "PATCH"; }
             }
 
             ///<summary>Gets the REST path.</summary>

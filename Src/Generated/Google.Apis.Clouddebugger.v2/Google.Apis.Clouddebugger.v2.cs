@@ -445,6 +445,12 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
+                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
+                    /// the last returned response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WaitToken { get; set; }
+
                     /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
                     /// response field to `true` when the server-selected timeout has expired (recommended).
                     ///
@@ -452,12 +458,6 @@ namespace Google.Apis.CloudDebugger.v2
                     /// expired (deprecated).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
-
-                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
-                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
-                    /// the last returned response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string WaitToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -493,18 +493,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
+                            "waitToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "successOnTimeout",
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "successOnTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "successOnTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -947,18 +947,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>A wait token that, if specified, blocks the call until the breakpoints list has
-                    /// changed, or a server selected timeout has expired.  The value should be set from the last
-                    /// response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
-                    /// should be called again with the same `wait_token`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string WaitToken { get; set; }
-
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
-                    /// `google.com/intellij/v1`).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientVersion { get; set; }
-
                     /// <summary>Only breakpoints with the specified action will pass the filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("action.value", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ActionValueEnum> ActionValue { get; set; }
@@ -971,6 +959,11 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
+
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
                     /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
                     /// it includes only active breakpoints.</summary>
@@ -986,6 +979,13 @@ namespace Google.Apis.CloudDebugger.v2
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> StripResults { get; set; }
+
+                    /// <summary>A wait token that, if specified, blocks the call until the breakpoints list has
+                    /// changed, or a server selected timeout has expired.  The value should be set from the last
+                    /// response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
+                    /// should be called again with the same `wait_token`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WaitToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1021,9 +1021,9 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "action.value", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1033,15 +1033,6 @@ namespace Google.Apis.CloudDebugger.v2
                             "clientVersion", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clientVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "action.value", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1069,6 +1060,15 @@ namespace Google.Apis.CloudDebugger.v2
                             "stripResults", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "stripResults",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "waitToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

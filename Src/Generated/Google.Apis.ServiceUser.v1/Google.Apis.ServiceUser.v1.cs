@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170221 (782)
+ *      <tr><th>API Rev<td>20170227 (788)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.ServiceUser.v1
             : base(initializer)
         {
             projects = new ProjectsResource(this);
+            services = new ServicesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -113,6 +114,14 @@ namespace Google.Apis.ServiceUser.v1
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly ServicesResource services;
+
+        /// <summary>Gets the Services resource.</summary>
+        public virtual ServicesResource Services
+        {
+            get { return services; }
         }
     }
 
@@ -561,13 +570,13 @@ namespace Google.Apis.ServiceUser.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Requested size of the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -603,15 +612,6 @@ namespace Google.Apis.ServiceUser.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -620,9 +620,112 @@ namespace Google.Apis.ServiceUser.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
+        }
+    }
+
+    /// <summary>The "services" collection of methods.</summary>
+    public class ServicesResource
+    {
+        private const string Resource = "services";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ServicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Search available services.
+        ///
+        /// When no filter is specified, returns all accessible services. For authenticated users, also returns all
+        /// services the calling user has "servicemanagement.services.bind" permission for.</summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>Search available services.
+        ///
+        /// When no filter is specified, returns all accessible services. For authenticated users, also returns all
+        /// services the calling user has "servicemanagement.services.bind" permission for.</summary>
+        public class SearchRequest : ServiceUserBaseServiceRequest<Google.Apis.ServiceUser.v1.Data.SearchServicesResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Requested size of the next page of data.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "search"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services:search"; }
+            }
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 }
@@ -1072,18 +1175,6 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An EnabledService message contains the details about a service that has been enabled for use.</summary>
-    public class EnabledService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Service definition for the enabled service. Only the name and title fields will be
-        /// populated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual Service Service { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>`Endpoint` describes a network endpoint that serves a set of APIs. A service may expose any number of
     /// endpoints, and all endpoints share the same service configuration, such as quota configuration and monitoring
     /// configuration.
@@ -1453,7 +1544,7 @@ namespace Google.Apis.ServiceUser.v1.Data
 
         /// <summary>Services enabled for the specified parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<EnabledService> Services { get; set; } 
+        public virtual System.Collections.Generic.IList<PublishedService> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1965,6 +2056,38 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// docset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subpages")]
         public virtual System.Collections.Generic.IList<Page> Subpages { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The published version of a Service that is managed by Google Service Management.</summary>
+    public class PublishedService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the service.
+        ///
+        /// A valid name would be: - services/serviceuser.googleapis.com</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The service's published configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual Service Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for SearchServices method.</summary>
+    public class SearchServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token that can be passed to `ListAvailableServices` to resume a paginated query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Services available publicly or available to the authenticated caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<PublishedService> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
