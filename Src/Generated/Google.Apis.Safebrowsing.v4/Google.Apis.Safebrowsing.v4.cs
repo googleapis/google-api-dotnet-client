@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Safe Browsing APIs Version v4
+ *   Google Safe Browsing API Version v4
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing APIs</a>
+ *          <td><a href='https://developers.google.com/safe-browsing/'>Google Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20160520 (505)
+ *      <tr><th>API Rev<td>20170221 (782)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Safe Browsing APIs can be found at
+ * The complete API documentation for using Google Safe Browsing API can be found at
  * <a href='https://developers.google.com/safe-browsing/'>https://developers.google.com/safe-browsing/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -64,6 +64,8 @@ namespace Google.Apis.Safebrowsing.v4
         public SafebrowsingService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            encodedFullHashes = new EncodedFullHashesResource(this);
+            encodedUpdates = new EncodedUpdatesResource(this);
             fullHashes = new FullHashesResource(this);
             threatListUpdates = new ThreatListUpdatesResource(this);
             threatLists = new ThreatListsResource(this);
@@ -97,6 +99,22 @@ namespace Google.Apis.Safebrowsing.v4
 
 
 
+
+        private readonly EncodedFullHashesResource encodedFullHashes;
+
+        /// <summary>Gets the EncodedFullHashes resource.</summary>
+        public virtual EncodedFullHashesResource EncodedFullHashes
+        {
+            get { return encodedFullHashes; }
+        }
+
+        private readonly EncodedUpdatesResource encodedUpdates;
+
+        /// <summary>Gets the EncodedUpdates resource.</summary>
+        public virtual EncodedUpdatesResource EncodedUpdates
+        {
+            get { return encodedUpdates; }
+        }
 
         private readonly FullHashesResource fullHashes;
 
@@ -142,7 +160,18 @@ namespace Google.Apis.Safebrowsing.v4
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -151,7 +180,21 @@ namespace Google.Apis.Safebrowsing.v4
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -319,6 +362,214 @@ namespace Google.Apis.Safebrowsing.v4
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "encodedFullHashes" collection of methods.</summary>
+    public class EncodedFullHashesResource
+    {
+        private const string Resource = "encodedFullHashes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EncodedFullHashesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+
+        /// <param name="encodedRequest">A serialized FindFullHashesRequest proto.</param>
+        public virtual GetRequest Get(string encodedRequest)
+        {
+            return new GetRequest(service, encodedRequest);
+        }
+
+
+        public class GetRequest : SafebrowsingBaseServiceRequest<Google.Apis.Safebrowsing.v4.Data.FindFullHashesResponse>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string encodedRequest)
+                : base(service)
+            {
+                EncodedRequest = encodedRequest;
+                InitParameters();
+            }
+
+
+            /// <summary>A serialized FindFullHashesRequest proto.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("encodedRequest", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EncodedRequest { get; private set; }
+
+            /// <summary>A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing
+            /// API.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientId { get; set; }
+
+            /// <summary>The version of the client implementation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientVersion { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v4/encodedFullHashes/{encodedRequest}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "encodedRequest", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "encodedRequest",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "clientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "clientVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "encodedUpdates" collection of methods.</summary>
+    public class EncodedUpdatesResource
+    {
+        private const string Resource = "encodedUpdates";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EncodedUpdatesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+
+        /// <param name="encodedRequest">A serialized FetchThreatListUpdatesRequest proto.</param>
+        public virtual GetRequest Get(string encodedRequest)
+        {
+            return new GetRequest(service, encodedRequest);
+        }
+
+
+        public class GetRequest : SafebrowsingBaseServiceRequest<Google.Apis.Safebrowsing.v4.Data.FetchThreatListUpdatesResponse>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string encodedRequest)
+                : base(service)
+            {
+                EncodedRequest = encodedRequest;
+                InitParameters();
+            }
+
+
+            /// <summary>A serialized FetchThreatListUpdatesRequest proto.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("encodedRequest", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EncodedRequest { get; private set; }
+
+            /// <summary>The version of the client implementation.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientVersion { get; set; }
+
+            /// <summary>A client ID that uniquely identifies the client implementation of the Safe Browsing
+            /// API.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("clientId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ClientId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v4/encodedUpdates/{encodedRequest}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "encodedRequest", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "encodedRequest",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "clientVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "clientId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "clientId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 
@@ -637,7 +888,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual System.Nullable<int> MaxDatabaseEntries { get; set; } 
 
         /// <summary>The maximum size in number of entries. The update will not contain more entries than this value.
-        /// This should be a power of 2 between 2**10 and 2**20. If zero, no update size limit is set.</summary>
+        /// This should be a power of 2 between 2**10 and 2**20.  If zero, no update size limit is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUpdateEntries")]
         public virtual System.Nullable<int> MaxUpdateEntries { get; set; } 
 
@@ -655,7 +906,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
     }    
 
     /// <summary>Describes a Safe Browsing API update request. Clients can request updates for multiple lists in a
-    /// single request. NOTE: Field index 2 is unused. NEXT: 4</summary>
+    /// single request. NOTE: Field index 2 is unused. NEXT: 5</summary>
     public class FetchThreatListUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The client metadata.</summary>
@@ -679,7 +930,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The minimum duration the client must wait before issuing any update request. If this field is not
         /// set clients may update as soon as they want.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWaitDuration")]
-        public virtual string MinimumWaitDuration { get; set; } 
+        public virtual object MinimumWaitDuration { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -688,6 +939,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     /// <summary>Request to return full hashes matched by the provided hash prefixes.</summary>
     public class FindFullHashesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Client metadata associated with callers of higher-level APIs built on top of the client's
+        /// implementation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiClient")]
+        public virtual ClientInfo ApiClient { get; set; } 
+
         /// <summary>The client metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
         public virtual ClientInfo Client { get; set; } 
@@ -713,12 +969,12 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The minimum duration the client must wait before issuing any find hashes request. If this field is
         /// not set, clients can issue a request as soon as they want.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWaitDuration")]
-        public virtual string MinimumWaitDuration { get; set; } 
+        public virtual object MinimumWaitDuration { get; set; } 
 
         /// <summary>For requested entities that did not match the threat list, how long to cache the
         /// response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeCacheDuration")]
-        public virtual string NegativeCacheDuration { get; set; } 
+        public virtual object NegativeCacheDuration { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -809,8 +1065,8 @@ namespace Google.Apis.Safebrowsing.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
         public virtual string PlatformType { get; set; } 
 
-        /// <summary>A set of entries to remove from a local threat type's list. Repeated for the same reason as
-        /// above.</summary>
+        /// <summary>A set of entries to remove from a local threat type's list. In practice, this field is empty or
+        /// contains exactly one ThreatEntrySet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removals")]
         public virtual System.Collections.Generic.IList<ThreatEntrySet> Removals { get; set; } 
 
@@ -834,11 +1090,11 @@ namespace Google.Apis.Safebrowsing.v4.Data
     /// <summary>A single metadata entry.</summary>
     public class MetadataEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The metadata entry key.</summary>
+        /// <summary>The metadata entry key. For JSON requests, the key is base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>The metadata entry value.</summary>
+        /// <summary>The metadata entry value. For JSON requests, the value is base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
@@ -848,17 +1104,19 @@ namespace Google.Apis.Safebrowsing.v4.Data
 
     /// <summary>The uncompressed threat entries in hash format of a particular prefix length. Hashes can be anywhere
     /// from 4 to 32 bytes in size. A large majority are 4 bytes, but some hashes are lengthened if they collide with
-    /// the hash of a popular URL. Used for sending ThreatEntrySet to clients that do not support compression, or when
-    /// sending non-4-byte hashes to clients that do support compression.</summary>
+    /// the hash of a popular URL.
+    ///
+    /// Used for sending ThreatEntrySet to clients that do not support compression, or when sending non-4-byte hashes to
+    /// clients that do support compression.</summary>
     public class RawHashes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest
+        /// <summary>The number of bytes for each prefix encoded below.  This field can be anywhere from 4 (shortest
         /// prefix) to 32 (full SHA256 hash).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixSize")]
         public virtual System.Nullable<int> PrefixSize { get; set; } 
 
-        /// <summary>The hashes, all concatenated into one long string. Each hash has a prefix size of |prefix_size|
-        /// above. Hashes are sorted in lexicographic order.</summary>
+        /// <summary>The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic
+        /// order. For JSON API users, hashes are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawHashes")]
         public virtual string RawHashesValue { get; set; } 
 
@@ -908,13 +1166,13 @@ namespace Google.Apis.Safebrowsing.v4.Data
     /// should be set.</summary>
     public class ThreatEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The digest of an executable in SHA256 format. The API supports both binary and hex
-        /// digests.</summary>
+        /// <summary>The digest of an executable in SHA256 format. The API supports both binary and hex digests. For
+        /// JSON requests, digests are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
         public virtual string Digest { get; set; } 
 
         /// <summary>A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. This field is in
-        /// binary format.</summary>
+        /// binary format. For JSON requests, hashes are base64-encoded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
         public virtual string Hash { get; set; } 
 
@@ -953,12 +1211,14 @@ namespace Google.Apis.Safebrowsing.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rawIndices")]
         public virtual RawIndices RawIndices { get; set; } 
 
-        /// <summary>The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding.</summary>
+        /// <summary>The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes
+        /// are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceHashes")]
         public virtual RiceDeltaEncoding RiceHashes { get; set; } 
 
         /// <summary>The encoded local, lexicographically-sorted list indices, using a Golomb-Rice encoding. Used for
-        /// sending compressed removal indices.</summary>
+        /// sending compressed removal indices. The removal indices (uint32) are sorted in ascending order, then delta
+        /// encoded and stored as encoded_data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("riceIndices")]
         public virtual RiceDeltaEncoding RiceIndices { get; set; } 
 
@@ -1016,7 +1276,7 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The cache lifetime for the returned match. Clients must not cache this response for more than this
         /// duration to avoid false positives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheDuration")]
-        public virtual string CacheDuration { get; set; } 
+        public virtual object CacheDuration { get; set; } 
 
         /// <summary>The platform type matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]

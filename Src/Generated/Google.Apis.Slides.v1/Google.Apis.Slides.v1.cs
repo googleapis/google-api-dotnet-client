@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170223 (784)
+ *      <tr><th>API Rev<td>20170301 (790)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -747,6 +747,11 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>A list of updates to apply to the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<Request> Requests { get; set; } 
+
+        /// <summary>Provides control over how write requests are executed, such as conditionally updating the
+        /// presentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeControl")]
+        public virtual WriteControl WriteControl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1836,6 +1841,16 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageType")]
         public virtual string PageType { get; set; } 
 
+        /// <summary>The revision ID of the presentation containing this page. Can be used in update requests to assert
+        /// that the presentation revision hasn't changed since the last read operation. Only populated if the user has
+        /// edit access to the presentation.
+        ///
+        /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
+        /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users.
+        /// Callers can assume that if two revision IDs are equal then the presentation has not changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; } 
+
         /// <summary>Slide specific properties. Only set if page_type = SLIDE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slideProperties")]
         public virtual SlideProperties SlideProperties { get; set; } 
@@ -2090,10 +2105,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The notes master in the presentation. It serves three purposes:
         ///
         /// - Placeholder shapes on a notes master contain the default text styles and shape properties of all
-        /// placeholder shapes on notes pages. Specifically, a SLIDE_IMAGE placeholder shape is defined to contain the
-        /// slide thumbnail, and a BODY placeholder shape is defined to contain the speaker notes. - The notes master
-        /// page properties define the common page properties inherited by all notes pages. - Any other shapes on the
-        /// notes master will appear on all notes pages.
+        /// placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide
+        /// thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties
+        /// define the common page properties inherited by all notes pages. - Any other shapes on the notes master will
+        /// appear on all notes pages.
         ///
         /// The notes master is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notesMaster")]
@@ -2106,6 +2121,16 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The ID of the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentationId")]
         public virtual string PresentationId { get; set; } 
+
+        /// <summary>The revision ID of the presentation. Can be used in update requests to assert that the presentation
+        /// revision hasn't changed since the last read operation. Only populated if the user has edit access to the
+        /// presentation.
+        ///
+        /// The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID
+        /// is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users.
+        /// Callers can assume that if two revision IDs are equal then the presentation has not changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; } 
 
         /// <summary>The slides in the presentation. A slide inherits properties from a slide layout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slides")]
@@ -3181,8 +3206,8 @@ namespace Google.Apis.Slides.v1.Data
     /// index range.</summary>
     public class UpdateParagraphStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The location of the cell in the table containing the paragraph(s) to style. If object_id refers to
-        /// a table, cell_location must have a value. Otherwise, it must not.</summary>
+        /// <summary>The location of the cell in the table containing the paragraph(s) to style. If `object_id` refers
+        /// to a table, `cell_location` must have a value. Otherwise, it must not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
@@ -3295,8 +3320,8 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Update the styling of text in a Shape or Table.</summary>
     public class UpdateTextStyleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The location of the cell in the table containing the text to style. If object_id refers to a table,
-        /// cell_location must have a value. Otherwise, it must not.</summary>
+        /// <summary>The location of the cell in the table containing the text to style. If `object_id` refers to a
+        /// table, `cell_location` must have a value. Otherwise, it must not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
         public virtual TableCellLocation CellLocation { get; set; } 
 
@@ -3407,6 +3432,19 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The text rendered as word art.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderedText")]
         public virtual string RenderedText { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides control over how write requests are executed.</summary>
+    public class WriteControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The revision ID of the presentation required for the write request. If specified and the
+        /// `required_revision_id` doesn't exactly match the presentation's current `revision_id`, the request will not
+        /// be processed and will return a 400 bad request error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredRevisionId")]
+        public virtual string RequiredRevisionId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
