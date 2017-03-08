@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170302 (791)
+ *      <tr><th>API Rev<td>20170306 (795)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -866,13 +866,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups that are
-                /// ancestors of the specified group. The groups are returned in order, starting with the immediate
-                /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
-                /// the results are empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string AncestorsOfGroup { get; set; }
-
                 /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
                 /// parentName field contains the group name. If no groups have this parent, the results are
                 /// empty.</summary>
@@ -894,6 +887,13 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups that are
+                /// ancestors of the specified group. The groups are returned in order, starting with the immediate
+                /// parent and ending with the most distant ancestor. If the specified group has no immediate parent,
+                /// the results are empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AncestorsOfGroup { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -929,15 +929,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ancestorsOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "childrenOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "childrenOfGroup",
@@ -968,6 +959,15 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ancestorsOfGroup",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1513,6 +1513,13 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
+                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
+                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
@@ -1522,13 +1529,6 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
-                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
-                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1564,6 +1564,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1576,15 +1585,6 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1719,6 +1719,77 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>A monitoring filter that specifies which time series should be returned. The filter must
+                /// specify a single metric type, and can additionally specify metric labels and other information. For
+                /// example: metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+                /// metric.label.instance_name = "my-instance-name" </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
+                /// applied to all time series, depending on the metric type and value type of the original time series.
+                /// Alignment may change the metric type or the value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
+
+                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
+                /// applied to all time series, depending on the metric type and value type of the original time series.
+                /// Alignment may change the metric type or the value type of the time series.Time series data must be
+                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
+                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
+                /// otherwise, an error is returned.</summary>
+                public enum AggregationPerSeriesAlignerEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+                }
+
+                /// <summary>Optional. The beginning of the time interval. The default value for the start time is the
+                /// end time. The start time must not be later than the end time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalStartTime { get; set; }
+
                 /// <summary>Specifies which information is returned about the time series.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1812,77 +1883,6 @@ namespace Google.Apis.Monitoring.v3
                     REDUCEPERCENTILE05,
                 }
 
-                /// <summary>A monitoring filter that specifies which time series should be returned. The filter must
-                /// specify a single metric type, and can additionally specify metric labels and other information. For
-                /// example: metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-                /// metric.label.instance_name = "my-instance-name" </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
-                /// previous call to this method. Using this field causes the method to return additional results from
-                /// the previous method call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
-                /// applied to all time series, depending on the metric type and value type of the original time series.
-                /// Alignment may change the metric type or the value type of the time series.Time series data must be
-                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
-                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
-                /// otherwise, an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
-
-                /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
-                /// applied to all time series, depending on the metric type and value type of the original time series.
-                /// Alignment may change the metric type or the value type of the time series.Time series data must be
-                /// aligned in order to perform cross-time series reduction. If crossSeriesReducer is specified, then
-                /// perSeriesAligner must be specified and not equal ALIGN_NONE and alignmentPeriod must be specified;
-                /// otherwise, an error is returned.</summary>
-                public enum AggregationPerSeriesAlignerEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
-                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
-                }
-
-                /// <summary>Optional. The beginning of the time interval. The default value for the start time is the
-                /// end time. The start time must not be later than the end time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalStartTime { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1915,6 +1915,42 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.perSeriesAligner",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "interval.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "view", new Google.Apis.Discovery.Parameter
@@ -1974,42 +2010,6 @@ namespace Google.Apis.Monitoring.v3
                         "aggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
                         {
                             Name = "aggregation.crossSeriesReducer",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.perSeriesAligner",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "interval.startTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "interval.startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

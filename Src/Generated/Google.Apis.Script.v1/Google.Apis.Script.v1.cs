@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170301 (790)
+ *      <tr><th>API Rev<td>20170228 (789)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -94,7 +94,7 @@ namespace Google.Apis.Script.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Apps Script Execution API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your mail</summary>
+            /// <summary>Read, send, delete, and manage your email</summary>
             public static string MailGoogleCom = "https://mail.google.com/";
 
             /// <summary>Manage your calendars</summary>
