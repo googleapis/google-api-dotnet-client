@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170227 (788)
+ *      <tr><th>API Rev<td>20170306 (795)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -417,6 +417,113 @@ namespace Google.Apis.ServiceManagement.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^operations/.+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
+        /// <param name="name">The name of the operation collection.</param>
+        public virtual ListRequest List(string name)
+        {
+            return new ListRequest(service, name);
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
+        public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the operation collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^operations$",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1212,7 +1319,8 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Disable a managed service for a project.
+        /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
+        /// accidental usage that may cause unexpected billing charges or security leaks.
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
@@ -1223,7 +1331,8 @@ namespace Google.Apis.ServiceManagement.v1
             return new DisableRequest(service, body, serviceName);
         }
 
-        /// <summary>Disable a managed service for a project.
+        /// <summary>Disables a service for a project, so it can no longer be be used for the project. It prevents
+        /// accidental usage that may cause unexpected billing charges or security leaks.
         ///
         /// Operation</summary>
         public class DisableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
@@ -1286,11 +1395,10 @@ namespace Google.Apis.ServiceManagement.v1
 
         }
 
-        /// <summary>Enable a managed service for a project with default setting.
+        /// <summary>Enables a service for a project, so it can be used for the project. See [Cloud Auth
+        /// Guide](https://cloud.google.com/docs/authentication) for more information.
         ///
-        /// Operation
-        ///
-        /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
+        /// Operation</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service to enable. Specifying an unknown service name will cause the request
         /// to fail.</param>
@@ -1299,11 +1407,10 @@ namespace Google.Apis.ServiceManagement.v1
             return new EnableRequest(service, body, serviceName);
         }
 
-        /// <summary>Enable a managed service for a project with default setting.
+        /// <summary>Enables a service for a project, so it can be used for the project. See [Cloud Auth
+        /// Guide](https://cloud.google.com/docs/authentication) for more information.
         ///
-        /// Operation
-        ///
-        /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
+        /// Operation</summary>
         public class EnableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
@@ -2056,8 +2163,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
@@ -3155,6 +3263,21 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for ListServiceConfigs method.</summary>
     public class ListServiceConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4027,6 +4150,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
+        /// <summary>Output only. The source information for this configuration if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
+        public virtual SourceInfo SourceInfo { get; set; } 
+
         /// <summary>System parameter configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemParameters")]
         public virtual SystemParameters SystemParameters { get; set; } 
@@ -4072,8 +4199,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, a default mask is used: paths: "bindings, etag" This field is only
-        /// used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
+        /// field is only used by Cloud IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
@@ -4089,6 +4216,17 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// example: `"google/protobuf/source_context.proto"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Source information used to create a Service Config</summary>
+    public class SourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All files used during config generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFiles")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> SourceFiles { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

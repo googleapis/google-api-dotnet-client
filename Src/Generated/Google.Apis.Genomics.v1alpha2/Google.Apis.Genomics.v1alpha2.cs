@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20170308 (797)
+ *      <tr><th>API Rev<td>20170309 (798)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -830,13 +830,13 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
-            /// <summary>The operation to retrieve controller configuration for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OperationId { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("validationToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> ValidationToken { get; set; }
+
+            /// <summary>The operation to retrieve controller configuration for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OperationId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -863,18 +863,18 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "operationId", new Google.Apis.Discovery.Parameter
+                    "validationToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "operationId",
+                        Name = "validationToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "validationToken", new Google.Apis.Discovery.Parameter
+                    "operationId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "validationToken",
+                        Name = "operationId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1590,8 +1590,9 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// for both create time and run time. Cannot be true at run time if false at create time. If you need to ssh
         /// into a private IP VM for debugging, you can ssh to a public VM and then ssh into the private VM's Internal
         /// IP.  If noAddress is set, this pipeline run may only load docker images from Google Container Registry and
-        /// not Docker Hub. ** Note: To use this option, your project must be in Google Access for Private IPs Early
-        /// Access Program.**</summary>
+        /// not Docker Hub. Before using this, you must [configure access to Google services from internal
+        /// IPs](https://cloud.google.com/compute/docs/configure-private-google-
+        /// access#configuring_access_to_google_services_from_internal_ips).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAddress")]
         public virtual System.Nullable<bool> NoAddress { get; set; } 
 

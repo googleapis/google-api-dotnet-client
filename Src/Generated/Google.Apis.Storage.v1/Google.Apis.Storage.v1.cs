@@ -975,6 +975,66 @@ namespace Google.Apis.Storage.v1
 
         }
 
+        /// <summary>Returns an IAM policy for the specified bucket.</summary>
+        /// <param name="bucket">Name of a bucket.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string bucket)
+        {
+            return new GetIamPolicyRequest(service, bucket);
+        }
+
+        /// <summary>Returns an IAM policy for the specified bucket.</summary>
+        public class GetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket)
+                : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/iam"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Creates a new bucket.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">A valid API project identifier.</param>
@@ -1452,6 +1512,151 @@ namespace Google.Apis.Storage.v1
                     {
                         Name = "projection",
                         IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an IAM policy for the specified bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of a bucket.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Storage.v1.Data.Policy body, string bucket)
+        {
+            return new SetIamPolicyRequest(service, body, bucket);
+        }
+
+        /// <summary>Updates an IAM policy for the specified bucket.</summary>
+        public class SetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket)
+                : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Policy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/iam"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Tests a set of permissions on the given bucket to see which, if any, are held by the
+        /// caller.</summary>
+        /// <param name="bucket">Name of a bucket.</param>
+        /// <param name="permissions">Permissions to test.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(string bucket, Google.Apis.Util.Repeatable<string> permissions)
+        {
+            return new TestIamPermissionsRequest(service, bucket, permissions);
+        }
+
+        /// <summary>Tests a set of permissions on the given bucket to see which, if any, are held by the
+        /// caller.</summary>
+        public class TestIamPermissionsRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, Google.Apis.Util.Repeatable<string> permissions)
+                : base(service)
+            {
+                Bucket = bucket;
+                Permissions = permissions;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Permissions to test.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Permissions { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/iam/testPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "permissions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "permissions",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -3758,6 +3963,98 @@ namespace Google.Apis.Storage.v1
 
         }
 
+        /// <summary>Returns an IAM policy for the specified object.</summary>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param
+        /// name="storageObject">Name of the object. For information about how to URL encode object names to be path safe, see
+        /// Encoding URI Path Parts.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string bucket, string storageObject)
+        {
+            return new GetIamPolicyRequest(service, bucket, storageObject);
+        }
+
+        /// <summary>Returns an IAM policy for the specified object.</summary>
+        public class GetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject)
+                : base(service)
+            {
+                Bucket = bucket;
+                Object = storageObject;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of the object. For information about how to URL encode object names to be path safe, see
+            /// Encoding URI Path Parts.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Object { get; private set; }
+
+            /// <summary>If present, selects a specific revision of this object (as opposed to the latest version, the
+            /// default).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Generation { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/o/{object}/iam"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "object", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "object",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "generation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "generation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Stores a new object and metadata.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which to store the new object. Overrides the provided object metadata's
@@ -4863,6 +5160,215 @@ namespace Google.Apis.Storage.v1
                     "sourceGeneration", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sourceGeneration",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an IAM policy for the specified object.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param
+        /// name="storageObject">Name of the object. For information about how to URL encode object names to be path safe, see
+        /// Encoding URI Path Parts.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Storage.v1.Data.Policy body, string bucket, string storageObject)
+        {
+            return new SetIamPolicyRequest(service, body, bucket, storageObject);
+        }
+
+        /// <summary>Updates an IAM policy for the specified object.</summary>
+        public class SetIamPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Policy body, string bucket, string storageObject)
+                : base(service)
+            {
+                Bucket = bucket;
+                Object = storageObject;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of the object. For information about how to URL encode object names to be path safe, see
+            /// Encoding URI Path Parts.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Object { get; private set; }
+
+            /// <summary>If present, selects a specific revision of this object (as opposed to the latest version, the
+            /// default).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Generation { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Policy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/o/{object}/iam"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "object", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "object",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "generation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "generation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Tests a set of permissions on the given object to see which, if any, are held by the
+        /// caller.</summary>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param
+        /// name="storageObject">Name of the object. For information about how to URL encode object names to be path safe, see
+        /// Encoding URI Path Parts.</param>
+        /// <param name="permissions">Permissions to test.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(string bucket, string storageObject, Google.Apis.Util.Repeatable<string> permissions)
+        {
+            return new TestIamPermissionsRequest(service, bucket, storageObject, permissions);
+        }
+
+        /// <summary>Tests a set of permissions on the given object to see which, if any, are held by the
+        /// caller.</summary>
+        public class TestIamPermissionsRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, Google.Apis.Util.Repeatable<string> permissions)
+                : base(service)
+            {
+                Bucket = bucket;
+                Object = storageObject;
+                Permissions = permissions;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Name of the object. For information about how to URL encode object names to be path safe, see
+            /// Encoding URI Path Parts.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Object { get; private set; }
+
+            /// <summary>Permissions to test.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Permissions { get; private set; }
+
+            /// <summary>If present, selects a specific revision of this object (as opposed to the latest version, the
+            /// default).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Generation { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/o/{object}/iam/testPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "object", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "object",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "permissions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "permissions",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "generation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "generation",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6074,6 +6580,71 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A bucket/object IAM policy.</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An association between a role, which comes with a set of permissions, and members who may assume
+        /// that role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Policy.BindingsData> Bindings { get; set; } 
+
+        /// <summary>HTTP 1.1  Entity tag for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The kind of item this is. For policies, this is always storage#policy. This field is ignored on
+        /// input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ID of the resource to which this policy belongs. Will be of the form buckets/bucket for
+        /// buckets, and buckets/bucket/objects/object for objects. A specific generation may be specified by appending
+        /// #generationNumber to the end of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The current
+        /// generation can be denoted with #0. This field is ignored on input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; } 
+
+        
+
+        public class BindingsData
+        {
+            /// <summary>A collection of identifiers for members who may assume the provided role. Recognized
+            /// identifiers are as follows: - allUsers — A special identifier that represents anyone on the internet;
+            /// with or without a Google account. - allAuthenticatedUsers — A special identifier that represents anyone
+            /// who is authenticated with a Google account or a service account. - user:emailid — An email address that
+            /// represents a specific account. For example, user:alice@gmail.com or user:joe@example.com. -
+            /// serviceAccount:emailid — An email address that represents a service account. For example,
+            /// serviceAccount:my-other-app@appspot.gserviceaccount.com . - group:emailid — An email address that
+            /// represents a Google group. For example, group:admins@example.com. - domain:domain — A Google Apps domain
+            /// name that represents all the users of that domain. For example, domain:google.com or domain:example.com.
+            /// - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project -
+            /// projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project -
+            /// projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-
+            /// project</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("members")]
+            public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+            /// <summary>The role to which members belong. Two types of roles are supported: new IAM roles, which grant
+            /// permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map
+            /// directly to ACL permissions. All roles are of the format roles/storage.specificRole. The new IAM roles
+            /// are: - roles/storage.admin — Full control of Google Cloud Storage resources. -
+            /// roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects. -
+            /// roles/storage.objectCreator — Access to create objects in Google Cloud Storage. -
+            /// roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are: -
+            /// roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL
+            /// entry on an object with the READER role. - roles/storage.legacyObjectOwner — Read/write access to
+            /// existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role. -
+            /// roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL
+            /// entry on a bucket with the READER role. - roles/storage.legacyBucketWriter — Read access to buckets with
+            /// object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role. -
+            /// roles/storage.legacyBucketOwner — Read and write access to existing buckets with object
+            /// listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("role")]
+            public virtual string Role { get; set; } 
+
+        }
+    }    
+
     /// <summary>A rewrite response.</summary>
     public class RewriteResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6105,6 +6676,30 @@ namespace Google.Apis.Storage.v1.Data
         /// indicator. This property is always present in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesRewritten")]
         public virtual System.Nullable<ulong> TotalBytesRewritten { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A storage.(buckets|objects).testIamPermissions response.</summary>
+    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The kind of item this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The permissions held by the caller. Permissions are always of the format
+        /// storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as
+        /// follows: - storage.buckets.delete — Delete bucket. - storage.buckets.get — Read bucket metadata. -
+        /// storage.buckets.getIamPolicy — Read bucket IAM policy. - storage.buckets.create — Create bucket. -
+        /// storage.buckets.list — List buckets. - storage.buckets.setIamPolicy — Update bucket IAM policy. -
+        /// storage.buckets.update — Update bucket metadata. - storage.objects.delete — Delete object. -
+        /// storage.objects.get — Read object data and metadata. - storage.objects.getIamPolicy — Read object IAM
+        /// policy. - storage.objects.create — Create object. - storage.objects.list — List objects. -
+        /// storage.objects.setIamPolicy — Update object IAM policy. - storage.objects.update — Update object
+        /// metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

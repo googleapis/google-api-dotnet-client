@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170228 (789)
+ *      <tr><th>API Rev<td>20170309 (798)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -531,6 +531,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
+        /// <summary>Information of navigation behavior of a Firebase Dynamic Links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("navigationInfo")]
+        public virtual NavigationInfo NavigationInfo { get; set; } 
+
         /// <summary>Parameters for social meta tag params. Used to set meta tag data for link previews on social
         /// sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialMetaTagInfo")]
@@ -642,6 +646,18 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>If specified, this overrides the ios_fallback_link value on iPads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosIpadFallbackLink")]
         public virtual string IosIpadFallbackLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information of navigation behavior.</summary>
+    public class NavigationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If this option is on, FDL click will be forced to redirect rather than show an interstitial
+        /// page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableForcedRedirect")]
+        public virtual System.Nullable<bool> EnableForcedRedirect { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

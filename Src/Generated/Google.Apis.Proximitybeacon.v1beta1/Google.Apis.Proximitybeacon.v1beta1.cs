@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/beacons/proximity/'>Google Proximity Beacon API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20160429 (484)
+ *      <tr><th>API Rev<td>20170220 (781)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/beacons/proximity/'>
  *              https://developers.google.com/beacons/proximity/</a>
@@ -148,7 +148,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -157,7 +168,21 @@ namespace Google.Apis.Proximitybeacon.v1beta1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -444,11 +469,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
 
             /// <summary>Deletes multiple attachments on a given beacon. This operation is permanent and cannot be
-            /// undone. You can optionally specify `namespacedType` to choose which attachments should be deleted. If
-            /// you do not specify `namespacedType`, all your attachments on the given beacon will be deleted. You also
-            /// may explicitly specify `*` to delete all. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner**
-            /// or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// undone.
+            ///
+            /// You can optionally specify `namespacedType` to choose which attachments should be deleted. If you do not
+            /// specify `namespacedType`,  all your attachments on the given beacon will be deleted. You also may
+            /// explicitly specify `*` to delete all.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+            /// project.</summary>
             /// <param name="beaconName">The beacon whose attachments should be deleted. A beacon name has the format
             /// "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's
             /// type. Possible values are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For
@@ -459,11 +488,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
             /// <summary>Deletes multiple attachments on a given beacon. This operation is permanent and cannot be
-            /// undone. You can optionally specify `namespacedType` to choose which attachments should be deleted. If
-            /// you do not specify `namespacedType`, all your attachments on the given beacon will be deleted. You also
-            /// may explicitly specify `*` to delete all. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner**
-            /// or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// undone.
+            ///
+            /// You can optionally specify `namespacedType` to choose which attachments should be deleted. If you do not
+            /// specify `namespacedType`,  all your attachments on the given beacon will be deleted. You also may
+            /// explicitly specify `*` to delete all.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+            /// project.</summary>
             public class BatchDeleteRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.DeleteAttachmentsResponse>
             {
                 /// <summary>Constructs a new BatchDelete request.</summary>
@@ -526,7 +559,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^beacons/[^/]*$",
+                            Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
                         "namespacedType", new Google.Apis.Discovery.Parameter
@@ -550,13 +583,19 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
             }
 
-            /// <summary>Associates the given data with the specified beacon. Attachment data must contain two parts: -
-            /// A namespaced type. - The actual attachment data itself.  The namespaced type consists of two parts, the
-            /// namespace and the type. The namespace must be one of the values returned by the `namespaces` endpoint,
-            /// while the type can be a string of any characters except for the forward slash (`/`) up to 100 characters
-            /// in length. Attachment data can be up to 1024 bytes long. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner**
-            /// or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// <summary>Associates the given data with the specified beacon. Attachment data must contain two parts:
+            ///
+            /// A namespaced type. The actual attachment data itself.
+            ///
+            /// The namespaced type consists of two parts, the namespace and the type. The namespace must be one of the
+            /// values returned by the `namespaces` endpoint, while the type can be a string of any characters except
+            /// for the forward slash (`/`) up to 100 characters in length.
+            ///
+            /// Attachment data can be up to 1024 bytes long.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+            /// project.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="beaconName">Beacon on which the attachment should be created. A beacon name has the format
             /// "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's
@@ -567,13 +606,19 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 return new CreateRequest(service, body, beaconName);
             }
 
-            /// <summary>Associates the given data with the specified beacon. Attachment data must contain two parts: -
-            /// A namespaced type. - The actual attachment data itself.  The namespaced type consists of two parts, the
-            /// namespace and the type. The namespace must be one of the values returned by the `namespaces` endpoint,
-            /// while the type can be a string of any characters except for the forward slash (`/`) up to 100 characters
-            /// in length. Attachment data can be up to 1024 bytes long. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner**
-            /// or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// <summary>Associates the given data with the specified beacon. Attachment data must contain two parts:
+            ///
+            /// A namespaced type. The actual attachment data itself.
+            ///
+            /// The namespaced type consists of two parts, the namespace and the type. The namespace must be one of the
+            /// values returned by the `namespaces` endpoint, while the type can be a string of any characters except
+            /// for the forward slash (`/`) up to 100 characters in length.
+            ///
+            /// Attachment data can be up to 1024 bytes long.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+            /// project.</summary>
             public class CreateRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.BeaconAttachment>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -636,7 +681,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^beacons/[^/]*$",
+                            Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
                         "projectId", new Google.Apis.Discovery.Parameter
@@ -654,6 +699,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             /// <summary>Deletes the specified attachment for the given beacon. Each attachment has a unique attachment
             /// name (`attachmentName`) which is returned when you fetch the attachment data via this API. You specify
             /// this with the delete request to control which attachment is removed. This operation cannot be undone.
+            ///
             /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
             /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
             /// project.</summary>
@@ -668,6 +714,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             /// <summary>Deletes the specified attachment for the given beacon. Each attachment has a unique attachment
             /// name (`attachmentName`) which is returned when you fetch the attachment data via this API. You specify
             /// this with the delete request to control which attachment is removed. This operation cannot be undone.
+            ///
             /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
             /// a signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
             /// project.</summary>
@@ -725,7 +772,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^beacons/[^/]*/attachments/[^/]*$",
+                            Pattern = @"^beacons/[^/]+/attachments/[^/]+$",
                         });
                     RequestParameters.Add(
                         "projectId", new Google.Apis.Discovery.Parameter
@@ -741,11 +788,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
             /// <summary>Returns the attachments for the specified beacon that match the specified namespaced-type
-            /// pattern. To control which namespaced types are returned, you add the `namespacedType` query parameter to
-            /// the request. You must either use `*`, to return all attachments, or the namespace must be one of the
-            /// ones returned from the `namespaces` endpoint. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**,
-            /// **Is owner** or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// pattern.
+            ///
+            /// To control which namespaced types are returned, you add the `namespacedType` query parameter to the
+            /// request. You must either use `*`, to return all attachments, or the namespace must be one of the ones
+            /// returned from the  `namespaces` endpoint.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers
+            /// Console project.</summary>
             /// <param name="beaconName">Beacon whose attachments should be fetched. A beacon name has the format
             /// "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's
             /// type. Possible values are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For
@@ -756,11 +807,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
             /// <summary>Returns the attachments for the specified beacon that match the specified namespaced-type
-            /// pattern. To control which namespaced types are returned, you add the `namespacedType` query parameter to
-            /// the request. You must either use `*`, to return all attachments, or the namespace must be one of the
-            /// ones returned from the `namespaces` endpoint. Authenticate using an [OAuth access
-            /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**,
-            /// **Is owner** or **Can edit** permissions in the Google Developers Console project.</summary>
+            /// pattern.
+            ///
+            /// To control which namespaced types are returned, you add the `namespacedType` query parameter to the
+            /// request. You must either use `*`, to return all attachments, or the namespace must be one of the ones
+            /// returned from the  `namespaces` endpoint.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers
+            /// Console project.</summary>
             public class ListRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.ListBeaconAttachmentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -823,7 +878,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^beacons/[^/]*$",
+                            Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
                         "namespacedType", new Google.Apis.Discovery.Parameter
@@ -872,10 +927,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
 
             /// <summary>List the diagnostics for a single beacon. You can also list diagnostics for all the beacons
-            /// owned by your Google Developers Console project by using the beacon name `beacons/-`. Authenticate using
-            /// an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user
-            /// with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
-            /// project.</summary>
+            /// owned by your Google Developers Console project by using the beacon name `beacons/-`.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers
+            /// Console project.</summary>
             /// <param name="beaconName">Beacon that the diagnostics are for.</param>
             public virtual ListRequest List(string beaconName)
             {
@@ -883,10 +939,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
             /// <summary>List the diagnostics for a single beacon. You can also list diagnostics for all the beacons
-            /// owned by your Google Developers Console project by using the beacon name `beacons/-`. Authenticate using
-            /// an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user
-            /// with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
-            /// project.</summary>
+            /// owned by your Google Developers Console project by using the beacon name `beacons/-`.
+            ///
+            /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from
+            /// a signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers
+            /// Console project.</summary>
             public class ListRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.ListDiagnosticsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -907,11 +964,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Requests results that occur after the `page_token`, obtained from the response to a
-                /// previous request. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Requests only beacons that have the given alert. For example, to find beacons that have low
                 /// batteries use `alert_filter=LOW_BATTERY`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -928,6 +980,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     [Google.Apis.Util.StringValueAttribute("LOW_BATTERY")]
                     LOWBATTERY,
                 }
+
+                /// <summary>Requests results that occur after the `page_token`, obtained from the response to a
+                /// previous request. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
                 /// <summary>Requests only diagnostic records for the given project id. If not set, then the project
                 /// making the request will be used for looking up diagnostic records. Optional.</summary>
@@ -965,7 +1022,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^beacons/[^/]*$",
+                            Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -977,18 +1034,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "alertFilter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "alertFilter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "alertFilter", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "alertFilter",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1010,9 +1067,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Activates a beacon. A beacon that is active will return information and attachment data when
         /// queried via `beaconinfo.getforobserved`. Calling this method on an already active beacon will do nothing
-        /// (but will return a successful response code). Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// (but will return a successful response code).
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         /// <param name="beaconName">Beacon that should be activated. A beacon name has the format "beacons/N!beaconId" where
         /// the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3`
         /// for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-EID beacons, you may
@@ -1024,9 +1083,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Activates a beacon. A beacon that is active will return information and attachment data when
         /// queried via `beaconinfo.getforobserved`. Calling this method on an already active beacon will do nothing
-        /// (but will return a successful response code). Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// (but will return a successful response code).
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public class ActivateRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Activate request.</summary>
@@ -1082,7 +1143,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^beacons/[^/]*$",
+                        Pattern = @"^beacons/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1099,9 +1160,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Deactivates a beacon. Once deactivated, the API will not return information nor attachment data for
         /// the beacon when queried via `beaconinfo.getforobserved`. Calling this method on an already inactive beacon
-        /// will do nothing (but will return a successful response code). Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// will do nothing (but will return a successful response code).
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         /// <param name="beaconName">Beacon that should be deactivated. A beacon name has the format "beacons/N!beaconId" where
         /// the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3`
         /// for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-EID beacons, you may
@@ -1113,9 +1176,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Deactivates a beacon. Once deactivated, the API will not return information nor attachment data for
         /// the beacon when queried via `beaconinfo.getforobserved`. Calling this method on an already inactive beacon
-        /// will do nothing (but will return a successful response code). Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// will do nothing (but will return a successful response code).
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public class DeactivateRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Deactivate request.</summary>
@@ -1171,7 +1236,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^beacons/[^/]*$",
+                        Pattern = @"^beacons/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1188,9 +1253,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Decommissions the specified beacon in the service. This beacon will no longer be returned from
         /// `beaconinfo.getforobserved`. This operation is permanent -- you will not be able to re-register a beacon
-        /// with this ID again. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// with this ID again.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         /// <param name="beaconName">Beacon that should be decommissioned. A beacon name has the format "beacons/N!beaconId"
         /// where the beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values
         /// are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-EID beacons,
@@ -1202,9 +1269,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Decommissions the specified beacon in the service. This beacon will no longer be returned from
         /// `beaconinfo.getforobserved`. This operation is permanent -- you will not be able to re-register a beacon
-        /// with this ID again. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// with this ID again.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public class DecommissionRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Empty>
         {
             /// <summary>Constructs a new Decommission request.</summary>
@@ -1261,7 +1330,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^beacons/[^/]*$",
+                        Pattern = @"^beacons/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1276,13 +1345,106 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         }
 
-        /// <summary>Returns detailed information about the specified beacon. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**, **Is
-        /// owner** or **Can edit** permissions in the Google Developers Console project. Requests may supply an
-        /// Eddystone-EID beacon name in the form: `beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID
-        /// broadcast by the beacon. The returned `Beacon` object will contain the beacon's stable Eddystone-UID.
-        /// Clients not authorized to resolve the beacon's ephemeral Eddystone-EID broadcast will receive an
-        /// error.</summary>
+        /// <summary>Deletes the specified beacon including all diagnostics data for the beacon as well as any
+        /// attachments on the beacon (including those belonging to other projects). This operation cannot be undone.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
+        /// <param name="beaconName">Beacon that should be deleted. A beacon name has the format "beacons/N!beaconId" where the
+        /// beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3` for
+        /// Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-EID beacons, you may use
+        /// either the current EID or the beacon's "stable" UID. Required.</param>
+        public virtual DeleteRequest Delete(string beaconName)
+        {
+            return new DeleteRequest(service, beaconName);
+        }
+
+        /// <summary>Deletes the specified beacon including all diagnostics data for the beacon as well as any
+        /// attachments on the beacon (including those belonging to other projects). This operation cannot be undone.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
+        public class DeleteRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string beaconName)
+                : base(service)
+            {
+                BeaconName = beaconName;
+                InitParameters();
+            }
+
+
+            /// <summary>Beacon that should be deleted. A beacon name has the format "beacons/N!beaconId" where the
+            /// beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values
+            /// are `3` for Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-
+            /// EID beacons, you may use either the current EID or the beacon's "stable" UID. Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BeaconName { get; private set; }
+
+            /// <summary>The project id of the beacon to delete. If not provided, the project that is making the request
+            /// is used. Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+beaconName}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "beaconName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "beaconName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^beacons/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns detailed information about the specified beacon.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.
+        ///
+        /// Requests may supply an Eddystone-EID beacon name in the form: `beacons/4!beaconId` where the `beaconId` is
+        /// the base16 ephemeral ID broadcast by the beacon. The returned `Beacon` object will contain the beacon's
+        /// stable Eddystone-UID. Clients not authorized to resolve the beacon's ephemeral Eddystone-EID broadcast will
+        /// receive an error.</summary>
         /// <param name="beaconName">Resource name of this beacon. A beacon name has the format "beacons/N!beaconId" where the
         /// beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3` for
         /// Eddystone-UID, `4` for Eddystone-EID, `1` for iBeacon, or `5` for AltBeacon. For Eddystone-EID beacons, you may use
@@ -1292,13 +1454,16 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             return new GetRequest(service, beaconName);
         }
 
-        /// <summary>Returns detailed information about the specified beacon. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**, **Is
-        /// owner** or **Can edit** permissions in the Google Developers Console project. Requests may supply an
-        /// Eddystone-EID beacon name in the form: `beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID
-        /// broadcast by the beacon. The returned `Beacon` object will contain the beacon's stable Eddystone-UID.
-        /// Clients not authorized to resolve the beacon's ephemeral Eddystone-EID broadcast will receive an
-        /// error.</summary>
+        /// <summary>Returns detailed information about the specified beacon.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.
+        ///
+        /// Requests may supply an Eddystone-EID beacon name in the form: `beacons/4!beaconId` where the `beaconId` is
+        /// the base16 ephemeral ID broadcast by the beacon. The returned `Beacon` object will contain the beacon's
+        /// stable Eddystone-UID. Clients not authorized to resolve the beacon's ephemeral Eddystone-EID broadcast will
+        /// receive an error.</summary>
         public class GetRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Beacon>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1354,7 +1519,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^beacons/[^/]*$",
+                        Pattern = @"^beacons/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1370,18 +1535,22 @@ namespace Google.Apis.Proximitybeacon.v1beta1
         }
 
         /// <summary>Searches the beacon registry for beacons that match the given search criteria. Only those beacons
-        /// that the client has permission to list will be returned. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**, **Is
-        /// owner** or **Can edit** permissions in the Google Developers Console project.</summary>
+        /// that the client has permission to list will be returned.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Searches the beacon registry for beacons that match the given search criteria. Only those beacons
-        /// that the client has permission to list will be returned. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **viewer**, **Is
-        /// owner** or **Can edit** permissions in the Google Developers Console project.</summary>
+        /// that the client has permission to list will be returned.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public class ListRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.ListBeaconsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1392,48 +1561,56 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
 
-            /// <summary>Filter query string that supports the following field filters: * `description:""` For example:
-            /// `description:"Room 3"` Returns beacons whose description matches tokens in the string "Room 3" (not
-            /// necessarily that exact string). The string must be double-quoted. * `status:` For example:
-            /// `status:active` Returns beacons whose status matches the given value. Values must be one of the
-            /// Beacon.Status enum values (case insensitive). Accepts multiple filters which will be combined with OR
-            /// logic. * `stability:` For example: `stability:mobile` Returns beacons whose expected stability matches
-            /// the given value. Values must be one of the Beacon.Stability enum values (case insensitive). Accepts
-            /// multiple filters which will be combined with OR logic. * `place_id:""` For example:
-            /// `place_id:"ChIJVSZzVR8FdkgRXGmmm6SslKw="` Returns beacons explicitly registered at the given place,
-            /// expressed as a Place ID obtained from [Google Places API](/places/place-id). Does not match places
-            /// inside the given place. Does not consider the beacon's actual location (which may be different from its
-            /// registered place). Accepts multiple filters that will be combined with OR logic. The place ID must be
-            /// double-quoted. * `registration_time[|=]` For example: `registration_time>=1433116800` Returns beacons
-            /// whose registration time matches the given filter. Supports the operators: , =. Timestamp must be
-            /// expressed as an integer number of seconds since midnight January 1, 1970 UTC. Accepts at most two
-            /// filters that will be combined with AND logic, to support "between" semantics. If more than two are
-            /// supplied, the latter ones are ignored. * `lat: lng: radius:` For example: `lat:51.1232343 lng:-1.093852
-            /// radius:1000` Returns beacons whose registered location is within the given circle. When any of these
-            /// fields are given, all are required. Latitude and longitude must be decimal degrees between -90.0 and
-            /// 90.0 and between -180.0 and 180.0 respectively. Radius must be an integer number of meters between 10
-            /// and 1,000,000 (1000 km). * `property:"="` For example: `property:"battery-type=CR2032"` Returns beacons
-            /// which have a property of the given name and value. Supports multiple filters which will be combined with
-            /// OR logic. The entire name=value string must be double-quoted as one string. * `attachment_type:""` For
-            /// example: `attachment_type:"my-namespace/my-type"` Returns beacons having at least one attachment of the
-            /// given namespaced type. Supports "any within this namespace" via the partial wildcard syntax: "my-
-            /// namespace". Supports multiple filters which will be combined with OR logic. The string must be double-
-            /// quoted. Multiple filters on the same field are combined with OR logic (except registration_time which is
+            /// <summary>Filter query string that supports the following field filters:
+            ///
+            /// * **description:`""`** For example: **description:"Room 3"** Returns beacons whose description matches
+            /// tokens in the string "Room 3" (not necessarily that exact string). The string must be double-quoted. *
+            /// **status:``** For example: **status:active** Returns beacons whose status matches the given value.
+            /// Values must be one of the Beacon.Status enum values (case insensitive). Accepts multiple filters which
+            /// will be combined with OR logic. * **stability:``** For example: **stability:mobile** Returns beacons
+            /// whose expected stability matches the given value. Values must be one of the Beacon.Stability enum values
+            /// (case insensitive). Accepts multiple filters which will be combined with OR logic. * **place\_id:`""`**
+            /// For example: **place\_id:"ChIJVSZzVR8FdkgRXGmmm6SslKw="** Returns beacons explicitly registered at the
+            /// given place, expressed as a Place ID obtained from [Google Places API](/places/place-id). Does not match
+            /// places inside the given place. Does not consider the beacon's actual location (which may be different
+            /// from its registered place). Accepts multiple filters that will be combined with OR logic. The place ID
+            /// must be double-quoted. * **registration\_time`[<|>|<=|>=]`** For example:
+            /// **registration\_time>=1433116800** Returns beacons whose registration time matches the given filter.
+            /// Supports the operators: <, >, <=, and >=. Timestamp must be expressed as an integer number of seconds
+            /// since midnight January 1, 1970 UTC. Accepts at most two filters that will be combined with AND logic, to
+            /// support "between" semantics. If more than two are supplied, the latter ones are ignored. * **lat:` lng:
+            /// radius:`** For example: **lat:51.1232343 lng:-1.093852 radius:1000** Returns beacons whose registered
+            /// location is within the given circle. When any of these fields are given, all are required. Latitude and
+            /// longitude must be decimal degrees between -90.0 and 90.0 and between -180.0 and 180.0 respectively.
+            /// Radius must be an integer number of meters between 10 and 1,000,000 (1000 km). * **property:`"="`** For
+            /// example: **property:"battery-type=CR2032"** Returns beacons which have a property of the given name and
+            /// value. Supports multiple filters which will be combined with OR logic. The entire name=value string must
+            /// be double-quoted as one string. * **attachment\_type:`""`** For example: **attachment_type:"my-namespace
+            /// /my-type"** Returns beacons having at least one attachment of the given namespaced type. Supports "any
+            /// within this namespace" via the partial wildcard syntax: "my-namespace". Supports multiple filters which
+            /// will be combined with OR logic. The string must be double-quoted. * **indoor\_level:`""`** For example:
+            /// **indoor\_level:"1"** Returns beacons which are located on the given indoor level. Accepts multiple
+            /// filters that will be combined with OR logic.
+            ///
+            /// Multiple filters on the same field are combined with OR logic (except registration_time which is
             /// combined with AND logic). Multiple filters on different fields are combined with AND logic. Filters
-            /// should be separated by spaces. As with any HTTP query string parameter, the whole filter expression must
-            /// be URL-encoded. Example REST request: `GET
+            /// should be separated by spaces.
+            ///
+            /// As with any HTTP query string parameter, the whole filter expression must be URL-encoded.
+            ///
+            /// Example REST request: `GET
             /// /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`</summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
-
-            /// <summary>A pagination token obtained from a previous request to list beacons.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
             /// <summary>The maximum number of records to return for this request, up to a server-defined upper
             /// limit.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A pagination token obtained from a previous request to list beacons.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
             /// <summary>The project id to list beacons under. If not present then the project credential that made the
             /// request is used as the project. Optional.</summary>
@@ -1474,18 +1651,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1505,9 +1682,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
         }
 
         /// <summary>Registers a previously unregistered beacon given its `advertisedId`. These IDs are unique within
-        /// the system. An ID can be registered only once. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// the system. An ID can be registered only once.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RegisterRequest Register(Google.Apis.Proximitybeacon.v1beta1.Data.Beacon body)
         {
@@ -1515,9 +1694,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
         }
 
         /// <summary>Registers a previously unregistered beacon given its `advertisedId`. These IDs are unique within
-        /// the system. An ID can be registered only once. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// the system. An ID can be registered only once.
+        ///
+        /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
+        /// signed-in user with **Is owner** or **Can edit** permissions in the Google Developers Console
+        /// project.</summary>
         public class RegisterRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Beacon>
         {
             /// <summary>Constructs a new Register request.</summary>
@@ -1579,16 +1760,19 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Updates the information about the specified beacon. **Any field that you do not populate in the
         /// submitted beacon will be permanently erased**, so you should follow the "read, modify, write" pattern to
-        /// avoid inadvertently destroying data. Changes to the beacon status via this method will be silently ignored.
-        /// To update beacon status, use the separate methods on this API for activation, deactivation, and
-        /// decommissioning. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// avoid inadvertently destroying data.
+        ///
+        /// Changes to the beacon status via this method will be  silently ignored. To update beacon status, use the
+        /// separate methods on this API for activation, deactivation, and decommissioning. Authenticate using an [OAuth
+        /// access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is
+        /// owner** or **Can edit** permissions in the Google Developers Console project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="beaconName">Resource name of this beacon. A beacon name has the format "beacons/N!beaconId" where the
         /// beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3` for
-        /// Eddystone, `1` for iBeacon, or `5` for AltBeacon. This field must be left empty when registering. After reading a
-        /// beacon, clients can use the name for future operations.</param>
+        /// Eddystone, `1` for iBeacon, or `5` for AltBeacon.
+        ///
+        /// This field must be left empty when registering. After reading a beacon, clients can use the name for future
+        /// operations.</param>
         public virtual UpdateRequest Update(Google.Apis.Proximitybeacon.v1beta1.Data.Beacon body, string beaconName)
         {
             return new UpdateRequest(service, body, beaconName);
@@ -1596,11 +1780,12 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Updates the information about the specified beacon. **Any field that you do not populate in the
         /// submitted beacon will be permanently erased**, so you should follow the "read, modify, write" pattern to
-        /// avoid inadvertently destroying data. Changes to the beacon status via this method will be silently ignored.
-        /// To update beacon status, use the separate methods on this API for activation, deactivation, and
-        /// decommissioning. Authenticate using an [OAuth access
-        /// token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is owner** or
-        /// **Can edit** permissions in the Google Developers Console project.</summary>
+        /// avoid inadvertently destroying data.
+        ///
+        /// Changes to the beacon status via this method will be  silently ignored. To update beacon status, use the
+        /// separate methods on this API for activation, deactivation, and decommissioning. Authenticate using an [OAuth
+        /// access token](https://developers.google.com/identity/protocols/OAuth2) from a signed-in user with **Is
+        /// owner** or **Can edit** permissions in the Google Developers Console project.</summary>
         public class UpdateRequest : ProximitybeaconBaseServiceRequest<Google.Apis.Proximitybeacon.v1beta1.Data.Beacon>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1615,8 +1800,10 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
             /// <summary>Resource name of this beacon. A beacon name has the format "beacons/N!beaconId" where the
             /// beaconId is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values
-            /// are `3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon. This field must be left empty when
-            /// registering. After reading a beacon, clients can use the name for future operations.</summary>
+            /// are `3` for Eddystone, `1` for iBeacon, or `5` for AltBeacon.
+            ///
+            /// This field must be left empty when registering. After reading a beacon, clients can use the name for
+            /// future operations.</summary>
             [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BeaconName { get; private set; }
 
@@ -1663,7 +1850,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^beacons/[^/]*$",
+                        Pattern = @"^beacons/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1697,6 +1884,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Lists all attachment namespaces owned by your Google Developers Console project. Attachment data
         /// associated with a beacon must include a namespaced type, and the namespace must be owned by your project.
+        ///
         /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
         /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
         /// project.</summary>
@@ -1707,6 +1895,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
 
         /// <summary>Lists all attachment namespaces owned by your Google Developers Console project. Attachment data
         /// associated with a beacon must include a namespaced type, and the namespace must be owned by your project.
+        ///
         /// Authenticate using an [OAuth access token](https://developers.google.com/identity/protocols/OAuth2) from a
         /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions in the Google Developers Console
         /// project.</summary>
@@ -1833,7 +2022,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^namespaces/[^/]*$",
+                        Pattern = @"^namespaces/[^/]+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -1962,16 +2151,20 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
     public class Beacon : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The identifier of a beacon as advertised by it. This field must be populated when registering. It
-        /// may be empty when updating a beacon record because it is ignored in updates. When registering a beacon that
-        /// broadcasts Eddystone-EID, this field should contain a "stable" Eddystone-UID that identifies the beacon and
-        /// links it to its attachments. The stable Eddystone-UID is only used for administering the beacon.</summary>
+        /// may be empty when updating a beacon record because it is ignored in updates.
+        ///
+        /// When registering a beacon that broadcasts Eddystone-EID, this field should contain a "stable" Eddystone-UID
+        /// that identifies the beacon and links it to its attachments. The stable Eddystone-UID is only used for
+        /// administering the beacon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedId")]
         public virtual AdvertisedId AdvertisedId { get; set; } 
 
         /// <summary>Resource name of this beacon. A beacon name has the format "beacons/N!beaconId" where the beaconId
         /// is the base16 ID broadcast by the beacon and N is a code for the beacon's type. Possible values are `3` for
-        /// Eddystone, `1` for iBeacon, or `5` for AltBeacon. This field must be left empty when registering. After
-        /// reading a beacon, clients can use the name for future operations.</summary>
+        /// Eddystone, `1` for iBeacon, or `5` for AltBeacon.
+        ///
+        /// This field must be left empty when registering. After reading a beacon, clients can use the name for future
+        /// operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beaconName")]
         public virtual string BeaconName { get; set; } 
 
@@ -2038,6 +2231,10 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentName")]
         public virtual string AttachmentName { get; set; } 
 
+        /// <summary>The UTC time when this attachment was created, in milliseconds since the UNIX epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimeMs")]
+        public virtual object CreationTimeMs { get; set; } 
+
         /// <summary>An opaque data container for client-provided data. Must be
         /// [base64](http://tools.ietf.org/html/rfc4648#section-4) encoded in HTTP requests, and will be so encoded
         /// (with padding) in responses. Required.</summary>
@@ -2062,8 +2259,8 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedId")]
         public virtual AdvertisedId AdvertisedId { get; set; } 
 
-        /// <summary>Attachments matching the type(s) requested. May be empty if no attachment types were requested, or
-        /// if none matched.</summary>
+        /// <summary>Attachments matching the type(s) requested. May be empty if no attachment types were
+        /// requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<AttachmentInfo> Attachments { get; set; } 
 
@@ -2132,9 +2329,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2142,17 +2341,21 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
     }    
 
     /// <summary>Write-only registration parameters for beacons using Eddystone-EID format. Two ways of securely
-    /// registering an Eddystone-EID beacon with the service are supported: 1. Perform an ECDH key exchange via this
-    /// API, including a previous call to `GET /v1beta1/eidparams`. In this case the fields `beacon_ecdh_public_key` and
-    /// `service_ecdh_public_key` should be populated and `beacon_identity_key` should not be populated. This method
-    /// ensures that only the two parties in the ECDH key exchange can compute the identity key, which becomes a secret
-    /// between them. 2. Derive or obtain the beacon's identity key via other secure means (perhaps an ECDH key exchange
-    /// between the beacon and a mobile device or any other secure method), and then submit the resulting identity key
-    /// to the service. In this case `beacon_identity_key` field should be populated, and neither of
-    /// `beacon_ecdh_public_key` nor `service_ecdh_public_key` fields should be. The security of this method depends on
-    /// how securely the parties involved (in particular the bluetooth client) handle the identity key, and obviously on
-    /// how securely the identity key was generated. See [the Eddystone
-    /// specification](https://github.com/google/eddystone/tree/master/eddystone-eid) at GitHub.</summary>
+    /// registering an Eddystone-EID beacon with the service are supported:
+    ///
+    /// 1. Perform an ECDH key exchange via this API, including a previous call to `GET /v1beta1/eidparams`. In this
+    /// case the fields `beacon_ecdh_public_key` and `service_ecdh_public_key` should be populated and
+    /// `beacon_identity_key` should not be populated. This method ensures that only the two parties in the ECDH key
+    /// exchange can compute the identity key, which becomes a secret between them. 2. Derive or obtain the beacon's
+    /// identity key via other secure means (perhaps an ECDH key exchange between the beacon and a mobile device or any
+    /// other secure method), and then submit the resulting identity key to the service. In this case
+    /// `beacon_identity_key` field should be populated, and neither of `beacon_ecdh_public_key` nor
+    /// `service_ecdh_public_key` fields should be. The security of this method depends on how securely the parties
+    /// involved (in particular the bluetooth client) handle the identity key, and obviously on how securely the
+    /// identity key was generated.
+    ///
+    /// See [the Eddystone specification](https://github.com/google/eddystone/tree/master/eddystone-eid) at
+    /// GitHub.</summary>
     public class EphemeralIdRegistration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The beacon's public key used for the Elliptic curve Diffie-Hellman key exchange. When this field is
@@ -2228,7 +2431,8 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
     {
         /// <summary>Specifies what kind of attachments to include in the response. When given, the response will
         /// include only attachments of the given types. When empty, no attachments will be returned. Must be in the
-        /// format namespace/type. Accepts `*` to specify all types in all namespaces. Optional.</summary>
+        /// format namespace/type. Accepts `*` to specify all types in all namespaces owned by the client.
+        /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedTypes")]
         public virtual System.Collections.Generic.IList<string> NamespacedTypes { get; set; } 
 
@@ -2265,18 +2469,28 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
 
     /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
     /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
-    /// Values must be within normalized ranges. Example of normalization code in Python: def
-    /// NormalizeLongitude(longitude): Wraps decimal degrees longitude to [-180.0, 180.0]. q, r = divmod(longitude,
-    /// 360.0) if r > 180.0 or (r == 180.0 and q <= -1.0): return r - 360.0 return r def NormalizeLatLng(latitude,
-    /// longitude): Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and [-180.0, 180.0], respectively. r =
-    /// latitude % 360.0 if r = 270.0: return r - 360, NormalizeLongitude(longitude) else: return 180 - r,
-    /// NormalizeLongitude(longitude + 180.0) assert 180.0 == NormalizeLongitude(180.0) assert -180.0 ==
-    /// NormalizeLongitude(-180.0) assert -179.0 == NormalizeLongitude(181.0) assert (0.0, 0.0) ==
-    /// NormalizeLatLng(360.0, 0.0) assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0) assert (85.0, 180.0) ==
-    /// NormalizeLatLng(95.0, 0.0) assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) ==
-    /// NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) ==
-    /// NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) ==
-    /// NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)</summary>
+    /// Values must be within normalized ranges.
+    ///
+    /// Example of normalization code in Python:
+    ///
+    /// def NormalizeLongitude(longitude): Wraps decimal degrees longitude to [-180.0, 180.0]. q, r = divmod(longitude,
+    /// 360.0) if r > 180.0 or (r == 180.0 and q <= -1.0): return r - 360.0 return r
+    ///
+    /// def NormalizeLatLng(latitude, longitude): Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and
+    /// [-180.0, 180.0], respectively. r = latitude % 360.0 if r <= 90.0: return r, NormalizeLongitude(longitude) elif r
+    /// >= 270.0: return r - 360, NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(longitude +
+    /// 180.0)
+    ///
+    /// assert 180.0 == NormalizeLongitude(180.0) assert -180.0 == NormalizeLongitude(-180.0) assert -179.0 ==
+    /// NormalizeLongitude(181.0) assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0) assert (0.0, 0.0) ==
+    /// NormalizeLatLng(-360.0, 0.0) assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0) assert (-85.0, -170.0) ==
+    /// NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) ==
+    /// NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) ==
+    /// NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) ==
+    /// NormalizeLatLng(-270.0, 10.0)
+    ///
+    /// The code in logs/storage/validator/logs_validator_traits.cc treats this type as if it were annotated as
+    /// ST_LOCATION.</summary>
     public class LatLng : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
@@ -2291,7 +2505,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response to ListBeaconAttachments that contains the requested attachments.</summary>
+    /// <summary>Response to `ListBeaconAttachments` that contains the requested attachments.</summary>
     public class ListBeaconAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The attachments that corresponded to the request params.</summary>
@@ -2371,9 +2585,10 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
     /// <summary>Represents one beacon observed once.</summary>
     public class Observation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID advertised by the beacon the client has encountered. Clients may submit an Eddystone-EID
-        /// `advertised_id`. If the client is not authorized to resolve the given Eddystone-EID, no data will be
-        /// returned for that beacon. Required.</summary>
+        /// <summary>The ID advertised by the beacon the client has encountered.
+        ///
+        /// If the submitted `advertised_id` type is Eddystone-EID, then the client must be authorized to resolve the
+        /// given beacon. Otherwise no data will be returned for that beacon. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedId")]
         public virtual AdvertisedId AdvertisedId { get; set; } 
 
@@ -2384,7 +2599,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
 
         /// <summary>Time when the beacon was observed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampMs")]
-        public virtual string TimestampMs { get; set; } 
+        public virtual object TimestampMs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

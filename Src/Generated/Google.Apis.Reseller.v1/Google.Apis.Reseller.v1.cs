@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170216 (777)
+ *      <tr><th>API Rev<td>20170220 (781)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>
@@ -2006,6 +2006,12 @@ namespace Google.Apis.Reseller.v1.Data
         /// SKU IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
+
+        /// <summary>Read-only external display name for a product's SKU assigned to a customer in the subscription. SKU
+        /// names are subject to change at Google's discretion. For products and SKUs available in this version of the
+        /// API, see  Product and SKU IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
+        public virtual string SkuName { get; set; } 
 
         /// <summary>This is an optional property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

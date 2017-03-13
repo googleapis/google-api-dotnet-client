@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/licensing/'>Enterprise License Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20150901 (243)
+ *      <tr><th>API Rev<td>20170213 (774)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/licensing/'>
  *              https://developers.google.com/google-apps/licensing/</a>
@@ -953,17 +953,25 @@ namespace Google.Apis.Licensing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of the product.</summary>
+        /// <summary>Id of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
+
+        /// <summary>Display Name of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productName")]
+        public virtual string ProductName { get; set; } 
 
         /// <summary>Link to this page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>Name of the sku of the product.</summary>
+        /// <summary>Id of the sku of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
+
+        /// <summary>Display Name of the sku of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuName")]
+        public virtual string SkuName { get; set; } 
 
         /// <summary>Email id of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]

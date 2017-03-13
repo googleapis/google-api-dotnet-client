@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170227 (788)
+ *      <tr><th>API Rev<td>20170306 (795)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -381,7 +381,8 @@ namespace Google.Apis.ServiceUser.v1
             }
 
 
-            /// <summary>Disable a managed service for a consumer.
+            /// <summary>Disable a service so it can no longer be used with a project. This prevents unintended usage
+            /// that may cause unexpected billing charges or security leaks.
             ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
@@ -395,7 +396,8 @@ namespace Google.Apis.ServiceUser.v1
                 return new DisableRequest(service, body, name);
             }
 
-            /// <summary>Disable a managed service for a consumer.
+            /// <summary>Disable a service so it can no longer be used with a project. This prevents unintended usage
+            /// that may cause unexpected billing charges or security leaks.
             ///
             /// Operation</summary>
             public class DisableRequest : ServiceUserBaseServiceRequest<Google.Apis.ServiceUser.v1.Data.Operation>
@@ -462,11 +464,10 @@ namespace Google.Apis.ServiceUser.v1
 
             }
 
-            /// <summary>Enable a managed service for a consumer with the default settings.
+            /// <summary>Enable a service so it can be used with a project. See [Cloud Auth
+            /// Guide](https://cloud.google.com/docs/authentication) for more information.
             ///
-            /// Operation
-            ///
-            /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
+            /// Operation</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Name of the consumer and the service to enable for that consumer.
             ///
@@ -476,11 +477,10 @@ namespace Google.Apis.ServiceUser.v1
                 return new EnableRequest(service, body, name);
             }
 
-            /// <summary>Enable a managed service for a consumer with the default settings.
+            /// <summary>Enable a service so it can be used with a project. See [Cloud Auth
+            /// Guide](https://cloud.google.com/docs/authentication) for more information.
             ///
-            /// Operation
-            ///
-            /// google.rpc.Status errors may contain a google.rpc.PreconditionFailure error detail.</summary>
+            /// Operation</summary>
             public class EnableRequest : ServiceUserBaseServiceRequest<Google.Apis.ServiceUser.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Enable request.</summary>
@@ -2014,6 +2014,29 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The metadata associated with a long running operation resource.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Percentage of completion of this operation, ranging from 0 to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual System.Nullable<int> ProgressPercentage { get; set; } 
+
+        /// <summary>The full name of the resources that this operation is directly associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
+
+        /// <summary>The start time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Detailed status information for each step. The order is undetermined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2199,6 +2222,10 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
+        /// <summary>Output only. The source information for this configuration if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
+        public virtual SourceInfo SourceInfo { get; set; } 
+
         /// <summary>System parameter configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemParameters")]
         public virtual SystemParameters SystemParameters { get; set; } 
@@ -2242,6 +2269,17 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// example: `"google/protobuf/source_context.proto"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Source information used to create a Service Config</summary>
+    public class SourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All files used during config generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFiles")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> SourceFiles { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2305,6 +2343,21 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the status of one operation step.</summary>
+    public class Step : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The short description of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

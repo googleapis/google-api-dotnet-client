@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170228 (789)
+ *      <tr><th>API Rev<td>20170306 (795)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1109,14 +1109,14 @@ namespace Google.Apis.Logging.v2
 
         }
 
-        /// <summary>Writes log entries to Stackdriver Logging. All log entries are written by this method.</summary>
+        /// <summary>Writes log entries to Stackdriver Logging.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual WriteRequest Write(Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
         {
             return new WriteRequest(service, body);
         }
 
-        /// <summary>Writes log entries to Stackdriver Logging. All log entries are written by this method.</summary>
+        /// <summary>Writes log entries to Stackdriver Logging.</summary>
         public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.WriteLogEntriesResponse>
         {
             /// <summary>Constructs a new Write request.</summary>
@@ -3721,19 +3721,19 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Optional. How the results should be sorted. Presently, the only permitted values are "timestamp
         /// asc" (default) and "timestamp desc". The first option returns entries in order of increasing values of
         /// LogEntry.timestamp (oldest first), and the second option returns entries in order of decreasing timestamps
-        /// (newest first). Entries with equal timestamps are returned in order of LogEntry.insertId.</summary>
+        /// (newest first). Entries with equal timestamps are returned in order of their insert_id values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; } 
 
         /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
-        /// ignored. The presence of nextPageToken in the response indicates that more results might be
+        /// ignored. The presence of next_page_token in the response indicates that more results might be
         /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; } 
 
         /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
-        /// method. pageToken must be the value of nextPageToken from the previous response. The values of other method
-        /// parameters should be identical to those in the previous call.</summary>
+        /// method. page_token must be the value of next_page_token from the previous response. The values of other
+        /// method parameters should be identical to those in the previous call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
@@ -3849,9 +3849,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpRequest")]
         public virtual HttpRequest HttpRequest { get; set; } 
 
-        /// <summary>Optional. A unique ID for the log entry. If you provide this field, the logging service considers
-        /// other log entries in the same project with the same ID as duplicates which can be removed. If omitted,
-        /// Stackdriver Logging will generate a unique ID for this log entry.</summary>
+        /// <summary>Optional. A unique identifier for the log entry. If you provide a value, then Stackdriver Logging
+        /// considers other log entries in the same project, with the same timestamp, and with the same insert_id to be
+        /// duplicates which can be removed. If omitted in new log entries, then Stackdriver Logging will insert its own
+        /// unique identifier. The insert_id is used to order log entries that have the same timestamp value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
         public virtual string InsertId { get; set; } 
 
@@ -3904,8 +3905,10 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; } 
 
-        /// <summary>Optional. The time the event described by the log entry occurred. If omitted, Stackdriver Logging
-        /// will use the time the log entry is received.</summary>
+        /// <summary>Optional. The time the event described by the log entry occurred. If omitted in a new log entry,
+        /// Stackdriver Logging will insert the time the log entry is received. Stackdriver Logging might reject log
+        /// entries whose time stamps are more than a couple of hours in the future. Log entries with time stamps in the
+        /// past are accepted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
@@ -4338,9 +4341,12 @@ namespace Google.Apis.Logging.v2.Data
     public class WriteLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The log entries to write. Values supplied for the fields log_name, resource, and labels
-        /// in this entries.write request are added to those log entries that do not provide their own values for the
-        /// fields.To improve throughput and to avoid exceeding the quota limit for calls to entries.write, you should
-        /// write multiple log entries at once rather than calling this method for each individual log entry.</summary>
+        /// in this entries.write request are inserted into those log entries in this list that do not provide their own
+        /// values.Stackdriver Logging also creates and inserts values for timestamp and insert_id if the entries do not
+        /// provide them. The created insert_id for the N'th entry in this list will be greater than earlier entries and
+        /// less than later entries. Otherwise, the order of log entries in this list does not matter.To improve
+        /// throughput and to avoid exceeding the quota limit for calls to entries.write, you should write multiple log
+        /// entries at once rather than calling this method for each individual log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
 
@@ -4360,9 +4366,9 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string LogName { get; set; } 
 
         /// <summary>Optional. Whether valid entries should be written even if some other entries fail due to
-        /// INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, the response status will be the
-        /// error associated with one of the failed entries and include error details in the form of
-        /// WriteLogEntriesPartialErrors.</summary>
+        /// INVALID_ARGUMENT or PERMISSION_DENIED errors. If any entry is not written, then the response status is the
+        /// error associated with one of the failed entries and the response includes error details keyed by the
+        /// entries' zero-based index in the entries.write method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialSuccess")]
         public virtual System.Nullable<bool> PartialSuccess { get; set; } 
 
