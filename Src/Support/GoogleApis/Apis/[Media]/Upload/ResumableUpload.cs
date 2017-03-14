@@ -86,7 +86,7 @@ namespace Google.Apis.Upload
             ContentStream = contentStream;
             // Check if the stream length is known.
             StreamLength = ContentStream.CanSeek ? ContentStream.Length : UnknownSize;
-            HttpClient = options?.ConfigurableHttpClient ?? new ConfigurableHttpClient(new ConfigurableMessageHandler(new HttpClientHandler()));
+            HttpClient = options?.ConfigurableHttpClient ?? new HttpClientFactory().CreateHttpClient(new CreateHttpClientArgs { ApplicationName = "ResumableUpload", GZipEnabled = true });
             Options = options;
         }
 
