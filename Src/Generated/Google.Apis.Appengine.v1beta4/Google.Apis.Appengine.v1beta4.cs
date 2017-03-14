@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20161208 (707)
+ *      <tr><th>API Rev<td>20170223 (784)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -939,7 +939,9 @@ namespace Google.Apis.Appengine.v1beta4
 
                     }
 
-                    /// <summary>Lists the instances of a version.</summary>
+                    /// <summary>Lists the instances of a version.Tip: To aggregate details about instances over time,
+                    /// see the Stackdriver Monitoring API
+                    /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).</summary>
                     /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
                     /// apps/myapp/modules/default/versions/v1.</param>
                     /// <param name="modulesId">Part of `name`. See documentation of
@@ -950,7 +952,9 @@ namespace Google.Apis.Appengine.v1beta4
                         return new ListRequest(service, appsId, modulesId, versionsId);
                     }
 
-                    /// <summary>Lists the instances of a version.</summary>
+                    /// <summary>Lists the instances of a version.Tip: To aggregate details about instances over time,
+                    /// see the Stackdriver Monitoring API
+                    /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).</summary>
                     public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.ListInstancesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1902,8 +1906,8 @@ namespace Google.Apis.Appengine.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("mask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Mask { get; set; }
 
-                /// <summary>Set to true to gradually shift traffic from one version to another single version. By
-                /// default, traffic is shifted immediately. For gradual traffic migration, the target version must be
+                /// <summary>Set to true to gradually shift traffic to one or more versions that you specify. By
+                /// default, traffic is shifted immediately. For gradual traffic migration, the target versions must be
                 /// located within instances that are configured for both warmup requests
                 /// (https://cloud.google.com/appengine/docs/admin-
                 /// api/reference/rest/v1beta4/apps.modules.versions#inboundservicetype) and automatic scaling
@@ -2192,20 +2196,22 @@ namespace Google.Apis.Appengine.v1beta4
             }
         }
 
-        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
-        /// excludes an App Engine application. For details about creating a project without an application, see the
-        /// Google Cloud Resource Manager create project topic (https://cloud.google.com/resource-manager/docs/creating-
-        /// project).</summary>
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
+        /// of the target Cloud Platform project. location - The region
+        /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For
+        /// more information about App Engine applications, see Managing Projects, Applications, and Billing
+        /// (https://cloud.google.com/appengine/docs/python/console/).</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Appengine.v1beta4.Data.Application body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates an App Engine application for a Google Cloud Platform project. This requires a project that
-        /// excludes an App Engine application. For details about creating a project without an application, see the
-        /// Google Cloud Resource Manager create project topic (https://cloud.google.com/resource-manager/docs/creating-
-        /// project).</summary>
+        /// <summary>Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
+        /// of the target Cloud Platform project. location - The region
+        /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For
+        /// more information about App Engine applications, see Managing Projects, Applications, and Billing
+        /// (https://cloud.google.com/appengine/docs/python/console/).</summary>
         public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2493,6 +2499,9 @@ namespace Google.Apis.Appengine.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("iap")]
+        public virtual IdentityAwareProxy Iap { get; set; } 
+
         /// <summary>Identifier of the Application resource. This identifier is equivalent to the project ID of the
         /// Google Cloud Platform project where you want to deploy your application. Example: myapp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -2592,10 +2601,11 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Docker image that is used to start a VM container for the version you deploy.</summary>
+    /// <summary>Docker image that is used to create a container and start a VM instance for the version that you
+    /// deploy. Only applicable for instances running in the App Engine flexible environment.</summary>
     public class ContainerInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI to the hosted container image in a Docker repository. The URI must be fully qualified and
+        /// <summary>URI to the hosted container image in Google Container Registry. The URI must be fully qualified and
         /// include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-
         /// project/image@digest"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
@@ -2637,8 +2647,8 @@ namespace Google.Apis.Appengine.v1beta4.Data
     /// <summary>Code and application artifacts used to deploy a version to App Engine.</summary>
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Docker image that App Engine uses the run the version. Only applicable for instances in App
-        /// Engine flexible environment.</summary>
+        /// <summary>The Docker image for the container that runs the version. Only applicable for instances running in
+        /// the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual ContainerInfo Container { get; set; } 
 
@@ -2755,6 +2765,31 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Identity-Aware Proxy</summary>
+    public class IdentityAwareProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the serving infrastructure will authenticate and authorize all incoming requests.If true,
+        /// the oauth2_client_id and oauth2_client_secret fields must be non-empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>OAuth2 client ID to use for the authentication flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
+        public virtual string Oauth2ClientId { get; set; } 
+
+        /// <summary>For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the
+        /// value is returned in the oauth2_client_secret_sha256 field.@InputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
+        public virtual string Oauth2ClientSecret { get; set; } 
+
+        /// <summary>Hex-encoded SHA-256 hash of the client secret.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
+        public virtual string Oauth2ClientSecretSha256 { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An Instance resource is the computing unit that App Engine uses to automatically scale an
     /// application.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
@@ -2864,7 +2899,7 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for LocationService.ListLocations.</summary>
+    /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of locations that matches the specified filter in the request.</summary>
@@ -3163,6 +3198,80 @@ namespace Google.Apis.Appengine.v1beta4.Data
 
         /// <summary>API method that initiated this operation. Example:
         /// google.appengine.v1.Versions.CreateVersion.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// apps/myapp/services/default.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>User who requested this operation.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; } 
+
+        /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
+    public class OperationMetadataV1Alpha : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time that this operation completed.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
+        public virtual string EphemeralMessage { get; set; } 
+
+        /// <summary>Time that this operation was created.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
+        public virtual string InsertTime { get; set; } 
+
+        /// <summary>API method that initiated this operation. Example:
+        /// google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>Name of the resource that this operation is acting on. Example:
+        /// apps/myapp/services/default.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>User who requested this operation.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; } 
+
+        /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
+    public class OperationMetadataV1Beta : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time that this operation completed.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
+        /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
+        public virtual string EphemeralMessage { get; set; } 
+
+        /// <summary>Time that this operation was created.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
+        public virtual string InsertTime { get; set; } 
+
+        /// <summary>API method that initiated this operation. Example:
+        /// google.appengine.v1beta.Versions.CreateVersion.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 

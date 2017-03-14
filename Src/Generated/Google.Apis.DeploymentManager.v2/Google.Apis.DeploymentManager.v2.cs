@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170302 (791)
+ *      <tr><th>API Rev<td>20170311 (800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -2358,8 +2358,9 @@ namespace Google.Apis.DeploymentManager.v2
 namespace Google.Apis.DeploymentManager.v2.Data
 {    
 
-    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
@@ -2379,8 +2380,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
-        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 

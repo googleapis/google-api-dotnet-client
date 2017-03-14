@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170302 (791)
+ *      <tr><th>API Rev<td>20170311 (800)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -2928,6 +2928,98 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 
         }
 
+        /// <summary>Gets a type info for a type provided by a TypeProvider.</summary>
+        /// <param name="project">The project ID for this request.</param>
+        /// <param name="typeProvider">The name of the
+        /// type provider for this request.</param>
+        /// <param name="type">The name of the type provider for this
+        /// request.</param>
+        public virtual GetTypeRequest GetType(string project, string typeProvider, string type)
+        {
+            return new GetTypeRequest(service, project, typeProvider, type);
+        }
+
+        /// <summary>Gets a type info for a type provided by a TypeProvider.</summary>
+        public class GetTypeRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeInfo>
+        {
+            /// <summary>Constructs a new GetType request.</summary>
+            public GetTypeRequest(Google.Apis.Services.IClientService service, string project, string typeProvider, string type)
+                : base(service)
+            {
+                Project = project;
+                TypeProvider = typeProvider;
+                Type = type;
+                InitParameters();
+            }
+
+
+            /// <summary>The project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the type provider for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TypeProvider { get; private set; }
+
+            /// <summary>The name of the type provider for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Type { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getType"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/typeProviders/{typeProvider}/types/{type}"; }
+            }
+
+            /// <summary>Initializes GetType parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "typeProvider", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "typeProvider",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Creates a type provider.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">The project ID for this request.</param>
@@ -3099,6 +3191,166 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists all the type info for a TypeProvider.</summary>
+        /// <param name="project">The project ID for this request.</param>
+        /// <param name="typeProvider">The name of the
+        /// type provider for this request.</param>
+        public virtual ListTypesRequest ListTypes(string project, string typeProvider)
+        {
+            return new ListTypesRequest(service, project, typeProvider);
+        }
+
+        /// <summary>Lists all the type info for a TypeProvider.</summary>
+        public class ListTypesRequest : DeploymentManagerAlphaBaseServiceRequest<Google.Apis.DeploymentManagerAlpha.alpha.Data.TypeProvidersListTypesResponse>
+        {
+            /// <summary>Constructs a new ListTypes request.</summary>
+            public ListTypesRequest(Google.Apis.Services.IClientService service, string project, string typeProvider)
+                : base(service)
+            {
+                Project = project;
+                TypeProvider = typeProvider;
+                InitParameters();
+            }
+
+
+            /// <summary>The project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the type provider for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TypeProvider { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listTypes"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/typeProviders/{typeProvider}/types"; }
+            }
+
+            /// <summary>Initializes ListTypes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "typeProvider", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "typeProvider",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -3862,8 +4114,9 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 {    
 
-    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
@@ -3883,8 +4136,8 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
-        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -5052,6 +5305,60 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains detailed information about a composite type, base type, or base type with specific
+    /// collection.</summary>
+    public class TypeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>For swagger 2.0 externalDocs field will be used. For swagger 1.2 this field will be
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
+        public virtual string DocumentationLink { get; set; } 
+
+        /// <summary>[Output Only] Type of the output. Always deploymentManager#TypeInfo for TypeInfo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The base type or composite type name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>For base types with a collection, we return a schema and documentation link For template types, we
+        /// return only a schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual TypeInfoSchemaInfo Schema { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The title on the API descriptor URL provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TypeInfoSchemaInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties that this composite type or base type collection accept as input, represented as a
+        /// json blob, format is: JSON Schema Draft V4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual string Input { get; set; } 
+
+        /// <summary>The properties that this composite type or base type collection exposes as output, these properties
+        /// can be used for references, represented as json blob, format is: JSON Schema Draft V4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual string Output { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class TypeLabelEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -5142,6 +5449,20 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>[Output Only] A list of resource type providers supported by Deployment Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeProviders")]
         public virtual System.Collections.Generic.IList<TypeProvider> TypeProviders { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TypeProvidersListTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token used to continue a truncated list request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] A list of resource type info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<TypeInfo> Types { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

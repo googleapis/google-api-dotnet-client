@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170228 (789)
+ *      <tr><th>API Rev<td>20170307 (796)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>
  *              https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api</a>
@@ -832,8 +832,9 @@ namespace Google.Apis.CloudSourceRepositories.v1
 namespace Google.Apis.CloudSourceRepositories.v1.Data
 {    
 
-    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
@@ -1188,8 +1189,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, a default mask is used: paths: "bindings, etag" This field is only
-        /// used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
+        /// field is only used by Cloud IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

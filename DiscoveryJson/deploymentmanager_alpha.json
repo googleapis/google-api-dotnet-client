@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/jx9RUPZOykHYb1fx36R_PK-o7ss\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/PY4pV5BLiidycFDAGNDLGwlTZLE\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:alpha",
  "name": "deploymentmanager",
  "canonicalName": "Deployment Manager Alpha",
  "version": "alpha",
- "revision": "20170302",
+ "revision": "20170311",
  "title": "Google Cloud Deployment Manager Alpha API",
  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -89,7 +89,7 @@
   "AuditConfig": {
    "id": "AuditConfig",
    "type": "object",
-   "description": "Specifies the audit configuration for a service. It consists of which permission types are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:foo@gmail.com\" ] }, { \"log_type\": \"DATA_WRITE\", }, { \"log_type\": \"ADMIN_READ\", } ] }, { \"service\": \"fooservice@googleapis.com\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:bar@gmail.com\" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.",
+   "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:foo@gmail.com\" ] }, { \"log_type\": \"DATA_WRITE\", }, { \"log_type\": \"ADMIN_READ\", } ] }, { \"service\": \"fooservice@googleapis.com\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:bar@gmail.com\" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.",
    "properties": {
     "auditLogConfigs": {
      "type": "array",
@@ -107,7 +107,7 @@
     },
     "service": {
      "type": "string",
-     "description": "Specifies a service that will be enabled for audit logging. For example, `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all services."
+     "description": "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services."
     }
    }
   },
@@ -1211,6 +1211,57 @@
     }
    }
   },
+  "TypeInfo": {
+   "id": "TypeInfo",
+   "type": "object",
+   "description": "Contains detailed information about a composite type, base type, or base type with specific collection.",
+   "properties": {
+    "description": {
+     "type": "string",
+     "description": "The description of the type."
+    },
+    "documentationLink": {
+     "type": "string",
+     "description": "For swagger 2.0 externalDocs field will be used. For swagger 1.2 this field will be empty."
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of the output. Always deploymentManager#TypeInfo for TypeInfo.",
+     "default": "deploymentmanager#typeInfo"
+    },
+    "name": {
+     "type": "string",
+     "description": "The base type or composite type name."
+    },
+    "schema": {
+     "$ref": "TypeInfoSchemaInfo",
+     "description": "For base types with a collection, we return a schema and documentation link For template types, we return only a schema"
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "title": {
+     "type": "string",
+     "description": "The title on the API descriptor URL provided."
+    }
+   }
+  },
+  "TypeInfoSchemaInfo": {
+   "id": "TypeInfoSchemaInfo",
+   "type": "object",
+   "description": "",
+   "properties": {
+    "input": {
+     "type": "string",
+     "description": "The properties that this composite type or base type collection accept as input, represented as a json blob, format is: JSON Schema Draft V4"
+    },
+    "output": {
+     "type": "string",
+     "description": "The properties that this composite type or base type collection exposes as output, these properties can be used for references, represented as json blob, format is: JSON Schema Draft V4"
+    }
+   }
+  },
   "TypeLabelEntry": {
    "id": "TypeLabelEntry",
    "type": "object",
@@ -1307,6 +1358,24 @@
      "description": "[Output Only] A list of resource type providers supported by Deployment Manager.",
      "items": {
       "$ref": "TypeProvider"
+     }
+    }
+   }
+  },
+  "TypeProvidersListTypesResponse": {
+   "id": "TypeProvidersListTypesResponse",
+   "type": "object",
+   "description": "",
+   "properties": {
+    "nextPageToken": {
+     "type": "string",
+     "description": "A token used to continue a truncated list request."
+    },
+    "types": {
+     "type": "array",
+     "description": "[Output Only] A list of resource type info.",
+     "items": {
+      "$ref": "TypeInfo"
      }
     }
    }
@@ -2421,6 +2490,48 @@
       "https://www.googleapis.com/auth/ndev.cloudman.readonly"
      ]
     },
+    "getType": {
+     "id": "deploymentmanager.typeProviders.getType",
+     "path": "{project}/global/typeProviders/{typeProvider}/types/{type}",
+     "httpMethod": "GET",
+     "description": "Gets a type info for a type provided by a TypeProvider.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "The project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "type": {
+       "type": "string",
+       "description": "The name of the type provider for this request.",
+       "required": true,
+       "location": "path"
+      },
+      "typeProvider": {
+       "type": "string",
+       "description": "The name of the type provider for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "typeProvider",
+      "type"
+     ],
+     "response": {
+      "$ref": "TypeInfo"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only",
+      "https://www.googleapis.com/auth/ndev.cloudman",
+      "https://www.googleapis.com/auth/ndev.cloudman.readonly"
+     ]
+    },
     "insert": {
      "id": "deploymentmanager.typeProviders.insert",
      "path": "{project}/global/typeProviders",
@@ -2491,6 +2602,64 @@
      ],
      "response": {
       "$ref": "TypeProvidersListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only",
+      "https://www.googleapis.com/auth/ndev.cloudman",
+      "https://www.googleapis.com/auth/ndev.cloudman.readonly"
+     ]
+    },
+    "listTypes": {
+     "id": "deploymentmanager.typeProviders.listTypes",
+     "path": "{project}/global/typeProviders/{typeProvider}/types",
+     "httpMethod": "GET",
+     "description": "Lists all the type info for a TypeProvider.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "Sets a filter expression for filtering listed resources, in the form filter={expression}. Your {expression} must be in the format: field_name comparison_string literal_string.\n\nThe field_name is the name of the field you want to compare. Only atomic field types are supported (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The literal_string is the string value to filter to. The literal value must be valid for the type of field you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a regular expression using RE2 syntax. The literal value must match the entire field.\n\nFor example, to filter for instances that do not have a name of example-instance, you would use filter=name ne example-instance.\n\nYou can filter on nested fields. For example, you could filter on instances that have set the scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to organize and search for results based on label values.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND expressions, meaning that resources must match all expressions to pass the filters.",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "The project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "typeProvider": {
+       "type": "string",
+       "description": "The name of the type provider for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "typeProvider"
+     ],
+     "response": {
+      "$ref": "TypeProvidersListTypesResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",

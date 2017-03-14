@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170203 (764)
+ *      <tr><th>API Rev<td>20170308 (797)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -1815,6 +1815,11 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request to verify the IDP assertion.</summary>
     public class IdentitytoolkitRelyingpartyVerifyAssertionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>When it's true, automatically creates a new account if the user doesn't exist. When it's false,
+        /// allows existing user to sign in normally and throws exception if the user doesn't exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreate")]
+        public virtual System.Nullable<bool> AutoCreate { get; set; } 
+
         /// <summary>GCP project number of the requesting delegated app. Currently only intended for Firebase V1
         /// migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedProjectNumber")]
@@ -1964,6 +1969,23 @@ namespace Google.Apis.IdentityToolkit.v3.Data
     /// <summary>Request of getting a code for user confirmation (reset password, change email etc.)</summary>
     public class Relyingparty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>whether or not to install the android app on the device where the link is opened</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidInstallApp")]
+        public virtual System.Nullable<bool> AndroidInstallApp { get; set; } 
+
+        /// <summary>minimum version of the app. if the version on the device is lower than this version then the user
+        /// is taken to the play store to upgrade the app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidMinimumVersion")]
+        public virtual string AndroidMinimumVersion { get; set; } 
+
+        /// <summary>android package name of the android app to handle the action code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
+        public virtual string AndroidPackageName { get; set; } 
+
+        /// <summary>whether or not the app can handle the oob code without first going to web</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canHandleCodeInApp")]
+        public virtual System.Nullable<bool> CanHandleCodeInApp { get; set; } 
+
         /// <summary>The recaptcha response from the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captchaResp")]
         public virtual string CaptchaResp { get; set; } 
@@ -1972,9 +1994,21 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string Challenge { get; set; } 
 
+        /// <summary>The url to continue to the Gitkit app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continueUrl")]
+        public virtual string ContinueUrl { get; set; } 
+
         /// <summary>The email of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
+
+        /// <summary>iOS app store id to download the app if it's not already installed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iOSAppStoreId")]
+        public virtual string IOSAppStoreId { get; set; } 
+
+        /// <summary>the iOS bundle id of iOS app to handle the action code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iOSBundleId")]
+        public virtual string IOSBundleId { get; set; } 
 
         /// <summary>The user's Gitkit login token for email change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
