@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170311 (800)
+ *      <tr><th>API Rev<td>20170224 (785)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1747,10 +1747,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>List of fields to return (comma-separated). If unspecified, all fields are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SelectedFields { get; set; }
-
             /// <summary>Zero-based index of the starting row to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> StartIndex { get; set; }
@@ -1819,15 +1815,6 @@ namespace Google.Apis.Bigquery.v2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "selectedFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "selectedFields",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1994,10 +1981,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
-            /// <summary>List of fields to return (comma-separated). If unspecified, all fields are returned</summary>
-            [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SelectedFields { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2046,15 +2029,6 @@ namespace Google.Apis.Bigquery.v2
                         Name = "tableId",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "selectedFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "selectedFields",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -2660,9 +2634,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The labels associated with this dataset. You can use these to organize and group your datasets. You
-        /// can set this property when inserting or updating a dataset. See Labeling Datasets for more
-        /// information.</summary>
+        /// <summary>[Experimental] The labels associated with this dataset. You can use these to organize and group
+        /// your datasets. You can set this property when inserting or updating a dataset. See Labeling Datasets for
+        /// more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2671,8 +2645,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; } 
 
-        /// <summary>The geographic location where the dataset should reside. Possible values include EU and US. The
-        /// default value is US.</summary>
+        /// <summary>[Experimental] The geographic location where the dataset should reside. Possible values include EU
+        /// and US. The default value is US.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -2763,8 +2737,8 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; } 
 
-            /// <summary>The labels associated with this dataset. You can use these to organize and group your
-            /// datasets.</summary>
+            /// <summary>[Experimental] The labels associated with this dataset. You can use these to organize and group
+            /// your datasets.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
             public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2886,8 +2860,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class ExternalDataConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Try to detect schema and format options automatically. Any option specified explicitly will be
-        /// honored.</summary>
+        /// <summary>[Experimental] Try to detect schema and format options automatically. Any option specified
+        /// explicitly will be honored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; } 
 
@@ -2932,8 +2906,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Required] The data format. For CSV files, specify "CSV". For Google sheets, specify
         /// "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify
-        /// "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable,
-        /// specify "BIGTABLE".</summary>
+        /// "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Experimental] For Google Cloud
+        /// Bigtable, specify "BIGTABLE". Please note that reading from Google Cloud Bigtable is experimental and has to
+        /// be enabled for your project. Please contact Google Cloud Support to enable this for your project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; } 
 
@@ -2981,8 +2956,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
 
@@ -3171,7 +3146,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowQuotedNewlines")]
         public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; } 
 
-        /// <summary>Indicates if we should automatically infer the options and schema for CSV and JSON
+        /// <summary>[Experimental] Indicates if we should automatically infer the options and schema for CSV and JSON
         /// sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; } 
@@ -3224,10 +3199,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; } 
 
-        /// <summary>If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into
-        /// BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties.
-        /// If no properties are specified, BigQuery loads all properties. If any named property isn't found in the
-        /// Cloud Datastore backup, an invalid error is returned in the job result.</summary>
+        /// <summary>[Experimental] If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to
+        /// load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level
+        /// properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found
+        /// in the Cloud Datastore backup, an invalid error is returned in the job result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectionFields")]
         public virtual System.Collections.Generic.IList<string> ProjectionFields { get; set; } 
 
@@ -3332,8 +3307,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
         public virtual System.Nullable<long> MaximumBytesBilled { get; set; } 
 
-        /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
-        /// named (@myparam) query parameters in this query.</summary>
+        /// <summary>[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to
+        /// NAMED to use named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; } 
 
@@ -3382,7 +3357,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
         public virtual System.Nullable<bool> UseQueryCache { get; set; } 
 
-        /// <summary>Describes user-defined function resources used in the query.</summary>
+        /// <summary>[Experimental] Describes user-defined function resources used in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]
         public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; } 
 
@@ -3559,12 +3534,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
 
-        /// <summary>[Output-only] Describes execution plan for the query.</summary>
+        /// <summary>[Output-only, Experimental] Describes execution plan for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; } 
 
@@ -3812,8 +3787,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; } 
 
-        /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
-        /// named (@myparam) query parameters in this query.</summary>
+        /// <summary>[Experimental] Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to
+        /// NAMED to use named (@myparam) query parameters in this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; } 
 
@@ -3826,7 +3801,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 
-        /// <summary>Query parameters for Standard SQL queries.</summary>
+        /// <summary>[Experimental] Query parameters for Standard SQL queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
@@ -3881,8 +3856,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>[Output-only, Experimental] The number of rows affected by a DML statement. Present only for DML
+        /// statements INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; } 
 
@@ -4323,7 +4298,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
-        /// <summary>Describes user-defined function resources used in the query.</summary>
+        /// <summary>[Experimental] Describes user-defined function resources used in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]
         public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170301 (790)
+ *      <tr><th>API Rev<td>20170313 (802)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -342,16 +342,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta1
         }
 
 
-        /// <summary>Finds named entities (currently finds proper names) in the text, entity types, salience, mentions
-        /// for each entity, and other properties.</summary>
+        /// <summary>Finds named entities (currently proper names and common nouns) in the text along with entity types,
+        /// salience, mentions for each entity, and other properties.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesRequest body)
         {
             return new AnalyzeEntitiesRequest(service, body);
         }
 
-        /// <summary>Finds named entities (currently finds proper names) in the text, entity types, salience, mentions
-        /// for each entity, and other properties.</summary>
+        /// <summary>Finds named entities (currently proper names and common nouns) in the text along with entity types,
+        /// salience, mentions for each entity, and other properties.</summary>
         public class AnalyzeEntitiesRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta1.Data.AnalyzeEntitiesResponse>
         {
             /// <summary>Constructs a new AnalyzeEntities request.</summary>
