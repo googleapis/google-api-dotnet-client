@@ -29,6 +29,7 @@ using NUnit.Framework;
 
 using Google.Apis.Http;
 using Google.Apis.Util;
+using Google.Apis.Logging;
 
 namespace Google.Apis.Tests.Apis.Http
 {
@@ -52,11 +53,13 @@ namespace Google.Apis.Tests.Apis.Http
         /// <summary>Message handler which returns a new successful (and empty) response.</summary>
         private class MockMessageHandler : HttpMessageHandler
         {
+            public HttpResponseMessage Response { get; set; } = new HttpResponseMessage();
+
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                tcs.SetResult(new HttpResponseMessage());
+                tcs.SetResult(Response);
                 return tcs.Task;
             }
         }
@@ -1026,6 +1029,111 @@ namespace Google.Apis.Tests.Apis.Http
                 userAgent = string.Join(" ", request.Headers.GetValues("User-Agent").ToArray());
                 Assert.That(userAgent, Is.EqualTo(applicationName + " " + apiVersion));
             }
+        }
+
+        private async Task<IList<string>> LogTest(ConfigurableMessageHandler.LogEventType logEvents, bool errorResponse = false)
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2017, 1, 2, 3, 4, 5, DateTimeKind.Utc) };
+            var logger = new MemoryLogger(LogLevel.All, clock: clock);
+            HttpMessageHandler handler;
+            if (errorResponse)
+            {
+                handler = new MockMessageHandler
+                {
+                    Response = new HttpResponseMessage
+                    {
+                        StatusCode = HttpStatusCode.ServiceUnavailable
+                    }
+                };
+            }
+            else
+            {
+                handler = new MockMessageHandler
+                {
+                    Response = new HttpResponseMessage
+                    {
+                        Headers = { { "header1", "One" }, { "header2", "Two" } },
+                        Content = new ByteArrayContent(new byte[] { 65, 66, 67, 0, 1, 255, 68, 69 }) // ABC...DE
+                    }
+                };
+            }
+            var configurableHandler = new ConfigurableMessageHandler(handler)
+            {
+                LogEvents = logEvents,
+                InstanceLogger = logger
+            };
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-host/")
+                {
+                    Headers = { Host = "test-host", Referrer = new Uri("https://referrer/") },
+                    Content = new ByteArrayContent(new byte[] { 88, 89, 90, 0, 1, 255, 68, 69 }) // XYZ...DE
+                };
+                await client.SendAsync(request);
+            }
+            return logger.LogEntries;
+        }
+
+        [Test]
+        public async Task Logging_RequestUri()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestUri);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] (triesRemaining=3) URI: 'https://test-host/'"));
+        }
+
+        [Test]
+        public async Task Logging_RequestHeaders()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestHeaders);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            // Header order may vary, and extra headers may be present (e.g. UserAgent), so test using Contain()
+            Assert.That(logEntries[0], Does.Contain("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Headers:\n"));
+            Assert.That(logEntries[0], Does.Contain("  [Host] 'test-host'"));
+            Assert.That(logEntries[0], Does.Contain("  [Referer] 'https://referrer/'"));
+        }
+
+        [Test]
+        public async Task Logging_RequestBody()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestBody);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Body: 'XYZ...DE'"));
+        }
+
+        [Test]
+        public async Task Logging_ResponseStatus()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseStatus);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Response status: OK 'OK'"));
+        }
+
+        [Test]
+        public async Task Logging_ResponseError()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseAbnormal, true);
+            Assert.That(logEntries.Count, Is.EqualTo(2));
+            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] An abnormal response wasn't handled. Status code is ServiceUnavailable"));
+            Assert.That(logEntries[1], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Abnormal response is being returned. Status Code is ServiceUnavailable"));
+        }
+
+        [Test]
+        public async Task Logging_ResponseHeaders()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseHeaders);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            Assert.That(logEntries[0], Does.Contain("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Headers:\n"));
+            Assert.That(logEntries[0], Does.Contain("  [header1] 'One'"));
+            Assert.That(logEntries[0], Does.Contain("  [header2] 'Two'"));
+        }
+
+        [Test]
+        public async Task Logging_ResponseBody()
+        {
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseBody);
+            Assert.That(logEntries.Count, Is.EqualTo(1));
+            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Body: 'ABC...DE'"));
         }
     }
 }
