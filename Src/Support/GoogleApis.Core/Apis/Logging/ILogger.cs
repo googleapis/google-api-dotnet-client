@@ -33,6 +33,11 @@ namespace Google.Apis.Logging
         /// <returns>A type-associated logger.</returns>
         ILogger ForType<T>();
 
+        /// <summary>Logs a debug message.</summary>
+        /// <param name="message">The message to log.</param>
+        /// <param name="formatArgs">String.Format arguments (if applicable).</param>
+        void Debug(string message, params object[] formatArgs);
+
         /// <summary>Logs an info message.</summary>
         /// <param name="message">The message to log.</param>
         /// <param name="formatArgs">String.Format arguments (if applicable).</param>
@@ -42,11 +47,6 @@ namespace Google.Apis.Logging
         /// <param name="message">The message to log.</param>
         /// <param name="formatArgs">String.Format arguments (if applicable).</param>
         void Warning(string message, params object[] formatArgs);
-
-        /// <summary>Logs a debug message.</summary>
-        /// <param name="message">The message to log.</param>
-        /// <param name="formatArgs">String.Format arguments (if applicable).</param>
-        void Debug(string message, params object[] formatArgs);
 
         /// <summary>Logs an error message resulting from an exception.</summary>
         /// <param name="exception"></param>

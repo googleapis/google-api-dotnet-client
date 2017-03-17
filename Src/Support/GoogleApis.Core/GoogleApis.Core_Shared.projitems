@@ -31,7 +31,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\IJsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\JsonExplicitNullAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Json\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\BaseLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\ConsoleLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\LogLevel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\MemoryLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Logging\NullLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\Parameters\ParameterCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\Parameters\ParameterUtils.cs" />
