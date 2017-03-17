@@ -25,8 +25,8 @@ namespace Google.Apis.Logging
     /// </summary>
     public abstract class BaseLogger : ILogger
     {
-        // Matches gRPC datetime log format
-        private const string DateTimeFormatString = "MMdd HH:mm:ss.ffffff";
+        // Does not match gRPC datetime log format, which is "MMdd HH:mm:ss.ffffff"
+        private const string DateTimeFormatString = "yyyy-MM-dd HH:mm:ss.ffffff";
 
         /// <summary>
         /// Construct a <see cref="BaseLogger"/>. 
@@ -106,17 +106,7 @@ namespace Google.Apis.Logging
         public ILogger ForType<T>() => ForType(typeof(T));
 
         /// <inheritdoc/>
-        public ILogger ForType(Type type)
-        {
-            if (type == LoggerForType)
-            {
-                return this;
-            }
-            else
-            {
-                return BuildNewLogger(type);
-            }
-        }
+        public ILogger ForType(Type type) => type == LoggerForType ? this : BuildNewLogger(type);
 
         /// <summary>
         /// Perform the actual logging.

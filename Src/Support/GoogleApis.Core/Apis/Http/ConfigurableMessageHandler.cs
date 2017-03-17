@@ -179,7 +179,8 @@ namespace Google.Apis.Http
         private ILogger _instanceLogger = Logger;
 
         /// <summary>
-        /// For testing only
+        /// For testing only.
+        /// This defaults to the static <see cref="Logger"/>, but can be overridden for fine-grain testing. 
         /// </summary>
         internal ILogger InstanceLogger
         {

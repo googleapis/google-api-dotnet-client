@@ -1079,7 +1079,7 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestUri);
             Assert.That(logEntries.Count, Is.EqualTo(1));
-            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] (triesRemaining=3) URI: 'https://test-host/'"));
+            Assert.That(logEntries[0], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] (triesRemaining=3) URI: 'https://test-host/'"));
         }
 
         [Test]
@@ -1088,7 +1088,7 @@ namespace Google.Apis.Tests.Apis.Http
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestHeaders);
             Assert.That(logEntries.Count, Is.EqualTo(1));
             // Header order may vary, and extra headers may be present (e.g. UserAgent), so test using Contain()
-            Assert.That(logEntries[0], Does.Contain("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Headers:\n"));
+            Assert.That(logEntries[0], Does.Contain("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Headers:\n"));
             Assert.That(logEntries[0], Does.Contain("  [Host] 'test-host'"));
             Assert.That(logEntries[0], Does.Contain("  [Referer] 'https://referrer/'"));
         }
@@ -1098,7 +1098,7 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestBody);
             Assert.That(logEntries.Count, Is.EqualTo(1));
-            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Body: 'XYZ...DE'"));
+            Assert.That(logEntries[0], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Body: 'XYZ...DE'"));
         }
 
         [Test]
@@ -1106,7 +1106,7 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseStatus);
             Assert.That(logEntries.Count, Is.EqualTo(1));
-            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Response status: OK 'OK'"));
+            Assert.That(logEntries[0], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Response status: OK 'OK'"));
         }
 
         [Test]
@@ -1114,8 +1114,8 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseAbnormal, true);
             Assert.That(logEntries.Count, Is.EqualTo(2));
-            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] An abnormal response wasn't handled. Status code is ServiceUnavailable"));
-            Assert.That(logEntries[1], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Abnormal response is being returned. Status Code is ServiceUnavailable"));
+            Assert.That(logEntries[0], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] An abnormal response wasn't handled. Status code is ServiceUnavailable"));
+            Assert.That(logEntries[1], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Abnormal response is being returned. Status Code is ServiceUnavailable"));
         }
 
         [Test]
@@ -1123,7 +1123,7 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseHeaders);
             Assert.That(logEntries.Count, Is.EqualTo(1));
-            Assert.That(logEntries[0], Does.Contain("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Headers:\n"));
+            Assert.That(logEntries[0], Does.Contain("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Headers:\n"));
             Assert.That(logEntries[0], Does.Contain("  [header1] 'One'"));
             Assert.That(logEntries[0], Does.Contain("  [header2] 'Two'"));
         }
@@ -1133,7 +1133,7 @@ namespace Google.Apis.Tests.Apis.Http
         {
             var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseBody);
             Assert.That(logEntries.Count, Is.EqualTo(1));
-            Assert.That(logEntries[0], Is.EqualTo("D0102 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Body: 'ABC...DE'"));
+            Assert.That(logEntries[0], Is.EqualTo("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Body: 'ABC...DE'"));
         }
     }
 }
