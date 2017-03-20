@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170306 (795)
+ *      <tr><th>API Rev<td>20170313 (802)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -349,7 +349,13 @@ namespace Google.Apis.ServiceControl.v1
         /// executed.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        ///
+        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
+        /// `PROJECT_STATUS_UNVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
+        /// `QUOTA_SYSTEM_UNAVAILABLE`
+        ///
+        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
         /// `"pubsub.googleapis.com"`.
@@ -364,7 +370,13 @@ namespace Google.Apis.ServiceControl.v1
         /// executed.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        ///
+        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
+        /// `PROJECT_STATUS_UNVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
+        /// `QUOTA_SYSTEM_UNAVAILABLE`
+        ///
+        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
         public class AllocateQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.AllocateQuotaResponse>
         {
             /// <summary>Constructs a new AllocateQuota request.</summary>
@@ -602,7 +614,13 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Releases previously allocated quota done through AllocateQuota method.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        ///
+        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
+        /// `PROJECT_STATUS_UNVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
+        /// `QUOTA_SYSTEM_UNAVAILABLE`
+        ///
+        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
         /// `"pubsub.googleapis.com"`.
@@ -616,7 +634,13 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Releases previously allocated quota done through AllocateQuota method.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        ///
+        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
+        /// `PROJECT_STATUS_UNVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
+        /// `QUOTA_SYSTEM_UNAVAILABLE`
+        ///
+        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
         public class ReleaseQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.ReleaseQuotaResponse>
         {
             /// <summary>Constructs a new ReleaseQuota request.</summary>
@@ -926,7 +950,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
         ///
         /// 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the
-        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"</summary>
+        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"
+        ///
+        /// 4. For allocation quota, value for each quota limit associated with the metrics will be specified using the
+        /// following gauge metric: "serviceruntime.googleapis.com/quota/limit"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1205,7 +1232,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>Metric values as tracked by One Platform before the adjustment was made.</summary>
+        /// <summary>Metric values as tracked by One Platform before the adjustment was made. The following metrics will
+        /// be included:
+        ///
+        /// 1. Per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        ///
+        /// 2. Value for each quota limit associated with the metrics will be specified using the following gauge
+        /// metric: "serviceruntime.googleapis.com/quota/limit"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1653,7 +1687,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// delta metric: "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
         ///
         /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
-        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"</summary>
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        ///
+        /// 3. For allocation quota, value for each quota limit associated with the metrics will be specified using the
+        /// following gauge metric: "serviceruntime.googleapis.com/quota/limit"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1798,7 +1835,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>Metric values as tracked by One Platform before the start of reconciliation.</summary>
+        /// <summary>Metric values as tracked by One Platform before the start of reconciliation. The following metrics
+        /// will be included:
+        ///
+        /// 1. Per quota metric total usage will be specified using the following gauge metric:
+        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
+        ///
+        /// 2. Value for each quota limit associated with the metrics will be specified using the following gauge
+        /// metric: "serviceruntime.googleapis.com/quota/limit"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 

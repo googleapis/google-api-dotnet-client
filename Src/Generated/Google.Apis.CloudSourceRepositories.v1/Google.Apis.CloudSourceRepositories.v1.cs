@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170307 (796)
+ *      <tr><th>API Rev<td>20170314 (803)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>
  *              https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api</a>
@@ -854,8 +854,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `resourcemanager`,
-        /// `storage`, `compute`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 

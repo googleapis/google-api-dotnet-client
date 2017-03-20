@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170307 (796)
+ *      <tr><th>API Rev<td>20170308 (797)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -373,8 +373,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
@@ -393,8 +393,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -438,8 +438,8 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -459,8 +459,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -513,8 +513,8 @@ namespace Google.Apis.Pubsub.v1
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
@@ -537,9 +537,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path. For example, a Project resource is specified as
-                /// `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -909,8 +908,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
@@ -929,8 +928,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1292,8 +1291,8 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -1313,8 +1312,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1367,8 +1366,8 @@ namespace Google.Apis.Pubsub.v1
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
@@ -1391,9 +1390,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path. For example, a Project resource is specified as
-                /// `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -1781,8 +1779,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual GetIamPolicyRequest GetIamPolicy(string resource)
             {
                 return new GetIamPolicyRequest(service, resource);
@@ -1801,8 +1799,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being requested. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2009,8 +2007,8 @@ namespace Google.Apis.Pubsub.v1
             /// <summary>Sets the access control policy on the specified resource. Replaces any existing
             /// policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Pubsub.v1.Data.SetIamPolicyRequest body, string resource)
             {
                 return new SetIamPolicyRequest(service, body, resource);
@@ -2030,8 +2028,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy is being specified. `resource` is usually
-                /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2084,8 +2082,8 @@ namespace Google.Apis.Pubsub.v1
             /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
             /// not for authorization checking. This operation may "fail open" without warning.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. `resource` is usually
-            /// specified as a path. For example, a Project resource is specified as `projects/{project}`.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
             public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Pubsub.v1.Data.TestIamPermissionsRequest body, string resource)
             {
                 return new TestIamPermissionsRequest(service, body, resource);
@@ -2108,9 +2106,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>REQUIRED: The resource for which the policy detail is being requested. `resource` is
-                /// usually specified as a path. For example, a Project resource is specified as
-                /// `projects/{project}`.</summary>
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Resource { get; private set; }
 
@@ -2434,10 +2431,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// Every endpoint has a set of API supported attributes that can be used to control different aspects of the
         /// message delivery.
         ///
-        /// The currently supported attribute is `x-goog-version`, which you can use to change the format of the push
+        /// The currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed
         /// message. This attribute indicates the version of the data expected by the endpoint. This controls the shape
-        /// of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub
-        /// API.
+        /// of the pushed message (i.e., its fields and metadata). The endpoint version is based on the version of the
+        /// Pub/Sub API.
         ///
         /// If not present during the `CreateSubscription` call, it will default to the version of the API used to make
         /// such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription`

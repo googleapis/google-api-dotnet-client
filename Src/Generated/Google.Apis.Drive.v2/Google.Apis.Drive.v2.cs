@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170303 (792)
+ *      <tr><th>API Rev<td>20170314 (803)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -8905,7 +8905,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailVersion")]
         public virtual System.Nullable<long> ThumbnailVersion { get; set; } 
 
-        /// <summary>The title of this file.</summary>
+        /// <summary>The title of this file. Note that for immutable items such as the top level folders of Team Drives,
+        /// My Drive root folder, and Application Data folder the title is constant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 

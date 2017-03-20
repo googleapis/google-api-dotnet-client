@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170314 (803)
+ *      <tr><th>API Rev<td>20170316 (805)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -522,6 +522,10 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -529,10 +533,6 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -568,6 +568,15 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -580,15 +589,6 @@ namespace Google.Apis.CloudBuild.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1566,9 +1566,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// host will attempt to pull the image first, using the builder service account's credentials if necessary.
         ///
         /// The Docker daemon's cache will already have the latest versions of all of the officially supported build
-        /// steps (https://github.com/GoogleCloudPlatform/cloud-builders). The Docker daemon will also have cached many
-        /// of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you
-        /// attempt to use them.
+        /// steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-
+        /// builders)). The Docker daemon will also have cached many of the layers for some popular images, like
+        /// "ubuntu", "debian", but they will be refreshed at the time you attempt to use them.
         ///
         /// If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is
         /// available to use as the name for a later build step.</summary>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.YouTubeReporting.v1</id>
-        <version>1.22.0.802</version>
+        <version>1.22.0.804</version>
         <title>Google.Apis.YouTubeReporting.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

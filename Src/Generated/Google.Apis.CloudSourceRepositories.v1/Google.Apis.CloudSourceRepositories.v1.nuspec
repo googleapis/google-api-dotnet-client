@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.CloudSourceRepositories.v1</id>
-        <version>1.22.0.796</version>
+        <version>1.22.0.803</version>
         <title>Google.Apis.CloudSourceRepositories.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

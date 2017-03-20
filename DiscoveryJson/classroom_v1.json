@@ -1104,7 +1104,8 @@
                 "ACTIVE",
                 "ARCHIVED",
                 "PROVISIONED",
-                "DECLINED"
+                "DECLINED",
+                "SUSPENDED"
               ],
               "repeated": true,
               "location": "query",
@@ -2219,14 +2220,16 @@
             "ACTIVE",
             "ARCHIVED",
             "PROVISIONED",
-            "DECLINED"
+            "DECLINED",
+            "SUSPENDED"
           ],
           "enumDescriptions": [
             "No course state. No returned Course message will use this value.",
             "The course is active.",
             "The course has been archived. You cannot modify it except to change it\nto a different state.",
             "The course has been created, but not yet activated. It is accessible by\nthe primary teacher and domain administrators, who may modify it or\nchange it to the `ACTIVE` or `DECLINED` states.\nA course may only be changed to `PROVISIONED` if it is in the `DECLINED`\nstate.",
-            "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate."
+            "The course has been created, but declined. It is accessible by the\ncourse owner and domain administrators, though it will not be\ndisplayed in the web UI. You cannot modify the course except to change it\nto the `PROVISIONED` state.\nA course may only be changed to `DECLINED` if it is in the `PROVISIONED`\nstate.",
+            "The course has been suspended. You cannot modify the course, and only the\nuser identified by the `owner_id` can view the course.\nA course may be placed in this state if it potentially violates the\nTerms of Service."
           ],
           "type": "string"
         },
@@ -2599,7 +2602,7 @@
       "id": "ListStudentsResponse"
     }
   },
-  "revision": "20170309",
+  "revision": "20170314",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170303 (792)
+ *      <tr><th>API Rev<td>20170314 (803)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5003,7 +5003,9 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
-        /// <summary>The name of the file. This is not necessarily unique within a folder.</summary>
+        /// <summary>The name of the file. This is not necessarily unique within a folder. Note that for immutable items
+        /// such as the top level folders of Team Drives, My Drive root folder, and Application Data folder the name is
+        /// constant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

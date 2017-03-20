@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>Enterprise Apps Reseller API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170220 (781)
+ *      <tr><th>API Rev<td>20170228 (789)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/reseller/'>
  *              https://developers.google.com/google-apps/reseller/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170301 (790)
+ *      <tr><th>API Rev<td>20170314 (803)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1289,6 +1289,10 @@ namespace Google.Apis.Vision.v1.Data
         /// features. For example an original image will likely have partial matching for its crops.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialMatchingImages")]
         public virtual System.Collections.Generic.IList<WebImage> PartialMatchingImages { get; set; } 
+
+        /// <summary>The visually similar image results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visuallySimilarImages")]
+        public virtual System.Collections.Generic.IList<WebImage> VisuallySimilarImages { get; set; } 
 
         /// <summary>Deduced entities from similar images on the Internet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webEntities")]

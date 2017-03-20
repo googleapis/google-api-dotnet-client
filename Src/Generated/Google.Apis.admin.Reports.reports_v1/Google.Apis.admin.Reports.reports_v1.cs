@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20160704 (550)
+ *      <tr><th>API Rev<td>20170315 (804)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
@@ -318,7 +318,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
-            /// <summary>Return events which occured at or before this time.</summary>
+            /// <summary>Return events which occurred at or before this time.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndTime { get; set; }
 
@@ -341,7 +341,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Return events which occured at or after this time.</summary>
+            /// <summary>Return events which occurred at or after this time.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartTime { get; set; }
 
@@ -385,7 +385,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)",
+                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
                     });
                 RequestParameters.Add(
                     "actorIpAddress", new Google.Apis.Discovery.Parameter
@@ -506,7 +506,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
-            /// <summary>Return events which occured at or before this time.</summary>
+            /// <summary>Return events which occurred at or before this time.</summary>
             [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndTime { get; set; }
 
@@ -529,7 +529,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Return events which occured at or after this time.</summary>
+            /// <summary>Return events which occurred at or after this time.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartTime { get; set; }
 
@@ -579,7 +579,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)",
+                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
                     });
                 RequestParameters.Add(
                     "actorIpAddress", new Google.Apis.Discovery.Parameter
@@ -840,7 +840,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)",
+                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
                     });
             }
 
@@ -974,7 +974,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
+                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
                     });
                 RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
@@ -1001,7 +1001,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)):[^,]+)",
+                        Pattern = @"(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
                     });
             }
 
