@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170308 (797)
+ *      <tr><th>API Rev<td>20170316 (805)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -450,6 +450,134 @@ namespace Google.Apis.Slides.v1
                             Name = "pageObjectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Generates a thumbnail of the latest version of the specified page in the presentation and
+            /// returns a URL to the thumbnail image.</summary>
+            /// <param name="presentationId">The ID of the presentation to retrieve.</param>
+            /// <param name="pageObjectId">The
+            /// object ID of the page whose thumbnail to retrieve.</param>
+            public virtual GetThumbnailRequest GetThumbnail(string presentationId, string pageObjectId)
+            {
+                return new GetThumbnailRequest(service, presentationId, pageObjectId);
+            }
+
+            /// <summary>Generates a thumbnail of the latest version of the specified page in the presentation and
+            /// returns a URL to the thumbnail image.</summary>
+            public class GetThumbnailRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Thumbnail>
+            {
+                /// <summary>Constructs a new GetThumbnail request.</summary>
+                public GetThumbnailRequest(Google.Apis.Services.IClientService service, string presentationId, string pageObjectId)
+                    : base(service)
+                {
+                    PresentationId = presentationId;
+                    PageObjectId = pageObjectId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The ID of the presentation to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("presentationId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PresentationId { get; private set; }
+
+                /// <summary>The object ID of the page whose thumbnail to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageObjectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PageObjectId { get; private set; }
+
+                /// <summary>The optional mime type of the thumbnail image.
+                ///
+                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.mimeType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ThumbnailPropertiesMimeTypeEnum> ThumbnailPropertiesMimeType { get; set; }
+
+                /// <summary>The optional mime type of the thumbnail image.
+                ///
+                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                public enum ThumbnailPropertiesMimeTypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("PNG")]
+                    PNG,
+                }
+
+                /// <summary>The optional thumbnail image size.
+                ///
+                /// If you don't specify the size, the server chooses a default size of the image.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.thumbnailSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ThumbnailPropertiesThumbnailSizeEnum> ThumbnailPropertiesThumbnailSize { get; set; }
+
+                /// <summary>The optional thumbnail image size.
+                ///
+                /// If you don't specify the size, the server chooses a default size of the image.</summary>
+                public enum ThumbnailPropertiesThumbnailSizeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("THUMBNAIL_SIZE_UNSPECIFIED")]
+                    THUMBNAILSIZEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("LARGE")]
+                    LARGE,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getThumbnail"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail"; }
+                }
+
+                /// <summary>Initializes GetThumbnail parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "presentationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "presentationId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageObjectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageObjectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "thumbnailProperties.mimeType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "thumbnailProperties.mimeType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "thumbnailProperties.thumbnailSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "thumbnailProperties.thumbnailSize",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -3104,6 +3232,30 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The type of the theme color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The thumbnail of a page.</summary>
+    public class Thumbnail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The content URL of the thumbnail image.
+        ///
+        /// The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the
+        /// requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image
+        /// may be lost if the presentation's sharing settings change. The mime type of the thumbnail image is the same
+        /// as specified in the `GetPageThumbnailRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
+        public virtual string ContentUrl { get; set; } 
+
+        /// <summary>The positive height in pixels of the thumbnail image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; } 
+
+        /// <summary>The positive width in pixels of the thumbnail image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

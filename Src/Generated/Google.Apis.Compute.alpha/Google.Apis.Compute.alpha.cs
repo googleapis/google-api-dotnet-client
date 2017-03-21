@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170224 (785)
+ *      <tr><th>API Rev<td>20170302 (791)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -2576,10 +2576,9 @@ namespace Google.Apis.Compute.alpha
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
-        /// <param name="autoscaler">Name of the autoscaler to update.</param>
-        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string zone, string autoscaler)
+        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string zone)
         {
-            return new PatchRequest(service, body, project, zone, autoscaler);
+            return new PatchRequest(service, body, project, zone);
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
@@ -2587,12 +2586,11 @@ namespace Google.Apis.Compute.alpha
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string zone, string autoscaler)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string zone)
                 : base(service)
             {
                 Project = project;
                 Zone = zone;
-                Autoscaler = autoscaler;
                 Body = body;
                 InitParameters();
             }
@@ -2606,9 +2604,9 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the autoscaler to update.</summary>
+            /// <summary>Name of the autoscaler to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Autoscaler { get; private set; }
+            public virtual string Autoscaler { get; set; }
 
             /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2666,7 +2664,7 @@ namespace Google.Apis.Compute.alpha
                     "autoscaler", new Google.Apis.Discovery.Parameter
                     {
                         Name = "autoscaler",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
@@ -24923,10 +24921,9 @@ namespace Google.Apis.Compute.alpha
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
-        /// <param name="autoscaler">Name of the autoscaler to update.</param>
-        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string region, string autoscaler)
+        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string region)
         {
-            return new PatchRequest(service, body, project, region, autoscaler);
+            return new PatchRequest(service, body, project, region);
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
@@ -24934,12 +24931,11 @@ namespace Google.Apis.Compute.alpha
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string region, string autoscaler)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Autoscaler body, string project, string region)
                 : base(service)
             {
                 Project = project;
                 Region = region;
-                Autoscaler = autoscaler;
                 Body = body;
                 InitParameters();
             }
@@ -24953,9 +24949,9 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the autoscaler to update.</summary>
+            /// <summary>Name of the autoscaler to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Autoscaler { get; private set; }
+            public virtual string Autoscaler { get; set; }
 
             /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -25013,7 +25009,7 @@ namespace Google.Apis.Compute.alpha
                     "autoscaler", new Google.Apis.Discovery.Parameter
                     {
                         Name = "autoscaler",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",

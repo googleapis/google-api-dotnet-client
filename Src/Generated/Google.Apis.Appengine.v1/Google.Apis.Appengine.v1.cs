@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170223 (784)
+ *      <tr><th>API Rev<td>20170320 (809)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -2548,7 +2548,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string DefaultHostname { get; set; } 
 
         /// <summary>HTTP path dispatch rules for requests to the application that do not explicitly target a service or
-        /// version. Rules are order-dependent.@OutputOnly</summary>
+        /// version. Rules are order-dependent. Up to 20 dispatch rules can be supported.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchRules")]
         public virtual System.Collections.Generic.IList<UrlDispatchRule> DispatchRules { get; set; } 
 
@@ -3324,43 +3324,6 @@ namespace Google.Apis.Appengine.v1.Data
     }    
 
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
-    public class OperationMetadataV1Alpha : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time that this operation completed.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
-
-        /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
-        public virtual string EphemeralMessage { get; set; } 
-
-        /// <summary>Time that this operation was created.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTime { get; set; } 
-
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
-
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/services/default.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>User who requested this operation.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
-
-        /// <summary>Durable messages that persist on every operation poll. @OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
-        public virtual System.Collections.Generic.IList<string> Warning { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1Beta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time that this operation completed.@OutputOnly</summary>
@@ -3656,7 +3619,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string Domain { get; set; } 
 
         /// <summary>Pathname within the host. Must start with a "/". A single "*" can be included at the end of the
-        /// path. The sum of the lengths of the domain and path may not exceed 100 characters.</summary>
+        /// path.The sum of the lengths of the domain and path may not exceed 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 

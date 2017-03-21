@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170224 (785)
+ *      <tr><th>API Rev<td>20170302 (791)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -6070,7 +6070,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
-        /// to update.</param>
+        /// to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.Firewall body, string project, string firewall)
         {
             return new PatchRequest(service, body, project, firewall);
@@ -6095,7 +6095,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall rule to update.</summary>
+            /// <summary>Name of the firewall rule to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -27680,6 +27680,107 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource.</param>
+        public virtual SetPrivateIpGoogleAccessRequest SetPrivateIpGoogleAccess(Google.Apis.Compute.beta.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+        {
+            return new SetPrivateIpGoogleAccessRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
+            public SetPrivateIpGoogleAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SubnetworksSetPrivateIpGoogleAccessRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setPrivateIpGoogleAccess"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess"; }
+            }
+
+            /// <summary>Initializes SetPrivateIpGoogleAccess parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -37242,10 +37343,26 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range
+        /// tuple that describes a permitted connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denied")]
+        public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
+        /// IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
+        public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
+
+        /// <summary>Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic,
+        /// it is NOT supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify
+        /// sourceRanges OR sourceTags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -37271,6 +37388,13 @@ namespace Google.Apis.Compute.beta.Data
         /// projects/myproject/global/networks/my-network - global/networks/default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified,
+        /// the value assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of
+        /// priority implies higher precedence (eg, a rule with priority 0 has higher precedence than a rule with
+        /// priority 1). DENY rules take precedence over ALLOW rules having equal priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -37304,6 +37428,24 @@ namespace Google.Apis.Compute.beta.Data
         
 
         public class AllowedData
+        {
+            /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
+            /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
+            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
+            public virtual string IPProtocol { get; set; } 
+
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
+            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// connections through any port.
+            ///
+            /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+            public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
+
+        }    
+
+        public class DeniedData
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
@@ -39647,6 +39789,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttempt")]
         public virtual ManagedInstanceLastAttempt LastAttempt { get; set; } 
 
+        /// <summary>[Output Only] Intended version of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ManagedInstanceVersion Version { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -39689,6 +39835,21 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    public class ManagedInstanceVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The intended template of the instance. This field is empty when current_action is one
+        /// of { DELETING, ABANDONING }.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
+        public virtual string InstanceTemplate { get; set; } 
+
+        /// <summary>[Output Only] Name of the version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A metadata key/value entry.</summary>
@@ -41882,6 +42043,15 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    public class SubnetworksSetPrivateIpGoogleAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class TCPHealthCheck : Google.Apis.Requests.IDirectResponseSchema

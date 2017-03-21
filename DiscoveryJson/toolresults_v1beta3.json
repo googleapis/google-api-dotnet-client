@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/o2ZHC0TzwCcS0e-I0BYeKi8My-E\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/fFLSz106l-GBrSih2N1uHd90gtc\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20170316",
+ "revision": "20170320",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -116,11 +116,13 @@
     "perfUnit": {
      "type": "string",
      "enum": [
+      "bytesPerSecond",
       "kibibyte",
       "percent",
       "perfUnitUnspecified"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -135,11 +137,17 @@
       "memoryRssPrivate",
       "memoryRssShared",
       "memoryRssTotal",
+      "memoryTotal",
+      "networkReceived",
+      "networkSent",
       "ntBytesReceived",
       "ntBytesTransferred",
       "sampleSeriesTypeUnspecified"
      ],
      "enumDescriptions": [
+      "",
+      "",
+      "",
       "",
       "",
       "",
