@@ -251,7 +251,7 @@ namespace Google.Apis.Auth.OAuth2
             return rsaParmeters;
         }
 
-        private static byte[] TrimLeadingZeroes(byte[] bs, bool alignTo8Bytes = true)
+        public static byte[] TrimLeadingZeroes(byte[] bs, bool alignTo8Bytes = true)
         {
             int zeroCount = 0;
             while (zeroCount < bs.Length && bs[zeroCount] == 0) zeroCount += 1;
@@ -270,12 +270,17 @@ namespace Google.Apis.Auth.OAuth2
             {
                 return bs;
             }
+
+            byte[] result = new byte[newLength];
+            if (newLength < bs.Length)
+            {
+                Buffer.BlockCopy(bs, bs.Length - newLength, result, 0, newLength);
+            }
             else
             {
-                byte[] result = new byte[newLength];
-                Buffer.BlockCopy(bs, zeroCount, result, 0, newLength);
-                return result;
+                Buffer.BlockCopy(bs, 0, result, newLength - bs.Length, bs.Length);
             }
+            return result;
         }
 
     }
