@@ -239,7 +239,7 @@ namespace Google.Apis.Auth.OAuth2
             var rsaParmeters = new RSAParameters
             {
                 Modulus = TrimLeadingZeroes((byte[])parameters[1]),
-                Exponent = TrimLeadingZeroes((byte[])parameters[2]),
+                Exponent = TrimLeadingZeroes((byte[])parameters[2], alignTo8Bytes: false),
                 D = TrimLeadingZeroes((byte[])parameters[3]),
                 P = TrimLeadingZeroes((byte[])parameters[4]),
                 Q = TrimLeadingZeroes((byte[])parameters[5]),
@@ -251,18 +251,29 @@ namespace Google.Apis.Auth.OAuth2
             return rsaParmeters;
         }
 
-        private static byte[] TrimLeadingZeroes(byte[] bs)
+        private static byte[] TrimLeadingZeroes(byte[] bs, bool alignTo8Bytes = true)
         {
             int zeroCount = 0;
             while (zeroCount < bs.Length && bs[zeroCount] == 0) zeroCount += 1;
-            if (zeroCount == 0)
+
+            int newLength = bs.Length - zeroCount;
+            if (alignTo8Bytes)
+            {
+                int remainder = newLength & 0x07;
+                if (remainder != 0)
+                {
+                    newLength += 8 - remainder;
+                }
+            }
+
+            if (newLength == bs.Length)
             {
                 return bs;
             }
             else
             {
-                byte[] result = new byte[bs.Length - zeroCount];
-                Array.Copy(bs, zeroCount, result, 0, result.Length);
+                byte[] result = new byte[newLength];
+                Buffer.BlockCopy(bs, zeroCount, result, 0, newLength);
                 return result;
             }
         }
