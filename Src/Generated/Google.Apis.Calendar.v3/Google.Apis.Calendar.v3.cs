@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170307 (796)
+ *      <tr><th>API Rev<td>20170314 (803)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4691,6 +4691,39 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class DeepLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<Link> Links { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DisplayInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("appIconUrl")]
+        public virtual string AppIconUrl { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("appShortTitle")]
+        public virtual string AppShortTitle { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("appTitle")]
+        public virtual string AppTitle { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("linkShortTitle")]
+        public virtual string LinkShortTitle { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("linkTitle")]
+        public virtual string LinkTitle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Error : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Domain, or broad category, of the error.</summary>
@@ -5184,6 +5217,20 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class EventHabitInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata specific to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual HabitInstanceData Data { get; set; } 
+
+        /// <summary>Id of the habit this instance belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
+        public virtual string ParentId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class EventReminder : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. -
@@ -5420,6 +5467,60 @@ namespace Google.Apis.Calendar.v3.Data
                 TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class HabitInstanceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("statusInferred")]
+        public virtual System.Nullable<bool> StatusInferred { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LaunchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("installUrl")]
+        public virtual string InstallUrl { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("intentAction")]
+        public virtual string IntentAction { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("applinkingSource")]
+        public virtual string ApplinkingSource { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayInfo")]
+        public virtual DisplayInfo DisplayInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("launchInfo")]
+        public virtual LaunchInfo LaunchInfo { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
