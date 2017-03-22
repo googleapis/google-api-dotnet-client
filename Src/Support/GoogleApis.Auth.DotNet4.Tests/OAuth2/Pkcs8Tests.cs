@@ -102,5 +102,43 @@ lK1DcBvq+IFLucBdi0/9hXE=
             Assert.That(ToHex(ps.InverseQ), Is.EqualTo(
                 "23B92EA0605DBC81E77B7637B6E710273727608DDBA696E1CA7D5D9A6F23B1A696AED06F16A09BD72D4C8DAA0BE25362F9BADD77A6E9579BB8E3B18141F1BCA372F596E5D392C44F9B087935B8575A5FE27A259CE9640BEACAFC43EBD2603280A3DE73761589BD6B3EFEFECD7D6A0594AD43701BEAF8814BB9C05D8B4FFD8571"));
         }
+
+#if !NETSTANDARD
+        [Test]
+        public void RsaFuzzTest()
+        {
+            // Create many RSA keys, encode them in PKCS8, verify the Pkcs8 class can decode them correctly.
+            for (int i = 0; i < 1000; i++)
+            {
+                // This SecureRandom construtor is deprecated,
+                // but is the easiest way to create a deterministic SecureRandom.
+                var rnd = new Org.BouncyCastle.Security.SecureRandom(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
+                var rsa = new Org.BouncyCastle.Crypto.Generators.RsaKeyPairGenerator();
+                // 384 is the shortest valid key length. Use this for speed.
+                rsa.Init(new Org.BouncyCastle.Crypto.KeyGenerationParameters(rnd, 384));
+                var keys = rsa.GenerateKeyPair();
+                var pkcs8Generator = new Org.BouncyCastle.OpenSsl.Pkcs8Generator(keys.Private);
+                var pem = pkcs8Generator.Generate();
+                var ms = new System.IO.MemoryStream();
+                var stWriter = new System.IO.StreamWriter(ms);
+                var pemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(stWriter);
+                pemWriter.WriteObject(pem);
+                stWriter.Close();
+                var pkcs8 = System.Text.Encoding.ASCII.GetString(ms.ToArray());
+                var rsaParameters = Pkcs8.DecodeRsaParameters(pkcs8);
+                var key = RSA.Create();
+                try
+                {
+                    key.ImportParameters(rsaParameters);
+                }
+                catch (CryptographicException e)
+                {
+                    // Fails in iteration 8 with unfixed Pkcs8 class
+                    Assert.Fail($"Failed in iteration {i}: {e}");
+                }
+            }
+        }
+#endif
+
     }
 }
