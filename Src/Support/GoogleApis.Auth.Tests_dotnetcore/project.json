@@ -27,7 +27,7 @@
         "../**/AssemblyInfo.cs", // Not needed for test, two of them collide
       ]
     },
-    "define": [ "NETSTANDARD;SIGNED" ],
+    "define": [ "NETSTANDARD", "SIGNED" ],
     "keyFile": "../../../google.apis.snk"
   },
 

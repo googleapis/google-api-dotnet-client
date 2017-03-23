@@ -108,6 +108,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
         public void RsaFuzzTest()
         {
             // Create many RSA keys, encode them in PKCS8, verify the Pkcs8 class can decode them correctly.
+            // This test does take a few (possibly 10s of) seconds, longer than most unit tests.
             for (int i = 0; i < 1000; i++)
             {
                 // This SecureRandom construtor is deprecated,
@@ -129,11 +130,12 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 var key = RSA.Create();
                 try
                 {
+                    // Throws CryptographicException if the rsaParameters is invalid
                     key.ImportParameters(rsaParameters);
                 }
                 catch (CryptographicException e)
                 {
-                    // Fails in iteration 8 with unfixed Pkcs8 class
+                    // Fails in iteration 8 without the Pkcs8 fix in PR#937
                     Assert.Fail($"Failed in iteration {i}: {e}");
                 }
             }
