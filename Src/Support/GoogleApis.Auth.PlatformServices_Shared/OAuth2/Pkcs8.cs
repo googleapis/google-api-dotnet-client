@@ -251,7 +251,7 @@ namespace Google.Apis.Auth.OAuth2
             return rsaParmeters;
         }
 
-        public static byte[] TrimLeadingZeroes(byte[] bs, bool alignTo8Bytes = true)
+        internal static byte[] TrimLeadingZeroes(byte[] bs, bool alignTo8Bytes = true)
         {
             int zeroCount = 0;
             while (zeroCount < bs.Length && bs[zeroCount] == 0) zeroCount += 1;

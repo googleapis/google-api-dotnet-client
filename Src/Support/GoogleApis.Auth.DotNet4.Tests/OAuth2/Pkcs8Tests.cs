@@ -111,7 +111,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
             // This test does take a few (possibly 10s of) seconds, longer than most unit tests.
             for (int i = 0; i < 1000; i++)
             {
-                // This SecureRandom construtor is deprecated,
+                // This SecureRandom constructor is deprecated,
                 // but is the easiest way to create a deterministic SecureRandom.
                 var rnd = new Org.BouncyCastle.Security.SecureRandom(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
                 var rsa = new Org.BouncyCastle.Crypto.Generators.RsaKeyPairGenerator();
@@ -130,6 +130,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 var key = RSA.Create();
                 try
                 {
+                    // Test that the parameters can be imported.
                     // Throws CryptographicException if the rsaParameters is invalid
                     key.ImportParameters(rsaParameters);
                 }
@@ -138,6 +139,16 @@ lK1DcBvq+IFLucBdi0/9hXE=
                     // Fails in iteration 8 without the Pkcs8 fix in PR#937
                     Assert.Fail($"Failed in iteration {i}: {e}");
                 }
+                // Check that all the parameters exported are equal to the originally created parameters
+                var exportedParams = key.ExportParameters(true);
+                var privateKey = (Org.BouncyCastle.Crypto.Parameters.RsaPrivateCrtKeyParameters)keys.Private;
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.P, false), Is.EqualTo(privateKey.P.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Q, false), Is.EqualTo(privateKey.Q.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.DP, false), Is.EqualTo(privateKey.DP.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.DQ, false), Is.EqualTo(privateKey.DQ.ToByteArrayUnsigned()));
+                var publicKey = (Org.BouncyCastle.Crypto.Parameters.RsaKeyParameters)keys.Public;
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Exponent, false), Is.EqualTo(publicKey.Exponent.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Modulus, false), Is.EqualTo(publicKey.Modulus.ToByteArrayUnsigned()));
             }
         }
 #endif
