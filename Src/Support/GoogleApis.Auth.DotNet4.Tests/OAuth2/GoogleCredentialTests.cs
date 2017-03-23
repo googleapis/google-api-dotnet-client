@@ -89,6 +89,50 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.IsTrue(credential.IsCreateScopedRequired);
         }
 
+        [Test]
+        public void FromJson_ShortDValue()
+        {
+            // This private key hits a rare edge case where the D value of the RSA private key only
+            // requires 255 bytes to encode, but we still need to left pad it to 256 so
+            // RSACryptoServiceProvider.ImportParameters does not throw CryptographicException with
+            // a "Bad Data" message.
+            var credential = GoogleCredential.FromJson(@"{
+""private_key_id"": ""PRIVATE_KEY_ID"",
+""private_key"": ""-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC5KC4i9y2QMw5S
+JrwW1Qgbxpen/PUnumAQfWUY3ZTOsXvr7vmLeDTx5a9VQ4YJFDqEEQEFPLLzSuBN
+lItMJAb10AMvwBxcxs/WFAMpxoF0Aiu2U16uqLH3vf5dUJpgg+/lsmHnJk5b8jzr
+CqfuEtDv7xq/HXTZtqFd144rW7mWKQyMzzlzBPgbEw5tE9Winjo9OErPrYusZ1WC
+FgiuKds0CzOqQEEW6RzA0Bj4B25Q2Y1BuKPh1zd9AkoHyiyEOeOwqvd7IDn3uAuM
+OfEkeL3zfs9UVq+DuGJ1bQl0N4L9JNtEdNOzWWYYBMk9pjJqNwCGUmtw9xWn2Tzp
+kAnGNKntAgMBAAECggEAAM1nxccEb4eJHFoGnqK1skkeByBVf6KTH/8rHPx41Jx4
+SQF0G2Kd+B5isB/myMtJpaDdPESTEfLVHgDyyZWuYgpQuTg/5zcFV4wmp1uw2+vW
+fKfH1UHt44DzRTxALwLjWz92pSXJWSSnlu0o5SM3vJJwrztVckwUTu/MMevn1fq9
+qqLja559YjKHoL99bB7FAGq6fqYuJv0KEDk0yzOyWX8PqSJhFE6pG3vFQ0pHg/b3
+pEyUrXX/aRfgzRq8aSHzNWkDKdN5AY2a12TmouKmMy+4V9j49WXZ5DF9ZPGFrE61
+Eb2UaGw8/Kzce6CY/L5pMnslwra1QxOEDLQuwuu8AQKBgQDrfdvMqgHTSX/ab0RM
+8JtOXGok5s3+Or0dTfki7fOIM9eDtD6YTYFqGyKdBFovHYLzKkYdSzP3gFrvIy7d
++Pw6rRfBDHAHdsoHcc8djzjZ41fvymbiHcCCe6PdWgD3mfC5Gq/+bZrdW6erWdMX
+P2QGR04ysFVNIIotAO3g2gsmLQKBgQDJSCQMx0paSKOV/psZRatf/eTDUNQDYF2N
+mbqg4DiIAokt+2EEHJGwtuobckldoN/4f89kTB0OU9SFRmBAPWUDu0NfJDMNhcma
+o6nlzcftObBPtAS1oLs4Rg/alcgEVHAwLpeg/QyWVb1sxgFs40EAp0TnwDWi3SSV
+HoIw8R+qwQKBgCXgZ3MCwSpnvv22OckaRhCTgqsOyIEkl3hYK0M3/Jyiof5YBl1e
+0frsBGQ25/5+A6ry2LYre19KsNWX1hjzzDXv00tEodxBefs6jfKWL7G0BFfYOTYT
+TPxvwIqAyHkKtJJBPZ9xp6AE9vHzj6VEl+T+oRA8FmxCWJcmeBxbVcG9AoGAe8st
+uNo9RYfVbKQZ2hI6U6CAuQuWSblT8Iny+YzN2ADPRAOOaIv1otzs4RKKQtZ1yY06
+DXKukChI1esxuXDJFuFujy5hY9i75KryDE9ivek0IeES4G5Jl1On3oUublNMaKXP
+Rgk8W53CEgs5xzGBwhgeTfauRkuCe2A3LEiwdEECgYAO80SVYrprJT6C2KcX5Hgw
+M+5ST4oIu9EOOv/hBSmEs1gkASH3XEHU0iV4vg94H61Wq3RmdLZ9P2uKNq7Tjl+a
+TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
+55tKWHy105Btnc5jJT1EXg==
+-----END PRIVATE KEY-----"",
+""client_email"": ""CLIENT_EMAIL"",
+""client_id"": ""CLIENT_ID"",
+""type"": ""service_account""}");
+            Assert.IsInstanceOf(typeof(ServiceAccountCredential), credential.UnderlyingCredential);
+            Assert.IsTrue(credential.IsCreateScopedRequired);
+        }
+
         /// <summary>
         /// Creates service account credential from stream, obtains a JWT token
         /// from the credential and checks the access token is well-formed.
