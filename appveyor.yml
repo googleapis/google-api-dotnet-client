@@ -8,6 +8,8 @@ image: Visual Studio 2015
 
 # Install the pre-requisites for the build.
 install:
+  # Make sure curl is available
+  - set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
   # Download and install the nunit runner.
   - nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
   # Download the installer for dotnet.
