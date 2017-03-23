@@ -103,6 +103,56 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 "23B92EA0605DBC81E77B7637B6E710273727608DDBA696E1CA7D5D9A6F23B1A696AED06F16A09BD72D4C8DAA0BE25362F9BADD77A6E9579BB8E3B18141F1BCA372F596E5D392C44F9B087935B8575A5FE27A259CE9640BEACAFC43EBD2603280A3DE73761589BD6B3EFEFECD7D6A0594AD43701BEAF8814BB9C05D8B4FFD8571"));
         }
 
+#if !NETSTANDARD
+        [Test]
+        public void RsaFuzzTest()
+        {
+            // Create many RSA keys, encode them in PKCS8, verify the Pkcs8 class can decode them correctly.
+            // This test does take a few (possibly 10s of) seconds, longer than most unit tests.
+            for (int i = 0; i < 1000; i++)
+            {
+                // This SecureRandom constructor is deprecated,
+                // but is the easiest way to create a deterministic SecureRandom.
+                var rnd = new Org.BouncyCastle.Security.SecureRandom(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
+                var rsa = new Org.BouncyCastle.Crypto.Generators.RsaKeyPairGenerator();
+                // 384 is the shortest valid key length. Use this for speed.
+                rsa.Init(new Org.BouncyCastle.Crypto.KeyGenerationParameters(rnd, 384));
+                var keys = rsa.GenerateKeyPair();
+                var pkcs8Generator = new Org.BouncyCastle.OpenSsl.Pkcs8Generator(keys.Private);
+                var pem = pkcs8Generator.Generate();
+                var ms = new System.IO.MemoryStream();
+                var stWriter = new System.IO.StreamWriter(ms);
+                var pemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(stWriter);
+                pemWriter.WriteObject(pem);
+                stWriter.Close();
+                var pkcs8 = System.Text.Encoding.ASCII.GetString(ms.ToArray());
+                var rsaParameters = Pkcs8.DecodeRsaParameters(pkcs8);
+                var key = RSA.Create();
+                try
+                {
+                    // Test that the parameters can be imported.
+                    // Throws CryptographicException if the rsaParameters is invalid
+                    key.ImportParameters(rsaParameters);
+                }
+                catch (CryptographicException e)
+                {
+                    // Fails in iteration 8 without the Pkcs8 fix in PR#937
+                    Assert.Fail($"Failed in iteration {i}: {e}");
+                }
+                // Check that all the parameters exported are equal to the originally created parameters
+                var exportedParams = key.ExportParameters(true);
+                var privateKey = (Org.BouncyCastle.Crypto.Parameters.RsaPrivateCrtKeyParameters)keys.Private;
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.P, false), Is.EqualTo(privateKey.P.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Q, false), Is.EqualTo(privateKey.Q.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.DP, false), Is.EqualTo(privateKey.DP.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.DQ, false), Is.EqualTo(privateKey.DQ.ToByteArrayUnsigned()));
+                var publicKey = (Org.BouncyCastle.Crypto.Parameters.RsaKeyParameters)keys.Public;
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Exponent, false), Is.EqualTo(publicKey.Exponent.ToByteArrayUnsigned()));
+                Assert.That(Pkcs8.TrimLeadingZeroes(exportedParams.Modulus, false), Is.EqualTo(publicKey.Modulus.ToByteArrayUnsigned()));
+            }
+        }
+#endif
+
         [Test]
         public void TrimLeadingZeroes()
         {
