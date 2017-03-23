@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/0FCdL0BWEx8yMtZQU6marCZhfgI\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/-zIhs3FY9L1B7uZzwfB9zEUqdGQ\"",
  "discoveryVersion": "v1",
  "id": "fusiontables:v1",
  "name": "fusiontables",
  "version": "v1",
- "revision": "20160526",
+ "revision": "20170321",
  "title": "Fusion Tables API",
  "description": "API for working with Fusion Tables data.",
  "ownerDomain": "google.com",

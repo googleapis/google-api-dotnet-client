@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170321 (810)
+ *      <tr><th>API Rev<td>20170322 (811)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3405,8 +3405,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; } 
 
-        /// <summary>Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000
-        /// inclusive.</summary>
+        /// <summary>Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive.
+        /// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000
+        /// years</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; } 
 

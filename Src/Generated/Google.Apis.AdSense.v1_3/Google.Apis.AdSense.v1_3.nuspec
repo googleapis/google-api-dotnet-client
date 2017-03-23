@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.AdSense.v1_3</id>
-        <version>1.22.0.809</version>
+        <version>1.22.0.810</version>
         <title>Google.Apis.AdSense.v1_3 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
