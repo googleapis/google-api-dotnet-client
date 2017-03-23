@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170302 (791)
+ *      <tr><th>API Rev<td>20170321 (810)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -6312,6 +6312,98 @@ namespace Google.Apis.Analytics.v3
 
             }
 
+
+            /// <summary>Delete a remarketing audience.</summary>
+            /// <param name="accountId">Account ID to which the remarketing audience belongs.</param>
+            /// <param
+            /// name="webPropertyId">Web property ID to which the remarketing audience belongs.</param>
+            /// <param
+            /// name="remarketingAudienceId">The ID of the remarketing audience to delete.</param>
+            public virtual DeleteRequest Delete(string accountId, string webPropertyId, string remarketingAudienceId)
+            {
+                return new DeleteRequest(service, accountId, webPropertyId, remarketingAudienceId);
+            }
+
+            /// <summary>Delete a remarketing audience.</summary>
+            public class DeleteRequest : AnalyticsBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string accountId, string webPropertyId, string remarketingAudienceId)
+                    : base(service)
+                {
+                    AccountId = accountId;
+                    WebPropertyId = webPropertyId;
+                    RemarketingAudienceId = remarketingAudienceId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Account ID to which the remarketing audience belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>Web property ID to which the remarketing audience belongs.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("webPropertyId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string WebPropertyId { get; private set; }
+
+                /// <summary>The ID of the remarketing audience to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("remarketingAudienceId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string RemarketingAudienceId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "management/accounts/{accountId}/webproperties/{webPropertyId}/remarketingAudiences/{remarketingAudienceId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "webPropertyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "webPropertyId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "remarketingAudienceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "remarketingAudienceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
 
             /// <summary>Gets a remarketing audience to which the user has access.</summary>
             /// <param name="accountId">The account ID of the remarketing audience to retrieve.</param>

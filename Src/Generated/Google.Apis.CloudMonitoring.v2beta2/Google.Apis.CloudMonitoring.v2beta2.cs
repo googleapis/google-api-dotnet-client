@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/v2beta2/'>Cloud Monitoring API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20170320 (809)
+ *      <tr><th>API Rev<td>20170322 (811)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/v2beta2/'>
  *              https://cloud.google.com/monitoring/v2beta2/</a>

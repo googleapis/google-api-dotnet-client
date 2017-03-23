@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/_TwJmLTniaOfTlJD9QIqNV_qu6g\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/TFZkgD9xYpP6NWCHPCOMPBvsifs\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3firstparty",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3firstparty",
- "revision": "20170321",
+ "revision": "20170322",
  "title": "Cloud Tool Results firstparty API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -210,7 +210,7 @@
     },
     "seconds": {
      "type": "string",
-     "description": "Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive.",
+     "description": "Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
      "format": "int64"
     }
    }

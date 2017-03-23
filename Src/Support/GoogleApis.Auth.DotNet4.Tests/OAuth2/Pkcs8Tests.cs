@@ -140,5 +140,21 @@ lK1DcBvq+IFLucBdi0/9hXE=
         }
 #endif
 
+        [Test]
+        public void TrimLeadingZeroes()
+        {
+            Assert.That(
+                Pkcs8.TrimLeadingZeroes(new byte[] { 0, 1 }, alignTo8Bytes: false),
+                Is.EqualTo(new byte[] { 1 }));
+            Assert.That(
+                Pkcs8.TrimLeadingZeroes(new byte[] { 0, 1 }, alignTo8Bytes: true),
+                Is.EqualTo(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }));
+            Assert.That(
+                Pkcs8.TrimLeadingZeroes(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, alignTo8Bytes: false),
+                Is.EqualTo(new byte[] { 1 }));
+            Assert.That(
+                Pkcs8.TrimLeadingZeroes(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, alignTo8Bytes: true),
+                Is.EqualTo(new byte[] { 0, 0, 0, 0, 0, 0, 0, 1 }));
+        }
     }
 }

@@ -355,6 +355,10 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
+            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
+
             /// <summary>The list of entity id to be used for search instead of query string. To specify multiple ids in
             /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
@@ -382,10 +386,6 @@ namespace Google.Apis.Kgsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Indent { get; set; }
 
-            /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -410,6 +410,15 @@ namespace Google.Apis.Kgsearch.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "languages", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languages",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "ids", new Google.Apis.Discovery.Parameter
                     {
@@ -459,15 +468,6 @@ namespace Google.Apis.Kgsearch.v1
                     "indent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "indent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "languages", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "languages",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

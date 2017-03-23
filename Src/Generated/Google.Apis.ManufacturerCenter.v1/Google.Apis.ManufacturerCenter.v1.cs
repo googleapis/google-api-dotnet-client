@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161028 (666)
+ *      <tr><th>API Rev<td>20170322 (811)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -563,20 +563,100 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     /// https://support.google.com/manufacturers/answer/6124116.</summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The additional images of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#addlimage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalImageLink")]
+        public virtual System.Collections.Generic.IList<Image> AdditionalImageLink { get; set; } 
+
+        /// <summary>The target age group of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#agegroup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
+        public virtual string AgeGroup { get; set; } 
+
         /// <summary>The brand name of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#brand.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
+
+        /// <summary>The capacity of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacity")]
+        public virtual Capacity Capacity { get; set; } 
+
+        /// <summary>The color of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#color.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual string Color { get; set; } 
+
+        /// <summary>The count of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual Count Count { get; set; } 
+
+        /// <summary>The description of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The disclosure date of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#disclosure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
+        public virtual string DisclosureDate { get; set; } 
+
+        /// <summary>The rich format description of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#featuredesc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureDescription")]
+        public virtual System.Collections.Generic.IList<FeatureDescription> FeatureDescription { get; set; } 
+
+        /// <summary>The flavor of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#flavor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flavor")]
+        public virtual string Flavor { get; set; } 
+
+        /// <summary>The format of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; } 
+
+        /// <summary>The target gender of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#gender.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
+        public virtual string Gender { get; set; } 
 
         /// <summary>The Global Trade Item Number (GTIN) of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#gtin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual System.Collections.Generic.IList<string> Gtin { get; set; } 
 
+        /// <summary>The image of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
+        public virtual Image ImageLink { get; set; } 
+
+        /// <summary>The item group id of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
+        public virtual string ItemGroupId { get; set; } 
+
+        /// <summary>The material of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("material")]
+        public virtual string Material { get; set; } 
+
         /// <summary>The Manufacturer Part Number (MPN) of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#mpn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; } 
+
+        /// <summary>The pattern of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; } 
+
+        /// <summary>The details of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#productdetail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productDetail")]
+        public virtual System.Collections.Generic.IList<ProductDetail> ProductDetail { get; set; } 
 
         /// <summary>The name of the group of products related to the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#productline.</summary>
@@ -588,20 +668,132 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productName")]
         public virtual string ProductName { get; set; } 
 
-        /// <summary>The URL of the manufacturer's detail page of the product. For more information, see
+        /// <summary>The URL of the detail page of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#productpage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productPageUrl")]
         public virtual string ProductPageUrl { get; set; } 
 
-        /// <summary>The manufacturer's category of the product. For more information, see
+        /// <summary>The category of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#producttype.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual System.Collections.Generic.IList<string> ProductType { get; set; } 
+
+        /// <summary>The release date of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
+        public virtual string ReleaseDate { get; set; } 
+
+        /// <summary>The scent of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#scent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scent")]
+        public virtual string Scent { get; set; } 
+
+        /// <summary>The size of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual string Size { get; set; } 
+
+        /// <summary>The size system of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#sizesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeSystem")]
+        public virtual string SizeSystem { get; set; } 
+
+        /// <summary>The size type of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#sizetype.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
+        public virtual string SizeType { get; set; } 
+
+        /// <summary>The suggested retail price (MSRP) of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedRetailPrice")]
+        public virtual Price SuggestedRetailPrice { get; set; } 
+
+        /// <summary>The theme of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#theme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("theme")]
+        public virtual string Theme { get; set; } 
 
         /// <summary>The title of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The videos of the product. For more information, see
+        /// https://support.google.com/manufacturers/answer/6124116#video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoLink")]
+        public virtual System.Collections.Generic.IList<string> VideoLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The capacity of a product. For more information, see
+    /// https://support.google.com/manufacturers/answer/6124116#capacity.</summary>
+    public class Capacity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit of the capacity, i.e., MB, GB, or TB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
+
+        /// <summary>The numeric value of the capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of products in a single package. For more information, see
+    /// https://support.google.com/manufacturers/answer/6124116#count.</summary>
+    public class Count : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unit in which these products are counted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
+
+        /// <summary>The numeric value of the number of products in a package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A feature description of the product. For more information, see
+    /// https://support.google.com/manufacturers/answer/6124116#featuredesc.</summary>
+    public class FeatureDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A short description of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; } 
+
+        /// <summary>An optional image describing the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual Image Image { get; set; } 
+
+        /// <summary>A detailed description of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An image.</summary>
+    public class Image : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the image. For crawled images, this is the provided URL. For uploaded images, this is a
+        /// serving URL from Google if the image has been processed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; } 
+
+        /// <summary>The status of the image. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The type of the image, i.e., crawled or uploaded. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -623,6 +815,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
 
+        /// <summary>The timestamp when this issue appeared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; } 
+
         /// <summary>The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”,
         /// “IMAGE_NOT_SERVEABLE”, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -641,6 +837,21 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>List of the products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<Product> Products { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A price.</summary>
+    public class Price : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric value of the price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amount")]
+        public virtual string Amount { get; set; } 
+
+        /// <summary>The currency in which the price is denoted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
+        public virtual string Currency { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -703,6 +914,26 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>Attributes of the product uploaded via the Manufacturer Center API or via feeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadedAttributes")]
         public virtual Attributes UploadedAttributes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A product detail of the product. For more information, see
+    /// https://support.google.com/manufacturers/answer/6124116#productdetail.</summary>
+    public class ProductDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; } 
+
+        /// <summary>The value of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; } 
+
+        /// <summary>A short section name that can be reused between multiple product details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionName")]
+        public virtual string SectionName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
