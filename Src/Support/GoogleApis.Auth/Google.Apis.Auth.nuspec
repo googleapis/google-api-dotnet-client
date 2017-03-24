@@ -33,22 +33,8 @@
         </group>
         <group targetFramework="netstandard1.3">
           <dependency id="Google.Apis.Core" version="$version$" />
-          <dependency id="Newtonsoft.Json" version="9.0.1" />
-          <dependency id="System.Collections" version="4.0.11" />
-          <dependency id="System.Console" version="4.0.0" />
-          <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-          <dependency id="System.IO" version="4.1.0" />
-          <dependency id="System.IO.FileSystem" version="4.0.1" />
-          <dependency id="System.IO.FileSystem.Primitives" version="4.0.1" />
-          <dependency id="System.Linq" version="4.1.0" />
-          <dependency id="System.Net.Http" version="4.1.0" />
-          <dependency id="System.Net.Primitives" version="4.0.11" />
-          <dependency id="System.Net.Requests" version="4.0.11" />
-          <dependency id="System.Runtime" version="4.1.0" />
-          <dependency id="System.Runtime.Extensions" version="4.1.0" />
-          <dependency id="System.Text.Encoding" version="4.0.11" />
-          <dependency id="System.Threading" version="4.0.11" />
-          <dependency id="System.Threading.Tasks" version="4.0.11" />
+          <dependency id="NETStandard.Library" version="1.6.1" />
+          <dependency id="System.Net.Requests" version="4.3.0" />
         </group>
         <group>
           <!-- Fallback group, used if nothing else matches. -->

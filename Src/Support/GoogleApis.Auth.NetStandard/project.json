@@ -1,19 +1,8 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "System.Collections": "4.0.11",
-    "System.Console": "4.0.0",
-    "System.Diagnostics.Debug": "4.0.11",
-    "System.IO": "4.1.0",
-    "System.IO.FileSystem": "4.0.1",
-    "System.IO.FileSystem.Primitives": "4.0.1",
-    "System.Linq": "4.1.0",
-    "System.Net.Http": "4.1.0",
-    "System.Net.Requests": "4.0.11",
-    "System.Runtime": "4.1.0",
-    "System.Runtime.Extensions": "4.1.0",
-    "System.Text.Encoding": "4.0.11",
-    "System.Threading.Tasks": "4.0.11"
+    "NETStandard.Library": "1.6.1",
+    "System.Net.Requests": "4.3.0"
   },
   "frameworks": {
     "netstandard1.3": {}
