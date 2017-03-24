@@ -115,10 +115,23 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.AuthorizationUrl"/>, and Token server URL to 
             /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.TokenUrl"/>.
             /// </summary>
-            public Initializer()
-                : base(GoogleAuthConsts.AuthorizationUrl, GoogleAuthConsts.TokenUrl)
+            public Initializer() : this(
+                GoogleAuthConsts.AuthorizationUrl, GoogleAuthConsts.TokenUrl, GoogleAuthConsts.RevokeTokenUrl)
             {
-                RevokeTokenUrl = GoogleAuthConsts.RevokeTokenUrl;
+            }
+
+            /// <summary>Constructs a new initializer.</summary>
+            /// <param name="authorizationServerUrl">Authorization server URL</param>
+            /// <param name="tokenServerUrl">Token server URL</param>
+            /// <param name="revokeTokenUrl">Revocation server URL</param>
+            /// <remarks>
+            /// This is mainly for internal testing at Google, where we occasionally need
+            /// to use alternative oauth endpoints. This is not for general use.
+            /// </remarks>
+            protected Initializer(string authorizationServerUrl, string tokenServerUrl, string revokeTokenUrl)
+                : base(authorizationServerUrl, tokenServerUrl)
+            {
+                RevokeTokenUrl = revokeTokenUrl;
             }
         }
     }
