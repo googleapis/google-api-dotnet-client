@@ -113,7 +113,9 @@ lK1DcBvq+IFLucBdi0/9hXE=
             {
                 // This SecureRandom constructor is deprecated,
                 // but is the easiest way to create a deterministic SecureRandom.
+#pragma warning disable CS0618
                 var rnd = new Org.BouncyCastle.Security.SecureRandom(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
+#pragma warning restore CS0618
                 var rsa = new Org.BouncyCastle.Crypto.Generators.RsaKeyPairGenerator();
                 // 384 is the shortest valid key length. Use this for speed.
                 rsa.Init(new Org.BouncyCastle.Crypto.KeyGenerationParameters(rnd, 384));
