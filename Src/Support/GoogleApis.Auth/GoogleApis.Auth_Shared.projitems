@@ -38,7 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Responses\AuthorizationCodeResponseUrl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Requests\AuthorizationRequestUrl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\GoogleClientSecrets.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)OAuth2\GoogleConsts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth2\GoogleAuthConsts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Requests\RefreshTokenRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Responses\TokenErrorResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Requests\TokenRequest.cs" />
