@@ -24,6 +24,15 @@ namespace GoogleApis.Apis.Util.Store
     /// </summary>
     class NullDataStore : IDataStore
     {
+        private static readonly Task s_completedTask = CompletedTask<int>();
+
+        private static Task<T> CompletedTask<T>()
+        {
+            var tcs = new TaskCompletionSource<T>();
+            tcs.SetResult(default(T));
+            return tcs.Task;
+        }
+
         /// <summary>
         /// Construct a new null datastore, that stores nothing.
         /// </summary>
@@ -31,22 +40,16 @@ namespace GoogleApis.Apis.Util.Store
         {
         }
 
-        private Task<T> CompletedTask<T>()
-        {
-            var tcs = new TaskCompletionSource<T>();
-            tcs.SetResult(default(T));
-            return tcs.Task;
-        }
+        /// <inheritdoc/>
+        public Task ClearAsync() => s_completedTask;
 
         /// <inheritdoc/>
-        public Task ClearAsync() => CompletedTask<int>();
-
-        /// <inheritdoc/>
-        public Task DeleteAsync<T>(string key) => CompletedTask<int>();
+        public Task DeleteAsync<T>(string key) => s_completedTask;
 
         /// <summary>
         /// Asynchronously returns the stored value for the given key or <c>null</c> if not found.
-        /// This implementation of <see cref="IDataStore"/> will always return <c>null</c>. 
+        /// This implementation of <see cref="IDataStore"/> will always return a completed task
+        /// with a result of <c>null</c>. 
         /// </summary>
         /// <typeparam name="T">The type to retrieve from the data store.</typeparam>
         /// <param name="key">The key to retrieve its value.</param>
@@ -62,6 +65,6 @@ namespace GoogleApis.Apis.Util.Store
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns>A task that completes immediately.</returns>
-        public Task StoreAsync<T>(string key, T value) => CompletedTask<int>();
+        public Task StoreAsync<T>(string key, T value) => s_completedTask;
     }
 }
