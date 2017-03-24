@@ -113,6 +113,7 @@
     <Compile Include="Apis\Upload\ImprovedResumableUploadTest.cs" />
     <Compile Include="Apis\Upload\ResumableUploadTest.cs" />
     <Compile Include="Apis\Utils\ExponentialBackOffTest.cs" />
+    <Compile Include="Apis\Utils\NullDataStoreTest.cs" />
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
     <Compile Include="ApplicationContextTests.cs" />
