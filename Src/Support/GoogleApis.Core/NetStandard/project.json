@@ -1,23 +1,9 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Newtonsoft.Json": "9.0.1",
-    "System.Collections": "4.0.11",
-    "System.Console": "4.0.0",
-    "System.Diagnostics.Debug": "4.0.11",
-    "System.Globalization": "4.0.11",
-    "System.IO": "4.1.0",
-    "System.Linq": "4.1.0",
-    "System.Net.Http": "4.1.0",
-    "System.Net.Primitives": "4.0.11",
-    "System.Reflection": "4.1.0",
-    "System.Reflection.Extensions": "4.0.1",
-    "System.Reflection.TypeExtensions": "4.1.0",
-    "System.Runtime": "4.1.0",
-    "System.Runtime.Extensions": "4.1.0",
-    "System.Text.RegularExpressions": "4.1.0",
-    "System.Threading": "4.0.11",
-    "System.Threading.Tasks": "4.0.11"
+    "NETStandard.Library": "1.6.1",
+    "System.Reflection.TypeExtensions": "4.3.0",
+    "Newtonsoft.Json": "9.0.1"
   },
   "frameworks": {
     "netstandard1.3": {}
