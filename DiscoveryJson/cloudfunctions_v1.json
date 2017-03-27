@@ -1,6 +1,18 @@
 {
+  "version": "v1",
+  "baseUrl": "https://cloudfunctions.googleapis.com/",
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "API for managing lightweight user-provided functions executed in response to events.",
+  "basePath": "",
+  "revision": "20170324",
+  "documentationLink": "https://cloud.google.com/functions",
+  "id": "cloudfunctions:v1",
+  "discoveryVersion": "v1",
+  "version_module": "True",
   "schemas": {
     "Location": {
+      "id": "Location",
       "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
@@ -9,16 +21,16 @@
           "type": "string"
         },
         "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
+          "type": "string",
+          "description": "The canonical id for this location. For example: `\"us-east1\"`."
         },
         "metadata": {
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object"
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation."
         },
         "labels": {
           "additionalProperties": {
@@ -27,10 +39,10 @@
           "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
           "type": "object"
         }
-      },
-      "id": "Location"
+      }
     },
     "OperationMetadataV1Beta2": {
+      "id": "OperationMetadataV1Beta2",
       "description": "Metadata describing an Operation",
       "type": "object",
       "properties": {
@@ -40,8 +52,8 @@
         },
         "request": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
           },
           "description": "The original request that started the operation.",
           "type": "object"
@@ -62,15 +74,14 @@
           "description": "Type of operation.",
           "type": "string"
         }
-      },
-      "id": "OperationMetadataV1Beta2"
+      }
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "Cloud Functions",
   "auth": {
     "oauth2": {
@@ -93,29 +104,29 @@
         "locations": {
           "methods": {
             "get": {
-              "description": "Get information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
+              "httpMethod": "GET",
               "parameterOrder": [
                 "name"
               ],
-              "httpMethod": "GET",
+              "response": {
+                "$ref": "Location"
+              },
               "parameters": {
                 "name": {
-                  "location": "path",
-                  "description": "Resource name for the location.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/locations/[^/]+$"
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Resource name for the location."
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "id": "cloudfunctions.projects.locations.get",
               "path": "v1/{+name}",
-              "id": "cloudfunctions.projects.locations.get"
+              "description": "Get information about a location."
             }
           }
         }
@@ -123,36 +134,80 @@
     }
   },
   "parameters": {
-    "access_token": {
-      "type": "string",
+    "fields": {
       "location": "query",
-      "description": "OAuth access token."
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ]
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
     },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+    "access_token": {
+      "description": "OAuth access token.",
       "type": "string",
       "location": "query"
     },
-    "pp": {
+    "quotaUser": {
       "location": "query",
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string"
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
+    "pp": {
+      "type": "boolean",
+      "default": "true",
+      "location": "query",
+      "description": "Pretty-print response."
+    },
+    "bearer_token": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "OAuth bearer token."
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
     },
     "upload_protocol": {
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
@@ -164,61 +219,6 @@
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
       "default": "true"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
     }
-  },
-  "version": "v1",
-  "baseUrl": "https://cloudfunctions.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "API for managing lightweight user-provided functions executed in response to events.",
-  "servicePath": "",
-  "basePath": "",
-  "revision": "20170314",
-  "documentationLink": "https://cloud.google.com/functions",
-  "id": "cloudfunctions:v1",
-  "discoveryVersion": "v1",
-  "version_module": "True"
+  }
 }
