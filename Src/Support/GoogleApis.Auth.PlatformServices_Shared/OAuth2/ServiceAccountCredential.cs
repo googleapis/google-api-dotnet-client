@@ -78,7 +78,7 @@ namespace Google.Apis.Auth.OAuth2
 
             /// <summary>Constructs a new initializer using the given id.</summary>
             public Initializer(string id)
-                : this(id, GoogleAuthConsts.TokenUrl) { }
+                : this(id, GoogleAuthConsts.OidcTokenUrl) { }
 
             /// <summary>Constructs a new initializer using the given id and the token server URL.</summary>
             public Initializer(string id, string tokenServerUrl) : base(tokenServerUrl)

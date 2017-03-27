@@ -66,6 +66,7 @@
     <Compile Include="..\IntegrationTests_NetCore\ServiceAccountTests.cs">
       <Link>ServiceAccountTests.cs</Link>
     </Compile>
+    <Compile Include="AuthClientSecretsTests.cs" />
     <Compile Include="AuthUriConstsTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

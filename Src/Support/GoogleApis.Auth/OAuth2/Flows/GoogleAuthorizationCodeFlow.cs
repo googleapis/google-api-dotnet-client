@@ -112,11 +112,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
-            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.AuthorizationUrl"/>, and Token server URL to 
-            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.TokenUrl"/>.
+            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.OidcAuthorizationUrl"/>, and Token server URL to 
+            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.OidcTokenUrl"/>.
             /// </summary>
             public Initializer() : this(
-                GoogleAuthConsts.AuthorizationUrl, GoogleAuthConsts.TokenUrl, GoogleAuthConsts.RevokeTokenUrl)
+                GoogleAuthConsts.OidcAuthorizationUrl, GoogleAuthConsts.OidcTokenUrl, GoogleAuthConsts.RevokeTokenUrl)
             {
             }
 
