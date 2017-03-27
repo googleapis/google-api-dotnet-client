@@ -60,6 +60,10 @@ namespace IntegrationTests
                 ApplicationName = "IntegrationTest"
             });
 
+            // Check an access token is available.
+            var ok = credential.UnderlyingCredential.GetAccessTokenForRequestAsync().Result;
+            Assert.That(ok, Is.Not.Null);
+
             // Following line will throw is authentication fails.
             Buckets buckets = client.Buckets.List(projectId).Execute();
 

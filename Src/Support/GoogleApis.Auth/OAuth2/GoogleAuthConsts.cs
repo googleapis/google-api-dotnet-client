@@ -25,11 +25,27 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The authorization code server URL.</summary>
         public const string AuthorizationUrl = "https://accounts.google.com/o/oauth2/auth";
 
+        /// <summary>The OpenID Connect authorization code server URL.</summary>
+        /// <remarks>
+        /// Use of this <see cref="OidcAuthorizationUrl"/> is not 100% compatible with using
+        /// <see cref="AuthorizationUrl"/>, so they are two distinct URLs.
+        /// Internally within this library only this more up-to-date <see cref="OidcAuthorizationUrl"/> is used.
+        /// </remarks>
+        public const string OidcAuthorizationUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+
         /// <summary>The approval URL (used in the Windows solution as a callback).</summary>
         public const string ApprovalUrl = "https://accounts.google.com/o/oauth2/approval";
 
         /// <summary>The authorization token server URL.</summary>
         public const string TokenUrl = "https://accounts.google.com/o/oauth2/token";
+
+        /// <summary>The OpenID Connect authorization token server URL.</summary>
+        /// <remarks>
+        /// Use of this <see cref="OidcTokenUrl"/> is not 100% compatible with using
+        /// <see cref="TokenUrl"/>, so they are two distinct URLs.
+        /// Internally within this library only this more up-to-date <see cref="OidcTokenUrl"/> is used.
+        /// </remarks>
+        public const string OidcTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
 
         /// <summary>The Compute Engine authorization token server URL</summary>
         public const string ComputeTokenUrl =

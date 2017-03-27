@@ -17,12 +17,12 @@ limitations under the License.
 using Google.Apis.Util.Store;
 using System.Threading.Tasks;
 
-namespace GoogleApis.Apis.Util.Store
+namespace Google.Apis.Util.Store
 {
     /// <summary>
     /// A null datastore. Nothing is stored, nothing is retrievable.
     /// </summary>
-    class NullDataStore : IDataStore
+    public class NullDataStore : IDataStore
     {
         private static readonly Task s_completedTask = CompletedTask<int>();
 
