@@ -32,9 +32,11 @@
           <dependency id="Google.Apis.Core" version="$version$" />
         </group>
         <group targetFramework="netstandard1.3">
+          <dependency id="Google.Apis" version="$version$" />
           <dependency id="Google.Apis.Core" version="$version$" />
           <dependency id="NETStandard.Library" version="1.6.1" />
           <dependency id="System.Net.Requests" version="4.3.0" />
+          <dependency id="System.Diagnostics.Process" version="4.3.0" />
         </group>
         <group>
           <!-- Fallback group, used if nothing else matches. -->

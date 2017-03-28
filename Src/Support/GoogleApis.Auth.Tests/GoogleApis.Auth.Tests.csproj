@@ -81,6 +81,7 @@
     <Compile Include="OAuth2\Flows\AuthorizationCodeFlowTests.cs" />
     <Compile Include="OAuth2\BearerTokenTests.cs" />
     <Compile Include="OAuth2\Flows\GoogleAuthorizationCodeFlowTests.cs" />
+    <Compile Include="OAuth2\LimitedLocalhostHttpServerTests.cs" />
     <Compile Include="OAuth2\Requests\AuthorizationCodeRequestUrlTests.cs" />
     <Compile Include="OAuth2\Requests\AuthorizationCodeTokenRequestTests.cs" />
     <Compile Include="OAuth2\Requests\GoogleAuthorizationCodeRequestUrlTest.cs" />
@@ -94,6 +95,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GoogleApis.Auth.DotNet4\GoogleApis.Auth.PlatformServices_Net45.csproj">
+      <Project>{8CFBF8D2-64CB-4703-A5B0-F9EF4DE41FA7}</Project>
+      <Name>GoogleApis.Auth.PlatformServices_Net45</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleApis.Auth\Net45\GoogleApis.Auth_Net45.csproj">
       <Project>{3ef3c1a9-a3cb-41c9-88c3-6b226ca051be}</Project>
       <Name>GoogleApis.Auth_Net45</Name>

@@ -17,27 +17,27 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using System.Net;
-using System.Text;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace IntegrationTests_Net45
+namespace IntegrationTests
 {
     [TestFixture]
     public class AuthUriConstsTests
     {
         [Test]
-        public void VerifyGoogleAuthConsts()
+        public async Task VerifyGoogleAuthConsts()
         {
             // Check that the URLs listed in GoogleConsts.cs match the canonical source:
             // at: https://accounts.google.com/.well-known/openid-configuration
 
             const string wellKnownUrl = "https://accounts.google.com/.well-known/openid-configuration";
-            byte[] wellKnownBytes;
-            using (var client = new WebClient())
+            string wellKnownJson;
+            using (var client = new HttpClient())
             {
-                wellKnownBytes = client.DownloadData(wellKnownUrl);
+                wellKnownJson = await client.GetStringAsync(wellKnownUrl);
             }
-            var wellKnown = JObject.Parse(Encoding.ASCII.GetString(wellKnownBytes));
+            var wellKnown = JObject.Parse(wellKnownJson);
 
             Assert.That(GoogleAuthConsts.OidcAuthorizationUrl, Is.EqualTo(wellKnown["authorization_endpoint"].ToString()));
             Assert.That(GoogleAuthConsts.OidcTokenUrl, Is.EqualTo(wellKnown["token_endpoint"].ToString()));

@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\DefaultCredentialProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\GoogleCredential.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth2\GoogleWebAuthorizationBroker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth2\LocalServerCodeReceiver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\Pkcs8.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\PromptCodeReceiver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuth2\ServiceAccountCredential.cs" />

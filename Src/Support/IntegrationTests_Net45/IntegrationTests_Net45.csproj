@@ -60,16 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\IntegrationTests_NetCore\Google.Apis.Storage.v1.cs">
-      <Link>Google.Apis.Storage.v1.cs</Link>
-    </Compile>
-    <Compile Include="..\IntegrationTests_NetCore\ServiceAccountTests.cs">
-      <Link>ServiceAccountTests.cs</Link>
-    </Compile>
     <Compile Include="AuthClientSecretsTests.cs" />
     <Compile Include="AuthUriConstsTests.cs" />
+    <Compile Include="FileDataStoreTests.cs" />
+    <Compile Include="Google.Apis.Storage.v1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceAccountTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,6 +84,10 @@
     <ProjectReference Include="..\GoogleApis.Core\Net45\GoogleApis.Core_Net45.csproj">
       <Project>{e83c6d98-c348-4944-ad7f-c4e428141079}</Project>
       <Name>GoogleApis.Core_Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.PlatformServices_Net45.csproj">
+      <Project>{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}</Project>
+      <Name>GoogleApis.PlatformServices_Net45</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoogleApis\Net45\GoogleApis_Net45.csproj">
       <Project>{e06dcdd2-b8e0-4bf0-b572-a825e8dc1fa2}</Project>

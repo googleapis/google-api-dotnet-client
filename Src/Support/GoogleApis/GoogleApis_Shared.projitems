@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Requests\PageStreamer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\BaseClientService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Services\IClientService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Store\FileDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\Util\Store\NullDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IDownloadProgress.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Apis\[Media]\Download\IMediaDownloader.cs" />
