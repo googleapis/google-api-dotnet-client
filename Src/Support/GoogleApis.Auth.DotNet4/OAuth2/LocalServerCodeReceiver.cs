@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
+using System;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -83,7 +84,16 @@ namespace Google.Apis.Auth.OAuth2
                     listener.Start();
 
                     Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
-                    Process.Start(authorizationUrl);
+                    try
+                    {
+                        Process.Start(authorizationUrl);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e, "Failed to launch browser with \"{0}\" for authorization", authorizationUrl);
+                        throw new NotSupportedException(
+                            $"Failed to launch browser with \"{authorizationUrl}\" for authorization. See inner exception for details.", e);
+                    }
 
                     // Wait to get the authorization code response.
                     var context = await listener.GetContextAsync().ConfigureAwait(false);
