@@ -31,23 +31,26 @@ namespace Google.Apis.Tests
     {
         public override string Name { get { return "TestService"; } }
 
-        private string _baseUri;
-        public override string BaseUri { get { return _baseUri; } }
-        public override string BasePath { get { return string.Empty; } }
+        public override string BaseUri { get; }
+        public override string BasePath => "";
+        public override string BatchUri { get; }
+        public override string BatchPath => "";
 
         private IList<string> _features = new List<string> { "rest", "rpc", "json", "atom" };
         public override IList<string> Features { get { return _features; } }
         public void SetFeatures(IList<string> features) { _features = features; }
 
-        public MockClientService(string baseUri = @"https://testexample.google.com")
-            : this(new Initializer(), baseUri)
+        public MockClientService(string baseUri = @"https://testexample.google.com", string batchUri = null)
+            : this(new Initializer(), baseUri, batchUri)
         {
         }
 
-        public MockClientService(Initializer initializer, string baseUri = @"https://testexample.google.com")
+        public MockClientService(Initializer initializer,
+            string baseUri = @"https://testexample.google.com", string batchUri = null)
             : base(initializer)
         {
-            _baseUri = baseUri;
+            BaseUri = baseUri;
+            BatchUri = batchUri;
         }
 
         protected override BackOffHandler CreateBackOffHandler()

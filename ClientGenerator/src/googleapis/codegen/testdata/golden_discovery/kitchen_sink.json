@@ -5,6 +5,7 @@
  "rootUrl": "https://www.googleapis.com/",
  "servicePath" : "sink/v1/",
  "rpcPath": "/rpc",
+ "batchPath": "batch",
  "features": [
   "dataWrapper"
  ],

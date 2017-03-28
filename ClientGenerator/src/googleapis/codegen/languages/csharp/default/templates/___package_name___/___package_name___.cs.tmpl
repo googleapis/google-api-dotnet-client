@@ -98,6 +98,24 @@ public override string BasePath
     get { return "{{ api.servicePath }}"; }
 }
 
+/// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
+public override string BatchUri
+{
+{% noblank %}{% if api.batchPath %}
+    get { return "{{ api.rootUrl }}{{ api.batchPath }}"; }
+{% else %}
+    get { return null; }
+{% endif %}{% endnoblank %}}
+
+/// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
+public override string BatchPath
+{
+{% noblank %}{% if api.batchPath %}
+    get { return "{{ api.batchPath }}"; }
+{% else %}
+    get { return null; }
+{% endif %}{% endnoblank %}}
+
 {% if api.authscopes %}/// <summary>Available OAuth 2.0 scopes for use with the {{ api.title }}.</summary>
 public class Scope
 {

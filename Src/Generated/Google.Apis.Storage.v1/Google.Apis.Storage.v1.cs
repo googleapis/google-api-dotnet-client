@@ -98,6 +98,18 @@ namespace Google.Apis.Storage.v1
             get { return "storage/v1/"; }
         }
 
+        /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
+        public override string BatchUri
+        {
+            get { return "https://www.googleapis.com/batch"; }
+        }
+
+        /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
+        public override string BatchPath
+        {
+            get { return "batch"; }
+        }
+
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Storage JSON API.</summary>
         public class Scope
         {
