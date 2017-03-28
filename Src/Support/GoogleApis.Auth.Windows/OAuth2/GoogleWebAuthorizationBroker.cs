@@ -59,7 +59,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
         /// <returns>User credential.</returns>
-        private static async Task<UserCredential> AuthorizeAsync(ClientSecrets clientSecrets,
+        public static async Task<UserCredential> AuthorizeAsync(ClientSecrets clientSecrets,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken)
         {
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
