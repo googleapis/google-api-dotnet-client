@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170308 (797)
+ *      <tr><th>API Rev<td>20170317 (806)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -68,8 +68,10 @@ namespace Google.Apis.Storage.v1
             buckets = new BucketsResource(this);
             channels = new ChannelsResource(this);
             defaultObjectAccessControls = new DefaultObjectAccessControlsResource(this);
+            notifications = new NotificationsResource(this);
             objectAccessControls = new ObjectAccessControlsResource(this);
             objects = new ObjectsResource(this);
+            projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -150,6 +152,14 @@ namespace Google.Apis.Storage.v1
             get { return defaultObjectAccessControls; }
         }
 
+        private readonly NotificationsResource notifications;
+
+        /// <summary>Gets the Notifications resource.</summary>
+        public virtual NotificationsResource Notifications
+        {
+            get { return notifications; }
+        }
+
         private readonly ObjectAccessControlsResource objectAccessControls;
 
         /// <summary>Gets the ObjectAccessControls resource.</summary>
@@ -164,6 +174,14 @@ namespace Google.Apis.Storage.v1
         public virtual ObjectsResource Objects
         {
             get { return objects; }
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
         }
     }
 
@@ -2424,6 +2442,303 @@ namespace Google.Apis.Storage.v1
                     "entity", new Google.Apis.Discovery.Parameter
                     {
                         Name = "entity",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "notifications" collection of methods.</summary>
+    public class NotificationsResource
+    {
+        private const string Resource = "notifications";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public NotificationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Permanently deletes a notification subscription.</summary>
+        /// <param name="bucket">The parent bucket of the notification.</param>
+        /// <param name="notification">ID of the
+        /// notification to delete.</param>
+        public virtual DeleteRequest Delete(string bucket, string notification)
+        {
+            return new DeleteRequest(service, bucket, notification);
+        }
+
+        /// <summary>Permanently deletes a notification subscription.</summary>
+        public class DeleteRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string bucket, string notification)
+                : base(service)
+            {
+                Bucket = bucket;
+                Notification = notification;
+                InitParameters();
+            }
+
+
+            /// <summary>The parent bucket of the notification.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>ID of the notification to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Notification { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/notificationConfigs/{notification}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "notification", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "notification",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>View a notification configuration.</summary>
+        /// <param name="bucket">The parent bucket of the notification.</param>
+        /// <param name="notification">Notification
+        /// ID</param>
+        public virtual GetRequest Get(string bucket, string notification)
+        {
+            return new GetRequest(service, bucket, notification);
+        }
+
+        /// <summary>View a notification configuration.</summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notification>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string notification)
+                : base(service)
+            {
+                Bucket = bucket;
+                Notification = notification;
+                InitParameters();
+            }
+
+
+            /// <summary>The parent bucket of the notification.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Notification ID</summary>
+            [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Notification { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/notificationConfigs/{notification}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "notification", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "notification",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a notification subscription for a given bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">The parent bucket of the notification.</param>
+        public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.Notification body, string bucket)
+        {
+            return new InsertRequest(service, body, bucket);
+        }
+
+        /// <summary>Creates a notification subscription for a given bucket.</summary>
+        public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notification>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Notification body, string bucket)
+                : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The parent bucket of the notification.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Notification Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/notificationConfigs"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of notification subscriptions for a given bucket.</summary>
+        /// <param name="bucket">Name of a GCS bucket.</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(service, bucket);
+        }
+
+        /// <summary>Retrieves a list of notification subscriptions for a given bucket.</summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Notifications>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket)
+                : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of a GCS bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/notificationConfigs"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -5784,6 +6099,108 @@ namespace Google.Apis.Storage.v1
 
         }
     }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            serviceAccount = new ServiceAccountResource(service);
+
+        }
+
+        private readonly ServiceAccountResource serviceAccount;
+
+        /// <summary>Gets the ServiceAccount resource.</summary>
+        public virtual ServiceAccountResource ServiceAccount
+        {
+            get { return serviceAccount; }
+        }
+
+        /// <summary>The "serviceAccount" collection of methods.</summary>
+        public class ServiceAccountResource
+        {
+            private const string Resource = "serviceAccount";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ServiceAccountResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Get the email address of this project's GCS service account.</summary>
+            /// <param name="projectId">Project ID</param>
+            public virtual GetRequest Get(string projectId)
+            {
+                return new GetRequest(service, projectId);
+            }
+
+            /// <summary>Get the email address of this project's GCS service account.</summary>
+            public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ServiceAccount>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string projectId)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    InitParameters();
+                }
+
+
+                /// <summary>Project ID</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "projects/{projectId}/serviceAccount"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+    }
 }
 
 namespace Google.Apis.Storage.v1.Data
@@ -5815,6 +6232,10 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The kind of item this is. For buckets, this is always storage#bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>User-provided labels, in key/value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The bucket's lifecycle configuration. See lifecycle management for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
@@ -6258,6 +6679,67 @@ namespace Google.Apis.Storage.v1.Data
         }
     }    
 
+    /// <summary>A subscription to receive Google PubSub notifications.</summary>
+    public class Notification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional list of additional attributes to attach to each Cloud PubSub message published for this
+        /// notification subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom_attributes")]
+        public virtual System.Collections.Generic.IDictionary<string,string> CustomAttributes { get; set; } 
+
+        /// <summary>HTTP 1.1 Entity tag for this subscription notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>If present, only send notifications about listed event types. If empty, sent notifications for all
+        /// event types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event_types")]
+        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; } 
+
+        /// <summary>The ID of the notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The kind of item this is. For notifications, this is always storage#notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>If present, only apply this notification configuration to object names that begin with this
+        /// prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object_name_prefix")]
+        public virtual string ObjectNamePrefix { get; set; } 
+
+        /// <summary>The desired content of the Payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload_format")]
+        public virtual string PayloadFormat { get; set; } 
+
+        /// <summary>The canonical URL of this notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The Cloud PubSub topic to which this subscription publishes. Formatted as:
+        /// '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+    }    
+
+    /// <summary>A list of notification subscriptions.</summary>
+    public class Notifications : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Notification> Items { get; set; } 
+
+        /// <summary>The kind of item this is. For lists of notifications, this is always
+        /// storage#notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An object.</summary>
     public class Object : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6676,6 +7158,21 @@ namespace Google.Apis.Storage.v1.Data
         /// indicator. This property is always present in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesRewritten")]
         public virtual System.Nullable<ulong> TotalBytesRewritten { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A subscription to receive Google PubSub notifications.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email_address")]
+        public virtual string EmailAddress { get; set; } 
+
+        /// <summary>The kind of item this is. For notifications, this is always storage#notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
