@@ -30,6 +30,8 @@ namespace Google.Apis.Auth.OAuth2.Responses
     /// </summary>
     public class TokenResponse
     {
+        private const int TokenExpiryTimeWindowSeconds = 60 * 5; // Refresh token 5 minutes before it expires.
+
         /// <summary>Gets or sets the access token issued by the authorization server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
         public string AccessToken { get; set; }
@@ -96,7 +98,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 return true;
             }
 
-            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - 60) <= clock.UtcNow;
+            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenExpiryTimeWindowSeconds) <= clock.UtcNow;
         }
 
         /// <summary>

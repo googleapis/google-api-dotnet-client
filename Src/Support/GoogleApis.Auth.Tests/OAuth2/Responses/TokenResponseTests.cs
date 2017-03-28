@@ -79,19 +79,19 @@ namespace Google.Apis.Auth.OAuth2.Responses
             response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 158, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 - 2, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 159, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 - 1, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 160, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 161, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 + 1, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 162, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 + 2, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
         }
 
