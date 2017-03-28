@@ -414,6 +414,22 @@ class ApiTest(basetest.TestCase):
     # no servicePath
     self.assertRaises(ValueError, LoadApi, {'rootUrl': 'https://foo.com/'})
 
+    # batchPath
+    api = LoadApi({})
+    self.assertEquals(None, api.values['batchPath'])
+    api = LoadApi({
+        'batchPath': 'batch'
+    })
+    self.assertEquals("batch", api.values['batchPath'])
+    api = LoadApi({
+        'batchPath': '/batch'
+    })
+    self.assertEquals("batch", api.values['batchPath'])
+    api = LoadApi({
+        'batchPath': '//batch'
+    })
+    self.assertEquals("batch", api.values['batchPath'])
+
   def testCanonicalName(self):
     d = {'name': 'fake', 'version': 'v1', 'canonicalName': 'My API'}
     api = Api(d)

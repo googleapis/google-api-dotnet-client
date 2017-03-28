@@ -328,6 +328,16 @@ class Api(template_objects.CodeObject):
     if service_path is None:
       self._api.SetTemplateValue('servicePath', base_path[1:])
 
+    batch_path = self.values.get('batchPath')
+    if batch_path:
+      batch_path = batch_path.lstrip('/')
+      if batch_path:
+        self._api.SetTemplateValue('batchPath', batch_path)
+      else:
+        self._api.SetTemplateValue('batchPath', None)
+    else:
+      self._api.SetTemplateValue('batchPath', None)
+
     # Make sure template writers do not revert
     self._api.DeleteTemplateValue('baseUrl')
     self._api.DeleteTemplateValue('basePath')

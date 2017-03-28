@@ -431,6 +431,21 @@ hello world
             Assert.AreEqual(expectedMessage, NormalizeLineEndings(requestStr));
         }
 
+        [Test]
+        public void BatchUrl()
+        {
+            using (var service = new MockClientService("http://sample.com", "http://batch.sample.com"))
+            {
+                var batch = new BatchRequest(service);
+                Assert.That(batch.BatchUrl, Is.EqualTo("http://batch.sample.com"));
+            }
+            using (var service = new MockClientService("http://sample.com", null))
+            {
+                var batch = new BatchRequest(service);
+                Assert.That(batch.BatchUrl, Is.EqualTo("https://www.googleapis.com/batch"));
+            }
+        }
+
         // Line endings in HttpContent are different between mono & .NET.
         private static string NormalizeLineEndings(string s) {
             return Regex.Replace(s, @"\r\n|\n", "\r\n");

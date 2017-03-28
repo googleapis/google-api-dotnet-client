@@ -91,9 +91,15 @@ namespace Google.Apis.Discovery.v1
             get { return "discovery/v1/"; }
         }
 
+        public override string BatchUri
+        {
+            get { return "https://www.googleapis.com/batch"; }
+        }
 
-
-
+        public override string BatchPath
+        {
+            get { return "batch"; }
+        }
 
         private readonly ApisResource apis;
 

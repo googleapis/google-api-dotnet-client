@@ -309,6 +309,8 @@ namespace Google.Apis.Services
         public abstract string Name { get; }
         public abstract string BaseUri { get; }
         public abstract string BasePath { get; }
+        public abstract string BatchUri { get; }
+        public abstract string BatchPath { get; }
 
         public abstract IList<string> Features { get; }
 

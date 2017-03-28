@@ -52,6 +52,9 @@ namespace Google.Apis.Requests
         private readonly string batchUrl;
         private readonly IClientService service;
 
+        // For testing
+        internal string BatchUrl => batchUrl;
+
         /// <summary>A concrete type callback for an individual response.</summary>
         /// <typeparam name="TResponse">The response type.</typeparam>
         /// <param name="content">The content response or <c>null</c> if the request failed.</param>
@@ -116,7 +119,7 @@ namespace Google.Apis.Requests
         /// <see cref="BatchRequest(IClientService, string)"/> for more information.
         /// </summary>
         public BatchRequest(IClientService service)
-            : this(service, DefaultBatchUrl) { }
+            : this(service, (service as BaseClientService)?.BatchUri ?? DefaultBatchUrl) { }
 
         /// <summary>
         /// Constructs a new batch request using the given service. The service's HTTP client is used to create a 
