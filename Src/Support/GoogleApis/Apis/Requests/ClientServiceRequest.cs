@@ -212,7 +212,10 @@ namespace Google.Apis.Requests
             };
 
             // Init parameters.
-            builder.AddParameter(RequestParameterType.Query, "key", service.ApiKey);
+            if (service.ApiKey != null)
+            {
+                builder.AddParameter(RequestParameterType.Query, "key", service.ApiKey);
+            }
             var parameters = ParameterUtils.CreateParameterDictionary(this);
             AddParameters(builder, ParameterCollection.FromDictionary(parameters));
             return builder;
