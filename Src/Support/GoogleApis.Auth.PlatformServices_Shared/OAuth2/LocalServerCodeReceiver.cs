@@ -74,8 +74,9 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal class LimitedLocalhostHttpServer : IDisposable
         {
-            public const int MaxRequestLineLength = 256;
-            public const int MaxHeadersLength = 8192;
+            private const int MaxRequestLineLength = 256;
+            private const int MaxHeadersLength = 8192;
+            private const int NetworkReadBufferSize = 1024;
 
             private static ILogger Logger = ApplicationContext.Logger.ForType<LimitedLocalhostHttpServer>();
 
@@ -129,7 +130,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 var stream = client.GetStream();
 
-                var buffer = new byte[1];
+                var buffer = new byte[NetworkReadBufferSize];
                 int bufferOfs = 0;
                 int bufferSize = 0;
                 Func<Task<byte?>> getByte = async () =>
