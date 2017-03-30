@@ -146,10 +146,8 @@ namespace Google.Apis.Auth.OAuth2
                         bufferOfs = 0;
                     }
                     byte b = buffer[bufferOfs++];
-                    if ((b & 0x80) != 0)
-                    {
-                        throw new ServerException("Received invalid non-ASCII character");
-                    }
+                    // HTTP headers are generally ASCII, but historically allowed ISO-8859-1.
+                    // Non-ASCII bytes should be treated opaquely, not further processed (e.g. as UTF8).
                     return (char)b;
                 };
 
