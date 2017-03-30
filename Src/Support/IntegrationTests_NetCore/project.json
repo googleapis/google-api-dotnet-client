@@ -1,6 +1,14 @@
 {
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "compile": {
+      "include": [
+        "../IntegrationTests_Net45/**/*.cs"
+      ],
+      "exclude": [
+        "../**/AssemblyInfo.cs", // Not needed for test, two of them collide
+      ]
+    },
   },
 
   "dependencies": {

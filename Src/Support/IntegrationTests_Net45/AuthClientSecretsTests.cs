@@ -23,7 +23,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IntegrationTests_Net45
+namespace IntegrationTests
 {
     [TestFixture]
     class AuthClientSecretsTests

@@ -5,8 +5,12 @@
     "GoogleApis.Core_dotnetcore": {
       "target": "project"
     },
+    "GoogleApis_dotnetcore": {
+      "target": "project"
+    },
     "NETStandard.Library": "1.6.1",
     "System.Net.Requests": "4.3.0",
+    "System.Diagnostics.Process":  "4.3.0"
   },
 
   "buildOptions": {

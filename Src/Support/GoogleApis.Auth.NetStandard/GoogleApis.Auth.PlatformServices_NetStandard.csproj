@@ -67,6 +67,10 @@
       <Project>{a6df7ada-7d48-4715-9c94-70dcbc07ea37}</Project>
       <Name>GoogleApis.Core_NetStandard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoogleApis\NetStandard\GoogleApis_NetStandard.csproj">
+      <Project>{453c7ff3-a3eb-4968-998f-9770d6c4e7b8}</Project>
+      <Name>GoogleApis_NetStandard</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="OAuth2\" />
