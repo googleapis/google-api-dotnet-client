@@ -98,6 +98,7 @@ public override string BasePath
     get { return "{{ api.servicePath }}"; }
 }
 
+#if !NET40
 /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
 public override string BatchUri
 {
@@ -115,6 +116,7 @@ public override string BatchPath
 {% else %}
     get { return null; }
 {% endif %}{% endnoblank %}}
+#endif
 
 {% if api.authscopes %}/// <summary>Available OAuth 2.0 scopes for use with the {{ api.title }}.</summary>
 public class Scope
