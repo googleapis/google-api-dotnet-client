@@ -90,7 +90,7 @@ namespace Google.Apis.Auth.OAuth2
                 var uri = new Uri(url);
                 if (!uri.IsLoopback)
                 {
-                    throw new ArgumentException($"Url must be loopback: '{url}'");
+                    throw new ArgumentException($"Url must be loopback, but given: '{url}'", nameof(url));
                 }
                 var listener = new TcpListener(IPAddress.Loopback, uri.Port);
                 return new LimitedLocalhostHttpServer(listener);
@@ -104,24 +104,24 @@ namespace Google.Apis.Auth.OAuth2
                 Port = ((IPEndPoint)_listener.LocalEndpoint).Port;
             }
 
-            private TcpListener _listener;
-            private CancellationTokenSource _cts;
+            private readonly TcpListener _listener;
+            private readonly CancellationTokenSource _cts;
 
             public int Port { get; }
 
             public async Task<Dictionary<string, string>> GetQueryParamsAsync(CancellationToken cancellationToken = default(CancellationToken))
             {
                 var ct = CancellationTokenSource.CreateLinkedTokenSource(_cts.Token, cancellationToken).Token;
-                using (TcpClient client = await _listener.AcceptTcpClientAsync())
+                using (TcpClient client = await _listener.AcceptTcpClientAsync().ConfigureAwait(false))
                 {
                     try
                     {
-                        return await GetQueryParamsFromClientAsync(client, ct);
+                        return await GetQueryParamsFromClientAsync(client, ct).ConfigureAwait(false);
                     }
                     catch (ServerException e)
                     {
                         Logger.Warning("{0}", e.Message);
-                        throw e;
+                        throw;
                     }
                 }
             }
@@ -133,11 +133,11 @@ namespace Google.Apis.Auth.OAuth2
                 var buffer = new byte[NetworkReadBufferSize];
                 int bufferOfs = 0;
                 int bufferSize = 0;
-                Func<Task<byte?>> getByte = async () =>
+                Func<Task<char?>> getChar = async () =>
                 {
                     if (bufferOfs == bufferSize)
                     {
-                        bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken);
+                        bufferSize = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken).ConfigureAwait(false);
                         if (bufferSize == 0)
                         {
                             // End of stream
@@ -145,18 +145,23 @@ namespace Google.Apis.Auth.OAuth2
                         }
                         bufferOfs = 0;
                     }
-                    return buffer[bufferOfs++];
+                    byte b = buffer[bufferOfs++];
+                    if ((b & 0x80) != 0)
+                    {
+                        throw new ServerException("Received invalid non-ASCII character");
+                    }
+                    return (char)b;
                 };
 
-                string requestLine = await ReadRequestLine(getByte);
+                string requestLine = await ReadRequestLine(getChar).ConfigureAwait(false);
                 var requestParams = ValidateAndGetRequestParams(requestLine);
-                await WaitForAllHeaders(getByte);
-                await WriteResponse(stream, cancellationToken);
+                await WaitForAllHeaders(getChar).ConfigureAwait(false);
+                await WriteResponse(stream, cancellationToken).ConfigureAwait(false);
 
                 return requestParams;
             }
 
-            private async Task<string> ReadRequestLine(Func<Task<byte?>> getByte)
+            private async Task<string> ReadRequestLine(Func<Task<char?>> getChar)
             {
                 var requestLine = new StringBuilder(MaxRequestLineLength);
                 do
@@ -165,12 +170,12 @@ namespace Google.Apis.Auth.OAuth2
                     {
                         throw new ServerException($"Request line too long: > {MaxRequestLineLength} bytes.");
                     }
-                    byte? b = await getByte();
-                    if (b == null)
+                    char? c = await getChar().ConfigureAwait(false);
+                    if (c == null)
                     {
                         throw new ServerException("Unexpected end of network stream reading request line.");
                     }
-                    requestLine.Append((char)b.Value);
+                    requestLine.Append(c);
                 } while (requestLine.Length < 2 || requestLine[requestLine.Length - 2] != '\r' || requestLine[requestLine.Length - 1] != '\n');
                 requestLine.Length -= 2; // Remove \r\n
                 return requestLine.ToString();
@@ -186,7 +191,7 @@ namespace Google.Apis.Auth.OAuth2
                 string requestVerb = requestLineParts[0];
                 if (requestVerb != "GET")
                 {
-                    throw new ServerException($"Expected  GET request, got '{requestVerb}'");
+                    throw new ServerException($"Expected 'GET' request, got '{requestVerb}'");
                 }
                 string requestPath = requestLineParts[1];
                 if (!requestPath.StartsWith(LoopbackCallbackPath))
@@ -208,7 +213,7 @@ namespace Google.Apis.Auth.OAuth2
                     var keyValue = param.Split('=');
                     if (keyValue.Length > 2)
                     {
-                        throw new ServerException($"Invalid query parameter: '{keyValue}'");
+                        throw new ServerException($"Invalid query parameter: '{param}'");
                     }
                     var key = WebUtility.UrlDecode(keyValue[0]);
                     var value = keyValue.Length == 2 ? WebUtility.UrlDecode(keyValue[1]) : "";
@@ -217,26 +222,26 @@ namespace Google.Apis.Auth.OAuth2
                 return result;
             }
 
-            private async Task WaitForAllHeaders(Func<Task<byte?>> getByte)
+            private async Task WaitForAllHeaders(Func<Task<char?>> getChar)
             {
                 // Looking for an empty line, terminated by \r\n
                 int byteCount = 0;
                 int lineLength = 0;
-                char c0 = (char)0;
-                char c1 = (char)0;
+                char c0 = '\0';
+                char c1 = '\0';
                 while (true)
                 {
                     if (byteCount > MaxHeadersLength)
                     {
                         throw new ServerException($"Headers too long: > {MaxHeadersLength} bytes.");
                     }
-                    byte? b = await getByte();
-                    if (b == null)
+                    char? c = await getChar().ConfigureAwait(false);
+                    if (c == null)
                     {
                         throw new ServerException("Unexpected end of network stream waiting for headers.");
                     }
                     c0 = c1;
-                    c1 = (char)b;
+                    c1 = (char)c;
                     lineLength += 1;
                     byteCount += 1;
                     if (c0 == '\r' && c1 == '\n')
@@ -255,8 +260,8 @@ namespace Google.Apis.Auth.OAuth2
             {
                 string fullResponse = $"HTTP/1.1 200 OK\r\n\r\n{ClosePageResponse}";
                 var response = Encoding.ASCII.GetBytes(fullResponse);
-                await stream.WriteAsync(response, 0, response.Length, cancellationToken);
-                await stream.FlushAsync(cancellationToken);
+                await stream.WriteAsync(response, 0, response.Length, cancellationToken).ConfigureAwait(false);
+                await stream.FlushAsync(cancellationToken).ConfigureAwait(false);
             }
 
             public void Dispose()
@@ -266,7 +271,12 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
+        // There is a race condition on the port used for the loopback callback.
+        // This is not good, but is now difficult to change due to RedirecrUri and ReceiveCodeAsync
+        // being public methods.
+
         private string redirectUri;
+        /// <inheritdoc />
         public string RedirectUri
         {
             get
@@ -280,6 +290,7 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
+        /// <inheritdoc />
         public async Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
@@ -306,7 +317,7 @@ namespace Google.Apis.Auth.OAuth2
                 }
 
                 // TODO: Use taskCancellationToken
-                return await GetResponseFromListener(listener);
+                return await GetResponseFromListener(listener).ConfigureAwait(false);
             }
         }
 
@@ -330,7 +341,7 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server)
         {
-            var queryParams = await server.GetQueryParamsAsync();
+            var queryParams = await server.GetQueryParamsAsync().ConfigureAwait(false);
 
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(queryParams);

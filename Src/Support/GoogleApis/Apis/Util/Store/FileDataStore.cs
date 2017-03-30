@@ -37,6 +37,8 @@ namespace Google.Apis.Util.Store
     /// </summary>
     public class FileDataStore : IDataStore
     {
+        private const string XdgDataHomeSubdirectory = "google-filedatastore";
+
         readonly string folderPath;
         /// <summary>Gets the full folder path.</summary>
         public string FolderPath { get { return folderPath; } }
@@ -49,8 +51,8 @@ namespace Google.Apis.Util.Store
         /// </summary>
         /// <param name="folder">Folder path.</param>
         /// <param name="fullPath">
-        /// Defines weather the folder parameter is absolute or relative to
-        /// <see cref="Environment.SpecialFolder.ApplicationData"/>.
+        /// Defines whether the folder parameter is absolute or relative to
+        /// <see cref="Environment.SpecialFolder.ApplicationData"/> on Windows, or $HOME on Linux and MacOS.
         /// </param>
         public FileDataStore(string folder, bool fullPath = false)
         {
@@ -65,16 +67,27 @@ namespace Google.Apis.Util.Store
 
         private string GetHomeDirectory()
         {
-            string path =
-                Environment.GetEnvironmentVariable("APPDATA") ?? // Windows
-                Environment.GetEnvironmentVariable("HOME"); // Linux, MacOS
-            if (path == "")
+            string appData = Environment.GetEnvironmentVariable("APPDATA");
+            if (!string.IsNullOrEmpty(appData))
             {
-                // To guard missing environment variables, and therefore
-                // trying to store data in the root directory.
-                throw new PlatformNotSupportedException("Relative FileDataStore paths not supported on this platform.");
+                // This is almost certainly windows.
+                // This path must be the same between the desktop FileDataStore and this netstandard FileDataStore.
+                return appData;
             }
-            return path;
+            string home = Environment.GetEnvironmentVariable("HOME");
+            if (!string.IsNullOrEmpty(home))
+            {
+                // This is almost certainly Linux or MacOS.
+                // Follow the XDG Base Directory Specification: https://specifications.freedesktop.org/basedir-spec/latest/index.html
+                // Store data in subdirectory of $XDG_DATA_HOME if it exists, defaulting to $HOME/.local/share if not set.
+                string xdgDataHome = Environment.GetEnvironmentVariable("XDG_DATA_HOME");
+                if (string.IsNullOrEmpty(xdgDataHome))
+                {
+                    xdgDataHome = Path.Combine(home, ".local", "share");
+                }
+                return Path.Combine(xdgDataHome, XdgDataHomeSubdirectory);
+            }
+            throw new PlatformNotSupportedException("Relative FileDataStore paths not supported on this platform.");
         }
 
         /// <summary>

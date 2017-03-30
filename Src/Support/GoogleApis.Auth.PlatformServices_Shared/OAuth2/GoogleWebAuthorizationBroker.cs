@@ -28,6 +28,7 @@ namespace Google.Apis.Auth.OAuth2
     /// <summary>A helper utility to manage the authorization code flow.</summary>
     public class GoogleWebAuthorizationBroker
     {
+        // It's unforunate this is a public field. But it cannot be changed due to backward compatibility.
         /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
         /// <remarks>
         /// The reason that this is not 'private const' is that a user can change it and store the credentials in a
