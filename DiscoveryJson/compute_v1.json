@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/-AXC-k_8CfD_YvETyckkdtLmETM\"",
+ "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/rLMFjaaFOh-_vdoKs9b5M-eCY0M\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20170302",
+ "revision": "20170313",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -412,12 +412,7 @@
      "enumDescriptions": [
       "",
       ""
-     ],
-     "annotations": {
-      "required": [
-       "compute.instances.insert"
-      ]
-     }
+     ]
     }
    }
   },
@@ -888,6 +883,10 @@
       "$ref": "Backend"
      }
     },
+    "cdnPolicy": {
+     "$ref": "BackendServiceCdnPolicy",
+     "description": "Cloud CDN configuration for this BackendService."
+    },
     "connectionDraining": {
      "$ref": "ConnectionDraining"
     },
@@ -1035,6 +1034,17 @@
     }
    }
   },
+  "BackendServiceCdnPolicy": {
+   "id": "BackendServiceCdnPolicy",
+   "type": "object",
+   "description": "Message containing Cloud CDN configuration for a backend service.",
+   "properties": {
+    "cacheKeyPolicy": {
+     "$ref": "CacheKeyPolicy",
+     "description": "The CacheKeyPolicy for this CdnPolicy."
+    }
+   }
+  },
   "BackendServiceGroupHealth": {
    "id": "BackendServiceGroupHealth",
    "type": "object",
@@ -1175,6 +1185,39 @@
     },
     "path": {
      "type": "string"
+    }
+   }
+  },
+  "CacheKeyPolicy": {
+   "id": "CacheKeyPolicy",
+   "type": "object",
+   "description": "Message containing what to include in the cache key for a request for Cloud CDN.",
+   "properties": {
+    "includeHost": {
+     "type": "boolean",
+     "description": "If true, requests to different hosts will be cached separately."
+    },
+    "includeProtocol": {
+     "type": "boolean",
+     "description": "If true, http and https requests will be cached separately."
+    },
+    "includeQueryString": {
+     "type": "boolean",
+     "description": "If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely."
+    },
+    "queryStringBlacklist": {
+     "type": "array",
+     "description": "Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.",
+     "items": {
+      "type": "string"
+     }
+    },
+    "queryStringWhitelist": {
+     "type": "array",
+     "description": "Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.",
+     "items": {
+      "type": "string"
+     }
     }
    }
   },
@@ -5720,7 +5763,7 @@
     },
     "linkedVpnTunnel": {
      "type": "string",
-     "description": "URI of linked VPN tunnel. It must be in the same region as the router. Each interface can have at most one linked resource."
+     "description": "URI of the linked VPN tunnel. It must be in the same region as the router. Each interface can have at most one linked resource and it could either be a VPN Tunnel or an interconnect attachment."
     },
     "name": {
      "type": "string",

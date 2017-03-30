@@ -1,14 +1,4 @@
 {
-  "canonicalName": "DLP",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        }
-      }
-    }
-  },
   "rootUrl": "https://dlp.googleapis.com/",
   "ownerDomain": "google.com",
   "name": "dlp",
@@ -23,40 +13,40 @@
             "findings": {
               "methods": {
                 "list": {
+                  "description": "Returns list of results for given inspect operation result set id.",
+                  "parameterOrder": [
+                    "name"
+                  ],
                   "httpMethod": "GET",
                   "response": {
                     "$ref": "ListInspectFindingsResponse"
                   },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^inspect/results/[^/]+$",
-                      "location": "path",
-                      "description": "Identifier of the results set returned as metadata of\nthe longrunning operation created by a call to CreateInspectOperation.\nShould be in the format of `inspect/results/{id}.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "description": "The value returned by the last `ListInspectFindingsResponse`; indicates\nthat this is a continuation of a prior `ListInspectFindings` call, and that\nthe system should return the next page of data.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageSize": {
-                      "description": "Maximum number of results to return.\nIf 0, the implementation will select a reasonable value.",
-                      "format": "int32",
-                      "type": "integer",
-                      "location": "query"
-                    }
-                  },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "parameters": {
+                    "name": {
+                      "description": "Identifier of the results set returned as metadata of\nthe longrunning operation created by a call to CreateInspectOperation.\nShould be in the format of `inspect/results/{id}.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^inspect/results/[^/]+$",
+                      "location": "path"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "The value returned by the last `ListInspectFindingsResponse`; indicates\nthat this is a continuation of a prior `ListInspectFindings` call, and that\nthe system should return the next page of data.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "description": "Maximum number of results to return.\nIf 0, the implementation will select a reasonable value.",
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
                   "flatPath": "v2beta1/inspect/results/{resultsId}/findings",
-                  "id": "dlp.inspect.results.findings.list",
                   "path": "v2beta1/{+name}/findings",
-                  "description": "Returns list of results for given inspect operation result set id."
+                  "id": "dlp.inspect.results.findings.list"
                 }
               }
             }
@@ -64,42 +54,61 @@
         },
         "operations": {
           "methods": {
-            "cancel": {
-              "id": "dlp.inspect.operations.cancel",
-              "path": "v2beta1/{+name}:cancel",
-              "request": {
-                "$ref": "CancelOperationRequest"
-              },
-              "description": "Cancels an operation. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.",
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "name"
-              ],
+            "create": {
               "response": {
-                "$ref": "Empty"
+                "$ref": "Operation"
               },
-              "parameters": {
-                "name": {
-                  "pattern": "^inspect/operations/[^/]+$",
-                  "location": "path",
-                  "description": "The name of the operation resource to be cancelled.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
+              "parameterOrder": [],
+              "httpMethod": "POST",
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
-              "flatPath": "v2beta1/inspect/operations/{operationsId}:cancel"
+              "parameters": {},
+              "flatPath": "v2beta1/inspect/operations",
+              "path": "v2beta1/inspect/operations",
+              "id": "dlp.inspect.operations.create",
+              "description": "Schedule a job scanning content in a Google Cloud Platform data repository.",
+              "request": {
+                "$ref": "CreateInspectOperationRequest"
+              }
             },
-            "delete": {
-              "httpMethod": "DELETE",
+            "cancel": {
+              "path": "v2beta1/{+name}:cancel",
+              "id": "dlp.inspect.operations.cancel",
+              "description": "Cancels an operation. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.",
+              "request": {
+                "$ref": "CancelOperationRequest"
+              },
               "response": {
                 "$ref": "Empty"
               },
               "parameterOrder": [
                 "name"
               ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the operation resource to be cancelled.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^inspect/operations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v2beta1/inspect/operations/{operationsId}:cancel"
+            },
+            "delete": {
+              "description": "This method is not supported and the server returns `UNIMPLEMENTED`.",
+              "response": {
+                "$ref": "Empty"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "DELETE",
               "parameters": {
                 "name": {
                   "description": "The name of the operation resource to be deleted.",
@@ -113,9 +122,8 @@
                 "https://www.googleapis.com/auth/cloud-platform"
               ],
               "flatPath": "v2beta1/inspect/operations/{operationsId}",
-              "id": "dlp.inspect.operations.delete",
               "path": "v2beta1/{+name}",
-              "description": "This method is not supported and the server returns `UNIMPLEMENTED`."
+              "id": "dlp.inspect.operations.delete"
             },
             "list": {
               "httpMethod": "GET",
@@ -145,9 +153,9 @@
                   "location": "query"
                 },
                 "filter": {
+                  "location": "query",
                   "description": "This parameter supports filtering by done, ie done=true or done=false.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 }
               },
               "scopes": [
@@ -159,13 +167,16 @@
               "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding below allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`."
             },
             "get": {
-              "parameterOrder": [
-                "name"
-              ],
               "httpMethod": "GET",
               "response": {
                 "$ref": "Operation"
               },
+              "parameterOrder": [
+                "name"
+              ],
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "name": {
                   "pattern": "^inspect/operations/[^/]+$",
@@ -175,31 +186,10 @@
                   "type": "string"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v2beta1/inspect/operations/{operationsId}",
-              "path": "v2beta1/{+name}",
               "id": "dlp.inspect.operations.get",
+              "path": "v2beta1/{+name}",
               "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
-            },
-            "create": {
-              "path": "v2beta1/inspect/operations",
-              "id": "dlp.inspect.operations.create",
-              "description": "Schedule a job scanning content in a Google Cloud Platform data repository.",
-              "request": {
-                "$ref": "CreateInspectOperationRequest"
-              },
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {},
-              "flatPath": "v2beta1/inspect/operations"
             }
           }
         }
@@ -208,71 +198,49 @@
     "content": {
       "methods": {
         "inspect": {
+          "description": "Find potentially sensitive info in a list of strings.\nThis method has limits on input size, processing time, and output size.",
           "request": {
             "$ref": "InspectContentRequest"
           },
-          "description": "Find potentially sensitive info in a list of strings.\nThis method has limits on input size, processing time, and output size.",
           "httpMethod": "POST",
           "parameterOrder": [],
           "response": {
             "$ref": "InspectContentResponse"
           },
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
+          "parameters": {},
           "flatPath": "v2beta1/content:inspect",
           "id": "dlp.content.inspect",
           "path": "v2beta1/content:inspect"
         },
         "redact": {
+          "id": "dlp.content.redact",
+          "path": "v2beta1/content:redact",
+          "request": {
+            "$ref": "RedactContentRequest"
+          },
+          "description": "Redact potentially sensitive info from a list of strings.\nThis method has limits on input size, processing time, and output size.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "RedactContentResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {},
-          "flatPath": "v2beta1/content:redact",
-          "path": "v2beta1/content:redact",
-          "id": "dlp.content.redact",
-          "description": "Redact potentially sensitive info from a list of strings.\nThis method has limits on input size, processing time, and output size.",
-          "request": {
-            "$ref": "RedactContentRequest"
-          }
+          "flatPath": "v2beta1/content:redact"
         }
       }
     },
     "rootCategories": {
-      "methods": {
-        "list": {
-          "description": "Returns the list of root categories of sensitive information.",
-          "httpMethod": "GET",
-          "response": {
-            "$ref": "ListRootCategoriesResponse"
-          },
-          "parameterOrder": [],
-          "parameters": {
-            "languageCode": {
-              "location": "query",
-              "description": "Optional language code for localized friendly category names.\nIf omitted or if localized strings are not available,\nen-US strings will be returned.",
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v2beta1/rootCategories",
-          "id": "dlp.rootCategories.list",
-          "path": "v2beta1/rootCategories"
-        }
-      },
       "resources": {
         "infoTypes": {
           "methods": {
             "list": {
+              "description": "Returns sensitive information types for given category.",
               "response": {
                 "$ref": "ListInfoTypesResponse"
               },
@@ -280,6 +248,9 @@
                 "category"
               ],
               "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "category": {
                   "description": "Category name as returned by ListRootCategories.",
@@ -289,76 +260,53 @@
                   "location": "path"
                 },
                 "languageCode": {
-                  "location": "query",
                   "description": "Optional BCP-47 language code for localized info type friendly\nnames. If omitted, or if localized strings are not available,\nen-US strings will be returned.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "flatPath": "v2beta1/rootCategories/{rootCategoriesId}/infoTypes",
               "path": "v2beta1/rootCategories/{+category}/infoTypes",
-              "id": "dlp.rootCategories.infoTypes.list",
-              "description": "Returns sensitive information types for given category."
+              "id": "dlp.rootCategories.infoTypes.list"
             }
           }
+        }
+      },
+      "methods": {
+        "list": {
+          "path": "v2beta1/rootCategories",
+          "id": "dlp.rootCategories.list",
+          "description": "Returns the list of root categories of sensitive information.",
+          "response": {
+            "$ref": "ListRootCategoriesResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "languageCode": {
+              "description": "Optional language code for localized friendly category names.\nIf omitted or if localized strings are not available,\nen-US strings will be returned.",
+              "type": "string",
+              "location": "query"
+            }
+          },
+          "flatPath": "v2beta1/rootCategories"
         }
       }
     }
   },
   "parameters": {
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "pp": {
-      "location": "query",
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "bearer_token": {
-      "description": "OAuth bearer token.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -393,6 +341,48 @@
       "location": "query",
       "description": "Data format for response.",
       "default": "json"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "version": "v2beta1",
@@ -401,15 +391,490 @@
   "description": "The Google Data Loss Prevention API provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.",
   "kind": "discovery#restDescription",
   "basePath": "",
-  "revision": "20170321",
-  "documentationLink": "https://cloud.google.com/dlp/docs/",
   "id": "dlp:v2beta1",
+  "revision": "20170328",
+  "documentationLink": "https://cloud.google.com/dlp/docs/",
   "discoveryVersion": "v1",
   "version_module": "True",
   "schemas": {
-    "PathElement": {
-      "description": "A (kind, ID/name) pair used to construct a key path.\n\nIf either name or ID is set, the element is complete.\nIf neither is set, the element is incomplete.",
+    "InfoTypeDescription": {
+      "description": "Info type description.",
       "type": "object",
+      "properties": {
+        "name": {
+          "description": "Internal name of the info type.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Human readable form of the info type name.",
+          "type": "string"
+        },
+        "categories": {
+          "description": "List of categories this info type belongs to.",
+          "type": "array",
+          "items": {
+            "$ref": "CategoryDescription"
+          }
+        }
+      },
+      "id": "InfoTypeDescription"
+    },
+    "ImageLocation": {
+      "description": "Bounding box encompassing detected text within an image.",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width of the bounding box in pixels.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "height": {
+          "description": "Height of the bounding box in pixels.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "top": {
+          "description": "Top coordinate of the bounding box. (0,0) is upper left.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "left": {
+          "description": "Left coordinate of the bounding box. (0,0) is upper left.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "id": "ImageLocation"
+    },
+    "CloudStorageKey": {
+      "properties": {
+        "filePath": {
+          "description": "Path to the file.",
+          "type": "string"
+        },
+        "startOffset": {
+          "description": "Byte offset of the referenced data in the file.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "id": "CloudStorageKey",
+      "description": "Record key for a finding in a Cloud Storage file.",
+      "type": "object"
+    },
+    "DatastoreOptions": {
+      "description": "Options defining a data set within Google Cloud Datastore.",
+      "type": "object",
+      "properties": {
+        "partitionId": {
+          "description": "A partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.",
+          "$ref": "PartitionId"
+        },
+        "kind": {
+          "$ref": "KindExpression",
+          "description": "The kind to process."
+        },
+        "projection": {
+          "description": "Properties to scan. If none are specified, all properties will be scanned\nby default.",
+          "type": "array",
+          "items": {
+            "$ref": "Projection"
+          }
+        }
+      },
+      "id": "DatastoreOptions"
+    },
+    "Empty": {
+      "properties": {},
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object"
+    },
+    "ListRootCategoriesResponse": {
+      "properties": {
+        "categories": {
+          "description": "List of all into type categories supported by the API.",
+          "type": "array",
+          "items": {
+            "$ref": "CategoryDescription"
+          }
+        }
+      },
+      "id": "ListRootCategoriesResponse",
+      "description": "Response for ListRootCategories request.",
+      "type": "object"
+    },
+    "DatastoreKey": {
+      "description": "Record key for a finding in Cloud Datastore.",
+      "type": "object",
+      "properties": {
+        "entityKey": {
+          "description": "Datastore entity key.",
+          "$ref": "Key"
+        }
+      },
+      "id": "DatastoreKey"
+    },
+    "Location": {
+      "properties": {
+        "recordKey": {
+          "description": "Key of the finding.",
+          "$ref": "RecordKey"
+        },
+        "codepointRange": {
+          "$ref": "Range",
+          "description": "Character offsets within a content item, included when content type\nis a text. Default charset assumed to be UTF-8."
+        },
+        "fieldId": {
+          "description": "Field id of the field containing the finding.",
+          "$ref": "FieldId"
+        },
+        "imageBoxes": {
+          "description": "Location within an image's pixels.",
+          "type": "array",
+          "items": {
+            "$ref": "ImageLocation"
+          }
+        },
+        "byteRange": {
+          "$ref": "Range",
+          "description": "Zero-based byte offsets within a content item."
+        }
+      },
+      "id": "Location",
+      "description": "Specifies the location of a finding within its source item.",
+      "type": "object"
+    },
+    "ListInspectFindingsResponse": {
+      "properties": {
+        "nextPageToken": {
+          "description": "If not empty, indicates that there may be more results that match the\nrequest; this value should be passed in a new `ListInspectFindingsRequest`.",
+          "type": "string"
+        },
+        "result": {
+          "description": "The results.",
+          "$ref": "InspectResult"
+        }
+      },
+      "id": "ListInspectFindingsResponse",
+      "description": "Response to the ListInspectFindings request.",
+      "type": "object"
+    },
+    "RecordKey": {
+      "properties": {
+        "datastoreKey": {
+          "$ref": "DatastoreKey"
+        },
+        "cloudStorageKey": {
+          "$ref": "CloudStorageKey"
+        }
+      },
+      "id": "RecordKey",
+      "description": "Message for a unique key indicating a record that contains a finding.",
+      "type": "object"
+    },
+    "CreateInspectOperationRequest": {
+      "properties": {
+        "inspectConfig": {
+          "description": "Configuration for the inspector.",
+          "$ref": "InspectConfig"
+        },
+        "storageConfig": {
+          "description": "Specification of the data set to process.",
+          "$ref": "StorageConfig"
+        }
+      },
+      "id": "CreateInspectOperationRequest",
+      "description": "Request for scheduling a scan of a data subset from a Google Platform data\nrepository.",
+      "type": "object"
+    },
+    "InspectContentResponse": {
+      "description": "Results of inspecting a list of items.",
+      "type": "object",
+      "properties": {
+        "results": {
+          "description": "Each content_item from the request will have a result in this list, in the\nsame order as the request.",
+          "type": "array",
+          "items": {
+            "$ref": "InspectResult"
+          }
+        }
+      },
+      "id": "InspectContentResponse"
+    },
+    "Finding": {
+      "description": "Container structure describing a single finding within a string or image.",
+      "type": "object",
+      "properties": {
+        "likelihood": {
+          "enum": [
+            "LIKELIHOOD_UNSPECIFIED",
+            "VERY_UNLIKELY",
+            "UNLIKELY",
+            "POSSIBLE",
+            "LIKELY",
+            "VERY_LIKELY"
+          ],
+          "description": "Estimate of how likely it is that the info_type is correct.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default value; information with all likelihoods will be included.",
+            "Few matching elements.",
+            "",
+            "Some matching elements.",
+            "",
+            "Many matching elements."
+          ]
+        },
+        "infoType": {
+          "$ref": "InfoType",
+          "description": "The specific type of info the string might be."
+        },
+        "createTime": {
+          "description": "Timestamp when finding was detected.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "quote": {
+          "description": "The specific string that may be potentially sensitive info.",
+          "type": "string"
+        },
+        "location": {
+          "description": "Location of the info found.",
+          "$ref": "Location"
+        }
+      },
+      "id": "Finding"
+    },
+    "ContentItem": {
+      "description": "Container structure for the content to inspect.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "String data to inspect or redact.",
+          "type": "string"
+        },
+        "data": {
+          "description": "Content data to inspect or redact.",
+          "format": "byte",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type of the content, as defined in Content-Type HTTP header.\nSupported types are: all \"text\" types, octet streams, PNG images,\nJPEG images.",
+          "type": "string"
+        }
+      },
+      "id": "ContentItem"
+    },
+    "InspectConfig": {
+      "description": "Configuration description of the scanning process.\nWhen used with redactContent only info_types and min_likelihood are currently\nused.",
+      "type": "object",
+      "properties": {
+        "maxFindings": {
+          "description": "Limit the number of findings per content item.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "infoTypes": {
+          "description": "Restrict what info_types to look for. The values must correspond to\nInfoType values returned by ListInfoTypes or found in documentation.\nEmpty info_types runs all enabled detectors.",
+          "type": "array",
+          "items": {
+            "$ref": "InfoType"
+          }
+        },
+        "excludeTypes": {
+          "description": "When true, exclude type information of the findings.",
+          "type": "boolean"
+        },
+        "includeQuote": {
+          "description": "When true, a contextual quote from the data that triggered a finding will\nbe included in the response; see Finding.quote.",
+          "type": "boolean"
+        },
+        "minLikelihood": {
+          "enumDescriptions": [
+            "Default value; information with all likelihoods will be included.",
+            "Few matching elements.",
+            "",
+            "Some matching elements.",
+            "",
+            "Many matching elements."
+          ],
+          "enum": [
+            "LIKELIHOOD_UNSPECIFIED",
+            "VERY_UNLIKELY",
+            "UNLIKELY",
+            "POSSIBLE",
+            "LIKELY",
+            "VERY_LIKELY"
+          ],
+          "description": "Only return findings equal or above this threshold.",
+          "type": "string"
+        }
+      },
+      "id": "InspectConfig"
+    },
+    "InfoType": {
+      "description": "Type of information detected by the API.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the information type, provided by the API call ListInfoTypes.",
+          "type": "string"
+        }
+      },
+      "id": "InfoType"
+    },
+    "ReplaceConfig": {
+      "properties": {
+        "replaceWith": {
+          "description": "Content replacing sensitive information of given type. Max 256 chars.",
+          "type": "string"
+        },
+        "infoType": {
+          "$ref": "InfoType",
+          "description": "Type of information to replace. Only one ReplaceConfig per info_type\nshould be provided. If ReplaceConfig does not have an info_type, we'll\nmatch it against all info_types that are found but not specified in\nanother ReplaceConfig."
+        }
+      },
+      "id": "ReplaceConfig",
+      "type": "object"
+    },
+    "FileSet": {
+      "description": "Set of files to scan.",
+      "type": "object",
+      "properties": {
+        "url": {
+          "description": "The url, in the format gs://\u003cbucket\u003e/\u003cpath\u003e. Trailing wildcard in the\npath is allowed.",
+          "type": "string"
+        }
+      },
+      "id": "FileSet"
+    },
+    "StorageConfig": {
+      "properties": {
+        "datastoreOptions": {
+          "$ref": "DatastoreOptions",
+          "description": "Google Cloud Datastore options specification."
+        },
+        "cloudStorageOptions": {
+          "$ref": "CloudStorageOptions",
+          "description": "Google Cloud Storage options specification."
+        }
+      },
+      "id": "StorageConfig",
+      "description": "Shared message indicating Cloud storage type.",
+      "type": "object"
+    },
+    "RedactContentRequest": {
+      "description": "Request to search for potentially sensitive info in a list of items\nand replace it with a default or provided content.",
+      "type": "object",
+      "properties": {
+        "replaceConfigs": {
+          "description": "The strings to replace findings with. Must specify at least one.",
+          "type": "array",
+          "items": {
+            "$ref": "ReplaceConfig"
+          }
+        },
+        "inspectConfig": {
+          "$ref": "InspectConfig",
+          "description": "Configuration for the inspector."
+        },
+        "items": {
+          "description": "The list of items to inspect. Up to 100 are allowed per request.",
+          "type": "array",
+          "items": {
+            "$ref": "ContentItem"
+          }
+        }
+      },
+      "id": "RedactContentRequest"
+    },
+    "PartitionId": {
+      "description": "Datastore partition ID.\nA partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.\n\nA partition ID contains several dimensions:\nproject ID and namespace ID.",
+      "type": "object",
+      "properties": {
+        "databaseId": {
+          "description": "If not empty, the ID of the database to which the entities\nbelong.",
+          "type": "string"
+        },
+        "namespaceId": {
+          "description": "If not empty, the ID of the namespace to which the entities belong.",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "The ID of the project to which the entities belong.",
+          "type": "string"
+        }
+      },
+      "id": "PartitionId"
+    },
+    "CategoryDescription": {
+      "description": "Info Type Category description.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Internal name of the category.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Human readable form of the category name.",
+          "type": "string"
+        }
+      },
+      "id": "CategoryDescription"
+    },
+    "CancelOperationRequest": {
+      "properties": {},
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object"
+    },
+    "Operation": {
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object",
+      "properties": {
+        "response": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "This field will contain an `InspectOperationResult` object.",
+          "type": "object"
+        },
+        "name": {
+          "description": "The server-assigned name, The `name` should have the format of `inspect/operations/\u003cidentifier\u003e`.",
+          "type": "string"
+        },
+        "error": {
+          "$ref": "Status",
+          "description": "The error result of the operation in case of failure or cancellation."
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "This field will contain an `InspectOperationMetdata` object.",
+          "type": "object"
+        },
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
+        }
+      },
+      "id": "Operation"
+    },
+    "CloudStorageOptions": {
+      "properties": {
+        "fileSet": {
+          "$ref": "FileSet"
+        }
+      },
+      "id": "CloudStorageOptions",
+      "description": "Options defining a file or a set of files (path ending with *) within\na Google Cloud Storage bucket.",
+      "type": "object"
+    },
+    "PathElement": {
       "properties": {
         "name": {
           "description": "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
@@ -425,7 +890,9 @@
           "type": "string"
         }
       },
-      "id": "PathElement"
+      "id": "PathElement",
+      "description": "A (kind, ID/name) pair used to construct a key path.\n\nIf either name or ID is set, the element is complete.\nIf neither is set, the element is incomplete.",
+      "type": "object"
     },
     "InspectResult": {
       "properties": {
@@ -487,8 +954,6 @@
       "type": "object"
     },
     "Range": {
-      "description": "Generic half-open interval [start, end)",
-      "type": "object",
       "properties": {
         "start": {
           "description": "Index of the first character of the range (inclusive).",
@@ -501,7 +966,9 @@
           "type": "string"
         }
       },
-      "id": "Range"
+      "id": "Range",
+      "description": "Generic half-open interval [start, end)",
+      "type": "object"
     },
     "FieldId": {
       "description": "General identifier of a data field in a storage service.",
@@ -539,42 +1006,6 @@
       },
       "id": "ListInfoTypesResponse"
     },
-    "InspectContentRequest": {
-      "properties": {
-        "inspectConfig": {
-          "description": "Configuration for the inspector.",
-          "$ref": "InspectConfig"
-        },
-        "items": {
-          "description": "The list of items to inspect. Items in a single request are\nconsidered \"related\" unless inspect_config.independent_inputs is true.\nUp to 100 are allowed per request.",
-          "type": "array",
-          "items": {
-            "$ref": "ContentItem"
-          }
-        }
-      },
-      "id": "InspectContentRequest",
-      "description": "Request to search for potentially sensitive info in a list of items.",
-      "type": "object"
-    },
-    "Key": {
-      "properties": {
-        "path": {
-          "description": "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a _root entity_, the second element identifies\na _child_ of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's _ancestors_.\n\nA path can never be empty, and a path can have at most 100 elements.",
-          "type": "array",
-          "items": {
-            "$ref": "PathElement"
-          }
-        },
-        "partitionId": {
-          "description": "Entities are partitioned into subsets, currently identified by a project\nID and namespace ID.\nQueries are scoped to a single partition.",
-          "$ref": "PartitionId"
-        }
-      },
-      "id": "Key",
-      "description": "A unique identifier for a Datastore entity.\nIf a key's partition ID or any of its path kinds or names are\nreserved/read-only, the key is reserved/read-only.\nA reserved/read-only key is forbidden in certain documented contexts.",
-      "type": "object"
-    },
     "ListOperationsResponse": {
       "properties": {
         "nextPageToken": {
@@ -593,6 +1024,42 @@
       "description": "The response message for Operations.ListOperations.",
       "type": "object"
     },
+    "InspectContentRequest": {
+      "properties": {
+        "inspectConfig": {
+          "$ref": "InspectConfig",
+          "description": "Configuration for the inspector."
+        },
+        "items": {
+          "description": "The list of items to inspect. Items in a single request are\nconsidered \"related\" unless inspect_config.independent_inputs is true.\nUp to 100 are allowed per request.",
+          "type": "array",
+          "items": {
+            "$ref": "ContentItem"
+          }
+        }
+      },
+      "id": "InspectContentRequest",
+      "description": "Request to search for potentially sensitive info in a list of items.",
+      "type": "object"
+    },
+    "Key": {
+      "description": "A unique identifier for a Datastore entity.\nIf a key's partition ID or any of its path kinds or names are\nreserved/read-only, the key is reserved/read-only.\nA reserved/read-only key is forbidden in certain documented contexts.",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a _root entity_, the second element identifies\na _child_ of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's _ancestors_.\n\nA path can never be empty, and a path can have at most 100 elements.",
+          "type": "array",
+          "items": {
+            "$ref": "PathElement"
+          }
+        },
+        "partitionId": {
+          "description": "Entities are partitioned into subsets, currently identified by a project\nID and namespace ID.\nQueries are scoped to a single partition.",
+          "$ref": "PartitionId"
+        }
+      },
+      "id": "Key"
+    },
     "PropertyReference": {
       "description": "A reference to a property relative to the Datastore kind expressions.",
       "type": "object",
@@ -605,497 +1072,30 @@
       "id": "PropertyReference"
     },
     "Projection": {
+      "description": "A representation of a Datastore property in a projection.",
+      "type": "object",
       "properties": {
         "property": {
-          "description": "The property to project.",
-          "$ref": "PropertyReference"
+          "$ref": "PropertyReference",
+          "description": "The property to project."
         }
       },
-      "id": "Projection",
-      "description": "A representation of a Datastore property in a projection.",
-      "type": "object"
-    },
-    "InfoTypeDescription": {
-      "properties": {
-        "categories": {
-          "description": "List of categories this info type belongs to.",
-          "type": "array",
-          "items": {
-            "$ref": "CategoryDescription"
-          }
-        },
-        "name": {
-          "description": "Internal name of the info type.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Human readable form of the info type name.",
-          "type": "string"
-        }
-      },
-      "id": "InfoTypeDescription",
-      "description": "Info type description.",
-      "type": "object"
-    },
-    "ImageLocation": {
-      "properties": {
-        "height": {
-          "description": "Height of the bounding box in pixels.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "top": {
-          "description": "Top coordinate of the bounding box. (0,0) is upper left.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "left": {
-          "description": "Left coordinate of the bounding box. (0,0) is upper left.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "width": {
-          "description": "Width of the bounding box in pixels.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "id": "ImageLocation",
-      "description": "Bounding box encompassing detected text within an image.",
-      "type": "object"
-    },
-    "CloudStorageKey": {
-      "properties": {
-        "filePath": {
-          "description": "Path to the file.",
-          "type": "string"
-        },
-        "startOffset": {
-          "description": "Byte offset of the referenced data in the file.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "id": "CloudStorageKey",
-      "description": "Record key for a finding in a Cloud Storage file.",
-      "type": "object"
-    },
-    "DatastoreOptions": {
-      "properties": {
-        "kind": {
-          "$ref": "KindExpression",
-          "description": "The kind to process."
-        },
-        "projection": {
-          "description": "Properties to scan. If none are specified, all properties will be scanned\nby default.",
-          "type": "array",
-          "items": {
-            "$ref": "Projection"
-          }
-        },
-        "partitionId": {
-          "description": "A partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.",
-          "$ref": "PartitionId"
-        }
-      },
-      "id": "DatastoreOptions",
-      "description": "Options defining a data set within Google Cloud Datastore.",
-      "type": "object"
-    },
-    "Empty": {
-      "properties": {},
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object"
-    },
-    "ListRootCategoriesResponse": {
-      "properties": {
-        "categories": {
-          "description": "List of all into type categories supported by the API.",
-          "type": "array",
-          "items": {
-            "$ref": "CategoryDescription"
-          }
-        }
-      },
-      "id": "ListRootCategoriesResponse",
-      "description": "Response for ListRootCategories request.",
-      "type": "object"
-    },
-    "DatastoreKey": {
-      "description": "Record key for a finding in Cloud Datastore.",
-      "type": "object",
-      "properties": {
-        "entityKey": {
-          "description": "Datastore entity key.",
-          "$ref": "Key"
-        }
-      },
-      "id": "DatastoreKey"
-    },
-    "Location": {
-      "description": "Specifies the location of a finding within its source item.",
-      "type": "object",
-      "properties": {
-        "recordKey": {
-          "$ref": "RecordKey",
-          "description": "Key of the finding."
-        },
-        "codepointRange": {
-          "description": "Character offsets within a content item, included when content type\nis a text. Default charset assumed to be UTF-8.",
-          "$ref": "Range"
-        },
-        "fieldId": {
-          "description": "Field id of the field containing the finding.",
-          "$ref": "FieldId"
-        },
-        "imageBoxes": {
-          "description": "Location within an image's pixels.",
-          "type": "array",
-          "items": {
-            "$ref": "ImageLocation"
-          }
-        },
-        "byteRange": {
-          "$ref": "Range",
-          "description": "Zero-based byte offsets within a content item."
-        }
-      },
-      "id": "Location"
-    },
-    "ListInspectFindingsResponse": {
-      "description": "Response to the ListInspectFindings request.",
-      "type": "object",
-      "properties": {
-        "nextPageToken": {
-          "description": "If not empty, indicates that there may be more results that match the\nrequest; this value should be passed in a new `ListInspectFindingsRequest`.",
-          "type": "string"
-        },
-        "result": {
-          "description": "The results.",
-          "$ref": "InspectResult"
-        }
-      },
-      "id": "ListInspectFindingsResponse"
-    },
-    "RecordKey": {
-      "description": "Message for a unique key indicating a record that contains a finding.",
-      "type": "object",
-      "properties": {
-        "datastoreKey": {
-          "$ref": "DatastoreKey"
-        },
-        "cloudStorageKey": {
-          "$ref": "CloudStorageKey"
-        }
-      },
-      "id": "RecordKey"
-    },
-    "Finding": {
-      "description": "Container structure describing a single finding within a string or image.",
-      "type": "object",
-      "properties": {
-        "likelihood": {
-          "enumDescriptions": [
-            "Default value; information with all likelihoods will be included.",
-            "Few matching elements.",
-            "",
-            "Some matching elements.",
-            "",
-            "Many matching elements."
-          ],
-          "enum": [
-            "LIKELIHOOD_UNSPECIFIED",
-            "VERY_UNLIKELY",
-            "UNLIKELY",
-            "POSSIBLE",
-            "LIKELY",
-            "VERY_LIKELY"
-          ],
-          "description": "Estimate of how likely it is that the info_type is correct.",
-          "type": "string"
-        },
-        "infoType": {
-          "$ref": "InfoType",
-          "description": "The specific type of info the string might be."
-        },
-        "createTime": {
-          "description": "Timestamp when finding was detected.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "quote": {
-          "description": "The specific string that may be potentially sensitive info.",
-          "type": "string"
-        },
-        "location": {
-          "$ref": "Location",
-          "description": "Location of the info found."
-        }
-      },
-      "id": "Finding"
-    },
-    "ContentItem": {
-      "properties": {
-        "data": {
-          "description": "Content data to inspect or redact.",
-          "format": "byte",
-          "type": "string"
-        },
-        "type": {
-          "description": "Type of the content, as defined in Content-Type HTTP header.\nSupported types are: all \"text\" types, octet streams, PNG images,\nJPEG images.",
-          "type": "string"
-        },
-        "value": {
-          "description": "String data to inspect or redact.",
-          "type": "string"
-        }
-      },
-      "id": "ContentItem",
-      "description": "Container structure for the content to inspect.",
-      "type": "object"
-    },
-    "InspectContentResponse": {
-      "properties": {
-        "results": {
-          "description": "Each content_item from the request will have a result in this list, in the\nsame order as the request.",
-          "type": "array",
-          "items": {
-            "$ref": "InspectResult"
-          }
-        }
-      },
-      "id": "InspectContentResponse",
-      "description": "Results of inspecting a list of items.",
-      "type": "object"
-    },
-    "CreateInspectOperationRequest": {
-      "properties": {
-        "inspectConfig": {
-          "description": "Configuration for the inspector.",
-          "$ref": "InspectConfig"
-        },
-        "storageConfig": {
-          "description": "Specification of the data set to process.",
-          "$ref": "StorageConfig"
-        }
-      },
-      "id": "CreateInspectOperationRequest",
-      "description": "Request for scheduling a scan of a data subset from a Google Platform data\nrepository.",
-      "type": "object"
-    },
-    "InfoType": {
-      "description": "Type of information detected by the API.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Name of the information type, provided by the API call ListInfoTypes.",
-          "type": "string"
-        }
-      },
-      "id": "InfoType"
-    },
-    "InspectConfig": {
-      "description": "Configuration description of the scanning process.\nWhen used with redactContent only info_types and min_likelihood are currently\nused.",
-      "type": "object",
-      "properties": {
-        "maxFindings": {
-          "description": "Limit the number of findings per content item.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "infoTypes": {
-          "description": "Restrict what info_types to look for. The values must correspond to\nInfoType values returned by ListInfoTypes or found in documentation.\nEmpty info_types runs all enabled detectors.",
-          "type": "array",
-          "items": {
-            "$ref": "InfoType"
-          }
-        },
-        "excludeTypes": {
-          "description": "When true, exclude type information of the findings.",
-          "type": "boolean"
-        },
-        "includeQuote": {
-          "description": "When true, a contextual quote from the data that triggered a finding will\nbe included in the response; see Finding.quote.",
-          "type": "boolean"
-        },
-        "minLikelihood": {
-          "enumDescriptions": [
-            "Default value; information with all likelihoods will be included.",
-            "Few matching elements.",
-            "",
-            "Some matching elements.",
-            "",
-            "Many matching elements."
-          ],
-          "enum": [
-            "LIKELIHOOD_UNSPECIFIED",
-            "VERY_UNLIKELY",
-            "UNLIKELY",
-            "POSSIBLE",
-            "LIKELY",
-            "VERY_LIKELY"
-          ],
-          "description": "Only return findings equal or above this threshold.",
-          "type": "string"
-        }
-      },
-      "id": "InspectConfig"
-    },
-    "ReplaceConfig": {
-      "type": "object",
-      "properties": {
-        "replaceWith": {
-          "description": "Content replacing sensitive information of given type. Max 256 chars.",
-          "type": "string"
-        },
-        "infoType": {
-          "$ref": "InfoType",
-          "description": "Type of information to replace. Only one ReplaceConfig per info_type\nshould be provided. If ReplaceConfig does not have an info_type, we'll\nmatch it against all info_types that are found but not specified in\nanother ReplaceConfig."
-        }
-      },
-      "id": "ReplaceConfig"
-    },
-    "FileSet": {
-      "properties": {
-        "url": {
-          "description": "The url, in the format gs://\u003cbucket\u003e/\u003cpath\u003e. Trailing wildcard in the\npath is allowed.",
-          "type": "string"
-        }
-      },
-      "id": "FileSet",
-      "description": "Set of files to scan.",
-      "type": "object"
-    },
-    "StorageConfig": {
-      "properties": {
-        "datastoreOptions": {
-          "$ref": "DatastoreOptions",
-          "description": "Google Cloud Datastore options specification."
-        },
-        "cloudStorageOptions": {
-          "$ref": "CloudStorageOptions",
-          "description": "Google Cloud Storage options specification."
-        }
-      },
-      "id": "StorageConfig",
-      "description": "Shared message indicating Cloud storage type.",
-      "type": "object"
-    },
-    "RedactContentRequest": {
-      "description": "Request to search for potentially sensitive info in a list of items\nand replace it with a default or provided content.",
-      "type": "object",
-      "properties": {
-        "items": {
-          "description": "The list of items to inspect. Up to 100 are allowed per request.",
-          "type": "array",
-          "items": {
-            "$ref": "ContentItem"
-          }
-        },
-        "replaceConfigs": {
-          "description": "The strings to replace findings with. Must specify at least one.",
-          "type": "array",
-          "items": {
-            "$ref": "ReplaceConfig"
-          }
-        },
-        "inspectConfig": {
-          "$ref": "InspectConfig",
-          "description": "Configuration for the inspector."
-        }
-      },
-      "id": "RedactContentRequest"
-    },
-    "PartitionId": {
-      "properties": {
-        "databaseId": {
-          "description": "If not empty, the ID of the database to which the entities\nbelong.",
-          "type": "string"
-        },
-        "namespaceId": {
-          "description": "If not empty, the ID of the namespace to which the entities belong.",
-          "type": "string"
-        },
-        "projectId": {
-          "description": "The ID of the project to which the entities belong.",
-          "type": "string"
-        }
-      },
-      "id": "PartitionId",
-      "description": "Datastore partition ID.\nA partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.\n\nA partition ID contains several dimensions:\nproject ID and namespace ID.",
-      "type": "object"
-    },
-    "CategoryDescription": {
-      "description": "Info Type Category description.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Internal name of the category.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Human readable form of the category name.",
-          "type": "string"
-        }
-      },
-      "id": "CategoryDescription"
-    },
-    "CancelOperationRequest": {
-      "properties": {},
-      "id": "CancelOperationRequest",
-      "description": "The request message for Operations.CancelOperation.",
-      "type": "object"
-    },
-    "Operation": {
-      "properties": {
-        "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
-          "type": "boolean"
-        },
-        "response": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "This field will contain an `InspectOperationResult` object.",
-          "type": "object"
-        },
-        "name": {
-          "description": "The server-assigned name, The `name` should have the format of `inspect/operations/\u003cidentifier\u003e`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "This field will contain an `InspectOperationMetdata` object.",
-          "type": "object"
-        }
-      },
-      "id": "Operation",
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object"
-    },
-    "CloudStorageOptions": {
-      "properties": {
-        "fileSet": {
-          "$ref": "FileSet"
-        }
-      },
-      "id": "CloudStorageOptions",
-      "description": "Options defining a file or a set of files (path ending with *) within\na Google Cloud Storage bucket.",
-      "type": "object"
+      "id": "Projection"
     }
   },
+  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest"
+  "canonicalName": "DLP",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        }
+      }
+    }
+  }
 }
