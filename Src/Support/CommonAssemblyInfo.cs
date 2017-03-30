@@ -21,7 +21,7 @@ using System.Reflection;
 [assembly: AssemblyCompany("Google Inc")]
 [assembly: AssemblyCopyright("Copyright 2017 Google Inc")]
 
-[assembly: AssemblyVersion("1.23.0.0")]
+[assembly: AssemblyVersion("1.24.0.0")]
 
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
