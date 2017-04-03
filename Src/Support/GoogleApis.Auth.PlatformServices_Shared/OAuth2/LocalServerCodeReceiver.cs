@@ -293,6 +293,9 @@ namespace Google.Apis.Auth.OAuth2
             CancellationToken taskCancellationToken)
         {
             var authorizationUrl = url.Build().ToString();
+            // The listener type depends on platform:
+            // * .NET desktop: System.Net.HttpListener
+            // * .NET Code: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
             using (var listener = StartListener())
             {
                 Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
@@ -315,7 +318,7 @@ namespace Google.Apis.Auth.OAuth2
                 }
 
                 // TODO: Use taskCancellationToken
-                return await GetResponseFromListener(listener).ConfigureAwait(false);
+                return await GetResponseFromListener(listener, taskCancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -337,9 +340,9 @@ namespace Google.Apis.Auth.OAuth2
 #if NETSTANDARD
         private LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri);
 
-        private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server)
+        private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
         {
-            var queryParams = await server.GetQueryParamsAsync().ConfigureAwait(false);
+            var queryParams = await server.GetQueryParamsAsync(ct).ConfigureAwait(false);
 
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(queryParams);
@@ -375,10 +378,33 @@ namespace Google.Apis.Auth.OAuth2
             return listener;
         }
 
-        private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(HttpListener listener)
+        private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(HttpListener listener, CancellationToken ct)
         {
+            // Set up cancellation. HttpListener.GetContextAsync() doesn't accept a cancellation token,
+            // the HttpListener needs to be stopped which immediately aborts the GetContextAsync() call.
+            var t = Task.Run(async () =>
+            {
+                try
+                {
+                    await Task.Delay(TimeSpan.FromHours(24), ct);
+                }
+                catch
+                {
+                    // Exception means the delay has been cancelled.
+                }
+                listener.Stop();
+            });
+
             // Wait to get the authorization code response.
-            var context = await listener.GetContextAsync().ConfigureAwait(false);
+            HttpListenerContext context;
+            try
+            {
+                context = await listener.GetContextAsync().ConfigureAwait(false);
+            }
+            catch (HttpListenerException e) when (e.ErrorCode == 995) // 995 = ERROR_OPERATION_ABORTED
+            {
+                throw new OperationCanceledException($"{nameof(listener.GetContextAsync)} cancelled.", e, ct);
+            }
             NameValueCollection coll = context.Request.QueryString;
 
             // Write a "close" response.
