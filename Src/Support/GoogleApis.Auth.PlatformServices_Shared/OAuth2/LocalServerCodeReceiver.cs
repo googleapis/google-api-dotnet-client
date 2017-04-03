@@ -295,7 +295,7 @@ namespace Google.Apis.Auth.OAuth2
             var authorizationUrl = url.Build().ToString();
             // The listener type depends on platform:
             // * .NET desktop: System.Net.HttpListener
-            // * .NET Code: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
+            // * .NET Core: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
             using (var listener = StartListener())
             {
                 Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
@@ -317,7 +317,6 @@ namespace Google.Apis.Auth.OAuth2
                         $"Failed to launch browser with \"{authorizationUrl}\" for authorization; platform not supported.");
                 }
 
-                // TODO: Use taskCancellationToken
                 return await GetResponseFromListener(listener, taskCancellationToken).ConfigureAwait(false);
             }
         }
@@ -382,18 +381,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             // Set up cancellation. HttpListener.GetContextAsync() doesn't accept a cancellation token,
             // the HttpListener needs to be stopped which immediately aborts the GetContextAsync() call.
-            var t = Task.Run(async () =>
-            {
-                try
-                {
-                    await Task.Delay(TimeSpan.FromHours(24), ct);
-                }
-                catch
-                {
-                    // Exception means the delay has been cancelled.
-                }
-                listener.Stop();
-            });
+            ct.Register(listener.Stop);
 
             // Wait to get the authorization code response.
             HttpListenerContext context;
@@ -401,9 +389,12 @@ namespace Google.Apis.Auth.OAuth2
             {
                 context = await listener.GetContextAsync().ConfigureAwait(false);
             }
-            catch (HttpListenerException e) when (e.ErrorCode == 995) // 995 = ERROR_OPERATION_ABORTED
+            catch (HttpListenerException e) when (ct.IsCancellationRequested)
             {
-                throw new OperationCanceledException($"{nameof(listener.GetContextAsync)} cancelled.", e, ct);
+                ct.ThrowIfCancellationRequested();
+                // Next line will never be reached because cancellation will always have been requested in this catch block.
+                // But it's required to satisfy compiler.
+                throw new InvalidOperationException();
             }
             NameValueCollection coll = context.Request.QueryString;
 
