@@ -8,7 +8,7 @@
     "GoogleApis_dotnetcore": {
       "target": "project"
     },
-    "Nunit": "3.4.0",
+    "NUnit": "3.6.1",
     "dotnet-test-nunit": "3.4.0-beta-1",
     // Following required for the HttpListener test implementation
     "System.Collections.Specialized": "4.0.1",

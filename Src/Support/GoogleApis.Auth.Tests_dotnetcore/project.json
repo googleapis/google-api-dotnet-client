@@ -11,7 +11,7 @@
     "GoogleApis.Tests_dotnetcore": {
       "target": "project"
     },
-    "Nunit": "3.4.1",
+    "Nunit": "3.6.1",
     "dotnet-test-nunit": "3.4.0-beta-1",
     "Moq": "4.6.36-alpha"
   },
