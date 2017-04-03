@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthClientSecretsTests.cs" />
+    <Compile Include="GoogleWebAuthorizationBrokerTests.cs" />
     <Compile Include="AuthUriConstsTests.cs" />
     <Compile Include="FileDataStoreTests.cs" />
     <Compile Include="Google.Apis.Storage.v1.cs" />

@@ -26,13 +26,10 @@ using System.Threading.Tasks;
 namespace IntegrationTests
 {
     [TestFixture]
-    class AuthClientSecretsTests
+    class GoogleWebAuthorizationBrokerTests
     {
-        [Test]
-        public async Task Test()
+        private MemoryStream GetClientSecret()
         {
-            // Warning: This test is interactive!
-
             const string ClientSecretFilenameVariable = "TEST_CLIENT_SECRET_FILENAME";
 
             string clientSecretFilename = Environment.GetEnvironmentVariable(ClientSecretFilenameVariable);
@@ -42,7 +39,16 @@ namespace IntegrationTests
                 throw new InvalidOperationException($"Please set the {ClientSecretFilenameVariable} environment variable before running tests.");
             }
 
-            var clientSecretsStream = new MemoryStream(File.ReadAllBytes(clientSecretFilename));
+            return new MemoryStream(File.ReadAllBytes(clientSecretFilename));
+        }
+
+        [Test]
+        public async Task AuthClientSecret()
+        {
+            // Warning: This test is interactive!
+            // It will bring up a browser window that must be responded to before the test can complete.
+
+            var clientSecretsStream = GetClientSecret();
 
             // Test the initial authorization.
             // NullDataStore is used to ensure the AuthorizationUrl is definitely used.
@@ -58,6 +64,27 @@ namespace IntegrationTests
             // Test token refresh succeeds.
             bool refreshed = await cred.RefreshTokenAsync(CancellationToken.None);
             Assert.That(refreshed, Is.True);
+        }
+
+        [Test]
+        public void Cancellation()
+        {
+            // Warning: This test is pseudo-interactive!
+            // It will bring up a browser window, but the test will complete without any interaction.
+
+            var clientSecretsStream = GetClientSecret();
+
+            // Test the initial authorization.
+            // NullDataStore is used to ensure browser will definitely be shown.
+            // Tests that the local listener will be cancelled properly.
+            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(1));
+
+            Assert.That(async () =>
+            {
+                await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    clientSecretsStream, new string[] { StorageService.Scope.CloudPlatformReadOnly },
+                    "user", cts.Token, new NullDataStore());
+            }, Throws.TypeOf<TaskCanceledException>());
         }
     }
 }
