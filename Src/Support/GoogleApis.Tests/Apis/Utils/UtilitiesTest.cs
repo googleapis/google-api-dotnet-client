@@ -62,6 +62,8 @@ namespace Google.Apis.Tests.Apis.Util
         {
             Assert.AreEqual("FooBar", Google.Apis.Util.Utilities.ConvertToString("FooBar"));
             Assert.AreEqual("123", Google.Apis.Util.Utilities.ConvertToString(123));
+            Assert.AreEqual("false", Google.Apis.Util.Utilities.ConvertToString(false));
+            Assert.AreEqual("true", Google.Apis.Util.Utilities.ConvertToString(true));
 
             // Check Enums work with and without StringValueAttribute.
             Assert.AreEqual("Test", Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithStringValue));
