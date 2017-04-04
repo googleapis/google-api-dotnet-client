@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170319 (808)
+ *      <tr><th>API Rev<td>20170324 (813)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3232,9 +3232,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] Specifies a string that represents a null value in a CSV file. For example, if you
         /// specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the
-        /// empty string. If you set this property to a custom value, BigQuery still interprets the empty string as a
-        /// null value for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets
-        /// the empty string as an empty value.</summary>
+        /// empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is
+        /// present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the
+        /// empty string as an empty value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; } 
 
@@ -3308,8 +3308,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class JobConfigurationQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, allows the query to produce arbitrarily large result tables at a slight cost in
-        /// performance. Requires destinationTable to be set.</summary>
+        /// <summary>[Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large
+        /// result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL
+        /// queries, this flag is ignored and large results are always allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLargeResults")]
         public virtual System.Nullable<bool> AllowLargeResults { get; set; } 
 
@@ -3330,8 +3331,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; } 
 
-        /// <summary>[Optional] Flattens all nested and repeated fields in the query results. The default value is true.
-        /// allowLargeResults must be true if this is set to false.</summary>
+        /// <summary>[Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in
+        /// the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this
+        /// flag is ignored and results are never flattened.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flattenResults")]
         public virtual System.Nullable<bool> FlattenResults { get; set; } 
 

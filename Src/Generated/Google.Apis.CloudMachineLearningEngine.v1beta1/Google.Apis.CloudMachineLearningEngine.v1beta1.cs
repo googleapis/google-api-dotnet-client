@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170327 (816)
+ *      <tr><th>API Rev<td>20170320 (809)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1423,6 +1423,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of models to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1430,12 +1436,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1471,18 +1471,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1743,10 +1743,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1754,6 +1750,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1789,15 +1789,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1810,6 +1801,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2072,7 +2072,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         /// When passing Version to [projects.models.versions.create](/ml-
         /// engine/reference/rest/v1/projects.models.versions/create) the model service uses the specified location as
         /// the source of the model. Once deployed, the model version is hosted by the prediction service, so this
-        /// location is useful only as a historical record. The total number of model files can't exceed 1000.</summary>
+        /// location is useful only as a historical record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentUri")]
         public virtual string DeploymentUri { get; set; } 
 
@@ -2670,7 +2670,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string MasterType { get; set; } 
 
         /// <summary>Required. The Google Cloud Storage location of the packages with the training program and any
-        /// additional dependencies. The maximum number of package URIs is 100.</summary>
+        /// additional dependencies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageUris")]
         public virtual System.Collections.Generic.IList<string> PackageUris { get; set; } 
 
@@ -2771,7 +2771,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         /// When passing Version to [projects.models.versions.create](/ml-
         /// engine/reference/rest/v1beta1/projects.models.versions/create) the model service uses the specified location
         /// as the source of the model. Once deployed, the model version is hosted by the prediction service, so this
-        /// location is useful only as a historical record. The total number of model files can't exceed 1000.</summary>
+        /// location is useful only as a historical record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentUri")]
         public virtual string DeploymentUri { get; set; } 
 

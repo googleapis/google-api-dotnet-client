@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Google Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20150811 (222)
+ *      <tr><th>API Rev<td>20170327 (816)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -67,7 +67,6 @@ namespace Google.Apis.Storagetransfer.v1
             googleServiceAccounts = new GoogleServiceAccountsResource(this);
             transferJobs = new TransferJobsResource(this);
             transferOperations = new TransferOperationsResource(this);
-            v1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -141,14 +140,6 @@ namespace Google.Apis.Storagetransfer.v1
         {
             get { return transferOperations; }
         }
-
-        private readonly V1Resource v1;
-
-        /// <summary>Gets the V1 resource.</summary>
-        public virtual V1Resource V1
-        {
-            get { return v1; }
-        }
     }
 
     ///<summary>A base abstract class for Storagetransfer requests.</summary>
@@ -162,7 +153,18 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -171,7 +173,21 @@ namespace Google.Apis.Storagetransfer.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -360,10 +376,10 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Returns the Google service account that is used by Storage Transfer Service to access buckets in
         /// the project where transfers run or in other projects. Each Google service account is associated with one
-        /// Google Developers Console project. Users should add this service account to the Google Cloud Storage bucket
-        /// ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage
-        /// Transfer Service and can only be used by Storage Transfer Service.</summary>
-        /// <param name="projectId">The ID of the Google Developers Console project that the Google service account is
+        /// Google Cloud Platform Console project. Users should add this service account to the Google Cloud Storage
+        /// bucket ACLs to grant access to Storage Transfer Service. This service account is created and owned by
+        /// Storage Transfer Service and can only be used by Storage Transfer Service.</summary>
+        /// <param name="projectId">The ID of the Google Cloud Platform Console project that the Google service account is
         /// associated with. Required.</param>
         public virtual GetRequest Get(string projectId)
         {
@@ -372,9 +388,9 @@ namespace Google.Apis.Storagetransfer.v1
 
         /// <summary>Returns the Google service account that is used by Storage Transfer Service to access buckets in
         /// the project where transfers run or in other projects. Each Google service account is associated with one
-        /// Google Developers Console project. Users should add this service account to the Google Cloud Storage bucket
-        /// ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage
-        /// Transfer Service and can only be used by Storage Transfer Service.</summary>
+        /// Google Cloud Platform Console project. Users should add this service account to the Google Cloud Storage
+        /// bucket ACLs to grant access to Storage Transfer Service. This service account is created and owned by
+        /// Storage Transfer Service and can only be used by Storage Transfer Service.</summary>
         public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.GoogleServiceAccount>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -386,8 +402,8 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>The ID of the Google Developers Console project that the Google service account is associated
-            /// with. Required.</summary>
+            /// <summary>The ID of the Google Cloud Platform Console project that the Google service account is
+            /// associated with. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
 
@@ -521,7 +537,7 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
-            /// <summary>The ID of the Google Developers Console project that owns the job. Required.</summary>
+            /// <summary>The ID of the Google Cloud Platform Console project that owns the job. Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
@@ -556,7 +572,7 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferJobs/.*$",
+                        Pattern = @"^transferJobs/.+$",
                     });
                 RequestParameters.Add(
                     "projectId", new Google.Apis.Discovery.Parameter
@@ -588,22 +604,21 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>A list of query parameters specified as JSON text in the form of
-            /// {"`project_id`":"my_project_id", "`job_names`":["jobid1","jobid2",...],
-            /// "`job_statuses`":["status1","status2",...]}. Since `job_names` and `job_statuses` support multiple
-            /// values, their values must be specified with array notation. `project_id` is required. `job_names` and
-            /// `job_statuses` are optional. The valid values for `job_statuses` are case-insensitive: `ENABLED`,
-            /// `DISABLED`, and `DELETED`.</summary>
+            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
+            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
+            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
+            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
+            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -639,18 +654,18 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -724,7 +739,7 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferJobs/.*$",
+                        Pattern = @"^transferJobs/.+$",
                     });
             }
 
@@ -803,7 +818,7 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferOperations/.*$",
+                        Pattern = @"^transferOperations/.+$",
                     });
             }
 
@@ -863,13 +878,13 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferOperations/.*$",
+                        Pattern = @"^transferOperations/.+$",
                     });
             }
 
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
         public virtual GetRequest Get(string name)
@@ -877,7 +892,7 @@ namespace Google.Apis.Storagetransfer.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+        /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         public class GetRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Operation>
         {
@@ -925,15 +940,17 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferOperations/.*$",
+                        Pattern = @"^transferOperations/.+$",
                     });
             }
 
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services to override the
-        /// binding to use different resource name schemes, such as `users/operations`.</summary>
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
         /// <param name="name">The value `transferOperations`.</param>
         public virtual ListRequest List(string name)
         {
@@ -941,8 +958,10 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding below allows API services to override the
-        /// binding to use different resource name schemes, such as `users/operations`.</summary>
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
         public class ListRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -958,17 +977,21 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
+            /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
+            /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
+            /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
+            /// `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array
+            /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list page token.</summary>
+            /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1013,18 +1036,18 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1096,7 +1119,7 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferOperations/.*$",
+                        Pattern = @"^transferOperations/.+$",
                     });
             }
 
@@ -1164,91 +1187,7 @@ namespace Google.Apis.Storagetransfer.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^transferOperations/.*$",
-                    });
-            }
-
-        }
-    }
-
-    /// <summary>The "v1" collection of methods.</summary>
-    public class V1Resource
-    {
-        private const string Resource = "v1";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public V1Resource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Returns the Google service account that is used by Storage Transfer Service to access buckets in
-        /// the project where transfers run or in other projects. Each Google service account is associated with one
-        /// Google Developers Console project. Users should add this service account to the Google Cloud Storage bucket
-        /// ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage
-        /// Transfer Service and can only be used by Storage Transfer Service.</summary>
-        public virtual GetGoogleServiceAccountRequest GetGoogleServiceAccount()
-        {
-            return new GetGoogleServiceAccountRequest(service);
-        }
-
-        /// <summary>Returns the Google service account that is used by Storage Transfer Service to access buckets in
-        /// the project where transfers run or in other projects. Each Google service account is associated with one
-        /// Google Developers Console project. Users should add this service account to the Google Cloud Storage bucket
-        /// ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage
-        /// Transfer Service and can only be used by Storage Transfer Service.</summary>
-        public class GetGoogleServiceAccountRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.GoogleServiceAccount>
-        {
-            /// <summary>Constructs a new GetGoogleServiceAccount request.</summary>
-            public GetGoogleServiceAccountRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-            /// <summary>The ID of the Google Developers Console project that the Google service account is associated
-            /// with. Required.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getGoogleServiceAccount"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1:getGoogleServiceAccount"; }
-            }
-
-            /// <summary>Initializes GetGoogleServiceAccount parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
+                        Pattern = @"^transferOperations/.+$",
                     });
             }
 
@@ -1297,19 +1236,19 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
     /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
     /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
-    /// [google.type.TimeOfDay][google.type.TimeOfDay] and `google.protobuf.Timestamp`.</summary>
+    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-        /// year/month where the day is not sigificant.</summary>
+        /// year/month where the day is not significant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year of date. Must be from 1 to 12.</summary>
+        /// <summary>Month of year. Must be from 1 to 12.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 
-        /// <summary>Year of date. Must be from 1 to 9,999, or 0 if specifying a date without a year.</summary>
+        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; } 
 
@@ -1318,9 +1257,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1387,23 +1328,42 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An HttpData specifies a list of objects on the web to be transferred over HTTP. The information of the
+    /// <summary>An HttpData specifies a list of objects on the web to be transferred over HTTP.  The information of the
     /// objects to be transferred is contained in a file referenced by a URL. The first line in the file must be
-    /// "TsvHttpData-1.0", which specifies the format of the file. Subsequent lines specify the information of the list
-    /// of objects, one object per list entry. Each entry has the following tab-delimited fields: * HTTP URL * Length *
-    /// MD5 - This field is a base64-encoded MD5 hash of the object An HTTP URL that points to the object to be
-    /// transferred. It must be a valid URL with URL scheme HTTP or HTTPS. When an object with URL
-    /// `http(s)://hostname:port/` is transferred to the data sink, the name of the object at the data sink is `/`.
-    /// Length and MD5 provide the size and the base64-encoded MD5 hash of the object. If Length does not match the
-    /// actual length of the object fetched, the object will not be transferred. If MD5 does not match the MD5 computed
-    /// from the transferred bytes, the object transfer will fail. `lastModificationTime` is not available in HttpData
-    /// objects. The objects that the URL list points to must allow public access. Storage Transfer Service obeys
-    /// `robots.txt` rules and requires the HTTP server to support Range requests and to return a Content-Length header
-    /// in each response.</summary>
+    /// "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines specify the information of the list
+    /// of objects, one object per list entry. Each entry has the following tab-delimited fields:
+    ///
+    /// * HTTP URL - The location of the object.
+    ///
+    /// * Length - The size of the object in bytes.
+    ///
+    /// * MD5 - The base64-encoded MD5 hash of the object.
+    ///
+    /// For an example of a valid TSV file, see [Transferring data from
+    /// URLs](https://cloud.google.com/storage/transfer/#urls)
+    ///
+    /// When transferring data based on a URL list, keep the following in mind:
+    ///
+    /// * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at
+    /// the data sink is `/`.
+    ///
+    /// * If the specified size of an object does not match the actual size of the object fetched, the object will not
+    /// be transferred.
+    ///
+    /// * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will
+    /// fail. For more information, see [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+    ///
+    /// * Ensure that each URL you specify is publicly accessible. For example, in Google Cloud Storage you can [share
+    /// an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it.
+    ///
+    /// * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range`
+    /// requests and to return a `Content-Length` header in each response.
+    ///
+    /// * [ObjectConditions](#ObjectConditions) have no effect when filtering objects to transfer.</summary>
     public class HttpData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The URL that points to the file that stores the object list entries. This file must allow public
-        /// access. Currently, only URLs with HTTP and HTTPS schemes are supported. Required.</summary>
+        /// access.  Currently, only URLs with HTTP and HTTPS schemes are supported. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUrl")]
         public virtual string ListUrl { get; set; } 
 
@@ -1411,8 +1371,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for
-    /// [Operations.ListOperations][google.longrunning.Operations.ListOperations].</summary>
+    /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The standard List next-page token.</summary>
@@ -1445,30 +1404,46 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Conditions that determine which objects will be transferred.</summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>`excludePrefixes` must follow the requirements described for `includePrefixes`. The max size of
-        /// `excludePrefixes` is 20.</summary>
+        /// <summary>`excludePrefixes` must follow the requirements described for `includePrefixes`.
+        ///
+        /// The max size of `excludePrefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludePrefixes")]
         public virtual System.Collections.Generic.IList<string> ExcludePrefixes { get; set; } 
 
         /// <summary>If `includePrefixes` is specified, objects that satisfy the object conditions must have names that
         /// start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If
         /// `includePrefixes` is not specified, all objects except those that have names starting with one of the
-        /// `excludePrefixes` must satisfy the object conditions. Requirements: * Each include-prefix and exclude-prefix
-        /// can contain any sequence of Unicode characters, of max length 1024 bytes when UTF8-encoded, and must not
-        /// contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not
-        /// supported. * None of the include-prefix or the exclude-prefix values can be empty, if specified. * Each
-        /// include-prefix must include a distinct portion of the object namespace, i.e., no include-prefix may be a
-        /// prefix of another include-prefix. * Each exclude-prefix must exclude a distinct portion of the object
-        /// namespace, i.e., no exclude-prefix may be a prefix of another exclude-prefix. * If `includePrefixes` is
-        /// specified, then each exclude-prefix must start with the value of a path explicitly included by
-        /// `includePrefixes`. The max size of `includePrefixes` is 20.</summary>
+        /// `excludePrefixes` must satisfy the object conditions.
+        ///
+        /// Requirements:
+        ///
+        /// * Each include-prefix and exclude-prefix can contain any sequence of Unicode characters, of max length 1024
+        /// bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters.  Wildcard matching
+        /// and regular expression matching are not supported.
+        ///
+        /// * Each include-prefix and exclude-prefix must omit the leading slash. For example, to include the
+        /// `requests.gz` object in a transfer from `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include
+        /// prefix as `logs/y=2015/requests.gz`.
+        ///
+        /// * None of the include-prefix or the exclude-prefix values can be empty, if specified.
+        ///
+        /// * Each include-prefix must include a distinct portion of the object namespace, i.e., no include-prefix may
+        /// be a prefix of another include-prefix.
+        ///
+        /// * Each exclude-prefix must exclude a distinct portion of the object namespace, i.e., no exclude-prefix may
+        /// be a prefix of another exclude-prefix.
+        ///
+        /// * If `includePrefixes` is specified, then each exclude-prefix must start with the value of a path explicitly
+        /// included by `includePrefixes`.
+        ///
+        /// The max size of `includePrefixes` is 1000.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; } 
 
         /// <summary>`maxTimeElapsedSinceLastModification` is the complement to
         /// `minTimeElapsedSinceLastModification`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeElapsedSinceLastModification")]
-        public virtual string MaxTimeElapsedSinceLastModification { get; set; } 
+        public virtual object MaxTimeElapsedSinceLastModification { get; set; } 
 
         /// <summary>If unspecified, `minTimeElapsedSinceLastModification` takes a zero value and
         /// `maxTimeElapsedSinceLastModification` takes the maximum possible value of Duration. Objects that satisfy the
@@ -1476,7 +1451,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// `maxTimeElapsedSinceLastModification` and less than `NOW` - `minTimeElapsedSinceLastModification`, or not
         /// have a `lastModificationTime`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
-        public virtual string MinTimeElapsedSinceLastModification { get; set; } 
+        public virtual object MinTimeElapsedSinceLastModification { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1486,11 +1461,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
-        /// completed and the `result` is available.</summary>
+        /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
@@ -1499,16 +1474,16 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping above, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the `name` should have the format of
+        /// `transferOperations/some/unique/name`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
+        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
+        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1538,12 +1513,16 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleEndDate")]
         public virtual Date ScheduleEndDate { get; set; } 
 
-        /// <summary>The first day the recurring transfer is scheduled to run. Required.</summary>
+        /// <summary>The first day the recurring transfer is scheduled to run. If `scheduleStartDate` is in the past,
+        /// the transfer will run for the first time on the following day. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStartDate")]
         public virtual Date ScheduleStartDate { get; set; } 
 
         /// <summary>The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start
-        /// later than this time. If not specified, transfers are scheduled to start at midnight UTC.</summary>
+        /// later than this time. If not specified, recurring and one-time transfers that are scheduled to run today
+        /// will run immediately; recurring transfers that are scheduled to run on a future date will start at
+        /// approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform
+        /// Console, the transfer's start time in a day is specified in your local timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeOfDay")]
         public virtual TimeOfDay StartTimeOfDay { get; set; } 
 
@@ -1553,41 +1532,60 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be: - Simple to use and understand for most users - Flexible enough to meet unexpected needs #
-    /// Overview The `Status` message contains three pieces of data: error code, error message, and error details. The
-    /// error code should be an enum value of [google.rpc.Code][google.rpc.Code], but it may accept additional error
-    /// codes if needed. The error message should be a developer-facing English message that helps developers
-    /// *understand* and *resolve* the error. If a localized user-facing error message is needed, put the localized
-    /// message in the error details or localize it in the client. The optional error details may contain arbitrary
-    /// information about the error. There is a predefined set of error detail types in the package `google.rpc` which
-    /// can be used for common error conditions. # Language mapping The `Status` message is the logical representation
-    /// of the error model, but it is not necessarily the actual wire format. When the `Status` message is exposed in
-    /// different client libraries and different wire protocols, it can be mapped differently. For example, it will
-    /// likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C. # Other uses The
-    /// error model and the `Status` message can be used in a variety of environments, either with or without APIs, to
-    /// provide a consistent developer experience across different environments. Example uses of this error model
-    /// include: - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status`
-    /// in the normal response to indicate the partial errors. - Workflow errors. A typical workflow has multiple steps.
-    /// Each step may have a `Status` message for error reporting purpose. - Batch operations. If a client uses batch
-    /// request and batch response, the `Status` message should be used directly inside batch response, one for each
-    /// error sub-response. - Asynchronous operations. If an API call embeds asynchronous operation results in its
-    /// response, the status of those operations should be represented directly using the `Status` message. - Logging.
-    /// If some API errors are stored in logs, the message `Status` could be used directly after any stripping needed
-    /// for security/privacy reasons.</summary>
+    /// is designed to be:
+    ///
+    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
+    ///
+    /// # Overview
+    ///
+    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
+    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
+    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
+    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
+    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
+    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    ///
+    /// # Language mapping
+    ///
+    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
+    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
+    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
+    /// to some error codes in C.
+    ///
+    /// # Other uses
+    ///
+    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
+    /// to provide a consistent developer experience across different environments.
+    ///
+    /// Example uses of this error model include:
+    ///
+    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
+    /// normal response to indicate the partial errors.
+    ///
+    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
+    /// reporting purpose.
+    ///
+    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
+    /// directly inside batch response, one for each error sub-response.
+    ///
+    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
+    /// those operations should be represented directly using the `Status` message.
+    ///
+    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
+    /// stripping needed for security/privacy reasons.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].</summary>
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
+        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
         /// APIs to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
         /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by
-        /// the client.</summary>
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
 
@@ -1596,7 +1594,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }    
 
     /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
-    /// An API may chose to allow leap seconds. Related types are [google.type.Date][google.type.Date] and
+    /// An API may choose to allow leap seconds. Related types are google.type.Date and
     /// `google.protobuf.Timestamp`.</summary>
     public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1702,11 +1700,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     {
         /// <summary>This field cannot be changed by user requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTime { get; set; } 
+        public virtual object CreationTime { get; set; } 
 
         /// <summary>This field cannot be changed by user requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
-        public virtual string DeletionTime { get; set; } 
+        public virtual object DeletionTime { get; set; } 
 
         /// <summary>A description provided by the user for the job. Its max length is 1024 bytes when Unicode-
         /// encoded.</summary>
@@ -1715,7 +1713,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>This field cannot be changed by user requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
-        public virtual string LastModificationTime { get; set; } 
+        public virtual object LastModificationTime { get; set; } 
 
         /// <summary>A globally unique name assigned by Storage Transfer Service when the job is created. This field
         /// should be left empty in requests to create a new transfer job; otherwise, the requests result in an
@@ -1723,7 +1721,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The ID of the Google Developers Console project that owns the job. Required.</summary>
+        /// <summary>The ID of the Google Cloud Platform Console project that owns the job. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -1731,10 +1729,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual Schedule Schedule { get; set; } 
 
-        /// <summary>Status of the job. This value MUST be specified for `CreateTransferJobRequests`. NOTE: The effect
-        /// of the new job status takes place during a subsequent job run. For example, if you change the job status
-        /// from `ENABLED` to `DISABLED`, and an operation spawned by the transfer is running, the status change would
-        /// not affect the current operation.</summary>
+        /// <summary>Status of the job. This value MUST be specified for `CreateTransferJobRequests`.
+        ///
+        /// NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change
+        /// the job status from `ENABLED` to `DISABLED`, and an operation spawned by the transfer is running, the status
+        /// change would not affect the current operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -1755,7 +1754,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>End time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTime { get; set; } 
+        public virtual object EndTime { get; set; } 
 
         /// <summary>Summarizes errors encountered with sample error log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorBreakdowns")]
@@ -1765,13 +1764,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The ID of the Google Developers Console project that owns the operation. Required.</summary>
+        /// <summary>The ID of the Google Cloud Platform Console project that owns the operation. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
         /// <summary>Start time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTime { get; set; } 
+        public virtual object StartTime { get; set; } 
 
         /// <summary>Status of the transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -1829,7 +1828,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual HttpData HttpDataSource { get; set; } 
 
         /// <summary>Only objects that satisfy these object conditions are included in the set of data source and data
-        /// sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data
+        /// sink objects.  Object conditions based on objects' `lastModificationTime` do not exclude objects in a data
         /// sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; } 
@@ -1846,7 +1845,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to UpdateTransferJob.</summary>
     public class UpdateTransferJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the Google Developers Console project that owns the job. Required.</summary>
+        /// <summary>The ID of the Google Cloud Platform Console project that owns the job. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -1854,12 +1853,12 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
         public virtual TransferJob TransferJob { get; set; } 
 
-        /// <summary>The field mask of the fields in `transferJob` that are to be updated in this request. Fields in
-        /// `transferJob` that can be updated are: `description`, `transferSpec`, and `status`. To update the
+        /// <summary>The field mask of the fields in `transferJob` that are to be updated in this request.  Fields in
+        /// `transferJob` that can be updated are: `description`, `transferSpec`, and `status`.  To update the
         /// `transferSpec` of the job, a complete transfer specification has to be provided. An incomplete specification
         /// which misses any required fields will be rejected with the error `INVALID_ARGUMENT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransferJobFieldMask")]
-        public virtual string UpdateTransferJobFieldMask { get; set; } 
+        public virtual object UpdateTransferJobFieldMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

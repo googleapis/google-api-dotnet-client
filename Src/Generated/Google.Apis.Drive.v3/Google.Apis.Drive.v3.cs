@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170320 (809)
+ *      <tr><th>API Rev<td>20170323 (812)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -4575,6 +4575,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageQuota")]
         public virtual About.StorageQuotaData StorageQuota { get; set; } 
 
+        /// <summary>A list of themes that are supported for Team Drives.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamDriveThemes")]
+        public virtual System.Collections.Generic.IList<About.TeamDriveThemesData> TeamDriveThemes { get; set; } 
+
         /// <summary>The authenticated user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; } 
@@ -4602,6 +4606,22 @@ namespace Google.Apis.Drive.v3.Data
             /// <summary>The usage by trashed files in Google Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("usageInDriveTrash")]
             public virtual System.Nullable<long> UsageInDriveTrash { get; set; } 
+
+        }    
+
+        public class TeamDriveThemesData
+        {
+            /// <summary>A link to this Team Drive theme's background image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
+            public virtual string BackgroundImageLink { get; set; } 
+
+            /// <summary>The color of this Team Drive theme as an RGB hex string.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
+            public virtual string ColorRgb { get; set; } 
+
+            /// <summary>The ID of the theme.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id { get; set; } 
 
         }
     }    
@@ -4871,8 +4891,8 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appProperties")]
         public virtual System.Collections.Generic.IDictionary<string,string> AppProperties { get; set; } 
 
-        /// <summary>Capabilities the current user has on the file. Each capability corresponds to a fine-grained action
-        /// that a user may take.</summary>
+        /// <summary>Capabilities the current user has on this file. Each capability corresponds to a fine-grained
+        /// action that a user may take.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual File.CapabilitiesData Capabilities { get; set; } 
 
@@ -5194,38 +5214,38 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>Capabilities the current user has on the file. Each capability corresponds to a fine-grained action
-        /// that a user may take.</summary>
+        /// <summary>Capabilities the current user has on this file. Each capability corresponds to a fine-grained
+        /// action that a user may take.</summary>
         public class CapabilitiesData
         {
-            /// <summary>Whether the user can add children to this folder. This is always false when the item is not a
-            /// folder.</summary>
+            /// <summary>Whether the current user can add children to this folder. This is always false when the item is
+            /// not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
 
-            /// <summary>Whether the user can comment on the file.</summary>
+            /// <summary>Whether the current user can comment on this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
             public virtual System.Nullable<bool> CanComment { get; set; } 
 
-            /// <summary>Whether the user can copy the file. For a Team Drive item, whether non-folder descendants of
-            /// this item, or this item itself if it is not a folder, can be copied.</summary>
+            /// <summary>Whether the current user can copy this file. For a Team Drive item, whether the current user
+            /// can copy non-folder descendants of this item, or this item itself if it is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; } 
 
-            /// <summary>Whether the file can be deleted by the user.</summary>
+            /// <summary>Whether the current user can delete this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
             public virtual System.Nullable<bool> CanDelete { get; set; } 
 
-            /// <summary>Whether the file can be downloaded by the user.</summary>
+            /// <summary>Whether the current user can download this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
             public virtual System.Nullable<bool> CanDownload { get; set; } 
 
-            /// <summary>Whether the user can edit the file's content.</summary>
+            /// <summary>Whether the current user can edit this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; } 
 
-            /// <summary>Whether the user can list the children of this folder. This is always false when the item is
-            /// not a folder.</summary>
+            /// <summary>Whether the current user can list the children of this folder. This is always false when the
+            /// item is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canListChildren")]
             public virtual System.Nullable<bool> CanListChildren { get; set; } 
 
@@ -5234,41 +5254,41 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveItemIntoTeamDrive")]
             public virtual System.Nullable<bool> CanMoveItemIntoTeamDrive { get; set; } 
 
-            /// <summary>Whether the user can move this Team Drive item by changing its parent. Note that a request to
-            /// change the parent for this item may still fail depending on the new parent that is being added. Only
-            /// populated for Team Drive files.</summary>
+            /// <summary>Whether the current user can move this Team Drive item by changing its parent. Note that a
+            /// request to change the parent for this item may still fail depending on the new parent that is being
+            /// added. Only populated for Team Drive files.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canMoveTeamDriveItem")]
             public virtual System.Nullable<bool> CanMoveTeamDriveItem { get; set; } 
 
-            /// <summary>Whether the user has read access to the Revisions resource of the file. For a Team Drive item,
+            /// <summary>Whether the current user can read the revisions resource of this file. For a Team Drive item,
             /// whether revisions of non-folder descendants of this item, or this item itself if it is not a folder, can
             /// be read.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
 
-            /// <summary>Whether the user has read access to the Team Drive to which this file belongs. Only populated
-            /// for Team Drive files.</summary>
+            /// <summary>Whether the current user can read the Team Drive to which this file belongs. Only populated for
+            /// Team Drive files.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadTeamDrive")]
             public virtual System.Nullable<bool> CanReadTeamDrive { get; set; } 
 
-            /// <summary>Whether the user can remove children from this folder. This is always false when the item is
-            /// not a folder.</summary>
+            /// <summary>Whether the current user can remove children from this folder. This is always false when the
+            /// item is not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
 
-            /// <summary>Whether the file can be renamed by the user.</summary>
+            /// <summary>Whether the current user can rename this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
             public virtual System.Nullable<bool> CanRename { get; set; } 
 
-            /// <summary>Whether the user can modify the file's permissions and sharing settings.</summary>
+            /// <summary>Whether the current user can modify the sharing settings for this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
             public virtual System.Nullable<bool> CanShare { get; set; } 
 
-            /// <summary>Whether the file can be trashed by the user.</summary>
+            /// <summary>Whether the current user can move this file to trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canTrash")]
             public virtual System.Nullable<bool> CanTrash { get; set; } 
 
-            /// <summary>Whether the file can be restored from the trash by the current user.</summary>
+            /// <summary>Whether the current user can restore this file from trash.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canUntrash")]
             public virtual System.Nullable<bool> CanUntrash { get; set; } 
 
@@ -5538,7 +5558,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; } 
 
-        /// <summary>Details of whether the Permissions on this Team Drive item are inherited or directly on this item.
+        /// <summary>Details of whether the permissions on this Team Drive item are inherited or directly on this item.
         /// This is an output-only field which is present only for Team Drive items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionDetails")]
         public virtual System.Collections.Generic.IList<Permission.TeamDrivePermissionDetailsData> TeamDrivePermissionDetails { get; set; } 
@@ -5808,9 +5828,24 @@ namespace Google.Apis.Drive.v3.Data
     /// <summary>Representation of a Team Drive.</summary>
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>An image file and cropping parameters from which a background image for this Team Drive is set.
+        /// This is a write only field that can only be set on a drive.teamdrives.update request that does not set
+        /// themeId. When specified, all fields of the backgroundImageFile must be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
+        public virtual TeamDrive.BackgroundImageFileData BackgroundImageFile { get; set; } 
+
+        /// <summary>A short-lived link to this Team Drive's background image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageLink")]
+        public virtual string BackgroundImageLink { get; set; } 
+
         /// <summary>Capabilities the current user has on this Team Drive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
         public virtual TeamDrive.CapabilitiesData Capabilities { get; set; } 
+
+        /// <summary>The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update
+        /// request that does not set themeId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
+        public virtual string ColorRgb { get; set; } 
 
         /// <summary>The ID of this Team Drive which is also the ID of the top level folder for this Team
         /// Drive.</summary>
@@ -5825,9 +5860,47 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
+        /// teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a
+        /// drive.teamdrives.create request, a random theme is chosen from which the background image and color are set.
+        /// This is a write only field that can only be set on a request that does not set colorRgb or
+        /// backgroundImageFile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
+        public virtual string ThemeId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
         
+
+        /// <summary>An image file and cropping parameters from which a background image for this Team Drive is set.
+        /// This is a write only field that can only be set on a drive.teamdrives.update request that does not set
+        /// themeId. When specified, all fields of the backgroundImageFile must be set.</summary>
+        public class BackgroundImageFileData
+        {
+            /// <summary>The ID of an image file in Drive to use for the background image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("id")]
+            public virtual string Id { get; set; } 
+
+            /// <summary>The width of the cropped image in the closed range of 0 to 1, which is the width of the cropped
+            /// image divided by the width of the entire image. The height is computed by applying a width to height
+            /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144 pixels
+            /// high.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("width")]
+            public virtual System.Nullable<float> Width { get; set; } 
+
+            /// <summary>The X coordinate of the upper left corner of the cropping area in the background image. This is
+            /// a value in the closed range of 0 to 1 which is the horizontal distance from the left side of the entire
+            /// image to the left side of the cropping area divided by the width of the entire image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
+            public virtual System.Nullable<float> XCoordinate { get; set; } 
+
+            /// <summary>The Y coordinate of the upper left corner of the cropping area in the background image. This is
+            /// a value in the closed range of 0 to 1 which is the vertical distance from the top side of the entire
+            /// image to the top side of the cropping area divided by the height of the entire image.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
+            public virtual System.Nullable<float> YCoordinate { get; set; } 
+
+        }    
 
         /// <summary>Capabilities the current user has on this Team Drive.</summary>
         public class CapabilitiesData
@@ -5836,23 +5909,28 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
 
+            /// <summary>Whether the current user can change the background of this Team Drive.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeTeamDriveBackground")]
+            public virtual System.Nullable<bool> CanChangeTeamDriveBackground { get; set; } 
+
             /// <summary>Whether the current user can comment on files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
             public virtual System.Nullable<bool> CanComment { get; set; } 
 
-            /// <summary>Whether files in this Team Drive can be copied by the current user.</summary>
+            /// <summary>Whether the current user can copy files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canCopy")]
             public virtual System.Nullable<bool> CanCopy { get; set; } 
 
-            /// <summary>Whether this Team Drive can be deleted by the current user.</summary>
+            /// <summary>Whether the current user can delete this Team Drive. Attempting to delete the Team Drive may
+            /// still fail if there are untrashed items inside the Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDeleteTeamDrive")]
             public virtual System.Nullable<bool> CanDeleteTeamDrive { get; set; } 
 
-            /// <summary>Whether files in this Team Drive can be downloaded by the current user.</summary>
+            /// <summary>Whether the current user can download files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canDownload")]
             public virtual System.Nullable<bool> CanDownload { get; set; } 
 
-            /// <summary>Whether files in this Team Drive can be edited by the current user.</summary>
+            /// <summary>Whether the current user can edit files in this Team Drive</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
             public virtual System.Nullable<bool> CanEdit { get; set; } 
 
@@ -5865,8 +5943,7 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canManageMembers")]
             public virtual System.Nullable<bool> CanManageMembers { get; set; } 
 
-            /// <summary>Whether the current user has read access to the Revisions resource of files in this Team
-            /// Drive.</summary>
+            /// <summary>Whether the current user can read the revisions resource of files in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canReadRevisions")]
             public virtual System.Nullable<bool> CanReadRevisions { get; set; } 
 
@@ -5874,11 +5951,11 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; } 
 
-            /// <summary>Whether files or folders in this Team Drive can be renamed by the current user.</summary>
+            /// <summary>Whether the current user can rename files or folders in this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRename")]
             public virtual System.Nullable<bool> CanRename { get; set; } 
 
-            /// <summary>Whether this Team Drive can be renamed by the current user.</summary>
+            /// <summary>Whether the current user can rename this Team Drive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRenameTeamDrive")]
             public virtual System.Nullable<bool> CanRenameTeamDrive { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170317 (806)
+ *      <tr><th>API Rev<td>20170324 (813)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -2053,15 +2053,15 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                    /// ListDatabasesResponse.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Number of databases to be returned in the response. If 0 or less, defaults to the
                     /// server's maximum allowed page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListDatabasesResponse.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2097,18 +2097,18 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2601,10 +2601,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2612,6 +2608,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2647,15 +2647,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -2668,6 +2659,15 @@ namespace Google.Apis.Spanner.v1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3412,18 +3412,25 @@ namespace Google.Apis.Spanner.v1
 namespace Google.Apis.Spanner.v1.Data
 {    
 
-    /// <summary>Specifies the audit configuration for a service. It consists of which permission types are logged, and
-    /// what identities, if any, are exempted from logging. An AuditConifg must have one or more
-    /// AuditLogConfigs.</summary>
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices" "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] },
+    /// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service": "fooservice@googleapis.com"
+    /// "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:bar@gmail.com" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE
+    /// logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
 
-        /// <summary>Specifies the identities that are exempted from "data access" audit logging for the `service`
-        /// specified above. Follows the same format of Binding.members. This field is deprecated in favor of per-
-        /// permission-type exemptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
 
@@ -4605,8 +4612,8 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual Policy Policy { get; set; } 
 
         /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, a default mask is used: paths: "bindings, etag" This field is only
-        /// used by Cloud IAM.</summary>
+        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
+        /// field is only used by Cloud IAM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 

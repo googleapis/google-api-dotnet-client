@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170321 (810)
+ *      <tr><th>API Rev<td>20170328 (817)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>

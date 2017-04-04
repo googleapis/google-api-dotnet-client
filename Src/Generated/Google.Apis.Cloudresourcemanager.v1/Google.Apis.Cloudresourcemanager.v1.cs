@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170327 (816)
+ *      <tr><th>API Rev<td>20170329 (818)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -463,74 +463,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
-        public virtual ClearOrgPolicyV1Request ClearOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-        {
-            return new ClearOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        public class ClearOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new ClearOrgPolicyV1 request.</summary>
-            public ClearOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource for the `Policy` to clear.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "clearOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:clearOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes ClearOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
-            }
-
-        }
-
         /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
         /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
         /// multiple resources.</summary>
@@ -586,78 +518,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes GetEffectiveOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
-        public virtual GetEffectiveOrgPolicyV1Request GetEffectiveOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-        {
-            return new GetEffectiveOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        public class GetEffectiveOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetEffectiveOrgPolicyV1 request.</summary>
-            public GetEffectiveOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the resource to start computing the effective `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getEffectiveOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getEffectiveOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetEffectiveOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -734,82 +594,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource the `Policy` is set on.</param>
-        public virtual GetOrgPolicyV1Request GetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-        {
-            return new GetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        public class GetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetOrgPolicyV1 request.</summary>
-            public GetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource the `Policy` is set on.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1036,80 +820,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
         }
-
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
-        public virtual SetOrgPolicyV1Request SetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-        {
-            return new SetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        public class SetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new SetOrgPolicyV1 request.</summary>
-            public SetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Resource name of the resource to attach the `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "setOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:setOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes SetOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^folders/[^/]+$",
-                    });
-            }
-
-        }
     }
 
     /// <summary>The "liens" collection of methods.</summary>
@@ -1280,6 +990,10 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
+            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1287,10 +1001,6 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1317,6 +1027,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1329,15 +1048,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1511,74 +1221,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
-        public virtual ClearOrgPolicyV1Request ClearOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-        {
-            return new ClearOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        public class ClearOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new ClearOrgPolicyV1 request.</summary>
-            public ClearOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource for the `Policy` to clear.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "clearOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:clearOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes ClearOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-            }
-
-        }
-
         /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
         /// <param name="name">The resource name of the Organization to fetch, e.g. "organizations/1234".</param>
         public virtual GetRequest Get(string name)
@@ -1694,78 +1336,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes GetEffectiveOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
-        public virtual GetEffectiveOrgPolicyV1Request GetEffectiveOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-        {
-            return new GetEffectiveOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        public class GetEffectiveOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetEffectiveOrgPolicyV1 request.</summary>
-            public GetEffectiveOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the resource to start computing the effective `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getEffectiveOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getEffectiveOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetEffectiveOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1916,82 +1486,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource the `Policy` is set on.</param>
-        public virtual GetOrgPolicyV1Request GetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-        {
-            return new GetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        public class GetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetOrgPolicyV1 request.</summary>
-            public GetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource the `Policy` is set on.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -2348,80 +1842,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
-        public virtual SetOrgPolicyV1Request SetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-        {
-            return new SetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        public class SetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new SetOrgPolicyV1 request.</summary>
-            public SetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Resource name of the resource to attach the `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "setOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:setOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes SetOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-            }
-
-        }
-
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
         /// the organization's resource name, e.g. "organizations/123".</summary>
         /// <param name="body">The body of the request.</param>
@@ -2562,74 +1982,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes ClearOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource for the `Policy` to clear.</param>
-        public virtual ClearOrgPolicyV1Request ClearOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-        {
-            return new ClearOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Clears a `Policy` from a resource.</summary>
-        public class ClearOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new ClearOrgPolicyV1 request.</summary>
-            public ClearOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource for the `Policy` to clear.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.ClearOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "clearOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:clearOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes ClearOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -3022,78 +2374,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">The name of the resource to start computing the effective `Policy`.</param>
-        public virtual GetEffectiveOrgPolicyV1Request GetEffectiveOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-        {
-            return new GetEffectiveOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource
-        /// hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across
-        /// multiple resources.</summary>
-        public class GetEffectiveOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetEffectiveOrgPolicyV1 request.</summary>
-            public GetEffectiveOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the resource to start computing the effective `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetEffectiveOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getEffectiveOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getEffectiveOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetEffectiveOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
-        }
-
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.</summary>
         /// <param name="body">The body of the request.</param>
@@ -3225,82 +2505,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
             /// <summary>Initializes GetOrgPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Name of the resource the `Policy` is set on.</param>
-        public virtual GetOrgPolicyV1Request GetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-        {
-            return new GetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Gets a `Policy` on a resource.
-        ///
-        /// If no `Policy` is set on the resource, a `Policy` is returned with default values including
-        /// `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to
-        /// create or update a `Policy` during read-modify-write.</summary>
-        public class GetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new GetOrgPolicyV1 request.</summary>
-            public GetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Name of the resource the `Policy` is set on.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.GetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "getOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:getOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes GetOrgPolicyV1 parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -3761,80 +2965,6 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">Resource name of the resource to attach the `Policy`.</param>
-        public virtual SetOrgPolicyV1Request SetOrgPolicyV1(Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-        {
-            return new SetOrgPolicyV1Request(service, body, resource);
-        }
-
-        /// <summary>Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the
-        /// resource if one does not exist.
-        ///
-        /// Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`.</summary>
-        public class SetOrgPolicyV1Request : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.OrgPolicy>
-        {
-            /// <summary>Constructs a new SetOrgPolicyV1 request.</summary>
-            public SetOrgPolicyV1Request(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest body, string resource)
-                : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Resource name of the resource to attach the `Policy`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudResourceManager.v1.Data.SetOrgPolicyRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "setOrgPolicyV1"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+resource}:setOrgPolicyV1"; }
-            }
-
-            /// <summary>Initializes SetOrgPolicyV1 parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
-        }
-
         /// <summary>Returns permissions that a caller has on the specified Project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
@@ -4085,13 +3215,17 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
-    /// "allServices" "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] },
-    /// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service": "fooservice@googleapis.com"
-    /// "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
-    /// "user:bar@gmail.com" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE
-    /// logging.</summary>
+    /// AuditConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+    /// }, { "service": "fooservice@googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    ///
+    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
