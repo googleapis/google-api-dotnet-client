@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/E-I2cyqk5aNIDcpUr3WwXNOAwnc\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/E-I2cyqk5aNIDcpUr3WwXNOAwnc\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",

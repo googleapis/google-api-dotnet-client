@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.Appengine.v1alpha</id>
-        <version>1.24.1.813</version>
+        <version>1.24.1.820</version>
         <title>Google.Apis.Appengine.v1alpha Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

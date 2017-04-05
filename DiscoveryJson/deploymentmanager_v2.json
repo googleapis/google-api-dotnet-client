@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"tbys6C40o18GZwyMen5GMkdK-3s/IHE7RRqwAjvUDuB9q_yaFj_YTY0\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/IHE7RRqwAjvUDuB9q_yaFj_YTY0\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:v2",
  "name": "deploymentmanager",
