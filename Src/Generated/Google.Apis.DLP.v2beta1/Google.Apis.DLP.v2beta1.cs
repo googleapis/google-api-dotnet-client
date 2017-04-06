@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170328 (817)
+ *      <tr><th>API Rev<td>20170404 (824)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
