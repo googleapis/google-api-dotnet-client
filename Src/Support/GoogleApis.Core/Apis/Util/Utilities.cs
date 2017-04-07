@@ -134,6 +134,11 @@ namespace Google.Apis.Util
                 return ConvertToRFC3339((DateTime)o);
             }
 
+            if (o is bool)
+            {
+                return o.ToString().ToLowerInvariant();
+            }
+
             return o.ToString();
         }
 

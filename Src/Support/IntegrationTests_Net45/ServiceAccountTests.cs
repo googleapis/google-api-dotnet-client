@@ -1,5 +1,5 @@
 ﻿/*
-Copyright 2016 Google Inc
+Copyright 2017 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,8 +19,6 @@ using Google.Apis.Services;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using NUnit.Framework;
-using System;
-using System.IO;
 
 namespace IntegrationTests
 {
@@ -33,27 +31,8 @@ namespace IntegrationTests
             // This is testing that a service-credential successfully authenticates to a Cloud Service.
             // If authentication fails, an exception will be thrown, failing the test.
 
-            const string ProjectEnvironmentVariable = "TEST_PROJECT";
-            const string ServiceAccountFilenameVariable = "TEST_SERVICE_CREDENTIAL_FILENAME";
+            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl);
 
-            string projectId = Environment.GetEnvironmentVariable(ProjectEnvironmentVariable);
-            string serviceAccountFilename = Environment.GetEnvironmentVariable(ServiceAccountFilenameVariable);
-
-            if (string.IsNullOrEmpty(projectId))
-            {
-                throw new InvalidOperationException($"Please set the {ProjectEnvironmentVariable} environment variable before running tests.");
-            }
-            if (string.IsNullOrEmpty(serviceAccountFilename))
-            {
-                throw new InvalidOperationException($"Please set the {ServiceAccountFilenameVariable} environment variable before running tests.");
-            }
-
-            GoogleCredential credential;
-            using (var serviceAccountStream = File.OpenRead(serviceAccountFilename))
-            {
-                credential = GoogleCredential.FromStream(serviceAccountStream);
-            }
-            credential = credential.CreateScoped(StorageService.Scope.DevstorageFullControl);
             StorageService client = new StorageService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
@@ -65,7 +44,7 @@ namespace IntegrationTests
             Assert.That(ok, Is.Not.Null);
 
             // Following line will throw is authentication fails.
-            Buckets buckets = client.Buckets.List(projectId).Execute();
+            Buckets buckets = client.Buckets.List(Helper.GetProjectId()).Execute();
 
             // A final sanity-check.
             Assert.NotNull(buckets.Items);

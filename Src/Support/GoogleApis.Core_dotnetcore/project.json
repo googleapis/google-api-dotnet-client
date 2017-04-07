@@ -11,7 +11,7 @@
     "compile": {
       "include": [
         "../GoogleApis.Core/*.cs",
-        "../GoogleApis.Core/properties/*.cs",
+        "../GoogleApis.Core/Properties/*.cs",
         "../GoogleApis.Core/Apis/**/*.cs",
         "../GoogleApis.Core/NetStandard/**/*.cs"
       ],

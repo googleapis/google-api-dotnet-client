@@ -33,13 +33,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseSigned|AnyCPU'">
     <OutputPath>bin\ReleaseSigned\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;SIGNED</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -64,9 +66,11 @@
     <Compile Include="AuthUriConstsTests.cs" />
     <Compile Include="FileDataStoreTests.cs" />
     <Compile Include="Google.Apis.Storage.v1.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccountTests.cs" />
+    <Compile Include="StorageApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,6 +92,10 @@
     <ProjectReference Include="..\GoogleApis.DotNet4\GoogleApis.PlatformServices_Net45.csproj">
       <Project>{C4DA0ABE-2C2E-4BB8-9881-5FF80B0C1AFD}</Project>
       <Name>GoogleApis.PlatformServices_Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleApis.Tests\GoogleApis.Tests.csproj">
+      <Project>{9A8AA9EF-6904-43D8-8A26-0AB62069C2DC}</Project>
+      <Name>GoogleApis.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\GoogleApis\Net45\GoogleApis_Net45.csproj">
       <Project>{e06dcdd2-b8e0-4bf0-b572-a825e8dc1fa2}</Project>

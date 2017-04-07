@@ -962,7 +962,44 @@ namespace Google.Apis.Tests.Apis.Requests
             }
         }
 
-        #endregion
+        class ClientServiceRequestWithBoolParameter : TestClientServiceRequest
+        {
+            [RequestParameter("bool", RequestParameterType.Query)]
+            public bool? Bool { get; set; }
+
+            public ClientServiceRequestWithBoolParameter(IClientService service, string method, object body)
+                : base(service, method, body)
+            {
+                RequestParameters.Add("bool", new Parameter
+                {
+                    Name = "bool",
+                    ParameterType = "query"
+                });
+            }
+        }
+
+        [Test]
+        public void CreateRequest_QueryBoolParameter()
+        {
+            using (var service = new MockClientService("https://build_request_params"))
+            {
+                // Request without the bool parameter.
+                var request = new ClientServiceRequestWithBoolParameter(service, "GET", null);
+                var httpRequest = request.CreateRequest();
+                Assert.That(httpRequest.RequestUri, Is.EqualTo(new Uri("https://build_request_params/restPath0")));
+
+                // Request with the bool parameter true
+                request.Bool = true;
+                Assert.That(request.CreateRequest().RequestUri, Is.EqualTo(new Uri("https://build_request_params/restPath0?bool=true")));
+
+                // Request with the bool parameter false
+                request.Bool = false;
+                Assert.That(request.CreateRequest().RequestUri, Is.EqualTo(new Uri("https://build_request_params/restPath0?bool=false")));
+
+            }
+        }
+
+            #endregion
 
         #region Path Parameters
 

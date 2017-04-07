@@ -19,7 +19,6 @@ using Google.Apis.Storage.v1;
 using Google.Apis.Util.Store;
 using NUnit.Framework;
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,32 +27,16 @@ namespace IntegrationTests
     [TestFixture]
     class GoogleWebAuthorizationBrokerTests
     {
-        private MemoryStream GetClientSecret()
-        {
-            const string ClientSecretFilenameVariable = "TEST_CLIENT_SECRET_FILENAME";
-
-            string clientSecretFilename = Environment.GetEnvironmentVariable(ClientSecretFilenameVariable);
-
-            if (string.IsNullOrEmpty(clientSecretFilename))
-            {
-                throw new InvalidOperationException($"Please set the {ClientSecretFilenameVariable} environment variable before running tests.");
-            }
-
-            return new MemoryStream(File.ReadAllBytes(clientSecretFilename));
-        }
-
         [Test]
         public async Task AuthClientSecret()
         {
             // Warning: This test is interactive!
             // It will bring up a browser window that must be responded to before the test can complete.
 
-            var clientSecretsStream = GetClientSecret();
-
             // Test the initial authorization.
             // NullDataStore is used to ensure the AuthorizationUrl is definitely used.
             UserCredential cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                clientSecretsStream, new string[] { StorageService.Scope.CloudPlatformReadOnly },
+                Helper.GetClientSecretStream(), new string[] { StorageService.Scope.CloudPlatformReadOnly },
                 "user", CancellationToken.None, new NullDataStore());
             Assert.That(cred, Is.Not.Null);
 
@@ -72,8 +55,6 @@ namespace IntegrationTests
             // Warning: This test is pseudo-interactive!
             // It will bring up a browser window, but the test will complete without any interaction.
 
-            var clientSecretsStream = GetClientSecret();
-
             // Test the initial authorization.
             // NullDataStore is used to ensure browser will definitely be shown.
             // Tests that the local listener will be cancelled properly.
@@ -82,7 +63,7 @@ namespace IntegrationTests
             Assert.That(async () =>
             {
                 await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    clientSecretsStream, new string[] { StorageService.Scope.CloudPlatformReadOnly },
+                    Helper.GetClientSecretStream(), new string[] { StorageService.Scope.CloudPlatformReadOnly },
                     "user", cts.Token, new NullDataStore());
             }, Throws.TypeOf<TaskCanceledException>());
         }
