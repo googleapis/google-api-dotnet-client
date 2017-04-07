@@ -19,7 +19,6 @@ using Google.Apis.Storage.v1;
 using Google.Apis.Util.Store;
 using NUnit.Framework;
 using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
