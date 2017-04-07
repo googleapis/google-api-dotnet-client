@@ -20,13 +20,13 @@ using System.IO;
 
 namespace IntegrationTests
 {
-    static class Helper
+    internal static class Helper
     {
         const string ProjectEnvironmentVariable = "TEST_PROJECT";
         const string ServiceAccountFilenameVariable = "TEST_SERVICE_CREDENTIAL_FILENAME";
         const string ClientSecretFilenameVariable = "TEST_CLIENT_SECRET_FILENAME";
 
-        private static Lazy<string> s_projectId = new Lazy<string>(() =>
+        private static readonly Lazy<string> s_projectId = new Lazy<string>(() =>
         {
             string projectId = Environment.GetEnvironmentVariable(ProjectEnvironmentVariable);
             if (string.IsNullOrEmpty(projectId))
@@ -36,7 +36,7 @@ namespace IntegrationTests
             return projectId;
         });
 
-        private static Lazy<GoogleCredential> s_serviceCredential = new Lazy<GoogleCredential>(() =>
+        private static readonly Lazy<GoogleCredential> s_serviceCredential = new Lazy<GoogleCredential>(() =>
         {
             string serviceAccountFilename = Environment.GetEnvironmentVariable(ServiceAccountFilenameVariable);
             if (string.IsNullOrEmpty(serviceAccountFilename))
@@ -49,7 +49,7 @@ namespace IntegrationTests
             }
         });
 
-        private static Lazy<byte[]> s_clientSecretStream = new Lazy<byte[]>(() =>
+        private static readonly Lazy<byte[]> s_clientSecret = new Lazy<byte[]>(() =>
         {
             string clientSecretFilename = Environment.GetEnvironmentVariable(ClientSecretFilenameVariable);
             if (string.IsNullOrEmpty(clientSecretFilename))
@@ -63,6 +63,6 @@ namespace IntegrationTests
 
         public static GoogleCredential GetServiceCredential() => s_serviceCredential.Value;
 
-        public static MemoryStream GetClientSecretStream() => new MemoryStream(s_clientSecretStream.Value);
+        public static MemoryStream GetClientSecretStream() => new MemoryStream(s_clientSecret.Value);
     }
 }
