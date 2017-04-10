@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/teOZN76FALH7qCuqaLXNA0L9jNQ\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/kQT6Vefuppwx6ChTLlX44e21f2w\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20170323",
+ "revision": "20170404",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -940,6 +940,10 @@
     "allowFileDiscovery": {
      "type": "boolean",
      "description": "Whether the permission allows the file to be discovered through search. This is only applicable for permissions of type domain or anyone."
+    },
+    "deleted": {
+     "type": "boolean",
+     "description": "Whether the account of the permission has been deleted. This field only pertains to user and group permissions."
     },
     "displayName": {
      "type": "string",
