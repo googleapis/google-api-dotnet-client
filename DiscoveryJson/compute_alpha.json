@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/PV6o7iabI3QrayBqgXaSOfgobdw\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/pPncpXn_EhI0JzodDGJQTY-VWDY\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20170313",
+ "revision": "20170315",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -4336,6 +4336,14 @@
      "type": "string",
      "description": "URL of the source image used to create this image. This can be a full or valid partial URL. You must provide exactly one of:  \n- this property, or  \n- the rawDisk.source property, or  \n- the sourceDisk property   in order to create an image."
     },
+    "sourceImageEncryptionKey": {
+     "$ref": "CustomerEncryptionKey",
+     "description": "The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key."
+    },
+    "sourceImageId": {
+     "type": "string",
+     "description": "[Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name."
+    },
     "sourceType": {
      "type": "string",
      "description": "The type of the image used to create this disk. The default and only value is RAW",
@@ -4424,6 +4432,7 @@
     },
     "guestAccelerators": {
      "type": "array",
+     "description": "List of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -5537,6 +5546,13 @@
       "$ref": "AttachedDisk"
      }
     },
+    "guestAccelerators": {
+     "type": "array",
+     "description": "A list of guest accelerator cards' type and count to use for instances created from the instance template.",
+     "items": {
+      "$ref": "AcceleratorConfig"
+     }
+    },
     "labels": {
      "type": "object",
      "description": "Labels to apply to instances that are created from this template.",
@@ -5815,6 +5831,7 @@
    "properties": {
     "guestAccelerators": {
      "type": "array",
+     "description": "List of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -8656,6 +8673,22 @@
     }
    }
   },
+  "SignedUrlKey": {
+   "id": "SignedUrlKey",
+   "type": "object",
+   "description": "Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs",
+   "properties": {
+    "keyName": {
+     "type": "string",
+     "description": "Name of the key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?"
+    },
+    "keyValue": {
+     "type": "string",
+     "description": "128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string."
+    }
+   }
+  },
   "Snapshot": {
    "id": "Snapshot",
    "type": "object",
@@ -11402,7 +11435,7 @@
      "id": "compute.addresses.setLabels",
      "path": "{project}/regions/{region}/addresses/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on an Address. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -11875,6 +11908,46 @@
   },
   "backendBuckets": {
    "methods": {
+    "addSignedUrlKey": {
+     "id": "compute.backendBuckets.addSignedUrlKey",
+     "path": "{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey",
+     "httpMethod": "POST",
+     "description": "Adds the given Signed URL Key to the backend bucket.",
+     "parameters": {
+      "backendBucket": {
+       "type": "string",
+       "description": "Name of the BackendBucket resource to which the Signed URL Key should be added. The name should conform to RFC1035.",
+       "required": true,
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "backendBucket"
+     ],
+     "request": {
+      "$ref": "SignedUrlKey"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "id": "compute.backendBuckets.delete",
      "path": "{project}/global/backendBuckets/{backendBucket}",
@@ -11904,6 +11977,50 @@
      "parameterOrder": [
       "project",
       "backendBucket"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "deleteSignedUrlKey": {
+     "id": "compute.backendBuckets.deleteSignedUrlKey",
+     "path": "{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey",
+     "httpMethod": "POST",
+     "description": "Deletes the given Signed URL Key from the backend bucket.",
+     "parameters": {
+      "backendBucket": {
+       "type": "string",
+       "description": "Name of the BackendBucket resource to which the Signed URL Key should be added. The name should conform to RFC1035.",
+       "required": true,
+       "location": "path"
+      },
+      "keyName": {
+       "type": "string",
+       "description": "The name of the Signed URL Key to delete.",
+       "required": true,
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "backendBucket",
+      "keyName"
      ],
      "response": {
       "$ref": "Operation"
@@ -12223,6 +12340,46 @@
   },
   "backendServices": {
    "methods": {
+    "addSignedUrlKey": {
+     "id": "compute.backendServices.addSignedUrlKey",
+     "path": "{project}/global/backendServices/{backendService}/addSignedUrlKey",
+     "httpMethod": "POST",
+     "description": "Adds the given Signed URL Key to the specified backend service.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to which the Signed URL Key should be added. The name should conform to RFC1035.",
+       "required": true,
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "backendService"
+     ],
+     "request": {
+      "$ref": "SignedUrlKey"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "aggregatedList": {
      "id": "compute.backendServices.aggregatedList",
      "path": "{project}/aggregated/backendServices",
@@ -12301,6 +12458,50 @@
      "parameterOrder": [
       "project",
       "backendService"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "deleteSignedUrlKey": {
+     "id": "compute.backendServices.deleteSignedUrlKey",
+     "path": "{project}/global/backendServices/{backendService}/deleteSignedUrlKey",
+     "httpMethod": "POST",
+     "description": "Deletes the given Signed URL Key from the specified backend service.",
+     "parameters": {
+      "backendService": {
+       "type": "string",
+       "description": "Name of the BackendService resource to which the Signed URL Key should be added. The name should conform to RFC1035.",
+       "required": true,
+       "location": "path"
+      },
+      "keyName": {
+       "type": "string",
+       "description": "The name of the Signed URL Key to delete.",
+       "required": true,
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "backendService",
+      "keyName"
      ],
      "response": {
       "$ref": "Operation"
@@ -13488,7 +13689,7 @@
      "id": "compute.disks.setLabels",
      "path": "{project}/zones/{zone}/disks/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a disk. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -14099,7 +14300,7 @@
      "id": "compute.forwardingRules.setLabels",
      "path": "{project}/regions/{region}/forwardingRules/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -14400,7 +14601,7 @@
      "id": "compute.globalAddresses.setLabels",
      "path": "{project}/global/addresses/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -14631,7 +14832,7 @@
      "id": "compute.globalForwardingRules.setLabels",
      "path": "{project}/global/forwardingRules/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -16578,7 +16779,7 @@
      "id": "compute.images.setLabels",
      "path": "{project}/global/images/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on an image. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -18921,7 +19122,7 @@
      "id": "compute.instances.setLabels",
      "path": "{project}/zones/{zone}/instances/{instance}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets labels on an instance. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "instance": {
        "type": "string",
@@ -24327,7 +24528,7 @@
      "id": "compute.snapshots.setLabels",
      "path": "{project}/global/snapshots/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -27913,7 +28114,7 @@
      "id": "compute.vpnTunnels.setLabels",
      "path": "{project}/regions/{region}/vpnTunnels/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",

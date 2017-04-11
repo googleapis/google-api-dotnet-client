@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TzxD0L1caz94p8uvs9QWkDyeBzQ\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/OnaAhKK66gBHbts7djsFr2H-zXM\"",
  "discoveryVersion": "v1",
  "id": "plusDomains:v1",
  "name": "plusDomains",
  "version": "v1",
- "revision": "20170405",
+ "revision": "20170407",
  "title": "Google+ Domains API",
  "description": "Builds on top of the Google+ platform for Google Apps Domains.",
  "ownerDomain": "google.com",

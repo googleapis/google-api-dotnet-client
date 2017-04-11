@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/ToE_9BezKA2RZwyUv-m2czStr6A\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/F68ZRfheZ05l0hQla4pbmDCHgsU\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20170313",
+ "revision": "20170315",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -3632,6 +3632,7 @@
     },
     "guestAccelerators": {
      "type": "array",
+     "description": "List of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -4851,6 +4852,7 @@
    "properties": {
     "guestAccelerators": {
      "type": "array",
+     "description": "List of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -11549,7 +11551,7 @@
      "id": "compute.disks.setLabels",
      "path": "{project}/zones/{zone}/disks/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a disk. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -13781,7 +13783,7 @@
      "id": "compute.images.setLabels",
      "path": "{project}/global/images/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on an image. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",
@@ -15832,7 +15834,7 @@
      "id": "compute.instances.setLabels",
      "path": "{project}/zones/{zone}/instances/{instance}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets labels on an instance. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "instance": {
        "type": "string",
@@ -19867,7 +19869,7 @@
      "id": "compute.snapshots.setLabels",
      "path": "{project}/global/snapshots/{resource}/setLabels",
      "httpMethod": "POST",
-     "description": "Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources documentation.",
+     "description": "Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources documentation.",
      "parameters": {
       "project": {
        "type": "string",

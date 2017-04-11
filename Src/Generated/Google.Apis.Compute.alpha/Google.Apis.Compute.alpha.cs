@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170313 (802)
+ *      <tr><th>API Rev<td>20170315 (804)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1765,7 +1765,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -1777,7 +1777,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -2931,6 +2931,104 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Adds the given Signed URL Key to the backend bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendBucket">Name of the
+        /// BackendBucket resource to which the Signed URL Key should be added. The name should conform to RFC1035.</param>
+        public virtual AddSignedUrlKeyRequest AddSignedUrlKey(Google.Apis.Compute.alpha.Data.SignedUrlKey body, string project, string backendBucket)
+        {
+            return new AddSignedUrlKeyRequest(service, body, project, backendBucket);
+        }
+
+        /// <summary>Adds the given Signed URL Key to the backend bucket.</summary>
+        public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new AddSignedUrlKey request.</summary>
+            public AddSignedUrlKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.SignedUrlKey body, string project, string backendBucket)
+                : base(service)
+            {
+                Project = project;
+                BackendBucket = backendBucket;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendBucket resource to which the Signed URL Key should be added. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendBucket { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.SignedUrlKey Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes AddSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendBucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendBucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Deletes the specified BackendBucket resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3006,6 +3104,112 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the backend bucket.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendBucket">Name of the
+        /// BackendBucket resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        /// <param name="keyName">The name of the Signed URL Key to delete.</param>
+        public virtual DeleteSignedUrlKeyRequest DeleteSignedUrlKey(string project, string backendBucket, string keyName)
+        {
+            return new DeleteSignedUrlKeyRequest(service, project, backendBucket, keyName);
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the backend bucket.</summary>
+        public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
+            public DeleteSignedUrlKeyRequest(Google.Apis.Services.IClientService service, string project, string backendBucket, string keyName)
+                : base(service)
+            {
+                Project = project;
+                BackendBucket = backendBucket;
+                KeyName = keyName;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendBucket resource to which the Signed URL Key should be added. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendBucket { get; private set; }
+
+            /// <summary>The name of the Signed URL Key to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KeyName { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes DeleteSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendBucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendBucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keyName",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -3784,6 +3988,105 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Adds the given Signed URL Key to the specified backend service.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendService">Name of the
+        /// BackendService resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        public virtual AddSignedUrlKeyRequest AddSignedUrlKey(Google.Apis.Compute.alpha.Data.SignedUrlKey body, string project, string backendService)
+        {
+            return new AddSignedUrlKeyRequest(service, body, project, backendService);
+        }
+
+        /// <summary>Adds the given Signed URL Key to the specified backend service.</summary>
+        public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new AddSignedUrlKey request.</summary>
+            public AddSignedUrlKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.SignedUrlKey body, string project, string backendService)
+                : base(service)
+            {
+                Project = project;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the Signed URL Key should be added. The name
+            /// should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.SignedUrlKey Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendServices/{backendService}/addSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes AddSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
         /// project.</summary>
         /// <param name="project">Name of the project scoping this request.</param>
@@ -4005,6 +4308,112 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the specified backend service.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendService">Name of the
+        /// BackendService resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        /// <param name="keyName">The name of the Signed URL Key to delete.</param>
+        public virtual DeleteSignedUrlKeyRequest DeleteSignedUrlKey(string project, string backendService, string keyName)
+        {
+            return new DeleteSignedUrlKeyRequest(service, project, backendService, keyName);
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the specified backend service.</summary>
+        public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
+            public DeleteSignedUrlKeyRequest(Google.Apis.Services.IClientService service, string project, string backendService, string keyName)
+                : base(service)
+            {
+                Project = project;
+                BackendService = backendService;
+                KeyName = keyName;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the Signed URL Key should be added. The name
+            /// should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+            /// <summary>The name of the Signed URL Key to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KeyName { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendServices/{backendService}/deleteSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes DeleteSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keyName",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -6984,7 +7393,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -6996,7 +7405,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -8503,8 +8912,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
@@ -8515,8 +8924,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -9242,8 +9651,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -9253,8 +9662,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -9823,8 +10232,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -9834,8 +10243,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -14714,7 +15123,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -14725,7 +15134,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -20590,7 +20999,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -20602,7 +21011,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -33893,7 +34302,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -33904,7 +34313,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -42764,7 +43173,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -42776,7 +43185,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -47442,6 +47851,17 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
+        /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] The ID value of the image used to create this image. This value may be used to
+        /// determine whether the image was taken from the current or a previous instance of a given image
+        /// name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
+        public virtual string SourceImageId { get; set; } 
+
         /// <summary>The type of the image used to create this disk. The default and only value is RAW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; } 
@@ -47536,6 +47956,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
@@ -48602,6 +49023,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        /// <summary>A list of guest accelerator cards' type and count to use for instances created from the instance
+        /// template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
+
         /// <summary>Labels to apply to instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -48819,6 +49245,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstancesSetMachineResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
@@ -51276,6 +51703,25 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The list of scopes to be made available for this service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs</summary>
+    public class SignedUrlKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        /// name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means
+        /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
+        /// letter, or digit, except the last character, which cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; } 
+
+        /// <summary>128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5
+        /// base64url encoded string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
+        public virtual string KeyValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

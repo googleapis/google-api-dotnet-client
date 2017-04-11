@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170407 (827)
+ *      <tr><th>API Rev<td>20170410 (830)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -427,6 +427,23 @@ namespace Google.Apis.People.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                public enum SortOrderEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                    LASTMODIFIEDASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                    FIRSTNAMEASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                    LASTNAMEASCENDING,
+                }
+
                 /// <summary>Whether the response should include a sync token, which can be used to get all changes
                 /// since the last request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -452,23 +469,6 @@ namespace Google.Apis.People.v1
                 /// changed since the sync token was created will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                public enum SortOrderEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -502,6 +502,15 @@ namespace Google.Apis.People.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
@@ -543,15 +552,6 @@ namespace Google.Apis.People.v1
                         "syncToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "syncToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>Google Identity Toolkit API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170308 (797)
+ *      <tr><th>API Rev<td>20170407 (827)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/identity-toolkit/v3/'>
  *              https://developers.google.com/identity-toolkit/v3/</a>
@@ -2257,6 +2257,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passwordUpdatedAt")]
         public virtual System.Nullable<double> PasswordUpdatedAt { get; set; } 
 
+        /// <summary>User's phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; } 
+
         /// <summary>The URL of the user profile photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
         public virtual string PhotoUrl { get; set; } 
@@ -2302,6 +2306,10 @@ namespace Google.Apis.IdentityToolkit.v3.Data
             /// <summary>User's identifier at IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("federatedId")]
             public virtual string FederatedId { get; set; } 
+
+            /// <summary>User's phone number.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+            public virtual string PhoneNumber { get; set; } 
 
             /// <summary>The user's photo url at the IDP.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]

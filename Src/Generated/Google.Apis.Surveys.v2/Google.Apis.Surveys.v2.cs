@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href=''>Surveys API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161103 (672)
+ *      <tr><th>API Rev<td>20170407 (827)
  *      <tr><th>API Docs
  *          <td><a href=''>
  *              </a>
@@ -1506,10 +1506,6 @@ namespace Google.Apis.Surveys.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; } 
 
-        /// <summary>Survey object containing the specification of the started Survey.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual Survey Resource { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1520,10 +1516,6 @@ namespace Google.Apis.Surveys.v2.Data
         /// troubleshooting requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; } 
-
-        /// <summary>Survey object containing the specification of the stopped Survey.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual Survey Resource { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

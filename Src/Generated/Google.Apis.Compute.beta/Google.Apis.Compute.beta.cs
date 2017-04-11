@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170313 (802)
+ *      <tr><th>API Rev<td>20170315 (804)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -5498,7 +5498,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -5510,7 +5510,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -11085,7 +11085,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -11096,7 +11096,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -16227,7 +16227,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -16239,7 +16239,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -26177,7 +26177,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -26188,7 +26188,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -38414,6 +38414,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
@@ -39494,6 +39495,7 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstancesSetMachineResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
