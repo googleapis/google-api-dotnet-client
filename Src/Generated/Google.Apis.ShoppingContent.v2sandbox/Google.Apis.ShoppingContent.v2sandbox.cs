@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20170324 (813)
+ *      <tr><th>API Rev<td>20170406 (826)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -425,8 +425,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Cancels all line items in an order, making a full refund. This method can only be called for non-
+        /// multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the order
@@ -436,8 +436,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new CancelRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels all line items in an order. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Cancels all line items in an order, making a full refund. This method can only be called for non-
+        /// multi-client accounts.</summary>
         public class CancelRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -511,7 +511,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
-        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
+        /// <summary>Cancels a line item, making a full refund. This method can only be called for non-multi-client
+        /// accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="orderId">The ID of the
@@ -521,7 +522,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             return new CancellineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels a line item. This method can only be called for non-multi-client accounts.</summary>
+        /// <summary>Cancels a line item, making a full refund. This method can only be called for non-multi-client
+        /// accounts.</summary>
         public class CancellineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersCancelLineItemResponse>
         {
             /// <summary>Constructs a new Cancellineitem request.</summary>
