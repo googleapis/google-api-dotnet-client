@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/kQT6Vefuppwx6ChTLlX44e21f2w\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/k5YKE4AZxQRCoprGRUGw27dEejE\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20170404",
+ "revision": "20170406",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -2113,7 +2113,7 @@
       },
       "pageSize": {
        "type": "integer",
-       "description": "The maximum number of files to return per page.",
+       "description": "The maximum number of files to return per page. Partial or empty result pages are possible even before the end of the files list has been reached.",
        "default": "100",
        "format": "int32",
        "minimum": "1",

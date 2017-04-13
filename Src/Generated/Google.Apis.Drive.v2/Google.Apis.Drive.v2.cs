@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170404 (824)
+ *      <tr><th>API Rev<td>20170406 (826)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -3222,7 +3222,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
-            /// <summary>Maximum number of files to return.</summary>
+            /// <summary>The maximum number of files to return per page. Partial or empty result pages are possible even
+            /// before the end of the files list has been reached.</summary>
             /// [default: 100]
             /// [minimum: 0]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]

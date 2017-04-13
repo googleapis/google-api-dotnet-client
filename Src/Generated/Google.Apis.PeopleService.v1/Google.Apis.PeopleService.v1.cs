@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170410 (830)
+ *      <tr><th>API Rev<td>20170411 (831)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.People.v1
+namespace Google.Apis.PeopleService.v1
 {
-    /// <summary>The People Service.</summary>
-    public class PeopleService : Google.Apis.Services.BaseClientService
+    /// <summary>The PeopleService Service.</summary>
+    public class PeopleServiceService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -56,12 +56,12 @@ namespace Google.Apis.People.v1
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public PeopleService() :
+        public PeopleServiceService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public PeopleService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public PeopleServiceService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             people = new PeopleResource(this);
@@ -148,11 +148,11 @@ namespace Google.Apis.People.v1
         }
     }
 
-    ///<summary>A base abstract class for People requests.</summary>
-    public abstract class PeopleBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for PeopleService requests.</summary>
+    public abstract class PeopleServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new PeopleBaseServiceRequest instance.</summary>
-        protected PeopleBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new PeopleServiceBaseServiceRequest instance.</summary>
+        protected PeopleServiceBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -239,7 +239,7 @@ namespace Google.Apis.People.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes People parameter list.</summary>
+        /// <summary>Initializes PeopleService parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -412,7 +412,7 @@ namespace Google.Apis.People.v1
             }
 
             /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
-            public class ListRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.ListConnectionsResponse>
+            public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string resourceName)
@@ -453,17 +453,17 @@ namespace Google.Apis.People.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
                 /// include all fields except for connections.list requests, which have a default mask that includes
                 /// common fields like metadata, name, photo, and profile url. Each path should start with `person.`:
                 /// for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
                 /// changed since the sync token was created will be returned.</summary>
@@ -531,18 +531,18 @@ namespace Google.Apis.People.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -576,7 +576,7 @@ namespace Google.Apis.People.v1
 
         /// <summary>Provides information about a person resource for a resource name. Use `people/me` to indicate the
         /// authenticated user.</summary>
-        public class GetRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.Person>
+        public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string resourceName)
@@ -657,7 +657,7 @@ namespace Google.Apis.People.v1
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
         /// names. Use `people/me` to indicate the authenticated user.</summary>
-        public class GetBatchGetRequest : PeopleBaseServiceRequest<Google.Apis.People.v1.Data.GetPeopleResponse>
+        public class GetBatchGetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.GetPeopleResponse>
         {
             /// <summary>Constructs a new GetBatchGet request.</summary>
             public GetBatchGetRequest(Google.Apis.Services.IClientService service)
@@ -728,7 +728,7 @@ namespace Google.Apis.People.v1
     }
 }
 
-namespace Google.Apis.People.v1.Data
+namespace Google.Apis.PeopleService.v1.Data
 {    
 
     /// <summary>A person's physical address. May be a P.O. box or street address. All fields are optional.</summary>
@@ -1322,10 +1322,10 @@ namespace Google.Apis.People.v1.Data
     }    
 
     /// <summary>Information about a person merged from various data sources such as the authenticated user's contacts
-    /// and profile data. Fields other than IDs, metadata, and group memberships are user-edited.
+    /// and profile data.
     ///
     /// Most fields can have multiple items. The items in a field have no guaranteed order, but each non-empty field is
-    /// guaranteed to have exactly one field with `metadata.primary` set to true. NEXT_ID: 31</summary>
+    /// guaranteed to have exactly one field with `metadata.primary` set to true.</summary>
     public class Person : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The person's street addresses.</summary>

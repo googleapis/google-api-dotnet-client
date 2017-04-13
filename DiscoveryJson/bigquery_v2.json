@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/5wJurQm8YriaqoWlJ61QZw5S5lo\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4k7_mz3_hjiHB-sQeq0R5OymfdI\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20170330",
+ "revision": "20170408",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",

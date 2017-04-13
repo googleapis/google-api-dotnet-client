@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataflow'>Google Dataflow API</a>
  *      <tr><th>API Version<td>v1b3
- *      <tr><th>API Rev<td>20170331 (820)
+ *      <tr><th>API Rev<td>20170330 (819)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataflow'>
  *              https://cloud.google.com/dataflow</a>
@@ -110,9 +110,6 @@ namespace Google.Apis.Dataflow.v1b3
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>View and manage your Google Compute Engine resources</summary>
-            public static string Compute = "https://www.googleapis.com/auth/compute";
 
             /// <summary>View your email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
@@ -634,6 +631,27 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
+                    /// <summary>Filter to only get messages with importance >= level</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
+
+                    /// <summary>Filter to only get messages with importance >= level</summary>
+                    public enum MinimumImportanceEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
+                        JOBMESSAGEIMPORTANCEUNKNOWN,
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
+                        JOBMESSAGEDEBUG,
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
+                        JOBMESSAGEDETAILED,
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
+                        JOBMESSAGEBASIC,
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
+                        JOBMESSAGEWARNING,
+                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
+                        JOBMESSAGEERROR,
+                    }
+
                     /// <summary>The location which contains the job specified by job_id.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Location { get; set; }
@@ -658,27 +676,6 @@ namespace Google.Apis.Dataflow.v1b3
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Filter to only get messages with importance >= level</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("minimumImportance", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<MinimumImportanceEnum> MinimumImportance { get; set; }
-
-                    /// <summary>Filter to only get messages with importance >= level</summary>
-                    public enum MinimumImportanceEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
-                        JOBMESSAGEIMPORTANCEUNKNOWN,
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
-                        JOBMESSAGEDEBUG,
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
-                        JOBMESSAGEDETAILED,
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
-                        JOBMESSAGEBASIC,
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
-                        JOBMESSAGEWARNING,
-                        [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
-                        JOBMESSAGEERROR,
-                    }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -723,6 +720,15 @@ namespace Google.Apis.Dataflow.v1b3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "minimumImportance", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "minimumImportance",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "location", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "location",
@@ -762,15 +768,6 @@ namespace Google.Apis.Dataflow.v1b3
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "minimumImportance", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "minimumImportance",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -998,14 +995,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The location that contains this job.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
-
-                /// <summary>Deprecated. This field is now in the Job message.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ReplaceJobId { get; set; }
-
                 /// <summary>The level of information requested in response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1022,6 +1011,14 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
                 }
+
+                /// <summary>The location that contains this job.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
+                /// <summary>Deprecated. This field is now in the Job message.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("replaceJobId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ReplaceJobId { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1063,6 +1060,15 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1075,15 +1081,6 @@ namespace Google.Apis.Dataflow.v1b3
                         "replaceJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "replaceJobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "view", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1237,14 +1234,14 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
+                /// <summary>The location which contains the job specified by job_id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>Return only metric data that has changed since this time. Default is to return all
                 /// information about all metrics for the job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
-
-                /// <summary>The location which contains the job specified by job_id.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Location { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1289,18 +1286,18 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "location", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "location",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "location", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "location",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1333,23 +1330,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The kind of filter to use.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterEnum> Filter { get; set; }
-
-                /// <summary>The kind of filter to use.</summary>
-                public enum FilterEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
-                    [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
-                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
-                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
-                }
-
                 /// <summary>The location that contains this job.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
@@ -1379,6 +1359,23 @@ namespace Google.Apis.Dataflow.v1b3
                     JOBVIEWALL,
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
                     JOBVIEWDESCRIPTION,
+                }
+
+                /// <summary>The kind of filter to use.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                /// <summary>The kind of filter to use.</summary>
+                public enum FilterEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ALL")]
+                    ALL,
+                    [Google.Apis.Util.StringValueAttribute("TERMINATED")]
+                    TERMINATED,
+                    [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                    ACTIVE,
                 }
 
 
@@ -1415,15 +1412,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -1454,6 +1442,15 @@ namespace Google.Apis.Dataflow.v1b3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1898,15 +1895,15 @@ namespace Google.Apis.Dataflow.v1b3
                         [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object EndTime { get; set; }
 
-                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
-                        /// call. This will cause the next page of results to be returned.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>If specified, return only messages with timestamps >= start_time. The default is
                         /// the job creation time (i.e. beginning of messages).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object StartTime { get; set; }
+
+                        /// <summary>If supplied, this should be the value of next_page_token returned by an earlier
+                        /// call. This will cause the next page of results to be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
                         /// <summary>If specified, determines the maximum number of messages to return.  If unspecified,
                         /// the service may choose an appropriate default, or may return an arbitrarily large number of
@@ -1996,18 +1993,18 @@ namespace Google.Apis.Dataflow.v1b3
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "startTime", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "startTime",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "startTime", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "startTime",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3499,11 +3496,6 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Whether or not the job should actually be executed after validating parameters. Defaults to
-                /// false. Validation errors do not cause the HTTP request to fail if true.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> DryRun { get; set; }
-
                 /// <summary>The location to which to direct the request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
@@ -3512,6 +3504,11 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Cloud Storage URL, beginning with 'gs://'.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
+
+                /// <summary>Whether or not the job should actually be executed after validating parameters. Defaults to
+                /// false. Validation errors do not cause the HTTP request to fail if true.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> DryRun { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3553,15 +3550,6 @@ namespace Google.Apis.Dataflow.v1b3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "dryRun", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dryRun",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "location", new Google.Apis.Discovery.Parameter
                         {
                             Name = "location",
@@ -3574,6 +3562,15 @@ namespace Google.Apis.Dataflow.v1b3
                         "gcsPath", new Google.Apis.Discovery.Parameter
                         {
                             Name = "gcsPath",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3730,34 +3727,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>A Position at which to split the work item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual Position Position { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A structured message reporting an autoscaling decision made by the Dataflow service.</summary>
-    public class AutoscalingEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The current number of workers the job has.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentNumWorkers")]
-        public virtual System.Nullable<long> CurrentNumWorkers { get; set; } 
-
-        /// <summary>A message describing why the system decided to adjust the current number of workers, why it failed,
-        /// or why the system decided to not make any changes to the number of workers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual StructuredMessage Description { get; set; } 
-
-        /// <summary>The type of autoscaling event to report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
-        public virtual string EventType { get; set; } 
-
-        /// <summary>The target number of workers the worker pool wants to resize to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetNumWorkers")]
-        public virtual System.Nullable<long> TargetNumWorkers { get; set; } 
-
-        /// <summary>The time this event was emitted to indicate a new target or current num_workers value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4312,25 +4281,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A message describing the state of a particular execution stage.</summary>
-    public class ExecutionStageState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time at which the stage transitioned to this state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentStateTime")]
-        public virtual object CurrentStateTime { get; set; } 
-
-        /// <summary>The name of the execution stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionStageName")]
-        public virtual string ExecutionStageName { get; set; } 
-
-        /// <summary>Executions stage states allow the same set of values as JobState.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("executionStageState")]
-        public virtual string ExecutionStageStateValue { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Description of the composing transforms, names/ids, and input/outputs of a stage of execution.  Some
     /// composing transforms and sources may have been generated by the Dataflow service during execution
     /// planning.</summary>
@@ -4640,10 +4590,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedState")]
         public virtual string RequestedState { get; set; } 
 
-        /// <summary>This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stageStates")]
-        public virtual System.Collections.Generic.IList<ExecutionStageState> StageStates { get; set; } 
-
         /// <summary>The top-level steps that constitute the entire job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; } 
@@ -4699,7 +4645,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A particular message pertaining to a Dataflow job.</summary>
     public class JobMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated.</summary>
+        /// <summary>Identifies the message.  This is automatically generated by the service; the caller should treat it
+        /// as an opaque string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -4869,10 +4816,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Response to a request to list job messages.</summary>
     public class ListJobMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Autoscaling events in ascending timestamp order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingEvents")]
-        public virtual System.Collections.Generic.IList<AutoscalingEvent> AutoscalingEvents { get; set; } 
-
         /// <summary>Messages in ascending timestamp order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobMessages")]
         public virtual System.Collections.Generic.IList<JobMessage> JobMessages { get; set; } 
@@ -5152,21 +5095,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Additional information for Write instructions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("write")]
         public virtual WriteInstruction Write { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Structured data associated with this message.</summary>
-    public class Parameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Key or name for this parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>Value for this parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6135,27 +6063,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Elements of the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elements")]
         public virtual System.Collections.Generic.IList<string> Elements { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A rich message format, including a human readable string, a key for identifying the message, and
-    /// structured data associated with the message for programmatic consumption.</summary>
-    public class StructuredMessage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Idenfier for this message type.  Used by external systems to internationalize or personalize
-        /// message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
-        public virtual string MessageKey { get; set; } 
-
-        /// <summary>Human-readable version of message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageText")]
-        public virtual string MessageText { get; set; } 
-
-        /// <summary>The structured data associated with this message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<Parameter> Parameters { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

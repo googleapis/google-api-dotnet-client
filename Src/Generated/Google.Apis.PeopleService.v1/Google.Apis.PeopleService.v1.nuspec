@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>Google.Apis.People.v1</id>
-        <version>1.25.0.830</version>
-        <title>Google.Apis.People.v1 Client Library</title>
+        <id>Google.Apis.PeopleService.v1</id>
+        <version>1.25.0.831</version>
+        <title>Google.Apis.PeopleService.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>
         <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -59,20 +59,20 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.People.v1.dll" target="lib\netstandard1.3\Google.Apis.People.v1.dll" />
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.People.v1.pdb" target="lib\netstandard1.3\Google.Apis.People.v1.pdb" />
-        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.People.v1.xml" target="lib\netstandard1.3\Google.Apis.People.v1.xml" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.PeopleService.v1.dll" target="lib\netstandard1.3\Google.Apis.PeopleService.v1.dll" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.PeopleService.v1.pdb" target="lib\netstandard1.3\Google.Apis.PeopleService.v1.pdb" />
+        <file src="NetStandard\bin\ReleaseSigned\Google.Apis.PeopleService.v1.xml" target="lib\netstandard1.3\Google.Apis.PeopleService.v1.xml" />
 
-        <file src="Net45\bin\ReleaseSigned\Google.Apis.People.v1.dll" target="lib\net45\Google.Apis.People.v1.dll" />
-        <file src="Net45\bin\ReleaseSigned\Google.Apis.People.v1.pdb" target="lib\net45\Google.Apis.People.v1.pdb" />
-        <file src="Net45\bin\ReleaseSigned\Google.Apis.People.v1.xml" target="lib\net45\Google.Apis.People.v1.xml" />
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.PeopleService.v1.dll" target="lib\net45\Google.Apis.PeopleService.v1.dll" />
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.PeopleService.v1.pdb" target="lib\net45\Google.Apis.PeopleService.v1.pdb" />
+        <file src="Net45\bin\ReleaseSigned\Google.Apis.PeopleService.v1.xml" target="lib\net45\Google.Apis.PeopleService.v1.xml" />
 
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.People.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.People.v1.dll" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.People.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.People.v1.pdb" />
-        <file src="Profile259\bin\ReleaseSigned\Google.Apis.People.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.People.v1.xml" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PeopleService.v1.dll" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.dll" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PeopleService.v1.pdb" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.pdb" />
+        <file src="Profile259\bin\ReleaseSigned\Google.Apis.PeopleService.v1.xml" target="lib\portable-net45+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.xml" />
 
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.People.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.People.v1.dll" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.People.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.People.v1.pdb" />
-        <file src="Profile328\bin\ReleaseSigned\Google.Apis.People.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.People.v1.xml" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PeopleService.v1.dll" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.dll" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PeopleService.v1.pdb" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.pdb" />
+        <file src="Profile328\bin\ReleaseSigned\Google.Apis.PeopleService.v1.xml" target="lib\portable-net40+sl50+netcore45+wpa81+wp8\Google.Apis.PeopleService.v1.xml" />
     </files>
 </package>

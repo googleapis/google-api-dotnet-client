@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170411 (831)
+ *      <tr><th>API Rev<td>20170412 (832)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -1149,6 +1149,8 @@ namespace Google.Apis.ToolResults.v1beta3firstparty
                             {
                                 [Google.Apis.Util.StringValueAttribute("cpu")]
                                 Cpu,
+                                [Google.Apis.Util.StringValueAttribute("graphics")]
+                                Graphics,
                                 [Google.Apis.Util.StringValueAttribute("memory")]
                                 Memory,
                                 [Google.Apis.Util.StringValueAttribute("network")]
