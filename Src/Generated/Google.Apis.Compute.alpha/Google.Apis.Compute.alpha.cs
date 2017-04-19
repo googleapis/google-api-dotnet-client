@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170315 (804)
+ *      <tr><th>API Rev<td>20170329 (818)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -70,7 +70,6 @@ namespace Google.Apis.Compute.alpha
             backendBuckets = new BackendBucketsResource(this);
             backendServices = new BackendServicesResource(this);
             clientSslPolicies = new ClientSslPoliciesResource(this);
-            commitments = new CommitmentsResource(this);
             diskTypes = new DiskTypesResource(this);
             disks = new DisksResource(this);
             firewalls = new FirewallsResource(this);
@@ -229,14 +228,6 @@ namespace Google.Apis.Compute.alpha
         public virtual ClientSslPoliciesResource ClientSslPolicies
         {
             get { return clientSslPolicies; }
-        }
-
-        private readonly CommitmentsResource commitments;
-
-        /// <summary>Gets the Commitments resource.</summary>
-        public virtual CommitmentsResource Commitments
-        {
-            get { return commitments; }
         }
 
         private readonly DiskTypesResource diskTypes;
@@ -1765,7 +1756,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -1777,7 +1768,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -5305,616 +5296,6 @@ namespace Google.Apis.Compute.alpha
         }
     }
 
-    /// <summary>The "commitments" collection of methods.</summary>
-    public class CommitmentsResource
-    {
-        private const string Resource = "commitments";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public CommitmentsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Retrieves an aggregated list of commitments.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        public virtual AggregatedListRequest AggregatedList(string project)
-        {
-            return new AggregatedListRequest(service, project);
-        }
-
-        /// <summary>Retrieves an aggregated list of commitments.</summary>
-        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.CommitmentAggregatedList>
-        {
-            /// <summary>Constructs a new AggregatedList request.</summary>
-            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
-                : base(service)
-            {
-                Project = project;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
-            ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
-            ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "aggregatedList"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/aggregated/commitments"; }
-            }
-
-            /// <summary>Initializes AggregatedList parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Returns the specified commitment resource. Get a list of available commitments by making a list()
-        /// request.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone for this
-        /// request.</param>
-        /// <param name="commitment">Name of the commitment to return.</param>
-        public virtual GetRequest Get(string project, string zone, string commitment)
-        {
-            return new GetRequest(service, project, zone, commitment);
-        }
-
-        /// <summary>Returns the specified commitment resource. Get a list of available commitments by making a list()
-        /// request.</summary>
-        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Commitment>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string project, string zone, string commitment)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Commitment = commitment;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the commitment to return.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("commitment", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Commitment { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "get"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments/{commitment}"; }
-            }
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "commitment", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "commitment",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-            }
-
-        }
-
-        /// <summary>Creates an commitment in the specified project using the data included in the request.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone for this
-        /// request.</param>
-        public virtual InsertRequest Insert(Google.Apis.Compute.alpha.Data.Commitment body, string project, string zone)
-        {
-            return new InsertRequest(service, body, project, zone);
-        }
-
-        /// <summary>Creates an commitment in the specified project using the data included in the request.</summary>
-        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new Insert request.</summary>
-            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Commitment body, string project, string zone)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestId { get; set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.Commitment Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "insert"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments"; }
-            }
-
-            /// <summary>Initializes Insert parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Retrieves a list of commitments contained within the specified zone.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">Name of the zone for this
-        /// request.</param>
-        public virtual ListRequest List(string project, string zone)
-        {
-            return new ListRequest(service, project, zone);
-        }
-
-        /// <summary>Retrieves a list of commitments contained within the specified zone.</summary>
-        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.CommitmentList>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string project, string zone)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
-            ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
-            ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "list"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments"; }
-            }
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone for this
-        /// request.</param>
-        /// <param name="resource">Name of the resource for this request.</param>
-        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string zone, string resource)
-        {
-            return new TestIamPermissionsRequest(service, body, project, zone, resource);
-        }
-
-        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
-        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
-        {
-            /// <summary>Constructs a new TestIamPermissions request.</summary>
-            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string zone, string resource)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the resource for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "testIamPermissions"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/commitments/{resource}/testIamPermissions"; }
-            }
-
-            /// <summary>Initializes TestIamPermissions parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "resource", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resource",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-            }
-
-        }
-    }
-
     /// <summary>The "diskTypes" collection of methods.</summary>
     public class DiskTypesResource
     {
@@ -7393,7 +6774,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -7405,7 +6786,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -8196,7 +7577,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
+        /// targetTags.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -8206,7 +7589,9 @@ namespace Google.Apis.Compute.alpha
             return new UpdateRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
+        /// targetTags.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -8912,8 +8297,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
@@ -8924,8 +8309,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -9651,8 +9036,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -9662,8 +9047,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -10232,8 +9617,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -10243,8 +9628,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
-        /// documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
+        /// Resources documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -15123,7 +14508,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -15134,7 +14519,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -15315,7 +14700,9 @@ namespace Google.Apis.Compute.alpha
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -15332,7 +14719,9 @@ namespace Google.Apis.Compute.alpha
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -15690,7 +15079,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -15706,7 +15097,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -15905,7 +15298,9 @@ namespace Google.Apis.Compute.alpha
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A managed instance group can have up to 1000 VM instances per group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -15919,7 +15314,9 @@ namespace Google.Apis.Compute.alpha
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A managed instance group can have up to 1000 VM instances per group.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -16321,9 +15718,9 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
-        /// operation is marked as DONE when the group is patched even if the instances in the group have not yet been
-        /// patchd. You must separately verify the status of the individual instances with the listmanagedinstances
-        /// method. This method supports patch semantics.</summary>
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listManagedInstances method. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -16336,9 +15733,9 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
-        /// operation is marked as DONE when the group is patched even if the instances in the group have not yet been
-        /// patchd. You must separately verify the status of the individual instances with the listmanagedinstances
-        /// method. This method supports patch semantics.</summary>
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listManagedInstances method. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -16442,8 +15839,9 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -16458,8 +15856,9 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -17269,7 +16668,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
-        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// updated. You must separately verify the status of the individual instances with the listManagedInstances
         /// method.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -17284,7 +16683,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is updated even if the instances in the group have not yet been
-        /// updated. You must separately verify the status of the individual instances with the listmanagedinstances
+        /// updated. You must separately verify the status of the individual instances with the listManagedInstances
         /// method.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -20660,7 +20059,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Performs a hard reset on the instance.</summary>
+        /// <summary>Performs a reset on the instance. For more information, see Resetting an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -20670,7 +20069,7 @@ namespace Google.Apis.Compute.alpha
             return new ResetRequest(service, project, zone, instance);
         }
 
-        /// <summary>Performs a hard reset on the instance.</summary>
+        /// <summary>Performs a reset on the instance. For more information, see Resetting an instance.</summary>
         public class ResetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -20999,7 +20398,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -21011,7 +20410,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -26869,6 +26268,150 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Retrieves an aggregated list of commitments.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string project)
+        {
+            return new AggregatedListRequest(service, project);
+        }
+
+        /// <summary>Retrieves an aggregated list of commitments.</summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.CommitmentAggregatedList>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "aggregatedList"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/aggregated/commitments"; }
+            }
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Returns the specified commitment resource. Get a list of available commitments by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -28546,7 +28089,9 @@ namespace Google.Apis.Compute.alpha
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -28562,7 +28107,9 @@ namespace Google.Apis.Compute.alpha
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -28772,7 +28319,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -28787,7 +28336,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -28984,7 +28535,9 @@ namespace Google.Apis.Compute.alpha
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A regional managed instance group can contain up to 2000 instances.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -28998,7 +28551,9 @@ namespace Google.Apis.Compute.alpha
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A regional managed instance group can contain up to 2000 instances.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -29396,9 +28951,9 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
-        /// operation is marked as DONE when the group is patched even if the instances in the group have not yet been
-        /// patched. You must separately verify the status of the individual instances with the listmanagedinstances
-        /// method. This method supports patch semantics.</summary>
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listmanagedinstances method. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -29411,9 +28966,9 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
-        /// operation is marked as DONE when the group is patched even if the instances in the group have not yet been
-        /// patched. You must separately verify the status of the individual instances with the listmanagedinstances
-        /// method. This method supports patch semantics.</summary>
+        /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
+        /// process of being patched. You must separately verify the status of the individual instances with the
+        /// listmanagedinstances method. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -29517,8 +29072,9 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -29532,8 +29088,9 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -34302,7 +33859,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -34313,7 +33870,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -43173,7 +42730,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -43185,7 +42742,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -44171,7 +43728,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of this access configuration.</summary>
+        /// <summary>The name of this access configuration. The default and recommended name is External NAT but you can
+        /// use any arbitrary string you would like. For example, My external IP or Network Access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -44218,7 +43776,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource. Only IPv4 is supported.</summary>
+        /// <summary>The static external IP address represented by this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -44615,13 +44173,17 @@ namespace Google.Apis.Compute.alpha.Data
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
-    /// "allServices" "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] },
-    /// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service": "fooservice@googleapis.com"
-    /// "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
-    /// "user:bar@gmail.com" ] } ] } ] } For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-    /// logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE
-    /// logging.</summary>
+    /// AuditConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+    /// }, { "service": "fooservice@googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    ///
+    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -45232,6 +44794,19 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
         public virtual System.Nullable<bool> EnableCDN { get; set; } 
 
+        /// <summary>The value of the field must be in [0, 1]. If set, 'backends[].failover' must be set. They together
+        /// define the fallback behavior of the primary backend: if the ratio of the healthy VMs in the primary backend
+        /// is at or below this number, traffic arriving at the load-balanced IP will be directed to the failover
+        /// backend.
+        ///
+        /// In case where 'failoverRatio' is not set or all the VMs in the backup backend are unhealthy, the traffic
+        /// will be directed back to the primary backend in the "force" mode, where traffic will be spread to the
+        /// healthy VMs with the best effort, or to all VMs when no VM is healthy.
+        ///
+        /// This field is only used with l4 load balancing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failoverRatio")]
+        public virtual System.Nullable<float> FailoverRatio { get; set; } 
+
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint
         /// must be provided in order to update the BackendService.</summary>
@@ -45637,10 +45212,6 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; } 
 
-        /// <summary>[Output Only] URL of the zone where this commitment may be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -45808,6 +45379,10 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Represents a customer-supplied encryption key</summary>
     public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The name of the encryption key that is stored in Google Cloud KMS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
         /// <summary>Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt
         /// or decrypt this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rawKey")]
@@ -46694,7 +46269,7 @@ namespace Google.Apis.Compute.alpha.Data
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
-        /// forwarding rule. If the port list is not provided then all ports are allowed to pass through.
+        /// forwarding rule.
         ///
         /// You may specify a maximum of up to 5 ports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
@@ -46740,7 +46315,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
-        /// For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
         ///
         /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -48051,7 +47625,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
-        /// <summary>Scheduling options for this instance.</summary>
+        /// <summary>Sets the scheduling options for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual Scheduling Scheduling { get; set; } 
 
@@ -48066,6 +47640,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// authenticate applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
+
+        /// <summary>[Output Only] Whether a VM has been restricted for start because Compute Engine has detected
+        /// suspicious activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startRestricted")]
+        public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
         /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
@@ -48342,11 +47921,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// specified, the service account {projectNumber}@cloudservices.gserviceaccount.com will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
-
-        /// <summary>Policy valid only for regional managed instance groups. Deprecated in favor of
-        /// distribution_policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spreadingPolicy")]
-        public virtual SpreadingPolicy SpreadingPolicy { get; set; } 
 
         /// <summary>The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The
         /// target pools automatically apply to all of the instances in the managed instance group.</summary>
@@ -49041,6 +48615,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual Metadata Metadata { get; set; } 
+
+        /// <summary>Minimum cpu/platform to be used by this instance. The instance may be scheduled on the specified or
+        /// later cpu/platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>An array of network access configurations for this interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
@@ -50717,7 +50296,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RegionInstanceGroupManagersAbandonInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of one or more instances to abandon.</summary>
+        /// <summary>The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -50727,7 +50307,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RegionInstanceGroupManagersDeleteInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of one or more instances to delete.</summary>
+        /// <summary>The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -51160,6 +50741,21 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Description-tagged prefixes for the router to advertise.</summary>
+    public class RouterAdvertisedPrefix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-specified description for the prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The prefix to advertise. The value must be a CIDR-formatted string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains a list of routers.</summary>
     public class RouterAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51193,6 +50789,23 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RouterBgp : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User-specified flag to indicate which mode to use for advertisement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
+        public virtual string AdvertiseMode { get; set; } 
+
+        /// <summary>User-specified list of prefix groups to advertise in custom mode. This field can only be populated
+        /// if advertise_mode is CUSTOM and is advertised to all peers of the router. These groups will be advertised in
+        /// addition to any specified prefixes. Leave this field blank to advertise no custom groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedGroups")]
+        public virtual System.Collections.Generic.IList<string> AdvertisedGroups { get; set; } 
+
+        /// <summary>User-specified list of individual prefixes to advertise in custom mode. This field can only be
+        /// populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These prefixes will be
+        /// advertised in addition to any specified groups. Leave this field blank to advertise no custom
+        /// prefixes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedPrefixs")]
+        public virtual System.Collections.Generic.IList<RouterAdvertisedPrefix> AdvertisedPrefixs { get; set; } 
+
         /// <summary>Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit.
         /// The value will be fixed for this router resource. All VPN tunnels that link to this router will have the
         /// same local ASN.</summary>
@@ -51205,6 +50818,24 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RouterBgpPeer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User-specified flag to indicate which mode to use for advertisement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
+        public virtual string AdvertiseMode { get; set; } 
+
+        /// <summary>User-specified list of prefix groups to advertise in custom mode. This field can only be populated
+        /// if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These groups
+        /// will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom
+        /// groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedGroups")]
+        public virtual System.Collections.Generic.IList<string> AdvertisedGroups { get; set; } 
+
+        /// <summary>User-specified list of individual prefixes to advertise in custom mode. This field can only be
+        /// populated if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These
+        /// prefixes will be advertised in addition to any specified groups. Leave this field blank to advertise no
+        /// custom prefixes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedPrefixs")]
+        public virtual System.Collections.Generic.IList<RouterAdvertisedPrefix> AdvertisedPrefixs { get; set; } 
+
         /// <summary>The priority of routes advertised to this BGP peer. In the case where there is more than one
         /// matching route of maximum length, the routes with lowest priority value win.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutePriority")]
@@ -51507,7 +51138,10 @@ namespace Google.Apis.Compute.alpha.Data
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
         /// Engine (not terminated by a user). You can only set the automatic restart option for standard instances.
-        /// Preemptible instances cannot be automatically restarted.</summary>
+        /// Preemptible instances cannot be automatically restarted.
+        ///
+        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute
+        /// Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticRestart")]
         public virtual System.Nullable<bool> AutomaticRestart { get; set; } 
 
@@ -51517,7 +51151,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onHostMaintenance")]
         public virtual string OnHostMaintenance { get; set; } 
 
-        /// <summary>Whether the instance is preemptible.</summary>
+        /// <summary>Defines whether the instance is preemptible. This can only be set during instance creation, it
+        /// cannot be set or changed after the instance has been created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
 
@@ -51858,27 +51493,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Deprecated in favor of distribution policy.</summary>
-    public class SpreadingPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
-        public virtual System.Collections.Generic.IList<SpreadingPolicyZoneConfiguration> Zones { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class SpreadingPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>URL of the zone where managed instance group is spawning instances (for regional resources). Zone
-        /// has to belong to the region where managed instance group is located.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170406 (826)
+ *      <tr><th>API Rev<td>20170410 (830)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>
  *              https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api</a>

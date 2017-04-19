@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170315 (804)
+ *      <tr><th>API Rev<td>20170329 (818)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1830,10 +1830,9 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
         /// request.</param>
-        /// <param name="autoscaler">Name of the autoscaler to update.</param>
-        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone, string autoscaler)
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone)
         {
-            return new PatchRequest(service, body, project, zone, autoscaler);
+            return new PatchRequest(service, body, project, zone);
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
@@ -1841,12 +1840,11 @@ namespace Google.Apis.Compute.v1
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone, string autoscaler)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Autoscaler body, string project, string zone)
                 : base(service)
             {
                 Project = project;
                 Zone = zone;
-                Autoscaler = autoscaler;
                 Body = body;
                 InitParameters();
             }
@@ -1860,9 +1858,9 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Name of the autoscaler to update.</summary>
+            /// <summary>Name of the autoscaler to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Autoscaler { get; private set; }
+            public virtual string Autoscaler { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1916,7 +1914,7 @@ namespace Google.Apis.Compute.v1
                     "autoscaler", new Google.Apis.Discovery.Parameter
                     {
                         Name = "autoscaler",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
@@ -2412,7 +2410,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
-        /// BackendBucket resource to update.</param>
+        /// BackendBucket resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.BackendBucket body, string project, string backendBucket)
         {
             return new PatchRequest(service, body, project, backendBucket);
@@ -2437,7 +2435,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the BackendBucket resource to update.</summary>
+            /// <summary>Name of the BackendBucket resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
@@ -3194,19 +3192,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
         /// Guidelines for more information. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
-        /// BackendService resource to update.</param>
+        /// BackendService resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.BackendService body, string project, string backendService)
         {
             return new PatchRequest(service, body, project, backendService);
         }
 
-        /// <summary>Updates the specified BackendService resource with the data included in the request. There are
+        /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
         /// Guidelines for more information. This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -3226,7 +3224,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the BackendService resource to update.</summary>
+            /// <summary>Name of the BackendService resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
@@ -4986,8 +4984,9 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags, targetTags.
+        /// This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -4997,8 +4996,9 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags, targetTags.
+        /// This method supports patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5072,7 +5072,9 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
+        /// targetTags.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -5082,7 +5084,9 @@ namespace Google.Apis.Compute.v1
             return new UpdateRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
+        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags,
+        /// targetTags.</summary>
         public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -7556,7 +7560,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
-        /// resource to update.</param>
+        /// resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.HealthCheck body, string project, string healthCheck)
         {
             return new PatchRequest(service, body, project, healthCheck);
@@ -7581,7 +7585,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the HealthCheck resource to update.</summary>
+            /// <summary>Name of the HealthCheck resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
@@ -8113,7 +8117,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
-        /// HttpHealthCheck resource to update.</param>
+        /// HttpHealthCheck resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.HttpHealthCheck body, string project, string httpHealthCheck)
         {
             return new PatchRequest(service, body, project, httpHealthCheck);
@@ -8138,7 +8142,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the HttpHealthCheck resource to update.</summary>
+            /// <summary>Name of the HttpHealthCheck resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
@@ -8670,7 +8674,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
-        /// HttpsHealthCheck resource to update.</param>
+        /// HttpsHealthCheck resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.HttpsHealthCheck body, string project, string httpsHealthCheck)
         {
             return new PatchRequest(service, body, project, httpsHealthCheck);
@@ -8695,7 +8699,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the HttpsHealthCheck resource to update.</summary>
+            /// <summary>Name of the HttpsHealthCheck resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
@@ -9411,7 +9415,9 @@ namespace Google.Apis.Compute.v1
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -9428,7 +9434,9 @@ namespace Google.Apis.Compute.v1
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -9760,7 +9768,9 @@ namespace Google.Apis.Compute.v1
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -9776,7 +9786,9 @@ namespace Google.Apis.Compute.v1
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -9962,7 +9974,9 @@ namespace Google.Apis.Compute.v1
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A managed instance group can have up to 1000 VM instances per group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -9976,7 +9990,9 @@ namespace Google.Apis.Compute.v1
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A managed instance group can have up to 1000 VM instances per group.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -10367,8 +10383,9 @@ namespace Google.Apis.Compute.v1
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -10383,8 +10400,9 @@ namespace Google.Apis.Compute.v1
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -13439,7 +13457,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Performs a hard reset on the instance.</summary>
+        /// <summary>Performs a reset on the instance. For more information, see Resetting an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -13449,7 +13467,7 @@ namespace Google.Apis.Compute.v1
             return new ResetRequest(service, project, zone, instance);
         }
 
-        /// <summary>Performs a hard reset on the instance.</summary>
+        /// <summary>Performs a reset on the instance. For more information, see Resetting an instance.</summary>
         public class ResetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -16213,10 +16231,9 @@ namespace Google.Apis.Compute.v1
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
-        /// <param name="autoscaler">Name of the autoscaler to update.</param>
-        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string region, string autoscaler)
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Autoscaler body, string project, string region)
         {
-            return new PatchRequest(service, body, project, region, autoscaler);
+            return new PatchRequest(service, body, project, region);
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
@@ -16224,12 +16241,11 @@ namespace Google.Apis.Compute.v1
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Autoscaler body, string project, string region, string autoscaler)
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Autoscaler body, string project, string region)
                 : base(service)
             {
                 Project = project;
                 Region = region;
-                Autoscaler = autoscaler;
                 Body = body;
                 InitParameters();
             }
@@ -16243,9 +16259,9 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the autoscaler to update.</summary>
+            /// <summary>Name of the autoscaler to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Autoscaler { get; private set; }
+            public virtual string Autoscaler { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16299,7 +16315,7 @@ namespace Google.Apis.Compute.v1
                     "autoscaler", new Google.Apis.Discovery.Parameter
                     {
                         Name = "autoscaler",
-                        IsRequired = true,
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
@@ -16963,7 +16979,7 @@ namespace Google.Apis.Compute.v1
         /// <param name="region">Name of the region scoping
         /// this request.</param>
         /// <param name="backendService">Name of the BackendService resource to
-        /// update.</param>
+        /// patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.BackendService body, string project, string region, string backendService)
         {
             return new PatchRequest(service, body, project, region, backendService);
@@ -16994,7 +17010,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the BackendService resource to update.</summary>
+            /// <summary>Name of the BackendService resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
@@ -17185,7 +17201,9 @@ namespace Google.Apis.Compute.v1
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -17201,7 +17219,9 @@ namespace Google.Apis.Compute.v1
         /// that are applied by the managed instance group. This method reduces the targetSize of the managed instance
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
-        /// status of the abandoning action with the listmanagedinstances method.</summary>
+        /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new AbandonInstances request.</summary>
@@ -17385,7 +17405,9 @@ namespace Google.Apis.Compute.v1
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -17400,7 +17422,9 @@ namespace Google.Apis.Compute.v1
         /// instances are also removed from any target pools of which they were a member. This method reduces the
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
-        /// separately verify the status of the deleting action with the listmanagedinstances method.</summary>
+        /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new DeleteInstances request.</summary>
@@ -17584,7 +17608,9 @@ namespace Google.Apis.Compute.v1
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A regional managed instance group can contain up to 2000 instances.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -17598,7 +17624,9 @@ namespace Google.Apis.Compute.v1
         /// group is created, it schedules an action to create instances in the group using the specified instance
         /// template. This operation is marked as DONE when the group is created even if the instances in the group have
         /// not yet been created. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// A regional managed instance group can contain up to 2000 instances.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -17985,8 +18013,9 @@ namespace Google.Apis.Compute.v1
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -18000,8 +18029,9 @@ namespace Google.Apis.Compute.v1
         /// <summary>Schedules a group action to recreate the specified instances in the managed instance group. The
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
-        /// You must separately verify the status of the recreating action with the listmanagedinstances
-        /// method.</summary>
+        /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RecreateInstances request.</summary>
@@ -20245,19 +20275,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// <summary>Patches the specified Router resource with the data included in the request. This method supports
         /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
         /// request.</param>
-        /// <param name="router">Name of the Router resource to update.</param>
+        /// <param name="router">Name of the Router resource to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Router body, string project, string region, string router)
         {
             return new PatchRequest(service, body, project, region, router);
         }
 
-        /// <summary>Updates the specified Router resource with the data included in the request. This method supports
+        /// <summary>Patches the specified Router resource with the data included in the request. This method supports
         /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -20281,7 +20311,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Name of the Router resource to update.</summary>
+            /// <summary>Name of the Router resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
@@ -22318,6 +22348,107 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource.</param>
+        public virtual SetPrivateIpGoogleAccessRequest SetPrivateIpGoogleAccess(Google.Apis.Compute.v1.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+        {
+            return new SetPrivateIpGoogleAccessRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
+        /// through Cloudpath.</summary>
+        public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
+            public SetPrivateIpGoogleAccessRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.SubnetworksSetPrivateIpGoogleAccessRequest body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.SubnetworksSetPrivateIpGoogleAccessRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setPrivateIpGoogleAccess"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}/setPrivateIpGoogleAccess"; }
+            }
+
+            /// <summary>Initializes SetPrivateIpGoogleAccess parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -26840,18 +26971,18 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
         /// patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
-        /// to update.</param>
+        /// to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.UrlMap body, string project, string urlMap)
         {
             return new PatchRequest(service, body, project, urlMap);
         }
 
-        /// <summary>Updates the specified UrlMap resource with the data included in the request. This method supports
+        /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
         /// patch semantics.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -26870,7 +27001,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the UrlMap resource to update.</summary>
+            /// <summary>Name of the UrlMap resource to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
@@ -28298,7 +28429,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Name of this access configuration.</summary>
+        /// <summary>The name of this access configuration. The default and recommended name is External NAT but you can
+        /// use any arbitrary string you would like. For example, My external IP or Network Access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -28320,7 +28452,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource. Only IPv4 is supported.</summary>
+        /// <summary>The static external IP address represented by this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -30120,7 +30252,7 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
-        /// forwarding rule. If the port list is not provided then all ports are allowed to pass through.
+        /// forwarding rule.
         ///
         /// You may specify a maximum of up to 5 ports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
@@ -30148,7 +30280,6 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The URL of the target resource to receive the matched traffic. For regional forwarding rules, this
         /// target must live in the same region as the forwarding rule. For global forwarding rules, this target must be
         /// a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object.
-        /// For example, TargetHttpProxy requires HTTP traffic, and TargetHttpsProxy requires HTTPS traffic.
         ///
         /// This field is not used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -30949,7 +31080,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
-        /// <summary>Scheduling options for this instance.</summary>
+        /// <summary>Sets the scheduling options for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual Scheduling Scheduling { get; set; } 
 
@@ -32967,7 +33098,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RegionInstanceGroupManagersAbandonInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of one or more instances to abandon.</summary>
+        /// <summary>The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -32977,7 +33109,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RegionInstanceGroupManagersDeleteInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of one or more instances to delete.</summary>
+        /// <summary>The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -33661,7 +33794,10 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>Specifies whether the instance should be automatically restarted if it is terminated by Compute
         /// Engine (not terminated by a user). You can only set the automatic restart option for standard instances.
-        /// Preemptible instances cannot be automatically restarted.</summary>
+        /// Preemptible instances cannot be automatically restarted.
+        ///
+        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute
+        /// Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticRestart")]
         public virtual System.Nullable<bool> AutomaticRestart { get; set; } 
 
@@ -33671,7 +33807,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onHostMaintenance")]
         public virtual string OnHostMaintenance { get; set; } 
 
-        /// <summary>Whether the instance is preemptible.</summary>
+        /// <summary>Defines whether the instance is preemptible. This can only be set during instance creation, it
+        /// cannot be set or changed after the instance has been created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
 
@@ -33969,6 +34106,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
+        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP
+        /// addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
+
         /// <summary>URL of the region where the Subnetwork resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
@@ -34105,6 +34247,15 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class SubnetworksSetPrivateIpGoogleAccessRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
+        public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class TCPHealthCheck : Google.Apis.Requests.IDirectResponseSchema

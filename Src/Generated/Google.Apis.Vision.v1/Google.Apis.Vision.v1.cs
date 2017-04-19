@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170411 (831)
+ *      <tr><th>API Rev<td>20170418 (838)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1290,8 +1290,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Relevant information for the image from the Internet.</summary>
     public class WebDetection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fully matching images from the Internet. They're definite neardups and most often a copy of the
-        /// query image with merely a size change.</summary>
+        /// <summary>Fully matching images from the Internet. Can include resized copies of the query image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullMatchingImages")]
         public virtual System.Collections.Generic.IList<WebImage> FullMatchingImages { get; set; } 
 

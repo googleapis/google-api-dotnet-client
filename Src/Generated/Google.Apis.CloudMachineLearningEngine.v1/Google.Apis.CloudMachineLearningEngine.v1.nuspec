@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Google.Apis.CloudMachineLearningEngine.v1</id>
-        <version>1.25.0.827</version>
+        <version>1.25.0.833</version>
         <title>Google.Apis.CloudMachineLearningEngine.v1 Client Library</title>
         <authors>Google Inc.</authors>
         <owners>google-apis-packages</owners>

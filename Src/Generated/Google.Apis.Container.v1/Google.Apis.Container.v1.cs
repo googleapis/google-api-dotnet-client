@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161024 (662)
+ *      <tr><th>API Rev<td>20170406 (826)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -135,7 +135,18 @@ namespace Google.Apis.Container.v1
 
         /// <summary>V1 error format.</summary>
         [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Xgafv { get; set; }
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1,
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2,
+        }
 
         /// <summary>OAuth access token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -144,7 +155,21 @@ namespace Google.Apis.Container.v1
         /// <summary>Data format for response.</summary>
         /// [default: json]
         [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
-        public virtual string Alt { get; set; }
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json,
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media,
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto,
+        }
 
         /// <summary>OAuth bearer token.</summary>
         [Google.Apis.Util.RequestParameterAttribute("bearer_token", Google.Apis.Util.RequestParameterType.Query)]
@@ -1066,11 +1091,16 @@ namespace Google.Apis.Container.v1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances. By default, the cluster is created in the project's [default network](/compute/docs
-                /// /networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation,
-                /// the cluster creates routes for each node to allow the containers on that node to communicate with
-                /// all other instances in the cluster. Finally, an entry is added to the project's global metadata
-                /// indicating which CIDR range is being used by the cluster.</summary>
+                /// instances.
+                ///
+                /// By default, the cluster is created in the project's [default network](/compute/docs/networks-and-
+                /// firewalls#networks).
+                ///
+                /// One firewall is added for the cluster. After cluster creation, the cluster creates routes for each
+                /// node to allow the containers on that node to communicate with all other instances in the cluster.
+                ///
+                /// Finally, an entry is added to the project's global metadata indicating which CIDR range is being
+                /// used by the cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840).</param>
@@ -1082,11 +1112,16 @@ namespace Google.Apis.Container.v1
                 }
 
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
-                /// instances. By default, the cluster is created in the project's [default network](/compute/docs
-                /// /networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation,
-                /// the cluster creates routes for each node to allow the containers on that node to communicate with
-                /// all other instances in the cluster. Finally, an entry is added to the project's global metadata
-                /// indicating which CIDR range is being used by the cluster.</summary>
+                /// instances.
+                ///
+                /// By default, the cluster is created in the project's [default network](/compute/docs/networks-and-
+                /// firewalls#networks).
+                ///
+                /// One firewall is added for the cluster. After cluster creation, the cluster creates routes for each
+                /// node to allow the containers on that node to communicate with all other instances in the cluster.
+                ///
+                /// Finally, an entry is added to the project's global metadata indicating which CIDR range is being
+                /// used by the cluster.</summary>
                 public class CreateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1162,10 +1197,12 @@ namespace Google.Apis.Container.v1
 
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
-                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
-                /// resources that might be in use by the cluster (e.g. load balancer resources) will not be deleted if
-                /// they weren't present at the initial create time.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
+                ///
+                /// Firewalls and routes that were configured during cluster creation are also deleted.
+                ///
+                /// Other Google Compute Engine resources that might be in use by the cluster (e.g. load balancer
+                /// resources) will not be deleted if they weren't present at the initial create time.</summary>
                 /// <param name="projectId">The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840).</param>
                 /// <param name="zone">The name of the Google
@@ -1177,10 +1214,12 @@ namespace Google.Apis.Container.v1
                     return new DeleteRequest(service, projectId, zone, clusterId);
                 }
 
-                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and
-                /// routes that were configured during cluster creation are also deleted. Other Google Compute Engine
-                /// resources that might be in use by the cluster (e.g. load balancer resources) will not be deleted if
-                /// they weren't present at the initial create time.</summary>
+                /// <summary>Deletes the cluster, including the Kubernetes endpoint and all worker nodes.
+                ///
+                /// Firewalls and routes that were configured during cluster creation are also deleted.
+                ///
+                /// Other Google Compute Engine resources that might be in use by the cluster (e.g. load balancer
+                /// resources) will not be deleted if they weren't present at the initial create time.</summary>
                 public class DeleteRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1358,6 +1397,109 @@ namespace Google.Apis.Container.v1
 
                 }
 
+                /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to update.</param>
+                public virtual LegacyAbacRequest LegacyAbac(Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new LegacyAbacRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Enables or disables the ABAC authorization mechanism on a cluster.</summary>
+                public class LegacyAbacRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new LegacyAbac request.</summary>
+                    public LegacyAbacRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLegacyAbacRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetLegacyAbacRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "legacyAbac"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac"; }
+                    }
+
+                    /// <summary>Initializes LegacyAbac parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists all clusters owned by a project in either the specified zone or all zones.</summary>
                 /// <param name="projectId">The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840).</param>
@@ -1429,6 +1571,216 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets labels on a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://developers.google.com/console/help/new/#projectnumber).</param>
+                /// <param name="zone">The name
+                /// of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                ///
+                /// <param name="clusterId">The name of the cluster.</param>
+                public virtual ResourceLabelsRequest ResourceLabels(Google.Apis.Container.v1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new ResourceLabelsRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets labels on a cluster.</summary>
+                public class ResourceLabelsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResourceLabels request.</summary>
+                    public ResourceLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLabelsRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://developers.google.com/console/help/new/#projectnumber).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetLabelsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "resourceLabels"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels"; }
+                    }
+
+                    /// <summary>Initializes ResourceLabels parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Used to set master auth materials. Currently supports :- Changing the admin password of a
+                /// specific cluster. This can be either via password generation or explicitly set the
+                /// password.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual SetMasterAuthRequest SetMasterAuth(Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new SetMasterAuthRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Used to set master auth materials. Currently supports :- Changing the admin password of a
+                /// specific cluster. This can be either via password generation or explicitly set the
+                /// password.</summary>
+                public class SetMasterAuthRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SetMasterAuth request.</summary>
+                    public SetMasterAuthRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMasterAuthRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetMasterAuthRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setMasterAuth"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth"; }
+                    }
+
+                    /// <summary>Initializes SetMasterAuth parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -2015,8 +2367,9 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<bool> EnableKubernetesAlpha { get; set; } 
 
         /// <summary>[Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from
-        /// the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for
-        /// username and password information.</summary>
+        /// the internet at `https://username:password@endpoint/`.
+        ///
+        /// See the `masterAuth` property of this resource for username and password information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; } 
 
@@ -2043,13 +2396,22 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 
+        /// <summary>The fingerprint of the set of labels for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Configuration for the legacy ABAC authorization mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyAbac")]
+        public virtual LegacyAbac LegacyAbac { get; set; } 
+
         /// <summary>The list of Google Compute Engine [locations](/compute/docs/zones#available) in which the cluster's
         /// nodes should be located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
 
-        /// <summary>The logging service the cluster should use to write logs. Currently available options: *
-        /// `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will be exported from the
+        /// <summary>The logging service the cluster should use to write logs. Currently available options:
+        ///
+        /// * `logging.googleapis.com` - the Google Cloud Logging service. * `none` - no logs will be exported from the
         /// cluster. * if left as an empty string,`logging.googleapis.com` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
@@ -2058,15 +2420,18 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; } 
 
-        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
-        /// `monitoring.googleapis.com` - the Google Cloud Monitoring service. * `none` - no metrics will be exported
+        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
+        ///
+        /// * `monitoring.googleapis.com` - the Google Cloud Monitoring service. * `none` - no metrics will be exported
         /// from the cluster. * if left as an empty string, `monitoring.googleapis.com` will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
         public virtual string MonitoringService { get; set; } 
 
         /// <summary>The name of this cluster. The name must be unique within this project and zone, and can be up to 40
-        /// characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start
-        /// with a letter. * Must end with a number or a letter.</summary>
+        /// characters with the following restrictions:
+        ///
+        /// * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a
+        /// letter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2079,8 +2444,9 @@ namespace Google.Apis.Container.v1.Data
         /// properties. For requests, this field should only be used in lieu of a "node_pool" object, since this
         /// configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-
         /// generated name. Do not use this and a node_pool at the same time. For responses, this field will be
-        /// populated with the node configuration of the first node pool. If unspecified, the defaults are
-        /// used.</summary>
+        /// populated with the node configuration of the first node pool.
+        ///
+        /// If unspecified, the defaults are used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; } 
 
@@ -2093,6 +2459,10 @@ namespace Google.Apis.Container.v1.Data
         /// "initial_node_count" are specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
+
+        /// <summary>The resource labels for the cluster to use to annotate any related GCE resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual ResourceLabels ResourceLabels { get; set; } 
 
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -2142,8 +2512,9 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The desired list of Google Compute Engine [locations](/compute/docs/zones#available) in which the
         /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
-        /// created or removed from the cluster, depending on whether locations are being added or removed. This list
-        /// must always include the cluster's primary zone.</summary>
+        /// created or removed from the cluster, depending on whether locations are being added or removed.
+        ///
+        /// This list must always include the cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
 
@@ -2152,8 +2523,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
         public virtual string DesiredMasterVersion { get; set; } 
 
-        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options: *
-        /// "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
+        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
+        ///
+        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
         /// from the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; } 
@@ -2202,9 +2574,11 @@ namespace Google.Apis.Container.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2232,6 +2606,35 @@ namespace Google.Apis.Container.v1.Data
         /// pod in the cluster that manages the load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A label to be applied to Google Compute Engine resources. It must comply with RFC1035 for each key and
+    /// value.</summary>
+    public class Item : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Key for this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>The Value for this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration for the legacy Attribute Based Access Control authorization mode.</summary>
+    public class LegacyAbac : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system,
+        /// including service accounts, nodes, and controllers, will have statically granted permissions beyond those
+        /// provided by the RBAC configuration or IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2314,8 +2717,9 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Parameters that describe the nodes in a cluster.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
-        /// unspecified, the default disk size is 100GB.</summary>
+        /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        ///
+        /// If unspecified, the default disk size is 100GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; } 
 
@@ -2332,33 +2736,45 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The number of local SSD disks to be attached to the node. The limit for this value is dependant
-        /// upon the maximum number of disks available on a machine per zone. See:
+        /// <summary>The number of local SSD disks to be attached to the node.
+        ///
+        /// The limit for this value is dependant upon the maximum number of disks available on a machine per zone. See:
         /// https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; } 
 
         /// <summary>The name of a Google Compute Engine [machine type](/compute/docs/machine-types) (e.g.
-        /// `n1-standard-1`). If unspecified, the default machine type is `n1-standard-1`.</summary>
+        /// `n1-standard-1`).
+        ///
+        /// If unspecified, the default machine type is `n1-standard-1`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
-        /// <summary>The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp
-        /// [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as part of a URL in the metadata
-        /// server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the
-        /// project or be one of the four reserved keys: "instance-template", "kube-env", "startup-script", and "user-
-        /// data" Values are free-form strings, and only have meaning as interpreted by the image running in the
-        /// instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB.
+        /// <summary>The metadata key/value pairs assigned to instances in the cluster.
+        ///
+        /// Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as
+        /// part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
+        /// other metadata keys for the project or be one of the four reserved keys: "instance-template", "kube-env",
+        /// "startup-script", and "user-data"
+        ///
+        /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
+        /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
+        ///
         /// The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
-        /// service account. The following scopes are recommended, but not required, and by default are not included: *
-        /// `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
+        /// service account.
+        ///
+        /// The following scopes are recommended, but not required, and by default are not included:
+        ///
+        /// * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. *
         /// `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the
-        /// [Google Container Registry](/container-registry/)). If unspecified, no scopes are added, unless Cloud
-        /// Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.</summary>
+        /// [Google Container Registry](/container-registry/)).
+        ///
+        /// If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case
+        /// their required scopes will be added.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
@@ -2386,7 +2802,15 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>NodeManagement defines the set of node management services turned on for the node pool.</summary>
     public class NodeManagement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the nodes will be automatically upgraded.</summary>
+        /// <summary>A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the
+        /// nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic
+        /// repair action will be triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoRepair")]
+        public virtual System.Nullable<bool> AutoRepair { get; set; } 
+
+        /// <summary>A flag that specifies whether node auto-upgrade is enabled for the node pool. If enabled, node
+        /// auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of
+        /// Kubernetes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpgrade")]
         public virtual System.Nullable<bool> AutoUpgrade { get; set; } 
 
@@ -2514,6 +2938,19 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The set of Google Compute Engine labels that will be applied to any underlying resources that the
+    /// Google Container Cluster creates or uses. These are merely metadata on the resources, and do not change the
+    /// behavior of the cluster.</summary>
+    public class ResourceLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Item> Items { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed NodePool upgrade. This will
     /// be an no-op if the last upgrade successfully completed.</summary>
     public class RollbackNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2544,6 +2981,51 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>List of valid node upgrade target versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
         public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetLabelsRequest sets the Google Cloud Platform labels on a Google Container Engine cluster, which will
+    /// in turn set them for Google Compute Engine resources used by that cluster</summary>
+    public class SetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Container Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash when updating or changing labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>The labels to set for that cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual ResourceLabels ResourceLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetLegacyAbacRequest enables or disables the ABAC authorization mechanism for a cluster.</summary>
+    public class SetLegacyAbacRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether ABAC authorization will be enabled in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetMasterAuthRequest updates the admin password of a cluster.</summary>
+    public class SetMasterAuthRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The exact form of action to be taken on the master auth</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        /// <summary>A description of the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("update")]
+        public virtual MasterAuth Update { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

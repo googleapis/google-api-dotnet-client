@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170405 (825)
+ *      <tr><th>API Rev<td>20170411 (831)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7432,11 +7432,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// deployment configurations.
         ///
         /// Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as
-        /// the device owner, - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner)
-        /// in addition to a separate, personal profile that is unavailable to the DPC, - "containerApp", a device
-        /// running the container App. The container App is managed by the DPC, - "unmanagedProfile", a device that has
-        /// been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google
-        /// Play, but the profile is itself not owned by a DPC.</summary>
+        /// the device owner. - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner)
+        /// in addition to a separate, personal profile that is unavailable to the DPC. - "containerApp", no longer used
+        /// (deprecated). - "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin
+        /// Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a
+        /// DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
 
@@ -8124,7 +8124,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productPricing")]
         public virtual string ProductPricing { get; set; } 
 
-        /// <summary>Whether this app can only be installed on devices using the Android container app.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresContainerApp")]
         public virtual System.Nullable<bool> RequiresContainerApp { get; set; } 
 
@@ -8231,10 +8231,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<string> ProductId { get; set; } 
 
         /// <summary>The interpretation of this product set. "unknown" should never be sent and is ignored if received.
-        /// "whitelist" means that this product set constitutes a whitelist. "includeAll" means that all products are
-        /// accessible, including products that are approved, products with revoked approval, and products that have
-        /// never been approved. If the value is "includeAll", the value of the productId field is therefore ignored. If
-        /// a value is not supplied, it is interpreted to be "whitelist" for backwards compatibility.</summary>
+        /// "whitelist" means that the user is entitled to access the product set. "includeAll" means that all products
+        /// are accessible, including products that are approved, products with revoked approval, and products that have
+        /// never been approved. "allApproved" means that the user is entitled to access all products that are approved
+        /// for the enterprise. If the value is "allApproved" or "includeAll", the productId field is ignored. If no
+        /// value is provided, it is interpreted as "whitelist" for backwards compatibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
         public virtual string ProductSetBehavior { get; set; } 
 

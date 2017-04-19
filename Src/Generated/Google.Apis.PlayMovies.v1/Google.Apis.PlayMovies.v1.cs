@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/playmoviespartner/'>Google Play Movies Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170406 (826)
+ *      <tr><th>API Rev<td>20170411 (831)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/playmoviespartner/'>
  *              https://developers.google.com/playmoviespartner/</a>
@@ -487,33 +487,6 @@ namespace Google.Apis.PlayMovies.v1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Filter that matches Avails with a `title_internal_alias`, `series_title_internal_alias`,
-                /// `season_title_internal_alias`, or `episode_title_internal_alias` that contains the given case-
-                /// insensitive title.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("title", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Title { get; set; }
-
-                /// <summary>Filter Avails that match any of the given `video_id`s.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
-
-                /// <summary>See _List methods rules_ for info about this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>See _List methods rules_ for info about this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filter Avails that match (case-insensitive) any of the given partner-specific custom
-                /// ids.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("altIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> AltIds { get; set; }
-
-                /// <summary>See _List methods rules_ for info about this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pphNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> PphNames { get; set; }
-
                 /// <summary>Filter Avails that match a case-insensitive, partner-specific custom id. NOTE: this field
                 /// is deprecated and will be removed on V2; `alt_ids` should be used instead.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("altId", Google.Apis.Util.RequestParameterType.Query)]
@@ -527,6 +500,33 @@ namespace Google.Apis.PlayMovies.v1
                 /// 3166-1 alpha-2" format (examples: "US", "us", "Us").</summary>
                 [Google.Apis.Util.RequestParameterAttribute("territories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Territories { get; set; }
+
+                /// <summary>Filter that matches Avails with a `title_internal_alias`, `series_title_internal_alias`,
+                /// `season_title_internal_alias`, or `episode_title_internal_alias` that contains the given case-
+                /// insensitive title.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("title", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Title { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Filter Avails that match any of the given `video_id`s.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("videoIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> VideoIds { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filter Avails that match (case-insensitive) any of the given partner-specific custom
+                /// ids.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("altIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AltIds { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pphNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> PphNames { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -562,6 +562,33 @@ namespace Google.Apis.PlayMovies.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "altId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "altId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "studioNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studioNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "territories", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "territories",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "title", new Google.Apis.Discovery.Parameter
                         {
                             Name = "title",
@@ -571,18 +598,18 @@ namespace Google.Apis.PlayMovies.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "videoIds", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "videoIds",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "videoIds", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "videoIds",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -610,33 +637,6 @@ namespace Google.Apis.PlayMovies.v1
                         "pphNames", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pphNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "altId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "altId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "studioNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studioNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "territories", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "territories",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -781,15 +781,6 @@ namespace Google.Apis.PlayMovies.v1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
-                /// <summary>Filter that matches Orders with a `name`, `show`, `season` or `episode` that contains the
-                /// given case-insensitive name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Name { get; set; }
-
-                /// <summary>See _List methods rules_ for info about this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
-
                 /// <summary>See _List methods rules_ for info about this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -831,6 +822,15 @@ namespace Google.Apis.PlayMovies.v1
                     STATUSNOTAVAILABLE,
                 }
 
+                /// <summary>Filter that matches Orders with a `name`, `show`, `season` or `episode` that contains the
+                /// given case-insensitive name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -861,24 +861,6 @@ namespace Google.Apis.PlayMovies.v1
                             Name = "accountId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "studioNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studioNames",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -931,6 +913,24 @@ namespace Google.Apis.PlayMovies.v1
                         "status", new Google.Apis.Discovery.Parameter
                         {
                             Name = "status",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "studioNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studioNames",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
