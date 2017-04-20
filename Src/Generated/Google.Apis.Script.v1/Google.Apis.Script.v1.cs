@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170407 (827)
+ *      <tr><th>API Rev<td>20170413 (833)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -546,6 +546,41 @@ namespace Google.Apis.Script.v1.Data
         /// `boolean`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual object Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to retrieve the results from a collection of requests, specified by the operation resource
+    /// names.</summary>
+    public class JoinAsyncRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of operation resource names that we want to join, as returned from a call to
+        /// RunAsync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; } 
+
+        /// <summary>The script id which specifies the script which all processes in the names field must be
+        /// from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
+        public virtual string ScriptId { get; set; } 
+
+        /// <summary>Timeout for information retrieval in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An object that provides the return value for the JoinAsync method.</summary>
+    public class JoinAsyncResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The return values for each script function, in a map of operation resource names to the Operation
+        /// containing the result of the process. The response will contain either an error or the result of the script
+        /// function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IDictionary<string,Operation> Results { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
