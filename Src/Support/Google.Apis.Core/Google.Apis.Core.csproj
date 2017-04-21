@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <!-- nupkg information -->
+  <Import Project="../CommonPackageInfo.xml" />
+  <PropertyGroup>
+    <Title>Google APIs Core Client Library</Title>
+    <PackageTags>Google</PackageTags>
+    <Description>
+The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, Data-store, logging and so on.
+
+Supported Platforms:
+- .NET Framework 4.5+
+- NetStandard1.3
+    </Description>
+  </PropertyGroup>
+  
+  <!-- targets -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- package references; common then per-target -->
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="Newtonsoft.Json" Version="7.0.1" />
+  </ItemGroup>
+
+  <!-- configurations; common then per-configuration -->
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../../../google.apis.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <DocumentationFile>Google.Apis.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

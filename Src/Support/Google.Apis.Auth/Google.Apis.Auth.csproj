@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- nupkg information -->
+  <Import Project="..\CommonPackageInfo.xml" />
+  <PropertyGroup>
+    <Title>Google APIs Client Library</Title>
+    <PackageTags>Google</PackageTags>
+    <Description>
+The Google APIs Client Library is a runtime client for working with Google services.
+
+This package includes auth components like user-credential, authorization code flow, etc. for making authenticated calls using the OAuth2 spec.
+
+Supported Platforms:
+- .NET Framework 4.5+
+- NetStandard1.3
+    </Description>
+  </PropertyGroup>
+
+  <!-- targets -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- package references; common then per-target -->
+  <ItemGroup>
+    <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
+    <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+  </ItemGroup>
+
+  <!-- configurations; common then per-configuration -->
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <DebugType>pdbonly</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
+  <!-- There must be a better way of doing this... -->
+  <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec">
+    <MSBuild Projects="..\Google.Apis.Auth.PlatformServices\Google.Apis.Auth.PlatformServices.csproj" />
+    <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\netstandard1.3\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)netstandard1.3" />
+    <Copy SourceFiles="..\Google.Apis.Auth.PlatformServices\bin\$(Configuration)\net45\Google.Apis.Auth.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
+  </Target>
+  <ItemGroup>
+    <None Include="$(OutputPath)netstandard1.3\Google.Apis.Auth.PlatformServices.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\netstandard1.3</PackagePath>
+    </None>
+    <None Include="$(OutputPath)net45\Google.Apis.Auth.PlatformServices.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\net45</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- net452 is the earliest desktop version supported by xunit runner -->
+    <TargetFrameworks>netcoreapp1.1;net452</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="xunit" Version="2.3.0-*" />
+    <PackageReference Include="Xunit.Combinatorial" Version="1.2.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-*" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Moq" Version="4.7.8" />
+    <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
+    <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
+    <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
+    <ProjectReference Include="..\Google.Apis.Tests\Google.Apis.Tests.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net452'">
+    <PackageReference Include="BouncyCastle" Version="1.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../../../google.apis.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+
+</Project>
