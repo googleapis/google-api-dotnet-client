@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170418 (838)
+ *      <tr><th>API Rev<td>20170420 (840)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -427,6 +427,11 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
+                /// changed since the sync token was created will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SyncToken { get; set; }
+
                 /// <summary>The order in which the connections should be sorted. Defaults to
                 /// `LAST_MODIFIED_ASCENDING`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
@@ -465,11 +470,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
 
-                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
-                /// changed since the sync token was created will be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SyncToken { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -502,6 +502,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "syncToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "syncToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "sortOrder", new Google.Apis.Discovery.Parameter
@@ -543,15 +552,6 @@ namespace Google.Apis.PeopleService.v1
                         "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestMask.includeField",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "syncToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "syncToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

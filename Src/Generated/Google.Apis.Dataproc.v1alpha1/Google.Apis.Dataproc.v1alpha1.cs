@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20170412 (832)
+ *      <tr><th>API Rev<td>20170418 (838)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -588,10 +588,6 @@ namespace Google.Apis.Dataproc.v1alpha1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard List page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Required A JSON object that contains filters for the list operation, in the format
             /// {"key1":"value1","key2":"value2", ..., }. Possible keys include project_id, cluster_name, and
             /// operation_state_matcher.If project_id is set, requests the list of operations that belong to the
@@ -605,6 +601,10 @@ namespace Google.Apis.Dataproc.v1alpha1
             /// <summary>The standard List page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard List page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -640,15 +640,6 @@ namespace Google.Apis.Dataproc.v1alpha1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -661,6 +652,15 @@ namespace Google.Apis.Dataproc.v1alpha1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1038,6 +1038,11 @@ namespace Google.Apis.Dataproc.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional A filter constraining which clusters to list. Valid filters contain label
+                    /// terms such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard List page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1045,11 +1050,6 @@ namespace Google.Apis.Dataproc.v1alpha1
                     /// <summary>The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional A filter constraining which clusters to list. Valid filters contain label
-                    /// terms such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1094,6 +1094,15 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1106,15 +1115,6 @@ namespace Google.Apis.Dataproc.v1alpha1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2017,35 +2017,35 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>Metadata describing the operation.</summary>
     public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only Name of the cluster for the operation.</summary>
+        /// <summary>Output-only. Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only Cluster UUID for the operation.</summary>
+        /// <summary>Output-only. Cluster UUID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
-        /// <summary>Output-only Short description of operation.</summary>
+        /// <summary>Output-only. Short description of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output-only Labels associated with the operation</summary>
+        /// <summary>Output-only. Labels associated with the operation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output-only The operation type.</summary>
+        /// <summary>Output-only. The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
-        /// <summary>Output-only Current operation status.</summary>
+        /// <summary>Output-only. Current operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterOperationStatus Status { get; set; } 
 
-        /// <summary>Output-only The previous operation status.</summary>
+        /// <summary>Output-only. The previous operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only Errors encountered during operation execution.</summary>
+        /// <summary>Output-only. Errors encountered during operation execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
 
@@ -2056,19 +2056,19 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>The status of the operation.</summary>
     public class ClusterOperationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-onlyA message containing any operation metadata details.</summary>
+        /// <summary>Output-only.A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>Output-only A message containing the detailed operation state.</summary>
+        /// <summary>Output-only. A message containing the detailed operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
         public virtual string InnerState { get; set; } 
 
-        /// <summary>Output-only A message containing the operation state.</summary>
+        /// <summary>Output-only. A message containing the operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only The time this state was entered.</summary>
+        /// <summary>Output-only. The time this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
@@ -2114,7 +2114,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>The location of diagnostic output.</summary>
     public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The Google Cloud Storage URI of the diagnostic output. The output report is a plain
+        /// <summary>Output-only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
         /// text file with a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
