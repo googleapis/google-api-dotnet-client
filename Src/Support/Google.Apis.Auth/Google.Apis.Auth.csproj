@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\CommonProjectProperties.xml" />
+
   <!-- nupkg information -->
-  <Import Project="..\CommonPackageInfo.xml" />
   <PropertyGroup>
     <Title>Google APIs Client Library</Title>
-    <PackageTags>Google</PackageTags>
     <Description>
 The Google APIs Client Library is a runtime client for working with Google services.
 
@@ -14,24 +14,6 @@ Supported Platforms:
 - .NET Framework 4.5+
 - NetStandard1.3
     </Description>
-  </PropertyGroup>
-
-  <!-- configurations; common -->
-  <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
-    <DebugType>pdbonly</DebugType>
-    <IncludeSymbols>true</IncludeSymbols>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <!-- package references; common then per-target -->

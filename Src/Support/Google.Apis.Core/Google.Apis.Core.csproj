@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
+  <Import Project="..\CommonProjectProperties.xml" />
+
   <!-- nupkg information -->
-  <Import Project="../CommonPackageInfo.xml" />
   <PropertyGroup>
     <Title>Google APIs Core Client Library</Title>
-    <PackageTags>Google</PackageTags>
     <Description>
 The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, Data-store, logging and so on.
 
@@ -14,17 +14,6 @@ Supported Platforms:
     </Description>
   </PropertyGroup>
   
-  <!-- configurations; common -->
-  <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>../../../google.apis.snk</AssemblyOriginatorKeyFile>
-    <DebugType>pdbonly</DebugType>
-    <IncludeSymbols>true</IncludeSymbols>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>Google.Apis.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
   <!-- package references; common then per-target -->
   <ItemGroup>
     <PackageReference Include="System.Net.Http" Version="4.3.1" />
