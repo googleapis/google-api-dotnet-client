@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://www.android.com/work/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170419 (839)
+ *      <tr><th>API Rev<td>20170422 (842)
  *      <tr><th>API Docs
  *          <td><a href='https://www.android.com/work/'>
  *              https://www.android.com/work/</a>
@@ -1006,6 +1006,41 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Long running operation metadata.</summary>
+    public class DevicesLongRunningOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of devices parsed in your requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicesCount")]
+        public virtual System.Nullable<int> DevicesCount { get; set; } 
+
+        /// <summary>The overall processing status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingStatus")]
+        public virtual string ProcessingStatus { get; set; } 
+
+        /// <summary>Processing progress from 0 to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual System.Nullable<int> Progress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Long running operation response.</summary>
+    public class DevicesLongRunningOperationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>processing status for each device. One PerDeviceStatus per device. The order is the same as in your
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perDeviceStatus")]
+        public virtual System.Collections.Generic.IList<OperationPerDevice> PerDeviceStatus { get; set; } 
+
+        /// <summary>Number of succeesfully processed ones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<int> SuccessCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1101,6 +1136,94 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Operation the server received for every device.</summary>
+    public class OperationPerDevice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Request to claim a device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claim")]
+        public virtual PartnerClaim Claim { get; set; } 
+
+        /// <summary>Processing result for every device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual PerDeviceStatusInBatch Result { get; set; } 
+
+        /// <summary>Request to unclaim a device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unclaim")]
+        public virtual PartnerUnclaim Unclaim { get; set; } 
+
+        /// <summary>Request to set metadata for a device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMetadata")]
+        public virtual UpdateMetadataArguments UpdateMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies one claim request.</summary>
+    public class PartnerClaim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>customer id to claim for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual System.Nullable<long> CustomerId { get; set; } 
+
+        /// <summary>Device identifier of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+
+        /// <summary>metadata to set at claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
+        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+
+        /// <summary>section type to claim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
+        public virtual string SectionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies one unclaim request.</summary>
+    public class PartnerUnclaim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>device id of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; } 
+
+        /// <summary>device identifier of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+
+        /// <summary>section type to unclaim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
+        public virtual string SectionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Stores the processing result for each device.</summary>
+    public class PerDeviceStatusInBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>device id of the device if process succeeds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; } 
+
+        /// <summary>Error identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorIdentifier")]
+        public virtual string ErrorIdentifier { get; set; } 
+
+        /// <summary>Error message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        /// <summary>Process result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message to unclaim a device.</summary>
     public class UnclaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1124,6 +1247,25 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     public class UpdateDeviceMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The metdata to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
+        public virtual DeviceMetadata DeviceMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies metdata updates to one device.</summary>
+    public class UpdateMetadataArguments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>device id of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; } 
+
+        /// <summary>device identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+
+        /// <summary>The metadata to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; } 
 

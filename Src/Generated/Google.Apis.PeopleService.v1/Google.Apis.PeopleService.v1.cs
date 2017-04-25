@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170420 (840)
+ *      <tr><th>API Rev<td>20170422 (842)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -427,11 +427,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
-                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
-                /// changed since the sync token was created will be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string SyncToken { get; set; }
-
                 /// <summary>The order in which the connections should be sorted. Defaults to
                 /// `LAST_MODIFIED_ASCENDING`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
@@ -458,17 +453,22 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will
                 /// include all fields except for connections.list requests, which have a default mask that includes
                 /// common fields like metadata, name, photo, and profile url. Each path should start with `person.`:
                 /// for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 500,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
+                /// changed since the sync token was created will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SyncToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -504,15 +504,6 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = @"^people/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "syncToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "syncToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "sortOrder", new Google.Apis.Discovery.Parameter
                         {
                             Name = "sortOrder",
@@ -540,6 +531,15 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestMask.includeField",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -549,9 +549,9 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "syncToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "syncToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -667,18 +667,18 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>The resource name, such as one returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
+            /// provide information about. You can include this parameter up to 50 times in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
             /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will include
             /// all fields except for connections.list requests, which have a default mask that includes common fields
             /// like metadata, name, photo, and profile url. Each path should start with `person.`: for example,
             /// `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
-
-            /// <summary>The resource name, such as one returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
-            /// provide information about. You can include this parameter up to 50 times in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -705,18 +705,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMask.includeField",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "requestMask.includeField",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

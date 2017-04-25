@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170329 (818)
+ *      <tr><th>API Rev<td>20170409 (829)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -6257,7 +6257,7 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to delete.</param>
@@ -6266,7 +6266,7 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -6333,8 +6333,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to return.</param>
@@ -6343,8 +6343,8 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRule>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -6411,8 +6411,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
+        /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.ForwardingRule body, string project)
@@ -6420,8 +6420,8 @@ namespace Google.Apis.Compute.v1
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
+        /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -6481,14 +6481,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ForwardingRuleList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -6625,8 +6625,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
+        /// as the old target.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
@@ -6636,8 +6636,8 @@ namespace Google.Apis.Compute.v1
             return new SetTargetRequest(service, body, project, forwardingRule);
         }
 
-        /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
+        /// as the old target.</summary>
         public class SetTargetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new SetTarget request.</summary>
@@ -30170,7 +30170,7 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to
-    /// forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.</summary>
+    /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple.</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
@@ -30240,15 +30240,18 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the
-        /// specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair
-        /// must have disjoint port ranges.
+        /// <summary>This field is used for external load balancing and VPN.
         ///
-        /// This field is not used for internal load balancing.</summary>
+        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
+        /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
+        /// port ranges.
+        ///
+        /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
+        /// TargetHttpsProxy: 443 - TargetSslProxy: 443 - TargetVpnGateway: 500, 4500 -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is not used for external load balancing.
+        /// <summary>This field is only used for internal load balancing.
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
@@ -31485,7 +31488,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstanceGroupManagersAbandonInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to abandon from the managed instance group.</summary>
+        /// <summary>The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -31495,8 +31499,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstanceGroupManagersDeleteInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of instances to delete from this managed instance group. Specify one or more instance
-        /// URLs.</summary>
+        /// <summary>The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -31516,7 +31520,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstanceGroupManagersRecreateInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to recreate.</summary>
+        /// <summary>The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -33130,7 +33135,8 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RegionInstanceGroupManagersRecreateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to recreate.</summary>
+        /// <summary>The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -33623,6 +33629,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Best routes for this router's network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bestRoutes")]
         public virtual System.Collections.Generic.IList<Route> BestRoutes { get; set; } 
+
+        /// <summary>Best routes learned by this router.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestRoutesForRouter")]
+        public virtual System.Collections.Generic.IList<Route> BestRoutesForRouter { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("bgpPeerStatus")]
         public virtual System.Collections.Generic.IList<RouterStatusBgpPeerStatus> BgpPeerStatus { get; set; } 

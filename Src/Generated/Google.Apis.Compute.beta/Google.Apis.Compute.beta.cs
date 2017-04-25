@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170329 (818)
+ *      <tr><th>API Rev<td>20170409 (829)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -7445,7 +7445,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to delete.</param>
@@ -7454,7 +7454,7 @@ namespace Google.Apis.Compute.beta
             return new DeleteRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Deletes the specified ForwardingRule resource.</summary>
+        /// <summary>Deletes the specified GlobalForwardingRule resource.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -7521,8 +7521,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
         /// ForwardingRule resource to return.</param>
@@ -7531,8 +7531,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Returns the specified ForwardingRule resource. Get a list of available forwarding rules by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ForwardingRule>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7599,8 +7599,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
+        /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual InsertRequest Insert(Google.Apis.Compute.beta.Data.ForwardingRule body, string project)
@@ -7608,8 +7608,8 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Creates a ForwardingRule resource in the specified project and region using the data included in
-        /// the request.</summary>
+        /// <summary>Creates a GlobalForwardingRule resource in the specified project using the data included in the
+        /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7669,14 +7669,14 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves a list of ForwardingRule resources available to the specified project.</summary>
+        /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ForwardingRuleList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7813,8 +7813,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
+        /// as the old target.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
@@ -7824,8 +7824,8 @@ namespace Google.Apis.Compute.beta
             return new SetTargetRequest(service, body, project, forwardingRule);
         }
 
-        /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
-        /// target.</summary>
+        /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
+        /// as the old target.</summary>
         public class SetTargetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetTarget request.</summary>
@@ -15818,6 +15818,183 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the target instance scoping this request, or '-' if the
+        /// request should span over all instances in the container.</param>
+        public virtual ListReferrersRequest ListReferrers(string project, string zone, string instance)
+        {
+            return new ListReferrersRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Retrieves the list of referrers to instances contained within the specified zone.</summary>
+        public class ListReferrersRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InstanceListReferrers>
+        {
+            /// <summary>Constructs a new ListReferrers request.</summary>
+            public ListReferrersRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the target instance scoping this request, or '-' if the request should span over all
+            /// instances in the container.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listReferrers"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/referrers"; }
+            }
+
+            /// <summary>Initializes ListReferrers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
                 RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
@@ -35722,7 +35899,7 @@ namespace Google.Apis.Compute.beta.Data
     ///
     /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
     /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
-    /// }, { "service": "fooservice@googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
     /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
     ///
     /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
@@ -37523,7 +37700,7 @@ namespace Google.Apis.Compute.beta.Data
     }    
 
     /// <summary>A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to
-    /// forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple.</summary>
+    /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple.</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
@@ -37598,15 +37775,18 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the
-        /// specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair
-        /// must have disjoint port ranges.
+        /// <summary>This field is used for external load balancing and VPN.
         ///
-        /// This field is not used for internal load balancing.</summary>
+        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
+        /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
+        /// port ranges.
+        ///
+        /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
+        /// TargetHttpsProxy: 443 - TargetSslProxy: 443 - TargetVpnGateway: 500, 4500 -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is not used for external load balancing.
+        /// <summary>This field is only used for internal load balancing.
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
@@ -38931,7 +39111,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagersAbandonInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to abandon from the managed instance group.</summary>
+        /// <summary>The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -38941,8 +39122,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagersDeleteInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of instances to delete from this managed instance group. Specify one or more instance
-        /// URLs.</summary>
+        /// <summary>The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -38969,7 +39150,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagersRecreateInstancesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to recreate.</summary>
+        /// <summary>The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 
@@ -39250,6 +39432,38 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>[Output Only] Type of resource. Always compute#instanceList for lists of Instance
         /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of instance referrers.</summary>
+    public class InstanceListReferrers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of referrers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Reference> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#instanceListReferrers for lists of Instance
+        /// referrers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -40700,6 +40914,30 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a reference to a resource.</summary>
+    public class Reference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of the resource. Always compute#reference for references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A description of the reference type with no implied semantics. Possible values include: -
+        /// MEMBER_OF</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
+        public virtual string ReferenceType { get; set; } 
+
+        /// <summary>URL of the resource which refers to the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
+        public virtual string Referrer { get; set; } 
+
+        /// <summary>URL of the resource to which this reference points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Region resource.</summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40877,7 +41115,8 @@ namespace Google.Apis.Compute.beta.Data
 
     public class RegionInstanceGroupManagersRecreateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The URL for one or more instances to recreate.</summary>
+        /// <summary>The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as
+        /// zones/[ZONE]/instances/[INSTANCE_NAME].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
 

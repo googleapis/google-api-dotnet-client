@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20170216 (777)
+ *      <tr><th>API Rev<td>20170419 (839)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -807,9 +807,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Take action on Chrome OS Device</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="resourceId">Immutable
-        /// id of Chrome OS Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="resourceId">Immutable ID
+        /// of Chrome OS Device</param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDeviceAction body, string customerId, string resourceId)
         {
             return new ActionRequest(service, body, customerId, resourceId);
@@ -829,11 +829,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Chrome OS Device</summary>
+            /// <summary>Immutable ID of Chrome OS Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
 
@@ -890,9 +890,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Chrome OS Device</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="deviceId">Immutable id
-        /// of Chrome OS Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="deviceId">Immutable ID of
+        /// Chrome OS Device</param>
         public virtual GetRequest Get(string customerId, string deviceId)
         {
             return new GetRequest(service, customerId, deviceId);
@@ -911,11 +911,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Chrome OS Device</summary>
+            /// <summary>Immutable ID of Chrome OS Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
 
@@ -991,7 +991,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Chrome OS Devices of a customer (paginated)</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
@@ -1009,7 +1009,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -1183,9 +1183,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Chrome OS Device. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="deviceId">Immutable id
-        /// of Chrome OS Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="deviceId">Immutable ID of
+        /// Chrome OS Device</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
             return new PatchRequest(service, body, customerId, deviceId);
@@ -1205,11 +1205,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Chrome OS Device</summary>
+            /// <summary>Immutable ID of Chrome OS Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
 
@@ -1292,9 +1292,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Chrome OS Device</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="deviceId">Immutable id
-        /// of Chrome OS Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="deviceId">Immutable ID of
+        /// Chrome OS Device</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsDevice body, string customerId, string deviceId)
         {
             return new UpdateRequest(service, body, customerId, deviceId);
@@ -1314,11 +1314,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Chrome OS Device</summary>
+            /// <summary>Immutable ID of Chrome OS Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
 
@@ -1630,9 +1630,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Deletes a Domain Alias of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
-        /// <param name="domainAliasName">Name
-        /// of domain alias to be retrieved.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="domainAliasName">Name of
+        /// domain alias to be retrieved.</param>
         public virtual DeleteRequest Delete(string customer, string domainAliasName)
         {
             return new DeleteRequest(service, customer, domainAliasName);
@@ -1651,7 +1651,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -1706,9 +1706,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a domain alias of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
-        /// <param name="domainAliasName">Name
-        /// of domain alias to be retrieved.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="domainAliasName">Name of
+        /// domain alias to be retrieved.</param>
         public virtual GetRequest Get(string customer, string domainAliasName)
         {
             return new GetRequest(service, customer, domainAliasName);
@@ -1727,7 +1727,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -1783,7 +1783,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Inserts a Domain alias of the customer.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.DomainAlias body, string customer)
         {
             return new InsertRequest(service, body, customer);
@@ -1802,7 +1802,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -1850,7 +1850,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domain aliases of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -1868,7 +1868,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -1940,9 +1940,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Deletes a domain of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
-        /// <param name="domainName">Name of
-        /// domain to be deleted</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="domainName">Name of domain
+        /// to be deleted</param>
         public virtual DeleteRequest Delete(string customer, string domainName)
         {
             return new DeleteRequest(service, customer, domainName);
@@ -1961,7 +1961,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -2016,9 +2016,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a domain of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
-        /// <param name="domainName">Name of
-        /// domain to be retrieved</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="domainName">Name of domain
+        /// to be retrieved</param>
         public virtual GetRequest Get(string customer, string domainName)
         {
             return new GetRequest(service, customer, domainName);
@@ -2037,7 +2037,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -2093,7 +2093,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Inserts a domain of the customer.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Domains body, string customer)
         {
             return new InsertRequest(service, body, customer);
@@ -2112,7 +2112,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -2160,7 +2160,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Lists the domains of the customer.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -2178,7 +2178,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -2655,7 +2655,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account. In case of multi-domain, to fetch all groups for a
+            /// <summary>Immutable ID of the G Suite account. In case of multi-domain, to fetch all groups for a
             /// customer, fill this field instead of domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -3416,9 +3416,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Take action on Mobile Device</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="resourceId">Immutable
-        /// id of Mobile Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="resourceId">Immutable ID
+        /// of Mobile Device</param>
         public virtual ActionRequest Action(Google.Apis.Admin.Directory.directory_v1.Data.MobileDeviceAction body, string customerId, string resourceId)
         {
             return new ActionRequest(service, body, customerId, resourceId);
@@ -3438,11 +3438,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Mobile Device</summary>
+            /// <summary>Immutable ID of Mobile Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
 
@@ -3499,9 +3499,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Delete Mobile Device</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="resourceId">Immutable
-        /// id of Mobile Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="resourceId">Immutable ID
+        /// of Mobile Device</param>
         public virtual DeleteRequest Delete(string customerId, string resourceId)
         {
             return new DeleteRequest(service, customerId, resourceId);
@@ -3520,11 +3520,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Mobile Device</summary>
+            /// <summary>Immutable ID of Mobile Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
 
@@ -3575,9 +3575,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Mobile Device</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="resourceId">Immutable
-        /// id of Mobile Device</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="resourceId">Immutable ID
+        /// of Mobile Device</param>
         public virtual GetRequest Get(string customerId, string resourceId)
         {
             return new GetRequest(service, customerId, resourceId);
@@ -3596,11 +3596,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Immutable id of Mobile Device</summary>
+            /// <summary>Immutable ID of Mobile Device</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
 
@@ -3676,7 +3676,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Mobile Devices of a customer (paginated)</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
@@ -3694,7 +3694,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -3887,7 +3887,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Deletes a notification</summary>
-        /// <param name="customer">The unique ID for the customer's Google account. The customerId is also returned as part of
+        /// <param name="customer">The unique ID for the customer's G Suite account. The customerId is also returned as part of
         /// the Users resource.</param>
         /// <param name="notificationId">The unique ID of the notification.</param>
         public virtual DeleteRequest Delete(string customer, string notificationId)
@@ -3908,8 +3908,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>The unique ID for the customer's Google account. The customerId is also returned as part of the
-            /// Users resource.</summary>
+            /// <summary>The unique ID for the customer's G Suite account. The customerId is also returned as part of
+            /// the Users resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -3964,7 +3964,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a notification.</summary>
-        /// <param name="customer">The unique ID for the customer's Google account. The customerId is also returned as part of
+        /// <param name="customer">The unique ID for the customer's G Suite account. The customerId is also returned as part of
         /// the Users resource.</param>
         /// <param name="notificationId">The unique ID of the notification.</param>
         public virtual GetRequest Get(string customer, string notificationId)
@@ -3985,8 +3985,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>The unique ID for the customer's Google account. The customerId is also returned as part of the
-            /// Users resource.</summary>
+            /// <summary>The unique ID for the customer's G Suite account. The customerId is also returned as part of
+            /// the Users resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -4041,7 +4041,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a list of notifications.</summary>
-        /// <param name="customer">The unique ID for the customer's Google account.</param>
+        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -4059,7 +4059,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>The unique ID for the customer's Google account.</summary>
+            /// <summary>The unique ID for the customer's G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -4142,7 +4142,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Updates a notification. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">The unique ID for the customer's Google account.</param>
+        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
         /// <param
         /// name="notificationId">The unique ID of the notification.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
@@ -4164,7 +4164,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>The unique ID for the customer's Google account.</summary>
+            /// <summary>The unique ID for the customer's G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -4226,7 +4226,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Updates a notification.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">The unique ID for the customer's Google account.</param>
+        /// <param name="customer">The unique ID for the customer's G Suite account.</param>
         /// <param
         /// name="notificationId">The unique ID of the notification.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Notification body, string customer, string notificationId)
@@ -4248,7 +4248,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>The unique ID for the customer's Google account.</summary>
+            /// <summary>The unique ID for the customer's G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -4326,9 +4326,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Remove Organization Unit</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="orgUnitPath">Full path
-        /// of the organization unit or its Id</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="orgUnitPath">Full path of
+        /// the organization unit or its Id</param>
         public virtual DeleteRequest Delete(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new DeleteRequest(service, customerId, orgUnitPath);
@@ -4347,7 +4347,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4402,9 +4402,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Organization Unit</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="orgUnitPath">Full path
-        /// of the organization unit or its Id</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="orgUnitPath">Full path of
+        /// the organization unit or its Id</param>
         public virtual GetRequest Get(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new GetRequest(service, customerId, orgUnitPath);
@@ -4423,7 +4423,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4479,7 +4479,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Add Organization Unit</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
         {
             return new InsertRequest(service, body, customerId);
@@ -4498,7 +4498,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4546,7 +4546,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all Organization Units</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
@@ -4564,7 +4564,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4644,9 +4644,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Organization Unit. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="orgUnitPath">Full path
-        /// of the organization unit or its Id</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="orgUnitPath">Full path of
+        /// the organization unit or its Id</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new PatchRequest(service, body, customerId, orgUnitPath);
@@ -4666,7 +4666,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4728,9 +4728,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Organization Unit</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
-        /// <param name="orgUnitPath">Full path
-        /// of the organization unit or its Id</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="orgUnitPath">Full path of
+        /// the organization unit or its Id</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new UpdateRequest(service, body, customerId, orgUnitPath);
@@ -4750,7 +4750,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -4828,7 +4828,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Retrieves a paginated list of all privileges for a customer.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -4846,7 +4846,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -4929,7 +4929,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
             /// <summary>Deletes a calendar resource.</summary>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to delete.</param>
@@ -4951,7 +4951,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5007,7 +5007,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>Retrieves a calendar resource.</summary>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to retrieve.</param>
@@ -5029,7 +5029,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5086,7 +5086,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Inserts a calendar resource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource body, string customer)
             {
@@ -5106,7 +5106,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5155,7 +5155,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>Retrieves a list of calendar resources for an account.</summary>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             public virtual ListRequest List(string customer)
             {
@@ -5174,7 +5174,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5246,7 +5246,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Updates a calendar resource. This method supports patch semantics.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to update.</param>
@@ -5269,7 +5269,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5332,7 +5332,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Updates a calendar resource.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="customer">The unique ID for the customer's Google account. As an account administrator, you can also
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
             /// <param
             /// name="calendarResourceId">The unique ID of the calendar resource to update.</param>
@@ -5355,7 +5355,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>The unique ID for the customer's Google account. As an account administrator, you can also
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
                 /// use the my_customer alias to represent your account's customer ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
@@ -5435,9 +5435,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Deletes a role assignment.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param
-        /// name="roleAssignmentId">Immutable ID of the role assignment.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleAssignmentId">Immutable
+        /// ID of the role assignment.</param>
         public virtual DeleteRequest Delete(string customer, string roleAssignmentId)
         {
             return new DeleteRequest(service, customer, roleAssignmentId);
@@ -5456,7 +5456,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5511,9 +5511,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve a role assignment.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param
-        /// name="roleAssignmentId">Immutable ID of the role assignment.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleAssignmentId">Immutable
+        /// ID of the role assignment.</param>
         public virtual GetRequest Get(string customer, string roleAssignmentId)
         {
             return new GetRequest(service, customer, roleAssignmentId);
@@ -5532,7 +5532,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5588,7 +5588,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Creates a role assignment.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment body, string customer)
         {
             return new InsertRequest(service, body, customer);
@@ -5607,7 +5607,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5655,7 +5655,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all roleAssignments.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -5673,7 +5673,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5788,9 +5788,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Deletes a role.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param name="roleId">Immutable ID of
-        /// the role.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleId">Immutable ID of the
+        /// role.</param>
         public virtual DeleteRequest Delete(string customer, string roleId)
         {
             return new DeleteRequest(service, customer, roleId);
@@ -5809,7 +5809,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5864,9 +5864,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a role.</summary>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param name="roleId">Immutable ID of
-        /// the role.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleId">Immutable ID of the
+        /// role.</param>
         public virtual GetRequest Get(string customer, string roleId)
         {
             return new GetRequest(service, customer, roleId);
@@ -5885,7 +5885,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -5941,7 +5941,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Creates a role.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer)
         {
             return new InsertRequest(service, body, customer);
@@ -5960,7 +5960,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -6008,7 +6008,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieves a paginated list of all the roles in a domain.</summary>
-        /// <param name="customer">Immutable id of the Google Apps account.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
         public virtual ListRequest List(string customer)
         {
             return new ListRequest(service, customer);
@@ -6026,7 +6026,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -6097,9 +6097,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Updates a role. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param name="roleId">Immutable ID of
-        /// the role.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleId">Immutable ID of the
+        /// role.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
             return new PatchRequest(service, body, customer, roleId);
@@ -6119,7 +6119,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -6181,9 +6181,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Updates a role.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customer">Immutable ID of the Google Apps account.</param>
-        /// <param name="roleId">Immutable ID of
-        /// the role.</param>
+        /// <param name="customer">Immutable ID of the G Suite account.</param>
+        /// <param name="roleId">Immutable ID of the
+        /// role.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Role body, string customer, string roleId)
         {
             return new UpdateRequest(service, body, customer, roleId);
@@ -6203,7 +6203,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the G Suite account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Customer { get; private set; }
 
@@ -6281,7 +6281,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Delete schema</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema</param>
         public virtual DeleteRequest Delete(string customerId, string schemaKey)
@@ -6302,7 +6302,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -6357,7 +6357,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve schema</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
@@ -6378,7 +6378,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -6434,7 +6434,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Create schema.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId)
         {
             return new InsertRequest(service, body, customerId);
@@ -6453,7 +6453,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -6501,7 +6501,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all schemas for a customer</summary>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
@@ -6519,7 +6519,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -6562,7 +6562,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update schema. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
@@ -6584,7 +6584,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -6646,7 +6646,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update schema</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="customerId">Immutable id of the Google Apps account</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
         /// immutable Id of the schema.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
@@ -6668,7 +6668,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Immutable id of the Google Apps account</summary>
+            /// <summary>Immutable ID of the G Suite account</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
@@ -7868,7 +7868,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customFieldMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomFieldMask { get; set; }
 
-            /// <summary>Immutable id of the Google Apps account. In case of multi-domain, to fetch all users for a
+            /// <summary>Immutable ID of the G Suite account. In case of multi-domain, to fetch all users for a
             /// customer, fill this field instead of domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -8421,7 +8421,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customFieldMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomFieldMask { get; set; }
 
-            /// <summary>Immutable id of the Google Apps account. In case of multi-domain, to fetch all users for a
+            /// <summary>Immutable ID of the G Suite account. In case of multi-domain, to fetch all users for a
             /// customer, fill this field instead of domain.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Customer { get; set; }
@@ -9153,7 +9153,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
-        /// <summary>Date and time the device was last synchronized with the policy settings in the Google Apps
+        /// <summary>Date and time the device was last synchronized with the policy settings in the G Suite
         /// administrator control panel (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
         public virtual string LastSyncRaw { get; set; }
@@ -9335,7 +9335,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The unique ID for the customer's Google account. (Readonly)</summary>
+        /// <summary>The unique ID for the customer's G Suite account. (Readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -9679,7 +9679,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Date and time the device was first synchronized with the policy settings in the Google Apps
+        /// <summary>Date and time the device was first synchronized with the policy settings in the G Suite
         /// administrator control panel (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstSync")]
         public virtual string FirstSyncRaw { get; set; }
@@ -9718,7 +9718,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Date and time the device was last synchronized with the policy settings in the Google Apps
+        /// <summary>Date and time the device was last synchronized with the policy settings in the G Suite
         /// administrator control panel (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
         public virtual string LastSyncRaw { get; set; }
@@ -10356,7 +10356,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changePasswordAtNextLogin")]
         public virtual System.Nullable<bool> ChangePasswordAtNextLogin { get; set; } 
 
-        /// <summary>User's Google account creation time. (Read-only)</summary>
+        /// <summary>User's G Suite account creation time. (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTimeRaw { get; set; }
 
@@ -10469,6 +10469,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
                 LastLoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual object Locations { get; set; } 
 
         /// <summary>User's name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -10686,6 +10689,45 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>JSON template for a location entry.</summary>
+    public class UserLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Textual location. This is most useful for display purposes to concisely describe the location. E.g.
+        /// "Mountain View, CA", "Near Seattle", "US-NYC-9TH 9A209A".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("area")]
+        public virtual string Area { get; set; } 
+
+        /// <summary>Building Identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
+        public virtual string BuildingId { get; set; } 
+
+        /// <summary>Custom Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customType")]
+        public virtual string CustomType { get; set; } 
+
+        /// <summary>Most specific textual code of individual desk location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deskCode")]
+        public virtual string DeskCode { get; set; } 
+
+        /// <summary>Floor name/number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorName")]
+        public virtual string FloorName { get; set; } 
+
+        /// <summary>Floor Section. More specific location within the floor. E.g. if a floor is divided into sections
+        /// "A", "B", and "C", this field would identify one of those values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorSection")]
+        public virtual string FloorSection { get; set; } 
+
+        /// <summary>Each entry can have a type which indicates standard types of that entry. For example location could
+        /// be of types default and desk. In addition to standard type, an entry can have a custom type and can give it
+        /// any name. Such types should have "custom" as type and also have a customType value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>JSON request template for setting/revoking admin status of a user in Directory API.</summary>
     public class UserMakeAdmin : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10835,7 +10877,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.</summary>
     public class UserPosixAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GECOS (user information) entry for this account.</summary>
+        /// <summary>The GECOS (user information) for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gecos")]
         public virtual string Gecos { get; set; } 
 
@@ -10859,7 +10901,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
         public virtual string SystemId { get; set; } 
 
-        /// <summary>The user ID.</summary>
+        /// <summary>The POSIX compliant user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual System.Nullable<int> Uid { get; set; } 
 

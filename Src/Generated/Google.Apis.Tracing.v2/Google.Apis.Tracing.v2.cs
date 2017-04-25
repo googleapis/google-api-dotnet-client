@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Google Tracing API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170406 (826)
+ *      <tr><th>API Rev<td>20170419 (839)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -585,12 +585,6 @@ namespace Google.Apis.Tracing.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
-                /// reasonable value. The implementation may return fewer traces than the requested page size.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
                 ///
                 /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
@@ -614,15 +608,21 @@ namespace Google.Apis.Tracing.v2
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
+                /// <summary>Start of the time interval (inclusive) during which the trace data was collected from the
+                /// application.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
                 /// <summary>Token identifying the page of results to return. If provided, use the value of the
                 /// `next_page_token` field from a previous request. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Start of the time interval (inclusive) during which the trace data was collected from the
-                /// application.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
+                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
+                /// reasonable value. The implementation may return fewer traces than the requested page size.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -658,15 +658,6 @@ namespace Google.Apis.Tracing.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -694,6 +685,15 @@ namespace Google.Apis.Tracing.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -703,9 +703,9 @@ namespace Google.Apis.Tracing.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -800,16 +800,15 @@ namespace Google.Apis.Tracing.v2.Data
     /// <summary>Text annotation with a set of attributes. A maximum of 32 annotations are allowed per Span.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the annotation. A maximum of 4 attributes are allowed per Annotation. The
-        /// maximum key length is 128 bytes. The value can be a string (up to 256 bytes), integer, or boolean
-        /// (true/false).</summary>
+        /// <summary>A set of attributes on the annotation. A maximum of 4 attributes are allowed per
+        /// Annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,AttributeValue> Attributes { get; set; } 
+        public virtual Attributes Attributes { get; set; } 
 
         /// <summary>A user-supplied message describing the event. The maximum length for the description is 256
-        /// characters.</summary>
+        /// bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
+        public virtual TruncatableString Description { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -826,9 +825,31 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; } 
 
-        /// <summary>A string value.</summary>
+        /// <summary>A string value (up to 256 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
+        public virtual TruncatableString StringValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Attributes of a span with a key:value format.</summary>
+    public class Attributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum key length is 128 bytes (attributes are dropped if the key size is larger than the
+        /// maximum allowed). The value can be a string (up to 256 bytes), integer, or boolean (true/false). Some common
+        /// pair examples:
+        ///
+        /// "/instance_id": "my-instance" "/zone": "us-central1-a" "/grpc/peer_address": "ip:port" (dns, etc.)
+        /// "/grpc/deadline": "Duration" "/http/user_agent" "/http/request_bytes": 300 "/http/response_bytes": 1200
+        /// "/http/url": google.com/apis "abc.com/myattribute": true</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
+        public virtual System.Collections.Generic.IDictionary<string,AttributeValue> AttributeMap { get; set; } 
+
+        /// <summary>The number of dropped attributes after the maximum size was enforced. If 0 then no attributes were
+        /// dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedAttributesCount")]
+        public virtual System.Nullable<int> DroppedAttributesCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -881,6 +902,23 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A collection of links, which are references from this span to a span in the same or different
+    /// trace.</summary>
+    public class Links : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of dropped links after the maximum size was enforced. If 0 then no links were
+        /// dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedLinksCount")]
+        public virtual System.Nullable<int> DroppedLinksCount { get; set; } 
+
+        /// <summary>A collection of links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual System.Collections.Generic.IList<Link> Link { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for the `ListSpans` method.</summary>
     public class ListSpansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -919,12 +957,12 @@ namespace Google.Apis.Tracing.v2.Data
         /// <summary>Build_id is a unique identifier for the module, usually a hash of its contents (up to 128
         /// characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
-        public virtual string BuildId { get; set; } 
+        public virtual TruncatableString BuildId { get; set; } 
 
         /// <summary>E.g. main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256
         /// characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
-        public virtual string ModuleValue { get; set; } 
+        public virtual TruncatableString ModuleValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -963,24 +1001,17 @@ namespace Google.Apis.Tracing.v2.Data
     /// be contiguous. There may be gaps and/or overlaps between spans in a trace.</summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attributes of a span with a key:value format. A maximum of 16 custom attributes are allowed per
-        /// Span. The maximum key length is 128 bytes. The value can be a string (up to 256 bytes), integer, or boolean
-        /// (true/false).
-        ///
-        /// Some common pair examples:
-        ///
-        /// "/instance_id": "my-instance" "/zone": "us-central1-a" "/grpc/peer_address": "ip:port" (dns, etc.)
-        /// "/grpc/deadline": "Duration" "/http/user_agent" "/http/request_bytes": 300 "/http/response_bytes": 1200
-        /// "/http/url": google.com/apis "abc.com/myattribute": true</summary>
+        /// <summary>A set of attributes on the span. A maximum of 32 attributes are allowed per Span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual System.Collections.Generic.IDictionary<string,AttributeValue> Attributes { get; set; } 
+        public virtual Attributes Attributes { get; set; } 
 
         /// <summary>Description of the operation in the span. It is sanitized and displayed in the Stackdriver Trace
         /// tool in the {% dynamic print site_values.console_name %}. The display_name may be a method name or some
         /// other per-call site name. For the same executable and the same call point, a best practice is to use a
-        /// consistent operation name, which makes it easier to correlate cross-trace spans.</summary>
+        /// consistent operation name, which makes it easier to correlate cross-trace spans. The maximum length for the
+        /// display_name is 128 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
+        public virtual TruncatableString DisplayName { get; set; } 
 
         /// <summary>End time of the span. On the client side, this is the local machine clock time at which the span
         /// execution was ended; on the server side, this is the time at which the server application handler stopped
@@ -988,10 +1019,9 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>A collection of links, which are references from this span to a span in the same or different
-        /// trace.</summary>
+        /// <summary>A maximum of 128 links are allowed per Span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
-        public virtual System.Collections.Generic.IList<Link> Links { get; set; } 
+        public virtual Links Links { get; set; } 
 
         /// <summary>The resource name of Span in the format `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
         /// `TRACE_ID` is a unique identifier for a trace within a project and is a base16-encoded, case-insensitive
@@ -1024,10 +1054,9 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
 
-        /// <summary>A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of
-        /// either user-supplied key:value pairs, or details of an RPC message sent/received on the network.</summary>
+        /// <summary>A maximum of 32 annotations and 128 network events are allowed per Span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvents")]
-        public virtual System.Collections.Generic.IList<TimeEvent> TimeEvents { get; set; } 
+        public virtual TimeEvents TimeEvents { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1043,12 +1072,12 @@ namespace Google.Apis.Tracing.v2.Data
 
         /// <summary>The filename of the file containing this frame (up to 256 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
-        public virtual string FileName { get; set; } 
+        public virtual TruncatableString FileName { get; set; } 
 
         /// <summary>The fully-qualified name that uniquely identifies this function or method (up to 1024
         /// characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
-        public virtual string FunctionName { get; set; } 
+        public virtual TruncatableString FunctionName { get; set; } 
 
         /// <summary>Line number of the frame.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
@@ -1061,11 +1090,27 @@ namespace Google.Apis.Tracing.v2.Data
         /// <summary>Used when the function name is [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
         /// fully-qualified (up to 1024 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFunctionName")]
-        public virtual string OriginalFunctionName { get; set; } 
+        public virtual TruncatableString OriginalFunctionName { get; set; } 
 
         /// <summary>The version of the deployed source code (up to 128 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
-        public virtual string SourceVersion { get; set; } 
+        public virtual TruncatableString SourceVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents collection of StackFrames that can be truncated.</summary>
+    public class StackFrames : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of dropped stack frames after the maximum size was enforced. If 0 then no frames were
+        /// dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedFramesCount")]
+        public virtual System.Nullable<int> DroppedFramesCount { get; set; } 
+
+        /// <summary>Stack frames in this stack trace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frame")]
+        public virtual System.Collections.Generic.IList<StackFrame> Frame { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1075,8 +1120,8 @@ namespace Google.Apis.Tracing.v2.Data
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Stack frames in this stack trace. A maximum of 128 frames are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stackFrame")]
-        public virtual System.Collections.Generic.IList<StackFrame> StackFrame { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
+        public virtual StackFrames StackFrames { get; set; } 
 
         /// <summary>The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace.
         ///
@@ -1174,6 +1219,28 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of
+    /// either user-supplied key:value pairs, or details of an RPC message sent/received on the network.</summary>
+    public class TimeEvents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of dropped annotations after the maximum size was enforced. If 0 then no annotations
+        /// were dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedAnnotationsCount")]
+        public virtual System.Nullable<int> DroppedAnnotationsCount { get; set; } 
+
+        /// <summary>The number of dropped network events after the maximum size was enforced. If 0 then no annotations
+        /// were dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedNetworkEventsCount")]
+        public virtual System.Nullable<int> DroppedNetworkEventsCount { get; set; } 
+
+        /// <summary>A collection of `TimeEvent`s.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeEvent")]
+        public virtual System.Collections.Generic.IList<TimeEvent> TimeEvent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A trace describes how long it takes for an application to perform some operations. It consists of a set
     /// of spans, each representing an operation and including time information and operation details.</summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
@@ -1183,6 +1250,22 @@ namespace Google.Apis.Tracing.v2.Data
         /// required to be 32 char long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a string value that might be truncated.</summary>
+    public class TruncatableString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of characters truncated from the original string value. If 0 it means that the string
+        /// value was not truncated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncatedCharacterCount")]
+        public virtual System.Nullable<int> TruncatedCharacterCount { get; set; } 
+
+        /// <summary>The truncated string value. E.g. for a string attribute this may have up to 256 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
