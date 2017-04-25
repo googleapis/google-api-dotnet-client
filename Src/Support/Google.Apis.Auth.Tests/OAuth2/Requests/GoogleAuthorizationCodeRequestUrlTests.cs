@@ -23,7 +23,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Requests
     /// <summary>
     /// Tests for <seealso cref="Google.Apis.Auth.OAuth2.Requests.GoogleAuthorizationCodeRequestUrl"/>.
     /// </summary>
-    public class GoogleAuthorizationCodeRequestUrlTest
+    public class GoogleAuthorizationCodeRequestUrlTests
     {
         private readonly Uri AuthorizationCodeUrl = new Uri("http://www.authorization-server.com");
 

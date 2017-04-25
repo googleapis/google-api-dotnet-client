@@ -16,9 +16,22 @@ Supported Platforms:
     </Description>
   </PropertyGroup>
 
-  <!-- targets -->
+  <!-- configurations; common -->
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <DebugType>pdbonly</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <!-- package references; common then per-target -->
@@ -34,22 +47,6 @@ Supported Platforms:
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
   </ItemGroup>
-
-  <!-- configurations; common then per-configuration -->
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <DebugType>pdbonly</DebugType>
-    <IncludeSymbols>true</IncludeSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <Optimize>true</Optimize>
-    <DocumentationFile>Google.Apis.Auth.xml</DocumentationFile>
-  </PropertyGroup>
 
   <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
   <!-- There must be a better way of doing this... -->
