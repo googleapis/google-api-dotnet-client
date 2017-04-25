@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <PackageVersion>1.25.0</PackageVersion>
+	<Authors>Google Inc.</Authors>
+	<Copyright>Copyright 2017 Google Inc.</Copyright>
+	<PackageProjectUrl>https://developers.google.com/api-client-library/dotnet</PackageProjectUrl>
+	<PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+  </PropertyGroup>
+</Project>
