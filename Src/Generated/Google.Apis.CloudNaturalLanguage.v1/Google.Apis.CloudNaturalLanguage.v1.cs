@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170412 (832)
+ *      <tr><th>API Rev<td>20170424 (844)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -602,8 +602,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See `Document.language` field for more
-        /// details.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -614,8 +613,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The sentiment analysis request message.</summary>
     public class AnalyzeSentimentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input document. Currently, `analyzeSentiment` only supports English text
-        /// (Document.language="EN").</summary>
+        /// <summary>Input document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; } 
 
@@ -635,8 +633,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual Sentiment DocumentSentiment { get; set; } 
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See `Document.language` field for more
-        /// details.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -667,8 +664,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     public class AnalyzeSyntaxResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See `Document.language` field for more
-        /// details.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -718,8 +714,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
 
         /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See `Document.language` field for more
-        /// details.</summary>
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -771,11 +766,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string GcsContentUri { get; set; } 
 
         /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
-        /// and BCP-47 language codes are accepted. **Current Language Restrictions:**
-        ///
-        /// * Only English, Spanish, and Japanese textual content are supported. If the language (either specified by
-        /// the caller or automatically detected) is not supported by the called API method, an `INVALID_ARGUMENT` error
-        /// is returned.</summary>
+        /// and BCP-47 language codes are accepted. [Language Support](https://cloud.google.com/natural-
+        /// language/docs/languages) lists currently supported languages for each API method. If the language (either
+        /// specified by the caller or automatically detected) is not supported by the called API method, an
+        /// `INVALID_ARGUMENT` error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 

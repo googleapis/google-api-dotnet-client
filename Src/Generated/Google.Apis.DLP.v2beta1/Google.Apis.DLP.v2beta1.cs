@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170418 (838)
+ *      <tr><th>API Rev<td>20170424 (844)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -802,10 +802,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -813,6 +809,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -848,15 +848,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -869,6 +860,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1247,6 +1247,17 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A location in Cloud Storage.</summary>
+    public class CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The url, in the format of gs://bucket/.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Container structure for the content to inspect.</summary>
     public class ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1273,6 +1284,17 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual InspectConfig InspectConfig { get; set; } 
+
+        /// <summary>Optional location to store findings. The bucket must already exist and the Google APIs service
+        /// account for DLP must have write permission to write to the given bucket. Results will be split over multiple
+        /// csv files with each file name matching the pattern "[operation_id] + [count].csv". The operation_id will
+        /// match the identifier for the Operation, and the [count] is a counter used for tracking the number of files
+        /// written. The CSV file(s) contain the following columns regardless of storage type scanned: id, info_type,
+        /// likelihood, byte size of finding, quote, time_stamp For cloud storage the next two columns are: file_path,
+        /// start_offset For datastore the next two columns are: project_id, namespace_id, path, column_name,
+        /// offset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual OutputStorageConfig OutputConfig { get; set; } 
 
         /// <summary>Specification of the data set to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageConfig")]
@@ -1641,6 +1663,17 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>This field will contain an `InspectOperationResult` object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Cloud repository for storing output.</summary>
+    public class OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path to a Google Storage location to store output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
+        public virtual CloudStoragePath StoragePath { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
