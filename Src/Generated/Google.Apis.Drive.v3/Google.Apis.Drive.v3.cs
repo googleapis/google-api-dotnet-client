@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170414 (834)
+ *      <tr><th>API Rev<td>20170420 (840)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5223,6 +5223,11 @@ namespace Google.Apis.Drive.v3.Data
             /// not a folder.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAddChildren")]
             public virtual System.Nullable<bool> CanAddChildren { get; set; } 
+
+            /// <summary>Whether the current user can change whether viewers can copy the contents of this
+            /// file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeViewersCanCopyContent")]
+            public virtual System.Nullable<bool> CanChangeViewersCanCopyContent { get; set; } 
 
             /// <summary>Whether the current user can comment on this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]

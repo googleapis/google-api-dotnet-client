@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20170419 (839)
+ *      <tr><th>API Rev<td>20170424 (844)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -1048,6 +1048,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 SupportEndDate,
             }
 
+            /// <summary>Full path of the organization unit or its Id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrgUnitPath { get; set; }
+
             /// <summary>Token to specify next page in the list</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1136,6 +1140,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
                         Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orgUnitPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitPath",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -10448,9 +10461,15 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isMailboxSetup")]
         public virtual System.Nullable<bool> IsMailboxSetup { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
+        public virtual object Keywords { get; set; } 
+
         /// <summary>Kind of resource this is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("languages")]
+        public virtual object Languages { get; set; } 
 
         /// <summary>User's last login time. (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastLoginTime")]
@@ -10684,6 +10703,45 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a keyword entry.</summary>
+    public class UserKeyword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customType")]
+        public virtual string CustomType { get; set; } 
+
+        /// <summary>Each entry can have a type which indicates standard type of that entry. For example keyword could
+        /// be of type occupation or outlook. In addition to the standard type, an entry can have a custom type and can
+        /// give it any name. Such types should have the CUSTOM value as type and also have a customType
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Keyword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a language entry.</summary>
+    public class UserLanguage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Other language. User can provide own language name if there is no corresponding Google III language
+        /// code. If this is set LanguageCode can't be set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLanguage")]
+        public virtual string CustomLanguage { get; set; } 
+
+        /// <summary>Language Code. Should be used for storing Google III LanguageCode string representation for
+        /// language. Illegal values cause SchemaException.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
