@@ -12,6 +12,14 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
   </PropertyGroup>
   
+  <!-- common items in nupkg -->
+  <ItemGroup>
+    <None Include="..\..\..\Resources\License.txt">
+	  <Pack>true</Pack>
+	  <PackagePath></PackagePath>
+	</None>
+  </ItemGroup>
+
   <!-- common build configuration -->
   <PropertyGroup>
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
