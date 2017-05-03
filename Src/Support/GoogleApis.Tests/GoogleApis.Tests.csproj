@@ -117,6 +117,7 @@
     <Compile Include="Apis\Utils\StringValueAttributeTest.cs" />
     <Compile Include="Apis\Utils\RepeatableTest.cs" />
     <Compile Include="ApplicationContextTests.cs" />
+    <Compile Include="Json\NewtonsoftJsonSerializer.cs" />
     <Compile Include="Json\JsonExplicitNullTest.cs" />
     <Compile Include="Logging\Log4NetLogger.cs" />
     <Compile Include="Program.cs" />
