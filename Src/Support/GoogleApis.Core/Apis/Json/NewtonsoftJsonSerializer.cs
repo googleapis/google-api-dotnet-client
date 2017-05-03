@@ -32,10 +32,7 @@ namespace Google.Apis.Json
     /// </summary>
     public class RFC3339DateTimeConverter : JsonConverter
     {
-        public override bool CanRead
-        {
-            get { return false; }
-        }
+        public override bool CanRead => false;
 
         public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
@@ -43,11 +40,9 @@ namespace Google.Apis.Json
             throw new NotImplementedException("Unnecessary because CanRead is false.");
         }
 
-        public override bool CanConvert(Type objectType)
-        {
+        public override bool CanConvert(Type objectType) =>
             // Convert DateTime only.
-            return objectType == typeof(DateTime) || objectType == typeof(Nullable<DateTime>);
-        }
+            objectType == typeof(DateTime) || objectType == typeof(Nullable<DateTime>);
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -83,36 +78,45 @@ namespace Google.Apis.Json
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
-        private static readonly JsonSerializerSettings newtonsoftSettings;
-        private static readonly JsonSerializer newtonsoftSerializer;
+        private readonly JsonSerializerSettings settings;
+        private readonly JsonSerializer serializer;
 
-        private static NewtonsoftJsonSerializer instance;
+        /// <summary>The default instance of the Newtonsoft JSON Serializer, with default settings.</summary>
+        public static NewtonsoftJsonSerializer Instance { get; } = new NewtonsoftJsonSerializer();
 
-        /// <summary>A singleton instance of the Newtonsoft JSON Serializer.</summary>
-        public static NewtonsoftJsonSerializer Instance
+        /// <summary>
+        /// Constructs a new instance with the default serialization settings, equivalent to <see cref="Instance"/>.
+        /// </summary>
+        public NewtonsoftJsonSerializer() : this(CreateDefaultSettings())
         {
-            get
-            {
-                return (instance = instance ?? new NewtonsoftJsonSerializer());
-            }
         }
 
-        static NewtonsoftJsonSerializer()
+        /// <summary>
+        /// Constructs a new instance with the given settings.
+        /// </summary>
+        /// <param name="settings">The settings to apply when serializing and deserializing. Must not be null.</param>
+        public NewtonsoftJsonSerializer(JsonSerializerSettings settings)
         {
-            // Initialize the Newtonsoft serializer.
-            newtonsoftSettings = new JsonSerializerSettings
+            Utilities.ThrowIfNull(settings, nameof(settings));
+            this.settings = settings;
+            serializer = JsonSerializer.Create(settings);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="JsonSerializerSettings"/> with the same behavior
+        /// as the ones used in <see cref="Instance"/>. This method is expected to be used to construct
+        /// settings which are then passed to <see cref="NewtonsoftJsonSerializer.NewtonsoftJsonSerializer(JsonSerializerSettings)"/>.
+        /// </summary>
+        /// <returns>A new set of default settings.</returns>
+        public static JsonSerializerSettings CreateDefaultSettings() =>
+            new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
                 Converters = { new RFC3339DateTimeConverter(), new ExplicitNullConverter() }
             };
-            newtonsoftSerializer = JsonSerializer.Create(newtonsoftSettings);
-        }
 
-        public string Format
-        {
-            get { return "json"; }
-        }
+        public string Format => "json";
 
         public void Serialize(object obj, Stream target)
         {
@@ -122,7 +126,7 @@ namespace Google.Apis.Json
                 {
                     obj = string.Empty;
                 }
-                newtonsoftSerializer.Serialize(writer, obj);
+                serializer.Serialize(writer, obj);
             }
         }
 
@@ -134,7 +138,7 @@ namespace Google.Apis.Json
                 {
                     obj = string.Empty;
                 }
-                newtonsoftSerializer.Serialize(tw, obj);
+                serializer.Serialize(tw, obj);
                 return tw.ToString();
             }
         }
@@ -145,7 +149,7 @@ namespace Google.Apis.Json
             {
                 return default(T);
             }
-            return JsonConvert.DeserializeObject<T>(input, newtonsoftSettings);
+            return JsonConvert.DeserializeObject<T>(input, settings);
         }
 
         public object Deserialize(string input, Type type)
@@ -154,7 +158,7 @@ namespace Google.Apis.Json
             {
                 return null;
             }
-            return JsonConvert.DeserializeObject(input, type, newtonsoftSettings);
+            return JsonConvert.DeserializeObject(input, type, settings);
         }
 
         public T Deserialize<T>(Stream input)
@@ -162,7 +166,7 @@ namespace Google.Apis.Json
             // Convert the JSON document into an object.
             using (StreamReader streamReader = new StreamReader(input))
             {
-                return (T)newtonsoftSerializer.Deserialize(streamReader, typeof(T));
+                return (T)serializer.Deserialize(streamReader, typeof(T));
             }
         }
     }
