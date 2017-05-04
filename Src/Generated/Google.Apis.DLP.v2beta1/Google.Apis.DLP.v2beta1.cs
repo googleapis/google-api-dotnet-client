@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170424 (844)
+ *      <tr><th>API Rev<td>20170502 (852)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -957,7 +957,7 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Maximum number of results to return. If 0, the implementation will select a reasonable
+                    /// <summary>Maximum number of results to return. If 0, the implementation select a reasonable
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1250,7 +1250,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>A location in Cloud Storage.</summary>
     public class CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The url, in the format of gs://bucket/.</summary>
+        /// <summary>The url, in the format of `gs://bucket/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
 
@@ -1286,13 +1286,13 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual InspectConfig InspectConfig { get; set; } 
 
         /// <summary>Optional location to store findings. The bucket must already exist and the Google APIs service
-        /// account for DLP must have write permission to write to the given bucket. Results will be split over multiple
-        /// csv files with each file name matching the pattern "[operation_id] + [count].csv". The operation_id will
-        /// match the identifier for the Operation, and the [count] is a counter used for tracking the number of files
-        /// written. The CSV file(s) contain the following columns regardless of storage type scanned: id, info_type,
-        /// likelihood, byte size of finding, quote, time_stamp For cloud storage the next two columns are: file_path,
-        /// start_offset For datastore the next two columns are: project_id, namespace_id, path, column_name,
-        /// offset.</summary>
+        /// account for DLP must have write permission to write to the given bucket. Results are split over multiple csv
+        /// files with each file name matching the pattern "[operation_id]_[count].csv", for example
+        /// `3094877188788974909_1.csv`. The `operation_id` matches the identifier for the Operation, and the `count` is
+        /// a counter used for tracking the number of files written. The CSV file(s) contain the following columns
+        /// regardless of storage type scanned: id info_type likelihood byte size of finding quote time_stamp For Cloud
+        /// Storage the next columns are: file_path start_offset For Cloud Datastore the next columns are: project_id
+        /// namespace_id path column_name offset</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputStorageConfig OutputConfig { get; set; } 
 
@@ -1361,7 +1361,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Set of files to scan.</summary>
     public class FileSet : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The url, in the format gs:. Trailing wildcard in the path is allowed.</summary>
+        /// <summary>The url, in the format `gs:`. Trailing wildcard in the path is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1457,8 +1457,8 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeTypes")]
         public virtual System.Nullable<bool> ExcludeTypes { get; set; } 
 
-        /// <summary>When true, a contextual quote from the data that triggered a finding will be included in the
-        /// response; see Finding.quote.</summary>
+        /// <summary>When true, a contextual quote from the data that triggered a finding is included in the response;
+        /// see Finding.quote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeQuote")]
         public virtual System.Nullable<bool> IncludeQuote { get; set; } 
 
@@ -1498,7 +1498,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Results of inspecting a list of items.</summary>
     public class InspectContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Each content_item from the request will have a result in this list, in the same order as the
+        /// <summary>Each content_item from the request has a result in this list, in the same order as the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<InspectResult> Results { get; set; } 
@@ -1671,7 +1671,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Cloud repository for storing output.</summary>
     public class OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The path to a Google Storage location to store output.</summary>
+        /// <summary>The path to a Google Cloud Storage location to store output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
         public virtual CloudStoragePath StoragePath { get; set; } 
 
@@ -1685,10 +1685,6 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// A partition ID contains several dimensions: project ID and namespace ID.</summary>
     public class PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If not empty, the ID of the database to which the entities belong.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
-        public virtual string DatabaseId { get; set; } 
-
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
         public virtual string NamespaceId { get; set; } 
@@ -1810,8 +1806,8 @@ namespace Google.Apis.DLP.v2beta1.Data
     public class ReplaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of information to replace. Only one ReplaceConfig per info_type should be provided. If
-        /// ReplaceConfig does not have an info_type, we'll match it against all info_types that are found but not
-        /// specified in another ReplaceConfig.</summary>
+        /// ReplaceConfig does not have an info_type, the DLP API matches it against all info_types that are found but
+        /// not specified in another ReplaceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual InfoType InfoType { get; set; } 
 

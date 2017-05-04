@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170425 (845)
+ *      <tr><th>API Rev<td>20170502 (852)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -427,6 +427,23 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                public enum SortOrderEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                    LASTMODIFIEDASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                    FIRSTNAMEASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                    LASTNAMEASCENDING,
+                }
+
                 /// <summary>Whether the response should include a sync token, which can be used to get all changes
                 /// since the last request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -452,23 +469,6 @@ namespace Google.Apis.PeopleService.v1
                 /// changed since the sync token was created will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                public enum SortOrderEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -502,6 +502,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
@@ -548,21 +557,12 @@ namespace Google.Apis.PeopleService.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
         }
 
-        /// <summary>Provides information about a person resource for a resource name. Use `people/me` to indicate the
+        /// <summary>Provides information about a person for a resource name. Use `people/me` to indicate the
         /// authenticated user.</summary>
         /// <param name="resourceName">The resource name of the person to provide information about.
         ///
@@ -574,7 +574,7 @@ namespace Google.Apis.PeopleService.v1
             return new GetRequest(service, resourceName);
         }
 
-        /// <summary>Provides information about a person resource for a resource name. Use `people/me` to indicate the
+        /// <summary>Provides information about a person for a resource name. Use `people/me` to indicate the
         /// authenticated user.</summary>
         public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
@@ -667,18 +667,18 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
+            /// <summary>The resource name, such as one returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
+            /// provide information about. You can include this parameter up to 50 times in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
             /// <summary>Comma-separated list of fields to be included in the response. Omitting this field will include
             /// all fields except for connections.list requests, which have a default mask that includes common fields
             /// like metadata, name, photo, and profile url. Each path should start with `person.`: for example,
             /// `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
-
-            /// <summary>The resource name, such as one returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
-            /// provide information about. You can include this parameter up to 50 times in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -705,18 +705,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMask.includeField",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "requestMask.includeField",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1110,7 +1110,12 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
         public virtual string NextSyncToken { get; set; } 
 
-        /// <summary>The total number of people in the list without pagination.</summary>
+        /// <summary>The total number of items in the list without pagination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
+        public virtual System.Nullable<int> TotalItems { get; set; } 
+
+        /// <summary>DEPRECATED(Please use total_items). The total number of people in the list without
+        /// pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPeople")]
         public virtual System.Nullable<int> TotalPeople { get; set; } 
 
@@ -1434,7 +1439,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual System.Collections.Generic.IList<Residence> Residences { get; set; } 
 
         /// <summary>The resource name for the person, assigned by the server. An ASCII string with a max length of 27
-        /// characters. Always starts with `people/`.</summary>
+        /// characters, in the form of `people/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -1489,7 +1494,8 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>The response for a single person</summary>
     public class PersonResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[HTTP 1.1 status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
+        /// <summary>DEPRECATED(Please use status instead). [HTTP 1.1 status
+        /// code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
         public virtual System.Nullable<int> HttpStatusCode { get; set; } 
 
@@ -1504,6 +1510,10 @@ namespace Google.Apis.PeopleService.v1.Data
         /// verified email, verified phone number, or a profile URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
         public virtual string RequestedResourceName { get; set; } 
+
+        /// <summary>The status of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1700,6 +1710,69 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
+    }    
+
+    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
+    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
+    /// is designed to be:
+    ///
+    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
+    ///
+    /// # Overview
+    ///
+    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
+    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
+    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
+    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
+    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
+    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    ///
+    /// # Language mapping
+    ///
+    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
+    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
+    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
+    /// to some error codes in C.
+    ///
+    /// # Other uses
+    ///
+    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
+    /// to provide a consistent developer experience across different environments.
+    ///
+    /// Example uses of this error model include:
+    ///
+    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
+    /// normal response to indicate the partial errors.
+    ///
+    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
+    /// reporting purpose.
+    ///
+    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
+    /// directly inside batch response, one for each error sub-response.
+    ///
+    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
+    /// those operations should be represented directly using the `Status` message.
+    ///
+    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
+    /// stripping needed for security/privacy reasons.</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
+        /// APIs to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>A read-only brief one-line description of the person.</summary>

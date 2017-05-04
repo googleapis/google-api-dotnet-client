@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170410 (830)
+ *      <tr><th>API Rev<td>20170501 (851)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4129,7 +4129,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 {    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is

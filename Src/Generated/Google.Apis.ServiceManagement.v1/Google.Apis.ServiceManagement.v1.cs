@@ -562,6 +562,7 @@ namespace Google.Apis.ServiceManagement.v1
         {
             this.service = service;
             configs = new ConfigsResource(service);
+            consumers = new ConsumersResource(service);
             rollouts = new RolloutsResource(service);
 
         }
@@ -791,13 +792,13 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The token of the page to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The token of the page to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -833,18 +834,18 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -929,6 +930,252 @@ namespace Google.Apis.ServiceManagement.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly ConsumersResource consumers;
+
+        /// <summary>Gets the Consumers resource.</summary>
+        public virtual ConsumersResource Consumers
+        {
+            get { return consumers; }
+        }
+
+        /// <summary>The "consumers" collection of methods.</summary>
+        public class ConsumersResource
+        {
+            private const string Resource = "consumers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ConsumersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
+            {
+                return new GetIamPolicyRequest(service, body, resource);
+            }
+
+            /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
+            /// and does not have a policy set.</summary>
+            public class GetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
+            {
+                /// <summary>Constructs a new GetIamPolicy request.</summary>
+                public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceManagement.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:getIamPolicy"; }
+                }
+
+                /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
+            {
+                return new SetIamPolicyRequest(service, body, resource);
+            }
+
+            /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+            /// policy.</summary>
+            public class SetIamPolicyRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Policy>
+            {
+                /// <summary>Constructs a new SetIamPolicy request.</summary>
+                public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceManagement.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "setIamPolicy"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:setIamPolicy"; }
+                }
+
+                /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</param>
+            public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
+            {
+                return new TestIamPermissionsRequest(service, body, resource);
+            }
+
+            /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+            /// exist, this will return an empty set of permissions, not a NOT_FOUND error.
+            ///
+            /// Note: This operation is designed to be used for building permission-aware UIs and command-line tools,
+            /// not for authorization checking. This operation may "fail open" without warning.</summary>
+            public class TestIamPermissionsRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsResponse>
+            {
+                /// <summary>Constructs a new TestIamPermissions request.</summary>
+                public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest body, string resource)
+                    : base(service)
+                {
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceManagement.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "testIamPermissions"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resource}:testIamPermissions"; }
+                }
+
+                /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+/consumers/[^/]+$",
                         });
                 }
 
@@ -1644,10 +1891,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1660,6 +1903,10 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1695,18 +1942,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2183,7 +2430,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
@@ -2413,6 +2660,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
+
+        /// <summary>Minimum deadline in seconds needed for this method. Calls having deadline value lower than this
+        /// will be rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
+        public virtual System.Nullable<double> MinDeadline { get; set; } 
 
         /// <summary>Selects the methods to which this rule applies.
         ///

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170419 (839)
+ *      <tr><th>API Rev<td>20170427 (847)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7664,6 +7664,16 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numPurchased")]
         public virtual System.Nullable<int> NumPurchased { get; set; } 
 
+        /// <summary>The state of permission acceptance with this product. This field is only set if the product is
+        /// approved. Possible states are: - "currentApproved", the current set of permissions is approved, but
+        /// additional permissions will require the administrator to reapprove the product (if the product was approved
+        /// without specifying what to when the required permissions change, this is the default), - "needsReapproval",
+        /// there are permissions which need to be accepted (currently the product is not assignable), -
+        /// "allCurrentAndFutureApproved", the current permissions are approved and any future permission updates will
+        /// be automatically approved without administrator review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual string Permissions { get; set; } 
+
         /// <summary>The ID of the product that the license is for. For example, "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
@@ -8251,6 +8261,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// product was updated since the URL was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalUrlInfo")]
         public virtual ApprovalUrlInfo ApprovalUrlInfo { get; set; } 
+
+        /// <summary>The permissions being approved with this app. This can either be the current set of permissions
+        /// only (additional permissions added to the app through updates will require review by the administrator) or
+        /// all current and future permissions for the app. If not specified, only the current set of permissions will
+        /// be approved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedPermissions")]
+        public virtual string ApprovedPermissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v2.6
- *      <tr><th>API Rev<td>20161027 (665)
+ *      <tr><th>API Rev<td>20170428 (848)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -1366,6 +1366,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1382,6 +1385,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -1394,11 +1398,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -1472,7 +1477,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1499,7 +1504,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1508,7 +1513,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1811,6 +1816,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1827,6 +1835,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -1839,11 +1848,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -1909,7 +1919,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1936,7 +1946,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -1945,7 +1955,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -2415,6 +2425,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> LandingPageIds { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2446,6 +2459,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SizeIds { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -2458,11 +2472,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -2643,7 +2658,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2706,7 +2721,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -2715,7 +2730,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3166,6 +3181,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -3182,6 +3200,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -3194,11 +3213,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -3255,7 +3275,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3282,7 +3302,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3291,7 +3311,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -3651,6 +3671,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual System.Nullable<bool> IncludeAdvertisersWithoutGroupsOnly { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -3671,6 +3694,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -3683,11 +3707,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -3788,7 +3813,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3824,7 +3849,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -3833,7 +3858,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4223,6 +4248,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual long CampaignId { get; private set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4230,11 +4258,12 @@ namespace Google.Apis.Dfareporting.v2_6
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -4291,7 +4320,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4309,7 +4338,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -4560,6 +4589,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -4580,6 +4612,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -4592,11 +4625,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -4702,7 +4736,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4738,7 +4772,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -4747,7 +4781,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -5087,6 +5121,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string MaxChangeTime { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -5268,7 +5305,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -5876,6 +5913,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -5892,6 +5932,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -5904,11 +5945,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -5965,7 +6007,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -5992,7 +6034,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -6001,7 +6043,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -6900,6 +6942,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -6913,6 +6958,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -6925,11 +6971,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 VALUE,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -6995,7 +7042,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -7022,7 +7069,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -7031,7 +7078,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -7491,6 +7538,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -7508,6 +7558,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -7520,11 +7571,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -7590,7 +7642,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -7617,7 +7669,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -7626,7 +7678,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -7974,6 +8026,8 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> AdvertiserIds { get; set; }
 
             /// <summary>Select only creative groups that belong to this subgroup.</summary>
+            /// [minimum: 1]
+            /// [maximum: 2]
             [Google.Apis.Util.RequestParameterAttribute("groupNumber", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> GroupNumber { get; set; }
 
@@ -7982,6 +8036,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -7999,6 +8056,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -8011,11 +8069,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -8090,7 +8149,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -8117,7 +8176,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -8126,7 +8185,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -8499,6 +8558,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -8523,6 +8585,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SizeIds { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -8535,11 +8598,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -8711,7 +8775,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -8756,7 +8820,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -8765,7 +8829,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9183,6 +9247,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -9200,6 +9267,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -9212,11 +9280,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -9282,7 +9351,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9309,7 +9378,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9318,7 +9387,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -9542,6 +9611,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -9562,6 +9634,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -9574,11 +9647,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -9689,7 +9763,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9725,7 +9799,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -9734,7 +9808,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -10398,6 +10472,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -10410,11 +10485,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -10534,7 +10610,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -10543,7 +10619,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -11361,6 +11437,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -11378,6 +11457,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -11390,11 +11470,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -11509,7 +11590,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11536,7 +11617,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11545,7 +11626,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -11915,6 +11996,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -11932,6 +12016,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -11944,11 +12029,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -12038,7 +12124,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -12065,7 +12151,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -12074,7 +12160,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -12708,6 +12794,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual System.Nullable<bool> InPlan { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -12724,6 +12813,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SiteId { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -12736,11 +12826,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -12828,7 +12919,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -12864,7 +12955,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -12873,7 +12964,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -14191,6 +14282,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -14216,6 +14310,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SiteId { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -14228,11 +14323,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -14307,7 +14403,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -14352,7 +14448,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -14361,7 +14457,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -14511,6 +14607,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -14531,6 +14630,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SiteId { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -14543,11 +14643,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -14613,7 +14714,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -14649,7 +14750,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -14658,7 +14759,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -14880,6 +14981,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string MaxEndDate { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 800]
+            /// [minimum: 0]
+            /// [maximum: 800]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -14962,6 +15066,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SiteIds { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -14974,11 +15079,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -15089,7 +15195,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "800",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -15179,7 +15285,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -15188,7 +15294,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -15612,6 +15718,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -15629,6 +15738,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -15641,11 +15751,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -15702,7 +15813,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -15729,7 +15840,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -15738,7 +15849,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -15964,6 +16075,8 @@ namespace Google.Apis.Dfareporting.v2_6
                 PLACEMENTTAGINSTREAMVIDEOPREFETCH,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3")]
                 PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST3,
+                [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4")]
+                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERNAL_REDIRECT")]
                 PLACEMENTTAGINTERNALREDIRECT,
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT")]
@@ -16281,6 +16394,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string MaxEndDate { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -16358,6 +16474,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> SizeIds { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -16370,11 +16487,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -16503,7 +16621,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -16602,7 +16720,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -16611,7 +16729,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -17201,6 +17319,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -17217,6 +17338,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -17229,11 +17351,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -17299,7 +17422,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -17326,7 +17449,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -17335,7 +17458,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -17864,6 +17987,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual System.Nullable<long> FloodlightActivityId { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -17881,6 +18007,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string PageToken { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -17893,11 +18020,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -17972,7 +18100,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -17999,7 +18127,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -18008,7 +18136,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -19434,6 +19562,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -19450,6 +19581,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -19462,11 +19594,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -19594,7 +19727,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -19621,7 +19754,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -19630,7 +19763,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -19992,6 +20125,8 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual long ProfileId { get; private set; }
 
             /// <summary>Select only sizes with this height.</summary>
+            /// [minimum: 0]
+            /// [maximum: 32767]
             [Google.Apis.Util.RequestParameterAttribute("height", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Height { get; set; }
 
@@ -20004,6 +20139,8 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Select only sizes with this width.</summary>
+            /// [minimum: 0]
+            /// [maximum: 32767]
             [Google.Apis.Util.RequestParameterAttribute("width", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> Width { get; set; }
 
@@ -20269,6 +20406,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -20285,6 +20425,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -20297,11 +20438,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -20358,7 +20500,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -20385,7 +20527,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -20394,7 +20536,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -20683,6 +20825,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual System.Nullable<bool> Active { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -20700,6 +20845,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string PageToken { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -20712,11 +20858,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -20782,7 +20929,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -20809,7 +20956,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -20818,7 +20965,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -21020,6 +21167,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -21036,6 +21186,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -21048,11 +21199,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -21118,7 +21270,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -21145,7 +21297,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -21154,7 +21306,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
             }
@@ -22023,6 +22175,9 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
             /// <summary>Maximum number of results to return.</summary>
+            /// [default: 1000]
+            /// [minimum: 0]
+            /// [maximum: 1000]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -22039,6 +22194,7 @@ namespace Google.Apis.Dfareporting.v2_6
             public virtual string SearchString { get; set; }
 
             /// <summary>Field by which to sort the list.</summary>
+            /// [default: ID]
             [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
 
@@ -22051,11 +22207,12 @@ namespace Google.Apis.Dfareporting.v2_6
                 NAME,
             }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
+            /// [default: ASCENDING]
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
 
-            /// <summary>Order of sorted results, default is ASCENDING.</summary>
+            /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
@@ -22125,7 +22282,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "maxResults",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "1000",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -22152,7 +22309,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortField",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ID",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -22161,7 +22318,7 @@ namespace Google.Apis.Dfareporting.v2_6
                         Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
+                        DefaultValue = "ASCENDING",
                         Pattern = null,
                     });
                 RequestParameters.Add(
@@ -22373,7 +22530,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS
         /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
         /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK</summary>
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -22400,7 +22557,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
         public virtual string Locale { get; set; } 
 
-        /// <summary>Maximum image size allowed for this account.</summary>
+        /// <summary>Maximum image size allowed for this account, in kilobytes. Value must be greater than or equal to
+        /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumImageSize")]
         public virtual System.Nullable<long> MaximumImageSize { get; set; } 
 
@@ -22422,7 +22580,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shareReportsWithTwitter")]
         public virtual System.Nullable<bool> ShareReportsWithTwitter { get; set; } 
 
-        /// <summary>File size limit in kilobytes of Rich Media teaser creatives. Must be between 1 and 10240.</summary>
+        /// <summary>File size limit in kilobytes of Rich Media teaser creatives. Acceptable values are 1 to 10240,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teaserSizeLimit")]
         public virtual System.Nullable<long> TeaserSizeLimit { get; set; } 
 
@@ -23115,8 +23274,9 @@ namespace Google.Apis.Dfareporting.v2_6.Data
     /// <summary>Audience Segment.</summary>
     public class AudienceSegment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Weight allocated to this segment. Must be between 1 and 1000. The weight assigned will be
-        /// understood in proportion to the weights assigned to other segments in the same segment group.</summary>
+        /// <summary>Weight allocated to this segment. The weight assigned will be understood in proportion to the
+        /// weights assigned to other segments in the same segment group. Acceptable values are 1 to 1000,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocation")]
         public virtual System.Nullable<int> Allocation { get; set; } 
 
@@ -23895,8 +24055,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The status of each conversion's insertion status. The status is returned in the same order that
-        /// conversions are inserted.</summary>
+        /// <summary>The insert status of each conversion. Statuses are returned in the same order that conversions are
+        /// inserted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Collections.Generic.IList<ConversionStatus> Status { get; set; } 
 
@@ -24356,7 +24516,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CompanionCreativeIds { get; set; } 
 
         /// <summary>Custom start time in seconds for making the asset visible. Applicable to the following creative
-        /// types: all RICH_MEDIA.</summary>
+        /// types: all RICH_MEDIA. Value must be greater than or equal to 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customStartTimeValue")]
         public virtual System.Nullable<int> CustomStartTimeValue { get; set; } 
 
@@ -24373,7 +24533,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         public virtual string DisplayType { get; set; } 
 
         /// <summary>Duration in seconds for which an asset will be displayed. Applicable to the following creative
-        /// types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO.</summary>
+        /// types: INSTREAM_VIDEO and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual System.Nullable<int> Duration { get; set; } 
 
@@ -24463,10 +24623,10 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pushdown")]
         public virtual System.Nullable<bool> Pushdown { get; set; } 
 
-        /// <summary>Pushdown duration in seconds for an asset. Must be between 0 and 9.99. Applicable to the following
-        /// creative types: all RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the
-        /// offsets are 0, the collapsedSize.width matches size.width, and the collapsedSize.height is less than
-        /// size.height.</summary>
+        /// <summary>Pushdown duration in seconds for an asset. Applicable to the following creative types: all
+        /// RICH_MEDIA.Additionally, only applicable when the asset pushdown field is true, the offsets are 0, the
+        /// collapsedSize.width matches size.width, and the collapsedSize.height is less than size.height. Acceptable
+        /// values are 0 to 9.99, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushdownDuration")]
         public virtual System.Nullable<float> PushdownDuration { get; set; } 
 
@@ -24531,9 +24691,9 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("windowMode")]
         public virtual string WindowMode { get; set; } 
 
-        /// <summary>zIndex value of an asset. This is a read-only field. Applicable to the following creative types:
-        /// all RICH_MEDIA.Additionally, only applicable to assets whose displayType is NOT one of the following types:
-        /// ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY.</summary>
+        /// <summary>zIndex value of an asset. Applicable to the following creative types: all RICH_MEDIA.Additionally,
+        /// only applicable to assets whose displayType is NOT one of the following types: ASSET_DISPLAY_TYPE_INPAGE or
+        /// ASSET_DISPLAY_TYPE_OVERLAY. Acceptable values are -999999999 to 999999999, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zIndex")]
         public virtual System.Nullable<int> ZIndex { get; set; } 
 
@@ -24692,14 +24852,14 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         }
 
         /// <summary>Rich media exit overrides for this creative assignment. Applicable when the creative type is any of
-        /// the following: - RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND -
+        /// the following: - DISPLAY - RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND -
         /// RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING
-        /// - RICH_MEDIA_PEEL_DOWN - ADVANCED_BANNER - VPAID_LINEAR - VPAID_NON_LINEAR</summary>
+        /// - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("richMediaExitOverrides")]
         public virtual System.Collections.Generic.IList<RichMediaExitOverride> RichMediaExitOverrides { get; set; } 
 
         /// <summary>Sequence number of the creative assignment, applicable when the rotation type is
-        /// CREATIVE_ROTATION_TYPE_SEQUENTIAL.</summary>
+        /// CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to 65535, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sequence")]
         public virtual System.Nullable<int> Sequence { get; set; } 
 
@@ -24727,7 +24887,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         }
 
         /// <summary>Weight of the creative assignment, applicable when the rotation type is
-        /// CREATIVE_ROTATION_TYPE_RANDOM.</summary>
+        /// CREATIVE_ROTATION_TYPE_RANDOM. Value must be greater than or equal to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; } 
 
@@ -24913,9 +25073,9 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
 
-        /// <summary>Subgroup of the creative group. Assign your creative groups to one of the following subgroups in
-        /// order to filter or manage them more easily. This field is required on insertion and is read-only after
-        /// insertion. Acceptable values are: - 1 - 2</summary>
+        /// <summary>Subgroup of the creative group. Assign your creative groups to a subgroup in order to filter or
+        /// manage them more easily. This field is required on insertion and is read-only after insertion. Acceptable
+        /// values are 1 to 2, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupNumber")]
         public virtual System.Nullable<int> GroupNumber { get; set; } 
 
@@ -25166,11 +25326,11 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
         public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; } 
 
-        /// <summary>Hours of the day when the ad will serve. Must be an integer between 0 and 23 (inclusive), where 0
-        /// is midnight to 1 AM, and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad
-        /// would serve during these hours on the specified days. For example, if Monday, Wednesday, Friday are the days
-        /// of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday,
-        /// Wednesdays, and Fridays at 9-10am and 3-5pm.</summary>
+        /// <summary>Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight.
+        /// Can be specified with days of week, in which case the ad would serve during these hours on the specified
+        /// days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9,
+        /// 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable
+        /// values are 0 to 23, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hoursOfDay")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> HoursOfDay { get; set; } 
 
@@ -25216,7 +25376,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
 
         /// <summary>Impression ratio for this ad. This ratio determines how often each ad is served relative to the
         /// others. For example, if ad A has an impression ratio of 1 and ad B has an impression ratio of 3, then DCM
-        /// will serve ad B three times as often as ad A. Must be between 1 and 10.</summary>
+        /// will serve ad B three times as often as ad A. Acceptable values are 1 to 10, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionRatio")]
         public virtual System.Nullable<long> ImpressionRatio { get; set; } 
 
@@ -25386,22 +25546,22 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contactAssignments")]
         public virtual System.Collections.Generic.IList<DirectorySiteContactAssignment> ContactAssignments { get; set; } 
 
-        /// <summary>Country ID of this directory site.</summary>
+        /// <summary>Country ID of this directory site. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryId")]
         public virtual System.Nullable<long> CountryId { get; set; } 
 
-        /// <summary>Currency ID of this directory site. Possible values are: - "1" for USD - "2" for GBP - "3" for ESP
-        /// - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD - "9" for FRF - "10" for ITL - "11"
-        /// for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for IEP - "16" for NLG - "17" for EUR - "18" for
-        /// KRW - "19" for TWD - "20" for SGD - "21" for CNY - "22" for HKD - "23" for NZD - "24" for MYR - "25" for BRL
-        /// - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS - "31" for PEN - "32" for ILS -
-        /// "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN - "39" for INR - "40" for THB -
-        /// "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB - "46" for AED - "47" for BGN -
-        /// "48" for HRK</summary>
+        /// <summary>Currency ID of this directory site. This is a read-only field. Possible values are: - "1" for USD -
+        /// "2" for GBP - "3" for ESP - "4" for SEK - "5" for CAD - "6" for JPY - "7" for DEM - "8" for AUD - "9" for
+        /// FRF - "10" for ITL - "11" for DKK - "12" for NOK - "13" for FIM - "14" for ZAR - "15" for IEP - "16" for NLG
+        /// - "17" for EUR - "18" for KRW - "19" for TWD - "20" for SGD - "21" for CNY - "22" for HKD - "23" for NZD -
+        /// "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS -
+        /// "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
+        /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
-        /// <summary>Description of this directory site.</summary>
+        /// <summary>Description of this directory site. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -25948,7 +26108,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdDimensionValue")]
         public virtual DimensionValue AdvertiserIdDimensionValue { get; set; } 
 
-        /// <summary>Code type used for cache busting in the generated tag.</summary>
+        /// <summary>Code type used for cache busting in the generated tag. Applicable only when
+        /// floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheBustingType")]
         public virtual string CacheBustingType { get; set; } 
 
@@ -26337,13 +26498,13 @@ namespace Google.Apis.Dfareporting.v2_6.Data
     /// <summary>Frequency Cap.</summary>
     public class FrequencyCap : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days in seconds,
-        /// or 7,776,000.</summary>
+        /// <summary>Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days. Acceptable
+        /// values are 1 to 7776000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual System.Nullable<long> Duration { get; set; } 
 
-        /// <summary>Number of times an individual user can be served the ad within the specified duration. The maximum
-        /// allowed is 15.</summary>
+        /// <summary>Number of times an individual user can be served the ad within the specified duration. Acceptable
+        /// values are 1 to 15, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
         public virtual System.Nullable<long> Impressions { get; set; } 
 
@@ -26754,13 +26915,13 @@ namespace Google.Apis.Dfareporting.v2_6.Data
     {
         /// <summary>Lookback window, in days, from the last time a given user clicked on one of your ads. If you enter
         /// 0, clicks will not be considered as triggering events for floodlight tracking. If you leave this field
-        /// blank, the default value for your account will be used.</summary>
+        /// blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickDuration")]
         public virtual System.Nullable<int> ClickDuration { get; set; } 
 
         /// <summary>Lookback window, in days, from the last time a given user viewed one of your ads. If you enter 0,
         /// impressions will not be considered as triggering events for floodlight tracking. If you leave this field
-        /// blank, the default value for your account will be used.</summary>
+        /// blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postImpressionActivitiesDuration")]
         public virtual System.Nullable<int> PostImpressionActivitiesDuration { get; set; } 
 
@@ -27038,8 +27199,9 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityIdDimensionValue")]
         public virtual DimensionValue FloodlightActivityIdDimensionValue { get; set; } 
 
-        /// <summary>Weight associated with this optimization. Must be greater than 1. The weight assigned will be
-        /// understood in proportion to the weights assigned to the other optimization activities.</summary>
+        /// <summary>Weight associated with this optimization. The weight assigned will be understood in proportion to
+        /// the weights assigned to the other optimization activities. Value must be greater than or equal to
+        /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; } 
 
@@ -27490,8 +27652,9 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         /// "PLACEMENT_TAG_INTERNAL_REDIRECT" - "PLACEMENT_TAG_JAVASCRIPT" -
         /// "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" -
         /// "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" -
-        /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME" -
-        /// "PLACEMENT_TAG_TRACKING_JAVASCRIPT"</summary>
+        /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" -
+        /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME"
+        /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagFormats")]
         public virtual System.Collections.Generic.IList<string> TagFormats { get; set; } 
 
@@ -28000,7 +28163,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingComment")]
         public virtual string PricingComment { get; set; } 
 
-        /// <summary>Rate or cost of this pricing period.</summary>
+        /// <summary>Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are
+        /// 0 to 1000000000000000000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCostNanos")]
         public virtual System.Nullable<long> RateOrCostNanos { get; set; } 
 
@@ -28010,7 +28174,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual string StartDate { get; set; } 
 
-        /// <summary>Units of this pricing period.</summary>
+        /// <summary>Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; } 
 
@@ -28273,7 +28437,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Number of days that a user should remain in the remarketing list without an impression.</summary>
+        /// <summary>Number of days that a user should remain in the remarketing list without an impression. Acceptable
+        /// values are 1 to 540, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifeSpan")]
         public virtual System.Nullable<long> LifeSpan { get; set; } 
 
@@ -29029,7 +29194,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
     /// <summary>Represents the dimensions of ads, placements, creatives, or creative assets.</summary>
     public class Size : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Height of this size.</summary>
+        /// <summary>Height of this size. Acceptable values are 0 to 32767, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; } 
 
@@ -29045,7 +29210,7 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Width of this size.</summary>
+        /// <summary>Width of this size. Acceptable values are 0 to 32767, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
 
@@ -29141,7 +29306,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
     /// <summary>Placement Tag Data</summary>
     public class TagData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Ad associated with this placement tag.</summary>
+        /// <summary>Ad associated with this placement tag. Applicable only when format is
+        /// PLACEMENT_TAG_TRACKING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adId")]
         public virtual System.Nullable<long> AdId { get; set; } 
 
@@ -29149,7 +29315,8 @@ namespace Google.Apis.Dfareporting.v2_6.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clickTag")]
         public virtual string ClickTag { get; set; } 
 
-        /// <summary>Creative associated with this placement tag.</summary>
+        /// <summary>Creative associated with this placement tag. Applicable only when format is
+        /// PLACEMENT_TAG_TRACKING.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
         public virtual System.Nullable<long> CreativeId { get; set; } 
 

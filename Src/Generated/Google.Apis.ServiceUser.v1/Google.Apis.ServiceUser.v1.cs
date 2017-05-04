@@ -969,6 +969,11 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
+        /// <summary>Minimum deadline in seconds needed for this method. Calls having deadline value lower than this
+        /// will be rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
+        public virtual System.Nullable<double> MinDeadline { get; set; } 
+
         /// <summary>Selects the methods to which this rule applies.
         ///
         /// Refer to selector for syntax details.</summary>

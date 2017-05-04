@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170409 (829)
+ *      <tr><th>API Rev<td>20170416 (836)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -35888,7 +35888,7 @@ namespace Google.Apis.Compute.beta.Data
     }    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
@@ -36306,7 +36306,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRate")]
         public virtual System.Nullable<int> MaxRate { get; set; } 
 
-        /// <summary>The max requests per second (RPS) that a single backend instance can handle.This is used to
+        /// <summary>The max requests per second (RPS) that a single backend instance can handle. This is used to
         /// calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or
         /// maxRatePerInstance must be set.
         ///
@@ -37775,7 +37775,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>This field is used for external load balancing and VPN.
+        /// <summary>This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy,
+        /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
         ///
         /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
         /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
@@ -37786,7 +37787,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is only used for internal load balancing.
+        /// <summary>This field is used along with the backend_service field for internal load balancing.
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
@@ -37804,6 +37805,24 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>An optional prefix to the service name for this Forwarding Rule. If specified, will be the first
+        /// label of the fully qualified service name.
+        ///
+        /// The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63
+        /// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
+        /// must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except
+        /// the last character, which cannot be a dash.
+        ///
+        /// This field is only used for internal load balancing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLabel")]
+        public virtual string ServiceLabel { get; set; } 
+
+        /// <summary>[Output Only] The internal fully qualified service name for this Forwarding Rule.
+        ///
+        /// This field is only used for internal load balancing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; } 
 
         /// <summary>This field is not used for external load balancing.
         ///

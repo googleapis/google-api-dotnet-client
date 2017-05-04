@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud RuntimeConfig API Version v1
+ *   Google Cloud Runtime Configuration API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud RuntimeConfig API</a>
+ *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170403 (823)
+ *      <tr><th>API Rev<td>20170429 (849)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud RuntimeConfig API can be found at
+ * The complete API documentation for using Google Cloud Runtime Configuration API can be found at
  * <a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>https://cloud.google.com/deployment-manager/runtime-configurator/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud RuntimeConfig API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Runtime Configuration API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

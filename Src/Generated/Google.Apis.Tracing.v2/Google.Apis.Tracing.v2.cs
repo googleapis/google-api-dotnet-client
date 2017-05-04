@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Google Tracing API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170419 (839)
+ *      <tr><th>API Rev<td>20170425 (845)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -585,24 +585,6 @@ namespace Google.Apis.Tracing.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
-                /// reasonable value. The implementation may return fewer traces than the requested page size.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
-                ///
-                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
-                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
-                /// root span)
-                ///
-                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
-                ///
-                /// Only one sort field is permitted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
                 /// <summary>An optional filter for the request. Example: `version_label_key:a
                 /// some_label:some_label_key` returns traces from version `a` and has `some_label` with
                 /// `some_label_key`.</summary>
@@ -623,6 +605,24 @@ namespace Google.Apis.Tracing.v2
                 /// `next_page_token` field from a previous request. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
+                /// reasonable value. The implementation may return fewer traces than the requested page size.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
+                ///
+                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
+                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
+                /// root span)
+                ///
+                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
+                ///
+                /// Only one sort field is permitted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -658,24 +658,6 @@ namespace Google.Apis.Tracing.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -706,6 +688,24 @@ namespace Google.Apis.Tracing.v2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

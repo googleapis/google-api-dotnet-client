@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170412 (832)
+ *      <tr><th>API Rev<td>20170425 (845)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -422,6 +422,111 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^operations/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
+        /// method, it returns `UNIMPLEMENTED`.
+        ///
+        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
+        /// schemes, such as `users/operations`.</summary>
+        public class ListRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1beta2.Data.ListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The name of the operation collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta2/operations"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1060,6 +1165,11 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryMb")]
         public virtual System.Nullable<int> AvailableMemoryMb { get; set; } 
 
+        /// <summary>Output only. The Google Cloud Storage signed URL generated for downloading the current deployed
+        /// source code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployedSourceDownloadUrl")]
+        public virtual string DeployedSourceDownloadUrl { get; set; } 
+
         /// <summary>The name of the function (as defined in source code) that will be executed. Defaults to the
         /// resource name suffix, if not specified. For backward compatibility, if function with given name is not
         /// found, then the system will try to use function named "function". For Node.js this is name of a function
@@ -1089,7 +1199,8 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
-        /// <summary>The URL, starting with gs://, pointing to the zip archive which contains the function.</summary>
+        /// <summary>The Google Cloud Storage URL, starting with gs://, pointing to the zip archive which contains the
+        /// function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceArchiveUrl")]
         public virtual string SourceArchiveUrl { get; set; } 
 
@@ -1176,6 +1287,21 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

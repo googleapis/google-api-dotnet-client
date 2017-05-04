@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170406 (826)
+ *      <tr><th>API Rev<td>20170411 (831)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -1090,6 +1090,109 @@ namespace Google.Apis.Container.v1
                     }
                 }
 
+                /// <summary>Completes master IP rotation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://developers.google.com/console/help/new/#projectnumber).</param>
+                /// <param name="zone">The name
+                /// of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                ///
+                /// <param name="clusterId">The name of the cluster.</param>
+                public virtual CompleteIpRotationRequest CompleteIpRotation(Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new CompleteIpRotationRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Completes master IP rotation.</summary>
+                public class CompleteIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new CompleteIpRotation request.</summary>
+                    public CompleteIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.CompleteIPRotationRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://developers.google.com/console/help/new/#projectnumber).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.CompleteIPRotationRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "completeIpRotation"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation"; }
+                    }
+
+                    /// <summary>Initializes CompleteIpRotation parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Creates a cluster, consisting of the specified number and type of Google Compute Engine
                 /// instances.
                 ///
@@ -1755,6 +1858,109 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>Initializes SetMasterAuth parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Start master IP rotation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://developers.google.com/console/help/new/#projectnumber).</param>
+                /// <param name="zone">The name
+                /// of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                ///
+                /// <param name="clusterId">The name of the cluster.</param>
+                public virtual StartIpRotationRequest StartIpRotation(Google.Apis.Container.v1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new StartIpRotationRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Start master IP rotation.</summary>
+                public class StartIpRotationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new StartIpRotation request.</summary>
+                    public StartIpRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.StartIPRotationRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://developers.google.com/console/help/new/#projectnumber).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.StartIPRotationRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "startIpRotation"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation"; }
+                    }
+
+                    /// <summary>Initializes StartIpRotation parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2462,7 +2668,7 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The resource labels for the cluster to use to annotate any related GCE resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
-        public virtual ResourceLabels ResourceLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -2551,6 +2757,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>CompleteIPRotationRequest moves the cluster master back into single-IP mode.</summary>
+    public class CompleteIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>CreateClusterRequest creates a cluster.</summary>
     public class CreateClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2606,22 +2819,6 @@ namespace Google.Apis.Container.v1.Data
         /// pod in the cluster that manages the load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A label to be applied to Google Compute Engine resources. It must comply with RFC1035 for each key and
-    /// value.</summary>
-    public class Item : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Key for this label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>The Value for this label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2938,19 +3135,6 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The set of Google Compute Engine labels that will be applied to any underlying resources that the
-    /// Google Container Cluster creates or uses. These are merely metadata on the resources, and do not change the
-    /// behavior of the cluster.</summary>
-    public class ResourceLabels : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of labels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<Item> Items { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>RollbackNodePoolUpgradeRequest rollbacks the previously Aborted or Failed NodePool upgrade. This will
     /// be an no-op if the last upgrade successfully completed.</summary>
     public class RollbackNodePoolUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -2999,7 +3183,7 @@ namespace Google.Apis.Container.v1.Data
 
         /// <summary>The labels to set for that cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
-        public virtual ResourceLabels ResourceLabels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3038,6 +3222,14 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>StartIPRotationRequest creates a new IP for the cluster and then performs a node upgrade on each node
+    /// pool to point to the new IP.</summary>
+    public class StartIPRotationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

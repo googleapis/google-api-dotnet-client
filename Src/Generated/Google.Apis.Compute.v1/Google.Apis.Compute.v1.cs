@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170409 (829)
+ *      <tr><th>API Rev<td>20170416 (836)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -29118,7 +29118,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRate")]
         public virtual System.Nullable<int> MaxRate { get; set; } 
 
-        /// <summary>The max requests per second (RPS) that a single backend instance can handle.This is used to
+        /// <summary>The max requests per second (RPS) that a single backend instance can handle. This is used to
         /// calculate the capacity of the group. Can be used in either balancing mode. For RATE mode, either maxRate or
         /// maxRatePerInstance must be set.
         ///
@@ -30240,7 +30240,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>This field is used for external load balancing and VPN.
+        /// <summary>This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy,
+        /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
         ///
         /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range
         /// will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint
@@ -30251,7 +30252,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
-        /// <summary>This field is only used for internal load balancing.
+        /// <summary>This field is used along with the backend_service field for internal load balancing.
         ///
         /// When the load balancing scheme is INTERNAL, a single port or a comma separated list of ports can be
         /// configured. Only packets addressed to these ports will be forwarded to the backends configured with this
