@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20170503 (853)
+ *      <tr><th>API Rev<td>20170504 (854)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1808,7 +1808,7 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.

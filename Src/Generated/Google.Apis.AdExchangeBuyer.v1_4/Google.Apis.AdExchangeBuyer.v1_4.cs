@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170215 (776)
+ *      <tr><th>API Rev<td>20170504 (854)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3489,8 +3489,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         {
             /// <summary>The protocol that the bidder endpoint is using. OpenRTB protocols with prefix
             /// PROTOCOL_OPENRTB_PROTOBUF use proto buffer, otherwise use JSON.  Allowed values: - PROTOCOL_ADX -
-            /// PROTOCOL_OPENRTB_2_2 - PROTOCOL_OPENRTB_2_3 - PROTOCOL_OPENRTB_2_4 - PROTOCOL_OPENRTB_PROTOBUF_2_3 -
-            /// PROTOCOL_OPENRTB_PROTOBUF_2_4</summary>
+            /// PROTOCOL_OPENRTB_2_2 - PROTOCOL_OPENRTB_2_3 - PROTOCOL_OPENRTB_2_4 - PROTOCOL_OPENRTB_2_5 -
+            /// PROTOCOL_OPENRTB_PROTOBUF_2_3 - PROTOCOL_OPENRTB_PROTOBUF_2_4 - PROTOCOL_OPENRTB_PROTOBUF_2_5</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("bidProtocol")]
             public virtual string BidProtocol { get; set; } 
 
@@ -3827,7 +3827,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         /// <summary>The granular status of this ad in specific contexts. A context here relates to where something
         /// ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the type of
-        /// auction). Read-only. This field should not be set in requests.</summary>
+        /// auction). Read-only. This field should not be set in requests. See the examples in the Creatives guide for
+        /// more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingRestrictions")]
         public virtual System.Collections.Generic.IList<Creative.ServingRestrictionsData> ServingRestrictions { get; set; } 
 
@@ -4261,7 +4262,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     public class DealTermsGuaranteedFixedPriceTermsBillingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The timestamp (in ms since epoch) when the original reservation price for the deal was first
-        /// converted to DFP currency. This is used to convert the contracted price into advertiser's currency without
+        /// converted to DFP currency. This is used to convert the contracted price into buyer's currency without
         /// discrepancy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionTimeMs")]
         public virtual System.Nullable<long> CurrencyConversionTimeMs { get; set; } 
@@ -4576,6 +4577,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// based on seller created products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRfpTemplate")]
         public virtual System.Nullable<bool> IsRfpTemplate { get; set; } 
+
+        /// <summary>True, if the buyside inventory setup is complete for this deal. (readonly, except via
+        /// OrderSetupCompleted action)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
+        public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "adexchangebuyer#marketplaceDeal".</summary>
@@ -5045,15 +5051,18 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in an product can become [0,1]
-    /// deals. To check if there is a PricePerBuyer for a particular buyer or buyer/advertiser pair, we look for the
-    /// most specific matching rule - we first look for a rule matching the buyer and advertiser, next a rule with the
-    /// buyer but an empty advertiser list, and otherwise look for a matching rule where no buyer is set.</summary>
+    /// <summary>Used to specify pricing rules for buyers. Each PricePerBuyer in a product can become [0,1] deals. To
+    /// check if there is a PricePerBuyer for a particular buyer we look for the most specific matching rule - we first
+    /// look for a rule matching the buyer and otherwise look for a matching rule where no buyer is set.</summary>
     public class PricePerBuyer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional access type for this buyer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auctionTier")]
         public virtual string AuctionTier { get; set; } 
+
+        /// <summary>Reference to the buyer that will get billed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billedBuyer")]
+        public virtual Buyer BilledBuyer { get; set; } 
 
         /// <summary>The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers
         /// match, and there's no more specific rule matching the buyer).</summary>
@@ -5089,6 +5098,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     /// either buyer or the seller.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The billed buyer corresponding to the buyer that created the offer. (readonly, except on
+        /// create)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billedBuyer")]
+        public virtual Buyer BilledBuyer { get; set; } 
+
+        /// <summary>The buyer that created the offer if this is a buyer initiated offer (readonly, except on
+        /// create)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyer")]
+        public virtual Buyer Buyer { get; set; } 
+
         /// <summary>Creation time in ms. since epoch (readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimeMs")]
         public virtual System.Nullable<long> CreationTimeMs { get; set; } 
@@ -5096,6 +5115,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>Optional contact information for the creator of this product. (buyer-readonly)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorContacts")]
         public virtual System.Collections.Generic.IList<ContactInformation> CreatorContacts { get; set; } 
+
+        /// <summary>The role that created the offer. Set to BUYER for buyer initiated offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorRole")]
+        public virtual string CreatorRole { get; set; } 
 
         /// <summary>The set of fields around delivery control that are interesting for a buyer to see but are non-
         /// negotiable. These are set by the publisher. This message is assigned an id of 100 since some day we would
@@ -5248,7 +5271,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual System.Nullable<bool> IsRenegotiating { get; set; } 
 
         /// <summary>True, if the buyside inventory setup is complete for this proposal. (readonly, except via
-        /// OrderSetupCompleted action)</summary>
+        /// OrderSetupCompleted action) Deprecated in favor of deal level setup complete flag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isSetupComplete")]
         public virtual System.Nullable<bool> IsSetupComplete { get; set; } 
 
@@ -5493,6 +5516,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         /// <summary>The Creative size type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeSizeType")]
         public virtual string CreativeSizeType { get; set; } 
+
+        /// <summary>The native template for native ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeTemplate")]
+        public virtual string NativeTemplate { get; set; } 
 
         /// <summary>For regular or video creative size type, specifies the size of the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]

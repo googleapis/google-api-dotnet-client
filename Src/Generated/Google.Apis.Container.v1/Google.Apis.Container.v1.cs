@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170411 (831)
+ *      <tr><th>API Rev<td>20170424 (844)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2584,8 +2584,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTime { get; set; } 
 
-        /// <summary>[Output only] The software version of the master endpoint and kubelets used in the cluster when it
-        /// was first created. The version can be upgraded over time.</summary>
+        /// <summary>The initial Kubernetes version for this cluster.  Valid versions are those found in
+        /// validMasterVersions returned by getServerConfig.  The version can be upgraded over time; such upgrades are
+        /// reflected in currentMasterVersion and currentNodeVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialClusterVersion")]
         public virtual string InitialClusterVersion { get; set; } 
 
@@ -2899,11 +2900,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ClusterCaCertificate { get; set; } 
 
         /// <summary>The password to use for HTTP basic authentication to the master endpoint. Because the master
-        /// endpoint is open to the Internet, you should create a strong password.</summary>
+        /// endpoint is open to the Internet, you should create a strong password.  If a password is provided for
+        /// cluster creation, username must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
-        /// <summary>The username to use for HTTP basic authentication to the master endpoint.</summary>
+        /// <summary>The username to use for HTTP basic authentication to the master endpoint. For clusters v1.6.0 and
+        /// later, you can disable basic authentication by providing an empty username.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
 
