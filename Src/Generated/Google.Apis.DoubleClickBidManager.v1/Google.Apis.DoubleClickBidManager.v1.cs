@@ -108,7 +108,13 @@ namespace Google.Apis.DoubleClickBidManager.v1
         }
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the DoubleClick Bid Manager API.</summary>
+        public class Scope
+        {
+            /// <summary>View and manage your reports in DoubleClick Bid Manager</summary>
+            public static string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
 
+        }
 
 
 

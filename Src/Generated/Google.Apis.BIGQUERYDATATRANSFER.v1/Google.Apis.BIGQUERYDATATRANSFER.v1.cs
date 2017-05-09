@@ -1422,10 +1422,6 @@ namespace Google.Apis.BIGQUERYDATATRANSFER.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required list of fields to be updated in this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                 /// provided, the transfer configuration will be associated with the gaia id of the authorizing user. In
                 /// order to obtain authorization_code, please make a request to
@@ -1440,6 +1436,10 @@ namespace Google.Apis.BIGQUERYDATATRANSFER.v1
                 /// application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
+
+                /// <summary>Required list of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1481,18 +1481,18 @@ namespace Google.Apis.BIGQUERYDATATRANSFER.v1
                             Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "authorizationCode", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "authorizationCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "authorizationCode", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "authorizationCode",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

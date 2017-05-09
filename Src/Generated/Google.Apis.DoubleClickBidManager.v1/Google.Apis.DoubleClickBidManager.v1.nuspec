@@ -35,9 +35,11 @@
         <dependencies>
             <group targetFramework="netstandard1.3">
                 <dependency id="Google.Apis" version="1.25.0" />
+                <dependency id="Google.Apis.Auth" version="1.25.0" />
             </group>
             <group targetFramework="net45">
                 <dependency id="Google.Apis" version="1.25.0" />
+                <dependency id="Google.Apis.Auth" version="1.25.0" />
             </group>
             <!--
               After v1.10.0 of Google.Apis, we
@@ -47,10 +49,12 @@
             -->
             <group targetFramework="portable-net45+netcore45+wpa81+wp8">
                 <dependency id="Google.Apis" version="1.25.0" />
+                <dependency id="Google.Apis.Auth" version="1.25.0" />
             </group>
             <group targetFramework="portable-net40+sl50+netcore45+wpa81+wp8">
                 <!-- Use [version] to require exact match. -->
                 <dependency id="Google.Apis" version="[1.10.0]" />
+                <dependency id="Google.Apis.Auth" version="[1.10.0]" />
             </group>
         </dependencies>
     </metadata>

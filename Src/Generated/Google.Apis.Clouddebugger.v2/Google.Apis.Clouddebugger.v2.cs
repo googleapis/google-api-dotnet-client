@@ -961,11 +961,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>This field is deprecated. The following fields are always stripped out of the result:
-                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> StripResults { get; set; }
-
                     /// <summary>A wait token that, if specified, blocks the call until the breakpoints list has
                     /// changed, or a server selected timeout has expired.  The value should be set from the last
                     /// response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
@@ -1001,6 +996,11 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
+                    /// <summary>This field is deprecated. The following fields are always stripped out of the result:
+                    /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> StripResults { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1031,15 +1031,6 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "stripResults", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "stripResults",
-                                IsRequired = false,
-                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1083,6 +1074,15 @@ namespace Google.Apis.CloudDebugger.v2
                             "includeInactive", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "includeInactive",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "stripResults", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "stripResults",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1192,6 +1192,11 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
+                /// <summary>When set to `true`, the result includes all debuggees. Otherwise, the result includes only
+                /// debuggees that are active.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
                 /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Project { get; set; }
@@ -1200,11 +1205,6 @@ namespace Google.Apis.CloudDebugger.v2
                 /// `google.com/intellij/v1`).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ClientVersion { get; set; }
-
-                /// <summary>When set to `true`, the result includes all debuggees. Otherwise, the result includes only
-                /// debuggees that are active.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1231,6 +1231,15 @@ namespace Google.Apis.CloudDebugger.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
+                        "includeInactive", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeInactive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "project", new Google.Apis.Discovery.Parameter
                         {
                             Name = "project",
@@ -1243,15 +1252,6 @@ namespace Google.Apis.CloudDebugger.v2
                         "clientVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "clientVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeInactive", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeInactive",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
