@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   
   <Import Project="..\CommonProjectProperties.xml" />
 
@@ -27,5 +27,7 @@ Supported Platforms:
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="Newtonsoft.Json" Version="7.0.1" />
   </ItemGroup>
+
+  <Import Project="..\StripDesktopOnNonWindows.xml" />
 
 </Project>

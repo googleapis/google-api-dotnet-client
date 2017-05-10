@@ -36,7 +36,7 @@ namespace Google.Apis.Tests.Apis.Requests
     /// <summary>Tests for <seealso cref="Google.Apis.Requests.BatchRequest"/>.</summary>
     public class BatchRequestTest
     {
-        const string ExpectedContentMessage = @"--BOUNDARY
+        private static string ExpectedContentMessage = NormalizeLineEndings(@"--BOUNDARY
 Content-Type: application/http
 
 POST http://sample.com/5?q=20
@@ -57,7 +57,7 @@ Content-Length:  43
 {""etag_key"":""\""200\"""",""name_key"":""Name1-1""}
 
 --BOUNDARY--
-";
+");
         /// <summary>A mock response class.</summary>
         class MockResponse : IDirectResponseSchema
         {
@@ -153,7 +153,7 @@ Content-Length:  43
         /// </summary>
         class BatchMessageHandler : CountableMessageHandler
         {
-            const string ResponseContent = @"--BOUNDARY
+            private static string ResponseContent = NormalizeLineEndings(@"--BOUNDARY
 Content-Type: application/http
 
 HTTP/1.1 200 OK
@@ -173,9 +173,9 @@ Content-Type: application/http
 
 SECOND_RESPONSE
 
---BOUNDARY--";
+--BOUNDARY--");
 
-            const string SuccessfulResponse =
+            private static string SuccessfulResponse = NormalizeLineEndings(
 @"HTTP/1.1 200 OK
 ETag: ""234""
 Content-Type: application/json; charset=UTF-8
@@ -183,9 +183,9 @@ Content-Length: 202
 
 {
  ""id_key"": 2
-}";
+}");
 
-            const string UnsuccessfulResponse =
+            private static string UnsuccessfulResponse = NormalizeLineEndings(
 @"HTTP/1.1 404 Not Found
 Content-Type: application/json; charset=UTF-8
 Date: Thu, 14 Nov 2013 22:03:08 GMT
@@ -205,7 +205,7 @@ Content-Length: 202
   ""code"": 404,
   ""message"": ""Not Found""
  }
-}";
+}");
             bool successful2ndResponse;
             public BatchMessageHandler(bool successful2ndReponse = true)
             {
@@ -387,13 +387,13 @@ Content-Length: 202
         [Fact]
         public void CreateIndividualRequest_Test()
         {
-            var expectedMessage = @"POST http://sample.com/5?q=20
+            var expectedMessage = NormalizeLineEndings(@"POST http://sample.com/5?q=20
 If-Match: ""123""
 Content-Type: application/json; charset=utf-8
 Content-Length:  40
 
 {""etag_key"":""\""123\"""",""name_key"":""Name""}
-";
+");
             using (var service = new MockClientService("http://sample.com"))
             {
                 var request = new TestClientServiceRequest(service, new MockRequest
@@ -410,13 +410,13 @@ Content-Length:  40
         [Fact]
         public void CreateRequestContentString_Test()
         {
-            var expectedMessage = @"GET http://test.com:2020/
+            var expectedMessage = NormalizeLineEndings(@"GET http://test.com:2020/
 Accept-Encoding: gzip
 Content-Type: application/json
 Content-Length:  11
 
 hello world
-";
+");
             var request = new HttpRequestMessage(HttpMethod.Get, "http://test.com:2020");
             request.Content = new StringContent("hello world");
             request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));

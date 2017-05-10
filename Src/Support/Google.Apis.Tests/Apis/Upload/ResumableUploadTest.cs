@@ -27,6 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,10 +38,6 @@ namespace Google.Apis.Tests.Apis.Upload
     /// <summary>
     /// Tests of resumable upload, that uses a real HTTP server.
     /// </summary>
-    /// <remarks>
-    /// These tests are very flakey on Travis, due to issue #765, so they are not run on Travis.
-    /// When these tests de-flake on travis, replace ResumableUploadTest with this class.
-    /// </remarks>
     public class ResumableUploadTest : IDisposable
     {
         /// <summary>
@@ -136,6 +133,11 @@ namespace Google.Apis.Tests.Apis.Upload
                     }
                     // Catch errors that mean the port is already in use
                     catch (HttpListenerException e) when (e.ErrorCode == 183 || e.ErrorCode == 32)
+                    {
+                        _httpListener.Close();
+                        _httpListener = null;
+                    }
+                    catch (SocketException e) when (e.SocketErrorCode == SocketError.AddressAlreadyInUse)
                     {
                         _httpListener.Close();
                         _httpListener = null;

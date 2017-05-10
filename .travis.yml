@@ -1,5 +1,11 @@
-sudo: required
+language: csharp
+mono: none
+dotnet: 1.0.1
 dist: trusty
-language: bash
+
 script:
-  - ./travis.sh
+  - dotnet --info
+  - dotnet restore Src/Support/GoogleApisClient.sln
+  - dotnet build Src/Support/GoogleApisClient.sln -c Release
+  - dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj -c Release
+  - dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj -c Release

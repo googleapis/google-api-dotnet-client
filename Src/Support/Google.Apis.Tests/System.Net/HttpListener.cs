@@ -47,7 +47,7 @@ namespace System.Net
             var host = match.Groups[1].Value;
             var port = int.Parse(match.Groups[2].Value);
             var path = match.Groups[3].Value;
-            // Harcoded to "localhost" as that's all we need for testing
+            // Hardcoded to "localhost" as that's all we need for testing
             _listener = new TcpListener(new IPEndPoint(IPAddress.Loopback, port));
             _listener.Start();
         }
