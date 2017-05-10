@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <Import Project="..\CommonProjectProperties.xml" />
 
@@ -47,5 +47,7 @@ Supported Platforms:
       <PackagePath>lib\net45</PackagePath>
     </None>
   </ItemGroup>
+
+  <Import Project="..\StripDesktopOnNonWindows.xml" />
 
 </Project>

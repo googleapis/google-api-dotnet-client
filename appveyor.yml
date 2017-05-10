@@ -3,29 +3,23 @@
 # Version for the build.
 version: 1.0.{build}-{branch}
 
-# We're using Visual Studio 2015
-image: Visual Studio 2015
+# We're using Visual Studio 2017
+image: Visual Studio 2017
 
 # Install the pre-requisites for the build.
 install:
   # Make sure curl is available
   - set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
-  # Download and install the nunit runner.
-  - nuget install NUnit.ConsoleRunner -Version 3.2.1 -OutputDirectory testrunner
-  # Download the installer for dotnet.
-  - mkdir .\scripts
-  - curl -SL https://raw.githubusercontent.com/dotnet/cli/rel/1.0.0/scripts/obtain/dotnet-install.ps1 -o .\scripts\dotnet-install.ps1
-  - ps: $env:DOTNET_INSTALL_DIR = "$pwd\.dotnetcli"
-  - ps: '& .\scripts\dotnet-install.ps1 -InstallDir "$env:DOTNET_INSTALL_DIR" -Version 1.0.0-preview2-003121 -NoPath'
   # add dotnet to PATH
   - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
 
 # Perform the build.
 build_script:
   - dotnet --info
-  - msbuild SupportLibraries.proj
-  - run_tests.bat
-  - run_tests_dotnetcore.bat
+  - dotnet restore Src\Support\GoogleApisClient.sln
+  - dotnet build Src\Support\GoogleApisClient.sln -c Release
 
-# The tests are run as part of the build.
-test: off
+# Perform the tests. Release build on all supported frameworks.
+test_script:
+  - dotnet test Src\Support\Google.Apis.Tests\Google.Apis.Tests.csproj -c Release
+  - dotnet test Src\Support\Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj -c Release

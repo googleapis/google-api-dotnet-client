@@ -1,9 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
     <TargetFrameworks>netcoreapp1.1;net452</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,9 +20,6 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>../../../google.apis.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
+  <Import Project="..\StripDesktopOnNonWindows.xml" />
 
 </Project>
