@@ -59,7 +59,7 @@ namespace IntegrationTests
             // Tests that the local listener will be cancelled properly.
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(1));
 
-            await Assert.ThrowsAsync<TaskCanceledException>(async () =>
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
             {
                 await GoogleWebAuthorizationBroker.AuthorizeAsync(
                     Helper.GetClientSecretStream(), new string[] { StorageService.Scope.CloudPlatformReadOnly },
