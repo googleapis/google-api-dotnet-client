@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/beacons/proximity/'>Google Proximity Beacon API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170504 (854)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/beacons/proximity/'>
  *              https://developers.google.com/beacons/proximity/</a>

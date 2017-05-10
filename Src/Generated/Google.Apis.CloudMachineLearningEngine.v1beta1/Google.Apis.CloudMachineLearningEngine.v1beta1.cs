@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170424 (844)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -617,10 +617,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -634,6 +630,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -669,15 +669,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -690,6 +681,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1743,6 +1743,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1750,10 +1754,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1789,6 +1789,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1801,15 +1810,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2663,7 +2663,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         ///
         /// complex_model_m_gpu
         ///
-        /// A machine equivalent to coplex_model_m that also includes four GPUs.
+        /// A machine equivalent to complex_model_m that also includes four GPUs.
         ///
         /// You must set this value when `scaleTier` is set to `CUSTOM`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
@@ -2910,7 +2910,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.

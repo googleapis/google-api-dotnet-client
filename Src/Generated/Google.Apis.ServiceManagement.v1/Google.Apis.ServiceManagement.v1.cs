@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170428 (848)
+ *      <tr><th>API Rev<td>20170505 (855)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -453,11 +453,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
-            /// is 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A string for filtering Operations. The following filter fields are supported
             ///
             /// * serviceName Required. Only `=` operator is allowed. * startTime The time this job was started, in ISO
@@ -484,6 +479,11 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
+            /// is 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -509,15 +509,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -539,6 +530,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2064,10 +2064,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Requested size of the next page of data.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Include services produced by the specified project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProducerProjectId { get; set; }
@@ -2081,6 +2077,10 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested size of the next page of data.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2107,15 +2107,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "producerProjectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "producerProjectId",
@@ -2137,6 +2128,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3573,6 +3573,19 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseBody")]
         public virtual string ResponseBody { get; set; } 
 
+        /// <summary>Optional. The REST collection name is by default derived from the URL pattern. If specified, this
+        /// field overrides the default collection name. Example:
+        ///
+        /// rpc AddressesAggregatedList(AddressesAggregatedListRequest) returns (AddressesAggregatedListResponse) {
+        /// option (google.api.http) = { get: "/v1/projects/{project_id}/aggregated/addresses" rest_collection:
+        /// "projects.addresses" }; }
+        ///
+        /// This method has the automatically derived collection name "projects.aggregated". Because, semantically, this
+        /// rpc is actually an operation on the "projects.addresses" collection, the `rest_collection` field is
+        /// configured to override the derived collection name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restCollection")]
+        public virtual string RestCollection { get; set; } 
+
         /// <summary>Selects methods to which this rule applies.
         ///
         /// Refer to selector for syntax details.</summary>
@@ -4795,7 +4808,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.

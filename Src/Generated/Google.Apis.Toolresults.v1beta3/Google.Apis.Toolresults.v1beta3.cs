@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170505 (855)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3957,7 +3957,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
     /// If a localized user-facing error message is needed, put the localized message in the error details or localize
     /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
     ///
     /// # Language mapping
     ///

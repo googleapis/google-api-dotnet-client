@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170416 (836)
+ *      <tr><th>API Rev<td>20170423 (843)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -14975,7 +14975,9 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Attaches a Disk resource to an instance.</summary>
+        /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
+        /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
+        /// Adding a persistent disk to your instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -14986,7 +14988,9 @@ namespace Google.Apis.Compute.beta
             return new AttachDiskRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Attaches a Disk resource to an instance.</summary>
+        /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
+        /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
+        /// Adding a persistent disk to your instance.</summary>
         public class AttachDiskRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new AttachDisk request.</summary>
@@ -27874,7 +27878,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Cloudpath.</summary>
+        /// through Private Google Access.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -27886,7 +27890,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Cloudpath.</summary>
+        /// through Private Google Access.</summary>
         public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
@@ -36209,19 +36213,19 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and
-        /// should be a utilization metric, which means that the number of virtual machines handling requests should
-        /// increase or decrease proportionally to the metric. The metric must also have a label of
-        /// compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not
-        /// guarantee that the metric is valid.
+        /// <summary>The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values
+        /// and should be a utilization metric, which means that the number of virtual machines handling requests should
+        /// increase or decrease proportionally to the metric.
         ///
-        /// For example, the following is a valid metric: compute.googleapis.com/instance/network/received_bytes_count
-        /// The following is not a valid metric because it does not increase or decrease based on usage:
-        /// compute.googleapis.com/instance/cpu/reserved_cores</summary>
+        /// The metric must have a value type of INT64 or DOUBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>Target value of the metric which autoscaler should maintain. Must be a positive value.</summary>
+        /// <summary>The target value of the metric that autoscaler should maintain. This must be a positive value.
+        ///
+        /// For example, a good metric to use as a utilization_target is
+        /// compute.googleapis.com/instance/network/received_bytes_count. The autoscaler will work to keep this value
+        /// constant for each of the instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
@@ -36584,6 +36588,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
         public virtual string Oauth2ClientSecret { get; set; } 
 
+        /// <summary>[Output Only] SHA256 hash value for the field oauth2_client_secret above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
         public virtual string Oauth2ClientSecretSha256 { get; set; } 
 
@@ -37573,7 +37578,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Ony] Type of the resource. Always compute#firewall for firewall rules.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#firewall for firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -38453,9 +38458,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Family { get; set; } 
 
         /// <summary>A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only
-        /// one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue.
-        /// For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or
-        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.
+        /// one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For
+        /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
+        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
         ///
         /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
         /// this is a Windows image. This value is purely informational and does not enable or disable any

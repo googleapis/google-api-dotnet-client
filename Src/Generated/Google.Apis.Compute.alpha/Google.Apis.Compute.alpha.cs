@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170416 (836)
+ *      <tr><th>API Rev<td>20170423 (843)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -19067,7 +19067,9 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Attaches a Disk resource to an instance.</summary>
+        /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
+        /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
+        /// Adding a persistent disk to your instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -19078,7 +19080,9 @@ namespace Google.Apis.Compute.alpha
             return new AttachDiskRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Attaches a Disk resource to an instance.</summary>
+        /// <summary>Attaches an existing Disk resource to an instance. You must first create the disk before you can
+        /// attach it. It is not possible to create and attach a disk at the same time. For more information, read
+        /// Adding a persistent disk to your instance.</summary>
         public class AttachDiskRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new AttachDisk request.</summary>
@@ -22280,6 +22284,134 @@ namespace Google.Apis.Compute.alpha
             }
 
             /// <summary>Initializes UpdateAccessConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "networkInterface", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "networkInterface",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="networkInterface">The name of the network interface to update.</param>
+        public virtual UpdateNetworkInterfaceRequest UpdateNetworkInterface(Google.Apis.Compute.alpha.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+        {
+            return new UpdateNetworkInterfaceRequest(service, body, project, zone, instance, networkInterface);
+        }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        public class UpdateNetworkInterfaceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateNetworkInterface request.</summary>
+            public UpdateNetworkInterfaceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                NetworkInterface = networkInterface;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The instance name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the network interface to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.NetworkInterface Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateNetworkInterface"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateNetworkInterface"; }
+            }
+
+            /// <summary>Initializes UpdateNetworkInterface parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -37557,7 +37689,7 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Cloudpath.</summary>
+        /// through Private Google Access.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -37569,7 +37701,7 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
-        /// through Cloudpath.</summary>
+        /// through Private Google Access.</summary>
         public class SetPrivateIpGoogleAccessRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetPrivateIpGoogleAccess request.</summary>
@@ -46608,19 +46740,19 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The identifier of the Stackdriver Monitoring metric. The metric cannot have negative values and
-        /// should be a utilization metric, which means that the number of virtual machines handling requests should
-        /// increase or decrease proportionally to the metric. The metric must also have a label of
-        /// compute.googleapis.com/resource_id with the value of the instance's unique ID, although this alone does not
-        /// guarantee that the metric is valid.
+        /// <summary>The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values
+        /// and should be a utilization metric, which means that the number of virtual machines handling requests should
+        /// increase or decrease proportionally to the metric.
         ///
-        /// For example, the following is a valid metric: compute.googleapis.com/instance/network/received_bytes_count
-        /// The following is not a valid metric because it does not increase or decrease based on usage:
-        /// compute.googleapis.com/instance/cpu/reserved_cores</summary>
+        /// The metric must have a value type of INT64 or DOUBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>Target value of the metric which autoscaler should maintain. Must be a positive value.</summary>
+        /// <summary>The target value of the metric that autoscaler should maintain. This must be a positive value.
+        ///
+        /// For example, a good metric to use as a utilization_target is
+        /// compute.googleapis.com/instance/network/received_bytes_count. The autoscaler will work to keep this value
+        /// constant for each of the instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
         public virtual System.Nullable<double> UtilizationTarget { get; set; } 
 
@@ -47090,6 +47222,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecret")]
         public virtual string Oauth2ClientSecret { get; set; } 
 
+        /// <summary>[Output Only] SHA256 hash value for the field oauth2_client_secret above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientSecretSha256")]
         public virtual string Oauth2ClientSecretSha256 { get; set; } 
 
@@ -48113,7 +48246,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Ony] Type of the resource. Always compute#firewall for firewall rules.</summary>
+        /// <summary>[Output Only] Type of the resource. Always compute#firewall for firewall rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -49456,9 +49589,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Family { get; set; } 
 
         /// <summary>A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only
-        /// one feature can be enabled, VIRTIO_SCSCI_MULTIQUEUE, which allows each virtual CPU to have its own queue.
-        /// For Windows images, you can only enable VIRTIO_SCSCI_MULTIQUEUE on images with driver version 1.2.0.1621 or
-        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSCI_MULTIQUEUE.
+        /// one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For
+        /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
+        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
         ///
         /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
         /// this is a Windows image. This value is purely informational and does not enable or disable any
@@ -52006,6 +52139,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
         public virtual System.Collections.Generic.IList<NetworkPeering> Peerings { get; set; } 
 
+        /// <summary>The network-level routing configuration for this network. Used by Cloud Router to determine what
+        /// type of network-wide routing behavior to enforce.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
+        public virtual NetworkRoutingConfig RoutingConfig { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -52031,6 +52169,12 @@ namespace Google.Apis.Compute.alpha.Data
         /// interfaces on subnet-mode networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
+
+        /// <summary>Fingerprint hash of contents stored in this network interface. This field will be ignored when
+        /// inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to
+        /// update the NetworkInterface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
 
         /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
         /// interfaces.</summary>
@@ -52137,6 +52281,22 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Details about the current state of the peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
         public virtual string StateDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A routing configuration attached to a network resource. The message includes the list of routers
+    /// associated with the network, and a flag indicating the type of routing behavior to enforce network-
+    /// wide.</summary>
+    public class NetworkRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only
+        /// advertise routes with subnetworks of this network in the same region as the router. If set to GLOBAL, this
+        /// network's cloud routers will advertise routes with all subnetworks of this network, across
+        /// regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
+        public virtual string RoutingMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

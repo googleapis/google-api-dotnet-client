@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170425 (845)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -452,6 +452,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
             }
 
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The name of the operation collection.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -463,10 +467,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -493,6 +493,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -514,15 +523,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1044,10 +1044,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1055,6 +1051,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1090,15 +1090,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1111,6 +1102,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1164,11 +1164,6 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// <summary>The amount of memory in MB available for a function. Defaults to 256MB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryMb")]
         public virtual System.Nullable<int> AvailableMemoryMb { get; set; } 
-
-        /// <summary>Output only. The Google Cloud Storage signed URL generated for downloading the current deployed
-        /// source code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deployedSourceDownloadUrl")]
-        public virtual string DeployedSourceDownloadUrl { get; set; } 
 
         /// <summary>The name of the function (as defined in source code) that will be executed. Defaults to the
         /// resource name suffix, if not specified. For backward compatibility, if function with given name is not
@@ -1462,7 +1457,7 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.
