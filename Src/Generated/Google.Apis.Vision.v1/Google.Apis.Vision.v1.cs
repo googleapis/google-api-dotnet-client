@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170501 (851)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1164,7 +1164,7 @@ namespace Google.Apis.Vision.v1.Data
     /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
     /// If a localized user-facing error message is needed, put the localized message in the error details or localize
     /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
     ///
     /// # Language mapping
     ///
@@ -1184,7 +1184,7 @@ namespace Google.Apis.Vision.v1.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170502 (852)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -766,10 +766,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string GcsContentUri { get; set; } 
 
         /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
-        /// and BCP-47 language codes are accepted. [Language Support](https://cloud.google.com/natural-
-        /// language/docs/languages) lists currently supported languages for each API method. If the language (either
-        /// specified by the caller or automatically detected) is not supported by the called API method, an
-        /// `INVALID_ARGUMENT` error is returned.</summary>
+        /// and BCP-47 language codes are accepted. [Language Support](/natural-language/docs/languages) lists currently
+        /// supported languages for each API method. If the language (either specified by the caller or automatically
+        /// detected) is not supported by the called API method, an `INVALID_ARGUMENT` error is returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -955,7 +954,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
     /// If a localized user-facing error message is needed, put the localized message in the error details or localize
     /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
     ///
     /// # Language mapping
     ///
@@ -975,7 +974,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.
