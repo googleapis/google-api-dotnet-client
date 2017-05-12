@@ -2,7 +2,7 @@
 
   <!-- common nupkg information -->
   <PropertyGroup>
-    <PackageVersion>1.25.0</PackageVersion>
+    <PackageVersion>1.26.0</PackageVersion>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
