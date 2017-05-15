@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Google Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170501 (851)
+ *      <tr><th>API Rev<td>20170512 (862)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -1630,6 +1630,9 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>The service account key create request.</summary>
     public class CreateServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("includePublicKeyData")]
+        public virtual System.Nullable<bool> IncludePublicKeyData { get; set; } 
+
         /// <summary>Which type of key and algorithm to use for the key. The default is currently a 2K RSA key.  However
         /// this may change in the future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]

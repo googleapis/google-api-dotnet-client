@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>Cloud Source Repositories API</a>
+ *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170410 (830)
+ *      <tr><th>API Rev<td>20170502 (852)
  *      <tr><th>API Docs
- *          <td><a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>
- *              https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api</a>
+ *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
+ *              https://cloud.google.com/source-repositories/docs/apis</a>
  *      <tr><th>Discovery Name<td>sourcerepo
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud Source Repositories API can be found at
- * <a href='https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api'>https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api</a>.
+ * <a href='https://cloud.google.com/source-repositories/docs/apis'>https://cloud.google.com/source-repositories/docs/apis</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -659,6 +659,17 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Maximum number of repositories to return; between 1 and 500. If not set or zero, defaults
+                /// to 100 at the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Resume listing repositories where a prior ListReposResponse left off. This is an opaque
+                /// token that must be obtained from a recent, prior ListReposResponse's next_page_token
+                /// field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -691,6 +702,24 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -847,7 +876,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
 {    
 
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConifg must have one or more
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
@@ -1015,6 +1044,11 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// <summary>Response for ListRepos.</summary>
     public class ListReposResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If non-empty, additional repositories exist within the project. These can be retrieved by including
+        /// this value in the next ListReposRequest's page_token field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
         /// <summary>The listed repos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repos")]
         public virtual System.Collections.Generic.IList<Repo> Repos { get; set; } 
@@ -1130,7 +1164,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The size in bytes of the repo.</summary>
+        /// <summary>The disk usage of the repo, in bytes. Only returned by GetRepo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; } 
 

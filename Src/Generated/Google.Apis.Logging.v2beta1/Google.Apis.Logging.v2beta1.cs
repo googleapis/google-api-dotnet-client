@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170429 (849)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1888,17 +1888,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1934,18 +1934,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2341,6 +2341,10 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
         public virtual System.Collections.Generic.IDictionary<string,object> ProtoPayload { get; set; } 
 
+        /// <summary>Output only. The time the log entry was received by Stackdriver Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("receiveTimestamp")]
+        public virtual object ReceiveTimestamp { get; set; } 
+
         /// <summary>Required. The monitored resource associated with this log entry. Example: a log entry that reports
         /// a database error would be associated with the monitored resource designating the particular database that
         /// reported the error.</summary>
@@ -2510,13 +2514,13 @@ namespace Google.Apis.Logging.v2beta1.Data
         public virtual string Filter { get; set; } 
 
         /// <summary>Optional. This field applies only to sinks owned by organizations and folders. If the field is
-        /// false, the default, only the logs owned by the sink's parent resource are availble for export. If the field
+        /// false, the default, only the logs owned by the sink's parent resource are available for export. If the field
         /// is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent
         /// resource are also available for export. Whether a particular log entry from the children is exported depends
         /// on the sink's filter expression. For example, if this field is true, then the filter
         /// resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the
         /// sink's parent. To only export entries from certain child projects, filter on the project part of the log
-        /// name: logName:("projects/test-project-a/" OR "projects/test-project-b/") AND resource.type=gce_instance
+        /// name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeChildren")]
         public virtual System.Nullable<bool> IncludeChildren { get; set; } 

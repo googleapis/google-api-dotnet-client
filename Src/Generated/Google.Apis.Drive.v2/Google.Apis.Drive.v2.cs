@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170428 (848)
+ *      <tr><th>API Rev<td>20170508 (858)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -8709,7 +8709,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasAugmentedPermissions")]
         public virtual System.Nullable<bool> HasAugmentedPermissions { get; set; } 
 
-        /// <summary>Whether this file has a thumbnail.</summary>
+        /// <summary>Whether this file has a thumbnail. This does not indicate whether the requesting app has access to
+        /// the thumbnail. To check access, look for the presence of the thumbnailLink field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasThumbnail")]
         public virtual System.Nullable<bool> HasThumbnail { get; set; } 
 
@@ -9380,8 +9381,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
         public virtual string AuthKey { get; set; } 
 
-        /// <summary>Whether the account of the permission has been deleted. This field only pertains to user and group
-        /// permissions.</summary>
+        /// <summary>Whether the account associated with this permission has been deleted. This field only pertains to
+        /// user and group permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; } 
 
@@ -9741,8 +9742,8 @@ namespace Google.Apis.Drive.v2.Data
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An image file and cropping parameters from which a background image for this Team Drive is set.
-        /// This is a write only field that can only be set on a drive.teamdrives.update request that does not set
-        /// themeId. When specified, all fields of the backgroundImageFile must be set.</summary>
+        /// This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId.
+        /// When specified, all fields of the backgroundImageFile must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundImageFile")]
         public virtual TeamDrive.BackgroundImageFileData BackgroundImageFile { get; set; } 
 
@@ -9775,7 +9776,7 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The ID of the theme from which the background image and color will be set. The set of possible
         /// teamDriveThemes can be retrieved from a drive.about.get response. When not specified on a
         /// drive.teamdrives.insert request, a random theme is chosen from which the background image and color are set.
-        /// This is a write only field that can only be set on a request that does not set colorRgb or
+        /// This is a write-only field; it can only be set on requests that don't set colorRgb or
         /// backgroundImageFile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeId")]
         public virtual string ThemeId { get; set; } 
@@ -9785,30 +9786,32 @@ namespace Google.Apis.Drive.v2.Data
         
 
         /// <summary>An image file and cropping parameters from which a background image for this Team Drive is set.
-        /// This is a write only field that can only be set on a drive.teamdrives.update request that does not set
-        /// themeId. When specified, all fields of the backgroundImageFile must be set.</summary>
+        /// This is a write only field; it can only be set on drive.teamdrives.update requests that don't set themeId.
+        /// When specified, all fields of the backgroundImageFile must be set.</summary>
         public class BackgroundImageFileData
         {
             /// <summary>The ID of an image file in Drive to use for the background image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; } 
 
-            /// <summary>The width of the cropped image in the closed range of 0 to 1, which is the width of the cropped
-            /// image divided by the width of the entire image. The height is computed by applying a width to height
-            /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144 pixels
-            /// high.</summary>
+            /// <summary>The width of the cropped image in the closed range of 0 to 1. This value represents the width
+            /// of the cropped image divided by the width of the entire image. The height is computed by applying a
+            /// width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144
+            /// pixels high.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("width")]
             public virtual System.Nullable<float> Width { get; set; } 
 
             /// <summary>The X coordinate of the upper left corner of the cropping area in the background image. This is
-            /// a value in the closed range of 0 to 1 which is the horizontal distance from the left side of the entire
-            /// image to the left side of the cropping area divided by the width of the entire image.</summary>
+            /// a value in the closed range of 0 to 1. This value represents the horizontal distance from the left side
+            /// of the entire image to the left side of the cropping area divided by the width of the entire
+            /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
             public virtual System.Nullable<float> XCoordinate { get; set; } 
 
             /// <summary>The Y coordinate of the upper left corner of the cropping area in the background image. This is
-            /// a value in the closed range of 0 to 1 which is the vertical distance from the top side of the entire
-            /// image to the top side of the cropping area divided by the height of the entire image.</summary>
+            /// a value in the closed range of 0 to 1. This value represents the vertical distance from the top side of
+            /// the entire image to the top side of the cropping area divided by the height of the entire
+            /// image.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
             public virtual System.Nullable<float> YCoordinate { get; set; } 
 
