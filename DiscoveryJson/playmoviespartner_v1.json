@@ -1,6 +1,28 @@
 {
-  "discoveryVersion": "v1",
+  "canonicalName": "Play Movies",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/playmovies_partner.readonly": {
+          "description": "View the digital assets you publish on Google Play Movies and TV"
+        }
+      }
+    }
+  },
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "Gets the delivery status of titles for Google Play Movies Partners.",
+  "rootUrl": "https://playmoviespartner.googleapis.com/",
+  "basePath": "",
+  "ownerDomain": "google.com",
+  "name": "playmoviespartner",
+  "batchPath": "batch",
+  "revision": "20170509",
+  "documentationLink": "https://developers.google.com/playmoviespartner/",
+  "id": "playmoviespartner:v1",
+  "title": "Google Play Movies Partner API",
   "ownerName": "Google",
+  "discoveryVersion": "v1",
   "resources": {
     "accounts": {
       "resources": {
@@ -9,9 +31,6 @@
             "country": {
               "methods": {
                 "get": {
-                  "path": "v1/accounts/{accountId}/storeInfos/{videoId}/country/{country}",
-                  "id": "playmoviespartner.accounts.storeInfos.country.get",
-                  "description": "Get a StoreInfo given its video id and country.\n\nSee _Authentication and Authorization rules_ and\n_Get methods rules_ for more information about this method.",
                   "response": {
                     "$ref": "StoreInfo"
                   },
@@ -21,9 +40,6 @@
                     "country"
                   ],
                   "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/playmovies_partner.readonly"
-                  ],
                   "parameters": {
                     "videoId": {
                       "location": "path",
@@ -32,10 +48,10 @@
                       "type": "string"
                     },
                     "country": {
+                      "location": "path",
                       "description": "REQUIRED. Edit country.",
                       "required": true,
-                      "type": "string",
-                      "location": "path"
+                      "type": "string"
                     },
                     "accountId": {
                       "location": "path",
@@ -44,29 +60,55 @@
                       "type": "string"
                     }
                   },
-                  "flatPath": "v1/accounts/{accountId}/storeInfos/{videoId}/country/{country}"
+                  "scopes": [
+                    "https://www.googleapis.com/auth/playmovies_partner.readonly"
+                  ],
+                  "flatPath": "v1/accounts/{accountId}/storeInfos/{videoId}/country/{country}",
+                  "path": "v1/accounts/{accountId}/storeInfos/{videoId}/country/{country}",
+                  "id": "playmoviespartner.accounts.storeInfos.country.get",
+                  "description": "Get a StoreInfo given its video id and country.\n\nSee _Authentication and Authorization rules_ and\n_Get methods rules_ for more information about this method."
                 }
               }
             }
           },
           "methods": {
             "list": {
-              "response": {
-                "$ref": "ListStoreInfosResponse"
-              },
+              "path": "v1/accounts/{accountId}/storeInfos",
+              "id": "playmoviespartner.accounts.storeInfos.list",
+              "description": "List StoreInfos owned or managed by the partner.\n\nSee _Authentication and Authorization rules_ and\n_List methods rules_ for more information about this method.",
               "parameterOrder": [
                 "accountId"
               ],
               "httpMethod": "GET",
+              "response": {
+                "$ref": "ListStoreInfosResponse"
+              },
               "scopes": [
                 "https://www.googleapis.com/auth/playmovies_partner.readonly"
               ],
               "parameters": {
-                "seasonIds": {
+                "studioNames": {
+                  "description": "See _List methods rules_ for info about this field.",
+                  "type": "string",
                   "repeated": true,
-                  "location": "query",
-                  "description": "Filter StoreInfos that match any of the given `season_id`s.",
+                  "location": "query"
+                },
+                "name": {
+                  "description": "Filter that matches StoreInfos with a `name` or `show_name`\nthat contains the given case-insensitive name.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "accountId": {
+                  "location": "path",
+                  "description": "REQUIRED. See _General rules_ for more information about this field.",
+                  "required": true,
                   "type": "string"
+                },
+                "seasonIds": {
+                  "description": "Filter StoreInfos that match any of the given `season_id`s.",
+                  "type": "string",
+                  "repeated": true,
+                  "location": "query"
                 },
                 "videoIds": {
                   "description": "Filter StoreInfos that match any of the given `video_id`s.",
@@ -75,14 +117,14 @@
                   "location": "query"
                 },
                 "videoId": {
-                  "location": "query",
                   "description": "Filter StoreInfos that match a given `video_id`.\nNOTE: this field is deprecated and will be removed on V2; `video_ids`\nshould be used instead.",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "description": "See _List methods rules_ for info about this field.",
                   "type": "string",
                   "location": "query"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "See _List methods rules_ for info about this field.",
+                  "type": "string"
                 },
                 "pageSize": {
                   "description": "See _List methods rules_ for info about this field.",
@@ -97,46 +139,26 @@
                   "type": "string"
                 },
                 "pphNames": {
-                  "description": "See _List methods rules_ for info about this field.",
-                  "type": "string",
                   "repeated": true,
-                  "location": "query"
+                  "location": "query",
+                  "description": "See _List methods rules_ for info about this field.",
+                  "type": "string"
                 },
                 "countries": {
                   "description": "Filter StoreInfos that match (case-insensitive) any of the given country\ncodes, using the \"ISO 3166-1 alpha-2\" format (examples: \"US\", \"us\", \"Us\").",
                   "type": "string",
                   "repeated": true,
                   "location": "query"
-                },
-                "studioNames": {
-                  "repeated": true,
-                  "location": "query",
-                  "description": "See _List methods rules_ for info about this field.",
-                  "type": "string"
-                },
-                "name": {
-                  "description": "Filter that matches StoreInfos with a `name` or `show_name`\nthat contains the given case-insensitive name.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "accountId": {
-                  "description": "REQUIRED. See _General rules_ for more information about this field.",
-                  "required": true,
-                  "type": "string",
-                  "location": "path"
                 }
               },
-              "flatPath": "v1/accounts/{accountId}/storeInfos",
-              "path": "v1/accounts/{accountId}/storeInfos",
-              "id": "playmoviespartner.accounts.storeInfos.list",
-              "description": "List StoreInfos owned or managed by the partner.\n\nSee _Authentication and Authorization rules_ and\n_List methods rules_ for more information about this method."
+              "flatPath": "v1/accounts/{accountId}/storeInfos"
             }
           }
         },
         "avails": {
           "methods": {
             "get": {
-              "description": "Get an Avail given its avail group id and avail id.",
+              "httpMethod": "GET",
               "response": {
                 "$ref": "Avail"
               },
@@ -144,7 +166,9 @@
                 "accountId",
                 "availId"
               ],
-              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/playmovies_partner.readonly"
+              ],
               "parameters": {
                 "availId": {
                   "location": "path",
@@ -153,20 +177,19 @@
                   "type": "string"
                 },
                 "accountId": {
-                  "location": "path",
                   "description": "REQUIRED. See _General rules_ for more information about this field.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/playmovies_partner.readonly"
-              ],
               "flatPath": "v1/accounts/{accountId}/avails/{availId}",
+              "id": "playmoviespartner.accounts.avails.get",
               "path": "v1/accounts/{accountId}/avails/{availId}",
-              "id": "playmoviespartner.accounts.avails.get"
+              "description": "Get an Avail given its avail group id and avail id."
             },
             "list": {
+              "description": "List Avails owned or managed by the partner.\n\nSee _Authentication and Authorization rules_ and\n_List methods rules_ for more information about this method.",
               "httpMethod": "GET",
               "response": {
                 "$ref": "ListAvailsResponse"
@@ -174,11 +197,19 @@
               "parameterOrder": [
                 "accountId"
               ],
+              "scopes": [
+                "https://www.googleapis.com/auth/playmovies_partner.readonly"
+              ],
               "parameters": {
+                "title": {
+                  "description": "Filter that matches Avails with a `title_internal_alias`,\n`series_title_internal_alias`, `season_title_internal_alias`,\nor `episode_title_internal_alias` that contains the given\ncase-insensitive title.",
+                  "type": "string",
+                  "location": "query"
+                },
                 "pageToken": {
-                  "location": "query",
                   "description": "See _List methods rules_ for info about this field.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "videoIds": {
                   "description": "Filter Avails that match any of the given `video_id`s.",
@@ -210,10 +241,10 @@
                   "location": "query"
                 },
                 "studioNames": {
-                  "description": "See _List methods rules_ for info about this field.",
-                  "type": "string",
                   "repeated": true,
-                  "location": "query"
+                  "location": "query",
+                  "description": "See _List methods rules_ for info about this field.",
+                  "type": "string"
                 },
                 "accountId": {
                   "description": "REQUIRED. See _General rules_ for more information about this field.",
@@ -222,34 +253,22 @@
                   "location": "path"
                 },
                 "territories": {
-                  "repeated": true,
-                  "location": "query",
                   "description": "Filter Avails that match (case-insensitive) any of the given country codes,\nusing the \"ISO 3166-1 alpha-2\" format (examples: \"US\", \"us\", \"Us\").",
-                  "type": "string"
-                },
-                "title": {
-                  "description": "Filter that matches Avails with a `title_internal_alias`,\n`series_title_internal_alias`, `season_title_internal_alias`,\nor `episode_title_internal_alias` that contains the given\ncase-insensitive title.",
                   "type": "string",
+                  "repeated": true,
                   "location": "query"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/playmovies_partner.readonly"
-              ],
               "flatPath": "v1/accounts/{accountId}/avails",
               "id": "playmoviespartner.accounts.avails.list",
-              "path": "v1/accounts/{accountId}/avails",
-              "description": "List Avails owned or managed by the partner.\n\nSee _Authentication and Authorization rules_ and\n_List methods rules_ for more information about this method."
+              "path": "v1/accounts/{accountId}/avails"
             }
           }
         },
         "orders": {
           "methods": {
             "get": {
-              "id": "playmoviespartner.accounts.orders.get",
-              "path": "v1/accounts/{accountId}/orders/{orderId}",
               "description": "Get an Order given its id.\n\nSee _Authentication and Authorization rules_ and\n_Get methods rules_ for more information about this method.",
-              "httpMethod": "GET",
               "response": {
                 "$ref": "Order"
               },
@@ -257,6 +276,7 @@
                 "accountId",
                 "orderId"
               ],
+              "httpMethod": "GET",
               "parameters": {
                 "accountId": {
                   "description": "REQUIRED. See _General rules_ for more information about this field.",
@@ -265,29 +285,48 @@
                   "location": "path"
                 },
                 "orderId": {
+                  "location": "path",
                   "description": "REQUIRED. Order ID.",
                   "required": true,
-                  "type": "string",
-                  "location": "path"
+                  "type": "string"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/playmovies_partner.readonly"
               ],
-              "flatPath": "v1/accounts/{accountId}/orders/{orderId}"
+              "flatPath": "v1/accounts/{accountId}/orders/{orderId}",
+              "path": "v1/accounts/{accountId}/orders/{orderId}",
+              "id": "playmoviespartner.accounts.orders.get"
             },
             "list": {
-              "parameterOrder": [
-                "accountId"
-              ],
               "httpMethod": "GET",
               "response": {
                 "$ref": "ListOrdersResponse"
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/playmovies_partner.readonly"
+              "parameterOrder": [
+                "accountId"
               ],
               "parameters": {
+                "pphNames": {
+                  "repeated": true,
+                  "location": "query",
+                  "description": "See _List methods rules_ for info about this field.",
+                  "type": "string"
+                },
+                "status": {
+                  "repeated": true,
+                  "location": "query",
+                  "enum": [
+                    "STATUS_UNSPECIFIED",
+                    "STATUS_APPROVED",
+                    "STATUS_FAILED",
+                    "STATUS_PROCESSING",
+                    "STATUS_UNFULFILLED",
+                    "STATUS_NOT_AVAILABLE"
+                  ],
+                  "description": "Filter Orders that match one of the given status.",
+                  "type": "string"
+                },
                 "name": {
                   "location": "query",
                   "description": "Filter that matches Orders with a `name`, `show`, `season` or `episode`\nthat contains the given case-insensitive name.",
@@ -300,10 +339,10 @@
                   "location": "query"
                 },
                 "accountId": {
+                  "location": "path",
                   "description": "REQUIRED. See _General rules_ for more information about this field.",
                   "required": true,
-                  "type": "string",
-                  "location": "path"
+                  "type": "string"
                 },
                 "pageToken": {
                   "description": "See _List methods rules_ for info about this field.",
@@ -311,46 +350,29 @@
                   "location": "query"
                 },
                 "videoIds": {
-                  "description": "Filter Orders that match any of the given `video_id`s.",
-                  "type": "string",
                   "repeated": true,
-                  "location": "query"
+                  "location": "query",
+                  "description": "Filter Orders that match any of the given `video_id`s.",
+                  "type": "string"
                 },
                 "customId": {
-                  "location": "query",
                   "description": "Filter Orders that match a case-insensitive, partner-specific custom id.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "pageSize": {
                   "location": "query",
                   "description": "See _List methods rules_ for info about this field.",
                   "format": "int32",
                   "type": "integer"
-                },
-                "pphNames": {
-                  "repeated": true,
-                  "location": "query",
-                  "description": "See _List methods rules_ for info about this field.",
-                  "type": "string"
-                },
-                "status": {
-                  "enum": [
-                    "STATUS_UNSPECIFIED",
-                    "STATUS_APPROVED",
-                    "STATUS_FAILED",
-                    "STATUS_PROCESSING",
-                    "STATUS_UNFULFILLED",
-                    "STATUS_NOT_AVAILABLE"
-                  ],
-                  "description": "Filter Orders that match one of the given status.",
-                  "type": "string",
-                  "repeated": true,
-                  "location": "query"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/playmovies_partner.readonly"
+              ],
               "flatPath": "v1/accounts/{accountId}/orders",
-              "path": "v1/accounts/{accountId}/orders",
               "id": "playmoviespartner.accounts.orders.list",
+              "path": "v1/accounts/{accountId}/orders",
               "description": "List Orders owned or managed by the partner.\n\nSee _Authentication and Authorization rules_ and\n_List methods rules_ for more information about this method."
             }
           }
@@ -359,10 +381,21 @@
     }
   },
   "parameters": {
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "type": "string",
       "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
     },
     "uploadType": {
       "location": "query",
@@ -370,9 +403,9 @@
       "type": "string"
     },
     "callback": {
-      "location": "query",
       "description": "JSONP",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -433,24 +466,28 @@
       "description": "OAuth 2.0 token for the current user.",
       "type": "string",
       "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
     }
   },
   "schemas": {
     "Order": {
-      "description": "An Order tracks the fulfillment of an Edit when delivered using the\nlegacy, non-component-based delivery.\n\nEach Order is uniquely identified by an `order_id`, which is generated\nby Google.\n\nExternally, Orders can also be identified by partners using its `custom_id`\n(when provided).",
-      "type": "object",
       "properties": {
+        "name": {
+          "description": "Default Edit name,\nusually in the language of the country of origin.\nExample: \"Googlers, The\".",
+          "type": "string"
+        },
+        "studioName": {
+          "description": "Name of the studio that owns the Edit ordered.",
+          "type": "string"
+        },
+        "receivedTime": {
+          "description": "Timestamp when the Order was fulfilled.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "seasonName": {
+          "description": "Default Season name,\nusually in the language of the country of origin.\nOnly available for TV Edits\nExample: \"Googlers, The - A Brave New World\".",
+          "type": "string"
+        },
         "customId": {
           "description": "ID that can be used to externally identify an Order.\nThis ID is provided by partners when submitting the Avails.\nExample: 'GOOGLER_2006'",
           "type": "string"
@@ -469,18 +506,18 @@
           "type": "string"
         },
         "normalizedPriority": {
-          "enumDescriptions": [
-            "Value could not be determined, please contact technical support if\nit should.",
-            "A low-priority asset, typically from a library movie.",
-            "A high-priority asset, typically from a new release or box office hit."
-          ],
           "enum": [
             "NORMALIZED_PRIORITY_UNSPECIFIED",
             "LOW_PRIORITY",
             "HIGH_PRIORITY"
           ],
           "description": "A simpler representation of the priority.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Value could not be determined, please contact technical support if\nit should.",
+            "A low-priority asset, typically from a library movie.",
+            "A high-priority asset, typically from a new release or box office hit."
+          ]
         },
         "orderId": {
           "description": "ID internally generated by Google to uniquely identify an Order.\nExample: 'abcde12_x'",
@@ -520,15 +557,15 @@
           "description": "Name of the post-production house that manages the Edit ordered.",
           "type": "string"
         },
-        "orderedTime": {
-          "description": "Timestamp when the Order was created.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "priority": {
           "description": "Order priority, as defined by Google.\nThe higher the value, the higher the priority.\nExample: 90",
           "format": "double",
           "type": "number"
+        },
+        "orderedTime": {
+          "description": "Timestamp when the Order was created.",
+          "format": "google-datetime",
+          "type": "string"
         },
         "videoId": {
           "description": "Google-generated ID identifying the video linked to this Order, once\ndelivered.\nExample: 'gtry456_xc'.",
@@ -544,6 +581,11 @@
           "items": {
             "type": "string"
           }
+        },
+        "earliestAvailStartTime": {
+          "description": "Timestamp of the earliest start date of the Avails\nlinked to this Order.",
+          "format": "google-datetime",
+          "type": "string"
         },
         "statusDetail": {
           "enum": [
@@ -572,6 +614,14 @@
           ]
         },
         "status": {
+          "enumDescriptions": [
+            "Value could not be determined, please contact technical support if\nit should.",
+            "Approved by Google.",
+            "Waiting for partner to re-deliver the asset after a rejection by Google.",
+            "Waiting for Google to process the asset.",
+            "Waiting for partner to deliver the asset.",
+            "Used when Status is not available (i.e: Orders for TV Seasons)."
+          ],
           "enum": [
             "STATUS_UNSPECIFIED",
             "STATUS_APPROVED",
@@ -581,42 +631,16 @@
             "STATUS_NOT_AVAILABLE"
           ],
           "description": "High-level status of the order.",
-          "type": "string",
-          "enumDescriptions": [
-            "Value could not be determined, please contact technical support if\nit should.",
-            "Approved by Google.",
-            "Waiting for partner to re-deliver the asset after a rejection by Google.",
-            "Waiting for Google to process the asset.",
-            "Waiting for partner to deliver the asset.",
-            "Used when Status is not available (i.e: Orders for TV Seasons)."
-          ]
-        },
-        "earliestAvailStartTime": {
-          "description": "Timestamp of the earliest start date of the Avails\nlinked to this Order.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "name": {
-          "description": "Default Edit name,\nusually in the language of the country of origin.\nExample: \"Googlers, The\".",
-          "type": "string"
-        },
-        "studioName": {
-          "description": "Name of the studio that owns the Edit ordered.",
-          "type": "string"
-        },
-        "receivedTime": {
-          "description": "Timestamp when the Order was fulfilled.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "seasonName": {
-          "description": "Default Season name,\nusually in the language of the country of origin.\nOnly available for TV Edits\nExample: \"Googlers, The - A Brave New World\".",
           "type": "string"
         }
       },
-      "id": "Order"
+      "id": "Order",
+      "description": "An Order tracks the fulfillment of an Edit when delivered using the\nlegacy, non-component-based delivery.\n\nEach Order is uniquely identified by an `order_id`, which is generated\nby Google.\n\nExternally, Orders can also be identified by partners using its `custom_id`\n(when provided).",
+      "type": "object"
     },
     "ListStoreInfosResponse": {
+      "description": "Response to the 'ListStoreInfos' method.",
+      "type": "object",
       "properties": {
         "nextPageToken": {
           "description": "See 'List methods rules' for info about this field.",
@@ -635,9 +659,7 @@
           "type": "integer"
         }
       },
-      "id": "ListStoreInfosResponse",
-      "description": "Response to the 'ListStoreInfos' method.",
-      "type": "object"
+      "id": "ListStoreInfosResponse"
     },
     "ListAvailsResponse": {
       "description": "Response to the 'ListAvails' method.",
@@ -664,65 +686,6 @@
     },
     "Avail": {
       "properties": {
-        "start": {
-          "description": "Start of term in YYYY-MM-DD format in the timezone of the\ncountry of the Avail.\nExample: \"2013-05-14\".",
-          "type": "string"
-        },
-        "ratingSystem": {
-          "description": "Rating system applied to the version of title within territory\nof Avail.\nRating systems should be formatted as per\n[EMA ratings spec](http://www.movielabs.com/md/ratings/)\nExample: \"MPAA\"",
-          "type": "string"
-        },
-        "pphNames": {
-          "description": "Name of the post-production houses that manage the Avail.\nNot part of EMA Specs.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "seriesAltId": {
-          "description": "Other identifier referring to the series, as defined by partner.\nOnly available on TV avails.\nExample: \"rs_googlers\".",
-          "type": "string"
-        },
-        "altId": {
-          "description": "Other identifier referring to the Edit, as defined by partner.\nExample: \"GOOGLER_2006\"",
-          "type": "string"
-        },
-        "episodeNumber": {
-          "description": "The number assigned to the episode within a season.\nOnly available on TV Avails.\nExample: \"3\".",
-          "type": "string"
-        },
-        "seriesTitleInternalAlias": {
-          "description": "Title used by involved parties to refer to this series.\nOnly available on TV Avails.\nExample: \"Googlers, The\".",
-          "type": "string"
-        },
-        "formatProfile": {
-          "enum": [
-            "FORMAT_PROFILE_UNSPECIFIED",
-            "SD",
-            "HD",
-            "UHD"
-          ],
-          "description": "Indicates the format profile covered by the transaction.",
-          "type": "string",
-          "enumDescriptions": [
-            "Value could not be determined, please contact technical support if\nit should.",
-            "Standard-definition format.",
-            "High-definition format.",
-            "4K UHD."
-          ]
-        },
-        "ratingValue": {
-          "description": "Value representing the rating.\nRatings should be formatted as per http://www.movielabs.com/md/ratings/\nExample: \"PG\"",
-          "type": "string"
-        },
-        "titleInternalAlias": {
-          "description": "Title used by involved parties to refer to this content.\nExample: \"Googlers, The\".\nOnly available on Movie Avails.",
-          "type": "string"
-        },
-        "contentId": {
-          "description": "Title Identifier. This should be the Title Level EIDR.\nExample: \"10.5240/1489-49A2-3956-4B2D-FE16-5\".",
-          "type": "string"
-        },
         "storeLanguage": {
           "description": "Spoken language of the intended audience.\nLanguage shall be encoded in accordance with RFC 5646.\nExample: \"fr\".",
           "type": "string"
@@ -755,6 +718,14 @@
           "description": "ISO 3166-1 alpha-2 country code for the country or territory\nof this Avail.\nFor Avails, we use Territory in lieu of Country to comply with\nEMA specifications.\nBut please note that Territory and Country identify the same thing.\nExample: \"US\".",
           "type": "string"
         },
+        "ratingReason": {
+          "description": "Value representing the rating reason.\nRating reasons should be formatted as per\n[EMA ratings spec](http://www.movielabs.com/md/ratings/)\nand comma-separated for inclusion of multiple reasons.\nExample: \"L, S, V\"",
+          "type": "string"
+        },
+        "availId": {
+          "description": "ID internally generated by Google to uniquely identify an Avail.\nNot part of EMA Specs.",
+          "type": "string"
+        },
         "workType": {
           "enum": [
             "TITLE_TYPE_UNSPECIFIED",
@@ -772,14 +743,6 @@
             "An episode of a TV show.",
             "A collection of movies, i.e. \"Googlers 1 and Googlers, the return\""
           ]
-        },
-        "availId": {
-          "description": "ID internally generated by Google to uniquely identify an Avail.\nNot part of EMA Specs.",
-          "type": "string"
-        },
-        "ratingReason": {
-          "description": "Value representing the rating reason.\nRating reasons should be formatted as per\n[EMA ratings spec](http://www.movielabs.com/md/ratings/)\nand comma-separated for inclusion of multiple reasons.\nExample: \"L, S, V\"",
-          "type": "string"
         },
         "episodeTitleInternalAlias": {
           "description": "OPTIONAL.TV Only. Title used by involved parties to refer to this episode.\nOnly available on TV Avails.\nExample: \"Coding at Google\".",
@@ -806,13 +769,6 @@
           "type": "boolean"
         },
         "licenseType": {
-          "enumDescriptions": [
-            "Value could not be determined, please contact technical support if\nit should.",
-            "Electronic Sell Through - purchase policy for unlimited viewing.",
-            "Video On Demand - rental policy for temporary viewing.",
-            "Subscription Video On Demand - used for subscription platforms.\nNot supported on Google Play.",
-            "Pre-order Electronic Sell Through - pre-order purchase only window."
-          ],
           "enum": [
             "LICENSE_TYPE_UNSPECIFIED",
             "EST",
@@ -821,7 +777,14 @@
             "POEST"
           ],
           "description": "Type of transaction.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Value could not be determined, please contact technical support if\nit should.",
+            "Electronic Sell Through - purchase policy for unlimited viewing.",
+            "Video On Demand - rental policy for temporary viewing.",
+            "Subscription Video On Demand - used for subscription platforms.\nNot supported on Google Play.",
+            "Pre-order Electronic Sell Through - pre-order purchase only window."
+          ]
         },
         "seasonNumber": {
           "description": "The number assigned to the season within a series.\nOnly available on TV Avails.\nExample: \"1\".",
@@ -838,6 +801,65 @@
         "videoId": {
           "description": "Google-generated ID identifying the video linked to this Avail, once\ndelivered.\nNot part of EMA Specs.\nExample: 'gtry456_xc'",
           "type": "string"
+        },
+        "start": {
+          "description": "Start of term in YYYY-MM-DD format in the timezone of the\ncountry of the Avail.\nExample: \"2013-05-14\".",
+          "type": "string"
+        },
+        "pphNames": {
+          "description": "Name of the post-production houses that manage the Avail.\nNot part of EMA Specs.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ratingSystem": {
+          "description": "Rating system applied to the version of title within territory\nof Avail.\nRating systems should be formatted as per\n[EMA ratings spec](http://www.movielabs.com/md/ratings/)\nExample: \"MPAA\"",
+          "type": "string"
+        },
+        "seriesAltId": {
+          "description": "Other identifier referring to the series, as defined by partner.\nOnly available on TV avails.\nExample: \"rs_googlers\".",
+          "type": "string"
+        },
+        "altId": {
+          "description": "Other identifier referring to the Edit, as defined by partner.\nExample: \"GOOGLER_2006\"",
+          "type": "string"
+        },
+        "episodeNumber": {
+          "description": "The number assigned to the episode within a season.\nOnly available on TV Avails.\nExample: \"3\".",
+          "type": "string"
+        },
+        "seriesTitleInternalAlias": {
+          "description": "Title used by involved parties to refer to this series.\nOnly available on TV Avails.\nExample: \"Googlers, The\".",
+          "type": "string"
+        },
+        "formatProfile": {
+          "enumDescriptions": [
+            "Value could not be determined, please contact technical support if\nit should.",
+            "Standard-definition format.",
+            "High-definition format.",
+            "4K UHD."
+          ],
+          "enum": [
+            "FORMAT_PROFILE_UNSPECIFIED",
+            "SD",
+            "HD",
+            "UHD"
+          ],
+          "description": "Indicates the format profile covered by the transaction.",
+          "type": "string"
+        },
+        "titleInternalAlias": {
+          "description": "Title used by involved parties to refer to this content.\nExample: \"Googlers, The\".\nOnly available on Movie Avails.",
+          "type": "string"
+        },
+        "ratingValue": {
+          "description": "Value representing the rating.\nRatings should be formatted as per http://www.movielabs.com/md/ratings/\nExample: \"PG\"",
+          "type": "string"
+        },
+        "contentId": {
+          "description": "Title Identifier. This should be the Title Level EIDR.\nExample: \"10.5240/1489-49A2-3956-4B2D-FE16-5\".",
+          "type": "string"
         }
       },
       "id": "Avail",
@@ -846,13 +868,6 @@
     },
     "ListOrdersResponse": {
       "properties": {
-        "orders": {
-          "description": "List of Orders that match the request criteria.",
-          "type": "array",
-          "items": {
-            "$ref": "Order"
-          }
-        },
         "nextPageToken": {
           "description": "See _List methods rules_ for info about this field.",
           "type": "string"
@@ -861,6 +876,13 @@
           "description": "See _List methods rules_ for more information about this field.",
           "format": "int32",
           "type": "integer"
+        },
+        "orders": {
+          "description": "List of Orders that match the request criteria.",
+          "type": "array",
+          "items": {
+            "$ref": "Order"
+          }
         }
       },
       "id": "ListOrdersResponse",
@@ -868,7 +890,22 @@
       "type": "object"
     },
     "StoreInfo": {
+      "description": "Information about a playable sequence (video) associated with an Edit\nand available at the Google Play Store.\n\nInternally, each StoreInfo is uniquely identified by a `video_id`\nand `country`.\n\nExternally, Title-level EIDR or Edit-level EIDR, if provided,\ncan also be used to identify a specific title or edit in a country.",
+      "type": "object",
       "properties": {
+        "videoId": {
+          "description": "Google-generated ID identifying the video linked to the Edit.\nExample: 'gtry456_xc'",
+          "type": "string"
+        },
+        "liveTime": {
+          "description": "Timestamp when the Edit went live on the Store.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "hasInfoCards": {
+          "description": "Whether the Edit has info cards.",
+          "type": "boolean"
+        },
         "hasVodOffer": {
           "description": "Whether the Edit has a VOD offer.",
           "type": "boolean"
@@ -915,6 +952,13 @@
           "type": "string"
         },
         "type": {
+          "enumDescriptions": [
+            "Value could not be determined, please contact technical support if\nit should.",
+            "A movie picture.",
+            "A season of a TV show.",
+            "An episode of a TV show.",
+            "A collection of movies, i.e. \"Googlers 1 and Googlers, the return\""
+          ],
           "enum": [
             "TITLE_TYPE_UNSPECIFIED",
             "MOVIE",
@@ -923,14 +967,7 @@
             "BUNDLE"
           ],
           "description": "Edit type, like Movie, Episode or Season.",
-          "type": "string",
-          "enumDescriptions": [
-            "Value could not be determined, please contact technical support if\nit should.",
-            "A movie picture.",
-            "A season of a TV show.",
-            "An episode of a TV show.",
-            "A collection of movies, i.e. \"Googlers 1 and Googlers, the return\""
-          ]
+          "type": "string"
         },
         "trailerId": {
           "description": "Google-generated ID identifying the trailer linked to the Edit.\nExample: 'bhd_4e_cx'",
@@ -968,35 +1005,20 @@
           "description": "The number assigned to the season within a show.\nOnly available on TV Edits.\nExample: \"1\".",
           "type": "string"
         },
-        "editLevelEidr": {
-          "description": "Edit-level EIDR ID.\nExample: \"10.5240/1489-49A2-3956-4B2D-FE16-6\".",
-          "type": "string"
-        },
         "hasEstOffer": {
           "description": "Whether the Edit has a EST offer.",
           "type": "boolean"
         },
+        "editLevelEidr": {
+          "description": "Edit-level EIDR ID.\nExample: \"10.5240/1489-49A2-3956-4B2D-FE16-6\".",
+          "type": "string"
+        },
         "hasSdOffer": {
           "description": "Whether the Edit has a SD offer.",
           "type": "boolean"
-        },
-        "videoId": {
-          "description": "Google-generated ID identifying the video linked to the Edit.\nExample: 'gtry456_xc'",
-          "type": "string"
-        },
-        "liveTime": {
-          "description": "Timestamp when the Edit went live on the Store.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "hasInfoCards": {
-          "description": "Whether the Edit has info cards.",
-          "type": "boolean"
         }
       },
-      "id": "StoreInfo",
-      "description": "Information about a playable sequence (video) associated with an Edit\nand available at the Google Play Store.\n\nInternally, each StoreInfo is uniquely identified by a `video_id`\nand `country`.\n\nExternally, Title-level EIDR or Edit-level EIDR, if provided,\ncan also be used to identify a specific title or edit in a country.",
-      "type": "object"
+      "id": "StoreInfo"
     }
   },
   "protocol": "rest",
@@ -1005,27 +1027,5 @@
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "version": "v1",
-  "baseUrl": "https://playmoviespartner.googleapis.com/",
-  "canonicalName": "Play Movies",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/playmovies_partner.readonly": {
-          "description": "View the digital assets you publish on Google Play Movies and TV"
-        }
-      }
-    }
-  },
-  "kind": "discovery#restDescription",
-  "description": "Gets the delivery status of titles for Google Play Movies Partners.",
-  "servicePath": "",
-  "rootUrl": "https://playmoviespartner.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "playmoviespartner",
-  "batchPath": "batch",
-  "revision": "20170509",
-  "documentationLink": "https://developers.google.com/playmoviespartner/",
-  "id": "playmoviespartner:v1",
-  "title": "Google Play Movies Partner API"
+  "baseUrl": "https://playmoviespartner.googleapis.com/"
 }

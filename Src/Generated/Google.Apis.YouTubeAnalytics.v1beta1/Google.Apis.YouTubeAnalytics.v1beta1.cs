@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/youtube/analytics/'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170510 (860)
+ *      <tr><th>API Rev<td>20170514 (864)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/youtube/analytics/'>
  *              http://developers.google.com/youtube/analytics/</a>
