@@ -28,6 +28,7 @@ using Google.Apis.Logging;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
 using Google.Apis.Testing;
+using System.Net;
 
 namespace Google.Apis.Auth.OAuth2.Flows
 {
@@ -300,7 +301,6 @@ namespace Google.Apis.Auth.OAuth2.Flows
             request.ClientId = ClientSecrets.ClientId;
             request.ClientSecret = ClientSecrets.ClientSecret;
 
-            TokenResponseException tokenException = null;
             try
             {
                 var tokenResponse = await request.ExecuteAsync
@@ -310,11 +310,17 @@ namespace Google.Apis.Auth.OAuth2.Flows
             catch (TokenResponseException ex)
             {
                 // In case there is an exception during getting the token, we delete any user's token information from 
-                // the data store.
-                tokenException = ex;
+                // the data store if it's not a server-side error.
+                int statusCode = (int)(ex.StatusCode ?? (HttpStatusCode)0);
+                bool serverError = statusCode >= 500 && statusCode < 600;
+                if (!serverError)
+                {
+                    // If not a server error, then delete the user token information.
+                    // This is to guard against suspicious client-side behaviour.
+                    await DeleteTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);
+                }
+                throw;
             }
-            await DeleteTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);
-            throw tokenException;
         }
 
         public void Dispose()

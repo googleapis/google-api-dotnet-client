@@ -85,7 +85,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             {
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
-                throw new TokenResponseException(error);
+                throw new TokenResponseException(error, response.StatusCode);
             }
 
             await DeleteTokenAsync(userId, taskCancellationToken);

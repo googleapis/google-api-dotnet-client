@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Net;
 
 namespace Google.Apis.Auth.OAuth2.Responses
 {
@@ -25,13 +26,21 @@ namespace Google.Apis.Auth.OAuth2.Responses
     public class TokenResponseException : Exception
     {
         /// <summary>The error information.</summary>
-        public TokenErrorResponse Error { get; private set; }
+        public TokenErrorResponse Error { get; }
+
+        /// <summary>HTTP status code of error, or null if unknown.</summary>
+        public HttpStatusCode? StatusCode { get; }
 
         /// <summary>Constructs a new token response exception from the given error.</summary>
         public TokenResponseException(TokenErrorResponse error)
+            : this(error, null) { }
+
+        /// <summary>Constructs a new token response exception from the given error nad optional HTTP status code.</summary>
+        public TokenResponseException(TokenErrorResponse error, HttpStatusCode? statusCode)
             : base(error.ToString())
         {
             Error = error;
+            StatusCode = statusCode;
         }
     }
 }
