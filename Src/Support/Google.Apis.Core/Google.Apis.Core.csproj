@@ -34,6 +34,4 @@ Supported Platforms:
     <PackageReference Include="Newtonsoft.Json" Version="7.0.1" />
   </ItemGroup>
 
-  <Import Project="..\StripDesktopOnNonWindows.xml" />
-
 </Project>

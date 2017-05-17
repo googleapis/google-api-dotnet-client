@@ -15,7 +15,7 @@ Nuget packages target:
 * .NETStandard 1.0 - _depends on v1.25.0 of support libraries_
   * Provides legacy support for: Windows 8.0, Windows Phone 8.1, and Windows Phone Silverlight 8.0
 
-Silverlight 5.0 is no longer supported. This is a breaking change. For Silverlight support, use v1.25.0.x of the relevant package(s).
+Silverlight 5.0 is no longer supported. But it turns out our Silverlight support has always been broken, so this change won't have any effect.
 
 ## Version 1.17.0 - 1.25.0
 _Explicit .NETFramework 4.5 support, for .NET4.6 projects_

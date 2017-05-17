@@ -34,7 +34,7 @@ namespace Google.Apis.Tests.Apis.Http
     /// For the default case, 
     /// <seealso cref="Google.Apis.Tests.Apis.Services.BaseClientServiceTest.TestGetWithUrlTooLongByDefault"/>.
     /// </summary>
-    class MaxUrlLengthInterceptorTest
+    public class MaxUrlLengthInterceptorTest
     {
         private const uint DefaultMaxUrlLength = 2048;
 

@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP1_1
+#if NETCOREAPP1_0 || NETCOREAPP1_1
 
 namespace System.Net
 {
@@ -32,4 +32,8 @@ namespace System.Net
     }
 }
 
+#elif NET452 || NET46
+// Nothing required
+#else
+#error Unsupported platform
 #endif

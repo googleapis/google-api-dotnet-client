@@ -54,6 +54,4 @@ Supported Platforms:
     </None>
   </ItemGroup>
 
-  <Import Project="..\StripDesktopOnNonWindows.xml" />
-
 </Project>

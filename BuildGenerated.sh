@@ -109,5 +109,5 @@ if [ -z ${SKIPPACK+x} ]; then
   # Delete all generated nupkgs
   echo Deleting existing \'$NUPKG_DIR\' directory...
   rm -rf $NUPKG_DIR
-  dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR --include-symbols --include-source
+  dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR
 fi
