@@ -307,7 +307,7 @@ namespace Google.Apis.Tests.Apis.Download
                 var outputStream = new MemoryStream();
                 var result = downloader.Download(_httpPrefix + "content", outputStream);
 
-                Assert.Equal(result.Status, DownloadStatus.Completed);
+                Assert.Equal(DownloadStatus.Completed, result.Status);
                 Assert.Null(result.Exception);
                 Assert.Equal(result.BytesDownloaded, outputStream.Position);
 
@@ -332,7 +332,7 @@ namespace Google.Apis.Tests.Apis.Download
                 var outputStream = new MemoryStream();
                 var result = downloader.Download(uri, outputStream);
 
-                Assert.Equal(result.Status, DownloadStatus.Completed);
+                Assert.Equal(DownloadStatus.Completed, result.Status);
                 Assert.Null(result.Exception);
                 Assert.Equal(result.BytesDownloaded, outputStream.Position);
 

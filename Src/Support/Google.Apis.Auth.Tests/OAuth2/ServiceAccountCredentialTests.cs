@@ -122,7 +122,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromX509Certificate()
         {
-#if NETCOREAPP1_1
+#if NETCOREAPP1_0 || NETCOREAPP1_1
             const string sPfx = @"
 MIIGMQIBAzCCBfcGCSqGSIb3DQEHAaCCBegEggXkMIIF4DCCAt8GCSqGSIb3DQEHBqCCAtAwggLM
 AgEAMIICxQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQImgNbotR3pnACAggAgIICmMHYqn7R
@@ -154,7 +154,7 @@ Sell3vQywF3jry7v/FMgPhoxJTAjBgkqhkiG9w0BCRUxFgQU+7ZMLd/K3gq6I9wxj3LcCb2tf5Uw
 MTAhMAkGBSsOAwIaBQAEFOM/amdwLHU0WBmyCw96Za0+5Z+PBAgvp7LF+Qwu+AICCAA=";
 
             var x509Cert = new X509Certificate2(Convert.FromBase64String(sPfx));
-#elif NET452
+#elif NET452 || NET46
             const string sPrivateKey = @"
 -----BEGIN PRIVATE KEY-----
 MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALQoMIfUT93VMvb5

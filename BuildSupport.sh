@@ -13,4 +13,4 @@ export NUGET_PACKAGES=$NUGET_PACKAGE_DIR
 
 dotnet restore Src/Support/GoogleApisClient.sln
 dotnet build Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION
-dotnet pack Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR --include-symbols --include-source
+dotnet pack Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR

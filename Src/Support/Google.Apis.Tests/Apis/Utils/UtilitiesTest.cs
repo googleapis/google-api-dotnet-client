@@ -67,15 +67,15 @@ namespace Google.Apis.Tests.Apis.Util
                 Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithSecondStringValue));
             Assert.Equal("EntryWithoutStringValue",
                 Google.Apis.Util.Utilities.ConvertToString(MockEnum.EntryWithoutStringValue));
-            Assert.Equal(null, Google.Apis.Util.Utilities.ConvertToString(null));
+            Assert.Null(Google.Apis.Util.Utilities.ConvertToString(null));
 
             // Test nullable types.
             int? nullable = 123;
             Assert.Equal("123", Google.Apis.Util.Utilities.ConvertToString(nullable));
             nullable = null;
-            Assert.Equal(null, Google.Apis.Util.Utilities.ConvertToString(nullable));
+            Assert.Null(Google.Apis.Util.Utilities.ConvertToString(nullable));
             MockEnum? nullEnum = null;
-            Assert.Equal(null, Google.Apis.Util.Utilities.ConvertToString(nullEnum));
+            Assert.Null(Google.Apis.Util.Utilities.ConvertToString(nullEnum));
         }
     }
 }
