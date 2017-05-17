@@ -23,7 +23,7 @@ namespace Google.Apis.Auth.OAuth2
     public static class GoogleAuthConsts
     {
         /// <summary>The authorization code server URL.</summary>
-        public const string AuthorizationUrl = "https://accounts.google.com/o/oauth2/auth";
+        public const string AuthorizationUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 
         /// <summary>The OpenID Connect authorization code server URL.</summary>
         /// <remarks>
@@ -37,7 +37,7 @@ namespace Google.Apis.Auth.OAuth2
         public const string ApprovalUrl = "https://accounts.google.com/o/oauth2/approval";
 
         /// <summary>The authorization token server URL.</summary>
-        public const string TokenUrl = "https://accounts.google.com/o/oauth2/token";
+        public const string TokenUrl = "https://www.googleapis.com/oauth2/v4/token";
 
         /// <summary>The OpenID Connect authorization token server URL.</summary>
         /// <remarks>
