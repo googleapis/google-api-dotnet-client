@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170509 (859)
+ *      <tr><th>API Rev<td>20170515 (865)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -2890,7 +2890,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
     /// If a localized user-facing error message is needed, put the localized message in the error details or localize
     /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
     ///
     /// # Language mapping
     ///

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170503 (853)
+ *      <tr><th>API Rev<td>20170509 (859)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2292,12 +2292,12 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Specifies a contiguous range of an indexed collection, such as characters in text.</summary>
     public class Range : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The optional zero-based index of the end of the collection. Required for `SPECIFIC_RANGE` delete
-        /// mode.</summary>
+        /// <summary>The optional zero-based index of the end of the collection. Required for `FIXED_RANGE`
+        /// ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; } 
 
-        /// <summary>The optional zero-based index of the beginning of the collection. Required for `SPECIFIC_RANGE` and
+        /// <summary>The optional zero-based index of the beginning of the collection. Required for `FIXED_RANGE` and
         /// `FROM_START_INDEX` ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 

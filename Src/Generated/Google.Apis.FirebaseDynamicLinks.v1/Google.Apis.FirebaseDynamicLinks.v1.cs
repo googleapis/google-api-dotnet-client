@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170430 (850)
+ *      <tr><th>API Rev<td>20170515 (865)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -511,35 +511,31 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     public class DynamicLinkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Parameters used for tracking. See all tracking parameters in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-
-        /// programmatically).</summary>
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsInfo")]
         public virtual AnalyticsInfo AnalyticsInfo { get; set; } 
 
         /// <summary>Android related information. See Android related parameters in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-
-        /// programmatically).</summary>
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidInfo")]
         public virtual AndroidInfo AndroidInfo { get; set; } 
 
         /// <summary>Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
-        /// more](https://firebase.google.com/docs/dynamic-links/android#set-up-firebase-and-the-dynamic-links-sdk) on
-        /// how to set up Dynamic Link domain associated with your Firebase project.
+        /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
+        /// associated with your Firebase project.
         ///
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkDomain")]
         public virtual string DynamicLinkDomain { get; set; } 
 
         /// <summary>iOS related information. See iOS related parameters in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/ios#create-a-dynamic-link-
-        /// programmatically).</summary>
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosInfo")]
         public virtual IosInfo IosInfo { get; set; } 
 
         /// <summary>The link your app will open, You can specify any URL your app can handle. This link must be a well-
         /// formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the
-        /// [documentation](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-
-        /// programmatically).
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
         ///
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
