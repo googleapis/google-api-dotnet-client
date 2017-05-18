@@ -35,27 +35,8 @@ namespace Google.Apis.Auth.OAuth2
     {
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
-        private TokenResponse token;
-        private object lockObject = new object();
-
         /// <summary>Gets or sets the token response which contains the access token.</summary>
-        public TokenResponse Token
-        {
-            get
-            {
-                lock (lockObject)
-                {
-                    return token;
-                }
-            }
-            set
-            {
-                lock (lockObject)
-                {
-                    token = value;
-                }
-            }
-        }
+        public TokenResponse Token { get; set; }
 
         /// <summary>Gets the authorization code flow.</summary>
         public IAuthorizationCodeFlow Flow
@@ -80,7 +61,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             this.flow = flow;
             this.userId = userId;
-            this.token = token;
+            this.Token = token;
         }
 
         #region IHttpExecuteInterceptor
@@ -136,7 +117,7 @@ namespace Google.Apis.Auth.OAuth2
                     throw new InvalidOperationException("The access token has expired but we can't refresh it");
                 }
             }
-            return token.AccessToken;
+            return Token.AccessToken;
         }
 
         #endregion
