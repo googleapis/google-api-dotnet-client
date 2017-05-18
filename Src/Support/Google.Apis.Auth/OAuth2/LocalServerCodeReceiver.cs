@@ -44,7 +44,7 @@ namespace Google.Apis.Auth.OAuth2
         internal const string LoopbackCallbackPath = "/authorize/";
 
         /// <summary>The call back format. Expects one port parameter.</summary>
-        internal const string LoopbackCallback = "http://localhost:{0}" + LoopbackCallbackPath;
+        internal static readonly string LoopbackCallback = $"http://{IPAddress.Loopback}:{{0}}{LoopbackCallbackPath}";
 
         /// <summary>Close HTML tag to return the browser so it will close itself.</summary>
         internal const string ClosePageResponse =
