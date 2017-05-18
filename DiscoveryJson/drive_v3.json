@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/1zBpgNKTcdzVs4sYZ4i_A9G7xpA\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/1elIKE9OJ8UNewNj9RsDGTkU5MM\"",
  "discoveryVersion": "v1",
  "id": "drive:v3",
  "name": "drive",
  "version": "v3",
- "revision": "20170508",
+ "revision": "20170512",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1008,7 +1008,7 @@
        },
        "teamDrivePermissionType": {
         "type": "string",
-        "description": "The Team Drive permission type for this user. While new values may be added in future, the following are currently possible:  \n- file\n- \n- member"
+        "description": "The Team Drive permission type for this user. While new values may be added in future, the following are currently possible:  \n- file \n- member"
        }
       }
      }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170508 (858)
+ *      <tr><th>API Rev<td>20170512 (862)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5601,7 +5601,7 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string Role { get; set; } 
 
             /// <summary>The Team Drive permission type for this user. While new values may be added in future, the
-            /// following are currently possible: - file - - member</summary>
+            /// following are currently possible: - file - member</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("teamDrivePermissionType")]
             public virtual string TeamDrivePermissionType { get; set; } 
 
