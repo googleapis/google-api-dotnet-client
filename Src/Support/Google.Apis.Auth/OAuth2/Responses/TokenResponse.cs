@@ -123,7 +123,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 {
                     typeName = nameof(TokenErrorResponse);
                     var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
-                    throw new TokenResponseException(error);
+                    throw new TokenResponseException(error, response.StatusCode);
                 }
 
                 // Gets the token and sets its issued time.
@@ -138,7 +138,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 throw new TokenResponseException(new TokenErrorResponse
                 {
                     Error = "Server response does not contain a JSON object. Status code is: " + response.StatusCode
-                });
+                }, response.StatusCode);
             }
         }
     }

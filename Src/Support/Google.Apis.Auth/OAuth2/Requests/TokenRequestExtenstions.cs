@@ -54,7 +54,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
             if (!response.IsSuccessStatusCode)
             {
                 var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
-                throw new TokenResponseException(error);
+                throw new TokenResponseException(error, response.StatusCode);
             }
 
             // Gets the token and sets its issued time.
