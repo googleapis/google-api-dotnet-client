@@ -1,0 +1,29 @@
+<Project>
+
+  <!-- common nupkg information -->
+  <PropertyGroup>
+    <PackageVersion>1.26.0</PackageVersion>
+    <Authors>Google Inc.</Authors>
+    <Copyright>Copyright 2017 Google Inc.</Copyright>
+    <PackageTags>Google</PackageTags>
+    <PackageProjectUrl>https://developers.google.com/api-client-library/dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+  </PropertyGroup>
+  
+  <!-- common build configuration -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <!-- On non-Windows platforms only net core can be built -->
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+</Project>

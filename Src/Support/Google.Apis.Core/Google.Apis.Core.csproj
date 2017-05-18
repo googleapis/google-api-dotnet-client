@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  
+  <Import Project="..\CommonProjectProperties.xml" />
+
+  <!-- build configuration -->
+  <PropertyGroup>
+    <!-- VS2017 project load fails if this is in an Import -->
+    <TargetFrameworks>$(TargetFrameworks)</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google APIs Core Client Library</Title>
+    <Description>
+The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, Data-store, logging and so on.
+
+Supported Platforms:
+- .NET Framework 4.5+
+- NetStandard1.3
+    </Description>
+  </PropertyGroup>
+  
+  <!-- package references; common then per-target -->
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="Newtonsoft.Json" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>

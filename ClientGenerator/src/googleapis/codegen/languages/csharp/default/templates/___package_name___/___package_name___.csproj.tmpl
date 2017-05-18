@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>{{ api.module.name }} Client Library</Title>
+    <Version>{{ features.currentSupportVersion }}.{{ api.revisionInt16 }}</Version>
+    <PackageVersion>{{ features.currentSupportVersion }}.{{ api.revisionInt16 }}</PackageVersion>
+    <Authors>Google Inc.</Authors>
+    <Copyright>Copyright 2017 {% if api.ownerName == 'Google' %}Google Inc.{% else %}{{ api.ownerName }}{% endif %}</Copyright>
+    <PackageTags>Google</PackageTags>
+    <PackageProjectUrl>https://developers.google.com/api-client-library/dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+    <Description>
+      Google APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
+
+      Supported Platforms:
+      - .NET Framework 4.5+
+      - NetStandard1.3
+
+      Legacy platforms:
+      - .NET Framework 4.0
+      - Windows 8 Apps
+      - Windows Phone 8.1
+      - Windows Phone Silverlight 8.0
+	  
+      Incompatible platforms:
+      - .NET Framework &lt; 4.0
+      - Silverlight
+      - UWP (will build, but is known not to work at runtime)
+
+      More documentation on the API is available at:
+      https://developers.google.com/api-client-library/dotnet/apis/{{ api.name }}/{{ api.version }}
+
+      The package source code is available at:
+      https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
+    </Description>
+  </PropertyGroup>
+
+  <!-- build properties -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;netstandard1.0;net45;net40</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1570,1587,1591</NoWarn>
+  </PropertyGroup>
+  
+  <!-- per-target dependencies -->
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="Google.Apis" Version="{{ features.currentSupportVersion }}" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="{{ features.currentSupportVersion }}" />{% endif %}
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
+    <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
+    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
+    <AppConfig>app.netstandard10.config</AppConfig>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
+    <PackageReference Include="Google.Apis" Version="[{{ features.pclSupportVersion }}]" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.pclSupportVersion }}]" />{% endif %}
+    <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="Google.Apis" Version="{{ features.currentSupportVersion }}" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="{{ features.currentSupportVersion }}" />{% endif %}
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
+    <AppConfig>app.net40.config</AppConfig>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net40'">
+    <PackageReference Include="Google.Apis" Version="[{{ features.net40SupportVersion }}]" />{% if api.authscopes %}
+    <PackageReference Include="Google.Apis.Auth" Version="[{{ features.net40SupportVersion }}]" />{% endif %}
+  </ItemGroup>
+
+</Project>
