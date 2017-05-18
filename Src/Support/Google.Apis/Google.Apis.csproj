@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <Import Project="..\CommonProjectProperties.xml" />
+
+  <!-- build configuration -->
+  <PropertyGroup>
+    <!-- VS2017 project load fails if this is in an Import -->
+    <TargetFrameworks>$(TargetFrameworks)</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google APIs Client Library</Title>
+    <Description>
+The Google APIs Client Library is a runtime client for working with Google services.
+The library supports service requests, media upload and download, etc.
+    
+Supported Platforms:
+- .NET Framework 4.5+
+- NetStandard1.3
+    </Description>
+  </PropertyGroup>
+
+  <!-- package references; common then per-target -->
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.1" />
+    <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="Newtonsoft.Json" Version="7.0.1" />
+  </ItemGroup>
+  
+  <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
+  <!-- There must be a better way of doing this... -->
+  <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec">
+    <MSBuild Projects="..\Google.Apis.PlatformServices\Google.Apis.PlatformServices.csproj" />
+    <Copy SourceFiles="..\Google.Apis.PlatformServices\bin\$(Configuration)\net45\Google.Apis.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
+  </Target>
+  <ItemGroup>
+    <None Include="$(OutputPath)net45\Google.Apis.PlatformServices.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\net45</PackagePath>
+    </None>
+  </ItemGroup>
+  
+</Project>
