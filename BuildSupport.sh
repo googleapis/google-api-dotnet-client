@@ -2,14 +2,13 @@
 
 set -e
 
-# NuGet package cache directory for restore/build.
-NUGET_PACKAGE_DIR=`pwd`/Packages
+# "nuget restore" fails if local package source directories don't exist.
+mkdir -p NuPkgs/Support
+
 # Final output directory of NuPkgs.
 NUPKG_DIR=`pwd`/NuPkgs/Support
 # Build configuration to build/pack.
 BUILD_CONFIGURATION=Release
-
-export NUGET_PACKAGES=$NUGET_PACKAGE_DIR
 
 dotnet restore Src/Support/GoogleApisClient.sln
 dotnet build Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION

@@ -2,8 +2,9 @@
 
 set -e
 
-# NuGet package cache directory for restore/build.
-NUGET_PACKAGE_DIR=$(pwd)/Packages
+# "nuget restore" fails if local package source directories don't exist.
+mkdir -p NuPkgs/Support
+
 # Final output directory of NuPkgs.
 NUPKG_DIR=$(pwd)/NuPkgs/Generated
 # Build configuration to build/pack.
@@ -14,8 +15,6 @@ DISCOVERY_DOC_DIR=$(pwd)/DiscoveryJson
 CODE_GENERATION_DIR=$(pwd)/Src/Generated
 # Directory containing tools used during the build.
 TOOLS_DIR=$(pwd)/Src/Tools
-
-export NUGET_PACKAGES=$NUGET_PACKAGE_DIR
 
 while [[ $# -gt 0 ]]; do
   key="$1"

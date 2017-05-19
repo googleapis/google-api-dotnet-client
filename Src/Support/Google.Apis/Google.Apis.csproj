@@ -37,11 +37,11 @@ Supported Platforms:
   
   <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
   <!-- There must be a better way of doing this... -->
-  <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec">
+  <Target Name="IncludePlatformServices" BeforeTargets="GenerateNuspec" Condition="'$(OS)' == 'Windows_NT'">
     <MSBuild Projects="..\Google.Apis.PlatformServices\Google.Apis.PlatformServices.csproj" />
     <Copy SourceFiles="..\Google.Apis.PlatformServices\bin\$(Configuration)\net45\Google.Apis.PlatformServices.dll" DestinationFolder="$(OutputPath)net45" />
   </Target>
-  <ItemGroup>
+  <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
     <None Include="$(OutputPath)net45\Google.Apis.PlatformServices.dll">
       <Pack>true</Pack>
       <PackagePath>lib\net45</PackagePath>
