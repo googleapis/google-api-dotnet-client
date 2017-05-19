@@ -83,4 +83,63 @@ Nuget packages target:
 
 E.g. [Google.Apis.Storage.v1 v1.11.1.434](https://www.nuget.org/packages/Google.Apis.Storage.v1/1.11.1.434).
 
-No specific framework targets in the nuget packages; depends on the same version of the support libraries. 
+No specific framework targets in the nuget packages; depends on the same version of the support libraries.
+
+----------
+
+# Framework support (support libraries)
+
+Framework support with support libraries. E.g. [Google.Apis](https://www.nuget.org/packages/Google.Apis). 
+
+## Version >= 1.26.0
+_Remove legacy frameworks_
+
+_TODO: Add example nuget package when it's released_
+
+Nuget packages target:
+
+* .NET Framework 4.5
+* .NETStandard 1.3
+
+## Version 1.15.0 - 1.25.0
+_.NETStandard support_
+
+E.g. [Google.Apis v1.25.0](https://www.nuget.org/packages/Google.Apis/1.25.0)
+
+Nuget packages target:
+
+* .NET Framework 4.5
+* .NETStandard 1.3
+* win81 (Windows 8.1 app)
+* wp8 (Windows Phone Silverlight)
+* wpa81 (Windows Phone 8.1)
+* PCL profile 344 (portable-net45+sl5+win8+wpa81+wp8)
+ * Silverlight 5.0
+
+## Version 1.11.1 - 1.14.1
+
+_Remove support for .NET Framework 4.0_
+
+E.g. [Google.Apis v1.14.1](https://www.nuget.org/packages/Google.Apis/1.14.1)
+
+Nuget packages target:
+
+* .NET Framework 4.5
+* win81 (Windows 8.1 app)
+* wp8 (Windows Phone Silverlight)
+* wpa81 (Windows Phone 8.1)
+* PCL profile 344 (portable-net45+sl5+win8+wpa81+wp8)
+ * Silverlight 5.0
+
+## Version <= 1.10.0
+
+E.g. [Google.Apis v1.10.0](https://www.nuget.org/packages/Google.Apis/1.10.0)
+
+Nuget packages target:
+
+* .NET Framework 4.0
+* netcore45 (Windows 8 app)
+* wp8 (Windows Phone Silverlight)
+* wpa81 (Windows Phone 8.1)
+* PCL profile 328 (portable-net4+sl50+win8+wpa81+wp8)
+ * Silverlight 5.0
