@@ -25,3 +25,6 @@ TestResult.xml
 
 # Ignore the testrunner directory.
 testrunner/*
+
+# Ignore the generated Generated.sln solution file
+Generated.sln

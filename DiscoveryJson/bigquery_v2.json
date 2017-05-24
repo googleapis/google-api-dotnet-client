@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9v2DvSjbMrXkrt5_2sOTOHvoALs\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/g_G3eD_OgD8-ScdUNw6NbiklXmE\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20170430",
+ "revision": "20170511",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -896,7 +896,7 @@
     },
     "query": {
      "type": "string",
-     "description": "[Required] BigQuery SQL query to execute."
+     "description": "[Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL."
     },
     "queryParameters": {
      "type": "array",
@@ -1733,7 +1733,7 @@
    "properties": {
     "description": {
      "type": "string",
-     "description": "[Optional] The field description. The maximum length is 16K characters."
+     "description": "[Optional] The field description. The maximum length is 512 characters."
     },
     "fields": {
      "type": "array",
