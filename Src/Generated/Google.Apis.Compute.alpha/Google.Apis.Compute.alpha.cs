@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170426 (846)
+ *      <tr><th>API Rev<td>20170515 (865)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -14943,6 +14943,9 @@ namespace Google.Apis.Compute.alpha
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -14961,6 +14964,9 @@ namespace Google.Apis.Compute.alpha
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -15322,6 +15328,9 @@ namespace Google.Apis.Compute.alpha
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -15339,6 +15348,9 @@ namespace Google.Apis.Compute.alpha
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -15541,7 +15553,8 @@ namespace Google.Apis.Compute.alpha
         /// not yet been created. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method.
         ///
-        /// A managed instance group can have up to 1000 VM instances per group.</summary>
+        /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
+        /// need an increase in this limit.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -15557,7 +15570,8 @@ namespace Google.Apis.Compute.alpha
         /// not yet been created. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method.
         ///
-        /// A managed instance group can have up to 1000 VM instances per group.</summary>
+        /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
+        /// need an increase in this limit.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -16082,6 +16096,9 @@ namespace Google.Apis.Compute.alpha
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -16098,6 +16115,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -16204,7 +16224,10 @@ namespace Google.Apis.Compute.alpha
         /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -16222,7 +16245,10 @@ namespace Google.Apis.Compute.alpha
         /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -16339,7 +16365,10 @@ namespace Google.Apis.Compute.alpha
         /// template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when
         /// the resize actions are scheduled even if the group has not yet added or deleted any instances. You must
         /// separately verify the status of the creating, creatingWithoutRetries, or deleting actions with the get or
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -16358,7 +16387,10 @@ namespace Google.Apis.Compute.alpha
         /// template. If you decrease the size, the group deletes instances. The resize operation is marked DONE when
         /// the resize actions are scheduled even if the group has not yet added or deleted any instances. You must
         /// separately verify the status of the creating, creatingWithoutRetries, or deleting actions with the get or
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         public class ResizeAdvancedRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new ResizeAdvanced request.</summary>
@@ -17949,7 +17981,10 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Removes one or more instances from the specified instance group, but does not delete those
-        /// instances.</summary>
+        /// instances.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -17962,7 +17997,10 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Removes one or more instances from the specified instance group, but does not delete those
-        /// instances.</summary>
+        /// instances.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
         public class RemoveInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new RemoveInstances request.</summary>
@@ -24206,6 +24244,95 @@ namespace Google.Apis.Compute.alpha
         }
 
 
+        /// <summary>Deletes the specified license.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="license">Name of the license
+        /// resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string license)
+        {
+            return new DeleteRequest(service, project, license);
+        }
+
+        /// <summary>Deletes the specified license.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string license)
+                : base(service)
+            {
+                Project = project;
+                License = license;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the license resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("license", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string License { get; private set; }
+
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses/{license}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "license", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "license",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Returns the specified License resource. Get a list of available licenses by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -30338,6 +30465,9 @@ namespace Google.Apis.Compute.alpha
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -30355,6 +30485,9 @@ namespace Google.Apis.Compute.alpha
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -30568,6 +30701,9 @@ namespace Google.Apis.Compute.alpha
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -30584,6 +30720,9 @@ namespace Google.Apis.Compute.alpha
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -31321,6 +31460,9 @@ namespace Google.Apis.Compute.alpha
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -31336,6 +31478,9 @@ namespace Google.Apis.Compute.alpha
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
@@ -31442,7 +31587,10 @@ namespace Google.Apis.Compute.alpha
         /// schedules actions to create new instances using the current instance template. If you decrease the size, the
         /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
         /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.</summary>
+        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -31458,7 +31606,10 @@ namespace Google.Apis.Compute.alpha
         /// schedules actions to create new instances using the current instance template. If you decrease the size, the
         /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
         /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.</summary>
+        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -48417,13 +48568,14 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
         ///
         /// For global forwarding rules, the address must be a global IP. For regional forwarding rules, the address
-        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IP
-        /// from the same scope (global or regional) will be assigned.
+        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IPv4
+        /// address from the same scope (global or regional) will be assigned. A regional forwarding rule supports IPv4
+        /// only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
         /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
-        /// network configured for this forwarding rule. Only IPv4 is supported.</summary>
+        /// network configured for this forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -54368,13 +54520,13 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
-        /// resource.</summary>
+        /// <summary>An optional description of this resource. Provide this property when you create the resource. This
+        /// field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
         /// <summary>[Output Only] The gateway address for default routes to reach destination addresses outside this
-        /// subnetwork.</summary>
+        /// subnetwork. This field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayAddress")]
         public virtual string GatewayAddress { get; set; } 
 
@@ -54385,7 +54537,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The range of internal addresses that are owned by this subnetwork. Provide this property when you
         /// create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping
-        /// within a network. Only IPv4 is supported.</summary>
+        /// within a network. Only IPv4 is supported. This field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -54402,16 +54554,18 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The URL of the network to which this subnetwork belongs, provided by the client when initially
-        /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.</summary>
+        /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can
+        /// be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP
-        /// addresses.</summary>
+        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP addresses.
+        /// This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
         public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
 
-        /// <summary>URL of the region where the Subnetwork resides.</summary>
+        /// <summary>URL of the region where the Subnetwork resides. This field can be set only at resource creation
+        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170511 (861)
+ *      <tr><th>API Rev<td>20170520 (870)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2970,8 +2970,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
 
-        /// <summary>[Output-only] All errors and warnings encountered during the running of the job. Errors here do not
-        /// necessarily mean that the job has completed or was unsuccessful.</summary>
+        /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
+        /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
+        /// that the job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
 
@@ -3659,8 +3660,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorResult")]
         public virtual ErrorProto ErrorResult { get; set; } 
 
-        /// <summary>[Output-only] All errors encountered during the running of the job. Errors here do not necessarily
-        /// mean that the job has completed or was unsuccessful.</summary>
+        /// <summary>[Output-only] The first errors encountered during the running of the job. The final message
+        /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
+        /// job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
 
@@ -3877,8 +3879,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
 
-        /// <summary>[Output-only] All errors and warnings encountered during the running of the job. Errors here do not
-        /// necessarily mean that the job has completed or was unsuccessful.</summary>
+        /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
+        /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
+        /// that the job has completed or was unsuccessful.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; } 
 
@@ -4162,7 +4165,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The field description. The maximum length is 512 characters.</summary>
+        /// <summary>[Optional] The field description. The maximum length is 1,024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 

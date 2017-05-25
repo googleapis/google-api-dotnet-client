@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170516 (866)
+ *      <tr><th>API Rev<td>20170522 (872)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -564,8 +564,11 @@ namespace Google.Apis.Speech.v1beta1
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
         /// method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
-        /// schemes, such as `users/operations`.</summary>
+        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
+        /// such as `users/operations`. To override the binding, API services can add a binding such as
+        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+        /// name includes the operations collection id, however overriding users must ensure the name binding is the
+        /// parent resource, without the operations collection id.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
@@ -574,8 +577,11 @@ namespace Google.Apis.Speech.v1beta1
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
         /// method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
-        /// schemes, such as `users/operations`.</summary>
+        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
+        /// such as `users/operations`. To override the binding, API services can add a binding such as
+        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+        /// name includes the operations collection id, however overriding users must ensure the name binding is the
+        /// parent resource, without the operations collection id.</summary>
         public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v1beta1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -590,7 +596,7 @@ namespace Google.Apis.Speech.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The name of the operation collection.</summary>
+            /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 

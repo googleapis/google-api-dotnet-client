@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170516 (866)
+ *      <tr><th>API Rev<td>20170523 (873)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -774,9 +774,12 @@ namespace Google.Apis.DLP.v2beta1
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
             /// this method, it returns `UNIMPLEMENTED`.
             ///
-            /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-            /// name schemes, such as `users/operations`.</summary>
-            /// <param name="name">The name of the operation collection.</param>
+            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+            /// name includes the operations collection id, however overriding users must ensure the name binding is the
+            /// parent resource, without the operations collection id.</summary>
+            /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -785,8 +788,11 @@ namespace Google.Apis.DLP.v2beta1
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
             /// this method, it returns `UNIMPLEMENTED`.
             ///
-            /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-            /// name schemes, such as `users/operations`.</summary>
+            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+            /// name includes the operations collection id, however overriding users must ensure the name binding is the
+            /// parent resource, without the operations collection id.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -798,13 +804,9 @@ namespace Google.Apis.DLP.v2beta1
                 }
 
 
-                /// <summary>The name of the operation collection.</summary>
+                /// <summary>The name of the operation's parent resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
                 /// <summary>The list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -813,6 +815,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -848,15 +854,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -869,6 +866,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1667,7 +1673,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>This field will contain an `InspectOperationMetdata` object.</summary>
+        /// <summary>This field will contain an `InspectOperationMetadata` object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 

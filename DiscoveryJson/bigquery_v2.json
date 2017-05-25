@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/g_G3eD_OgD8-ScdUNw6NbiklXmE\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/q30PR_lnWnFjEO34qBOs7pMSLYA\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20170511",
+ "revision": "20170520",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -552,7 +552,7 @@
     },
     "errors": {
      "type": "array",
-     "description": "[Output-only] All errors and warnings encountered during the running of the job. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
+     "description": "[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
      "items": {
       "$ref": "ErrorProto"
      }
@@ -1206,7 +1206,7 @@
     },
     "errors": {
      "type": "array",
-     "description": "[Output-only] All errors encountered during the running of the job. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
+     "description": "[Output-only] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
      "items": {
       "$ref": "ErrorProto"
      }
@@ -1444,7 +1444,7 @@
     },
     "errors": {
      "type": "array",
-     "description": "[Output-only] All errors and warnings encountered during the running of the job. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
+     "description": "[Output-only] The first errors or warnings encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.",
      "items": {
       "$ref": "ErrorProto"
      }
@@ -1733,7 +1733,7 @@
    "properties": {
     "description": {
      "type": "string",
-     "description": "[Optional] The field description. The maximum length is 512 characters."
+     "description": "[Optional] The field description. The maximum length is 1,024 characters."
     },
     "fields": {
      "type": "array",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170522 (872)
+ *      <tr><th>API Rev<td>20170524 (874)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -508,9 +508,12 @@ namespace Google.Apis.CloudBuild.v1
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
         /// method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
-        /// schemes, such as `users/operations`.</summary>
-        /// <param name="name">The name of the operation collection.</param>
+        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
+        /// such as `users/operations`. To override the binding, API services can add a binding such as
+        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+        /// name includes the operations collection id, however overriding users must ensure the name binding is the
+        /// parent resource, without the operations collection id.</summary>
+        /// <param name="name">The name of the operation's parent resource.</param>
         public virtual ListRequest List(string name)
         {
             return new ListRequest(service, name);
@@ -519,8 +522,11 @@ namespace Google.Apis.CloudBuild.v1
         /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
         /// method, it returns `UNIMPLEMENTED`.
         ///
-        /// NOTE: the `name` binding below allows API services to override the binding to use different resource name
-        /// schemes, such as `users/operations`.</summary>
+        /// NOTE: the `name` binding allows API services to override the binding to use different resource name schemes,
+        /// such as `users/operations`. To override the binding, API services can add a binding such as
+        /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+        /// name includes the operations collection id, however overriding users must ensure the name binding is the
+        /// parent resource, without the operations collection id.</summary>
         public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -532,7 +538,7 @@ namespace Google.Apis.CloudBuild.v1
             }
 
 
-            /// <summary>The name of the operation collection.</summary>
+            /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -921,10 +927,6 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Number of results to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The raw filter text to constrain the results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -932,6 +934,10 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Number of results to return in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -967,15 +973,6 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -988,6 +985,15 @@ namespace Google.Apis.CloudBuild.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170509 (859)
+ *      <tr><th>API Rev<td>20170519 (869)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2361,6 +2361,13 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
+        ///
+        /// Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page
+        /// with that object ID doesn't exist in the presentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
+        public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
+
         /// <summary>The replace method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceMethod")]
         public virtual string ReplaceMethod { get; set; } 
@@ -2401,6 +2408,13 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkingMode")]
         public virtual string LinkingMode { get; set; } 
 
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
+        ///
+        /// Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page
+        /// with that object ID doesn't exist in the presentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
+        public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
+
         /// <summary>The ID of the Google Sheets spreadsheet that contains the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetId")]
         public virtual string SpreadsheetId { get; set; } 
@@ -2426,6 +2440,13 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Finds text in a shape matching this substring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containsText")]
         public virtual SubstringMatchCriteria ContainsText { get; set; } 
+
+        /// <summary>If non-empty, limits the matches to page elements only on the given pages.
+        ///
+        /// Returns a 400 bad request error if given the page object ID of a notes master, or if a page with that object
+        /// ID doesn't exist in the presentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageObjectIds")]
+        public virtual System.Collections.Generic.IList<string> PageObjectIds { get; set; } 
 
         /// <summary>The text that will replace the matched text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceText")]

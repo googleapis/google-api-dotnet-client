@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170426 (846)
+ *      <tr><th>API Rev<td>20170515 (865)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -4594,6 +4594,107 @@ namespace Google.Apis.Compute.v1
                     "disk", new Google.Apis.Discovery.Parameter
                     {
                         Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.ZoneSetLabelsRequest body, string project, string zone, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, zone, resource);
+        }
+
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ZoneSetLabelsRequest body, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ZoneSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/disks/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -9392,6 +9493,92 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/images/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "instanceGroupManagers" collection of methods.</summary>
@@ -9417,6 +9604,9 @@ namespace Google.Apis.Compute.v1
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -9435,6 +9625,9 @@ namespace Google.Apis.Compute.v1
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -9770,6 +9963,9 @@ namespace Google.Apis.Compute.v1
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -9787,6 +9983,9 @@ namespace Google.Apis.Compute.v1
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -9976,7 +10175,8 @@ namespace Google.Apis.Compute.v1
         /// not yet been created. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method.
         ///
-        /// A managed instance group can have up to 1000 VM instances per group.</summary>
+        /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
+        /// need an increase in this limit.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -9992,7 +10192,8 @@ namespace Google.Apis.Compute.v1
         /// not yet been created. You must separately verify the status of the individual instances with the
         /// listmanagedinstances method.
         ///
-        /// A managed instance group can have up to 1000 VM instances per group.</summary>
+        /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you
+        /// need an increase in this limit.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -10385,6 +10586,9 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -10401,6 +10605,9 @@ namespace Google.Apis.Compute.v1
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -10494,7 +10701,10 @@ namespace Google.Apis.Compute.v1
         /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
         /// managed instance group is located.</param>
@@ -10512,7 +10722,10 @@ namespace Google.Apis.Compute.v1
         /// the current instance template. If you decrease the size, the group deletes instances. The resize operation
         /// is marked DONE when the resize actions are scheduled even if the group has not yet added or deleted any
         /// instances. You must separately verify the status of the creating or deleting actions with the
-        /// listmanagedinstances method.</summary>
+        /// listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -11703,7 +11916,10 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Removes one or more instances from the specified instance group, but does not delete those
-        /// instances.</summary>
+        /// instances.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -11716,7 +11932,10 @@ namespace Google.Apis.Compute.v1
         }
 
         /// <summary>Removes one or more instances from the specified instance group, but does not delete those
-        /// instances.</summary>
+        /// instances.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration before the VM instance is removed or deleted.</summary>
         public class RemoveInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new RemoveInstances request.</summary>
@@ -13675,6 +13894,107 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.InstancesSetLabelsRequest body, string project, string zone, string instance)
+        {
+            return new SetLabelsRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InstancesSetLabelsRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InstancesSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Changes the machine type for a stopped instance to the machine type specified in the
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
@@ -15450,6 +15770,264 @@ namespace Google.Apis.Compute.v1
         }
 
 
+        /// <summary>Disable this project as an XPN host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual DisableXpnHostRequest DisableXpnHost(string project)
+        {
+            return new DisableXpnHostRequest(service, project);
+        }
+
+        /// <summary>Disable this project as an XPN host project.</summary>
+        public class DisableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new DisableXpnHost request.</summary>
+            public DisableXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "disableXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/disableXpnHost"; }
+            }
+
+            /// <summary>Initializes DisableXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.v1.Data.ProjectsDisableXpnResourceRequest body, string project)
+        {
+            return new DisableXpnResourceRequest(service, body, project);
+        }
+
+        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new DisableXpnResource request.</summary>
+            public DisableXpnResourceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ProjectsDisableXpnResourceRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ProjectsDisableXpnResourceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "disableXpnResource"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/disableXpnResource"; }
+            }
+
+            /// <summary>Initializes DisableXpnResource parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Enable this project as an XPN host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual EnableXpnHostRequest EnableXpnHost(string project)
+        {
+            return new EnableXpnHostRequest(service, project);
+        }
+
+        /// <summary>Enable this project as an XPN host project.</summary>
+        public class EnableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new EnableXpnHost request.</summary>
+            public EnableXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "enableXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/enableXpnHost"; }
+            }
+
+            /// <summary>Initializes EnableXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
+        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual EnableXpnResourceRequest EnableXpnResource(Google.Apis.Compute.v1.Data.ProjectsEnableXpnResourceRequest body, string project)
+        {
+            return new EnableXpnResourceRequest(service, body, project);
+        }
+
+        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
+        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        public class EnableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new EnableXpnResource request.</summary>
+            public EnableXpnResourceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ProjectsEnableXpnResourceRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ProjectsEnableXpnResourceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "enableXpnResource"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/enableXpnResource"; }
+            }
+
+            /// <summary>Initializes EnableXpnResource parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
         /// <summary>Returns the specified Project resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetRequest Get(string project)
@@ -15505,6 +16083,302 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetXpnHostRequest GetXpnHost(string project)
+        {
+            return new GetXpnHostRequest(service, project);
+        }
+
+        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Project>
+        {
+            /// <summary>Constructs a new GetXpnHost request.</summary>
+            public GetXpnHostRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getXpnHost"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/getXpnHost"; }
+            }
+
+            /// <summary>Initializes GetXpnHost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Get XPN resources associated with this host project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetXpnResourcesRequest GetXpnResources(string project)
+        {
+            return new GetXpnResourcesRequest(service, project);
+        }
+
+        /// <summary>Get XPN resources associated with this host project.</summary>
+        public class GetXpnResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ProjectsGetXpnResources>
+        {
+            /// <summary>Constructs a new GetXpnResources request.</summary>
+            public GetXpnResourcesRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getXpnResources"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/getXpnResources"; }
+            }
+
+            /// <summary>Initializes GetXpnResources parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "order_by", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order_by",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest body, string project)
+        {
+            return new ListXpnHostsRequest(service, body, project);
+        }
+
+        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.XpnHostList>
+        {
+            /// <summary>Constructs a new ListXpnHosts request.</summary>
+            public ListXpnHostsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("order_by", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listXpnHosts"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/listXpnHosts"; }
+            }
+
+            /// <summary>Initializes ListXpnHosts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "order_by", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "order_by",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -17207,6 +18081,9 @@ namespace Google.Apis.Compute.v1
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -17224,6 +18101,9 @@ namespace Google.Apis.Compute.v1
         /// group by the number of instances that you abandon. This operation is marked as DONE when the action is
         /// scheduled even if the instances have not yet been removed from the group. You must separately verify the
         /// status of the abandoning action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class AbandonInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -17411,6 +18291,9 @@ namespace Google.Apis.Compute.v1
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -17427,6 +18310,9 @@ namespace Google.Apis.Compute.v1
         /// targetSize of the managed instance group by the number of instances that you delete. This operation is
         /// marked as DONE when the action is scheduled even if the instances are still being deleted. You must
         /// separately verify the status of the deleting action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class DeleteInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -18019,6 +18905,9 @@ namespace Google.Apis.Compute.v1
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
         ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
+        ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -18034,6 +18923,9 @@ namespace Google.Apis.Compute.v1
         /// instances are deleted and recreated using the current instance template for the managed instance group. This
         /// operation is marked as DONE when the action is scheduled even if the instances have not yet been recreated.
         /// You must separately verify the status of the recreating action with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.
         ///
         /// You can specify a maximum of 1000 instances with this method per request.</summary>
         public class RecreateInstancesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
@@ -18127,7 +19019,10 @@ namespace Google.Apis.Compute.v1
         /// schedules actions to create new instances using the current instance template. If you decrease the size, the
         /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
         /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.</summary>
+        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -18143,7 +19038,10 @@ namespace Google.Apis.Compute.v1
         /// schedules actions to create new instances using the current instance template. If you decrease the size, the
         /// group schedules delete actions on one or more instances. The resize operation is marked DONE when the resize
         /// actions are scheduled even if the group has not yet added or deleted any instances. You must separately
-        /// verify the status of the creating or deleting actions with the listmanagedinstances method.</summary>
+        /// verify the status of the creating or deleting actions with the listmanagedinstances method.
+        ///
+        /// If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds
+        /// after the connection draining duration has elapsed before the VM instance is removed or deleted.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -21281,6 +22179,92 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/snapshots/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -29652,6 +30636,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>[Output Only] Last attach timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttachTimestamp")]
         public virtual string LastAttachTimestamp { get; set; } 
@@ -30203,13 +31191,14 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
         ///
         /// For global forwarding rules, the address must be a global IP. For regional forwarding rules, the address
-        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IP
-        /// from the same scope (global or regional) will be assigned.
+        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IPv4
+        /// address from the same scope (global or regional) will be assigned. A regional forwarding rule supports IPv4
+        /// only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
         /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
         /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
-        /// network configured for this forwarding rule. Only IPv4 is supported.</summary>
+        /// network configured for this forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -30431,6 +31420,28 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class GlobalSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash when updating or changing labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>A list of labels to apply for this resource. Each label key & value must comply with RFC1035.
+        /// Specifically, the name must be 1-63 characters long and match the regular expression
+        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// For example, "webserver-frontend": "images". A label value can also be empty (e.g. "my-label":
+        /// "").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Guest OS features.</summary>
@@ -30933,6 +31944,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Labels to apply to this image. These can be later modified by the setLabels method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Any applicable license URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
@@ -31073,6 +32088,10 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Type of the resource. Always compute#instance for instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Full or partial URL of the machine type resource to use for this instance, in the format:
         /// zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For
@@ -31849,6 +32868,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
+        /// <summary>Labels to apply to instances that are created from this template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>The machine type to use for instances that are created from this template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
@@ -32037,6 +33060,20 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class InstancesSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fingerprint of the previous set of labels for this resource, used to prevent conflicts. Provide the
+        /// latest fingerprint value when making a request to add or change labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class InstancesSetMachineTypeRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -32969,6 +34006,64 @@ namespace Google.Apis.Compute.v1.Data
         /// stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageExportLocation")]
         public virtual UsageExportLocation UsageExportLocation { get; set; } 
+
+        /// <summary>[Output Only] The role this project has in a Cross Project Network (XPN) configuration. Currently
+        /// only HOST projects are differentiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
+        public virtual string XpnProjectStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsDisableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>XPN resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
+        public virtual XpnResourceId XpnResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsEnableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>XPN resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
+        public virtual XpnResourceId XpnResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsGetXpnResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of resource. Always compute#projectsGetXpnResources for lists of XPN
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>XPN resources attached to this project as their XPN host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<XpnResourceId> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsListXpnHostsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional organization ID managed by Cloud Resource Manager, for which to list XPN host projects. If
+        /// not specified, the organization will be inferred from the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33925,6 +35020,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values
+        /// may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>[Output Only] A list of public visible licenses that apply to this snapshot. This can be because
         /// the original image had licenses attached (such as a Windows image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
@@ -34106,13 +35206,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
-        /// resource.</summary>
+        /// <summary>An optional description of this resource. Provide this property when you create the resource. This
+        /// field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
         /// <summary>[Output Only] The gateway address for default routes to reach destination addresses outside this
-        /// subnetwork.</summary>
+        /// subnetwork. This field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayAddress")]
         public virtual string GatewayAddress { get; set; } 
 
@@ -34123,7 +35223,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The range of internal addresses that are owned by this subnetwork. Provide this property when you
         /// create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping
-        /// within a network. Only IPv4 is supported.</summary>
+        /// within a network. Only IPv4 is supported. This field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
@@ -34140,16 +35240,18 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The URL of the network to which this subnetwork belongs, provided by the client when initially
-        /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks.</summary>
+        /// creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can
+        /// be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP
-        /// addresses.</summary>
+        /// <summary>Whether the VMs in this subnet can access Google services without assigned external IP addresses.
+        /// This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
         public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
 
-        /// <summary>URL of the region where the Subnetwork resides.</summary>
+        /// <summary>URL of the region where the Subnetwork resides. This field can be set only at resource creation
+        /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -35643,6 +36745,52 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    public class XpnHostList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>[Output Only] A list of XPN host project URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Project> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#xpnHostList for lists of XPN hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>XpnResourceId</summary>
+    public class XpnResourceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the XPN resource. In the case of projects, this field matches the project's name, not the
+        /// canonical ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The type of the XPN resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Zone resource.</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -35712,6 +36860,23 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ZoneSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>The labels to set for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
