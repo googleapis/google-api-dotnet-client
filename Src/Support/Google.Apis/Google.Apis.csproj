@@ -4,8 +4,8 @@
 
   <!-- build configuration -->
   <PropertyGroup>
-    <!-- VS2017 project load fails if this is in an Import -->
-    <TargetFrameworks>$(TargetFrameworks)</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
   </PropertyGroup>
 
   <!-- nupkg information -->

@@ -12,7 +12,6 @@
 
   <!-- build configuration -->
   <PropertyGroup>
-    <!-- VS2017 project load fails if this is in an Import -->
     <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net45</TargetFrameworks>
     <!-- If not on Windows, target netstandard1.3, just to allow the empty build to succeed -->
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
