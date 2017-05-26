@@ -95,10 +95,22 @@ namespace Google.Apis.Services
             /// <summary>Gets or sets the API Key. Default value is <c>null</c>.</summary>
             public string ApiKey { get; set; }
 
+            private string _applicationName;
             /// <summary>
             /// Gets or sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
             /// </summary>
-            public string ApplicationName { get; set; }
+            public string ApplicationName
+            {
+                get => _applicationName;
+                set
+                {
+                    if (value != null && !ProductInfoHeaderValue.TryParse(value, out var _))
+                    {
+                        throw new ArgumentException("Invalid Application name", nameof(value));
+                    }
+                    _applicationName = value;
+                }
+            }
 
             /// <summary>
             /// Maximum allowed length of a URL string for GET requests. Default value is <c>2048</c>. If the value is
