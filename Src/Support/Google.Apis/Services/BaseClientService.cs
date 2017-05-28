@@ -95,22 +95,10 @@ namespace Google.Apis.Services
             /// <summary>Gets or sets the API Key. Default value is <c>null</c>.</summary>
             public string ApiKey { get; set; }
 
-            private string _applicationName;
             /// <summary>
             /// Gets or sets Application name to be used in the User-Agent header. Default value is <c>null</c>. 
             /// </summary>
-            public string ApplicationName
-            {
-                get => _applicationName;
-                set
-                {
-                    if (value != null && !ProductInfoHeaderValue.TryParse(value, out var _))
-                    {
-                        throw new ArgumentException("Invalid Application name", nameof(value));
-                    }
-                    _applicationName = value;
-                }
-            }
+            public string ApplicationName { get; set; }
 
             /// <summary>
             /// Maximum allowed length of a URL string for GET requests. Default value is <c>2048</c>. If the value is
@@ -126,6 +114,14 @@ namespace Google.Apis.Services
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 MaxUrlLength = DefaultMaxUrlLength;
             }
+
+            internal void Validate()
+            {
+                if (ApplicationName != null && !ProductInfoHeaderValue.TryParse(ApplicationName, out var _))
+                {
+                    throw new ArgumentException("Invalid Application name", nameof(ApplicationName));
+                }
+            }
         }
 
         #endregion
@@ -133,6 +129,7 @@ namespace Google.Apis.Services
         /// <summary>Constructs a new base client with the specified initializer.</summary>
         protected BaseClientService(Initializer initializer)
         {
+            initializer.Validate();
             // Set the right properties by the initializer's properties.
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;
