@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170515 (865)
+ *      <tr><th>API Rev<td>20170520 (870)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1821,7 +1821,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// +   `google-api-python-client/1.4.0`: The request was made by the Google API client for Python. +   `Cloud
         /// SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the Google Cloud SDK CLI
         /// (gcloud). +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`: The request was
-        /// made from the `my-project` App Engine app.</summary>
+        /// made from the `my-project` App Engine app.
+        ///
+        /// NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
 

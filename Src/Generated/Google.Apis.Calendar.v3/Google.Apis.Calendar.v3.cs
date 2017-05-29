@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170516 (866)
+ *      <tr><th>API Rev<td>20170521 (871)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -2886,8 +2886,10 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
-            /// <summary>Maximum number of events returned on one result page. By default the value is 250 events. The
-            /// page size can never be larger than 2500 events. Optional.</summary>
+            /// <summary>Maximum number of events returned on one result page. The number of events in the resulting
+            /// page may be less than this value, or none at all, even if there are more events matching the query.
+            /// Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the
+            /// value is 250 events. The page size can never be larger than 2500 events. Optional.</summary>
             /// [default: 250]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3710,8 +3712,10 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("maxAttendees", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxAttendees { get; set; }
 
-            /// <summary>Maximum number of events returned on one result page. By default the value is 250 events. The
-            /// page size can never be larger than 2500 events. Optional.</summary>
+            /// <summary>Maximum number of events returned on one result page. The number of events in the resulting
+            /// page may be less than this value, or none at all, even if there are more events matching the query.
+            /// Incomplete pages can be detected by a non-empty nextPageToken field in the response. By default the
+            /// value is 250 events. The page size can never be larger than 2500 events. Optional.</summary>
             /// [default: 250]
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]

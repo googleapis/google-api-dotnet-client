@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170512 (862)
+ *      <tr><th>API Rev<td>20170519 (869)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -584,13 +584,13 @@ namespace Google.Apis.ServiceUser.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested size of the next page of data.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Requested size of the next page of data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -626,18 +626,18 @@ namespace Google.Apis.ServiceUser.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1418,8 +1418,10 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// Any fields in the request message which are not bound by the path pattern automatically become (optional) HTTP
     /// query parameters. Assume the following definition of the request message:
     ///
-    /// message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // mapped to the
-    /// URL int64 revision = 2;    // becomes a parameter SubMessage sub = 3;    // `sub.subfield` becomes a parameter }
+    /// service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http).get =
+    /// "/v1/messages/{message_id}"; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string
+    /// message_id = 1; // mapped to the URL int64 revision = 2;    // becomes a parameter SubMessage sub = 3;    //
+    /// `sub.subfield` becomes a parameter }
     ///
     /// This enables a HTTP JSON to RPC mapping as below:
     ///
@@ -1569,6 +1571,17 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// configured to override the derived collection name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restCollection")]
         public virtual string RestCollection { get; set; } 
+
+        /// <summary>Optional. The rest method name is by default derived from the URL pattern. If specified, this field
+        /// overrides the default method name. Example:
+        ///
+        /// rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse) { option (google.api.http) = {
+        /// post: "/v1/resources", body: "resource", rest_method_name: "insert" }; }
+        ///
+        /// This method has the automatically derived rest method name "create", but for backwards compatability with
+        /// apiary, it is specified as insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restMethodName")]
+        public virtual string RestMethodName { get; set; } 
 
         /// <summary>Selects methods to which this rule applies.
         ///

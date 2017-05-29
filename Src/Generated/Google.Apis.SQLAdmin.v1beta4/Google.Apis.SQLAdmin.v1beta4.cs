@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20170522 (872)
+ *      <tr><th>API Rev<td>20170523 (873)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4666,21 +4666,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Reserved for future use.</summary>
-    public class Labels : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; } 
-
-        /// <summary>Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Preferred location. This specifies where a Cloud SQL instance should preferably be located, either in a
     /// specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location
     /// is not available, the instance will be located as close as possible within the region. Only one location may be
@@ -5071,9 +5056,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Reserved for future use.</summary>
+        /// <summary>User defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<Labels> Labels { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The location preference settings. This allows the instance to be located as near as possible to
         /// either an App Engine app or GCE zone for better performance. App Engine co-location is only applicable to

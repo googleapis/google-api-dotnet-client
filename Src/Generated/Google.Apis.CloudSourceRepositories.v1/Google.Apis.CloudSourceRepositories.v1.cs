@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170502 (852)
+ *      <tr><th>API Rev<td>20170528 (878)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -110,6 +110,12 @@ namespace Google.Apis.CloudSourceRepositories.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>View the contents of your source code repositories</summary>
+            public static string SourceReadOnly = "https://www.googleapis.com/auth/source.read_only";
+
+            /// <summary>Manage the contents of your source code repositories</summary>
+            public static string SourceReadWrite = "https://www.googleapis.com/auth/source.read_write";
 
         }
 
@@ -380,7 +386,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
             }
 
 
-            /// <summary>Creates a repo in the given project with the given name..
+            /// <summary>Creates a repo in the given project with the given name.
             ///
             /// If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.</summary>
             /// <param name="body">The body of the request.</param>
@@ -390,7 +396,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a repo in the given project with the given name..
+            /// <summary>Creates a repo in the given project with the given name.
             ///
             /// If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.</summary>
             public class CreateRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.Repo>
@@ -636,14 +642,16 @@ namespace Google.Apis.CloudSourceRepositories.v1
 
             }
 
-            /// <summary>Returns all repos belonging to a project.</summary>
+            /// <summary>Returns all repos belonging to a project. The sizes of the repos are not set by ListRepos.  To
+            /// get the size of a repo, use GetRepo.</summary>
             /// <param name="name">The project ID whose repos should be listed. Values are of the form `projects/`.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Returns all repos belonging to a project.</summary>
+            /// <summary>Returns all repos belonging to a project. The sizes of the repos are not set by ListRepos.  To
+            /// get the size of a repo, use GetRepo.</summary>
             public class ListRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.ListReposResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -971,6 +979,10 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
+        public virtual string LogName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1041,7 +1053,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for ListRepos.</summary>
+    /// <summary>Response for ListRepos.  The size is not set in the returned repositories.</summary>
     public class ListReposResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If non-empty, additional repositories exist within the project. These can be retrieved by including
@@ -1160,7 +1172,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mirrorConfig")]
         public virtual MirrorConfig MirrorConfig { get; set; } 
 
-        /// <summary>Resource name of the repository, of the form `projects//repos/`.</summary>
+        /// <summary>Resource name of the repository, of the form `projects//repos/`.  The repo name may contain
+        /// slashes. eg, `projects/myproject/repos/name/with/slash`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

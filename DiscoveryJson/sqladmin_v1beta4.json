@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Euc4LCSjh6fw7Ncb7AG5gCqXa7Y\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/OkCuATKu4W9Y2ow8-gA51dk2muk\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20170522",
+ "revision": "20170523",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -793,21 +793,6 @@
     }
    }
   },
-  "Labels": {
-   "id": "Labels",
-   "type": "object",
-   "description": "Reserved for future use.",
-   "properties": {
-    "key": {
-     "type": "string",
-     "description": "Reserved for future use."
-    },
-    "value": {
-     "type": "string",
-     "description": "Reserved for future use."
-    }
-   }
-  },
   "LocationPreference": {
    "id": "LocationPreference",
    "type": "object",
@@ -1159,10 +1144,11 @@
      "default": "sql#settings"
     },
     "labels": {
-     "type": "array",
-     "description": "Reserved for future use.",
-     "items": {
-      "$ref": "Labels"
+     "type": "object",
+     "description": "User defined labels.",
+     "additionalProperties": {
+      "type": "string",
+      "description": "An individual label entry."
      }
     },
     "locationPreference": {
