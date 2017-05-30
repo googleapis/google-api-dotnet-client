@@ -114,6 +114,14 @@ namespace Google.Apis.Services
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 MaxUrlLength = DefaultMaxUrlLength;
             }
+
+            internal void Validate()
+            {
+                if (ApplicationName != null && !ProductInfoHeaderValue.TryParse(ApplicationName, out var _))
+                {
+                    throw new ArgumentException("Invalid Application name", nameof(ApplicationName));
+                }
+            }
         }
 
         #endregion
@@ -121,6 +129,7 @@ namespace Google.Apis.Services
         /// <summary>Constructs a new base client with the specified initializer.</summary>
         protected BaseClientService(Initializer initializer)
         {
+            initializer.Validate();
             // Set the right properties by the initializer's properties.
             GZipEnabled = initializer.GZipEnabled;
             Serializer = initializer.Serializer;

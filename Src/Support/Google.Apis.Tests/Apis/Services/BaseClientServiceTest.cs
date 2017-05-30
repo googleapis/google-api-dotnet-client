@@ -325,5 +325,38 @@ namespace Google.Apis.Tests.Apis.Services
                 Assert.Equal(new Uri(requestUri), request.RequestUri);
             }
         }
+
+        [Fact]
+        public void ValidApplicationName()
+        {
+            // Assert no exception thrown
+            new MockClientService(new BaseClientService.Initializer
+            {
+                ApplicationName = "AppName"
+            });
+        }
+
+        [Fact]
+        public void NullApplicationName()
+        {
+            // Assert no exception thrown
+            new MockClientService(new BaseClientService.Initializer
+            {
+                ApplicationName = null
+            });
+        }
+
+        [Fact]
+        public void InvalidApplicationName()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                new MockClientService(new BaseClientService.Initializer
+                {
+                    ApplicationName = "AppName = a name"
+                });
+            });
+        }
+
     }
 }
