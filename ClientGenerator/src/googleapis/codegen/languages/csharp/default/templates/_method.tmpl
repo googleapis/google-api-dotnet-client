@@ -133,10 +133,20 @@ public override string RestPath
 /// <summary>Gets the media downloader.</summary>
 public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
 
-/// <summary>Synchronously download the media into the given stream.</summary>
+/// <summary>
+/// <para>Synchronously download the media into the given stream.</para>
+/// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+/// </summary>
 public virtual void Download(System.IO.Stream stream)
 {
     MediaDownloader.Download(this.GenerateRequestUri(), stream);
+}
+
+/// <summary>Synchronously download the media into the given stream.</summary>
+/// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+{
+    return MediaDownloader.Download(this.GenerateRequestUri(), stream);
 }
 
 /// <summary>Asynchronously download the media into the given stream.</summary>
