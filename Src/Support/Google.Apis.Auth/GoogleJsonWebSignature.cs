@@ -14,6 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Json;
+using Google.Apis.Util;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Google.Apis.Auth
 {
     /// <summary>
@@ -21,8 +34,171 @@ namespace Google.Apis.Auth
     /// </summary>
     public class GoogleJsonWebSignature
     {
-        // TODO(peleyal): We should provide a way to verify JWS.
-        // Take a look at: https://github.com/googleplus/gplus-verifytoken-csharp/blob/master/verifytoken.ashx.cs.
+        /// <summary>
+        /// An exception that is thrown when a Json Web Token (JWT) is invalid.
+        /// </summary>
+        public class InvalidJwtException : Exception
+        {
+            /// <summary>
+            /// Initializes a new InvalidJwtException instanc e with the specified error message.
+            /// </summary>
+            /// <param name="message">The error message that explains why the JWT was invalid.</param>
+            public InvalidJwtException(string message) : base(message) { }
+        }
+
+        internal const int MaxJwtLength = 10000;
+        internal readonly static TimeSpan CertCacheRefreshInterval = TimeSpan.FromHours(1);
+
+        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
+
+        /// <summary>
+        /// Validates a Google-issued Json Web Token (JWT).
+        /// With throw a <see cref="InvalidJwtException"/> if the passed value is not valid JWT signed by Google.
+        /// </summary>
+        /// <remarks>
+        /// <para>Follows the procedure to
+        /// <see href="https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken">validate a JWT ID token</see>.
+        /// </para>
+        /// <para>Google certificates are cached, and refreshed once per hour. This can be overridden by setting
+        /// <paramref name="forceGoogleCertRefresh"/> to true.</para>
+        /// </remarks>
+        /// <param name="jwt">The JWT to validate.</param>
+        /// <param name="clock">Optional. The <see cref="IClock"/> to use for JWT expiration verification. Defaults to the system clock.</param>
+        /// <param name="forceGoogleCertRefresh">Optional. If true forces new certificates to be downloaded from Google. Defaults to false.</param>
+        /// <returns>The JWT payload, if the JWT is valid. Throws an <see cref="InvalidJwtException"/> otherwise.</returns>
+        /// <exception cref="InvalidJwtException">Thrown when passed a JWT that is not a valid JWT signed by Google.</exception>
+        public static Task<Payload> ValidateAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false) =>
+            ValidateInternalAsync(jwt, clock ?? SystemClock.Default, forceGoogleCertRefresh, null);
+
+        // internal for testing
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, IClock clock, bool forceGoogleCertRefresh, string certsJson)
+        {
+            // Check arguments
+            jwt.ThrowIfNull(nameof(jwt));
+            jwt.ThrowIfNullOrEmpty(nameof(jwt));
+            if (jwt.Length > MaxJwtLength)
+            {
+                throw new InvalidJwtException($"Java Web Token exceeds maximum allowed length of {MaxJwtLength}");
+            }
+            var parts = jwt.Split('.');
+            if (parts.Length != 3)
+            {
+                throw new InvalidJwtException($"Java Web Token must consist of Header, Payload, and Signature");
+            }
+            
+            // Decode the three parts of the JWT: header.payload.signature
+            Header header = NewtonsoftJsonSerializer.Instance.Deserialize<Header>(Base64UrlToJson(parts[0]));
+            Payload payload = NewtonsoftJsonSerializer.Instance.Deserialize<Payload>(Base64UrlToJson(parts[1]));
+            byte[] signature = Base64UrlDecode(parts[2]);
+
+            // Verify algorithm in JWT
+            if (header.Algorithm != "RS256")
+            {
+                throw new InvalidJwtException("JWT algorithm must be 'RS256;");
+            }
+
+            // Verify signature
+            byte[] hash;
+            using (var hashAlg = SHA256.Create())
+            {
+                hash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes($"{parts[0]}.{parts[1]}"));
+            }
+            bool verifiedOk = false;
+            foreach (var googleCert in await GetGoogleCertsAsync(clock, forceGoogleCertRefresh, certsJson))
+            {
+#if NET45
+                verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
+#elif NETSTANDARD1_3
+                verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+#else
+#error Unsupported platform
+#endif
+                if (verifiedOk)
+                {
+                    break;
+                }
+            }
+            if (!verifiedOk)
+            {
+                throw new InvalidJwtException("JWT invalid: unable to verify signature.");
+            }
+
+            // Verify iss, iat and exp claims
+            if (payload.Issuer != "https://accounts.google.com" && payload.Issuer != "accounts.google.com")
+            {
+                throw new InvalidJwtException("JWT issuer incorrect. Must be 'https://accounts.google.com' or 'accounts.google.com'");
+            }
+            if (payload.IssuedAtTimeSeconds == null || payload.ExpirationTimeSeconds == null)
+            {
+                throw new InvalidJwtException("JWT must contain 'iat' and 'exp' claims");
+            }
+            var now = (clock.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            if (now < payload.IssuedAtTimeSeconds.Value || now > payload.ExpirationTimeSeconds.Value)
+            {
+                throw new InvalidJwtException("JWT is not yet valid, or has expired.");
+            }
+
+            // All verification passed, return payload.
+            return payload;
+        }
+
+        private static string Base64UrlToJson(string base64Url) => Encoding.UTF8.GetString(Base64UrlDecode(base64Url));
+
+        private static byte[] Base64UrlDecode(string base64Url)
+        {
+            var base64 = base64Url.Replace('-', '+').Replace('_', '/');
+            switch (base64.Length % 4)
+            {
+                case 2: base64 += "=="; break;
+                case 3: base64 += "="; break;
+            }
+            return Convert.FromBase64String(base64);
+        }
+
+        private static SemaphoreSlim _certCacheLock = new SemaphoreSlim(1);
+        private static DateTime _certCacheDownloadTime;
+        private static List<RSA> _certCache;
+
+        // internal for testing
+        internal static async Task<List<RSA>> GetGoogleCertsAsync(IClock clock, bool forceGoogleCertRefresh, string certsJson)
+        {
+            var now = clock.UtcNow;
+            await _certCacheLock.WaitAsync();
+            try
+            {
+                if (forceGoogleCertRefresh ||_certCache == null || _certCacheDownloadTime + CertCacheRefreshInterval < now)
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        // certsJson used for unit tests
+                        if (certsJson == null)
+                        {
+                            certsJson = await httpClient.GetStringAsync(GoogleAuthConsts.JsonWebKeySetUrl);
+                        }
+                    }
+                    _certCache = GetGoogleCertsFromJson(certsJson);
+                    _certCacheDownloadTime = now;
+                }
+                return _certCache;
+            }
+            finally
+            {
+                _certCacheLock.Release();
+            }
+        }
+
+        private static List<RSA> GetGoogleCertsFromJson(string json) =>
+            JToken.Parse(json)["keys"].AsEnumerable().Select(key =>
+                {
+                    var rsa = RSA.Create();
+                    rsa.ImportParameters(new RSAParameters
+                    {
+                        Modulus = Base64UrlDecode((string)key["n"]),
+                        Exponent = Base64UrlDecode((string)key["e"]),
+                    });
+                    return rsa;
+                })
+                .ToList();
 
         /// <summary>
         /// The header as specified in https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingheader.
