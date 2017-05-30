@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170520 (870)
+ *      <tr><th>API Rev<td>20170527 (877)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3311,7 +3311,8 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>[Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large
         /// result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL
-        /// queries, this flag is ignored and large results are always allowed.</summary>
+        /// queries, this flag is ignored and large results are always allowed. However, you must still set
+        /// destinationTable when result size exceeds the allowed maximum response size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLargeResults")]
         public virtual System.Nullable<bool> AllowLargeResults { get; set; } 
 
@@ -3328,7 +3329,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual DatasetReference DefaultDataset { get; set; } 
 
         /// <summary>[Optional] Describes the table where the query results should be stored. If not present, a new
-        /// table will be created to store the results.</summary>
+        /// table will be created to store the results. This property must be set for large results that exceed the
+        /// maximum response size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; } 
 
