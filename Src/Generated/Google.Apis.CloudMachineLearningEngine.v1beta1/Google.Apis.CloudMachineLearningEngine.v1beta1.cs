@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170520 (870)
+ *      <tr><th>API Rev<td>20170527 (877)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1715,9 +1715,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
             /// this method, it returns `UNIMPLEMENTED`.
             ///
-            /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-            /// name schemes, such as `users/operations`.</summary>
-            /// <param name="name">The name of the operation collection.</param>
+            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+            /// name includes the operations collection id, however overriding users must ensure the name binding is the
+            /// parent resource, without the operations collection id.</summary>
+            /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -1726,8 +1729,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
             /// this method, it returns `UNIMPLEMENTED`.
             ///
-            /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-            /// name schemes, such as `users/operations`.</summary>
+            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
+            /// name includes the operations collection id, however overriding users must ensure the name binding is the
+            /// parent resource, without the operations collection id.</summary>
             public class ListRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1739,7 +1745,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 }
 
 
-                /// <summary>The name of the operation collection.</summary>
+                /// <summary>The name of the operation's parent resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2012,12 +2018,35 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Options for automatically scaling a model.</summary>
+    public class GoogleCloudMlV1AutomaticScaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The minimum number of nodes to allocate for this model. These nodes are always up,
+        /// starting from the time the model is deployed, so the cost of operating this model will be at least `rate` *
+        /// `min_nodes` * number of hours since last billing cycle, where `rate` is the cost per node-hour as documented
+        /// in [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing), even if no predictions are
+        /// performed. There is additional cost for each prediction performed.
+        ///
+        /// Unlike manual scaling, if the load gets too heavy for the nodes that are up, the service will automatically
+        /// add nodes to handle the increased load as well as scale back as traffic drops, always maintaining at least
+        /// `min_nodes`. You will be charged for the time in which additional nodes are used.
+        ///
+        /// If not specified, `min_nodes` defaults to 0, in which case, when traffic to a model stops (and after a cool-
+        /// down period), nodes will be shut down and no charges will be incurred until traffic to the model
+        /// resumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodes")]
+        public virtual System.Nullable<int> MinNodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Options for manually scaling a model.</summary>
     public class GoogleCloudMlV1ManualScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of nodes to allocate for this model. These nodes are always up, starting from the time
-        /// the model is deployed, so the cost of operating this model will be proportional to nodes * number of hours
-        /// since deployment.</summary>
+        /// the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours
+        /// since last billing cycle plus the cost for each prediction performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Nullable<int> Nodes { get; set; } 
 
@@ -2067,6 +2096,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
+        /// decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or
+        /// you will start seeing increases in latency and 429 response codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticScaling")]
+        public virtual GoogleCloudMlV1AutomaticScaling AutomaticScaling { get; set; } 
+
         /// <summary>Output only. The time the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
@@ -2097,11 +2132,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]
         public virtual object LastUseTime { get; set; } 
 
-        /// <summary>Optional. Manually select the number of nodes to use for serving the model. If unset (i.e., by
-        /// default), the number of nodes used to serve the model automatically scales with traffic. However, care
-        /// should be taken to ramp up traffic according to the model's ability to scale. If your model needs to handle
-        /// bursts of traffic beyond it's ability to scale, it is recommended you set this field
-        /// appropriately.</summary>
+        /// <summary>Manually select the number of nodes to use for serving the model. You should generally use
+        /// `automatic_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more
+        /// predictable billing. Beware that latency and error rates will increase if the traffic exceeds that
+        /// capability of the system to serve it based on the selected number of nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
         public virtual GoogleCloudMlV1ManualScaling ManualScaling { get; set; } 
 
@@ -2115,6 +2149,29 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         /// ML will choose a version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for automatically scaling a model.</summary>
+    public class GoogleCloudMlV1beta1AutomaticScaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The minimum number of nodes to allocate for this model. These nodes are always up,
+        /// starting from the time the model is deployed, so the cost of operating this model will be at least `rate` *
+        /// `min_nodes` * number of hours since last billing cycle, where `rate` is the cost per node-hour as documented
+        /// in [pricing](https://cloud.google.com/ml-engine/pricing#prediction_pricing), even if no predictions are
+        /// performed. There is additional cost for each prediction performed.
+        ///
+        /// Unlike manual scaling, if the load gets too heavy for the nodes that are up, the service will automatically
+        /// add nodes to handle the increased load as well as scale back as traffic drops, always maintaining at least
+        /// `min_nodes`. You will be charged for the time in which additional nodes are used.
+        ///
+        /// If not specified, `min_nodes` defaults to 0, in which case, when traffic to a model stops (and after a cool-
+        /// down period), nodes will be shut down and no charges will be incurred until traffic to the model
+        /// resumes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodes")]
+        public virtual System.Nullable<int> MinNodes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2319,8 +2376,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     public class GoogleCloudMlV1beta1ManualScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of nodes to allocate for this model. These nodes are always up, starting from the time
-        /// the model is deployed, so the cost of operating this model will be proportional to nodes * number of hours
-        /// since deployment.</summary>
+        /// the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours
+        /// since last billing cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Nullable<int> Nodes { get; set; } 
 
@@ -2766,6 +2823,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).</summary>
     public class GoogleCloudMlV1beta1Version : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
+        /// decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or
+        /// you will start seeing increases in latency and 429 response codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticScaling")]
+        public virtual GoogleCloudMlV1beta1AutomaticScaling AutomaticScaling { get; set; } 
+
         /// <summary>Output only. The time the version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
@@ -2796,11 +2859,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]
         public virtual object LastUseTime { get; set; } 
 
-        /// <summary>Optional. Manually select the number of nodes to use for serving the model. If unset (i.e., by
-        /// default), the number of nodes used to serve the model automatically scales with traffic. However, care
-        /// should be taken to ramp up traffic according to the model's ability to scale. If your model needs to handle
-        /// bursts of traffic beyond it's ability to scale, it is recommended you set this field
-        /// appropriately.</summary>
+        /// <summary>Manually select the number of nodes to use for serving the model. You should generally use
+        /// `automatic_scaling` with an appropriate `min_nodes` instead, but this option is available if you want
+        /// predictable billing. Beware that latency and error rates will increase if the traffic exceeds that
+        /// capability of the system to serve it based on the selected number of nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualScaling")]
         public virtual GoogleCloudMlV1beta1ManualScaling ManualScaling { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta5
- *      <tr><th>API Rev<td>20170522 (872)
+ *      <tr><th>API Rev<td>20170525 (875)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -487,6 +487,10 @@ namespace Google.Apis.Appengine.v1beta5
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -494,10 +498,6 @@ namespace Google.Apis.Appengine.v1beta5
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -533,6 +533,15 @@ namespace Google.Apis.Appengine.v1beta5
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -545,15 +554,6 @@ namespace Google.Apis.Appengine.v1beta5
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -666,17 +666,23 @@ namespace Google.Apis.Appengine.v1beta5
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding below allows API services to override the
-            /// binding to use different resource name schemes, such as users/operations.</summary>
-            /// <param name="appsId">Part of `name`. The name of the operation collection.</param>
+            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
+            /// to use different resource name schemes, such as users/operations. To override the binding, API services
+            /// can add a binding such as "/v1/{name=users}/operations" to their service configuration. For backwards
+            /// compatibility, the default name includes the operations collection id, however overriding users must
+            /// ensure the name binding is the parent resource, without the operations collection id.</summary>
+            /// <param name="appsId">Part of `name`. The name of the operation's parent resource.</param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
             }
 
             /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding below allows API services to override the
-            /// binding to use different resource name schemes, such as users/operations.</summary>
+            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
+            /// to use different resource name schemes, such as users/operations. To override the binding, API services
+            /// can add a binding such as "/v1/{name=users}/operations" to their service configuration. For backwards
+            /// compatibility, the default name includes the operations collection id, however overriding users must
+            /// ensure the name binding is the parent resource, without the operations collection id.</summary>
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta5.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -688,13 +694,9 @@ namespace Google.Apis.Appengine.v1beta5
                 }
 
 
-                /// <summary>Part of `name`. The name of the operation collection.</summary>
+                /// <summary>Part of `name`. The name of the operation's parent resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -703,6 +705,10 @@ namespace Google.Apis.Appengine.v1beta5
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -738,15 +744,6 @@ namespace Google.Apis.Appengine.v1beta5
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -759,6 +756,15 @@ namespace Google.Apis.Appengine.v1beta5
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1225,13 +1231,13 @@ namespace Google.Apis.Appengine.v1beta5
                         [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string VersionsId { get; private set; }
 
-                        /// <summary>Maximum results to return per page.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Continuation token for fetching the next page of results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1285,18 +1291,18 @@ namespace Google.Apis.Appengine.v1beta5
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1635,6 +1641,14 @@ namespace Google.Apis.Appengine.v1beta5
                     [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ServicesId { get; private set; }
 
+                    /// <summary>Continuation token for fetching the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum results to return per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Controls the set of fields returned in the List response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1647,14 +1661,6 @@ namespace Google.Apis.Appengine.v1beta5
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
-
-                    /// <summary>Continuation token for fetching the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Maximum results to return per page.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1699,15 +1705,6 @@ namespace Google.Apis.Appengine.v1beta5
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1720,6 +1717,15 @@ namespace Google.Apis.Appengine.v1beta5
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3724,6 +3730,11 @@ namespace Google.Apis.Appengine.v1beta5.Data
         /// <summary>Desired runtime. Example: python27.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; } 
+
+        /// <summary>The version of the API in the given runtime environment. Please see the app.yaml reference for
+        /// valid values at https://cloud.google.com/appengine/docs/standard//config/appref</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeApiVersion")]
+        public virtual string RuntimeApiVersion { get; set; } 
 
         /// <summary>Current serving status of this version. Only the versions with a SERVING status create instances
         /// and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.</summary>
