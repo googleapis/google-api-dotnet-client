@@ -83,6 +83,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region ServiceCredential overrides
 
+        /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
             // Create and send the HTTP request to compute server token URL.

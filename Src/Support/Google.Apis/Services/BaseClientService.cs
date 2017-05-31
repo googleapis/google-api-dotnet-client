@@ -187,16 +187,22 @@ namespace Google.Apis.Services
 
         #region IClientService Members
 
+        /// <inheritdoc/>
         public ConfigurableHttpClient HttpClient { get; private set; }
 
+        /// <inheritdoc/>
         public IConfigurableHttpClientInitializer HttpClientInitializer { get; private set; }
 
+        /// <inheritdoc/>
         public bool GZipEnabled { get; private set; }
 
+        /// <inheritdoc/>
         public string ApiKey { get; private set; }
 
+        /// <inheritdoc/>
         public string ApplicationName { get; private set; }
 
+        /// <inheritdoc/>
         public void SetRequestSerailizedContent(HttpRequestMessage request, object body)
         {
             request.SetRequestSerailizedContent(this, body, GZipEnabled);
@@ -204,8 +210,10 @@ namespace Google.Apis.Services
 
         #region Serialization
 
+        /// <inheritdoc/>
         public ISerializer Serializer { get; private set; }
 
+        /// <inheritdoc/>
         public virtual string SerializeObject(object obj)
         {
             if (HasFeature(Discovery.Features.LegacyDataResponse))
@@ -217,6 +225,7 @@ namespace Google.Apis.Services
             return Serializer.Serialize(obj);
         }
 
+        /// <inheritdoc/>
         public virtual async Task<T> DeserializeResponse<T>(HttpResponseMessage response)
         {
             var text = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -279,6 +288,7 @@ namespace Google.Apis.Services
             return result;
         }
 
+        /// <inheritdoc/>
         public virtual async Task<RequestError> DeserializeError(HttpResponseMessage response)
         {
             StandardResponse<object> errorResponse = null;
@@ -306,18 +316,29 @@ namespace Google.Apis.Services
 
         #region Abstract Members
 
+        /// <inheritdoc/>
         public abstract string Name { get; }
+
+        /// <inheritdoc/>
         public abstract string BaseUri { get; }
+
+        /// <inheritdoc/>
         public abstract string BasePath { get; }
+
+        /// <summary>The URI used for batch operations.</summary>
         public virtual string BatchUri { get { return null; } }
+
+        /// <summary>The path used for batch operations.</summary>
         public virtual string BatchPath { get { return null; } }
 
+        /// <inheritdoc/>
         public abstract IList<string> Features { get; }
 
         #endregion
 
         #endregion
 
+        /// <inheritdoc/>
         public virtual void Dispose()
         {
             if (HttpClient != null)

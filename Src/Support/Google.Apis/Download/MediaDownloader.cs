@@ -134,20 +134,24 @@ namespace Google.Apis.Download
 
         #region IMediaDownloader Overrides
 
+        /// <inheritdoc/>
         public event Action<IDownloadProgress> ProgressChanged;
 
         #region Download (sync and async)
 
+        /// <inheritdoc/>
         public IDownloadProgress Download(string url, Stream stream)
         {
             return DownloadCoreAsync(url, stream, CancellationToken.None).Result;
         }
 
+        /// <inheritdoc/>
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream)
         {
             return await DownloadAsync(url, stream, CancellationToken.None).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<IDownloadProgress> DownloadAsync(string url, Stream stream,
             CancellationToken cancellationToken)
         {

@@ -41,6 +41,7 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public abstract class ServiceCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
+        /// <summary>Logger for this class</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<ServiceCredential>();
 
         /// <summary>An initializer class for the service credential. </summary>
@@ -152,6 +153,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IConfigurableHttpClientInitializer
 
+        /// <inheritdoc/>
         public void Initialize(ConfigurableHttpClient httpClient)
         {
             httpClient.MessageHandler.AddExecuteInterceptor(this);
@@ -162,6 +164,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IHttpExecuteInterceptor implementation
 
+        /// <inheritdoc/>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken)

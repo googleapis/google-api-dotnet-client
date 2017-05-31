@@ -34,6 +34,7 @@ namespace Google.Apis.Auth.OAuth2.Mvc.Controllers
     [AuthorizationCodeActionFilter]
     public abstract class AuthCallbackController : Controller
     {
+        /// <summary>Logger for this class.</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<AuthCallbackController>();
 
         /// <summary>Gets the authorization code flow.</summary>

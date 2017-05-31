@@ -61,6 +61,7 @@ namespace Google.Apis.Auth.OAuth2
             get { return codeReceiver; }
         }
 
+        /// <inheritdoc/>
         public async Task<UserCredential> AuthorizeAsync(string userId, CancellationToken taskCancellationToken)
         {
             // Try to load a token from the data store.

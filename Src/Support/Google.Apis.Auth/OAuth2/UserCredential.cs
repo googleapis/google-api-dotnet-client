@@ -33,6 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class UserCredential : ICredential, IHttpExecuteInterceptor, IHttpUnsuccessfulResponseHandler
     {
+        /// <summary>Logger for this class.</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
         private TokenResponse token;
@@ -100,6 +101,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IHttpUnsuccessfulResponseHandler
 
+        /// <inheritdoc/>
         public async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
             // TODO(peleyal): check WWW-Authenticate header.
@@ -116,6 +118,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region IConfigurableHttpClientInitializer
 
+        /// <inheritdoc/>
         public void Initialize(ConfigurableHttpClient httpClient)
         {
             httpClient.MessageHandler.AddExecuteInterceptor(this);
@@ -126,6 +129,7 @@ namespace Google.Apis.Auth.OAuth2
 
         #region ITokenAccess implementation
 
+        /// <inheritdoc/>
         public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Token.IsExpired(flow.Clock))

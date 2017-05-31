@@ -56,12 +56,19 @@ namespace Google.Apis.Requests
 
         #region IClientServiceRequest Properties
 
+        /// <inheritdoc/>
         public abstract string MethodName { get; }
+
+        /// <inheritdoc/>
         public abstract string RestPath { get; }
+
+        /// <inheritdoc/>
         public abstract string HttpMethod { get; }
 
+        /// <inheritdoc/>
         public IDictionary<string, IParameter> RequestParameters { get; private set; }
 
+        /// <inheritdoc/>
         public IClientService Service
         {
             get { return service; }
@@ -86,6 +93,7 @@ namespace Google.Apis.Requests
 
         #region Execution
 
+        /// <inheritdoc/>
         public TResponse Execute()
         {
             try
@@ -106,6 +114,7 @@ namespace Google.Apis.Requests
             }
         }
 
+        /// <inheritdoc/>
         public Stream ExecuteAsStream()
         {
             // TODO(peleyal): should we copy the stream, and dispose the response?
@@ -126,11 +135,13 @@ namespace Google.Apis.Requests
             }
         }
 
+        /// <inheritdoc/>
         public async Task<TResponse> ExecuteAsync()
         {
             return await ExecuteAsync(CancellationToken.None).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<TResponse> ExecuteAsync(CancellationToken cancellationToken)
         {
             using (var response = await ExecuteUnparsedAsync(cancellationToken).ConfigureAwait(false))
@@ -140,11 +151,13 @@ namespace Google.Apis.Requests
             }
         }
 
+        /// <inheritdoc/>
         public async Task<Stream> ExecuteAsStreamAsync()
         {
             return await ExecuteAsStreamAsync(CancellationToken.None).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<Stream> ExecuteAsStreamAsync(CancellationToken cancellationToken)
         {
             // TODO(peleyal): should we copy the stream, and dispose the response?
@@ -184,6 +197,7 @@ namespace Google.Apis.Requests
 
         #endregion
 
+        /// <inheritdoc/>
         public HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null)
         {
             var builder = CreateBuilder();
@@ -227,6 +241,8 @@ namespace Google.Apis.Requests
             return CreateBuilder().BuildUri().ToString();
         }
 
+        /// <summary>Returns the body of this request.</summary>
+        /// <returns>The body of this request.</returns>
         protected virtual object GetBody()
         {
             return null;
