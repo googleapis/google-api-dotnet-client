@@ -36,6 +36,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the token revocation URL.</summary>
         public string RevokeTokenUrl { get { return revokeTokenUrl; } }
 
+        /// <summary>Gets or sets the include granted scopes indicator.
+        /// Do not use, use <see cref="IncludeGrantedScopes"/> instead.</summary>
         public readonly bool? includeGrantedScopes;
 
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
@@ -58,6 +60,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
 
+        /// <inheritdoc/>
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
         {
             return new GoogleAuthorizationCodeRequestUrl(new Uri(AuthorizationServerUrl))
@@ -71,6 +74,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             };
         }
 
+        /// <inheritdoc/>
         public override async Task RevokeTokenAsync(string userId, string token,
             CancellationToken taskCancellationToken)
         {
@@ -91,6 +95,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             await DeleteTokenAsync(userId, taskCancellationToken);
         }
 
+        /// <inheritdoc/>
         public override bool ShouldForceTokenRetrieval() 
         {
             return IncludeGrantedScopes.HasValue && IncludeGrantedScopes.Value;

@@ -29,11 +29,13 @@ namespace Google.Apis.Auth.OAuth2
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<PromptCodeReceiver>();
 
+        /// <inheritdoc/>
         public string RedirectUri
         {
             get { return GoogleAuthConsts.InstalledAppRedirectUri; }
         }
 
+        /// <inheritdoc/>
         public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {

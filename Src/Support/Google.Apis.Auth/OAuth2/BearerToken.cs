@@ -34,11 +34,13 @@ namespace Google.Apis.Auth.OAuth2
         {
             const string Schema = "Bearer";
 
+            /// <inheritdoc/>
             public void Intercept(HttpRequestMessage request, string accessToken)
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue(Schema, accessToken);
             }
 
+            /// <inheritdoc/>
             public string GetAccessToken(HttpRequestMessage request)
             {
                 if (request.Headers.Authorization != null && request.Headers.Authorization.Scheme == Schema)
@@ -57,6 +59,7 @@ namespace Google.Apis.Auth.OAuth2
         {
             const string AccessTokenKey = "access_token";
 
+            /// <inheritdoc/>
             public void Intercept(HttpRequestMessage request, string accessToken)
             {
                 var uri = request.RequestUri;
@@ -65,6 +68,7 @@ namespace Google.Apis.Auth.OAuth2
                     Uri.EscapeDataString(accessToken)));
             }
 
+            /// <inheritdoc/>
             public string GetAccessToken(HttpRequestMessage request)
             {
                 var query = request.RequestUri.Query;

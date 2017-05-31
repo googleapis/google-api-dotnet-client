@@ -42,6 +42,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Newtonsoft.Json.JsonProperty("error_uri")]
         public string ErrorUri { get; set; }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return string.Format("Error:\"{0}\", Description:\"{1}\", Uri:\"{2}\"", Error, ErrorDescription, ErrorUri);

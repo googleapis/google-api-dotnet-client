@@ -38,14 +38,14 @@ namespace Google.Apis.Util.Store
 
         /// <summary>
         /// Constructs a new file data store. If <c>fullPath</c> is <c>false</c> the path will be used as relative to 
-        /// <see cref="Environment.SpecialFolder.ApplicationData"/> on Windows, or $HOME on Linux and MacOS,
+        /// <c>Environment.SpecialFolder.ApplicationData"</c> on Windows, or <c>$HOME</c> on Linux and MacOS,
         /// otherwise the input folder will be treated as absolute.
         /// The folder is created if it doesn't exist yet.
         /// </summary>
         /// <param name="folder">Folder path.</param>
         /// <param name="fullPath">
         /// Defines whether the folder parameter is absolute or relative to
-        /// <see cref="Environment.SpecialFolder.ApplicationData"/> on Windows, or $HOME on Linux and MacOS.
+        /// <c>Environment.SpecialFolder.ApplicationData</c> on Windows, or<c>$HOME</c> on Linux and MacOS.
         /// </param>
         public FileDataStore(string folder, bool fullPath = false)
         {

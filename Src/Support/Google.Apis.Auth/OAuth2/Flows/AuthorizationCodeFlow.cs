@@ -198,10 +198,13 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         #region IAuthorizationCodeFlow overrides
 
+        /// <inheritdoc/>
         public IAccessMethod AccessMethod { get { return accessMethod; } }
 
+        /// <inheritdoc/>
         public IClock Clock { get { return clock; } }
 
+        /// <inheritdoc/>
         public async Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken)
         {
             taskCancellationToken.ThrowIfCancellationRequested();
@@ -212,6 +215,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             return await DataStore.GetAsync<TokenResponse>(userId).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken)
         {
             taskCancellationToken.ThrowIfCancellationRequested();
@@ -221,6 +225,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             }
         }
 
+        /// <inheritdoc/>
         public virtual AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
         {
             return new AuthorizationCodeRequestUrl(new Uri(AuthorizationServerUrl))
@@ -231,6 +236,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             };
         }
 
+        /// <inheritdoc/>
         public async Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri,
             CancellationToken taskCancellationToken)
         {
@@ -247,6 +253,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             return token;
         }
 
+        /// <inheritdoc/>
         public async Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken,
             CancellationToken taskCancellationToken)
         {
@@ -266,11 +273,13 @@ namespace Google.Apis.Auth.OAuth2.Flows
             return token;
         }
 
+        /// <inheritdoc/>
         public virtual Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken)
         {
             throw new NotImplementedException("The OAuth 2.0 protocol does not support token revocation.");
         }
 
+        /// <inheritdoc/>
         public virtual bool ShouldForceTokenRetrieval() { return false; }
 
         #endregion
@@ -323,6 +332,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             }
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             if (HttpClient != null)
