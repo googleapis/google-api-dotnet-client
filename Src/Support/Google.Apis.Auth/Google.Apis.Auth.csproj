@@ -18,7 +18,7 @@ This package includes auth components like user-credential, authorization code f
 
 Supported Platforms:
 - .NET Framework 4.5+
-- NetStandard1.3, providing NET Core support
+- NetStandard1.3, providing .NET Core support
     </Description>
   </PropertyGroup>
 

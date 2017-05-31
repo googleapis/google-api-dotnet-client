@@ -15,7 +15,7 @@ The Google API client library for .NET enables access to Google APIs such as Dri
 ## Supported Frameworks
 
 * .NET Framework 4.5+
-* netstandard1.3, providing NET Core support
+* netstandard1.3, providing .NET Core support
 
 ### ASP.NET Core
 
