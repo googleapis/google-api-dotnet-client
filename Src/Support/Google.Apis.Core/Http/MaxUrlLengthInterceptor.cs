@@ -45,6 +45,7 @@ namespace Google.Apis.Http
             this.maxUrlLength = maxUrlLength;
         }
 
+        /// <inheritdoc/>
         public Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request.Method != HttpMethod.Get || request.RequestUri.AbsoluteUri.Length <= maxUrlLength)

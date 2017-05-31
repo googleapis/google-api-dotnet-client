@@ -19,43 +19,52 @@ using System.Reflection;
 
 namespace Google.Apis.Util
 {
-    // UriPatcher lets us work around some unfortunate behaviors in the .NET Framework's
-    // implementation of System.Uri.
-    //
-    // == Problem 1: Slashes and dots
-    //
-    // Prior to .NET 4.5, System.Uri would always unescape "%2f" ("/") and "%5c" ("\\").
-    // Relative path components were also compressed.
-    //
-    // As a result, this:     "http://www.example.com/.%2f.%5c./"
-    // ... turned into this:  "http://www.example.com/"
-    //
-    // This breaks API requests where slashes or dots appear in path parameters. Such requests
-    // arise, for example, when these characters appear in the name of a GCS object.
-    //
-    // == Problem 2: Fewer unreserved characters
-    //
-    // Unless IDN/IRI parsing is enabled -- which it is not, by default, prior to .NET 4.5 --
-    // Uri.EscapeDataString uses the set of "unreserved" characters from RFC 2396 instead of the
-    // newer, *smaller* list from RFC 3986. We build requests using URI templating as described
-    // by RFC 6570, which specifies that the latter definition (RFC 3986) should be used.
-    //
-    // This breaks API requests with parameters including any of: !*'()
-    //
-    // == Solutions
-    //
-    // Though the default behaviors changed in .NET 4.5, these "quirks" remain for compatibility
-    // unless the application explicitly targets the new runtime.  Usually, that means adding a
-    // TargetFrameworkAttribute to the entry assembly.
-    //
-    // Applications running on .NET 4.0 or later can also set "DontUnescapePathDotsAndSlashes"
-    // and enable IDN/IRI parsing using app.config or web.config.
-    //
-    // As a class library, we can't control app.config or the entry assembly, so we can't take
-    // either approach. Instead, we resort to reflection trickery to try to solve these problems
-    // if we detect they exist. Sorry.
+    /// <summary>
+    /// Workarounds for some unfortunate behaviors in the .NET Framework's
+    /// implementation of System.Uri
+    /// </summary>
+    /// <remarks>
+    /// UriPatcher lets us work around some unfortunate behaviors in the .NET Framework's
+    /// implementation of System.Uri.
+    ///
+    /// == Problem 1: Slashes and dots
+    ///
+    /// Prior to .NET 4.5, System.Uri would always unescape "%2f" ("/") and "%5c" ("\\").
+    /// Relative path components were also compressed.
+    ///
+    /// As a result, this:     "http://www.example.com/.%2f.%5c./"
+    /// ... turned into this:  "http://www.example.com/"
+    ///
+    /// This breaks API requests where slashes or dots appear in path parameters. Such requests
+    /// arise, for example, when these characters appear in the name of a GCS object.
+    ///
+    /// == Problem 2: Fewer unreserved characters
+    ///
+    /// Unless IDN/IRI parsing is enabled -- which it is not, by default, prior to .NET 4.5 --
+    /// Uri.EscapeDataString uses the set of "unreserved" characters from RFC 2396 instead of the
+    /// newer, *smaller* list from RFC 3986. We build requests using URI templating as described
+    /// by RFC 6570, which specifies that the latter definition (RFC 3986) should be used.
+    ///
+    /// This breaks API requests with parameters including any of: !*'()
+    ///
+    /// == Solutions
+    ///
+    /// Though the default behaviors changed in .NET 4.5, these "quirks" remain for compatibility
+    /// unless the application explicitly targets the new runtime.  Usually, that means adding a
+    /// TargetFrameworkAttribute to the entry assembly.
+    ///
+    /// Applications running on .NET 4.0 or later can also set "DontUnescapePathDotsAndSlashes"
+    /// and enable IDN/IRI parsing using app.config or web.config.
+    ///
+    /// As a class library, we can't control app.config or the entry assembly, so we can't take
+    /// either approach. Instead, we resort to reflection trickery to try to solve these problems
+    /// if we detect they exist. Sorry.
+    /// </remarks>
     public static class UriPatcher
     {
+        /// <summary>
+        /// Patch URI quirks in System.Uri. See class summary for details.
+        /// </summary>
         public static void PatchUriQuirks()
         {
             var uriParser = typeof(System.Uri).GetTypeInfo().Assembly.GetType("System.UriParser");

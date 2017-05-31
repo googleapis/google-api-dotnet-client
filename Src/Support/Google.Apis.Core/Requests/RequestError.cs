@@ -54,6 +54,10 @@ namespace Google.Apis.Requests
         /// </summary>
         public string Message { get; set; }
 
+        /// <summary>
+        /// Returns a string summary of this error
+        /// </summary>
+        /// <returns>A string summary of this error</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

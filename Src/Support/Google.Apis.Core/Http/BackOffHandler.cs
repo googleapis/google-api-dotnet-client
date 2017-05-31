@@ -119,6 +119,7 @@ namespace Google.Apis.Http
 
         #region IHttpUnsuccessfulResponseHandler
 
+        /// <inheritdoc/>
         public virtual async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
             // if the func returns true try to handle this current failed try
@@ -134,6 +135,7 @@ namespace Google.Apis.Http
 
         #region IHttpExceptionHandler
 
+        /// <inheritdoc/>
         public virtual async Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
         {
             // if the func returns true try to handle this current failed try

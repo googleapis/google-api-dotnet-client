@@ -30,6 +30,7 @@ namespace Google.Apis.Http
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<HttpClientFactory>();
 
+        /// <inheritdoc/>
         public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
         {
             // Create the handler.

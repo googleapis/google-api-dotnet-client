@@ -46,6 +46,10 @@ namespace Google.Apis.Requests
         /// </summary>
         public string Location { get; set; }
 
+        /// <summary>
+        /// Returns a string summary of this error
+        /// </summary>
+        /// <returns>A string summary of this error</returns>
         public override string ToString()
         {
             return string.Format(

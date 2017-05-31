@@ -57,6 +57,7 @@ namespace Google.Apis.Http
             CreateBackOff = createBackOff;
         }
 
+        /// <inheritdoc/>
         public void Initialize(ConfigurableHttpClient httpClient)
         {
             var backOff = CreateBackOff();
