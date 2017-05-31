@@ -24,10 +24,19 @@ namespace Google.Apis.Http
     /// <summary>HTTP constants.</summary>
     public static class HttpConsts
     {
+        /// <summary>Http GET request</summary>
         public const string Get = "GET";
+
+        /// <summary>Http DELETE request</summary>
         public const string Delete = "DELETE";
+
+        /// <summary>Http PUT request</summary>
         public const string Put = "PUT";
+
+        /// <summary>Http POST request</summary>
         public const string Post = "POST";
+
+        /// <summary>Http PATCH request</summary>
         public const string Patch = "PATCH";
     }
 }

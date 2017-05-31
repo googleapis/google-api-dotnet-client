@@ -23,10 +23,19 @@ namespace Google.Apis.Discovery
     /// <summary>Represents a method's parameter.</summary>
     public class Parameter : IParameter
     {
+        /// <inheritdoc/>
         public string Name { get; set; }
+
+        /// <inheritdoc/>
         public string Pattern { get; set; }
+
+        /// <inheritdoc/>
         public bool IsRequired { get; set; }
+
+        /// <inheritdoc/>
         public string ParameterType { get; set; }
+
+        /// <inheritdoc/>
         public string DefaultValue { get; set; }
     }
 }

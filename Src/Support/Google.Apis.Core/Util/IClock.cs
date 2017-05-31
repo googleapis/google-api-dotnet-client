@@ -47,8 +47,10 @@ namespace Google.Apis.Util
         /// <summary>The default instance.</summary>
         public static readonly IClock Default = new SystemClock();
 
+        /// <inheritdoc/>
         public DateTime Now => DateTime.Now;
 
+        /// <inheritdoc/>
         public DateTime UtcNow => DateTime.UtcNow;
     }
 }

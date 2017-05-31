@@ -28,18 +28,22 @@ namespace Google.Apis.Json
     /// </summary>
     public class RFC3339DateTimeConverter : JsonConverter
     {
+        /// <inheritdoc/>
         public override bool CanRead => false;
 
+        /// <inheritdoc/>
         public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
             throw new NotImplementedException("Unnecessary because CanRead is false.");
         }
 
+        /// <inheritdoc/>
         public override bool CanConvert(Type objectType) =>
             // Convert DateTime only.
             objectType == typeof(DateTime) || objectType == typeof(Nullable<DateTime>);
 
+        /// <inheritdoc/>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value != null)
@@ -112,8 +116,10 @@ namespace Google.Apis.Json
                 Converters = { new RFC3339DateTimeConverter(), new ExplicitNullConverter() }
             };
 
+        /// <inheritdoc/>
         public string Format => "json";
 
+        /// <inheritdoc/>
         public void Serialize(object obj, Stream target)
         {
             using (var writer = new StreamWriter(target))
@@ -126,6 +132,7 @@ namespace Google.Apis.Json
             }
         }
 
+        /// <inheritdoc/>
         public string Serialize(object obj)
         {
             using (TextWriter tw = new StringWriter())
@@ -139,6 +146,7 @@ namespace Google.Apis.Json
             }
         }
 
+        /// <inheritdoc/>
         public T Deserialize<T>(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -148,6 +156,7 @@ namespace Google.Apis.Json
             return JsonConvert.DeserializeObject<T>(input, settings);
         }
 
+        /// <inheritdoc/>
         public object Deserialize(string input, Type type)
         {
             if (string.IsNullOrEmpty(input))
@@ -157,6 +166,7 @@ namespace Google.Apis.Json
             return JsonConvert.DeserializeObject(input, type, settings);
         }
 
+        /// <inheritdoc/>
         public T Deserialize<T>(Stream input)
         {
             // Convert the JSON document into an object.

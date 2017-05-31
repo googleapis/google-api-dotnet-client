@@ -33,6 +33,7 @@ namespace Google.Apis.Util
             values = new ReadOnlyCollection<T>(new List<T>(enumeration));
         }
 
+        /// <inheritdoc/>
         public IEnumerator<T> GetEnumerator()
         {
             return values.GetEnumerator();

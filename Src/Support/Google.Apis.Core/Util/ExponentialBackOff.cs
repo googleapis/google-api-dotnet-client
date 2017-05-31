@@ -74,6 +74,7 @@ namespace Google.Apis.Util
 
         #region IBackOff Members
 
+        /// <inheritdoc/>
         public TimeSpan GetNextBackOff(int currentRetry)
         {
             if (currentRetry <= 0)

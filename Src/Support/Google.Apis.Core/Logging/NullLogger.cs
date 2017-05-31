@@ -23,33 +23,37 @@ namespace Google.Apis.Logging
     /// </summary>
     public class NullLogger : ILogger
     {
-        #region ILogger Members
-
+        /// <inheritdoc/>
         public bool IsDebugEnabled
         {
             get { return false; }
         }
 
+        /// <inheritdoc/>
         public ILogger ForType(Type type)
         {
             return new NullLogger();
         }
 
+        /// <inheritdoc/>
         public ILogger ForType<T>()
         {
             return new NullLogger();
         }
 
+        /// <inheritdoc/>
         public void Info(string message, params object[] formatArgs) {}
 
+        /// <inheritdoc/>
         public void Warning(string message, params object[] formatArgs) {}
 
+        /// <inheritdoc/>
         public void Debug(string message, params object[] formatArgs) {}
 
+        /// <inheritdoc/>
         public void Error(Exception exception, string message, params object[] formatArgs) {}
 
+        /// <inheritdoc/>
         public void Error(string message, params object[] formatArgs) {}
-
-        #endregion
     }
 }

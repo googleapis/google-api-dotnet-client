@@ -50,6 +50,10 @@ namespace Google
         /// <summary>The HTTP status code which was returned along with this error, or 0 if unavailable.</summary>
         public HttpStatusCode HttpStatusCode { get; set; }
 
+        /// <summary>
+        /// Returns a summary of this exception.
+        /// </summary>
+        /// <returns>A summary of this exception.</returns>
         public override string ToString()
         {
             return string.Format("The service {1} has thrown an exception: {0}", base.ToString(), serviceName);
