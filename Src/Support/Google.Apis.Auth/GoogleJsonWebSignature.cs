@@ -34,22 +34,22 @@ namespace Google.Apis.Auth
     /// </summary>
     public class GoogleJsonWebSignature
     {
-        /// <summary>
-        /// An exception that is thrown when a Json Web Token (JWT) is invalid.
-        /// </summary>
-        public class InvalidJwtException : Exception
-        {
-            /// <summary>
-            /// Initializes a new InvalidJwtException instanc e with the specified error message.
-            /// </summary>
-            /// <param name="message">The error message that explains why the JWT was invalid.</param>
-            public InvalidJwtException(string message) : base(message) { }
-        }
 
         internal const int MaxJwtLength = 10000;
         internal readonly static TimeSpan CertCacheRefreshInterval = TimeSpan.FromHours(1);
 
+        // See http://oid-info.com/get/2.16.840.1.101.3.4.2.1
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
+
+        private const string SupportedJwtAlgorithm = "RS256";
+
+        private static readonly IEnumerable<string> ValidJwtIssuers = new[]
+        {
+            "https://accounts.google.com",
+            "accounts.google.com"
+        };
+
+        private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         /// Validates a Google-issued Json Web Token (JWT).
@@ -78,23 +78,23 @@ namespace Google.Apis.Auth
             jwt.ThrowIfNullOrEmpty(nameof(jwt));
             if (jwt.Length > MaxJwtLength)
             {
-                throw new InvalidJwtException($"Java Web Token exceeds maximum allowed length of {MaxJwtLength}");
+                throw new InvalidJwtException($"JWT exceeds maximum allowed length of {MaxJwtLength}");
             }
             var parts = jwt.Split('.');
             if (parts.Length != 3)
             {
-                throw new InvalidJwtException($"Java Web Token must consist of Header, Payload, and Signature");
+                throw new InvalidJwtException($"JWT must consist of Header, Payload, and Signature");
             }
             
             // Decode the three parts of the JWT: header.payload.signature
-            Header header = NewtonsoftJsonSerializer.Instance.Deserialize<Header>(Base64UrlToJson(parts[0]));
-            Payload payload = NewtonsoftJsonSerializer.Instance.Deserialize<Payload>(Base64UrlToJson(parts[1]));
+            Header header = NewtonsoftJsonSerializer.Instance.Deserialize<Header>(Base64UrlToString(parts[0]));
+            Payload payload = NewtonsoftJsonSerializer.Instance.Deserialize<Payload>(Base64UrlToString(parts[1]));
             byte[] signature = Base64UrlDecode(parts[2]);
 
             // Verify algorithm in JWT
-            if (header.Algorithm != "RS256")
+            if (header.Algorithm != SupportedJwtAlgorithm)
             {
-                throw new InvalidJwtException("JWT algorithm must be 'RS256;");
+                throw new InvalidJwtException($"JWT algorithm must be '{SupportedJwtAlgorithm}'");
             }
 
             // Verify signature
@@ -124,25 +124,30 @@ namespace Google.Apis.Auth
             }
 
             // Verify iss, iat and exp claims
-            if (payload.Issuer != "https://accounts.google.com" && payload.Issuer != "accounts.google.com")
+            if (!ValidJwtIssuers.Contains(payload.Issuer))
             {
-                throw new InvalidJwtException("JWT issuer incorrect. Must be 'https://accounts.google.com' or 'accounts.google.com'");
+                var validList = string.Join(", ", ValidJwtIssuers.Select(x => $"'{x}'"));
+                throw new InvalidJwtException($"JWT issuer incorrect. Must be one of: {validList}");
             }
             if (payload.IssuedAtTimeSeconds == null || payload.ExpirationTimeSeconds == null)
             {
                 throw new InvalidJwtException("JWT must contain 'iat' and 'exp' claims");
             }
-            var now = (clock.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-            if (now < payload.IssuedAtTimeSeconds.Value || now > payload.ExpirationTimeSeconds.Value)
+            var nowSeconds = (clock.UtcNow - UnixEpoch).TotalSeconds;
+            if (nowSeconds < payload.IssuedAtTimeSeconds.Value)
             {
-                throw new InvalidJwtException("JWT is not yet valid, or has expired.");
+                throw new InvalidJwtException("JWT is not yet valid.");
+            }
+            if (nowSeconds > payload.ExpirationTimeSeconds.Value)
+            {
+                throw new InvalidJwtException("JWT has expired.");
             }
 
             // All verification passed, return payload.
             return payload;
         }
 
-        private static string Base64UrlToJson(string base64Url) => Encoding.UTF8.GetString(Base64UrlDecode(base64Url));
+        private static string Base64UrlToString(string base64Url) => Encoding.UTF8.GetString(Base64UrlDecode(base64Url));
 
         private static byte[] Base64UrlDecode(string base64Url)
         {
@@ -166,7 +171,7 @@ namespace Google.Apis.Auth
             await _certCacheLock.WaitAsync();
             try
             {
-                if (forceGoogleCertRefresh ||_certCache == null || _certCacheDownloadTime + CertCacheRefreshInterval < now)
+                if (forceGoogleCertRefresh || _certCache == null || (_certCacheDownloadTime + CertCacheRefreshInterval) < now)
                 {
                     using (var httpClient = new HttpClient())
                     {

@@ -93,7 +93,7 @@ namespace Google.Apis.Auth.Tests
             Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, clockValid1, false, GoogleCertsJson));
 
             var clockValid2 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 24, 0, DateTimeKind.Utc) };
-            var ex = await Assert.ThrowsAsync<GoogleJsonWebSignature.InvalidJwtException>(() =>
+            var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(JwtNonGoogleSigned, clockValid2, false, GoogleCertsJson));
             Assert.Equal("JWT invalid: unable to verify signature.", ex.Message);
         }
@@ -110,13 +110,13 @@ namespace Google.Apis.Auth.Tests
             Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, clockValid1, false, GoogleCertsJson));
             Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, clockValid2, false, GoogleCertsJson));
 
-            var ex1 = await Assert.ThrowsAsync<GoogleJsonWebSignature.InvalidJwtException>(() =>
+            var ex1 = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, clockInvalid1, false, GoogleCertsJson));
-            Assert.Equal("JWT is not yet valid, or has expired.", ex1.Message);
+            Assert.Equal("JWT is not yet valid.", ex1.Message);
 
-            var ex2 = await Assert.ThrowsAsync<GoogleJsonWebSignature.InvalidJwtException>(() =>
+            var ex2 = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, clockInvalid2, false, GoogleCertsJson));
-            Assert.Equal("JWT is not yet valid, or has expired.", ex2.Message);
+            Assert.Equal("JWT has expired.", ex2.Message);
         }
 
         [Fact]
@@ -127,10 +127,10 @@ namespace Google.Apis.Auth.Tests
             // Empty JWT
             await Assert.ThrowsAsync<ArgumentException>(() => GoogleJsonWebSignature.ValidateInternalAsync("", null, false, GoogleCertsJson));
             // Too long JWT
-            await Assert.ThrowsAsync<GoogleJsonWebSignature.InvalidJwtException>(() =>
+            await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(new string('a', GoogleJsonWebSignature.MaxJwtLength + 1), null, false, GoogleCertsJson));
             // JWT with incorrect top-level structure; missing signature
-            await Assert.ThrowsAsync<GoogleJsonWebSignature.InvalidJwtException>(() =>
+            await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync("header.payload", null, false, GoogleCertsJson));
         }
 
