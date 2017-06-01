@@ -81,10 +81,20 @@ namespace Google.Apis.Auth.OAuth2
         /// </item>
         /// </list>
         /// </summary>
+        /// <returns>A task which completes with the application default credentials.</returns>
         public static Task<GoogleCredential> GetApplicationDefaultAsync()
         {
             return defaultCredentialProvider.GetDefaultCredentialAsync();
         }
+
+        /// <summary>
+        /// <para>Synchronously returns the Application Default Credentials which are ambient credentials that identify and authorize
+        /// the whole application. See <see cref="GetApplicationDefaultAsync"/> for details on application default credentials.</para>
+        /// <para>This method will block until the credentials are available (or an exception is thrown).
+        /// It is highly preferable to call <see cref="GetApplicationDefaultAsync"/> where possible.</para>
+        /// </summary>
+        /// <returns>The application default credentials.</returns>
+        public static GoogleCredential GetApplicationDefault() => Task.Run(() => GetApplicationDefaultAsync()).Result;
 
         /// <summary>
         /// Loads credential from stream containing JSON credential data.

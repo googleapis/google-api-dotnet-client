@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2;
 using System;
 using System.IO;
+using System.Text;
 
 namespace IntegrationTests
 {
@@ -62,6 +63,8 @@ namespace IntegrationTests
         public static string GetProjectId() => s_projectId.Value;
 
         public static GoogleCredential GetServiceCredential() => s_serviceCredential.Value;
+
+        public static string GetClientSecret() => Encoding.UTF8.GetString(s_clientSecret.Value);
 
         public static MemoryStream GetClientSecretStream() => new MemoryStream(s_clientSecret.Value);
     }

@@ -133,10 +133,20 @@ public override string RestPath
 /// <summary>Gets the media downloader.</summary>
 public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
 
-/// <summary>Synchronously download the media into the given stream.</summary>
+/// <summary>
+/// <para>Synchronously download the media into the given stream.</para>
+/// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
+/// </summary>
 public virtual void Download(System.IO.Stream stream)
 {
     MediaDownloader.Download(this.GenerateRequestUri(), stream);
+}
+
+/// <summary>Synchronously download the media into the given stream.</summary>
+/// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+{
+    return MediaDownloader.Download(this.GenerateRequestUri(), stream);
 }
 
 /// <summary>Asynchronously download the media into the given stream.</summary>
@@ -151,6 +161,26 @@ public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgres
 {
     return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
 }
+
+#if !NET40
+/// <summary>Synchronously download a range of the media into the given stream.</summary>
+public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+{
+    var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+    mediaDownloader.Range = range;
+    return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+}
+
+/// <summary>Asynchronously download a range of the media into the given stream.</summary>
+public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+    System.Net.Http.Headers.RangeHeaderValue range,
+    System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+{
+    var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
+    mediaDownloader.Range = range;
+    return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+}
+#endif
 {% endif %}{% endindent %}
 }
 
