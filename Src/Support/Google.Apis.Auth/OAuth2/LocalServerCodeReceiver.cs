@@ -379,22 +379,23 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(HttpListener listener, CancellationToken ct)
         {
+            HttpListenerContext context;
             // Set up cancellation. HttpListener.GetContextAsync() doesn't accept a cancellation token,
             // the HttpListener needs to be stopped which immediately aborts the GetContextAsync() call.
-            ct.Register(listener.Stop);
-
-            // Wait to get the authorization code response.
-            HttpListenerContext context;
-            try
+            using (ct.Register(listener.Stop))
             {
-                context = await listener.GetContextAsync().ConfigureAwait(false);
-            }
-            catch (HttpListenerException) when (ct.IsCancellationRequested)
-            {
-                ct.ThrowIfCancellationRequested();
-                // Next line will never be reached because cancellation will always have been requested in this catch block.
-                // But it's required to satisfy compiler.
-                throw new InvalidOperationException();
+                // Wait to get the authorization code response.
+                try
+                {
+                    context = await listener.GetContextAsync().ConfigureAwait(false);
+                }
+                catch (Exception) when (ct.IsCancellationRequested)
+                {
+                    ct.ThrowIfCancellationRequested();
+                    // Next line will never be reached because cancellation will always have been requested in this catch block.
+                    // But it's required to satisfy compiler.
+                    throw new InvalidOperationException();
+                }
             }
             NameValueCollection coll = context.Request.QueryString;
 

@@ -41,6 +41,7 @@ namespace IntegrationTests
             Assert.Equal(wellKnown["authorization_endpoint"].ToString(), GoogleAuthConsts.OidcAuthorizationUrl);
             Assert.Equal(wellKnown["token_endpoint"].ToString(), GoogleAuthConsts.OidcTokenUrl);
             Assert.Equal(wellKnown["revocation_endpoint"].ToString(), GoogleAuthConsts.RevokeTokenUrl);
+            Assert.Equal(wellKnown["jwks_uri"].ToString(), GoogleAuthConsts.JsonWebKeySetUrl);
         }
     }
 }

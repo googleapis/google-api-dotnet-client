@@ -54,6 +54,9 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>The path to the Google revocation endpoint.</summary>
         public const string RevokeTokenUrl = "https://accounts.google.com/o/oauth2/revoke";
 
+        /// <summary>The OpenID Connect Json Web Key Set (jwks) URL.</summary>
+        public const string JsonWebKeySetUrl = "https://www.googleapis.com/oauth2/v3/certs";
+
         /// <summary>Installed application redirect URI.</summary>
         public const string InstalledAppRedirectUri = "urn:ietf:wg:oauth:2.0:oob";
 
