@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170515 (865)
+ *      <tr><th>API Rev<td>20170530 (880)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -103,6 +103,7 @@ namespace Google.Apis.Compute.v1
             targetInstances = new TargetInstancesResource(this);
             targetPools = new TargetPoolsResource(this);
             targetSslProxies = new TargetSslProxiesResource(this);
+            targetTcpProxies = new TargetTcpProxiesResource(this);
             targetVpnGateways = new TargetVpnGatewaysResource(this);
             urlMaps = new UrlMapsResource(this);
             vpnTunnels = new VpnTunnelsResource(this);
@@ -483,6 +484,14 @@ namespace Google.Apis.Compute.v1
         public virtual TargetSslProxiesResource TargetSslProxies
         {
             get { return targetSslProxies; }
+        }
+
+        private readonly TargetTcpProxiesResource targetTcpProxies;
+
+        /// <summary>Gets the TargetTcpProxies resource.</summary>
+        public virtual TargetTcpProxiesResource TargetTcpProxies
+        {
+            get { return targetTcpProxies; }
         }
 
         private readonly TargetVpnGatewaysResource targetVpnGateways;
@@ -26898,6 +26907,559 @@ namespace Google.Apis.Compute.v1
         }
     }
 
+    /// <summary>The "targetTcpProxies" collection of methods.</summary>
+    public class TargetTcpProxiesResource
+    {
+        private const string Resource = "targetTcpProxies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TargetTcpProxiesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string targetTcpProxy)
+        {
+            return new DeleteRequest(service, project, targetTcpProxy);
+        }
+
+        /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
+        /// a list() request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource to return.</param>
+        public virtual GetRequest Get(string project, string targetTcpProxy)
+        {
+            return new GetRequest(service, project, targetTcpProxy);
+        }
+
+        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
+        /// a list() request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetTcpProxy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.TargetTcpProxy body, string project)
+        {
+            return new InsertRequest(service, body, project);
+        }
+
+        /// <summary>Creates a TargetTcpProxy resource in the specified project using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TargetTcpProxy body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TargetTcpProxy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TargetTcpProxyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
+            /// {expression} must be in the format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use
+            /// filter=name ne example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource whose BackendService resource is to be set.</param>
+        public virtual SetBackendServiceRequest SetBackendService(Google.Apis.Compute.v1.Data.TargetTcpProxiesSetBackendServiceRequest body, string project, string targetTcpProxy)
+        {
+            return new SetBackendServiceRequest(service, body, project, targetTcpProxy);
+        }
+
+        /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
+        public class SetBackendServiceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetBackendService request.</summary>
+            public SetBackendServiceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TargetTcpProxiesSetBackendServiceRequest body, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource whose BackendService resource is to be set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TargetTcpProxiesSetBackendServiceRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setBackendService"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}/setBackendService"; }
+            }
+
+            /// <summary>Initializes SetBackendService parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="targetTcpProxy">Name of the
+        /// TargetTcpProxy resource whose ProxyHeader is to be set.</param>
+        public virtual SetProxyHeaderRequest SetProxyHeader(Google.Apis.Compute.v1.Data.TargetTcpProxiesSetProxyHeaderRequest body, string project, string targetTcpProxy)
+        {
+            return new SetProxyHeaderRequest(service, body, project, targetTcpProxy);
+        }
+
+        /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
+        public class SetProxyHeaderRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetProxyHeader request.</summary>
+            public SetProxyHeaderRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TargetTcpProxiesSetProxyHeaderRequest body, string project, string targetTcpProxy)
+                : base(service)
+            {
+                Project = project;
+                TargetTcpProxy = targetTcpProxy;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the TargetTcpProxy resource whose ProxyHeader is to be set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TargetTcpProxy { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TargetTcpProxiesSetProxyHeaderRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setProxyHeader"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/targetTcpProxies/{targetTcpProxy}/setProxyHeader"; }
+            }
+
+            /// <summary>Initializes SetProxyHeader parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "targetTcpProxy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetTcpProxy",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "targetVpnGateways" collection of methods.</summary>
     public class TargetVpnGatewaysResource
     {
@@ -30636,6 +31198,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels
+        /// set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
+        /// every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to
+        /// update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
         /// <summary>Labels to apply to this disk. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -31944,6 +32515,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this image, which is essentially a hash of the labels
+        /// used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
+        /// every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to
+        /// update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
         /// <summary>Labels to apply to this image. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -32089,6 +32669,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for this request, which is essentially a hash of the metadata's contents and used for
+        /// optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request
+        /// to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or
+        /// change metadata.
+        ///
+        /// To see the latest fingerprint, make get() request to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
         /// <summary>Labels to apply to this instance. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
@@ -32145,6 +32734,11 @@ namespace Google.Apis.Compute.v1.Data
         /// authenticate applications on the instance. See Service Accounts for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
+
+        /// <summary>[Output Only] Whether a VM has been restricted for start because Compute Engine has detected
+        /// suspicious activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startRestricted")]
+        public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
         /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
@@ -32853,8 +33447,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Enables instances created based on this template to send packets with source IP addresses other
         /// than their own and receive packets with destination IP addresses other than their own. If these instances
         /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more
-        /// information.</summary>
+        /// unsure, leave this set to false. See the Enable IP forwarding documentation for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -35020,6 +35613,15 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this snapshot, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
         /// <summary>Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values
         /// may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -36145,6 +36747,104 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>A list of TargetSslProxy resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<TargetSslProxy> Items { get; set; } 
+
+        /// <summary>Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetTcpProxiesSetBackendServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the new BackendService resource for the targetTcpProxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetTcpProxiesSetProxyHeaderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new type of proxy header to append before sending data to the backend. NONE or PROXY_V1 are
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A TargetTcpProxy resource. This resource defines a TCP proxy.</summary>
+    public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional description of this resource. Provide this property when you create the
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
+        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Specifies the type of proxy header to append before sending data to the backend, either NONE or
+        /// PROXY_V1. The default is NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>URL to the BackendService resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a list of TargetTcpProxy resources.</summary>
+    public class TargetTcpProxyList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of TargetTcpProxy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<TargetTcpProxy> Items { get; set; } 
 
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.BIGQUERYDATATRANSFER.v1 Client Library</Title>
-    <Version>1.26.2.872</Version>
+    <Title>Google.Apis.BigQueryDataTransfer.v1 Client Library</Title>
+    <Version>1.26.2.880</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

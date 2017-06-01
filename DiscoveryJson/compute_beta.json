@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9-drllTG8kccAPb3S2o9OH-xoig\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/on50t1QJ0-zGVjeoBH8DCH0yiyk\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20170515",
+ "revision": "20170530",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1575,7 +1575,7 @@
    "properties": {
     "members": {
      "type": "array",
-     "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`.\n\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
+     "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`.\n\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
      "items": {
       "type": "string"
      }
@@ -1635,7 +1635,7 @@
   "Commitment": {
    "id": "Commitment",
    "type": "object",
-   "description": "A usage-commitment with a start / end time. Users create commitments for particular resources (e.g. memory). Actual usage is first deducted from available commitments made prior, perhaps at a reduced price (as laid out in the commitment).",
+   "description": "Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.\n\nCommitted use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new commitment to continue receiving discounts.",
    "properties": {
     "creationTimestamp": {
      "type": "string",
@@ -1699,7 +1699,7 @@
     },
     "status": {
      "type": "string",
-     "description": "[Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end-date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.",
+     "description": "[Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.",
      "enum": [
       "ACTIVE",
       "CREATING",
@@ -3746,6 +3746,10 @@
       "$ref": "ServiceAccount"
      }
     },
+    "startRestricted": {
+     "type": "boolean",
+     "description": "[Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity."
+    },
     "status": {
      "type": "string",
      "description": "[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.",
@@ -4642,7 +4646,7 @@
    "properties": {
     "canIpForward": {
      "type": "boolean",
-     "description": "Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more information."
+     "description": "Enables instances created based on this template to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information."
     },
     "description": {
      "type": "string",
@@ -5032,9 +5036,34 @@
    "type": "object",
    "description": "Specifies what kind of log the caller must write",
    "properties": {
+    "cloudAudit": {
+     "$ref": "LogConfigCloudAuditOptions",
+     "description": "Cloud audit options."
+    },
     "counter": {
      "$ref": "LogConfigCounterOptions",
      "description": "Counter options."
+    }
+   }
+  },
+  "LogConfigCloudAuditOptions": {
+   "id": "LogConfigCloudAuditOptions",
+   "type": "object",
+   "description": "Write a Cloud Audit log",
+   "properties": {
+    "logName": {
+     "type": "string",
+     "description": "The log_name to populate in the Cloud Audit Record.",
+     "enum": [
+      "ADMIN_ACTIVITY",
+      "DATA_ACCESS",
+      "UNSPECIFIED_LOG_NAME"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -6689,12 +6718,12 @@
    "properties": {
     "amount": {
      "type": "string",
-     "description": "The amount of the resource purchased (in a type-dependent unit, such as bytes).",
+     "description": "The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.",
      "format": "int64"
     },
     "type": {
      "type": "string",
-     "description": "Type of resource for which this commitment applies.",
+     "description": "Type of resource for which this commitment applies. Possible values are VCPU and MEMORY",
      "enum": [
       "MEMORY",
       "UNSPECIFIED",
@@ -18120,7 +18149,7 @@
      "id": "compute.regionCommitments.insert",
      "path": "{project}/regions/{region}/commitments",
      "httpMethod": "POST",
-     "description": "Creates an commitment in the specified project using the data included in the request.",
+     "description": "Creates a commitment in the specified project using the data included in the request.",
      "parameters": {
       "project": {
        "type": "string",

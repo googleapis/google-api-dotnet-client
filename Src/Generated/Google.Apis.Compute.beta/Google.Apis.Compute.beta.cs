@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170515 (865)
+ *      <tr><th>API Rev<td>20170530 (880)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -21473,7 +21473,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Creates an commitment in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -21483,7 +21483,7 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project, region);
         }
 
-        /// <summary>Creates an commitment in the specified project using the data included in the request.</summary>
+        /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -36936,9 +36936,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A usage-commitment with a start / end time. Users create commitments for particular resources (e.g.
-    /// memory). Actual usage is first deducted from available commitments made prior, perhaps at a reduced price (as
-    /// laid out in the commitment).</summary>
+    /// <summary>Represents a Commitment resource. Creating a Commitment resource means that you are purchasing a
+    /// committed use contract with an explicit start and end time. You can create commitments based on vCPUs and memory
+    /// usage and receive discounted rates. For full details, read Signing Up for Committed Use Discounts.
+    ///
+    /// Committed use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed
+    /// use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new
+    /// commitment to continue receiving discounts.</summary>
     public class Commitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -36994,7 +36998,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string StartTimestamp { get; set; } 
 
         /// <summary>[Output Only] Status of the commitment with regards to eventual expiration (each commitment has an
-        /// end-date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.</summary>
+        /// end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -38895,6 +38899,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; } 
 
+        /// <summary>[Output Only] Whether a VM has been restricted for start because Compute Engine has detected
+        /// suspicious activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startRestricted")]
+        public virtual System.Nullable<bool> StartRestricted { get; set; } 
+
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
         /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -39713,8 +39722,7 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Enables instances created based on this template to send packets with source IP addresses other
         /// than their own and receive packets with destination IP addresses other than their own. If these instances
         /// will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If
-        /// unsure, leave this set to false. See the Enable IP forwarding for instances documentation for more
-        /// information.</summary>
+        /// unsure, leave this set to false. See the Enable IP forwarding documentation for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
         public virtual System.Nullable<bool> CanIpForward { get; set; } 
 
@@ -40034,9 +40042,24 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Specifies what kind of log the caller must write</summary>
     public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cloud audit options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
+        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; } 
+
         /// <summary>Counter options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
         public virtual LogConfigCounterOptions Counter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Cloud Audit log</summary>
+    public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
+        public virtual string LogName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41477,11 +41500,13 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>
     public class ResourceCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The amount of the resource purchased (in a type-dependent unit, such as bytes).</summary>
+        /// <summary>The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can
+        /// just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to
+        /// 6.5GB of memory per every vCPU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual System.Nullable<long> Amount { get; set; } 
 
-        /// <summary>Type of resource for which this commitment applies.</summary>
+        /// <summary>Type of resource for which this commitment applies. Possible values are VCPU and MEMORY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
