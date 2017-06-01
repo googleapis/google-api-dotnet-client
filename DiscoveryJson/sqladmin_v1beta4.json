@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/OkCuATKu4W9Y2ow8-gA51dk2muk\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/epSKU8P8WOZtpaH2MUyjoX5-EVg\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20170523",
+ "revision": "20170525",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -1145,10 +1145,10 @@
     },
     "labels": {
      "type": "object",
-     "description": "User defined labels.",
+     "description": "User-provided labels, represented as a dictionary where each label is a single key value pair.",
      "additionalProperties": {
       "type": "string",
-      "description": "An individual label entry."
+      "description": "An individual label entry, composed of a key and a value."
      }
     },
     "locationPreference": {
@@ -2095,7 +2095,7 @@
      "parameters": {
       "filter": {
        "type": "string",
-       "description": "Reserved for future use.",
+       "description": "An expression for filtering the results of the request, such as by name or label.",
        "location": "query"
       },
       "maxResults": {

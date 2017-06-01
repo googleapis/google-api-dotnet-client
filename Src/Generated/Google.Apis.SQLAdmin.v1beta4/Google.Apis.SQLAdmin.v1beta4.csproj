@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.SQLAdmin.v1beta4 Client Library</Title>
-    <Version>1.26.2.873</Version>
+    <Version>1.27.0.875</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -16,7 +16,7 @@
 
       Supported Platforms:
       - .NET Framework 4.5+
-      - NetStandard1.3
+      - NetStandard1.3, providing .NET Core support.
 
       Legacy platforms:
       - .NET Framework 4.0
@@ -52,8 +52,8 @@
   
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Google.Apis" Version="1.26.2" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.26.2" />
+    <PackageReference Include="Google.Apis" Version="1.27.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.27.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -68,8 +68,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <PackageReference Include="Google.Apis" Version="1.26.2" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.26.2" />
+    <PackageReference Include="Google.Apis" Version="1.27.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.27.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
