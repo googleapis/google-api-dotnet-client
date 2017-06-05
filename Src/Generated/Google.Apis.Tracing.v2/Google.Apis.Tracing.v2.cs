@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Google Tracing API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170516 (866)
+ *      <tr><th>API Rev<td>20170531 (881)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -585,6 +585,12 @@ namespace Google.Apis.Tracing.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
+                /// reasonable value. The implementation may return fewer traces than the requested page size.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
                 ///
                 /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
@@ -618,12 +624,6 @@ namespace Google.Apis.Tracing.v2
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
 
-                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
-                /// reasonable value. The implementation may return fewer traces than the requested page size.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -656,6 +656,15 @@ namespace Google.Apis.Tracing.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
@@ -697,15 +706,6 @@ namespace Google.Apis.Tracing.v2
                         "startTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "startTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1125,7 +1125,7 @@ namespace Google.Apis.Tracing.v2.Data
 
         /// <summary>The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace.
         ///
-        /// Often multiple spans will have identical stack traces. The first occurance of a stack trace should contain
+        /// Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain
         /// both the `stackFrame` content and a value in `stackTraceHashId`.
         ///
         /// Subsequent spans within the same request can refer to that stack trace by only setting

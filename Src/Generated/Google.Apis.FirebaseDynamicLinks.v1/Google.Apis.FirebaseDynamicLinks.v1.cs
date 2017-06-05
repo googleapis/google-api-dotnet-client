@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170526 (876)
+ *      <tr><th>API Rev<td>20170602 (883)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -65,6 +65,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             : base(initializer)
         {
             shortLinks = new ShortLinksResource(this);
+            v1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -121,6 +122,14 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public virtual ShortLinksResource ShortLinks
         {
             get { return shortLinks; }
+        }
+
+        private readonly V1Resource v1;
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1
+        {
+            get { return v1; }
         }
     }
 
@@ -421,6 +430,98 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
 
         }
     }
+
+    /// <summary>The "v1" collection of methods.</summary>
+    public class V1Resource
+    {
+        private const string Resource = "v1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of
+        /// clicks, redirects, installs, app first opens, and app reopens.</summary>
+        /// <param name="dynamicLink">Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz</param>
+        public virtual GetLinkStatsRequest GetLinkStats(string dynamicLink)
+        {
+            return new GetLinkStatsRequest(service, dynamicLink);
+        }
+
+        /// <summary>Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of
+        /// clicks, redirects, installs, app first opens, and app reopens.</summary>
+        public class GetLinkStatsRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.DynamicLinkStats>
+        {
+            /// <summary>Constructs a new GetLinkStats request.</summary>
+            public GetLinkStatsRequest(Google.Apis.Services.IClientService service, string dynamicLink)
+                : base(service)
+            {
+                DynamicLink = dynamicLink;
+                InitParameters();
+            }
+
+
+            /// <summary>Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dynamicLink", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DynamicLink { get; private set; }
+
+            /// <summary>The span of time requested in days.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("durationDays", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> DurationDays { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getLinkStats"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{dynamicLink}/linkStats"; }
+            }
+
+            /// <summary>Initializes GetLinkStats parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "dynamicLink", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dynamicLink",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "durationDays", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "durationDays",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.FirebaseDynamicLinks.v1.Data
@@ -507,6 +608,25 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Dynamic Link event stat.</summary>
+    public class DynamicLinkEventStat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of times this event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; } 
+
+        /// <summary>Link event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual string Event__ { get; set; } 
+
+        /// <summary>Requested platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Information about a Dynamic Link.</summary>
     public class DynamicLinkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -549,6 +669,17 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// sites.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("socialMetaTagInfo")]
         public virtual SocialMetaTagInfo SocialMetaTagInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Analytics stats of a Dynamic Link for a given timeframe.</summary>
+    public class DynamicLinkStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dynamic Link event stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkEventStats")]
+        public virtual System.Collections.Generic.IList<DynamicLinkEventStat> LinkEventStats { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

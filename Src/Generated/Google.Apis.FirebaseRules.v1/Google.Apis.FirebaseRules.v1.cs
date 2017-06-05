@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170418 (838)
+ *      <tr><th>API Rev<td>20170523 (873)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -648,17 +648,6 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Next page token for the next batch of `Release` instances.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
-                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
-                /// all of the releases, the caller should iterate until the `page_token` on the response is
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>`Release` filter. The list method supports filters with restrictions on the `Release.name`,
                 /// `Release.ruleset_name`, and `Release.test_suite_name`.
                 ///
@@ -681,6 +670,17 @@ namespace Google.Apis.FirebaseRules.v1
                 /// `test_suite_name=projects/foo/testsuites/uuid1`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Next page token for the next batch of `Release` instances.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
+                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
+                /// all of the releases, the caller should iterate until the `page_token` on the response is
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -716,6 +716,15 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -728,15 +737,6 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1123,6 +1123,15 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
+                ///
+                /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
+                /// the RFC 3339 date/time specifications.
+                ///
+                /// Example: `create_time > date("2017-01-01") AND name=UUID-*`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Next page token for loading the next batch of `Ruleset` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1132,15 +1141,6 @@ namespace Google.Apis.FirebaseRules.v1
                 /// the releases, caller should iterate until the `page_token` is empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
-                ///
-                /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
-                /// the RFC 3339 date/time specifications.
-                ///
-                /// Example: `create_time > date("2017-01-01") AND name=UUID-*`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1176,6 +1176,15 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1188,15 +1197,6 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1318,6 +1318,21 @@ namespace Google.Apis.FirebaseRules.v1
 namespace Google.Apis.FirebaseRules.v1.Data
 {    
 
+    /// <summary>Arg matchers for the mock function.</summary>
+    public class Arg : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Argument matches any value provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anyValue")]
+        public virtual Empty AnyValue { get; set; } 
+
+        /// <summary>Argument exactly matches value provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactValue")]
+        public virtual object ExactValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1359,6 +1374,36 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Name of the function invoked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Mock function definition.
+    ///
+    /// Mocks must refer to a function declared by the target service. The type of the function args and result will be
+    /// inferred at test time. If either the arg or result values are not compatible with function type declaration, the
+    /// request will be considered invalid.
+    ///
+    /// More than one `FunctionMock` may be provided for a given function name so long as the `Arg` matchers are
+    /// distinct. There may be only one function for a given overload where all `Arg` values are
+    /// `Arg.any_value`.</summary>
+    public class FunctionMock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `Arg` values to match. The order in which the arguments are provided is the order in
+        /// which they must appear in the function invocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<Arg> Args { get; set; } 
+
+        /// <summary>The name of the function.
+        ///
+        /// The function name must match one provided by a service declaration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("function")]
+        public virtual string Function { get; set; } 
+
+        /// <summary>The mock result of the function call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual Result Result { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1457,6 +1502,22 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Possible result values from the function mock invocation.</summary>
+    public class Result : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result is undefined, meaning the result could not be computed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("undefined")]
+        public virtual Empty Undefined { get; set; } 
+
+        /// <summary>The result is an actual value. The type of the value must match that of the type declared by the
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Ruleset` is an immutable copy of `Source` with a globally unique identifier and a creation
     /// time.</summary>
     public class Ruleset : Google.Apis.Requests.IDirectResponseSchema
@@ -1509,6 +1570,50 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>`TestCase` messages provide the request context and an expectation as to whether the given context will
+    /// be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function
+    /// call to a service-provided function.
+    ///
+    /// The `request` object represents context present at request-time.
+    ///
+    /// The `resource` is the value of the target resource as it appears in persistent storage before the request is
+    /// executed.</summary>
+    public class TestCase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Test expectation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectation")]
+        public virtual string Expectation { get; set; } 
+
+        /// <summary>Optional function mocks for service-defined functions. If not set, any service defined function is
+        /// expected to return an error, which may or may not influence the test outcome.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionMocks")]
+        public virtual System.Collections.Generic.IList<FunctionMock> FunctionMocks { get; set; } 
+
+        /// <summary>Request context.
+        ///
+        /// The exact format of the request context is service-dependent. See the appropriate service documentation for
+        /// information about the supported fields and types on the request. Minimally, all services support the
+        /// following fields and types:
+        ///
+        /// Request field  | Type ---------------|----------------- auth.uid       | `string` auth.token     | `map`
+        /// headers        | `map` method         | `string` params         | `map` path           | `string` time
+        /// | `google.protobuf.Timestamp`
+        ///
+        /// If the request value is not well-formed for the service, the request will be rejected as an invalid
+        /// argument.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual object Request { get; set; } 
+
+        /// <summary>Optional resource value as it appears in persistent storage before the request is fulfilled.
+        ///
+        /// The resource type depends on the `request.path` value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual object Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Test result message containing the state of the test as well as a description and source position for
     /// test failures.</summary>
     public class TestResult : Google.Apis.Requests.IDirectResponseSchema
@@ -1555,6 +1660,10 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 
 
+        /// <summary>Inline `TestSuite` to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testSuite")]
+        public virtual TestSuite TestSuite { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1571,6 +1680,19 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// same order as the test cases appear in the `TestSuite`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testResults")]
         public virtual System.Collections.Generic.IList<TestResult> TestResults { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`TestSuite` is a collection of `TestCase` instances that validate the logical correctness of a
+    /// `Ruleset`. The `TestSuite` may be referenced in-line within a `TestRuleset` invocation or as part of a `Release`
+    /// object as a pre-release check.</summary>
+    public class TestSuite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Collection of test cases associated with the `TestSuite`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
+        public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
