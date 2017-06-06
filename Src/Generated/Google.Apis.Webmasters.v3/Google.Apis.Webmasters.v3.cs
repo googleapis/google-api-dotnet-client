@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/webmaster-tools/'>Search Console API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170517 (867)
+ *      <tr><th>API Rev<td>20170528 (878)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/webmaster-tools/'>
  *              https://developers.google.com/webmaster-tools/</a>

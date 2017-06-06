@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>CustomSearch API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160411 (466)
+ *      <tr><th>API Rev<td>20170530 (880)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>
  *              https://developers.google.com/custom-search/v1/using_rest</a>
@@ -290,10 +290,6 @@ namespace Google.Apis.Customsearch.v1
             /// <summary>Country restrict(s).</summary>
             [Google.Apis.Util.RequestParameterAttribute("cr", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Cr { get; set; }
-
-            /// <summary>The URL of a linked custom search engine</summary>
-            [Google.Apis.Util.RequestParameterAttribute("cref", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Cref { get; set; }
 
             /// <summary>The custom search engine ID to scope this search query</summary>
             [Google.Apis.Util.RequestParameterAttribute("cx", Google.Apis.Util.RequestParameterType.Query)]
@@ -723,15 +719,6 @@ namespace Google.Apis.Customsearch.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "cref", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "cref",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "cx", new Google.Apis.Discovery.Parameter
                     {
                         Name = "cx",
@@ -1079,9 +1066,6 @@ namespace Google.Apis.Customsearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("cr")]
         public virtual string Cr { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("cref")]
-        public virtual string Cref { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("cx")]
         public virtual string Cx { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170519 (869)
+ *      <tr><th>API Rev<td>20170526 (876)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -688,13 +688,13 @@ namespace Google.Apis.ServiceUser.v1
             }
 
 
-            /// <summary>Requested size of the next page of data.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested size of the next page of data.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -721,18 +721,18 @@ namespace Google.Apis.ServiceUser.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1918,10 +1918,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota,
-    /// billing, and monitoring behaviors to apply to the method call.
-    ///
-    /// Used by metric-based quotas only.</summary>
+    /// <summary>Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota
+    /// behaviors to apply to the method call.</summary>
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metrics to update when the selected methods are called, and the associated cost applied to each
@@ -2277,15 +2275,12 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// INT64</summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of `QuotaLimit` definitions for the service.
-        ///
-        /// Used by metric-based quotas only.</summary>
+        /// <summary>List of `QuotaLimit` definitions for the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IList<QuotaLimit> Limits { get; set; } 
 
-        /// <summary>List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
-        ///
-        /// Used by metric-based quotas only.</summary>
+        /// <summary>List of `MetricRule` definitions, each one mapping a selected method to one or more
+        /// metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricRules")]
         public virtual System.Collections.Generic.IList<MetricRule> MetricRules { get; set; } 
 
@@ -2357,9 +2352,6 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// <summary>Name of the quota limit. The name is used to refer to the limit when overriding the default limit
         /// on per-consumer basis.
         ///
-        /// For group-based quota limits, the name must be unique within the quota group. If a name is not provided, it
-        /// will be generated from the limit_by and duration fields.
-        ///
         /// For metric-based quota limits, the name must be provided, and it must be unique within the service. The name
         /// can only include alphanumeric characters as well as '-'.
         ///
@@ -2377,15 +2369,9 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// The [Google Service Control](https://cloud.google.com/service-control) supports the following unit
         /// components: * One of the time intevals: * "/min"  for quota every minute. * "/d"  for quota every 24 hours,
         /// starting 00:00 US Pacific Time. * Otherwise the quota won't be reset by time, such as storage limit. * One
-        /// and only one of the granted containers: * "/{organization}" quota for an organization. * "/{project}" quota
-        /// for a project. * "/{folder}" quota for a folder. * "/{resource}" quota for a universal resource. * Zero or
-        /// more quota segmentation dimension. Not all combos are valid. * "/{region}" quota for every region. Not to be
-        /// used with time intervals. * Otherwise the resources granted on the target is not segmented. * "/{zone}"
-        /// quota for every zone. Not to be used with time intervals. * Otherwise the resources granted on the target is
-        /// not segmented. * "/{resource}" quota for a resource associated with a project or org.
+        /// and only one of the granted containers: * "/{project}" quota for a project
         ///
-        /// Here are some examples: * "1/min/{project}" for quota per minute per project. * "1/min/{user}" for quota per
-        /// minute per user. * "1/min/{organization}" for quota per minute per organization.
+        /// Here are some examples: * "1/min/{project}" for quota per minute per project.
         ///
         /// Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the
         /// metric unit syntax.
@@ -2394,31 +2380,7 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
-        /// <summary>Tiered limit values. Also allows for regional or zone overrides for these values if "/{region}" or
-        /// "/{zone}" is specified in the unit field.
-        ///
-        /// Currently supported tiers from low to high: VERY_LOW, LOW, STANDARD, HIGH, VERY_HIGH
-        ///
-        /// To apply different limit values for users according to their tiers, specify the values for the tiers you
-        /// want to differentiate. For example: {LOW:100, STANDARD:500, HIGH:1000, VERY_HIGH:5000}
-        ///
-        /// The limit value for each tier is optional except for the tier STANDARD. The limit value for an unspecified
-        /// tier falls to the value of its next tier towards tier STANDARD. For the above example, the limit value for
-        /// tier STANDARD is 500.
-        ///
-        /// To apply the same limit value for all users, just specify limit value for tier STANDARD. For example:
-        /// {STANDARD:500}.
-        ///
-        /// To apply a regional overide for a tier, add a map entry with key "/", where  is a region name. Similarly,
-        /// for a zone override, add a map entry with key "/{zone}". Further, a wildcard can be used at the end of a
-        /// zone name in order to specify zone level overrides. For example: LOW: 10, STANDARD: 50, HIGH: 100, LOW/us-
-        /// central1: 20, STANDARD/us-central1: 60, HIGH/us-central1: 200, LOW/us-central1-*: 10, STANDARD/us-
-        /// central1-*: 20, HIGH/us-central1-*: 80
-        ///
-        /// The regional overrides tier set for each region must be the same as the tier set for default limit values.
-        /// Same rule applies for zone overrides tier as well.
-        ///
-        /// Used by metric-based quotas only.</summary>
+        /// <summary>Tiered limit values, currently only STANDARD is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> Values { get; set; } 
 

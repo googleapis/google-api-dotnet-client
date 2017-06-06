@@ -369,14 +369,6 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
-            /// <summary>Limits the number of entities to be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> Limit { get; set; }
-
-            /// <summary>Enables prefix match against names and aliases of entities</summary>
-            [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Prefix { get; set; }
-
             /// <summary>The literal query string for search.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -399,6 +391,14 @@ namespace Google.Apis.Kgsearch.v1
             /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
+
+            /// <summary>Limits the number of entities to be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Limit { get; set; }
+
+            /// <summary>Enables prefix match against names and aliases of entities</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Prefix { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -424,24 +424,6 @@ namespace Google.Apis.Kgsearch.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "limit", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "limit",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "prefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "query", new Google.Apis.Discovery.Parameter
                     {
@@ -482,6 +464,24 @@ namespace Google.Apis.Kgsearch.v1
                     "ids", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ids",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "limit", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "limit",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "prefix", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "prefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
