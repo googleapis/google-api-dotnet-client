@@ -117,10 +117,7 @@ namespace Google.Apis.Services
 
             internal void Validate()
             {
-                if (ApplicationName != null && !ProductInfoHeaderValue.TryParse(ApplicationName, out var _))
-                {
-                    throw new ArgumentException("Invalid Application name", nameof(ApplicationName));
-                }
+                // TODO: Validate ApplicationName
             }
         }
 
