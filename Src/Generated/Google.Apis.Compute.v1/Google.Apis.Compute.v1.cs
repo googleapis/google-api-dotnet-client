@@ -695,8 +695,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -704,8 +704,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1114,8 +1114,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1123,8 +1123,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1284,8 +1284,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1293,8 +1293,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1703,8 +1703,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1712,8 +1712,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2293,8 +2293,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2302,8 +2302,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2626,8 +2626,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2635,8 +2635,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3080,8 +3080,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3089,8 +3089,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3417,8 +3417,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3426,8 +3426,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3661,8 +3661,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3670,8 +3670,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3831,8 +3831,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3840,8 +3840,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4383,8 +4383,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4392,8 +4392,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4612,7 +4612,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -4624,7 +4624,7 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -4973,8 +4973,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4982,8 +4982,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5310,8 +5310,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5319,8 +5319,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5733,8 +5733,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5742,8 +5742,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6229,8 +6229,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6238,8 +6238,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6614,8 +6614,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6623,8 +6623,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6861,8 +6861,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6870,8 +6870,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7159,8 +7159,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7168,8 +7168,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7544,8 +7544,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7553,8 +7553,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8101,8 +8101,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8110,8 +8110,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8658,8 +8658,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8667,8 +8667,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -9382,8 +9382,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9391,8 +9391,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -9503,7 +9503,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -9514,7 +9514,7 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -9749,8 +9749,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9758,8 +9758,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -10308,8 +10308,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -10317,8 +10317,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11183,8 +11183,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11192,8 +11192,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11609,8 +11609,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11618,8 +11618,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11779,8 +11779,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11788,8 +11788,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -12404,8 +12404,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -12413,8 +12413,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -12680,8 +12680,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -12689,8 +12689,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13559,8 +13559,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -13568,8 +13568,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13903,7 +13903,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -13915,7 +13915,7 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -14929,8 +14929,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -14938,8 +14938,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15173,8 +15173,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15182,8 +15182,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15319,6 +15319,90 @@ namespace Google.Apis.Compute.v1
 
         }
 
+
+        /// <summary>Adds a peering to the specified network.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource to add peering to.</param>
+        public virtual AddPeeringRequest AddPeering(Google.Apis.Compute.v1.Data.NetworksAddPeeringRequest body, string project, string network)
+        {
+            return new AddPeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Adds a peering to the specified network.</summary>
+        public class AddPeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new AddPeering request.</summary>
+            public AddPeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.NetworksAddPeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource to add peering to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.NetworksAddPeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addPeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/addPeering"; }
+            }
+
+            /// <summary>Initializes AddPeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
 
         /// <summary>Deletes the specified network.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -15565,8 +15649,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15574,8 +15658,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15681,6 +15765,90 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Removes a peering from the specified network.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network
+        /// resource to remove peering from.</param>
+        public virtual RemovePeeringRequest RemovePeering(Google.Apis.Compute.v1.Data.NetworksRemovePeeringRequest body, string project, string network)
+        {
+            return new RemovePeeringRequest(service, body, project, network);
+        }
+
+        /// <summary>Removes a peering from the specified network.</summary>
+        public class RemovePeeringRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new RemovePeering request.</summary>
+            public RemovePeeringRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.NetworksRemovePeeringRequest body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource to remove peering from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.NetworksRemovePeeringRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "removePeering"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}/removePeering"; }
+            }
+
+            /// <summary>Initializes RemovePeering parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -16982,8 +17150,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -16991,8 +17159,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -17728,8 +17896,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17737,8 +17905,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -18631,8 +18799,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -18640,8 +18808,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -19488,8 +19656,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -19497,8 +19665,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -19661,8 +19829,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -19670,8 +19838,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20135,8 +20303,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20144,8 +20312,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20383,8 +20551,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20392,8 +20560,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20544,8 +20712,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20553,8 +20721,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -21056,8 +21224,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -21065,8 +21233,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -21749,8 +21917,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -21758,8 +21926,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -22072,8 +22240,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -22081,8 +22249,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -22193,7 +22361,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -22204,7 +22372,7 @@ namespace Google.Apis.Compute.v1
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
@@ -22543,8 +22711,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -22552,8 +22720,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -22704,8 +22872,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -22713,8 +22881,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23220,8 +23388,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23229,8 +23397,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23715,8 +23883,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23724,8 +23892,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24184,8 +24352,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24193,8 +24361,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24513,8 +24681,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24522,8 +24690,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24934,8 +25102,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24943,8 +25111,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -25304,8 +25472,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -25313,8 +25481,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -25827,8 +25995,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -25836,8 +26004,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -26533,8 +26701,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -26542,8 +26710,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27170,8 +27338,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27179,8 +27347,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27499,8 +27667,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27508,8 +27676,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27920,8 +28088,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27929,8 +28097,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -28400,8 +28568,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -28409,8 +28577,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -28817,8 +28985,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -28826,8 +28994,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29238,8 +29406,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29247,8 +29415,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29597,8 +29765,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29606,8 +29774,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29845,8 +30013,8 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29854,8 +30022,8 @@ namespace Google.Apis.Compute.v1
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -30019,6 +30187,11 @@ namespace Google.Apis.Compute.v1.Data
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>The IP Version that will be used by this address. Valid options are IPV4 or IPV6. This can only be
+        /// specified for a global address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; } 
 
         /// <summary>[Output Only] Type of the resource. Always compute#address for addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -31800,6 +31973,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
+        /// <summary>The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can
+        /// only be specified for a global forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#forwardingRule for Forwarding Rule
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -31835,7 +32013,9 @@ namespace Google.Apis.Compute.v1.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetSslProxy: 443 - TargetVpnGateway: 500, 4500 -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 - TargetVpnGateway: 500, 4500
+        /// -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -33712,8 +33892,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>A license resource.</summary>
     public class License : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] If true, the customer will be charged license fee for running software that contains
-        /// this license on an instance.</summary>
+        /// <summary>[Output Only] Deprecated. This field no longer reflects whether a license charges a usage
+        /// fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chargesUseFee")]
         public virtual System.Nullable<bool> ChargesUseFee { get; set; } 
 
@@ -34110,6 +34290,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>[Output Only] List of network peerings for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
+        public virtual System.Collections.Generic.IList<NetworkPeering> Peerings { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -34199,6 +34383,73 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A network peering attached to a network resource. The message includes the peering name, peer network,
+    /// peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the
+    /// peering.</summary>
+    public class NetworkPeering : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether full mesh connectivity is created and managed automatically. When it is set to true, Google
+        /// Compute Engine will automatically create and manage the routes between two networks when the state is
+        /// ACTIVE. Otherwise, user needs to create routes manually to route packets to peer network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
+        public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
+
+        /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
+        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all the following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
+        /// dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The URL of the peer network. It can be either full URL or partial URL. The peer network may belong
+        /// to a different project. If the partial URL does not contain project, it is assumed that the peer network is
+        /// in the same project as the current network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>[Output Only] State for the peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>[Output Only] Details about the current state of the peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
+        public virtual string StateDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class NetworksAddPeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Google Compute Engine manages the routes automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreateRoutes")]
+        public virtual System.Nullable<bool> AutoCreateRoutes { get; set; } 
+
+        /// <summary>Name of the peering, which should conform to RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a
+        /// different project. If the partial URL does not contain project, it is assumed that the peer network is in
+        /// the same project as the current network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerNetwork")]
+        public virtual string PeerNetwork { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class NetworksRemovePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the peering, which should conform to RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -34994,11 +35245,11 @@ namespace Google.Apis.Compute.v1.Data
     /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
     /// routing table.
     ///
-    /// For each packet leaving a instance, the system searches that instance's routing table for a single best matching
-    /// route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger
-    /// ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie,
-    /// it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet
-    /// is then forwarded as specified by the nextHop field of the winning route - either to another instance
+    /// For each packet leaving an instance, the system searches that instance's routing table for a single best
+    /// matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over
+    /// larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still
+    /// a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The
+    /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
     /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
     ///
     /// Packets that do not match any route in the sending instance's routing table are dropped.</summary>
@@ -35058,6 +35309,11 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The URL of the local network if it should handle matching packets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopNetwork")]
         public virtual string NextHopNetwork { get; set; } 
+
+        /// <summary>[Output Only] The network peering name that should handle matching packets, which should conform to
+        /// RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopPeering")]
+        public virtual string NextHopPeering { get; set; } 
 
         /// <summary>The URL to a VpnTunnel that should handle matching packets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopVpnTunnel")]

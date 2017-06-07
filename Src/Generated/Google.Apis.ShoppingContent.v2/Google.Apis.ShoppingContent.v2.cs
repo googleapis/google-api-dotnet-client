@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170523 (873)
+ *      <tr><th>API Rev<td>20170531 (881)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1865,8 +1865,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a datafeed from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Deletes a datafeed configuration from your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong datafeedId)
@@ -1874,8 +1874,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new DeleteRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Deletes a datafeed from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Deletes a datafeed configuration from your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1955,8 +1955,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a datafeed from your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Retrieves a datafeed configuration from your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
@@ -1964,8 +1964,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new GetRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Retrieves a datafeed from your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Retrieves a datafeed configuration from your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2032,8 +2032,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Registers a datafeed with your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Registers a datafeed configuration with your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Datafeed body, ulong merchantId)
@@ -2041,8 +2041,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Registers a datafeed with your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Registers a datafeed configuration with your Merchant Center account. This method can only be
+        /// called for non-multi-client accounts.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -2203,8 +2203,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
@@ -2213,8 +2213,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new PatchRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2301,8 +2301,8 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId"></param>
         /// <param name="datafeedId"></param>
@@ -2311,8 +2311,8 @@ namespace Google.Apis.ShoppingContent.v2
             return new UpdateRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed of your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
+        /// for non-multi-client accounts.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -6055,7 +6055,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Datafeed data.</summary>
+    /// <summary>Datafeed configuration data.</summary>
     public class Datafeed : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The two-letter ISO 639-1 language in which the attributes are defined in the data feed.</summary>
@@ -8210,6 +8210,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The material of which the item is made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("material")]
         public virtual string Material { get; set; } 
+
+        /// <summary>Maximal product handling time (in business days).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
+        public virtual System.Nullable<long> MaxHandlingTime { get; set; } 
+
+        /// <summary>Minimal product handling time (in business days).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
+        public virtual System.Nullable<long> MinHandlingTime { get; set; } 
 
         /// <summary>Link to a mobile-optimized version of the landing page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]

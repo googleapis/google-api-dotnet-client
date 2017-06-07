@@ -713,8 +713,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -722,8 +722,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -957,8 +957,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -966,8 +966,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1127,8 +1127,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1136,8 +1136,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1284,6 +1284,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1334,6 +1344,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -1464,6 +1483,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Address Body { get; set; }
@@ -1512,6 +1541,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1546,8 +1584,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1555,8 +1593,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1667,6 +1705,126 @@ namespace Google.Apis.Compute.beta
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/addresses/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1815,8 +1973,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1824,8 +1982,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1972,6 +2130,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2022,6 +2190,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2152,6 +2329,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -2200,6 +2387,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2234,8 +2430,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2243,8 +2439,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2402,6 +2598,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -2458,6 +2664,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2598,6 +2813,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -2655,6 +2880,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2706,6 +2940,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2747,6 +2991,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -2857,6 +3110,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendBucket Body { get; set; }
@@ -2896,6 +3159,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2923,8 +3195,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2932,8 +3204,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3078,6 +3350,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendBucket Body { get; set; }
@@ -3126,6 +3408,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3161,6 +3452,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the BackendBucket resource to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3210,6 +3511,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3256,8 +3566,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3265,8 +3575,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3407,6 +3717,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3448,6 +3768,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -3644,6 +3973,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -3683,6 +4022,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3710,8 +4058,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3719,8 +4067,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3867,6 +4215,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -3914,6 +4272,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -4039,6 +4406,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -4087,6 +4464,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -4131,8 +4517,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4140,8 +4526,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4375,8 +4761,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4384,8 +4770,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4545,8 +4931,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4554,8 +4940,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4708,6 +5094,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Snapshot Body { get; set; }
@@ -4774,6 +5170,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -4817,6 +5222,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the persistent disk to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4866,6 +5281,15 @@ namespace Google.Apis.Compute.beta
                         Name = "disk",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5002,6 +5426,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
             /// <summary>Optional. Source image to restore onto a disk.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceImage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceImage { get; set; }
@@ -5055,6 +5489,15 @@ namespace Google.Apis.Compute.beta
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
                 RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "sourceImage", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sourceImage",
@@ -5097,8 +5540,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5106,8 +5549,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5265,6 +5708,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.DisksResizeRequest Body { get; set; }
@@ -5322,11 +5775,20 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -5338,7 +5800,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -5365,6 +5827,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the resource for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -5422,6 +5894,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -5573,6 +6054,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -5614,6 +6105,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -5720,6 +6220,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Firewall Body { get; set; }
@@ -5759,6 +6269,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -5786,8 +6305,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5795,8 +6314,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5941,6 +6460,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Firewall Body { get; set; }
@@ -5988,6 +6517,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -6113,6 +6651,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Firewall Body { get; set; }
@@ -6161,6 +6709,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -6205,8 +6762,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6214,8 +6771,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6363,6 +6920,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -6413,6 +6980,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -6544,6 +7120,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.ForwardingRule Body { get; set; }
@@ -6592,6 +7178,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -6628,8 +7223,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6637,8 +7232,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6758,6 +7353,126 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/forwardingRules/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Changes target URL for forwarding rule. The new target should be of the same type as the old
         /// target.</summary>
         /// <param name="body">The body of the request.</param>
@@ -6798,6 +7513,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the ForwardingRule resource in which target is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -6855,6 +7580,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7006,6 +7740,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -7047,6 +7791,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7157,6 +7910,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Address Body { get; set; }
@@ -7196,6 +7959,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -7223,8 +7995,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7232,8 +8004,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7339,6 +8111,92 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/addresses/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -7475,6 +8333,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -7516,6 +8384,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -7626,6 +8503,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.ForwardingRule Body { get; set; }
@@ -7665,6 +8552,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -7692,8 +8588,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7701,8 +8597,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7813,6 +8709,92 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/forwardingRules/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type
         /// as the old target.</summary>
         /// <param name="body">The body of the request.</param>
@@ -7846,6 +8828,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the ForwardingRule resource in which target is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -7894,6 +8886,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -8023,8 +9024,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8032,8 +9033,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8321,8 +9322,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8330,8 +9331,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8489,6 +9490,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -8530,6 +9541,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -8640,6 +9660,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HealthCheck Body { get; set; }
@@ -8679,6 +9709,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -8706,8 +9745,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8715,8 +9754,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8861,6 +9900,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HealthCheck Body { get; set; }
@@ -8908,6 +9957,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9031,6 +10089,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HealthCheck Body { get; set; }
@@ -9078,6 +10146,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9130,6 +10207,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -9171,6 +10258,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9281,6 +10377,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpHealthCheck Body { get; set; }
@@ -9320,6 +10426,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -9347,8 +10462,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9356,8 +10471,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -9502,6 +10617,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpHealthCheck Body { get; set; }
@@ -9549,6 +10674,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9672,6 +10806,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpHealthCheck Body { get; set; }
@@ -9719,6 +10863,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9771,6 +10924,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -9812,6 +10975,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -9922,6 +11094,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpsHealthCheck Body { get; set; }
@@ -9961,6 +11143,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -9988,8 +11179,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9997,8 +11188,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -10143,6 +11334,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpsHealthCheck Body { get; set; }
@@ -10190,6 +11391,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10313,6 +11523,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.HttpsHealthCheck Body { get; set; }
@@ -10360,6 +11580,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10412,6 +11641,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -10454,6 +11693,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -10492,6 +11740,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Image name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -10540,6 +11798,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -10722,6 +11989,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Image Body { get; set; }
@@ -10761,6 +12038,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -10796,8 +12082,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -10805,8 +12091,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -10917,7 +12203,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -10928,7 +12214,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -11163,6 +12449,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManagersAbandonInstancesRequest Body { get; set; }
@@ -11220,6 +12516,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -11247,8 +12552,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11256,8 +12561,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11409,6 +12714,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -11457,6 +12772,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -11521,6 +12845,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManagersDeleteInstancesRequest Body { get; set; }
@@ -11575,6 +12909,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -11722,6 +13065,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -11770,6 +13123,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -11806,8 +13168,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11815,8 +13177,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -12133,6 +13495,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -12187,6 +13559,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -12249,6 +13630,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManagersRecreateInstancesRequest Body { get; set; }
@@ -12303,6 +13694,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -12371,6 +13771,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -12427,6 +13837,15 @@ namespace Google.Apis.Compute.beta
                     {
                         Name = "size",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12494,6 +13913,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManagersResizeAdvancedRequest Body { get; set; }
@@ -12551,6 +13980,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -12593,6 +14031,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the instance group manager.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12651,6 +14099,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -12695,6 +14152,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12753,6 +14220,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -12803,6 +14279,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -12858,6 +14344,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -13009,6 +14504,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -13063,6 +14568,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -13128,6 +14642,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupsAddInstancesRequest Body { get; set; }
@@ -13185,6 +14709,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -13212,8 +14745,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -13221,8 +14754,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13374,6 +14907,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -13422,6 +14965,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -13556,6 +15108,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroup Body { get; set; }
@@ -13604,6 +15166,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -13638,8 +15209,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -13647,8 +15218,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13808,8 +15379,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -13817,8 +15388,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -14000,6 +15571,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupsRemoveInstancesRequest Body { get; set; }
@@ -14057,6 +15638,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -14099,6 +15689,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the instance group where the named ports are updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -14154,6 +15754,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -14311,6 +15920,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceTemplate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceTemplate { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -14352,6 +15971,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -14464,6 +16092,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceTemplate Body { get; set; }
@@ -14503,6 +16141,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -14532,8 +16179,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -14541,8 +16188,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -14799,6 +16446,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.AccessConfig Body { get; set; }
@@ -14865,6 +16522,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -14892,8 +16558,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -14901,8 +16567,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15055,6 +16721,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.AttachedDisk Body { get; set; }
@@ -15112,6 +16788,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15153,6 +16838,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance resource to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -15204,6 +16899,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -15258,6 +16962,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the network interface.</summary>
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -15328,6 +17042,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15374,6 +17097,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Disk device name to detach.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -15431,6 +17164,15 @@ namespace Google.Apis.Compute.beta
                     {
                         Name = "deviceName",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -15689,6 +17431,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Instance Body { get; set; }
@@ -15737,6 +17489,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -15771,8 +17532,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15780,8 +17541,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15939,8 +17700,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15948,8 +17709,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -16114,6 +17875,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -16164,6 +17935,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -16218,6 +17998,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The device name of the disk to modify.</summary>
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -16288,11 +18078,20 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"\w[\w.-]{0,254}",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -16304,7 +18103,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -16331,6 +18130,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16389,6 +18198,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16432,6 +18250,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16490,6 +18318,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16533,6 +18370,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16591,6 +18438,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16632,6 +18488,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -16690,6 +18556,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16734,7 +18609,13 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16846,6 +18727,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Scheduling Body { get; set; }
@@ -16903,6 +18794,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -16946,6 +18846,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17004,6 +18914,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17045,6 +18964,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17103,6 +19032,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17144,6 +19082,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -17196,6 +19144,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17239,6 +19196,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance resource to start.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -17297,6 +19264,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -17342,6 +19318,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the instance resource to stop.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -17393,6 +19379,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -17632,8 +19627,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17641,8 +19636,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -17876,8 +19871,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17885,8 +19880,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -18055,6 +20050,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.NetworksAddPeeringRequest Body { get; set; }
@@ -18103,6 +20108,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18136,6 +20150,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the network to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18178,6 +20202,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18286,6 +20319,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Network Body { get; set; }
@@ -18325,6 +20368,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18352,8 +20404,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -18361,8 +20413,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -18505,6 +20557,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.NetworksRemovePeeringRequest Body { get; set; }
@@ -18553,6 +20615,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18586,6 +20657,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the network to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18628,6 +20709,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -18757,6 +20847,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -18790,6 +20890,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18818,6 +20927,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -18858,6 +20977,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18884,6 +21012,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -18918,6 +21056,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -18948,6 +21095,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -18987,6 +21144,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -19373,6 +21539,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.DiskMoveRequest Body { get; set; }
@@ -19412,6 +21588,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19440,6 +21625,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19480,6 +21675,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19510,6 +21714,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19550,6 +21764,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19580,6 +21803,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -19619,6 +21852,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -19677,6 +21919,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -19727,6 +21979,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -19855,6 +22116,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -19903,6 +22174,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -19937,8 +22217,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -19946,8 +22226,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20105,6 +22385,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -20161,6 +22451,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -20301,6 +22600,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Autoscaler Body { get; set; }
@@ -20357,6 +22666,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -20416,6 +22734,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -20466,6 +22794,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -20698,6 +23035,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -20746,6 +23093,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -20782,8 +23138,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20791,8 +23147,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20955,6 +23311,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -21011,6 +23377,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -21158,6 +23533,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.BackendService Body { get; set; }
@@ -21215,6 +23600,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21259,8 +23653,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -21268,8 +23662,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -21505,6 +23899,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Commitment Body { get; set; }
@@ -21553,6 +23957,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21587,8 +24000,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -21596,8 +24009,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -21792,6 +24205,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersAbandonInstancesRequest Body { get; set; }
@@ -21849,6 +24272,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -21889,6 +24321,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the managed instance group to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -21938,6 +24380,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -22001,6 +24452,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersDeleteInstancesRequest Body { get; set; }
@@ -22055,6 +24516,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -22198,6 +24668,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -22246,6 +24726,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22282,8 +24771,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -22291,8 +24780,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -22605,6 +25094,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -22659,6 +25158,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -22720,6 +25228,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.RegionInstanceGroupManagersRecreateRequest Body { get; set; }
@@ -22774,6 +25292,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -22839,6 +25366,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -22899,6 +25436,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -22940,6 +25486,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -22998,6 +25554,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -23042,6 +25607,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>The name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -23100,6 +25675,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -23143,6 +25727,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the managed instance group.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -23198,6 +25792,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -23349,6 +25952,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.InstanceGroupManager Body { get; set; }
@@ -23403,6 +26016,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroupManager",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -23549,8 +26171,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23558,8 +26180,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23722,8 +26344,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23731,8 +26353,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23906,6 +26528,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.RegionInstanceGroupsSetNamedPortsRequest Body { get; set; }
@@ -23960,6 +26592,15 @@ namespace Google.Apis.Compute.beta
                         Name = "instanceGroup",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -24295,8 +26936,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24304,8 +26945,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24543,8 +27184,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24552,8 +27193,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24704,8 +27345,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24713,8 +27354,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24861,6 +27502,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -24911,6 +27562,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -25134,6 +27794,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Router Body { get; set; }
@@ -25182,6 +27852,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -25216,8 +27895,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -25225,8 +27904,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -25386,6 +28065,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Router Body { get; set; }
@@ -25442,6 +28131,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -25685,6 +28383,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Router Body { get; set; }
@@ -25742,6 +28450,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -25793,6 +28510,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("route", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Route { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -25834,6 +28561,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -25942,6 +28678,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Route Body { get; set; }
@@ -25981,6 +28727,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26008,8 +28763,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -26017,8 +28772,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -26268,6 +29023,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Snapshot { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -26309,6 +29074,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -26415,8 +29189,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -26424,8 +29198,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -26536,7 +29310,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -26547,7 +29321,7 @@ namespace Google.Apis.Compute.beta
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -26753,6 +29527,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("sslCertificate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SslCertificate { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -26794,6 +29578,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -26904,6 +29697,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.SslCertificate Body { get; set; }
@@ -26943,6 +29746,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -26970,8 +29782,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -26979,8 +29791,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27215,8 +30027,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27224,8 +30036,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27372,6 +30184,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -27423,6 +30245,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -27464,6 +30295,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the Subnetwork resource to update.</summary>
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -27521,6 +30362,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -27742,6 +30592,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Subnetwork Body { get; set; }
@@ -27790,6 +30650,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -27824,8 +30693,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27833,8 +30702,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -28093,6 +30962,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.SubnetworksSetPrivateIpGoogleAccessRequest Body { get; set; }
@@ -28149,6 +31028,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -28300,6 +31188,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -28341,6 +31239,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -28451,6 +31358,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetHttpProxy Body { get; set; }
@@ -28490,6 +31407,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -28517,8 +31443,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -28526,8 +31452,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -28670,6 +31596,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.UrlMapReference Body { get; set; }
@@ -28717,6 +31653,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -28853,6 +31798,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -28894,6 +31849,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29004,6 +31968,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetHttpsProxy Body { get; set; }
@@ -29043,6 +32017,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -29070,8 +32053,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29079,8 +32062,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29223,6 +32206,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetHttpsProxiesSetSslCertificatesRequest Body { get; set; }
@@ -29271,6 +32264,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -29306,6 +32308,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetHttpsProxy resource whose URL map is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -29354,6 +32366,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29483,8 +32504,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29492,8 +32513,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29640,6 +32661,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetInstance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetInstance { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -29690,6 +32721,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -29822,6 +32862,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetInstance Body { get; set; }
@@ -29870,6 +32920,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -29904,8 +32963,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29913,8 +32972,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -30189,6 +33248,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetPoolsAddHealthCheckRequest Body { get; set; }
@@ -30246,6 +33315,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -30288,6 +33366,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetPool resource to add instances to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -30346,6 +33434,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -30373,8 +33470,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -30382,8 +33479,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -30530,6 +33627,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -30580,6 +33687,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -30814,6 +33930,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetPool Body { get; set; }
@@ -30862,6 +33988,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -30896,8 +34031,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -30905,8 +34040,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -31064,6 +34199,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetPoolsRemoveHealthCheckRequest Body { get; set; }
@@ -31121,6 +34266,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -31163,6 +34317,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetPool resource to remove instances from.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -31221,6 +34385,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -31267,6 +34440,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>New failoverRatio value for the target pool.</summary>
             [Google.Apis.Util.RequestParameterAttribute("failoverRatio", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<float> FailoverRatio { get; set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -31329,6 +34512,15 @@ namespace Google.Apis.Compute.beta
                     "failoverRatio", new Google.Apis.Discovery.Parameter
                     {
                         Name = "failoverRatio",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -31484,6 +34676,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -31525,6 +34727,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -31635,6 +34846,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetSslProxy Body { get; set; }
@@ -31674,6 +34895,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -31701,8 +34931,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -31710,8 +34940,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -31854,6 +35084,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetSslProxiesSetBackendServiceRequest Body { get; set; }
@@ -31902,6 +35142,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -31937,6 +35186,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetSslProxy resource whose ProxyHeader is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -31986,6 +35245,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -32021,6 +35289,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetSslProxy resource whose SslCertificate resource is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -32069,6 +35347,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32205,6 +35492,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -32246,6 +35543,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -32356,6 +35662,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetTcpProxy Body { get; set; }
@@ -32395,6 +35711,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -32422,8 +35747,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -32431,8 +35756,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -32575,6 +35900,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetTcpProxiesSetBackendServiceRequest Body { get; set; }
@@ -32623,6 +35958,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -32658,6 +36002,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the TargetTcpProxy resource whose ProxyHeader is to be set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -32707,6 +36061,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -32751,8 +36114,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -32760,8 +36123,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -32908,6 +36271,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("targetVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetVpnGateway { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -32958,6 +36331,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33090,6 +36472,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.TargetVpnGateway Body { get; set; }
@@ -33138,6 +36530,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -33172,8 +36573,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -33181,8 +36582,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -33448,6 +36849,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -33489,6 +36900,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -33599,6 +37019,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.UrlMap Body { get; set; }
@@ -33638,6 +37068,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -33675,6 +37114,16 @@ namespace Google.Apis.Compute.beta
             /// <summary>Name of the UrlMap scoping this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -33724,6 +37173,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -33751,8 +37209,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -33760,8 +37218,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -33906,6 +37364,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.UrlMap Body { get; set; }
@@ -33953,6 +37421,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34074,6 +37551,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.UrlMap Body { get; set; }
@@ -34121,6 +37608,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34252,8 +37748,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -34261,8 +37757,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -34409,6 +37905,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("vpnTunnel", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VpnTunnel { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -34459,6 +37965,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -34591,6 +38106,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.VpnTunnel Body { get; set; }
@@ -34639,6 +38164,15 @@ namespace Google.Apis.Compute.beta
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -34673,8 +38207,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -34682,8 +38216,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -35131,8 +38665,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -35140,8 +38674,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -35379,8 +38913,8 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -35388,8 +38922,8 @@ namespace Google.Apis.Compute.beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -35736,6 +39270,20 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Type of the resource. Always compute#address for addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this Address, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an Address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this Address resource. These can be later modified by the setLabels method. Each
+        /// label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -37939,6 +41487,20 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this resource, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this resource. These can be later modified by the setLabels method. Each label
+        /// key/value pair must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>This signifies what the ForwardingRule will be used for and can only take the following values:
         /// INTERNAL, EXTERNAL The value of INTERNAL means that this will be used for Internal Network Load Balancing
         /// (TCP, UDP). The value of EXTERNAL means that this will be used for External Load Balancing (HTTP(S) LB,
@@ -37969,7 +41531,9 @@ namespace Google.Apis.Compute.beta.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetSslProxy: 443 - TargetVpnGateway: 500, 4500 -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 - TargetVpnGateway: 500, 4500
+        /// -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -40017,8 +43581,8 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>A license resource.</summary>
     public class License : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] If true, the customer will be charged license fee for running software that contains
-        /// this license on an instance.</summary>
+        /// <summary>[Output Only] Deprecated. This field no longer reflects whether a license charges a usage
+        /// fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chargesUseFee")]
         public virtual System.Nullable<bool> ChargesUseFee { get; set; } 
 
@@ -41497,6 +45061,23 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class RegionSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>The labels to set for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>
     public class ResourceCommitment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -41528,11 +45109,11 @@ namespace Google.Apis.Compute.beta.Data
     /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
     /// routing table.
     ///
-    /// For each packet leaving a instance, the system searches that instance's routing table for a single best matching
-    /// route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger
-    /// ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie,
-    /// it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet
-    /// is then forwarded as specified by the nextHop field of the winning route - either to another instance
+    /// For each packet leaving an instance, the system searches that instance's routing table for a single best
+    /// matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over
+    /// larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still
+    /// a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The
+    /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
     /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
     ///
     /// Packets that do not match any route in the sending instance's routing table are dropped.</summary>

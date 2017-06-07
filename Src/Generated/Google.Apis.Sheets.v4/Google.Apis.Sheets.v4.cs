@@ -1139,6 +1139,29 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
+                }
+
                 /// <summary>How values should be represented in the output. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1171,29 +1194,6 @@ namespace Google.Apis.Sheets.v4
                     SERIALNUMBER,
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
-                }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
                 }
 
 
@@ -1239,6 +1239,15 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "valueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueRenderOption",
@@ -1251,15 +1260,6 @@ namespace Google.Apis.Sheets.v4
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1302,13 +1302,6 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>The A1 notation of the values to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
-
-                /// <summary>Determines if the update response should include the values of the cells that were updated.
-                /// By default, responses do not include the updated values. If the range to write was larger than than
-                /// the range actually written, the response will include all values in the requested range (excluding
-                /// trailing empty rows and columns).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
@@ -1359,6 +1352,13 @@ namespace Google.Apis.Sheets.v4
                     FORMATTEDSTRING,
                 }
 
+                /// <summary>Determines if the update response should include the values of the cells that were updated.
+                /// By default, responses do not include the updated values. If the range to write was larger than than
+                /// the range actually written, the response will include all values in the requested range (excluding
+                /// trailing empty rows and columns).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -1408,15 +1408,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -1438,6 +1429,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2057,6 +2057,11 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual ChartData Domain { get; set; } 
 
+        /// <summary>True to reverse the order of the domain values (horizontal axis). Not applicable to Gauge, Geo,
+        /// Histogram, Org, Pie, Radar, and Treemap charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
+        public virtual System.Nullable<bool> Reversed { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2108,13 +2113,33 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headerCount")]
         public virtual System.Nullable<int> HeaderCount { get; set; } 
 
+        /// <summary>If some values in a series are missing, gaps may appear in the chart (e.g, segments of lines in a
+        /// line chart will be missing).  To eliminate these gaps set this to true. Applies to Line, Area, and Combo
+        /// charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolateNulls")]
+        public virtual System.Nullable<bool> InterpolateNulls { get; set; } 
+
         /// <summary>The position of the chart legend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
         public virtual string LegendPosition { get; set; } 
 
+        /// <summary>Gets whether all lines should be rendered smooth or straight by default. Applies to Line
+        /// charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineSmoothing")]
+        public virtual System.Nullable<bool> LineSmoothing { get; set; } 
+
         /// <summary>The data this chart is visualizing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual System.Collections.Generic.IList<BasicChartSeries> Series { get; set; } 
+
+        /// <summary>The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, and
+        /// Stepped Area charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
+        public virtual string StackedType { get; set; } 
+
+        /// <summary>True to make the chart 3D. Applies to Bar and Column charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threeDimensional")]
+        public virtual System.Nullable<bool> ThreeDimensional { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2375,6 +2400,133 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A bubble chart.</summary>
+    public class BubbleChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bubble border color.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleBorderColor")]
+        public virtual Color BubbleBorderColor { get; set; } 
+
+        /// <summary>The data containing the bubble labels.  These do not need to be unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleLabels")]
+        public virtual ChartData BubbleLabels { get; set; } 
+
+        /// <summary>The max radius size of the bubbles, in pixels. If specified, the field must be a positive
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleMaxRadiusSize")]
+        public virtual System.Nullable<int> BubbleMaxRadiusSize { get; set; } 
+
+        /// <summary>The minimum radius size of the bubbles, in pixels. If specific, the field must be a positive
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleMinRadiusSize")]
+        public virtual System.Nullable<int> BubbleMinRadiusSize { get; set; } 
+
+        /// <summary>The opacity of the bubbles between 0 and 1.0. 0 is fully transparent and 1 is fully
+        /// opaque.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleOpacity")]
+        public virtual System.Nullable<float> BubbleOpacity { get; set; } 
+
+        /// <summary>The data contianing the bubble sizes.  Bubble sizes are used to draw the bubbles at different sizes
+        /// relative to each other. If specified, group_ids must also be specified.  This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleSizes")]
+        public virtual ChartData BubbleSizes { get; set; } 
+
+        /// <summary>The format of the text inside the bubbles. Underline and Strikethrough are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleTextStyle")]
+        public virtual TextFormat BubbleTextStyle { get; set; } 
+
+        /// <summary>The data containing the bubble x-values.  These values locate the bubbles in the chart
+        /// horizontally.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual ChartData Domain { get; set; } 
+
+        /// <summary>The data containing the bubble group IDs. All bubbles with the same group ID will be drawn in the
+        /// same color. If bubble_sizes is specified then this field must also be specified but may contain blank
+        /// values. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIds")]
+        public virtual ChartData GroupIds { get; set; } 
+
+        /// <summary>Where the legend of the chart should be drawn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
+        public virtual string LegendPosition { get; set; } 
+
+        /// <summary>The data contianing the bubble y-values.  These values locate the bubbles in the chart
+        /// vertically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("series")]
+        public virtual ChartData Series { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A candlestick chart.</summary>
+    public class CandlestickChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Candlestick chart data. Only one CandlestickData is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IList<CandlestickData> Data { get; set; } 
+
+        /// <summary>The domain data (horizontal axis) for the candlestick chart.  String data will be treated as
+        /// discrete labels, other data will be treated as continous values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual CandlestickDomain Domain { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Candlestick chart data, each containing the low, open, close, and high values for a
+    /// series.</summary>
+    public class CandlestickData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range data (vertical axis) for the close/final value for each candle. This is the top of the
+        /// candle body.  If greater than the open value the candle will be filled.  Otherwise the candle will be
+        /// hollow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("closeSeries")]
+        public virtual CandlestickSeries CloseSeries { get; set; } 
+
+        /// <summary>The range data (vertical axis) for the high/maximum value for each candle. This is the top of the
+        /// candle's center line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highSeries")]
+        public virtual CandlestickSeries HighSeries { get; set; } 
+
+        /// <summary>The range data (vertical axis) for the low/minimum value for each candle. This is the bottom of the
+        /// candle's center line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowSeries")]
+        public virtual CandlestickSeries LowSeries { get; set; } 
+
+        /// <summary>The range data (vertical axis) for the open/initial value for each candle. This is the bottom of
+        /// the candle body.  If less than the close value the candle will be filled.  Otherwise the candle will be
+        /// hollow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openSeries")]
+        public virtual CandlestickSeries OpenSeries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The domain of a CandlestickChart.</summary>
+    public class CandlestickDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data of the CandlestickDomain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual ChartData Data { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The series of a CandlestickData.</summary>
+    public class CandlestickSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data of the CandlestickSeries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual ChartData Data { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Data about a specific cell.</summary>
     public class CellData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2526,14 +2678,44 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The specifications of a chart.</summary>
     public class ChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The background color of the entire chart. Not applicable to Org charts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual Color BackgroundColor { get; set; } 
+
         /// <summary>A basic chart specification, can be one of many kinds of charts. See BasicChartType for the list of
         /// all charts this supports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicChart")]
         public virtual BasicChartSpec BasicChart { get; set; } 
 
+        /// <summary>A bubble chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bubbleChart")]
+        public virtual BubbleChartSpec BubbleChart { get; set; } 
+
+        /// <summary>A candlestick chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candlestickChart")]
+        public virtual CandlestickChartSpec CandlestickChart { get; set; } 
+
+        /// <summary>The name of the font to use by default for all chart text (e.g. title, axis labels, legend).  If a
+        /// font is specified for a specific part of the chart it will override this font name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontName")]
+        public virtual string FontName { get; set; } 
+
         /// <summary>Determines how the charts will use hidden rows or columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenDimensionStrategy")]
         public virtual string HiddenDimensionStrategy { get; set; } 
+
+        /// <summary>A histogram chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("histogramChart")]
+        public virtual HistogramChartSpec HistogramChart { get; set; } 
+
+        /// <summary>True to make a chart fill the entire space in which it's rendered with minimum padding.  False to
+        /// use the default padding. (Not applicable to Geo and Org charts.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximized")]
+        public virtual System.Nullable<bool> Maximized { get; set; } 
+
+        /// <summary>An org chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgChart")]
+        public virtual OrgChartSpec OrgChart { get; set; } 
 
         /// <summary>A pie chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pieChart")]
@@ -2542,6 +2724,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The title of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
+
+        /// <summary>The title text format. Strikethrough and underline are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleTextFormat")]
+        public virtual TextFormat TitleTextFormat { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3382,6 +3568,58 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A histogram chart. A histogram chart groups data items into bins, displaying each bin as a column of
+    /// stacked items.  Histograms are used to display the distribution of a dataset.  Each column of items represents a
+    /// range into which those items fall.  The number of bins can be chosen automatically or specified
+    /// explicitly.</summary>
+    public class HistogramChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>By default the bucket size (the range of values stacked in a single column) is chosen
+        /// automatically, but it may be overridden here. E.g., A bucket size of 1.5 results in buckets from 0 - 1.5,
+        /// 1.5 - 3.0, etc. Cannot be negative. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
+        public virtual System.Nullable<double> BucketSize { get; set; } 
+
+        /// <summary>The position of the chart legend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legendPosition")]
+        public virtual string LegendPosition { get; set; } 
+
+        /// <summary>The outlier percentile is used to ensure that outliers do not adversely affect the calculation of
+        /// bucket sizes.  For example, setting an outlier percentile of 0.05 indicates that the top and bottom 5% of
+        /// values when calculating buckets.  The values are still included in the chart, they will be added to the
+        /// first or last buckets instead of their own buckets. Must be between 0.0 and 0.5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outlierPercentile")]
+        public virtual System.Nullable<double> OutlierPercentile { get; set; } 
+
+        /// <summary>The series for a histogram may be either a single series of values to be bucketed or multiple
+        /// series, each of the same length, containing the name of the series followed by the values to be bucketed for
+        /// that series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("series")]
+        public virtual System.Collections.Generic.IList<HistogramSeries> Series { get; set; } 
+
+        /// <summary>Whether horizontal divider lines should be displayed between items in each column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showItemDividers")]
+        public virtual System.Nullable<bool> ShowItemDividers { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A histogram series containing the series color and data.</summary>
+    public class HistogramSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The color of the column representing this series in each bucket. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("barColor")]
+        public virtual Color BarColor { get; set; } 
+
+        /// <summary>The data for this histogram series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual ChartData Data { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Inserts rows or columns in a sheet at a particular index.</summary>
     public class InsertDimensionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3525,6 +3763,45 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The type of the number format. When writing, this field must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An org chart. Org charts require a unique set of labels in labels and may optionally include
+    /// parent_labels and tooltips. parent_labels contain, for each node, the label identifying the parent node.
+    /// tooltips contain, for each node, an optional tooltip.
+    ///
+    /// For example, to describe an OrgChart with Alice as the CEO, Bob as the President (reporting to Alice) and Cathy
+    /// as VP of Sales (also reporting to Alice), have labels contain "Alice", "Bob", "Cathy", parent_labels contain "",
+    /// "Alice", "Alice" and tooltips contain "CEO", "President", "VP Sales".</summary>
+    public class OrgChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data containing the labels for all the nodes in the chart.  Labels must be unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual ChartData Labels { get; set; } 
+
+        /// <summary>The color of the org chart nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeColor")]
+        public virtual Color NodeColor { get; set; } 
+
+        /// <summary>The size of the org chart nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSize")]
+        public virtual string NodeSize { get; set; } 
+
+        /// <summary>The data containing the label of the parent for the corresponding node. A blank value indicates
+        /// that the node has no parent and is a top-level node. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentLabels")]
+        public virtual ChartData ParentLabels { get; set; } 
+
+        /// <summary>The color of the selected org chart nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedNodeColor")]
+        public virtual Color SelectedNodeColor { get; set; } 
+
+        /// <summary>The data containing the tooltip for the corresponding node.  A blank value results in no tooltip
+        /// being displayed for the node. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tooltips")]
+        public virtual ChartData Tooltips { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

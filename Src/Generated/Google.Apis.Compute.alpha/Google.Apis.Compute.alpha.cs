@@ -794,8 +794,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -803,8 +803,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1038,8 +1038,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1047,8 +1047,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1208,8 +1208,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1217,8 +1217,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1365,7 +1365,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -1558,7 +1564,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -1653,8 +1665,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1662,8 +1674,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1783,7 +1795,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -1795,7 +1807,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an Address. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -1823,7 +1835,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2036,8 +2054,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2045,8 +2063,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2193,7 +2211,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2386,7 +2410,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2481,8 +2511,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2490,8 +2520,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2649,7 +2679,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2858,7 +2894,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2982,7 +3024,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3077,7 +3125,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3174,7 +3228,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KeyName { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3425,7 +3485,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3504,8 +3570,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3513,8 +3579,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3659,7 +3725,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3924,7 +3996,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendBucket { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4040,7 +4118,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4130,8 +4214,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4139,8 +4223,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4281,7 +4365,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4378,7 +4468,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KeyName { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4637,7 +4733,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4716,8 +4818,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -4725,8 +4827,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -4873,7 +4975,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4971,7 +5079,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5156,7 +5270,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5362,8 +5482,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5371,8 +5491,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5606,8 +5726,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5615,8 +5735,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5776,8 +5896,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -5785,8 +5905,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -5939,7 +6059,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6062,7 +6188,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6352,7 +6484,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6460,8 +6598,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -6469,8 +6607,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -6628,7 +6766,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6801,7 +6945,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -6813,7 +6957,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, resource);
         }
 
-        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a disk. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -6841,7 +6985,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7061,7 +7211,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7221,7 +7377,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7300,8 +7462,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7309,8 +7471,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7455,7 +7617,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7640,7 +7808,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7745,8 +7919,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -7754,8 +7928,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -7903,7 +8077,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8097,7 +8277,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8194,8 +8380,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -8203,8 +8389,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -8365,7 +8551,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8439,8 +8631,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The region for this
@@ -8451,8 +8643,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -8479,7 +8671,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8594,7 +8792,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8814,7 +9018,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Address { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8978,7 +9188,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9057,8 +9273,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9066,8 +9282,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -9178,8 +9394,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -9189,8 +9405,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on a GlobalAddress. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -9395,7 +9611,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9559,7 +9781,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9638,8 +9866,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -9647,8 +9875,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -9793,7 +10021,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9858,8 +10092,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
@@ -9869,8 +10103,8 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling or Tagging
-        /// Resources documentation.</summary>
+        /// <summary>Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new SetLabels request.</summary>
@@ -9978,7 +10212,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forwardingRule", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ForwardingRule { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10167,8 +10407,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -10176,8 +10416,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -10465,8 +10705,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -10474,8 +10714,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -10633,7 +10873,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10797,7 +11043,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10876,8 +11128,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -10885,8 +11137,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11031,7 +11283,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11214,7 +11472,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("healthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11319,8 +11583,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11328,8 +11592,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11563,8 +11827,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11572,8 +11836,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11733,8 +11997,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -11742,8 +12006,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -11890,7 +12154,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Host { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12174,7 +12444,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12269,8 +12545,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -12278,8 +12554,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -12644,7 +12920,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12808,7 +13090,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12887,8 +13175,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -12896,8 +13184,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13042,7 +13330,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13225,7 +13519,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13337,7 +13637,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13501,7 +13807,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13580,8 +13892,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -13589,8 +13901,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -13735,7 +14047,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13918,7 +14236,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("httpsHealthCheck", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string HttpsHealthCheck { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14030,7 +14354,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14124,7 +14454,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("image", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Image { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14448,7 +14784,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forceCreate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceCreate { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14544,8 +14886,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -14553,8 +14895,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -14749,7 +15091,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -14760,7 +15102,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on an image. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -14995,7 +15337,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15092,8 +15440,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15101,8 +15449,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -15254,7 +15602,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15379,7 +15733,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15593,7 +15953,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15690,8 +16056,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -15699,8 +16065,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -16017,7 +16383,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16146,7 +16518,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16281,7 +16659,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16417,7 +16801,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16530,7 +16920,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16645,7 +17041,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16766,7 +17168,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16984,7 +17392,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17116,7 +17530,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17213,8 +17633,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17222,8 +17642,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -17375,7 +17795,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17570,7 +17996,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17665,8 +18097,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17674,8 +18106,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -17835,8 +18267,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -17844,8 +18276,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -18027,7 +18459,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18140,7 +18578,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18364,7 +18808,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceTemplate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceTemplate { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18530,7 +18980,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18611,8 +19067,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -18620,8 +19076,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -18878,7 +19334,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18984,8 +19446,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -18993,8 +19455,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -19152,7 +19614,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ForceAttach { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19273,7 +19741,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19391,7 +19865,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19520,7 +20000,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19940,9 +20426,25 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
+
+            /// <summary>Specifies instance template to create the instance.
+            ///
+            /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
+            /// to an instance template: -
+            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
+            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
+            /// global/instancesTemplates/instanceTemplate</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceInstanceTemplate { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -20001,6 +20503,15 @@ namespace Google.Apis.Compute.alpha
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "sourceInstanceTemplate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceInstanceTemplate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -20035,8 +20546,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20044,8 +20555,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20203,8 +20714,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -20212,8 +20723,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -20378,7 +20889,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20496,7 +21013,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("deviceName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DeviceName { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20681,7 +21204,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -20693,7 +21216,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets labels on an instance. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -20721,7 +21244,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20835,7 +21364,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20949,7 +21484,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21061,7 +21602,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21175,7 +21722,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21287,7 +21840,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21401,7 +21960,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21513,7 +22078,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21716,7 +22287,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21824,7 +22401,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21945,7 +22528,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22069,7 +22658,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("discardLocalSsd", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DiscardLocalSsd { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22292,7 +22887,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22420,7 +23021,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string NetworkInterface { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22543,8 +23150,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -22552,8 +23159,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -22701,7 +23308,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("interconnectAttachment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InterconnectAttachment { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22988,7 +23601,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23083,8 +23702,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23092,8 +23711,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23430,8 +24049,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23439,8 +24058,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -23682,7 +24301,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Interconnect { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23844,7 +24469,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23923,8 +24554,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -23932,8 +24563,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24078,7 +24709,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Interconnect { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24274,10 +24911,6 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("license", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string License { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -24319,15 +24952,6 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                    });
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
                     });
             }
 
@@ -24436,7 +25060,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24521,8 +25151,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24530,8 +25160,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24682,8 +25312,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24691,8 +25321,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -24926,8 +25556,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -24935,8 +25565,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -25105,7 +25735,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25200,7 +25836,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25362,7 +26004,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25441,8 +26089,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -25450,8 +26098,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -25562,6 +26210,109 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Patches the specified network with the data included in the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network to
+        /// update.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.Network body, string project, string network)
+        {
+            return new PatchRequest(service, body, project, network);
+        }
+
+        /// <summary>Patches the specified network with the data included in the request.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Network body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Network Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Removes a peering from the specified network.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -25594,7 +26345,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25689,7 +26446,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Network { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25872,7 +26635,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25947,7 +26716,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26026,7 +26801,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26103,7 +26884,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26540,7 +27327,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26621,7 +27414,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26704,7 +27503,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26787,7 +27592,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26870,7 +27681,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26979,7 +27796,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Autoscaler { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27170,7 +27993,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27265,8 +28094,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -27274,8 +28103,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -27433,7 +28262,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27642,7 +28477,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("autoscaler", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Autoscaler { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27770,7 +28611,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28065,7 +28912,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28162,8 +29015,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -28171,8 +29024,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -28335,7 +29188,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28551,7 +29410,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BackendService { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28665,8 +29530,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -28674,8 +29539,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29012,8 +29877,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29021,8 +29886,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29381,8 +30246,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -29390,8 +30255,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -29570,7 +30435,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("guestFlush", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> GuestFlush { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29693,7 +30564,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29886,7 +30763,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29994,8 +30877,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -30003,8 +30886,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -30162,7 +31045,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Disk { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30274,7 +31163,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30522,7 +31417,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30633,7 +31534,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30757,7 +31664,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30967,7 +31880,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31064,8 +31983,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -31073,8 +31992,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -31387,7 +32306,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31515,7 +32440,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31647,7 +32578,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("size", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Size { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31762,7 +32699,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31877,7 +32820,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31991,7 +32940,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32209,7 +33164,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroupManager { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32422,8 +33383,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -32431,8 +33392,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -32595,8 +33556,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -32604,8 +33565,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -32779,7 +33740,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -33181,8 +34148,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -33190,8 +34157,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -33429,8 +34396,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -33438,8 +34405,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -33590,8 +34557,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -33599,8 +34566,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -33747,7 +34714,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34033,7 +35006,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34128,8 +35107,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -34137,8 +35116,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -34298,7 +35277,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34610,7 +35595,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("router", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Router { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34731,7 +35722,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("route", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Route { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34893,7 +35890,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34972,8 +35975,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -34981,8 +35984,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -35224,7 +36227,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SecurityPolicy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35384,7 +36393,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35463,8 +36478,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -35472,8 +36487,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -35616,7 +36631,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SecurityPolicy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35820,7 +36841,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Snapshot { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36058,8 +37085,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -36067,8 +37094,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -36263,7 +37290,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -36274,7 +37301,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, resource);
         }
 
-        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a snapshot. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -36480,7 +37507,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("sslCertificate", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SslCertificate { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36644,7 +37677,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36723,8 +37762,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -36732,8 +37771,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -36968,8 +38007,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -36977,8 +38016,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -37125,7 +38164,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37231,7 +38276,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37521,7 +38572,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37616,8 +38673,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -37625,8 +38682,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -37885,7 +38942,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Subnetwork { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38105,7 +39168,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38269,7 +39338,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38348,8 +39423,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -38357,8 +39432,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -38501,7 +39576,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38697,7 +39778,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38861,7 +39948,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38940,8 +40033,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -38949,8 +40042,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -39093,7 +40186,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -39190,7 +40289,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetHttpsProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetHttpsProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -39379,8 +40484,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -39388,8 +40493,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -39536,7 +40641,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetInstance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetInstance { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -39731,7 +40842,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -39826,8 +40943,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -39835,8 +40952,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -40111,7 +41228,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -40224,7 +41347,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -40321,8 +41450,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -40330,8 +41459,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -40478,7 +41607,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -40775,7 +41910,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -40870,8 +42011,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -40879,8 +42020,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -41038,7 +42179,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41151,7 +42298,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetPool", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetPool { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41268,7 +42421,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("failoverRatio", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<float> FailoverRatio { get; set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41497,7 +42656,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41661,7 +42826,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41740,8 +42911,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -41749,8 +42920,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -41893,7 +43064,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -41990,7 +43167,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42087,7 +43270,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetSslProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetSslProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42283,7 +43472,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42447,7 +43642,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42526,8 +43727,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -42535,8 +43736,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -42679,7 +43880,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42776,7 +43983,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetTcpProxy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetTcpProxy { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -42965,8 +44178,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -42974,8 +44187,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -43122,7 +44335,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("targetVpnGateway", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TargetVpnGateway { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -43317,7 +44536,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -43412,8 +44637,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -43421,8 +44646,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -43688,7 +44913,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -43852,7 +45083,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -43942,7 +45179,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -44030,8 +45273,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -44039,8 +45282,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -44185,7 +45428,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -44366,7 +45615,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -44557,8 +45812,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -44566,8 +45821,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -44714,7 +45969,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("vpnTunnel", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string VpnTunnel { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -44909,7 +46170,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -45004,8 +46271,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -45013,8 +46280,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -45134,7 +46401,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -45146,7 +46413,7 @@ namespace Google.Apis.Compute.alpha
             return new SetLabelsRequest(service, body, project, region, resource);
         }
 
-        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling or Tagging Resources
+        /// <summary>Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Resources
         /// documentation.</summary>
         public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
@@ -45174,7 +46441,13 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
-            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and then the request times out. If
+            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -45576,8 +46849,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -45585,8 +46858,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -45824,8 +47097,8 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -45833,8 +47106,8 @@ namespace Google.Apis.Compute.alpha
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -47938,6 +49211,13 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; } 
 
+        /// <summary>Physical block size of the persistent disk, in bytes. If not present in a request, a default value
+        /// is used. Initially only 4096 is supported, but other powers of two may be added. If an unsupported value is
+        /// requested, the error message will list the supported values, but even a supported value may be allowed for
+        /// only some projects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("physicalBlockSizeBytes")]
+        public virtual System.Nullable<long> PhysicalBlockSizeBytes { get; set; } 
+
         /// <summary>[Output Only] URL of the region where the disk resides. Only applicable for regional
         /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
@@ -48675,7 +49955,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetSslProxy: 443 - TargetVpnGateway: 500, 4500 -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 - TargetVpnGateway: 500, 4500
+        /// -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -51355,6 +52637,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>[Output Only] List of outages expected for this Interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedOutages")]
+        public virtual System.Collections.Generic.IList<InterconnectOutageNotification> ExpectedOutages { get; set; } 
+
         /// <summary>[Output Only] IP address configured on the Google side of the Interconnect link. This can be used
         /// only for ping tests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleIpAddress")]
@@ -51791,11 +53077,47 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Description of a planned outage on this Interconnect. Next id: 9</summary>
+    public class InterconnectOutageNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Iff issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+        /// affected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedCircuits")]
+        public virtual System.Collections.Generic.IList<string> AffectedCircuits { get; set; } 
+
+        /// <summary>Short user-visible description of the purpose of the outage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual System.Nullable<long> EndTime { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
+        public virtual string IssueType { get; set; } 
+
+        /// <summary>Unique identifier for this outage notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>Scheduled start and end times for the outage (milliseconds since Unix epoch).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual System.Nullable<long> StartTime { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A license resource.</summary>
     public class License : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] If true, the customer will be charged license fee for running software that contains
-        /// this license on an instance.</summary>
+        /// <summary>[Output Only] Deprecated. This field no longer reflects whether a license charges a usage
+        /// fee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chargesUseFee")]
         public virtual System.Nullable<bool> ChargesUseFee { get; set; } 
 
@@ -53528,11 +54850,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// Routes are associated with instances by tags and the set of routes for a particular instance is called its
     /// routing table.
     ///
-    /// For each packet leaving a instance, the system searches that instance's routing table for a single best matching
-    /// route. Routes match packets by destination IP address, preferring smaller or more specific ranges over larger
-    /// ones. If there is a tie, the system selects the route with the smallest priority value. If there is still a tie,
-    /// it uses the layer three and four packet headers to select just one of the remaining matching routes. The packet
-    /// is then forwarded as specified by the nextHop field of the winning route - either to another instance
+    /// For each packet leaving an instance, the system searches that instance's routing table for a single best
+    /// matching route. Routes match packets by destination IP address, preferring smaller or more specific ranges over
+    /// larger ones. If there is a tie, the system selects the route with the smallest priority value. If there is still
+    /// a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes. The
+    /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
     /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
     ///
     /// Packets that do not match any route in the sending instance's routing table are dropped.</summary>
@@ -54308,6 +55630,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>CIDR IP address range. Only IPv4 is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]
         public virtual System.Collections.Generic.IList<string> SrcIpRanges { get; set; } 
+
+        /// <summary>Match by country or region code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("srcRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> SrcRegionCodes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
