@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170530 (880)
+ *      <tr><th>API Rev<td>20170605 (886)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1998,7 +1998,7 @@ namespace Google.Apis.Logging.v2beta1
                 /// new values of this field: If the old and new values of this field are both false or both true, then
                 /// there is no change to the sink's writer_identity. If the old value is false and the new value is
                 /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is false.</summary>
+                /// is true and the new value is set to false or defaulted to false.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/+/api/'>Google+ API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170605 (886)
+ *      <tr><th>API Rev<td>20170606 (887)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/+/api/'>
  *              https://developers.google.com/+/api/</a>

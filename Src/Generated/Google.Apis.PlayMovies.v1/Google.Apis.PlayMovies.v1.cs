@@ -1115,6 +1115,20 @@ namespace Google.Apis.PlayMovies.v1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
+                /// <summary>Filter StoreInfos that match (case-insensitive) any of the given country codes, using the
+                /// "ISO 3166-1 alpha-2" format (examples: "US", "us", "Us").</summary>
+                [Google.Apis.Util.RequestParameterAttribute("countries", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Countries { get; set; }
+
+                /// <summary>See _List methods rules_ for info about this field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
+
+                /// <summary>Filter that matches StoreInfos with a `name` or `show_name` that contains the given case-
+                /// insensitive name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Name { get; set; }
+
                 /// <summary>Filter StoreInfos that match any of the given `season_id`s.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("seasonIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> SeasonIds { get; set; }
@@ -1143,20 +1157,6 @@ namespace Google.Apis.PlayMovies.v1
                 /// <summary>See _List methods rules_ for info about this field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pphNames", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> PphNames { get; set; }
-
-                /// <summary>Filter StoreInfos that match (case-insensitive) any of the given country codes, using the
-                /// "ISO 3166-1 alpha-2" format (examples: "US", "us", "Us").</summary>
-                [Google.Apis.Util.RequestParameterAttribute("countries", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Countries { get; set; }
-
-                /// <summary>See _List methods rules_ for info about this field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("studioNames", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> StudioNames { get; set; }
-
-                /// <summary>Filter that matches StoreInfos with a `name` or `show_name` that contains the given case-
-                /// insensitive name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Name { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1188,6 +1188,33 @@ namespace Google.Apis.PlayMovies.v1
                             Name = "accountId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "countries", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "countries",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "studioNames", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "studioNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1249,33 +1276,6 @@ namespace Google.Apis.PlayMovies.v1
                         "pphNames", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pphNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "countries", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "countries",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "studioNames", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "studioNames",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

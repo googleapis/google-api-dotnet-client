@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170519 (869)
+ *      <tr><th>API Rev<td>20170605 (886)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -9497,7 +9497,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalRoles")]
         public virtual System.Collections.Generic.IList<string> AdditionalRoles { get; set; } 
 
-        /// <summary>The authkey parameter required for this permission.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
         public virtual string AuthKey { get; set; } 
 

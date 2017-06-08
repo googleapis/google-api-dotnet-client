@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/apis-explorer/#search/adexperiencereport/adexperiencereport/v1/'>Google Ad Experience Report API</a>
+ *          <td><a href='https://developers.google.com/ad-experience-report/'>Google Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170606 (887)
+ *      <tr><th>API Rev<td>20170607 (888)
  *      <tr><th>API Docs
- *          <td><a href='https://developers.google.com/apis-explorer/#search/adexperiencereport/adexperiencereport/v1/'>
- *              https://developers.google.com/apis-explorer/#search/adexperiencereport/adexperiencereport/v1/</a>
+ *          <td><a href='https://developers.google.com/ad-experience-report/'>
+ *              https://developers.google.com/ad-experience-report/</a>
  *      <tr><th>Discovery Name<td>adexperiencereport
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Google Ad Experience Report API can be found at
- * <a href='https://developers.google.com/apis-explorer/#search/adexperiencereport/adexperiencereport/v1/'>https://developers.google.com/apis-explorer/#search/adexperiencereport/adexperiencereport/v1/</a>.
+ * <a href='https://developers.google.com/ad-experience-report/'>https://developers.google.com/ad-experience-report/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
